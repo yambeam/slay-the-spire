@@ -19,7 +19,7 @@ func _process(_delta: float) -> void:
 	area_2d.position = get_local_mouse_position()
 	
 func _on_card_aim_started(card: CardUI) -> void:
-	if not card.card.is_single_targetd():
+	if not card.card.is_single_targeted():
 		printerr("bug_at_card_target_selector")
 		return
 	bessel_arrow.show()

@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://cunj3kh5og6dc" path="res://scenes/ui/card_ui.tscn" id="3_hq47e"]
 [ext_resource type="Texture2D" uid="uid://bnlf5ynahsy8u" path="res://images/rooms/underdocks/underdocks_02_a.png" id="4_hq47e"]
 [ext_resource type="Resource" uid="uid://rfrswfbanfy" path="res://entities/characters/ironclad/cards/打击.tres" id="4_prplb"]
+[ext_resource type="Resource" uid="uid://bqq44kff15k4w" path="res://entities/characters/ironclad/ironclad_stats.tres" id="5_58ypt"]
 [ext_resource type="Resource" uid="uid://b5jbjk3a0xd0q" path="res://entities/characters/ironclad/cards/防御.tres" id="5_jnfh8"]
 [ext_resource type="Texture2D" uid="uid://del54pxobtgf8" path="res://images/rooms/underdocks/underdocks_04_a.png" id="5_prplb"]
 [ext_resource type="Texture2D" uid="uid://c6r8xp7wi3hkh" path="res://images/rooms/underdocks/underdocks_05_a.png" id="6_jnfh8"]
@@ -35,37 +36,30 @@ offset_top = 860.0
 offset_right = 1493.0
 offset_bottom = 1160.0
 
-[node name="CardUI" parent="CombatUI/HandManager" unique_id=883918395 instance=ExtResource("3_hq47e")]
-layout_mode = 0
-card = ExtResource("4_prplb")
-
-[node name="CardUI2" parent="CombatUI/HandManager" unique_id=952582467 instance=ExtResource("3_hq47e")]
-layout_mode = 0
-card = ExtResource("4_prplb")
-
-[node name="CardUI4" parent="CombatUI/HandManager" unique_id=280806397 instance=ExtResource("3_hq47e")]
-layout_mode = 0
-card = ExtResource("4_prplb")
-
 [node name="CardUI5" parent="CombatUI/HandManager" unique_id=1954644581 instance=ExtResource("3_hq47e")]
 layout_mode = 0
 card = ExtResource("4_prplb")
+char_stats = ExtResource("5_58ypt")
 
 [node name="CardUI6" parent="CombatUI/HandManager" unique_id=1837956305 instance=ExtResource("3_hq47e")]
 layout_mode = 0
 card = ExtResource("4_prplb")
+char_stats = ExtResource("5_58ypt")
 
 [node name="CardUI7" parent="CombatUI/HandManager" unique_id=1623024565 instance=ExtResource("3_hq47e")]
 layout_mode = 0
 card = ExtResource("4_prplb")
+char_stats = ExtResource("5_58ypt")
 
 [node name="CardUI8" parent="CombatUI/HandManager" unique_id=1468746378 instance=ExtResource("3_hq47e")]
 layout_mode = 0
 card = ExtResource("4_prplb")
+char_stats = ExtResource("5_58ypt")
 
 [node name="CardUI3" parent="CombatUI/HandManager" unique_id=1938168792 instance=ExtResource("3_hq47e")]
 layout_mode = 0
 card = ExtResource("5_jnfh8")
+char_stats = ExtResource("5_58ypt")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=919668335]
 layer = 2

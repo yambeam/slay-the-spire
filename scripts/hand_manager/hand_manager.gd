@@ -89,10 +89,12 @@ func _on_card_previewed(pre_card: CardUI, to_preview: bool) -> void:
 		for card_ui: CardUI in get_children():
 			var movement = sign(card_ui.original_index - pre_card.original_index) * element * offset
 			#card_ui.animate_to_position(card_ui.original_position + Vector2(movement, 0), tween_time)
-			var tween := get_tree().create_tween()
-			tween.set_parallel(true)
-			tween.tween_property(card_ui, "position:x", card_ui.original_position.x + movement, tween_time)
-
+			#var tween := get_tree().create_tween()
+			#tween.set_parallel(true)
+			#tween.tween_property(card_ui, "position:x", card_ui.original_position.x + movement, tween_time)
+			card_ui.movement_tween = create_tween()
+			card_ui.movement_tween.tween_property(card_ui, "position:x", card_ui.original_position.x + movement, tween_time)
+			
 func discard_card(card: CardUI) -> void:
 	card.queue_free()
 

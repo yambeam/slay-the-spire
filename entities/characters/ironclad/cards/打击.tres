@@ -1,10 +1,10 @@
-[gd_resource type="Resource" script_class="Card" format=3 uid="uid://rfrswfbanfy"]
+[gd_resource type="Resource" format=3 uid="uid://rfrswfbanfy"]
 
 [ext_resource type="Texture2D" uid="uid://w1mk8x" path="res://images/atlases/card_atlas.sprites/ironclad/strike_ironclad.tres" id="1_80w5b"]
-[ext_resource type="Script" uid="uid://br1hibx18tv13" path="res://scripts/costum_resources/card.gd" id="1_cguel"]
+[ext_resource type="Script" uid="uid://c43aulk6qym1v" path="res://entities/characters/ironclad/cards/打击.gd" id="2_80w5b"]
 
 [resource]
-script = ExtResource("1_cguel")
+script = ExtResource("2_80w5b")
 id = "打击"
 target = 1
 cost = 1

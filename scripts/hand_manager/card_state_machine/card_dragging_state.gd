@@ -21,10 +21,9 @@ func exit_state() -> void:
 	# 可能原因: dragging->aiming中间释放了card_drag_ended
 	# 导致卡牌一瞬间disabled被设置为false,与其他卡牌进行互动
 	Events.card_drag_ended.emit(card_ui)
-	card_ui.drop_point_area.monitoring = false
 
 func on_input(event: InputEvent) -> void:
-	var single_targetd := card_ui.card.is_single_targetd()
+	var single_targetd := card_ui.card.is_single_targeted()
 	var mouse_motion := event is InputEventMouseMotion
 	var cancel := event.is_action_pressed("right_mouse")
 	# 点击后再点击释放，拖拽后释放

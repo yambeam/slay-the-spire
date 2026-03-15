@@ -1,12 +1,13 @@
-[gd_resource type="Resource" script_class="Card" format=3 uid="uid://b5jbjk3a0xd0q"]
+[gd_resource type="Resource" format=3 uid="uid://b5jbjk3a0xd0q"]
 
 [ext_resource type="Texture2D" uid="uid://cxnepi0" path="res://images/atlases/card_atlas.sprites/ironclad/defend_ironclad.tres" id="1_2fmq3"]
-[ext_resource type="Script" uid="uid://br1hibx18tv13" path="res://scripts/costum_resources/card.gd" id="1_3wko0"]
+[ext_resource type="Script" uid="uid://b6koyyeqx1l35" path="res://entities/characters/ironclad/cards/防御.gd" id="2_kysfd"]
 
 [resource]
-script = ExtResource("1_3wko0")
+script = ExtResource("2_kysfd")
 id = "防御"
 type = 1
 cost = 1
 portrait = ExtResource("1_2fmq3")
+description = "[center]获得5点格挡[/center]"
 metadata/_custom_type_script = "uid://br1hibx18tv13"

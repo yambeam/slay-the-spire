@@ -5,7 +5,6 @@ var minimum_drag_time_elapsed := false
 var offset : Vector2
 
 func enter_state() -> void:
-	card_ui.state_label.text = "DRAGGING"
 	var ui_layer := get_tree().get_first_node_in_group("ui_layer")
 	if ui_layer:
 		card_ui.reparent(ui_layer)

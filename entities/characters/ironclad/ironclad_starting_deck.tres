@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://br1hibx18tv13" path="res://scripts/costum_resources/card.gd" id="1_6dnus"]
 [ext_resource type="Script" uid="uid://jvpf65gf7yuq" path="res://scripts/costum_resources/card_pile.gd" id="2_pcwuu"]
-[ext_resource type="Resource" uid="uid://b5jbjk3a0xd0q" path="res://entities/characters/ironclad/cards/格挡.tres" id="2_uecsy"]
+[ext_resource type="Resource" uid="uid://b5jbjk3a0xd0q" path="res://entities/characters/ironclad/cards/防御.tres" id="2_uecsy"]
 [ext_resource type="Resource" uid="uid://rfrswfbanfy" path="res://entities/characters/ironclad/cards/打击.tres" id="3_55lnr"]
 
 [resource]

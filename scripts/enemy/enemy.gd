@@ -37,3 +37,11 @@ func take_damage(damage: int) -> void:
 	stats.take_damage(damage)
 	if stats.health <= 0:
 		print("敌人死亡")
+
+
+func _on_area_entered(_area: Area2D) -> void:
+	reticles.visible = true
+
+
+func _on_area_exited(_area: Area2D) -> void:
+	reticles.visible = false

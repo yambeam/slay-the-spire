@@ -1,12 +1,16 @@
 class_name CardUI
 extends Control
 
-@export var card: Card
+@export var card: Card: set = _set_card
 
-@onready var state_label: Label = $Debug/StateLabel
 @onready var drop_point_area: Area2D = $DropPointArea
 @onready var card_state_machine: CardStateMachine = $CardStateMachine
 @onready var visuals: Control = $Visuals
+@onready var card_portrait: TextureRect = %CardPortrait
+@onready var card_frame: TextureRect = %CardFrame
+@onready var title_label: Label = %TitleLabel
+@onready var energy_label: Label = %EnergyLabel
+@onready var type_label: Label = %TypeLabel
 
 var disabled: bool = false
 var playable: bool = true
@@ -53,6 +57,30 @@ func animate_end_preview() -> void:
 func animate_scale(to: Vector2, duration: float) -> void:
 	tween = create_tween()
 	tween.tween_property(self, "scale", to, duration)
+
+func _set_card(value: Card) -> void:
+	if not is_node_ready():
+		await ready
+	
+	card = value
+	card_portrait.texture = card.portrait
+	title_label.text = card.id
+	energy_label.text = str(card.cost)
+	var type_text: String
+	# TODO: 诅咒，状态
+	match card.Type:
+		card.Type.ATTACK:
+			type_text = "攻击"
+		card.Type.SKILL:
+			type_text = "技能"
+		card.Type.POWER:
+			type_text = "能力"
+		_:
+			type_text = "出错"
+			
+	type_label.text = type_text
+	
+	
 
 func _input(event: InputEvent) -> void:
 	card_state_machine.on_input(event)

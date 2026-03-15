@@ -12,6 +12,9 @@ enum Target {SELF, SINGLE_ENEMY, ALL_ENEMIES, EVERYONE}
 @export var type: Type
 @export var target: Target
 @export var cost: int
+@export_group("卡牌描述")
+@export var portrait: Texture
+@export_multiline var description: String
 
 func is_single_targetd() -> bool:
 	return target == Target.SINGLE_ENEMY

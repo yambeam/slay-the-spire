@@ -1,9 +1,12 @@
 [gd_resource type="Resource" script_class="Card" format=3 uid="uid://b5jbjk3a0xd0q"]
 
+[ext_resource type="Texture2D" uid="uid://cxnepi0" path="res://images/atlases/card_atlas.sprites/ironclad/defend_ironclad.tres" id="1_2fmq3"]
 [ext_resource type="Script" uid="uid://br1hibx18tv13" path="res://scripts/costum_resources/card.gd" id="1_3wko0"]
 
 [resource]
 script = ExtResource("1_3wko0")
-id = "格挡"
+id = "防御"
 type = 1
+cost = 1
+portrait = ExtResource("1_2fmq3")
 metadata/_custom_type_script = "uid://br1hibx18tv13"

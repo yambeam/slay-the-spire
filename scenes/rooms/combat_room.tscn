@@ -6,13 +6,14 @@
 [ext_resource type="PackedScene" uid="uid://cunj3kh5og6dc" path="res://scenes/ui/card_ui.tscn" id="3_hq47e"]
 [ext_resource type="Texture2D" uid="uid://bnlf5ynahsy8u" path="res://images/rooms/underdocks/underdocks_02_a.png" id="4_hq47e"]
 [ext_resource type="Resource" uid="uid://rfrswfbanfy" path="res://entities/characters/ironclad/cards/打击.tres" id="4_prplb"]
-[ext_resource type="Resource" uid="uid://b5jbjk3a0xd0q" path="res://entities/characters/ironclad/cards/格挡.tres" id="5_jnfh8"]
+[ext_resource type="Resource" uid="uid://b5jbjk3a0xd0q" path="res://entities/characters/ironclad/cards/防御.tres" id="5_jnfh8"]
 [ext_resource type="Texture2D" uid="uid://del54pxobtgf8" path="res://images/rooms/underdocks/underdocks_04_a.png" id="5_prplb"]
 [ext_resource type="Texture2D" uid="uid://c6r8xp7wi3hkh" path="res://images/rooms/underdocks/underdocks_05_a.png" id="6_jnfh8"]
 [ext_resource type="PackedScene" uid="uid://bdu3mvwj8syfb" path="res://scenes/card_target_selector/card_target_selector.tscn" id="11_58ypt"]
 [ext_resource type="PackedScene" uid="uid://bsxwudt1fhfq" path="res://scenes/player/player.tscn" id="11_jnfh8"]
 [ext_resource type="PackedScene" uid="uid://dtcyajca05718" path="res://scenes/enemy/enemy.tscn" id="12_jnfh8"]
 [ext_resource type="Resource" uid="uid://dehq0xyltkswt" path="res://entities/enemies/leaf_slime_m/test.tres" id="13_1y2y0"]
+[ext_resource type="PackedScene" uid="uid://dlp0rxa1b482m" path="res://scenes/combat_ui/energy_ui.tscn" id="14_1y2y0"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vujjl"]
 size = Vector2(1920, 630)
@@ -155,6 +156,14 @@ text = "删除卡牌"
 [node name="Enemy" parent="." unique_id=934959197 instance=ExtResource("12_jnfh8")]
 position = Vector2(1434, 459)
 stats = ExtResource("13_1y2y0")
+
+[node name="EnergyUI" parent="." unique_id=1056468165 instance=ExtResource("14_1y2y0")]
+layout_mode = 1
+offset_left = 77.0
+offset_top = 798.0
+offset_right = -1587.0
+offset_bottom = -26.0
+scale = Vector2(0.6, 0.6)
 
 [connection signal="pressed" from="AddCard" to="." method="_on_add_card_pressed"]
 [connection signal="pressed" from="RemoveCard" to="." method="_on_remove_card_pressed"]

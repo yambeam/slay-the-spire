@@ -43,6 +43,7 @@ offset_bottom = 211.0
 mouse_filter = 2
 
 [node name="CardPortrait" type="TextureRect" parent="Visuals" unique_id=749964796]
+unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -59,6 +60,7 @@ mouse_filter = 2
 texture = ExtResource("2_im7p3")
 
 [node name="CardFrame" type="TextureRect" parent="Visuals" unique_id=724728824]
+unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -110,6 +112,7 @@ expand_mode = 1
 stretch_mode = 4
 
 [node name="TitleLabel" type="Label" parent="Visuals/TitleBanner" unique_id=924373933]
+unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -135,6 +138,7 @@ expand_mode = 1
 stretch_mode = 4
 
 [node name="EnergyLabel" type="Label" parent="Visuals/EnergyIcon" unique_id=484522562]
+unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -163,6 +167,7 @@ patch_margin_top = 5
 patch_margin_right = 13
 
 [node name="TypeLabel" type="Label" parent="Visuals/TypePlaque" unique_id=247319145]
+unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -189,22 +194,6 @@ mouse_filter = 2
 bbcode_enabled = true
 text = "[center]造成6点伤害[/center]"
 scroll_active = false
-vertical_alignment = 1
-
-[node name="Debug" type="Control" parent="." unique_id=679281035]
-anchors_preset = 0
-offset_left = 124.0
-offset_top = 266.0
-offset_right = 164.0
-offset_bottom = 306.0
-mouse_filter = 2
-
-[node name="StateLabel" type="Label" parent="Debug" unique_id=1534182082]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 23.0
-text = "BASE"
-horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="CardStateMachine" type="Node" parent="." unique_id=152135754 node_paths=PackedStringArray("initial_state", "card_ui")]

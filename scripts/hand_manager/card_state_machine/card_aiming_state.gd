@@ -4,7 +4,6 @@ extends CardState
 const MOUSE_Y_SNAPBACK_THRESHHOLD := 1000
 
 func enter_state() -> void:
-	card_ui.state_label.text = "AMIMING"
 	card_ui.drop_point_area.monitoring = false
 	card_ui.targets.clear()
 	card_ui.animate_to_position(card_ui.parent.global_position + card_ui.parent.size * Vector2(0.5, -0.5), 0.2)

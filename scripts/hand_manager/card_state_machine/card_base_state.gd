@@ -5,7 +5,6 @@ var original_card_position: Vector2
 ## TODO: tween动画有点混乱
 
 func enter_state() -> void:
-	card_ui.state_label.text = "BASE"
 	card_ui.reparent_requested.emit(card_ui)
 	#card_ui.animate_scale(Vector2.ONE, 0.2)
 	#card_ui.tween = create_tween()

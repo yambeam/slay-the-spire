@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://cpiu2ss1wfos0" path="res://entities/enemies/leaf_slime_m/attack_action.gd" id="2_uyiru"]
 [ext_resource type="Script" uid="uid://d4n2wao2k18as" path="res://entities/enemies/leaf_slime_m/attack_block_action.gd" id="3_0vsok"]
 [ext_resource type="Script" uid="uid://6hsfcvkq5h3t" path="res://entities/enemies/leaf_slime_m/mega_attack_action.gd" id="4_e5hhr"]
+[ext_resource type="Script" uid="uid://bxf4q06mhs7dk" path="res://entities/enemies/leaf_slime_m/mega_block_action.gd" id="5_0vsok"]
 
 [node name="leaf_slime_m_ai" unique_id=160467564 instance=ExtResource("1_mgtwb")]
 
@@ -19,3 +20,7 @@ weight = 1.0
 
 [node name="MegaAttackAction" type="Node" parent="." index="2" unique_id=1348560572]
 script = ExtResource("4_e5hhr")
+type = 2
+
+[node name="MegaBlockAction" type="Node" parent="." index="3" unique_id=1460575418]
+script = ExtResource("5_0vsok")

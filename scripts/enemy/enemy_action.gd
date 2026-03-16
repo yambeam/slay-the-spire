@@ -1,7 +1,7 @@
 class_name EnemyAction
 extends Node
 
-enum Type{CONDITIONAL, CHANCE_BASED}
+enum Type{CONDITIONAL, CHANCE_BASED, CONDITIONAL_OVER_TURN}
 
 @export var type: Type
 ## 触发的权重，只对CHANCE_BASED类型的Action生效

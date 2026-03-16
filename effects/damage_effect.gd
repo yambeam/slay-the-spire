@@ -7,4 +7,4 @@ func execute(_targets: Array[Node]) -> void:
 	for target in _targets:
 		if not target:
 			continue
-		target.stats.take_damage(amount)
+		target.take_damage(amount)

@@ -6,15 +6,31 @@ extends Node
 
 @onready var total_weight := 0.0
 
+func _ready() -> void:
+	target = get_tree().get_first_node_in_group("ui_player")
+	setup_chances()
+	
 func get_action() -> EnemyAction:
-	var action := get_first_conditional_action()
+	var action := get_first_any_conditional_action()
 	if action:
 		return action
 	return get_chance_based_action()
-
+	
+func get_first_any_conditional_action() -> EnemyAction:
+	var ret: EnemyAction = get_first_conditional_action()
+	return ret if ret != null else get_first_conditional_over_turn_action()
+	
 func get_first_conditional_action() -> EnemyAction:
 	for action: EnemyAction in get_children():
 		if not action or action.type != EnemyAction.Type.CONDITIONAL:
+			continue
+		if action.is_performable():
+			return action
+	return null
+
+func get_first_conditional_over_turn_action() -> EnemyAction:
+	for action: EnemyAction in get_children():
+		if not action or action.type != EnemyAction.Type.CONDITIONAL_OVER_TURN:
 			continue
 		if action.is_performable():
 			return action

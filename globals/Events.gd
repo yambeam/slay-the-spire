@@ -15,6 +15,9 @@ signal player_hand_drawn
 signal player_hand_discarded
 signal player_turn_ended
 signal player_hited(text: String)
+signal player_died
 ## 敌人相关
-signal  enemy_action_completed(enemy: Enemy)
+signal enemy_action_completed(enemy: Enemy)
+signal enemy_turn_ended
+signal enemy_died
 @warning_ignore_restore("unused_signal")

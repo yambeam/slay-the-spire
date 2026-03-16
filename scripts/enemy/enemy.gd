@@ -19,7 +19,7 @@ func do_turn() -> void:
 		return
 		
 	current_action.perform_action()
-	_update_action()
+	update_action()
 
 func _set_current_action(value: EnemyAction) -> void:
 	current_action = value
@@ -41,7 +41,7 @@ func _setup_ai() -> void:
 	enemy_ai = new_ai
 	enemy_ai.enemy = self
 
-func _update_action() -> void:
+func update_action() -> void:
 	if not enemy_ai:
 		return
 	if not current_action:
@@ -54,6 +54,7 @@ func _update_action() -> void:
 	
 func _update_stats() -> void:
 	health_bar.update_stats(stats)
+	update_action()
 
 func _update_enemy() -> void:
 	if not stats is Stats:
@@ -67,11 +68,13 @@ func _update_enemy() -> void:
 	_update_stats()
 
 func take_damage(damage: int) -> void:
+	print("take_damage")
 	if stats.health <= 0:
 		return
 	stats.take_damage(damage)
 	if stats.health <= 0:
 		print("敌人死亡")
+		queue_free()
 
 
 func _on_area_entered(_area: Area2D) -> void:

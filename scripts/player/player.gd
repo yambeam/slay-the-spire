@@ -29,6 +29,7 @@ func take_damage(damage: int) -> void:
 	stats.take_damage(damage)
 	
 	if stats.health <= 0:
+		Events.player_died.emit()
 		print("玩家死亡")
 
 func _set_char_stats(value: CharacterStats) -> void:

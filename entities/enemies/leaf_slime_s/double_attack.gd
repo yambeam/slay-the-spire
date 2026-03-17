@@ -16,5 +16,6 @@ func perform_action() -> void:
 	tween.tween_callback(damage_effect.execute.bind([target] as Array[Node]))
 	tween.tween_interval(0.3)
 	tween.tween_callback(damage_effect.execute.bind([target] as Array[Node]))
-		
+	await tween.finished
+	
 	Events.enemy_action_completed.emit(enemy)

@@ -78,6 +78,23 @@ func _update_enemy() -> void:
 	spine_anim_state = spine_manager.get_animation_state()
 	spine_anim_state.set_animation("idle_loop", true, 0)
 	_update_stats()
+	
+func lose_health(amount: int) -> void:
+	if stats.health <= 0:
+		return
+	
+	stats.health -= amount		
+
+	if stats.health <= 0:
+		intents.hide()
+		health_bar.hide()
+		spine_anim_state.set_animation("die", true, 0)
+		spine_manager.animation_completed.connect(
+			func (_x, _y, _z): queue_free()
+		)
+	else:
+		spine_anim_state.set_animation("hurt", true, 0)
+		spine_anim_state.add_animation("idle_loop", 0, true, 0)
 
 func take_damage(damage: int) -> void:
 	if stats.health <= 0:

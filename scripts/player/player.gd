@@ -22,7 +22,22 @@ func _hint(hint_text: String) -> void:
 	hint_sprite.visible = true
 	hint_lable.text = hint_text
 	hint_timer.start(2.5)
+	
+func lose_health(amount: int) -> void:
+	if stats.health <= 0:
+		return
+	
+	stats.health -= amount
 
+	if stats.health <= 0:
+		health_bar.hide()
+		Events.player_died.emit()
+		spine_anim_state.set_animation("die", false, 0)
+	else:
+		Events.player_hit.emit()
+		spine_anim_state.set_animation("hurt", false, 0)
+		spine_anim_state.add_animation("idle_loop", 0, true, 0)
+		
 func take_damage(damage: int) -> void:
 	if stats.health <= 0:
 		return

@@ -5,9 +5,9 @@ extends HBoxContainer
 @onready var intent_ui_2: IntentUI = $intentUI2
 
 # 暂时的
-const INTENT_ATTACK_1 = preload("uid://bvpum0wc2c6or")
-const INTENT_BUFF_00 = preload("uid://cfdd2dmjyy32j")
-const INTENT_DEFEND_00 = preload("uid://d3uguum0r467c")
+const INTENT_ATTACK_1 = preload("res://images/packed/intents/attack/intent_attack_1.png")
+const INTENT_BUFF_00 = preload("res://images/packed/intents/buff/intent_buff_00.png")
+const INTENT_DEFEND_00 = preload("res://images/packed/intents/defend/intent_defend_00.png")
 
 var intent: Intent
 

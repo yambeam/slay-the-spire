@@ -8,7 +8,6 @@ extends Control
 # 子节点的所有char_stats由该节点分发
 @export var char_stats: CharacterStats: set = _set_char_stats
 @export var music: AudioStream
-const CARD_UI = preload("uid://cunj3kh5og6dc")
 
 func _ready() -> void:
 	# 这步应该在开始一局时进行

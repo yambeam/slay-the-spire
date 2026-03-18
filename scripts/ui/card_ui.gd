@@ -1,17 +1,16 @@
 class_name CardUI
 extends Control
 
-const CARD_PORTRAIT_BORDER_ATTACK_S = preload("uid://0o70qg")
-const CARD_PORTRAIT_BORDER_POWER_S = preload("uid://0bx41p")
-const CARD_PORTRAIT_BORDER_SKILL_S = preload("uid://rgdrpx")
+const CARD_PORTRAIT_BORDER_ATTACK_S = preload("res://images/atlases/ui_atlas.sprites/card/card_portrait_border_attack_s.tres")
+const CARD_PORTRAIT_BORDER_POWER_S = preload("res://images/atlases/ui_atlas.sprites/card/card_portrait_border_power_s.tres")
+const CARD_PORTRAIT_BORDER_SKILL_S = preload("res://images/atlases/ui_atlas.sprites/card/card_portrait_border_skill_s.tres")
 
-const CARD_FRAME_ATTACK_S = preload("uid://cslfj7h")
-const CARD_FRAME_POWER_S = preload("uid://d8j0tw")
-const CARD_FRAME_SKILL_S = preload("uid://cwvw75o")
+const CARD_FRAME_ATTACK_S = preload("res://images/atlases/ui_atlas.sprites/card/card_frame_attack_s.tres")
+const CARD_FRAME_POWER_S = preload("res://images/atlases/ui_atlas.sprites/card/card_frame_power_s.tres")
+const CARD_FRAME_SKILL_S = preload("res://images/atlases/ui_atlas.sprites/card/card_frame_skill_s.tres")
 
 
 @export var card: Card: set = _set_card
-# 暂时
 @export var char_stats: CharacterStats: set = _set_char_stats
 
 @onready var drop_point_area: Area2D = $DropPointArea
@@ -25,8 +24,8 @@ const CARD_FRAME_SKILL_S = preload("uid://cwvw75o")
 @onready var type_label: Label = %TypeLabel
 @onready var description_label: RichTextLabel = %DescriptionLabel
 
-var disabled: bool = false : set = _set_playable
-var playable: bool = true
+var disabled: bool = false : set = _set_disabled
+var playable: bool = true : set = _set_playable
 
 var targets: Array[Node]
 
@@ -94,7 +93,6 @@ func _set_card(value: Card) -> void:
 	description_label.text = card.description
 	var type_text: String
 	# TODO: 诅咒，状态
-	# TODO: 根据类型修改卡牌外观
 	match card.type:
 		card.Type.ATTACK:
 			type_text = "攻击"
@@ -117,6 +115,9 @@ func _set_playable(value: bool) -> void:
 	playable = value
 	# TODO:改变卡牌外观
 
+func _set_disabled(value: bool) -> void:
+	disabled = value
+	
 
 func _input(event: InputEvent) -> void:
 	card_state_machine.on_input(event)

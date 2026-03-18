@@ -9,8 +9,8 @@ extends Node2D
 @export var arrow_scale_factor: float
 @export var arrow_min_scale: float
 
-const TARGETING_ARROW_HEAD = preload("uid://b6f8rjefjafsr")
-const TARGETING_ARROW_SEGMENT = preload("uid://mdaouyxp763c")
+const TARGETING_ARROW_HEAD = preload("res://images/ui/combat/targeting_arrow_head.png")
+const TARGETING_ARROW_SEGMENT = preload("res://images/ui/combat/targeting_arrow_segment.png")
 
 var arrow_array: Array[Sprite2D] = []
 

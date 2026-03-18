@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://doi41puqdenrn"]
+
+[ext_resource type="Script" uid="uid://51kwq6wwnhfq" path="res://scripts/combat_ui/intents.gd" id="1_42p1c"]
+[ext_resource type="PackedScene" uid="uid://do0dq71gofpkr" path="res://scenes/combat_ui/intent_ui.tscn" id="2_451xj"]
+
+[node name="Intents" type="HBoxContainer" unique_id=2030278896]
+offset_right = 300.0
+offset_bottom = 100.0
+theme_override_constants/separation = 30
+alignment = 1
+script = ExtResource("1_42p1c")
+
+[node name="intentUI1" parent="." unique_id=1443955602 instance=ExtResource("2_451xj")]
+layout_mode = 2
+
+[node name="intentUI2" parent="." unique_id=702523415 instance=ExtResource("2_451xj")]
+layout_mode = 2

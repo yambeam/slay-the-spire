@@ -37,6 +37,7 @@ offset_bottom = 1080.0
 mouse_filter = 1
 script = ExtResource("1_vujjl")
 char_stats = ExtResource("5_58ypt")
+music = ExtResource("3_07jhg")
 metadata/_edit_lock_ = true
 
 [node name="CombatUI" type="CanvasLayer" parent="." unique_id=661618034 groups=["ui_layer"]]
@@ -90,6 +91,20 @@ metadata/_edit_lock_ = true
 layer = 2
 
 [node name="CardTargetSelector" parent="CanvasLayer" unique_id=20047492 instance=ExtResource("11_58ypt")]
+
+[node name="RedFlash" type="ColorRect" parent="CanvasLayer" unique_id=392927311]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(1, 0.20392157, 0.1254902, 0)
+script = ExtResource("9_3tt8j")
+
+[node name="FlashTimer" type="Timer" parent="CanvasLayer/RedFlash" unique_id=436102311]
+wait_time = 0.1
+one_shot = true
 
 [node name="BackGroundContainer" type="Control" parent="." unique_id=1215282505]
 layout_mode = 1
@@ -175,5 +190,9 @@ script = ExtResource("16_og13y")
 [node name="Enemy" parent="EnemyHandler" unique_id=934959197 instance=ExtResource("12_jnfh8")]
 position = Vector2(1434, 459)
 stats = ExtResource("17_82is4")
+
+[node name="Enemy2" parent="EnemyHandler" unique_id=1978483126 instance=ExtResource("12_jnfh8")]
+position = Vector2(1752, 479)
+stats = ExtResource("21_vx7dl")
 
 [connection signal="pressed" from="AddCard" to="." method="_on_add_card_pressed"]

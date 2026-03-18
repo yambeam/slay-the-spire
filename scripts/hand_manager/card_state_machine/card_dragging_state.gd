@@ -29,7 +29,7 @@ func on_input(event: InputEvent) -> void:
 	# 点击后再点击释放，拖拽后释放
 	var comfirm := event.is_action_pressed("left_mouse") or event.is_action_released("left_mouse")
 	
-	if not card_ui.playable and (card_ui.targets.size() > 0 or single_targetd):
+	if not card_ui.playable:
 		card_state_machine_change_state_requested.emit(self, STATE.BASE)
 		Events.player_hited.emit("没有足够的能量")
 		return

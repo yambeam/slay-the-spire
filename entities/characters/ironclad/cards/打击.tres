@@ -2,6 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://w1mk8x" path="res://images/atlases/card_atlas.sprites/ironclad/strike_ironclad.tres" id="1_80w5b"]
 [ext_resource type="Script" uid="uid://c43aulk6qym1v" path="res://entities/characters/ironclad/cards/打击.gd" id="2_80w5b"]
+[ext_resource type="AudioStream" uid="uid://b3reffdbqylun" path="res://audio/SFX/slash_attack.mp3" id="3_ymqo2"]
 
 [resource]
 script = ExtResource("2_80w5b")
@@ -10,4 +11,5 @@ target = 1
 cost = 1
 portrait = ExtResource("1_80w5b")
 description = "[center]造成6点伤害[/center]"
+sound = ExtResource("3_ymqo2")
 metadata/_custom_type_script = "uid://br1hibx18tv13"

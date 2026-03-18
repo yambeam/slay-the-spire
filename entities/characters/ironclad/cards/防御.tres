@@ -2,6 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://cxnepi0" path="res://images/atlases/card_atlas.sprites/ironclad/defend_ironclad.tres" id="1_2fmq3"]
 [ext_resource type="Script" uid="uid://b6koyyeqx1l35" path="res://entities/characters/ironclad/cards/防御.gd" id="2_kysfd"]
+[ext_resource type="AudioStream" uid="uid://cnxfhtrl0n8nm" path="res://audio/SFX/frost_orb_passive.mp3" id="3_gvm3b"]
 
 [resource]
 script = ExtResource("2_kysfd")
@@ -10,4 +11,5 @@ type = 1
 cost = 1
 portrait = ExtResource("1_2fmq3")
 description = "[center]获得5点格挡[/center]"
+sound = ExtResource("3_gvm3b")
 metadata/_custom_type_script = "uid://br1hibx18tv13"

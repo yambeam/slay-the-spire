@@ -12,6 +12,7 @@ func perform_action() -> void:
 	block_effect.amount = block
 	block_effect.execute([enemy])
 	damage_effect.amount = damage
+	damage_effect.sound = intent.sound
 	damage_effect.execute([target])
 		
 	Events.enemy_action_completed.emit(enemy)

@@ -1,8 +1,15 @@
 class_name Player
-extends Node2D
+extends Node2D 
+
+# 这些信号只为buff系统服务
+signal turn_started(player: Player)
+signal turn_ended(player: Player)
+signal before_take_damage(context: Context)
+signal before_lose_health(context: Context)
 
 @export var stats: CharacterStats : set = _set_char_stats
 
+@onready var buff_container: Node = $BuffContainer
 @onready var hint_sprite: TextureRect = $Hint
 @onready var hint_lable: Label = $Hint/HintLable
 @onready var spine_manager: SpineManager = $SpineManager
@@ -23,11 +30,12 @@ func _hint(hint_text: String) -> void:
 	hint_lable.text = hint_text
 	hint_timer.start(2.5)
 	
-func lose_health(amount: int) -> void:
+func lose_health(context: Context) -> void:
 	if stats.health <= 0:
 		return
 	
-	stats.health -= amount
+	before_lose_health.emit(context)
+	stats.health -= context.amount
 
 	if stats.health <= 0:
 		health_bar.hide()
@@ -38,11 +46,13 @@ func lose_health(amount: int) -> void:
 		spine_anim_state.set_animation("hurt", false, 0)
 		spine_anim_state.add_animation("idle_loop", 0, true, 0)
 		
-func take_damage(damage: int) -> void:
+func take_damage(context: Context) -> void:
 	if stats.health <= 0:
 		return
-	
-	var hurt := stats.take_damage(damage)
+		
+	before_take_damage.emit(context)
+
+	var hurt := stats.take_damage(context.amount)
 	
 	if stats.health <= 0:
 		health_bar.hide()
@@ -52,6 +62,15 @@ func take_damage(damage: int) -> void:
 		Events.player_hit.emit()
 		spine_anim_state.set_animation("hurt", false, 0)
 		spine_anim_state.add_animation("idle_loop", 0, true, 0)
+
+func gain_block(context: Context) -> void:
+	stats.block += context.amount
+
+func start_turn() -> void:
+	turn_started.emit(self)
+
+func end_turn() -> void:
+	turn_ended.emit(self)
 		
 func _set_char_stats(value: CharacterStats) -> void:
 	stats = value

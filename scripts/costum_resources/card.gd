@@ -18,34 +18,37 @@ enum Target {SELF, SINGLE_ENEMY, ALL_ENEMIES, EVERYONE}
 @export_multiline var description: String
 @export var sound: AudioStream
 
-func play(targets: Array[Node], char_stats: CharacterStats) -> void:
+func play(context: Context, char_stats: CharacterStats) -> void:
 	Events.card_played.emit(self)
 	char_stats.energy -= cost
 	if is_single_targeted():
-		apply_effects(targets)
+		apply_effects(context)
 	else:
-		apply_effects(_get_targets(targets))
+		apply_effects(_get_targets(context))
 
-func apply_effects(_targets) -> void:
+func apply_effects(_context: Context) -> void:
 	pass
 
 func is_single_targeted() -> bool:
 	return target == Target.SINGLE_ENEMY
 
-func _get_targets(targets: Array[Node]) -> Array[Node]:
+func _get_targets(context: Context) -> Context:
+	var targets := context.targets
 	if not targets or targets.is_empty():
 		printerr("card出错")
-		return []
+		context.targets = []
+		return context
 	# 资源没有获取场景树的方法
 	var tree := targets[0].get_tree()
 	match target:
 		Target.SELF:
-			return tree.get_nodes_in_group("ui_player")
+			context.targets = tree.get_nodes_in_group("ui_player")
 		Target.ALL_ENEMIES:
-			return tree.get_nodes_in_group("ui_enemies")
+			context.targets = tree.get_nodes_in_group("ui_emeies")
 		Target.EVERYONE:
-			return tree.get_nodes_in_group("ui_player") + tree.get_nodes_in_group("ui_enemies")
+			context.targets = tree.get_nodes_in_group("ui_player") + tree.get_nodes_in_group("ui_enemies")
 		_:
 			# 对于SingleTargeted,使用TargetSelector获取目标
 			printerr("card出错")
-			return []
+			context.targets = []
+	return context

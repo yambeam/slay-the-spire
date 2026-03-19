@@ -1,10 +1,15 @@
 class_name Enemy
 extends Area2D
 
+signal turn_started(enemy: Enemy)
+signal turn_ended(enemy: Enemy)
+signal before_take_damage(context: Context)
+signal before_lose_health(context: Context)
 # offset: 根据贴图大小调整各个组件
 
 @export var stats: EnemyStats : set = _set_enemy_stats
 
+@onready var buff_container: Node = $BuffContainer
 @onready var reticles: Node2D = $Reticles
 @onready var health_bar: HealthBar = $HealthBar
 @onready var spine_manager: SpineManager = $SpineManager
@@ -16,6 +21,7 @@ var current_action: EnemyAction : set = _set_current_action
 var spine_anim_state: SpineAnimationState
 
 func do_turn() -> void:
+	start_turn()
 	stats.block = 0
 	
 	if not current_action:
@@ -49,6 +55,12 @@ func _setup_ai() -> void:
 	enemy_ai = new_ai
 	enemy_ai.enemy = self
 
+func start_turn() -> void:
+	turn_started.emit(self)
+
+func end_turn() -> void:
+	turn_ended.emit(self)
+
 func update_action() -> void:
 	if not enemy_ai:
 		return
@@ -79,15 +91,17 @@ func _update_enemy() -> void:
 	spine_anim_state.set_animation("idle_loop", true, 0)
 	_update_stats()
 	
-func lose_health(amount: int) -> void:
+func lose_health(context: Context) -> void:
 	if stats.health <= 0:
 		return
 	
-	stats.health -= amount		
+	before_lose_health.emit(context)
+	stats.health -= context.amount
 
 	if stats.health <= 0:
 		intents.hide()
 		health_bar.hide()
+		reticles.hide()
 		spine_anim_state.set_animation("die", true, 0)
 		spine_manager.animation_completed.connect(
 			func (_x, _y, _z): queue_free()
@@ -96,10 +110,17 @@ func lose_health(amount: int) -> void:
 		spine_anim_state.set_animation("hurt", true, 0)
 		spine_anim_state.add_animation("idle_loop", 0, true, 0)
 
-func take_damage(damage: int) -> void:
+func gain_block(context: Context):
+	stats.block += context.amount
+
+func take_damage(context: Context) -> void:
 	if stats.health <= 0:
 		return
-	var hurt := stats.take_damage(damage)
+	
+	before_take_damage.emit(context)
+	
+	var hurt := stats.take_damage(context.amount)
+	
 	if stats.health <= 0:
 		intents.hide()
 		health_bar.hide()

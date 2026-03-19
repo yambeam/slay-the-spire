@@ -1,7 +1,7 @@
 extends Card
 
-func apply_effects(targets) -> void:
+func apply_effects(context: Context) -> void:
 	var block_effect := BlockEffect.new()
-	block_effect.amount = 5
+	context.amount = 5
 	block_effect.sound = sound
-	block_effect.execute(targets)
+	block_effect.execute(context)

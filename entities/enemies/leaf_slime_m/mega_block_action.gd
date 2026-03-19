@@ -18,8 +18,7 @@ func perform_action() -> void:
 		return
 	already_used = true
 	var block_effect := BlockEffect.new()
-	block_effect.amount = block
 	block_effect.sound = intent.sound
-	block_effect.execute([enemy])	
+	block_effect.execute(GainBlockContext.new(enemy, [enemy], block))	
 	Events.enemy_action_completed.emit(enemy)
 	

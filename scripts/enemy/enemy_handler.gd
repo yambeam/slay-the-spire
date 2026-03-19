@@ -3,7 +3,6 @@ extends Node2D
 
 func _ready() -> void:
 	Events.enemy_action_completed.connect(_on_enemy_action_completed)
-	
 
 func reset_enemy_actions() -> void:
 	for child: Enemy in get_children():

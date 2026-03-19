@@ -42,6 +42,6 @@ func on_input(event: InputEvent) -> void:
 		card_ui.global_position = card_ui.get_global_mouse_position() - offset
 	elif cancel:
 		card_state_machine_change_state_requested.emit(self, STATE.BASE)
-	elif minimum_drag_time_elapsed and comfirm:
+	elif minimum_drag_time_elapsed and comfirm and not single_targetd:
 		get_viewport().set_input_as_handled()
 		card_state_machine_change_state_requested.emit(self, STATE.RELEASED)

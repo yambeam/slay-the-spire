@@ -60,3 +60,5 @@ vertical_alignment = 1
 [node name="Timer" type="Timer" parent="." unique_id=784918376]
 wait_time = 2.0
 one_shot = true
+
+[node name="BuffContainer" type="Node" parent="." unique_id=667935252]

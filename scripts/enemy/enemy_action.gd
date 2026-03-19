@@ -11,6 +11,7 @@ enum Type{CONDITIONAL, CHANCE_BASED, CONDITIONAL_OVER_TURN}
 @onready var accumulated_weight := 0.0
 
 var enemy: Enemy
+# 也许应该改为Array[Node2D]?
 var target: Node2D
 
 # 在其他Action中实现

@@ -66,5 +66,7 @@ rotation = 3.1415927
 scale = Vector2(2, 2)
 texture = ExtResource("5_cwlon")
 
+[node name="BuffContainer" type="Node" parent="." unique_id=792632197]
+
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="area_exited" from="." to="." method="_on_area_exited"]

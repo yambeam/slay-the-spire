@@ -9,10 +9,8 @@ func perform_action() -> void:
 		
 	var block_effect := BlockEffect.new()
 	var damage_effect := DamageEffect.new()
-	block_effect.amount = block
-	block_effect.execute([enemy])
-	damage_effect.amount = damage
+	block_effect.execute(GainBlockContext.new(enemy, [enemy], block))
 	damage_effect.sound = intent.sound
-	damage_effect.execute([target])
+	damage_effect.execute(DamageContext.new(enemy, [target], damage))
 		
 	Events.enemy_action_completed.emit(enemy)

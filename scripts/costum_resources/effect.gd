@@ -3,5 +3,5 @@ extends RefCounted
 
 var sound : AudioStream
 
-func execute(_targets: Array[Node]) -> void:
+func execute(_context: Context) -> void:
 	pass

@@ -6,10 +6,10 @@ extends Effect
 
 var amount := 0
 
-func execute(_targets: Array[Node]) -> void:
-	for target in _targets:
+func execute(context: Context) -> void:
+	for target: Node in context.targets:
 		if not target:
 			continue
 		if target is Enemy or target is Player:
-			target.stats.block += amount
+			target.stats.block += context.amount
 			SFXPlayer.play(sound)

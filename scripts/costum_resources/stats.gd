@@ -17,16 +17,17 @@ func _set_block(value: int) -> void:
 	block = clampi(value, 0, 999)
 	stats_changed.emit()
 
-func take_damage(damage: int) -> void:
+func take_damage(damage: int) -> bool:
 	if damage <= 0:
-		return
+		return false
 	var actual_damage: int
 	#实际伤害
 	actual_damage = clampi(damage - block, 0, damage)
 	#计算护甲
 	block = clampi(block - damage, 0, block)
 	health -= actual_damage
-
+	return actual_damage > 0
+	
 func heal(amount: int) -> void:
 	health += amount
 

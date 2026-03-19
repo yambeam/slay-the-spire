@@ -8,9 +8,12 @@ extends Area2D
 @onready var reticles: Node2D = $Reticles
 @onready var health_bar: HealthBar = $HealthBar
 @onready var spine_manager: SpineManager = $SpineManager
+@onready var intents: HBoxContainer = $Intents
 
 var enemy_ai: EnemyActionPicker
 var current_action: EnemyAction : set = _set_current_action
+
+var spine_anim_state: SpineAnimationState
 
 func do_turn() -> void:
 	stats.block = 0
@@ -19,11 +22,16 @@ func do_turn() -> void:
 		return
 		
 	current_action.perform_action()
+	spine_anim_state.set_animation(current_action.anim_name, true, 0)
+	spine_anim_state.add_animation("idle_loop", 0, true, 0)
 	update_action()
 
 func _set_current_action(value: EnemyAction) -> void:
 	current_action = value
 	# TODO: 修改意图
+	if not current_action:
+		return
+	intents.update_intent(current_action.intent)
 
 func _set_enemy_stats(value: EnemyStats) -> void:
 	stats = value.create_instance()
@@ -65,16 +73,43 @@ func _update_enemy() -> void:
 	
 	spine_manager.skeleton_data_res = stats.animation
 	_setup_ai()
+	# 不等一帧的话get_animation_state返回的是null
+	await get_tree().process_frame
+	spine_anim_state = spine_manager.get_animation_state()
+	spine_anim_state.set_animation("idle_loop", true, 0)
 	_update_stats()
-
-func take_damage(damage: int) -> void:
-	print("take_damage")
+	
+func lose_health(amount: int) -> void:
 	if stats.health <= 0:
 		return
-	stats.take_damage(damage)
+	
+	stats.health -= amount		
+
 	if stats.health <= 0:
-		print("敌人死亡")
-		queue_free()
+		intents.hide()
+		health_bar.hide()
+		spine_anim_state.set_animation("die", true, 0)
+		spine_manager.animation_completed.connect(
+			func (_x, _y, _z): queue_free()
+		)
+	else:
+		spine_anim_state.set_animation("hurt", true, 0)
+		spine_anim_state.add_animation("idle_loop", 0, true, 0)
+
+func take_damage(damage: int) -> void:
+	if stats.health <= 0:
+		return
+	var hurt := stats.take_damage(damage)
+	if stats.health <= 0:
+		intents.hide()
+		health_bar.hide()
+		spine_anim_state.set_animation("die", true, 0)
+		spine_manager.animation_completed.connect(
+			func (_x, _y, _z): queue_free()
+		)
+	elif hurt:
+		spine_anim_state.set_animation("hurt", true, 0)
+		spine_anim_state.add_animation("idle_loop", 0, true, 0)
 
 
 func _on_area_entered(_area: Area2D) -> void:

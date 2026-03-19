@@ -16,6 +16,7 @@ enum Target {SELF, SINGLE_ENEMY, ALL_ENEMIES, EVERYONE}
 @export_group("卡牌描述")
 @export var portrait: Texture
 @export_multiline var description: String
+@export var sound: AudioStream
 
 func play(targets: Array[Node], char_stats: CharacterStats) -> void:
 	Events.card_played.emit(self)

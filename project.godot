@@ -14,9 +14,15 @@ config/name="Slay the Spire"
 run/main_scene="uid://bsxwudt1fhfq"
 config/features=PackedStringArray("4.6", "Forward Plus")
 
+[audio]
+
+buses/default_bus_layout="uid://d21g525cffshd"
+
 [autoload]
 
 Events="*uid://b020t6pk8kp4y"
+MusicPlayer="*uid://d3vsqdefsperv"
+SFXPlayer="*uid://cloao6gglg3wl"
 
 [display]
 

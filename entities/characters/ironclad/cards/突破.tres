@@ -1,0 +1,15 @@
+[gd_resource type="Resource" format=3 uid="uid://objfyia1a4gs"]
+
+[ext_resource type="Texture2D" uid="uid://cyokfre" path="res://images/atlases/card_atlas.sprites/ironclad/breakthrough.tres" id="1_mytnf"]
+[ext_resource type="Script" uid="uid://mu7i5m4la2jn" path="res://entities/characters/ironclad/cards/突破.gd" id="2_82msx"]
+[ext_resource type="AudioStream" uid="uid://bcwmh6adledx" path="res://audio/SFX/blunt_attack.mp3" id="3_7hojj"]
+
+[resource]
+script = ExtResource("2_82msx")
+id = "突破"
+target = 3
+cost = 1
+portrait = ExtResource("1_mytnf")
+description = "[center]受到1点伤害，然后对所有敌人造成8点伤害[/center]"
+sound = ExtResource("3_7hojj")
+metadata/_custom_type_script = "uid://br1hibx18tv13"

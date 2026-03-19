@@ -10,12 +10,11 @@ func perform_action() -> void:
 	if not enemy or not target:
 		return
 	var damage_effect := DamageEffect.new()
-	damage_effect.amount = damage
 	damage_effect.sound = intent.sound
 	var tween := create_tween()
-	tween.tween_callback(damage_effect.execute.bind([target] as Array[Node]))
+	tween.tween_callback(damage_effect.execute.bind(DamageContext.new(enemy, [target], damage)))
 	tween.tween_interval(0.3)
-	tween.tween_callback(damage_effect.execute.bind([target] as Array[Node]))
+	tween.tween_callback(damage_effect.execute.bind(DamageContext.new(enemy, [target], damage)))
 	await tween.finished
 	
 	Events.enemy_action_completed.emit(enemy)

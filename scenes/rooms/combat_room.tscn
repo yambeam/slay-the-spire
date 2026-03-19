@@ -3,11 +3,13 @@
 [ext_resource type="Script" uid="uid://blqos0ytgqhao" path="res://scripts/rooms/combat_room.gd" id="1_vujjl"]
 [ext_resource type="PackedScene" uid="uid://deidb0dmylls" path="res://scenes/hand_manager/hand_manager.tscn" id="2_6v8j0"]
 [ext_resource type="Script" uid="uid://cyuwwr8gs0v4v" path="res://scripts/combat_ui/combat_ui.gd" id="2_og13y"]
+[ext_resource type="AudioStream" uid="uid://b4jkiwnd4o7vc" path="res://audio/music/Clark Aboud - The Beyond.mp3" id="3_07jhg"]
 [ext_resource type="Texture2D" uid="uid://bu4t3lmsql4f3" path="res://images/rooms/underdocks/underdocks_01_a.png" id="3_8xk3v"]
 [ext_resource type="Texture2D" uid="uid://cuitjetrtc6k8" path="res://images/rooms/underdocks/underdocks_02_a.png" id="4_hq47e"]
 [ext_resource type="Resource" uid="uid://bqq44kff15k4w" path="res://entities/characters/ironclad/ironclad_stats.tres" id="5_58ypt"]
 [ext_resource type="Texture2D" uid="uid://buq4ks50ewhi0" path="res://images/rooms/underdocks/underdocks_04_a.png" id="5_prplb"]
 [ext_resource type="Texture2D" uid="uid://dlcpty0ep8145" path="res://images/rooms/underdocks/underdocks_05_a.png" id="6_jnfh8"]
+[ext_resource type="Script" uid="uid://b7jbna8u8wfw1" path="res://scripts/combat_ui/red_flash.gd" id="9_3tt8j"]
 [ext_resource type="PackedScene" uid="uid://bdu3mvwj8syfb" path="res://scenes/card_target_selector/card_target_selector.tscn" id="11_58ypt"]
 [ext_resource type="PackedScene" uid="uid://bsxwudt1fhfq" path="res://scenes/player/player.tscn" id="11_jnfh8"]
 [ext_resource type="PackedScene" uid="uid://dtcyajca05718" path="res://scenes/enemy/enemy.tscn" id="12_jnfh8"]
@@ -18,6 +20,7 @@
 [ext_resource type="Script" uid="uid://bgjydn1xm3hu4" path="res://scripts/enemy/enemy_handler.gd" id="16_og13y"]
 [ext_resource type="Resource" uid="uid://bdt85ngfibtet" path="res://entities/enemies/leaf_slime_m/leaf_slime_m.tres" id="17_82is4"]
 [ext_resource type="Texture2D" uid="uid://dx31ojs2fsqwg" path="res://images/packed/combat_ui/end_turn_button_glow.png" id="17_og13y"]
+[ext_resource type="Resource" uid="uid://6t0lxm3urof3" path="res://entities/enemies/leaf_slime_s/leaf_slime_s.tres" id="21_vx7dl"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_82is4"]
 font_size = 30

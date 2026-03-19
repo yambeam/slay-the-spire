@@ -52,15 +52,21 @@ func _ready() -> void:
 func play() -> void:
 	if not card:
 		return
-	card.play(targets, char_stats)
+	card.play(Context.new(get_tree().get_first_node_in_group("ui_player"), targets, 0), char_stats)
 	# TODO: 在删除前做出消耗/去弃牌堆的动画
 	queue_free()
 	
 func animate_to_position(new_position: Vector2, duration: float) -> void:
+	if movement_tween:
+		movement_tween.kill()
 	movement_tween = create_tween().set_trans(Tween.TRANS_CIRC).set_ease(Tween.EASE_OUT)
 	movement_tween.tween_property(self, "global_position", new_position, duration)
 
 func animate_start_preview() -> void:
+	if movement_tween:
+		movement_tween.kill()
+	if tween:
+		tween.kill()
 	tween = create_tween().set_trans(Tween.TRANS_SINE).set_parallel(true)
 	movement_tween = create_tween().set_trans(Tween.TRANS_SINE)
 	movement_tween.tween_property(self, "position:y", original_position.y - 175, 0.1).set_trans(Tween.TRANS_SINE)
@@ -68,6 +74,10 @@ func animate_start_preview() -> void:
 	tween.tween_property(self, "rotation_degrees", 0, 0.1).set_trans(Tween.TRANS_SINE)
 
 func animate_end_preview() -> void:
+	if movement_tween:
+		movement_tween.kill()
+	if tween:
+		tween.kill()
 	tween = create_tween().set_trans(Tween.TRANS_SINE).set_parallel(true)
 	movement_tween = create_tween().set_trans(Tween.TRANS_SINE)
 	movement_tween.tween_property(self, "position:y", original_position.y, 0.1).set_trans(Tween.TRANS_SINE)
@@ -75,6 +85,8 @@ func animate_end_preview() -> void:
 	tween.tween_property(self, "rotation_degrees", original_rotation, 0.1).set_trans(Tween.TRANS_SINE)
 
 func animate_scale(to: Vector2, duration: float) -> void:
+	if tween:
+		tween.kill()
 	tween = create_tween()
 	tween.tween_property(self, "scale", to, duration)
 

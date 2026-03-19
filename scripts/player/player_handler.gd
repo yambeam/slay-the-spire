@@ -20,6 +20,7 @@ func start_battle(char_stats_: CharacterStats) -> void:
 	start_turn()
 	
 func start_turn() -> void:
+	player.start_turn()
 	char_stats.block = 0
 	char_stats.energy = char_stats.max_energy
 	draw_cards(char_stats.cards_per_turn)

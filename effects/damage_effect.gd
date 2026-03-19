@@ -1,12 +1,11 @@
 class_name DamageEffect
 extends Effect
 
-var amount := 0
-
-func execute(_targets: Array[Node]) -> void:
-	for target in _targets:
+func execute(context: Context) -> void:
+	for target: Node in context.targets:
 		if not target:
 			continue
-		SFXPlayer.play(sound)
-		target.take_damage(amount)
+		if target is Enemy or target is Player:
+			SFXPlayer.play(sound)
+			target.take_damage(context)
 		

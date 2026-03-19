@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://bw1n7xfmahpbq"]
+
+[ext_resource type="Texture2D" uid="uid://ddqe2lj6gnb7g" path="res://images/atlases/compressed.sprites/map/map_dot.png" id="1_hx6oq"]
+
+[node name="MapLine" type="Line2D" unique_id=1921503614]
+modulate = Color(1, 0.9843137, 0.99607843, 1)
+self_modulate = Color(0.9647059, 0.9843137, 0.9843137, 1)
+texture_repeat = 2
+texture = ExtResource("1_hx6oq")
+texture_mode = 1

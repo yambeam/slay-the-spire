@@ -1,8 +1,9 @@
-[gd_resource type="AtlasTexture" load_steps=2 format=3 uid="uid://be6fje4"]
+[gd_resource type="AtlasTexture" format=3 uid="uid://be6fje4"]
 
-[ext_resource type="Texture2D" path="res://images/atlases/compressed_0.png" id="1"]
+[ext_resource type="Texture2D" uid="uid://coreq2lqv86nr" path="res://images/atlases/compressed_0.png" id="1"]
 
 [resource]
+resource_local_to_scene = true
 atlas = ExtResource("1")
 region = Rect2(1420, 1104, 14, 25)
 margin = Rect2(9, 3, 18, 7)

@@ -1,12 +1,10 @@
 class_name LossHealthEffect
 extends Effect
 
-var amount := 0
-
-func execute(_targets: Array[Node]) -> void:
-	for target in _targets:
+func execute(context: Context) -> void:
+	for target in context.targets:
 		if not target:
 			continue
 		if target is Enemy or target is Player:
-			target.lose_health(amount)
+			target.lose_health(context)
 			SFXPlayer.play(sound)

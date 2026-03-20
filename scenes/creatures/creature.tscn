@@ -1,0 +1,57 @@
+[gd_scene format=3 uid="uid://cb16flm0r74mt"]
+
+[ext_resource type="Script" uid="uid://doeqctp26hq6y" path="res://scripts/creatures/creature.gd" id="1_32syg"]
+[ext_resource type="PackedScene" uid="uid://copfb0hm4hkcy" path="res://scenes/combat_ui/health_bar.tscn" id="2_j4eis"]
+[ext_resource type="PackedScene" uid="uid://cbir7pfgl5y7d" path="res://scenes/combat_ui/buff_container.tscn" id="3_bod4x"]
+[ext_resource type="Script" uid="uid://bayy3j6ssj0g" path="res://scripts/utils/spine_manager.gd" id="5_qn62h"]
+[ext_resource type="Texture2D" uid="uid://hm3yndjsncmt" path="res://images/ui/combat/combat_reticle.png" id="6_dlany"]
+[ext_resource type="Script" uid="uid://beoly8uxrkebe" path="res://scripts/creatures/buff_manager.gd" id="7_ne82r"]
+
+[node name="Creature" type="Area2D" unique_id=465140807]
+script = ExtResource("1_32syg")
+
+[node name="HealthBar" parent="." unique_id=1512934549 instance=ExtResource("2_j4eis")]
+offset_left = -115.0
+offset_top = 77.0
+offset_right = -115.0
+offset_bottom = 77.0
+
+[node name="BuffContainer" parent="." unique_id=1496015378 instance=ExtResource("3_bod4x")]
+offset_left = -101.0
+offset_top = 107.0
+offset_right = 134.0
+offset_bottom = 248.0
+
+[node name="SpineManager" type="SpineSprite" parent="." unique_id=2074089765]
+scale = Vector2(0.7, 0.7)
+script = ExtResource("5_qn62h")
+metadata/_custom_type_script = "uid://bayy3j6ssj0g"
+
+[node name="Reticles" type="Node2D" parent="." unique_id=1493303524]
+visible = false
+
+[node name="UpLeft" type="Sprite2D" parent="Reticles" unique_id=1850510580]
+position = Vector2(-161, -206)
+scale = Vector2(2, 2)
+texture = ExtResource("6_dlany")
+
+[node name="UpRight" type="Sprite2D" parent="Reticles" unique_id=88697426]
+position = Vector2(161, -205)
+rotation = 1.5707964
+scale = Vector2(2, 2)
+texture = ExtResource("6_dlany")
+
+[node name="DownLeft" type="Sprite2D" parent="Reticles" unique_id=1816683782]
+position = Vector2(-162, 64)
+rotation = 4.712389
+scale = Vector2(2, 2)
+texture = ExtResource("6_dlany")
+
+[node name="DownRight" type="Sprite2D" parent="Reticles" unique_id=626631678]
+position = Vector2(164, 65)
+rotation = 3.1415927
+scale = Vector2(2, 2)
+texture = ExtResource("6_dlany")
+
+[node name="BuffManager" type="Node" parent="." unique_id=1071170894]
+script = ExtResource("7_ne82r")

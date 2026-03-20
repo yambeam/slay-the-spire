@@ -16,5 +16,3 @@ func perform_action() -> void:
 	tween.tween_interval(0.3)
 	tween.tween_callback(damage_effect.execute.bind(DamageContext.new(enemy, [target], damage)))
 	await tween.finished
-	
-	Events.enemy_action_completed.emit(enemy)

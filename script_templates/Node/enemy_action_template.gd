@@ -7,19 +7,17 @@ extends EnemyAction
 @export var block := 10
 @export var damage:= 3
 
-# 条件行为必须实现该函数
+# 条件行动必须实现 
 func is_performable() -> bool:
 	return false
 
 func perform_action() -> void:
 	if not enemy or not target:
 		return
+		
 	var block_effect := BlockEffect.new()
 	var damage_effect := DamageEffect.new()
-	block_effect.amount = block
-	block_effect.execute([enemy])
-	damage_effect.amount = damage
+	block_effect.execute(GainBlockContext.new(enemy, [enemy], block))
 	damage_effect.sound = intent.sound
-	damage_effect.execute([target])
+	damage_effect.execute(DamageContext.new(enemy, [target], damage))
 		
-	Events.enemy_action_completed.emit(enemy)

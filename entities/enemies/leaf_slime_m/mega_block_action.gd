@@ -20,5 +20,5 @@ func perform_action() -> void:
 	var block_effect := BlockEffect.new()
 	block_effect.sound = intent.sound
 	block_effect.execute(GainBlockContext.new(enemy, [enemy], block))	
-	Events.enemy_action_completed.emit(enemy)
+
 	

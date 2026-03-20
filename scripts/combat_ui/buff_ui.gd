@@ -21,8 +21,14 @@ func _on_buff_removed() -> void:
 
 func _on_mouse_entered():
 	if buff:
-		KeywordTooltip.show()
+		Events.tooltip_show_request.emit(self)
 
 func _on_mouse_exited():
 	if buff:
-		KeywordTooltip.hide()
+		Events.tooltip_hide_request.emit()
+
+func show_keyword_tooltip() -> void:
+	if not buff:
+		return
+	KeywordTooltip.add_keyword(buff.buff_name, buff.get_description())
+	KeywordTooltip.global_position = global_position + Vector2(size.x * 2, 0)

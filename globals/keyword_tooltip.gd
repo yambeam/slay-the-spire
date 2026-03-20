@@ -49,6 +49,6 @@ func _on_tooltip_hide_requested() -> void:
 	hide()
 
 func _on_timer_timeout() -> void:
-	# TODO:这写得太糟糕了，找时间重构
+	# TODO:找时间重构
 	current_node.show_keyword_tooltip()
 	show()

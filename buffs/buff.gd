@@ -5,7 +5,7 @@ extends Node
 enum Type {BUFF, DEBUFF, SPECIAL}
 var type
 # 实际接受buff的对象
-var agent: Node2D
+var agent: Creature
 # 图标
 var icon: Texture
 

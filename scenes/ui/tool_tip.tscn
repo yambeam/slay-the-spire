@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://h3da6tbyw5e0"]
+
+[ext_resource type="Script" uid="uid://e3gcmmnjthso" path="res://scripts/ui/tooltip.gd" id="1_cpbve"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_261h5"]
+bg_color = Color(0, 0, 0, 0.3882353)
+
+[node name="ToolTip" type="Panel" unique_id=849497176]
+offset_right = 180.0
+offset_bottom = 125.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_261h5")
+script = ExtResource("1_cpbve")
+
+[node name="Description" type="Label" parent="." unique_id=72406716]
+unique_name_in_owner = true
+layout_mode = 1
+offset_right = 84.0
+offset_bottom = 23.0
+text = "这是tooltip"

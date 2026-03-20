@@ -1,17 +1,16 @@
 class_name CardUI
 extends Control
 
-const CARD_PORTRAIT_BORDER_ATTACK_S = preload("uid://0o70qg")
-const CARD_PORTRAIT_BORDER_POWER_S = preload("uid://0bx41p")
-const CARD_PORTRAIT_BORDER_SKILL_S = preload("uid://rgdrpx")
+const CARD_PORTRAIT_BORDER_ATTACK_S = preload("res://images/atlases/ui_atlas.sprites/card/card_portrait_border_attack_s.tres")
+const CARD_PORTRAIT_BORDER_POWER_S = preload("res://images/atlases/ui_atlas.sprites/card/card_portrait_border_power_s.tres")
+const CARD_PORTRAIT_BORDER_SKILL_S = preload("res://images/atlases/ui_atlas.sprites/card/card_portrait_border_skill_s.tres")
 
-const CARD_FRAME_ATTACK_S = preload("uid://cslfj7h")
-const CARD_FRAME_POWER_S = preload("uid://d8j0tw")
-const CARD_FRAME_SKILL_S = preload("uid://cwvw75o")
+const CARD_FRAME_ATTACK_S = preload("res://images/atlases/ui_atlas.sprites/card/card_frame_attack_s.tres")
+const CARD_FRAME_POWER_S = preload("res://images/atlases/ui_atlas.sprites/card/card_frame_power_s.tres")
+const CARD_FRAME_SKILL_S = preload("res://images/atlases/ui_atlas.sprites/card/card_frame_skill_s.tres")
 
 
 @export var card: Card: set = _set_card
-# 暂时
 @export var char_stats: CharacterStats: set = _set_char_stats
 
 @onready var drop_point_area: Area2D = $DropPointArea
@@ -25,8 +24,8 @@ const CARD_FRAME_SKILL_S = preload("uid://cwvw75o")
 @onready var type_label: Label = %TypeLabel
 @onready var description_label: RichTextLabel = %DescriptionLabel
 
-var disabled: bool = false : set = _set_playable
-var playable: bool = true
+var disabled: bool = false : set = _set_disabled
+var playable: bool = true : set = _set_playable
 
 var targets: Array[Node]
 
@@ -44,24 +43,34 @@ var movement_tween: Tween
 signal reparent_requested(card_ui: CardUI)
 
 func _ready() -> void:
-	Events.card_aim_started.connect(_on_card_drag_or_aiming_started)
-	Events.card_aim_ended.connect(_on_card_drag_or_aiming_ended)
-	Events.card_drag_started.connect(_on_card_drag_or_aiming_started)
-	Events.card_drag_ended.connect(_on_card_drag_or_aiming_ended)
+	Events.card_aim_started.connect(_on_card_click_or_drag_or_aiming_started)
+	Events.card_aim_ended.connect(_on_card_click_or_drag_or_aiming_ended)
+	Events.card_click_started.connect(_on_card_click_or_drag_or_aiming_started)
+	Events.card_click_ended.connect(_on_card_click_or_drag_or_aiming_ended)
+	Events.card_drag_started.connect(_on_card_click_or_drag_or_aiming_started)
+	Events.card_drag_ended.connect(_on_card_click_or_drag_or_aiming_ended)
+	Events.target_selected.connect(_on_target_selected)
+	Events.target_unselected.connect(_on_target_unselected)
 	card_state_machine.init()
 
 func play() -> void:
 	if not card:
 		return
-	card.play(targets, char_stats)
+	card.play(Context.new(get_tree().get_first_node_in_group("ui_player"), targets, 0), char_stats)
 	# TODO: 在删除前做出消耗/去弃牌堆的动画
 	queue_free()
 	
 func animate_to_position(new_position: Vector2, duration: float) -> void:
+	if movement_tween:
+		movement_tween.kill()
 	movement_tween = create_tween().set_trans(Tween.TRANS_CIRC).set_ease(Tween.EASE_OUT)
 	movement_tween.tween_property(self, "global_position", new_position, duration)
 
 func animate_start_preview() -> void:
+	if movement_tween:
+		movement_tween.kill()
+	if tween:
+		tween.kill()
 	tween = create_tween().set_trans(Tween.TRANS_SINE).set_parallel(true)
 	movement_tween = create_tween().set_trans(Tween.TRANS_SINE)
 	movement_tween.tween_property(self, "position:y", original_position.y - 175, 0.1).set_trans(Tween.TRANS_SINE)
@@ -69,6 +78,10 @@ func animate_start_preview() -> void:
 	tween.tween_property(self, "rotation_degrees", 0, 0.1).set_trans(Tween.TRANS_SINE)
 
 func animate_end_preview() -> void:
+	if movement_tween:
+		movement_tween.kill()
+	if tween:
+		tween.kill()
 	tween = create_tween().set_trans(Tween.TRANS_SINE).set_parallel(true)
 	movement_tween = create_tween().set_trans(Tween.TRANS_SINE)
 	movement_tween.tween_property(self, "position:y", original_position.y, 0.1).set_trans(Tween.TRANS_SINE)
@@ -76,6 +89,8 @@ func animate_end_preview() -> void:
 	tween.tween_property(self, "rotation_degrees", original_rotation, 0.1).set_trans(Tween.TRANS_SINE)
 
 func animate_scale(to: Vector2, duration: float) -> void:
+	if tween:
+		tween.kill()
 	tween = create_tween()
 	tween.tween_property(self, "scale", to, duration)
 
@@ -94,7 +109,6 @@ func _set_card(value: Card) -> void:
 	description_label.text = card.description
 	var type_text: String
 	# TODO: 诅咒，状态
-	# TODO: 根据类型修改卡牌外观
 	match card.type:
 		card.Type.ATTACK:
 			type_text = "攻击"
@@ -112,11 +126,15 @@ func _set_card(value: Card) -> void:
 			type_text = "出错"
 			
 	type_label.text = type_text
+	description_label.text = card.get_default_description()
 
 func _set_playable(value: bool) -> void:
 	playable = value
 	# TODO:改变卡牌外观
 
+func _set_disabled(value: bool) -> void:
+	disabled = value
+	
 
 func _input(event: InputEvent) -> void:
 	card_state_machine.on_input(event)
@@ -126,25 +144,52 @@ func _on_gui_input(event: InputEvent) -> void:
 
 func _on_mouse_entered() -> void:
 	card_state_machine.on_mouse_entered()
+	Events.tooltip_show_request.emit(self)
+	
+func show_keyword_tooltip() -> void:
+	var keywords = KeywordTooltip.extract_keyword(card.description)
+	if keywords.is_empty():
+		return
+	for keyword:String in keywords:
+		var keyword_name := BuffLibrary.get_keyword_name(keyword)
+		var desc := BuffLibrary.get_keyword_description(keyword)
+		KeywordTooltip.add_keyword(keyword_name, desc)
+	# preview时会scale到1.3，同时向上移动175px(显示tooltip需要0.2s,此时tween已经完成)
+	KeywordTooltip.global_position = global_position + Vector2(size.x * 1.4, 0)
+	KeywordTooltip.show()
 
 func _on_mouse_exited() -> void:
 	card_state_machine.on_mouse_exited()
-
-func _on_card_drag_or_aiming_started(card_ui: CardUI) -> void:
-		if card_ui == self:
-			return
-		disabled = true
+	Events.tooltip_hide_request.emit()
+	
+func _on_card_click_or_drag_or_aiming_started(card_ui: CardUI) -> void:
+	if card_ui == self:
+		return
+	disabled = true
 		
-func _on_card_drag_or_aiming_ended(_card_ui: CardUI) -> void:
+func _on_card_click_or_drag_or_aiming_ended(_card_ui: CardUI) -> void:
 	disabled = false
 	self.playable = char_stats.can_play_card(card)
 
+func set_description(source_: Creature, target_: Creature) -> void:
+	description_label.text = card.get_description(source_, target_)
+
 func _on_drop_point_area_area_entered(area: Area2D) -> void:
+	
 	if not targets.has(area):
 		targets.append(area)
+	# 这么调用会不会有问题?
+	if card.target == card.Target.ALL_ENEMIES or card.target == card.Target.EVERYONE:
+		set_description(get_tree().get_first_node_in_group("ui_player"), get_tree().get_first_node_in_group("ui_enemies"))
 
 func _on_drop_point_area_area_exited(area: Area2D) -> void:
 	targets.erase(area)
 
 func _on_char_stats_changed() -> void:
 	self.playable = char_stats.can_play_card(card)
+
+func _on_target_selected(target: Creature) -> void:
+	set_description(get_tree().get_first_node_in_group("ui_player"), target)
+	
+func _on_target_unselected() -> void:
+	set_description(get_tree().get_first_node_in_group("ui_player"), null)

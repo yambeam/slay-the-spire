@@ -14,9 +14,18 @@ config/name="Slay the Spire"
 run/main_scene="uid://bsxwudt1fhfq"
 config/features=PackedStringArray("4.6", "Forward Plus")
 
+[audio]
+
+buses/default_bus_layout="uid://d21g525cffshd"
+
 [autoload]
 
 Events="*uid://b020t6pk8kp4y"
+MusicPlayer="*uid://d3vsqdefsperv"
+SFXPlayer="*uid://cloao6gglg3wl"
+TooltipManager="*uid://b84mguuwvj18j"
+BuffLibrary="*uid://biey585ofwmog"
+KeywordTooltip="*uid://bi5jyqar571h3"
 
 [display]
 
@@ -48,12 +57,23 @@ right_mouse={
 "events": [Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"button_mask":0,"position":Vector2(0, 0),"global_position":Vector2(0, 0),"factor":1.0,"button_index":2,"canceled":false,"pressed":false,"double_click":false,"script":null)
 ]
 }
+scroll_up={
+"deadzone": 0.2,
+"events": [Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"button_mask":0,"position":Vector2(0, 0),"global_position":Vector2(0, 0),"factor":1.0,"button_index":4,"canceled":false,"pressed":false,"double_click":false,"script":null)
+]
+}
+scroll_down={
+"deadzone": 0.2,
+"events": [Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"button_mask":0,"position":Vector2(0, 0),"global_position":Vector2(0, 0),"factor":1.0,"button_index":5,"canceled":false,"pressed":false,"double_click":false,"script":null)
+]
+}
 
 [layer_names]
 
 2d_physics/layer_1="CardTargetSelector"
 2d_physics/layer_2="CardDropArea"
 2d_physics/layer_3="Enemies"
+2d_physics/layer_4="Player"
 
 [physics]
 

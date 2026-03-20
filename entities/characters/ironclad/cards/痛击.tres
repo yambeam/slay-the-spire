@@ -1,0 +1,32 @@
+[gd_resource type="Resource" format=3 uid="uid://dosdxrq1vcxfj"]
+
+[ext_resource type="Texture2D" uid="uid://c08n4uo" path="res://images/atlases/card_atlas.sprites/ironclad/bash.tres" id="1_1yq0f"]
+[ext_resource type="Script" uid="uid://cxgxfbwykbp84" path="res://scripts/costum_resources/numeric_entry.gd" id="1_kqsla"]
+[ext_resource type="Script" uid="uid://c88oxyuj67or7" path="res://entities/characters/ironclad/cards/痛击.gd" id="2_kqsla"]
+[ext_resource type="AudioStream" uid="uid://bcwmh6adledx" path="res://audio/SFX/blunt_attack.mp3" id="3_4yurv"]
+
+[sub_resource type="Resource" id="Resource_4yurv"]
+script = ExtResource("1_kqsla")
+base_value = 8
+placeholder = "damage"
+affected_by = 2
+metadata/_custom_type_script = "uid://cxgxfbwykbp84"
+
+[sub_resource type="Resource" id="Resource_epc34"]
+script = ExtResource("1_kqsla")
+type = 4
+base_value = 2
+placeholder = "vunlerable"
+affected_by = 3
+metadata/_custom_type_script = "uid://cxgxfbwykbp84"
+
+[resource]
+script = ExtResource("2_kqsla")
+id = "痛击"
+target = 1
+cost = 2
+portrait = ExtResource("1_1yq0f")
+description = "[center]造成{damage}点伤害，施加{vunlerable}层[url=vulnerable]易伤[/url][/center]"
+sound = ExtResource("3_4yurv")
+numeric_entries = Array[ExtResource("1_kqsla")]([SubResource("Resource_4yurv"), SubResource("Resource_epc34")])
+metadata/_custom_type_script = "uid://br1hibx18tv13"

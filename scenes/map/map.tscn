@@ -1,0 +1,49 @@
+[gd_scene format=3 uid="uid://g1qfq6cyq3sc"]
+
+[ext_resource type="Script" uid="uid://bcd358hkhxqp" path="res://scripts/map/map.gd" id="1_sxf4j"]
+[ext_resource type="Script" uid="uid://brcwbale2dt2h" path="res://scripts/map/map_generator.gd" id="2_tqkkf"]
+[ext_resource type="Texture2D" uid="uid://pl0hb0opxxvr" path="res://images/packed/map/map_bgs/hive/map_middle_hive.png" id="3_fcby6"]
+[ext_resource type="Texture2D" uid="uid://cppqiw47dh74t" path="res://images/packed/map/map_bgs/hive/map_top_hive.png" id="4_jcaow"]
+[ext_resource type="Texture2D" uid="uid://c6r8hw0o0dgq8" path="res://images/packed/map/map_bgs/hive/map_bottom_hive.png" id="5_04w0f"]
+
+[node name="Map" type="Node2D" unique_id=2080320068]
+script = ExtResource("1_sxf4j")
+metadata/_edit_lock_ = true
+
+[node name="Visuals" type="Node2D" parent="." unique_id=1331920648]
+metadata/_edit_lock_ = true
+
+[node name="Lines" type="Node2D" parent="Visuals" unique_id=573115876]
+unique_name_in_owner = true
+
+[node name="Rooms" type="Node2D" parent="Visuals" unique_id=827458797]
+unique_name_in_owner = true
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1233016871]
+offset = Vector2(960, 540)
+limit_enabled = false
+
+[node name="MapGenerator" type="Node" parent="." unique_id=1547311155]
+script = ExtResource("2_tqkkf")
+
+[node name="Background" type="Node2D" parent="." unique_id=1208578723]
+z_index = -1
+metadata/_edit_lock_ = true
+
+[node name="Top" type="Sprite2D" parent="Background" unique_id=343043579]
+position = Vector2(952, -2788)
+scale = Vector2(1.0986001, 1.1434028)
+texture = ExtResource("4_jcaow")
+metadata/_edit_lock_ = true
+
+[node name="Middle" type="Sprite2D" parent="Background" unique_id=499505033]
+position = Vector2(946, -1173)
+scale = Vector2(1.100442, 1.103125)
+texture = ExtResource("3_fcby6")
+metadata/_edit_lock_ = true
+
+[node name="Down" type="Sprite2D" parent="Background" unique_id=528615178]
+position = Vector2(947, 299)
+scale = Vector2(1.1026523, 0.9434027)
+texture = ExtResource("5_04w0f")
+metadata/_edit_lock_ = true

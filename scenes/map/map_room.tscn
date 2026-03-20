@@ -1,0 +1,267 @@
+[gd_scene format=3 uid="uid://b4qr6iax7mv6v"]
+
+[ext_resource type="Texture2D" uid="uid://2n5p0n" path="res://images/atlases/compressed.sprites/map/map_circle_0.tres" id="1_71bvp"]
+[ext_resource type="Script" uid="uid://celx4067lnvn" path="res://scripts/map/map_room.gd" id="1_g1tsg"]
+[ext_resource type="Texture2D" uid="uid://3jgf5m" path="res://images/atlases/compressed.sprites/map/map_circle_1.tres" id="2_xjypl"]
+[ext_resource type="Texture2D" uid="uid://4ep5bl" path="res://images/atlases/compressed.sprites/map/map_circle_2.tres" id="3_uo7qb"]
+[ext_resource type="Texture2D" uid="uid://480ugk" path="res://images/atlases/compressed.sprites/map/map_circle_3.tres" id="4_7bw2w"]
+[ext_resource type="Texture2D" uid="uid://54bklj" path="res://images/atlases/compressed.sprites/map/map_circle_4.tres" id="5_dh5ag"]
+[ext_resource type="Texture2D" uid="uid://b8m5mtsv6ue2g" path="res://images/ui/run_history/rest_site.png" id="7_g1tsg"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_11bm1"]
+resource_local_to_scene = true
+radius = 50.0
+
+[sub_resource type="Animation" id="Animation_55kfl"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Visuals:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Select_Circle/Sprite2D2:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Select_Circle/Sprite2D3:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Select_Circle/Sprite2D4:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Select_Circle/Sprite2D5:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 0)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Select_Circle/Sprite2D6:modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 0)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Select_Circle/Sprite2D7:modulate")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_h1xp5"]
+resource_name = "highlight"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Visuals:scale")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(-0.6372803, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.25, 1.25)]
+}
+
+[sub_resource type="Animation" id="Animation_t8n8e"]
+resource_name = "select"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Select_Circle/Sprite2D2:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.16666667, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Select_Circle/Sprite2D3:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.19999999, 0.3158),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Select_Circle/Sprite2D4:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.3, 0.36666667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Select_Circle/Sprite2D5:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.43333334, 0.53333336),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Select_Circle/Sprite2D6:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0.53333336, 0.6666667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 1)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Select_Circle/Sprite2D7:modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0.76666665, 0.8333333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 1)]
+}
+tracks/6/type = "method"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath(".")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"_on_map_room_selected"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_bwxqk"]
+_data = {
+&"RESET": SubResource("Animation_55kfl"),
+&"highlight": SubResource("Animation_h1xp5"),
+&"select": SubResource("Animation_t8n8e")
+}
+
+[node name="MapRoom" type="Area2D" unique_id=2050772987]
+collision_layer = 8
+collision_mask = 0
+script = ExtResource("1_g1tsg")
+
+[node name="Select_Circle" type="Node2D" parent="." unique_id=1744452023]
+modulate = Color(0, 0, 0, 1)
+self_modulate = Color(0, 0, 0, 1)
+z_index = 1
+scale = Vector2(1.259, 1.259)
+
+[node name="Sprite2D2" type="Sprite2D" parent="Select_Circle" unique_id=309982339]
+modulate = Color(0, 0, 0, 0)
+self_modulate = Color(0, 0, 0, 1)
+scale = Vector2(1.0767161, 1.0767161)
+texture = ExtResource("1_71bvp")
+
+[node name="Sprite2D3" type="Sprite2D" parent="Select_Circle" unique_id=1220532938]
+modulate = Color(0, 0, 0, 0)
+self_modulate = Color(0, 0, 0, 1)
+texture = ExtResource("2_xjypl")
+
+[node name="Sprite2D4" type="Sprite2D" parent="Select_Circle" unique_id=134177534]
+modulate = Color(0, 0, 0, 0)
+self_modulate = Color(0, 0, 0, 1)
+texture = ExtResource("3_uo7qb")
+
+[node name="Sprite2D5" type="Sprite2D" parent="Select_Circle" unique_id=524139253]
+modulate = Color(0, 0, 0, 0)
+self_modulate = Color(0, 0, 0, 1)
+
+[node name="Sprite2D6" type="Sprite2D" parent="Select_Circle" unique_id=374469991]
+modulate = Color(0, 0, 0, 0)
+self_modulate = Color(0, 0, 0, 1)
+texture = ExtResource("4_7bw2w")
+
+[node name="Sprite2D7" type="Sprite2D" parent="Select_Circle" unique_id=77971014]
+modulate = Color(0, 0, 0, 0)
+self_modulate = Color(0, 0, 0, 1)
+texture = ExtResource("5_dh5ag")
+
+[node name="Visuals" type="Node2D" parent="." unique_id=137324443]
+
+[node name="Sprite2D" type="Sprite2D" parent="Visuals" unique_id=764668594]
+texture = ExtResource("7_g1tsg")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=286046258]
+visible = false
+shape = SubResource("CircleShape2D_11bm1")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=399628461]
+libraries/ = SubResource("AnimationLibrary_bwxqk")
+
+[connection signal="input_event" from="." to="." method="_on_input_event"]

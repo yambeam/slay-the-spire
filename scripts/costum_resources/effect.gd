@@ -1,5 +1,7 @@
 class_name Effect
 extends RefCounted
 
-func execute(_targets: Array[Node]) -> void:
+var sound : AudioStream
+
+func execute(_context: Context) -> void:
 	pass

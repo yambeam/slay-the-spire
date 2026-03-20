@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://cbir7pfgl5y7d"]
+
+[node name="BuffContainer" type="GridContainer" unique_id=1496015378]
+offset_right = 235.0
+offset_bottom = 141.0
+columns = 6

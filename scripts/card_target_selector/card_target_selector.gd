@@ -35,14 +35,15 @@ func _on_card_aim_ended(_card: CardUI) -> void:
 	current_card = null
 	bessel_arrow.hide()
 
-
 func _on_area_2d_area_entered(area: Area2D) -> void:
 	if not current_card or not targeting:
 		return
 	if not current_card.targets.has(area):
+		Events.target_selected.emit(area)
 		current_card.targets.append(area)
 
 func _on_area_2d_area_exited(area: Area2D) -> void:
 	if not current_card or not targeting:
 		return
+	Events.target_unselected.emit()
 	current_card.targets.erase(area)

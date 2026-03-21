@@ -1,8 +1,16 @@
 [gd_resource type="Resource" format=3 uid="uid://b5jbjk3a0xd0q"]
 
 [ext_resource type="Texture2D" uid="uid://cxnepi0" path="res://images/atlases/card_atlas.sprites/ironclad/defend_ironclad.tres" id="1_2fmq3"]
+[ext_resource type="Script" path="res://scripts/costum_resources/numeric_entry.gd" id="1_rknk0"]
 [ext_resource type="Script" uid="uid://b6koyyeqx1l35" path="res://entities/characters/ironclad/cards/防御.gd" id="2_kysfd"]
-[ext_resource type="AudioStream" uid="uid://cnxfhtrl0n8nm" path="res://audio/SFX/frost_orb_passive.mp3" id="3_gvm3b"]
+[ext_resource type="AudioStream" uid="uid://dg3m3v6ldrym8" path="res://audio/SFX/frost_orb_passive.mp3" id="3_gvm3b"]
+
+[sub_resource type="Resource" id="Resource_jo61m"]
+script = ExtResource("1_rknk0")
+type = 2
+base_value = 5
+placeholder = "block"
+metadata/_custom_type_script = "uid://cxgxfbwykbp84"
 
 [resource]
 script = ExtResource("2_kysfd")
@@ -10,6 +18,7 @@ id = "防御"
 type = 1
 cost = 1
 portrait = ExtResource("1_2fmq3")
-description = "[center]获得5点格挡[/center]"
+description = "[center]获得{block}点格挡[/center]"
 sound = ExtResource("3_gvm3b")
+numeric_entries = Array[ExtResource("1_rknk0")]([SubResource("Resource_jo61m")])
 metadata/_custom_type_script = "uid://br1hibx18tv13"

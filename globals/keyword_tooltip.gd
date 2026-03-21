@@ -1,6 +1,6 @@
 extends HBoxContainer
 
-@onready var tooltip_container_1: VBoxContainer = $VBoxContainer
+@onready var tooltip_container_1: VBoxContainer =$VBoxContainer
 @onready var tooltip_container_2: VBoxContainer = $VBoxContainer2
 @onready var tooltip_timer: Timer = $TooltipTimer
 

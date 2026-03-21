@@ -11,21 +11,17 @@ config_version=5
 [application]
 
 config/name="Slay the Spire"
+run/main_scene="uid://cjfw4hasfo8ik"
 config/features=PackedStringArray("4.6", "Forward Plus")
-config/icon="res://icon.svg"
-
-[audio]
-
-buses/default_bus_layout="uid://d21g525cffshd"
 
 [autoload]
 
-Events="*uid://b020t6pk8kp4y"
-MusicPlayer="*uid://d3vsqdefsperv"
-SFXPlayer="*uid://cloao6gglg3wl"
-TooltipManager="*uid://b84mguuwvj18j"
-BuffLibrary="*uid://biey585ofwmog"
-KeywordTooltip="*uid://bi5jyqar571h3"
+Events="*res://globals/Events.gd"
+MusicPlayer="*res://globals/music_player.tscn"
+SFXPlayer="*res://globals/sfx_player.tscn"
+TooltipManager="*res://globals/tooltip_manager.gd"
+KeywordTooltip="*res://globals/keyword_tooltip.tscn"
+BuffLibrary="*res://globals/buff_library.gd"
 
 [display]
 

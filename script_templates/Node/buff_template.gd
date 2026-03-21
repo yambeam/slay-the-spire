@@ -24,6 +24,10 @@ func _ready() -> void:
 	if agent and agent.has_signal("turn_started"):
 		agent.connect("turn_started", _on_turn_started)
 
+func get_modifier() -> Array[Modifier]:
+	var modifier := Modifier.new(Enums.NumericType.DAMAGE, 0, 1.5, null)
+	return [modifier]
+
 func _on_before_take_damage(context: Context) -> void:
 	context.amount = int(context.amount * 1.5)
 

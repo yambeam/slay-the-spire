@@ -15,6 +15,11 @@ var buff_data = {
 		"name": "中毒",
 		"description": "回合开始时失去{stacks}点生命，然后减少一层",
 		"icon": preload("res://images/powers/poison_power.png")
+	},
+	"脆弱":{
+		"name": "脆弱",
+		"description": "从卡牌中获得的格挡降低25%",
+		"icon": preload("res://images/powers/frail_power.png")
 	}
 }
 
@@ -34,6 +39,10 @@ var keyword_info = {
 	"消耗":{
 		"name": "消耗",
 		"description": "被消耗的牌不会进入弃牌堆而是进入消耗堆"
+	},
+	"脆弱":{
+		"name": "脆弱",
+		"description": "从卡牌中获得的格挡降低25%",
 	}
 }
 

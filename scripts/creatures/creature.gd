@@ -26,6 +26,11 @@ func add_buff(buff_context: ApplyBuffContext) -> void:
 	buff_ui.buff = buff_context.buff_node
 	buff_container.add_child(buff_ui)
 
+func get_modifiers_by_type(type: Enums.NumericType) -> Array:
+	var ret := []
+	for child: Buff in buff_manager.get_children():
+		ret += child.get_modifiers_on_type(type)
+	return ret
 
 func start_turn() -> void:
 	turn_started.emit(self)

@@ -32,7 +32,7 @@ func _on_add_card_pressed() -> void:
 
 func _on_child_order_changed() -> void:
 	if enemy_handler.get_child_count() == 0:
-		print("win")
+		Events.combat_won.emit()
 	
 func _on_enemy_turn_ended() -> void:
 	player_handler.start_turn()
@@ -40,3 +40,7 @@ func _on_enemy_turn_ended() -> void:
 
 func _set_char_stats(value: CharacterStats) -> void:
 	char_stats = value
+
+
+func _on_back_to_map_pressed() -> void:
+	Events.combat_won.emit()

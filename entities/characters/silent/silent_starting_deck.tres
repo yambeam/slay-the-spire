@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="CardPile" format=3 uid="uid://no4eskllokyl"]
+
+[ext_resource type="Script" uid="uid://br1hibx18tv13" path="res://scripts/costum_resources/card.gd" id="1_26rvs"]
+[ext_resource type="Resource" uid="uid://b8u1cul0yhigc" path="res://entities/characters/silent/cards/灵动步伐.tres" id="2_j3rvd"]
+[ext_resource type="Script" uid="uid://jvpf65gf7yuq" path="res://scripts/costum_resources/card_pile.gd" id="2_yv3q0"]
+[ext_resource type="Resource" uid="uid://dbnn1ddj582d6" path="res://entities/characters/silent/cards/中和.tres" id="3_jwtex"]
+
+[resource]
+script = ExtResource("2_yv3q0")
+cards = Array[ExtResource("1_26rvs")]([ExtResource("2_j3rvd"), ExtResource("2_j3rvd"), ExtResource("3_jwtex"), ExtResource("3_jwtex"), ExtResource("3_jwtex"), ExtResource("3_jwtex")])
+metadata/_custom_type_script = "uid://jvpf65gf7yuq"

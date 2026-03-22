@@ -1,0 +1,61 @@
+[gd_scene format=3 uid="uid://c3altrf8yy8d2"]
+
+[ext_resource type="PackedScene" uid="uid://g1qfq6cyq3sc" path="res://scenes/map/map.tscn" id="1_8rlou"]
+[ext_resource type="Script" uid="uid://daxdlju0chrci" path="res://scripts/run/run.gd" id="1_l7o68"]
+[ext_resource type="Resource" uid="uid://kfd10rulosb7" path="res://scenes/run/run_start_up.tres" id="2_wdonh"]
+
+[node name="Run" type="Node" unique_id=185755344]
+script = ExtResource("1_l7o68")
+run_startup = ExtResource("2_wdonh")
+
+[node name="Map" parent="." unique_id=2080320068 instance=ExtResource("1_8rlou")]
+visible = false
+
+[node name="CurrentRoom" type="Node" parent="." unique_id=1013259375]
+
+[node name="Debug" type="VBoxContainer" parent="." unique_id=1592071927]
+offset_right = 200.0
+offset_bottom = 724.0
+
+[node name="combat" type="Button" parent="Debug" unique_id=1827413871]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(200, 100)
+layout_mode = 2
+text = "combat"
+
+[node name="treasure" type="Button" parent="Debug" unique_id=934340579]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(200, 100)
+layout_mode = 2
+text = "treasure"
+
+[node name="shop" type="Button" parent="Debug" unique_id=1621989979]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(200, 100)
+layout_mode = 2
+text = "shop
+"
+
+[node name="campfire" type="Button" parent="Debug" unique_id=95700433]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(200, 100)
+layout_mode = 2
+text = "campfire"
+
+[node name="rewards" type="Button" parent="Debug" unique_id=2099012983]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(200, 100)
+layout_mode = 2
+text = "rewards"
+
+[node name="map" type="Button" parent="Debug" unique_id=623420853]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(200, 100)
+layout_mode = 2
+text = "map"
+
+[node name="incident" type="Button" parent="Debug" unique_id=1327236725]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(200, 100)
+layout_mode = 2
+text = "incident"

@@ -1,11 +1,11 @@
 [gd_scene format=3 uid="uid://copfb0hm4hkcy"]
 
-[ext_resource type="Texture2D" uid="uid://bydu5n4y1b5o" path="res://images/ui/combat/health_bar_bg.png" id="1_rrjfa"]
-[ext_resource type="Script" uid="uid://xaq46gu11m8e" path="res://scripts/combat_ui/health_bar.gd" id="1_x032g"]
-[ext_resource type="Texture2D" uid="uid://dg2dkaqkccg86" path="res://images/ui/combat/health_bar_stroke.png" id="2_2emu1"]
-[ext_resource type="Texture2D" uid="uid://ta0irxtri5jj" path="res://images/ui/combat/health_bar.png" id="3_hmx8g"]
-[ext_resource type="Texture2D" uid="uid://g08m1dy2l4bh" path="res://images/ui/combat/health_bar_fill.png" id="4_bmndt"]
-[ext_resource type="Texture2D" uid="uid://bihrw7avwc3xa" path="res://images/ui/combat/block.png" id="5_dveov"]
+[ext_resource type="Script" uid="uid://xaq46gu11m8e" path="res://scripts/rooms/combat_room/combat_ui/health_bar.gd" id="1_syflm"]
+[ext_resource type="Texture2D" uid="uid://dg2dkaqkccg86" path="res://images/ui/combat/health_bar_stroke.png" id="2_mym8l"]
+[ext_resource type="Texture2D" uid="uid://bydu5n4y1b5o" path="res://images/ui/combat/health_bar_bg.png" id="3_hiafd"]
+[ext_resource type="Texture2D" uid="uid://ta0irxtri5jj" path="res://images/ui/combat/health_bar.png" id="4_hvkyi"]
+[ext_resource type="Texture2D" uid="uid://g08m1dy2l4bh" path="res://images/ui/combat/health_bar_fill.png" id="5_vrny1"]
+[ext_resource type="Texture2D" uid="uid://bihrw7avwc3xa" path="res://images/ui/combat/block.png" id="6_b6e7y"]
 
 [node name="HealthBar" type="Control" unique_id=1512934549]
 layout_mode = 3
@@ -14,7 +14,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_x032g")
+script = ExtResource("1_syflm")
 mask_length = 240
 
 [node name="HPBarContainer" type="Control" parent="." unique_id=1062729065]
@@ -28,7 +28,7 @@ visible = false
 layout_mode = 1
 offset_right = 248.0
 offset_bottom = 16.0
-texture = ExtResource("2_2emu1")
+texture = ExtResource("2_mym8l")
 patch_margin_left = 9
 patch_margin_right = 9
 
@@ -36,7 +36,7 @@ patch_margin_right = 9
 layout_mode = 1
 offset_right = 248.0
 offset_bottom = 16.0
-texture = ExtResource("1_rrjfa")
+texture = ExtResource("3_hiafd")
 patch_margin_left = 9
 patch_margin_right = 9
 
@@ -54,7 +54,7 @@ offset_left = 4.0
 offset_top = 3.0
 offset_right = 244.0
 offset_bottom = 13.0
-texture = ExtResource("3_hmx8g")
+texture = ExtResource("4_hvkyi")
 patch_margin_left = 6
 patch_margin_right = 6
 
@@ -71,7 +71,7 @@ offset_right = 5.0
 offset_bottom = 2.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("4_bmndt")
+texture = ExtResource("5_vrny1")
 patch_margin_left = 6
 patch_margin_right = 6
 
@@ -83,7 +83,7 @@ offset_left = -3.0
 offset_top = -4.0
 offset_right = 245.0
 offset_bottom = 12.0
-texture = ExtResource("4_bmndt")
+texture = ExtResource("5_vrny1")
 patch_margin_left = 6
 patch_margin_right = 6
 
@@ -95,7 +95,7 @@ layout_mode = 0
 offset_top = -1.0
 offset_right = 248.0
 offset_bottom = 17.0
-texture = ExtResource("4_bmndt")
+texture = ExtResource("5_vrny1")
 patch_margin_left = 6
 patch_margin_right = 6
 
@@ -127,7 +127,7 @@ offset_right = 1.0
 offset_bottom = -4.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("5_dveov")
+texture = ExtResource("6_b6e7y")
 expand_mode = 1
 stretch_mode = 4
 

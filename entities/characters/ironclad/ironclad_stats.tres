@@ -2,6 +2,7 @@
 
 [ext_resource type="SpineSkeletonDataResource" uid="uid://b8e4wst5vt8xh" path="res://animations/characters/ironclad/ironclad_skel_data.tres" id="1_e3vkd"]
 [ext_resource type="Script" uid="uid://dpde6spa48hlj" path="res://scripts/costum_resources/character_stats.gd" id="1_orbop"]
+[ext_resource type="Texture2D" uid="uid://x2neryjvbtwy" path="res://images/ui/top_panel/character_icon_ironclad.png" id="2_e3vkd"]
 [ext_resource type="Resource" uid="uid://hp2dus3ms3gm" path="res://entities/characters/ironclad/ironclad_starting_deck.tres" id="3_spq8r"]
 
 [resource]
@@ -9,6 +10,9 @@ script = ExtResource("1_orbop")
 starting_deck = ExtResource("3_spq8r")
 cards_per_turn = 5
 max_energy = 3
+character_name = "铁甲战士"
+character_icon = ExtResource("2_e3vkd")
+character_description = "这是战士的描述"
 max_health = 33
 animation = ExtResource("1_e3vkd")
 metadata/_custom_type_script = "uid://dpde6spa48hlj"

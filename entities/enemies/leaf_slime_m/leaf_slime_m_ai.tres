@@ -8,8 +8,8 @@
 [ext_resource type="AudioStream" uid="uid://bcwmh6adledx" path="res://audio/SFX/blunt_attack.mp3" id="4_ldd8u"]
 [ext_resource type="Texture2D" uid="uid://bihrw7avwc3xa" path="res://images/ui/combat/block.png" id="5_ldd8u"]
 [ext_resource type="AudioStream" uid="uid://cnxfhtrl0n8nm" path="res://audio/SFX/frost_orb_passive.mp3" id="7_kvjr0"]
+[ext_resource type="Script" uid="uid://dpbv4m5rd0bbq" path="res://scripts/costum_resources/intents/apply_buff_sub_intent.gd" id="8_ldd8u"]
 [ext_resource type="Texture2D" uid="uid://cebxla1q2er7j" path="res://images/packed/intents/intent_debuff.png" id="8_nfbet"]
-[ext_resource type="Script" uid="uid://c2p6buhbk6em8" path="res://scripts/costum_resources/intents/apply_debuff_sub_intent.gd" id="9_tgs2r"]
 [ext_resource type="AudioStream" uid="uid://dbe46o0jyq2x8" path="res://audio/SFX/dark_orb_channel.mp3" id="10_sj1l8"]
 
 [sub_resource type="Resource" id="Resource_kvjr0"]
@@ -37,7 +37,6 @@ script = ExtResource("2_ldd8u")
 type = 3
 icon = ExtResource("5_ldd8u")
 base_value = 7
-self_targeted = true
 sound = ExtResource("7_kvjr0")
 metadata/_custom_type_script = "uid://iqqyr44teapg"
 
@@ -55,13 +54,13 @@ sound = ExtResource("4_ldd8u")
 metadata/_custom_type_script = "uid://iqqyr44teapg"
 
 [sub_resource type="Resource" id="Resource_7sfex"]
-script = ExtResource("9_tgs2r")
+script = ExtResource("8_ldd8u")
 buff_id = "虚弱"
 type = 4
 icon = ExtResource("8_nfbet")
 base_value = 2
 sound = ExtResource("10_sj1l8")
-metadata/_custom_type_script = "uid://c2p6buhbk6em8"
+metadata/_custom_type_script = "uid://dpbv4m5rd0bbq"
 
 [sub_resource type="Resource" id="Resource_xkl8f"]
 script = ExtResource("1_et3dl")

@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://cb16flm0r74mt" path="res://scenes/creatures/creature.tscn" id="1_p0pr7"]
 [ext_resource type="SpineSkeletonDataResource" uid="uid://bighcyss2jo7q" path="res://animations/monsters/leaf_slime_m/leaf_slime_m_skel_data.tres" id="2_3yh5s"]
 [ext_resource type="Script" uid="uid://1evs6fw28860" path="res://scripts/creatures/enemy/enemy.gd" id="2_r5gqq"]
-[ext_resource type="PackedScene" uid="uid://doi41puqdenrn" path="res://scenes/combat_ui/intents.tscn" id="3_c8v6u"]
+[ext_resource type="PackedScene" uid="uid://doi41puqdenrn" path="res://scenes/rooms/combat_room/combat_ui/intents.tscn" id="3_c8v6u"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ygxal"]
 size = Vector2(283, 218)

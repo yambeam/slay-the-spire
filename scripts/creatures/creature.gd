@@ -13,7 +13,7 @@ signal after_applied_buff(context: Context)
 @warning_ignore_restore("unused_signal")
 # offset: 根据贴图大小调整各个组件
 
-const BUFF_UI = preload("res://scenes/combat_ui/buff_ui.tscn")
+const BUFF_UI = preload("res://scenes/rooms/combat_room/combat_ui/buff_ui.tscn")
 
 @onready var buff_container: GridContainer = $BuffContainer
 @onready var buff_manager: BuffManager = $BuffManager

@@ -11,6 +11,7 @@ var current_node: Node
 func _ready() -> void:
 	Events.tooltip_show_request.connect(_on_tooltip_show_requested)
 	Events.tooltip_hide_request.connect(_on_tooltip_hide_requested)
+	Events.combat_won.connect(hide)
 	tooltip_timer.timeout.connect(_on_timer_timeout)
 
 func clear():
@@ -23,7 +24,7 @@ func add_keyword(title, desc) -> void:
 	var tooltip_entry := TOOLTIP_ENTRY.instantiate()
 	tooltip_entry.setup(title, desc)
 	# 如果状态装不下了之后再说
-	if tooltip_container_1.get_child_count() < 4:
+	if tooltip_container_1.get_child_count() < 3:
 		tooltip_container_1.add_child(tooltip_entry)
 	else:
 		tooltip_container_2.add_child(tooltip_entry)

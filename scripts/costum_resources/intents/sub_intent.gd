@@ -18,7 +18,6 @@ enum Type{
 @export var type: Type
 @export var icon: Texture2D
 @export var base_value: int
-@export var self_targeted: bool
 @export var repeat: int = 1
 @export var sound: AudioStream
 
@@ -64,5 +63,25 @@ func get_text() -> String:
 				return "{0}".format([final_value])
 			else:
 				return "{0}x{1}".format([final_value, repeat])
+		_:
+			return ""
+
+func get_intent_name() -> String:
+	match type:
+		Type.ATTACK:
+			return "攻势"
+		Type.DEFFEND:
+			return "守势"
+		_:
+			return ""
+
+func get_intent_description() -> String:
+	match type:
+		Type.ATTACK:
+			if repeat > 1:
+				return "该敌人将要攻击造成{0}点伤害{1}次".format([final_value, repeat])
+			return "该敌人将要攻击造成{0}点伤害".format([final_value])
+		Type.DEFFEND:
+			return "这个敌人将在其回合获得格挡"
 		_:
 			return ""

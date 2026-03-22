@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://dlp0rxa1b482m"]
 
-[ext_resource type="Script" uid="uid://cf0jmv71badp3" path="res://scripts/combat_ui/energy_ui.gd" id="1_ln3uo"]
+[ext_resource type="Script" uid="uid://cf0jmv71badp3" path="res://scripts/rooms/combat_room/combat_ui/energy_ui.gd" id="1_ln3uo"]
 [ext_resource type="Texture2D" uid="uid://btlw4vc3brx7t" path="res://images/ui/combat/energy_counters/ironclad/ironclad_orb_layer_1.png" id="1_yi4t3"]
 [ext_resource type="Texture2D" uid="uid://cgne87p4x0y8o" path="res://images/ui/combat/energy_counters/ironclad/ironclad_orb_layer_2.png" id="2_ln3uo"]
 [ext_resource type="Resource" uid="uid://bqq44kff15k4w" path="res://entities/characters/ironclad/ironclad_stats.tres" id="2_spmcu"]

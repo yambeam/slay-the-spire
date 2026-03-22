@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://bsprh70hm6qi6"]
 
-[ext_resource type="Texture2D" uid="uid://b86g4tg" path="res://images/atlases/power_atlas.sprites/poison_power.tres" id="1_ioj04"]
-[ext_resource type="Script" uid="uid://bh55r3bo6qp1f" path="res://scripts/combat_ui/buff_ui.gd" id="2_x8xea"]
+[ext_resource type="Texture2D" uid="uid://b86g4tg" path="res://images/atlases/power_atlas.sprites/poison_power.tres" id="1_jptjq"]
+[ext_resource type="Script" uid="uid://bh55r3bo6qp1f" path="res://scripts/rooms/combat_room/combat_ui/buff_ui.gd" id="2_h0on2"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_x8xea"]
 font_size = 18
@@ -11,10 +11,10 @@ custom_minimum_size = Vector2(40, 40)
 offset_right = 40.0
 offset_bottom = 40.0
 scale = Vector2(0.5, 0.5)
-texture = ExtResource("1_ioj04")
+texture = ExtResource("1_jptjq")
 expand_mode = 1
 stretch_mode = 4
-script = ExtResource("2_x8xea")
+script = ExtResource("2_h0on2")
 
 [node name="StackLabel" type="Label" parent="." unique_id=803372942]
 layout_mode = 0

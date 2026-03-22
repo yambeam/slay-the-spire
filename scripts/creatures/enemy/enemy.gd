@@ -160,12 +160,14 @@ func _on_mouse_exited() -> void:
 func show_keyword_tooltip() -> void:
 	#if buff_manager.get_child_count() == 0:
 		#return
-	for child: Buff in buff_manager.get_children():
-		KeywordTooltip.add_keyword(child.buff_name, child.get_description())
+	if current_intent:
+		for sub_intent: SubIntent in current_intent.sub_intents:
+			KeywordTooltip.add_keyword(sub_intent.get_intent_name(), sub_intent.get_intent_description())
 	if stats.has_block():
 		KeywordTooltip.add_keyword(BuffLibrary.keyword_info["格挡"]["name"], BuffLibrary.keyword_info["格挡"]["description"])
-	elif buff_manager.get_child_count() == 0:
-		return
+	for child: Buff in buff_manager.get_children():
+		KeywordTooltip.add_keyword(child.buff_name, child.get_description())
+	
 	KeywordTooltip.global_position = global_position + Vector2(hitbox.shape.size.x / 2, -hitbox.shape.size.y / 2)
 	KeywordTooltip.show()
 

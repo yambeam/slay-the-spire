@@ -1,9 +1,18 @@
 class_name CharacterStats
 extends Stats
 
+
+@export_group("游戏数据")
 @export var starting_deck: CardPile
 @export var cards_per_turn: int
 @export var max_energy: int
+@export_group("视觉效果")
+## 角色的名称
+@export var character_name: String
+## 角色的图标
+@export var character_icon: Texture2D
+## 角色的描述，选人界面时使用
+@export var character_description: String
 
 var energy: int : set = _set_energy
 var deck: CardPile

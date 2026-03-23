@@ -8,6 +8,8 @@ signal before_take_damage(context: Context)
 signal before_lose_health(context: Context)
 signal before_attack(context: Context)
 signal before_gain_block(context: Context)
+signal before_apply_buff(context: Context)
+signal after_apply_buff(context: Context)
 signal before_applied_buff(context: Context)
 signal after_applied_buff(context: Context)
 @warning_ignore_restore("unused_signal")
@@ -33,12 +35,21 @@ func attack(context: Context) -> void:
 func gain_block(_context: Context) -> void:
 	pass
 
+func apply_buff(buff_context: ApplyBuffContext) -> void:
+	before_apply_buff.emit(buff_context)
+	buff_context.targets[0].add_buff(buff_context)
+	after_apply_buff.emit(buff_context)
+	
 func add_buff(buff_context: ApplyBuffContext) -> void:
+	before_applied_buff.emit(buff_context)
+	if not buff_context.buff_node:
+		return
 	buff_context.buff_node.stacks = buff_context.amount	
 	if buff_manager.add_buff(buff_context):
 		var buff_ui := BUFF_UI.instantiate()
 		buff_ui.buff = buff_context.buff_node
 		buff_container.add_child(buff_ui)
+	after_applied_buff.emit(buff_context)
 
 func get_modifiers_by_type(type: Enums.NumericType, affect: Buff.AFFECT) -> Array:
 	var ret := []

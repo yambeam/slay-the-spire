@@ -1,17 +1,12 @@
-class_name ApplyBuffSubIntent
+class_name ApplyDebuffSubIntent
 extends SubIntent
 
 @export var buff_id: String
-@export var buff_all_allay: bool
 
 func execute(source: Creature, targets: Array[Node]) -> void:
-	if buff_all_allay:
-		targets = source.get_tree().get_nodes_in_group("ui_enemies")
-	else:
-		targets = [source]
-	for target: Creature in targets:
-		target.add_buff(ApplyBuffContext.new(source, targets, base_value, BuffLibrary.buff_scene[buff_id].new()))
-
+	var apply_buff_effect = ApplyBuffEffect.new()
+	apply_buff_effect.execute(ApplyBuffContext.new(source, targets, base_value, BuffLibrary.buff_scene[buff_id].new()))
+	
 func get_text() -> String:
 	return ""
 

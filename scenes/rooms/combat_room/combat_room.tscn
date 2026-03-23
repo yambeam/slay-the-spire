@@ -8,12 +8,14 @@
 [ext_resource type="Texture2D" uid="uid://bnnrjotxgq0sx" path="res://images/packed/combat_ui/end_turn_button_glow.png" id="6_m2yy5"]
 [ext_resource type="PackedScene" uid="uid://dlp0rxa1b482m" path="res://scenes/rooms/combat_room/combat_ui/energy_ui.tscn" id="7_htae7"]
 [ext_resource type="PackedScene" uid="uid://deidb0dmylls" path="res://scenes/hand_manager/hand_manager.tscn" id="8_mj7tc"]
-[ext_resource type="PackedScene" uid="uid://dykepqfbnqupo" path="res://scenes/rooms/combat_room/combat_ui/draw_pile_ui.tscn" id="9_gwk7b"]
-[ext_resource type="PackedScene" uid="uid://nl6ds0o0nx4d" path="res://scenes/rooms/combat_room/combat_ui/discard_pile_ui.tscn" id="10_r586e"]
+[ext_resource type="PackedScene" uid="uid://dtc84mfyeh67u" path="res://scenes/ui/card_pile_button.tscn" id="10_7btib"]
+[ext_resource type="Texture2D" uid="uid://ce37xptc8x4au" path="res://images/packed/combat_ui/pile_button_count.png" id="11_hylje"]
 [ext_resource type="PackedScene" uid="uid://cwr534h73coes" path="res://scenes/rooms/combat_room/combat_ui/exhause_pile.tscn" id="11_sunpa"]
+[ext_resource type="Texture2D" uid="uid://lb7f7afwbapn" path="res://images/packed/combat_ui/discard_pile.png" id="12_4hrnf"]
 [ext_resource type="PackedScene" uid="uid://bdu3mvwj8syfb" path="res://scenes/card_target_selector/card_target_selector.tscn" id="12_83j5g"]
 [ext_resource type="Script" uid="uid://b7jbna8u8wfw1" path="res://scripts/rooms/combat_room/combat_ui/red_flash.gd" id="13_d1stk"]
 [ext_resource type="Texture2D" uid="uid://cvxy8ydgwomqh" path="res://images/rooms/underdocks/underdocks_01_a.png" id="14_fjeak"]
+[ext_resource type="PackedScene" uid="uid://bijk3yg4btssm" path="res://scenes/ui/deck_view.tscn" id="15_hylje"]
 [ext_resource type="Texture2D" uid="uid://bnlf5ynahsy8u" path="res://images/rooms/underdocks/underdocks_02_a.png" id="15_s0f1l"]
 [ext_resource type="Texture2D" uid="uid://del54pxobtgf8" path="res://images/rooms/underdocks/underdocks_04_a.png" id="16_tey1o"]
 [ext_resource type="Texture2D" uid="uid://c6r8xp7wi3hkh" path="res://images/rooms/underdocks/underdocks_05_a.png" id="17_albe3"]
@@ -88,30 +90,81 @@ offset_right = 1493.0
 offset_bottom = 1155.0
 metadata/_edit_lock_ = true
 
-[node name="DrawPileUI" parent="CombatUI" unique_id=100384998 instance=ExtResource("9_gwk7b")]
-offset_left = 29.0
-offset_top = 968.0
-offset_right = -1791.0
-offset_bottom = -12.0
-
-[node name="DiscardPileUI" parent="CombatUI" unique_id=1104846514 instance=ExtResource("10_r586e")]
-offset_left = 1799.0
-offset_top = 968.0
-offset_right = -21.0
-offset_bottom = -12.0
-
 [node name="ExhaustPile" parent="CombatUI" unique_id=228360926 instance=ExtResource("11_sunpa")]
 offset_left = 1809.0
 offset_top = 669.0
 offset_right = 1968.0
 offset_bottom = 825.0
 
-[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=919668335]
+[node name="DrawPileButton" parent="CombatUI" unique_id=1722351305 node_paths=PackedStringArray("label") instance=ExtResource("10_7btib")]
+unique_name_in_owner = true
+offset_left = 24.0
+offset_top = 963.0
+offset_right = 124.0
+offset_bottom = 1063.0
+label = NodePath("TextureRect/Label")
+metadata/_edit_lock_ = true
+
+[node name="TextureRect" type="TextureRect" parent="CombatUI/DrawPileButton" unique_id=585953156]
+layout_mode = 0
+offset_left = 52.0
+offset_top = 36.0
+offset_right = 122.0
+offset_bottom = 106.0
+mouse_filter = 2
+texture = ExtResource("11_hylje")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="CombatUI/DrawPileButton/TextureRect" unique_id=563060340]
+layout_mode = 0
+offset_left = 15.0
+offset_top = 19.0
+offset_right = 55.0
+offset_bottom = 47.0
+theme_override_font_sizes/font_size = 20
+text = "99"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="DiscardPileButton" parent="CombatUI" unique_id=1579447934 node_paths=PackedStringArray("label") instance=ExtResource("10_7btib")]
+unique_name_in_owner = true
+offset_left = 1812.0
+offset_top = 963.0
+offset_right = 1912.0
+offset_bottom = 1063.0
+texture_normal = ExtResource("12_4hrnf")
+label = NodePath("TextureRect/Label")
+metadata/_edit_lock_ = true
+
+[node name="TextureRect" type="TextureRect" parent="CombatUI/DiscardPileButton" unique_id=2026268013]
+layout_mode = 0
+offset_left = -31.0
+offset_top = 36.0
+offset_right = 39.0
+offset_bottom = 106.0
+mouse_filter = 2
+texture = ExtResource("11_hylje")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="CombatUI/DiscardPileButton/TextureRect" unique_id=1130453798]
+layout_mode = 0
+offset_left = 15.0
+offset_top = 19.0
+offset_right = 55.0
+offset_bottom = 47.0
+theme_override_font_sizes/font_size = 20
+text = "99"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="RedFlash" type="CanvasLayer" parent="." unique_id=919668335]
 layer = 2
 
-[node name="CardTargetSelector" parent="CanvasLayer" unique_id=20047492 instance=ExtResource("12_83j5g")]
+[node name="CardTargetSelector" parent="RedFlash" unique_id=20047492 instance=ExtResource("12_83j5g")]
 
-[node name="RedFlash" type="ColorRect" parent="CanvasLayer" unique_id=392927311]
+[node name="RedFlash" type="ColorRect" parent="RedFlash" unique_id=392927311]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -121,9 +174,20 @@ mouse_filter = 2
 color = Color(1, 0.20392157, 0.1254902, 0)
 script = ExtResource("13_d1stk")
 
-[node name="FlashTimer" type="Timer" parent="CanvasLayer/RedFlash" unique_id=436102311]
+[node name="FlashTimer" type="Timer" parent="RedFlash/RedFlash" unique_id=436102311]
 wait_time = 0.1
 one_shot = true
+
+[node name="CardPileView" type="CanvasLayer" parent="." unique_id=653295741]
+layer = 3
+
+[node name="DrawPileView" parent="CardPileView" unique_id=1662556681 instance=ExtResource("15_hylje")]
+unique_name_in_owner = true
+visible = false
+
+[node name="DiscardPileView" parent="CardPileView" unique_id=1838611263 instance=ExtResource("15_hylje")]
+unique_name_in_owner = true
+visible = false
 
 [node name="BackGroundContainer" type="Control" parent="." unique_id=1215282505]
 layout_mode = 1

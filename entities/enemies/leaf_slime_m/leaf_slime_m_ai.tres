@@ -8,7 +8,7 @@
 [ext_resource type="AudioStream" uid="uid://bcwmh6adledx" path="res://audio/SFX/blunt_attack.mp3" id="4_ldd8u"]
 [ext_resource type="Texture2D" uid="uid://bihrw7avwc3xa" path="res://images/ui/combat/block.png" id="5_ldd8u"]
 [ext_resource type="AudioStream" uid="uid://cnxfhtrl0n8nm" path="res://audio/SFX/frost_orb_passive.mp3" id="7_kvjr0"]
-[ext_resource type="Script" uid="uid://dpbv4m5rd0bbq" path="res://scripts/costum_resources/intents/apply_buff_sub_intent.gd" id="8_ldd8u"]
+[ext_resource type="Script" uid="uid://dpbv4m5rd0bbq" path="res://scripts/costum_resources/intents/apply_debuff_sub_intent.gd" id="8_ldd8u"]
 [ext_resource type="Texture2D" uid="uid://cebxla1q2er7j" path="res://images/packed/intents/intent_debuff.png" id="8_nfbet"]
 [ext_resource type="AudioStream" uid="uid://dbe46o0jyq2x8" path="res://audio/SFX/dark_orb_channel.mp3" id="10_sj1l8"]
 

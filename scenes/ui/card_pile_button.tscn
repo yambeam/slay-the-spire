@@ -1,0 +1,12 @@
+[gd_scene format=3 uid="uid://dtc84mfyeh67u"]
+
+[ext_resource type="Texture2D" uid="uid://sdtih21q6vri" path="res://images/packed/combat_ui/draw_pile.png" id="1_nsexx"]
+[ext_resource type="Script" uid="uid://3g0h1k0drbx5" path="res://scripts/ui/card_pile_button.gd" id="2_sk8hy"]
+
+[node name="CardPileButton" type="TextureButton" unique_id=1722351305]
+offset_right = 100.0
+offset_bottom = 100.0
+texture_normal = ExtResource("1_nsexx")
+ignore_texture_size = true
+stretch_mode = 5
+script = ExtResource("2_sk8hy")

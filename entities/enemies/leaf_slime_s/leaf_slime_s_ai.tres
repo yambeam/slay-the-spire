@@ -7,7 +7,7 @@
 [ext_resource type="AudioStream" uid="uid://bcwmh6adledx" path="res://audio/SFX/blunt_attack.mp3" id="4_6ocyn"]
 [ext_resource type="Texture2D" uid="uid://cdjfipfy2o2u8" path="res://images/packed/intents/attack/intent_attack_2.png" id="4_rsknn"]
 [ext_resource type="Texture2D" uid="uid://cfdd2dmjyy32j" path="res://images/packed/intents/buff/intent_buff_00.png" id="6_bh4vf"]
-[ext_resource type="Script" uid="uid://c2p6buhbk6em8" path="res://scripts/costum_resources/intents/apply_debuff_sub_intent.gd" id="7_1qj4i"]
+[ext_resource type="Script" uid="uid://c2p6buhbk6em8" path="res://scripts/costum_resources/intents/apply_buff_sub_intent.gd" id="7_1qj4i"]
 [ext_resource type="AudioStream" uid="uid://dbe46o0jyq2x8" path="res://audio/SFX/dark_orb_channel.mp3" id="8_ihmm0"]
 
 [sub_resource type="Resource" id="Resource_6ocyn"]

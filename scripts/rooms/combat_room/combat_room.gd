@@ -3,7 +3,7 @@ extends Control
 @onready var enemy_handler: EnemyHandler = $EnemyHandler
 @onready var player: Player = $Player
 @onready var player_handler: PlayerHandler = $PlayerHandler
-@onready var combat_ui: BattleUI = $CombatUI
+@onready var combat_ui: CombatUI = $CombatUI
 @onready var hand_manager: HandManager = $CombatUI/HandManager
 # 子节点的所有char_stats由该节点分发
 @export var char_stats: CharacterStats: set = _set_char_stats
@@ -21,10 +21,12 @@ func _ready() -> void:
 	Events.player_hand_discarded.connect(enemy_handler.start_turn)
 	
 	start_combat(new_stats)
+	# 初始化牌堆
+	combat_ui.initialize_card_pile_view()
 
 func start_combat(char_stats_: CharacterStats) -> void:
 	MusicPlayer.play(music, true)
-	enemy_handler.reset_enemy_actions()
+	enemy_handler.reset_enemy_intents()
 	player_handler.start_battle(char_stats_)
 
 func _on_add_card_pressed() -> void:
@@ -36,7 +38,7 @@ func _on_child_order_changed() -> void:
 	
 func _on_enemy_turn_ended() -> void:
 	player_handler.start_turn()
-	enemy_handler.reset_enemy_actions()
+	enemy_handler.reset_enemy_intents()
 
 func _set_char_stats(value: CharacterStats) -> void:
 	char_stats = value

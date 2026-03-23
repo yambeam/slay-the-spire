@@ -26,7 +26,6 @@ func get_modifier() -> Array[Modifier]:
 	return [modifier]
 
 func _on_before_attack(context: Context) -> void:
-	print("on_before_attack")
 	context.amount = int(context.amount * 0.75)
 
 func _on_turn_ended(_creature: Node2D) -> void:

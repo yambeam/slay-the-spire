@@ -1,0 +1,145 @@
+[gd_scene format=3 uid="uid://bijk3yg4btssm"]
+
+[ext_resource type="PackedScene" uid="uid://uxv6ncqktd1c" path="res://scenes/ui/card_menu_ui.tscn" id="1_j3w2u"]
+[ext_resource type="Script" uid="uid://xvrt6tofeicp" path="res://scripts/ui/deck_view.gd" id="1_tntwv"]
+[ext_resource type="Texture2D" uid="uid://bb803i8" path="res://images/atlases/ui_atlas.sprites/back_button.tres" id="2_j3w2u"]
+[ext_resource type="Texture2D" uid="uid://cahogy5" path="res://images/atlases/compressed.sprites/back_button_arrow.tres" id="3_ngan4"]
+[ext_resource type="Texture2D" uid="uid://cxm0iyd" path="res://images/atlases/compressed.sprites/back_button_outline.tres" id="3_tntwv"]
+[ext_resource type="PackedScene" uid="uid://ciqc4fkeeetw0" path="res://scenes/ui/card_inspect.tscn" id="6_lc132"]
+
+[node name="DeckView" type="Control" unique_id=1662556681]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_tntwv")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=518446147]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.827451)
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1044447811]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 300
+theme_override_constants/margin_top = 150
+theme_override_constants/margin_right = 300
+theme_override_constants/margin_bottom = 100
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer" unique_id=655352061]
+layout_mode = 2
+theme_override_constants/separation = 30
+
+[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer/VBoxContainer" unique_id=1287278987]
+layout_mode = 2
+size_flags_vertical = 3
+horizontal_scroll_mode = 3
+vertical_scroll_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer/ScrollContainer" unique_id=869368362]
+layout_mode = 2
+theme_override_constants/margin_left = 45
+theme_override_constants/margin_top = 45
+theme_override_constants/margin_right = 45
+
+[node name="CardGridContainer" type="GridContainer" parent="MarginContainer/VBoxContainer/ScrollContainer/MarginContainer" unique_id=1023979334]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/h_separation = 10
+theme_override_constants/v_separation = 50
+columns = 5
+
+[node name="CenterContainer" parent="MarginContainer/VBoxContainer/ScrollContainer/MarginContainer/CardGridContainer" unique_id=946762981 instance=ExtResource("1_j3w2u")]
+layout_mode = 2
+
+[node name="CenterContainer2" parent="MarginContainer/VBoxContainer/ScrollContainer/MarginContainer/CardGridContainer" unique_id=1307100150 instance=ExtResource("1_j3w2u")]
+layout_mode = 2
+
+[node name="CenterContainer3" parent="MarginContainer/VBoxContainer/ScrollContainer/MarginContainer/CardGridContainer" unique_id=449394564 instance=ExtResource("1_j3w2u")]
+layout_mode = 2
+
+[node name="CenterContainer4" parent="MarginContainer/VBoxContainer/ScrollContainer/MarginContainer/CardGridContainer" unique_id=630424486 instance=ExtResource("1_j3w2u")]
+layout_mode = 2
+
+[node name="CenterContainer5" parent="MarginContainer/VBoxContainer/ScrollContainer/MarginContainer/CardGridContainer" unique_id=1580385203 instance=ExtResource("1_j3w2u")]
+layout_mode = 2
+
+[node name="CenterContainer6" parent="MarginContainer/VBoxContainer/ScrollContainer/MarginContainer/CardGridContainer" unique_id=1444163811 instance=ExtResource("1_j3w2u")]
+layout_mode = 2
+
+[node name="CenterContainer7" parent="MarginContainer/VBoxContainer/ScrollContainer/MarginContainer/CardGridContainer" unique_id=754076071 instance=ExtResource("1_j3w2u")]
+layout_mode = 2
+
+[node name="CenterContainer8" parent="MarginContainer/VBoxContainer/ScrollContainer/MarginContainer/CardGridContainer" unique_id=927337746 instance=ExtResource("1_j3w2u")]
+layout_mode = 2
+
+[node name="CenterContainer9" parent="MarginContainer/VBoxContainer/ScrollContainer/MarginContainer/CardGridContainer" unique_id=325021307 instance=ExtResource("1_j3w2u")]
+layout_mode = 2
+
+[node name="CenterContainer10" parent="MarginContainer/VBoxContainer/ScrollContainer/MarginContainer/CardGridContainer" unique_id=549997316 instance=ExtResource("1_j3w2u")]
+layout_mode = 2
+
+[node name="CenterContainer11" parent="MarginContainer/VBoxContainer/ScrollContainer/MarginContainer/CardGridContainer" unique_id=123741639 instance=ExtResource("1_j3w2u")]
+layout_mode = 2
+
+[node name="CenterContainer12" parent="MarginContainer/VBoxContainer/ScrollContainer/MarginContainer/CardGridContainer" unique_id=660686436 instance=ExtResource("1_j3w2u")]
+layout_mode = 2
+
+[node name="CenterContainer13" parent="MarginContainer/VBoxContainer/ScrollContainer/MarginContainer/CardGridContainer" unique_id=1665153770 instance=ExtResource("1_j3w2u")]
+layout_mode = 2
+
+[node name="CenterContainer14" parent="MarginContainer/VBoxContainer/ScrollContainer/MarginContainer/CardGridContainer" unique_id=429204596 instance=ExtResource("1_j3w2u")]
+layout_mode = 2
+
+[node name="hint" type="Label" parent="MarginContainer/VBoxContainer" unique_id=1984764825]
+layout_mode = 2
+theme_override_font_sizes/font_size = 25
+text = "你在战斗中将会使用这里的所有卡牌"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BackButton" type="Button" parent="." unique_id=573064870]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = -47.0
+offset_top = 813.0
+offset_right = 261.0
+offset_bottom = 1023.0
+icon = ExtResource("2_j3w2u")
+flat = true
+
+[node name="TextureRect2" type="TextureRect" parent="BackButton" unique_id=423583559]
+visible = false
+show_behind_parent = true
+layout_mode = 0
+offset_left = 3.0
+offset_top = 3.0
+offset_right = 303.0
+offset_bottom = 205.0
+texture = ExtResource("3_tntwv")
+
+[node name="TextureRect" type="TextureRect" parent="BackButton" unique_id=1743523212]
+layout_mode = 1
+offset_left = 57.0
+offset_top = 47.0
+offset_right = 202.0
+offset_bottom = 140.0
+texture = ExtResource("3_ngan4")
+expand_mode = 2
+stretch_mode = 5
+
+[node name="CardInspect" parent="." unique_id=302635351 instance=ExtResource("6_lc132")]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1

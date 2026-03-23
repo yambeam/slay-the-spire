@@ -17,14 +17,14 @@ func _ready() -> void:
 	mouse_exited.connect(_on_mouse_exited)
 	after_applied_buff.connect(_on_after_applied_buff)
 
-func add_buff(buff_context: ApplyBuffContext) -> void:
-	before_applied_buff.emit(buff_context)
-	buff_context.buff_node.stacks = buff_context.amount	
-	if buff_manager.add_buff(buff_context):
-		var buff_ui := BUFF_UI.instantiate()
-		buff_ui.buff = buff_context.buff_node
-		buff_container.add_child(buff_ui)
-	after_applied_buff.emit(buff_context)
+#func add_buff(buff_context: ApplyBuffContext) -> void:
+	#before_applied_buff.emit(buff_context)
+	#buff_context.buff_node.stacks = buff_context.amount	
+	#if buff_manager.add_buff(buff_context):
+		#var buff_ui := BUFF_UI.instantiate()
+		#buff_ui.buff = buff_context.buff_node
+		#buff_container.add_child(buff_ui)
+	#after_applied_buff.emit(buff_context)
 
 func gain_block(context: Context) -> void:
 	before_gain_block.emit(context)

@@ -26,6 +26,7 @@ func start_turn() -> void:
 	draw_cards(char_stats.cards_per_turn)
 
 func end_turn() -> void:
+	player.end_turn()
 	discard_cards()
 
 func draw_card() -> void:

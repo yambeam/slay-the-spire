@@ -3,6 +3,8 @@
 [ext_resource type="PackedScene" uid="uid://g1qfq6cyq3sc" path="res://scenes/map/map.tscn" id="1_8rlou"]
 [ext_resource type="Script" uid="uid://daxdlju0chrci" path="res://scripts/run/run.gd" id="1_l7o68"]
 [ext_resource type="Resource" uid="uid://kfd10rulosb7" path="res://scenes/run/run_start_up.tres" id="2_wdonh"]
+[ext_resource type="PackedScene" uid="uid://cdcj73ue1lo5b" path="res://scenes/ui/top_bar/top_bar.tscn" id="4_o4jfg"]
+[ext_resource type="PackedScene" uid="uid://bijk3yg4btssm" path="res://scenes/ui/deck_view.tscn" id="5_gqbdr"]
 
 [node name="Run" type="Node" unique_id=185755344]
 script = ExtResource("1_l7o68")
@@ -59,3 +61,16 @@ unique_name_in_owner = true
 custom_minimum_size = Vector2(200, 100)
 layout_mode = 2
 text = "incident"
+
+[node name="TopBar" type="CanvasLayer" parent="." unique_id=849789068]
+layer = 2
+
+[node name="TopBar" parent="TopBar" unique_id=1162620190 instance=ExtResource("4_o4jfg")]
+unique_name_in_owner = true
+mouse_filter = 2
+
+[node name="DeckViewLayer" type="CanvasLayer" parent="." unique_id=188833395]
+
+[node name="DeckView" parent="DeckViewLayer" unique_id=1662556681 instance=ExtResource("5_gqbdr")]
+unique_name_in_owner = true
+visible = false

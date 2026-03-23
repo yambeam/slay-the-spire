@@ -44,13 +44,15 @@ func calc_final_value(source: Creature, target: Creature) -> void:
 func execute(source: Creature, targets: Array[Node]) -> void:
 	match type:
 		Type.ATTACK:
+			var attack_effect = AttackEffect.new()
 			for i in range(repeat):
-				source.attack(DamageContext.new(source, targets, base_value))
+				attack_effect.execute(DamageContext.new(source, targets, base_value))
 				SFXPlayer.play(sound)
 				if i < repeat - 1:
 					await source.get_tree().create_timer(0.3).timeout
 		Type.DEFFEND:
-			source.gain_block(GainBlockContext.new(source, [source], base_value))
+			var gain_block_effect = BlockEffect.new()
+			gain_block_effect.execute(GainBlockContext.new(source, [source], base_value))
 			SFXPlayer.play(sound)
 		_:
 			SFXPlayer.play(sound)

@@ -1,0 +1,184 @@
+[gd_scene format=3 uid="uid://uxv6ncqktd1c"]
+
+[ext_resource type="Script" uid="uid://yldb61754eoh" path="res://scripts/ui/card_menu_ui.gd" id="1_wcoov"]
+[ext_resource type="Resource" uid="uid://dosdxrq1vcxfj" path="res://entities/characters/ironclad/cards/痛击.tres" id="2_0nfo2"]
+[ext_resource type="Texture2D" uid="uid://w1mk8x" path="res://images/atlases/card_atlas.sprites/ironclad/strike_ironclad.tres" id="2_6mrvh"]
+[ext_resource type="Texture2D" uid="uid://cslfj7h" path="res://images/atlases/ui_atlas.sprites/card/card_frame_attack_s.tres" id="3_kqc5b"]
+[ext_resource type="Texture2D" uid="uid://0o70qg" path="res://images/atlases/ui_atlas.sprites/card/card_portrait_border_attack_s.tres" id="4_f3d54"]
+[ext_resource type="Texture2D" uid="uid://qmqejd" path="res://images/atlases/ui_atlas.sprites/card/card_banner.tres" id="5_1opq8"]
+[ext_resource type="Texture2D" uid="uid://g1g8kd" path="res://images/atlases/ui_atlas.sprites/card/energy_ironclad.tres" id="6_nqkf3"]
+[ext_resource type="Texture2D" uid="uid://bduvy6u" path="res://images/atlases/ui_atlas.sprites/card/card_portrait_border_plaque_s.tres" id="7_kt2j1"]
+
+[node name="CardMenuUI" type="CenterContainer" unique_id=1243657344]
+offset_right = 300.0
+offset_bottom = 422.0
+size_flags_horizontal = 3
+script = ExtResource("1_wcoov")
+card = ExtResource("2_0nfo2")
+
+[node name="Visuals" type="Control" parent="." unique_id=1490993169]
+custom_minimum_size = Vector2(300, 422)
+layout_mode = 2
+
+[node name="CardPortrait" type="TextureRect" parent="Visuals" unique_id=749964796]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -127.0
+offset_top = -167.0
+offset_right = 123.0
+offset_bottom = 23.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("2_6mrvh")
+
+[node name="CardFrame" type="TextureRect" parent="Visuals" unique_id=724728824]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -150.0
+offset_top = -211.0
+offset_right = 150.0
+offset_bottom = 211.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("3_kqc5b")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="PortraitBorder" type="TextureRect" parent="Visuals" unique_id=72130813]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -139.0
+offset_top = 42.0
+offset_right = 136.0
+offset_bottom = 252.0
+grow_horizontal = 2
+mouse_filter = 2
+texture = ExtResource("4_f3d54")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="TitleBanner" type="TextureRect" parent="Visuals" unique_id=855410499]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -159.0
+offset_top = -214.0
+offset_right = 168.0
+offset_bottom = -131.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("5_1opq8")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="TitleLabel" type="Label" parent="Visuals/TitleBanner" unique_id=924373933]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -24.5
+offset_top = -23.5
+offset_right = 7.5
+offset_bottom = -0.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "打击"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="EnergyIcon" type="TextureRect" parent="Visuals" unique_id=765360507]
+layout_mode = 0
+offset_left = -10.0
+offset_top = -7.0
+offset_right = 54.0
+offset_bottom = 57.0
+mouse_filter = 2
+texture = ExtResource("6_nqkf3")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="EnergyLabel" type="Label" parent="Visuals/EnergyIcon" unique_id=484522562]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "1"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TypePlaque" type="NinePatchRect" parent="Visuals" unique_id=1435758143]
+layout_mode = 0
+offset_left = 118.0
+offset_top = 206.0
+offset_right = 179.0
+offset_bottom = 243.0
+texture = ExtResource("7_kt2j1")
+patch_margin_left = 13
+patch_margin_top = 5
+patch_margin_right = 13
+
+[node name="TypeLabel" type="Label" parent="Visuals/TypePlaque" unique_id=247319145]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "攻击"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="DescriptionLabel" type="RichTextLabel" parent="Visuals" unique_id=1953267051]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 27.0
+offset_top = 246.0
+offset_right = 270.0
+offset_bottom = 382.0
+mouse_filter = 2
+bbcode_enabled = true
+text = "[center]造成6点伤害[/center]"
+scroll_active = false
+vertical_alignment = 1
+
+[connection signal="gui_input" from="Visuals" to="." method="_on_visuals_gui_input"]
+[connection signal="mouse_entered" from="Visuals" to="." method="_on_visuals_mouse_entered"]
+[connection signal="mouse_exited" from="Visuals" to="." method="_on_visuals_mouse_exited"]

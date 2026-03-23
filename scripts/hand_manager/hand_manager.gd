@@ -1,7 +1,7 @@
 class_name HandManager
 extends Control
 
-const CARD_UI = preload("res://scenes/ui/card_ui.tscn")
+const CARD_UI = preload("res://scenes/rooms/combat_room/combat_ui/card_ui.tscn")
 
 @export var char_stats: CharacterStats
 

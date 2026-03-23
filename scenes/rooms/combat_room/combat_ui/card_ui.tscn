@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://cunj3kh5og6dc"]
 
-[ext_resource type="Script" uid="uid://p5t5ynm0gru3" path="res://scripts/ui/card_ui.gd" id="1_s55cg"]
+[ext_resource type="Script" uid="uid://p5t5ynm0gru3" path="res://scripts/rooms/combat_room/combat_ui/card_ui.gd" id="1_s55cg"]
 [ext_resource type="Texture2D" uid="uid://w1mk8x" path="res://images/atlases/card_atlas.sprites/ironclad/strike_ironclad.tres" id="2_0og8s"]
 [ext_resource type="Script" uid="uid://n32cyhvf6qam" path="res://scripts/hand_manager/card_state_machine/card_state_machine.gd" id="2_1kpl7"]
 [ext_resource type="Texture2D" uid="uid://cslfj7h" path="res://images/atlases/ui_atlas.sprites/card/card_frame_attack_s.tres" id="3_2u763"]

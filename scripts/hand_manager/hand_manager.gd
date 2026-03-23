@@ -101,7 +101,7 @@ func discard_card(card: CardUI) -> void:
 
 func discard_hand() -> void:
 	for child in get_children():
-		child.disabled = true
+		discard_card(child)
 
 func disable_hand() -> void:
 	for card_ui: CardUI in get_children():

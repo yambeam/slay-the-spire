@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://dykepqfbnqupo"]
+[gd_scene format=3 uid="uid://dwvbksqxleecf"]
 
 [ext_resource type="Texture2D" uid="uid://sdtih21q6vri" path="res://images/packed/combat_ui/draw_pile.png" id="1_nl2gc"]
 [ext_resource type="Texture2D" uid="uid://ce37xptc8x4au" path="res://images/packed/combat_ui/pile_button_count.png" id="2_soo4o"]

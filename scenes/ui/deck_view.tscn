@@ -5,6 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://bb803i8" path="res://images/atlases/ui_atlas.sprites/back_button.tres" id="2_j3w2u"]
 [ext_resource type="Texture2D" uid="uid://cahogy5" path="res://images/atlases/compressed.sprites/back_button_arrow.tres" id="3_ngan4"]
 [ext_resource type="Texture2D" uid="uid://cxm0iyd" path="res://images/atlases/compressed.sprites/back_button_outline.tres" id="3_tntwv"]
+[ext_resource type="PackedScene" uid="uid://ciqc4fkeeetw0" path="res://scenes/ui/card_inspect.tscn" id="6_lc132"]
 
 [node name="DeckView" type="Control" unique_id=1662556681]
 layout_mode = 3
@@ -22,7 +23,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0, 0, 0, 0.36862746)
+color = Color(0, 0, 0, 0.827451)
 
 [node name="MarginContainer" type="MarginContainer" parent="." unique_id=1044447811]
 layout_mode = 1
@@ -101,7 +102,7 @@ layout_mode = 2
 [node name="CenterContainer14" parent="MarginContainer/VBoxContainer/ScrollContainer/MarginContainer/CardGridContainer" unique_id=429204596 instance=ExtResource("1_j3w2u")]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="MarginContainer/VBoxContainer" unique_id=1984764825]
+[node name="hint" type="Label" parent="MarginContainer/VBoxContainer" unique_id=1984764825]
 layout_mode = 2
 theme_override_font_sizes/font_size = 25
 text = "你在战斗中将会使用这里的所有卡牌"
@@ -137,3 +138,8 @@ offset_bottom = 140.0
 texture = ExtResource("3_ngan4")
 expand_mode = 2
 stretch_mode = 5
+
+[node name="CardInspect" parent="." unique_id=302635351 instance=ExtResource("6_lc132")]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1

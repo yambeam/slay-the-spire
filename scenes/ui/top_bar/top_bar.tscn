@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://cdcj73ue1lo5b"]
 
+[ext_resource type="Script" uid="uid://clww358gstah7" path="res://scripts/ui/top_bar.gd" id="1_dhe2k"]
 [ext_resource type="Texture2D" uid="uid://4s166a" path="res://images/atlases/ui_atlas.sprites/top_bar/top_bar.tres" id="1_x5rd1"]
 [ext_resource type="Texture2D" uid="uid://ch3nihw" path="res://images/atlases/ui_atlas.sprites/top_bar/top_bar_char_backdrop.tres" id="2_ltrmm"]
 [ext_resource type="Texture2D" uid="uid://x2neryjvbtwy" path="res://images/ui/top_panel/character_icon_ironclad.png" id="3_52e5t"]
@@ -15,6 +16,7 @@
 [ext_resource type="Texture2D" uid="uid://bqliha840b7m5" path="res://images/ui/run_history/ceremonial_beast_boss_outline.png" id="13_dhe2k"]
 [ext_resource type="Texture2D" uid="uid://c2xn8o6xsv3f" path="res://images/ui/run_history/ceremonial_beast_boss.png" id="14_p4p88"]
 [ext_resource type="Texture2D" uid="uid://bqsbmj4" path="res://images/atlases/ui_atlas.sprites/top_bar/top_bar_map.tres" id="15_aw7m0"]
+[ext_resource type="PackedScene" uid="uid://dtc84mfyeh67u" path="res://scenes/ui/card_pile_button.tscn" id="16_dhe2k"]
 [ext_resource type="Texture2D" uid="uid://cnw38r1" path="res://images/atlases/ui_atlas.sprites/top_bar/top_bar_deck.tres" id="16_y0s8s"]
 [ext_resource type="Texture2D" uid="uid://bghd30q" path="res://images/atlases/ui_atlas.sprites/top_bar/top_bar_settings.tres" id="17_dhe2k"]
 
@@ -25,6 +27,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_dhe2k")
 
 [node name="BackGround" type="TextureRect" parent="." unique_id=1729661160]
 layout_mode = 1
@@ -271,25 +274,21 @@ texture = ExtResource("15_aw7m0")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="Deck" type="MarginContainer" parent="Right" unique_id=692739830]
+[node name="Deck" type="MarginContainer" parent="Right" unique_id=1917620061]
 layout_mode = 2
 
-[node name="TextureRect" type="TextureRect" parent="Right/Deck" unique_id=734452889]
+[node name="CardPileButton" parent="Right/Deck" unique_id=1722351305 node_paths=PackedStringArray("label") instance=ExtResource("16_dhe2k")]
 custom_minimum_size = Vector2(80, 80)
 layout_mode = 2
-texture = ExtResource("16_y0s8s")
-expand_mode = 1
-stretch_mode = 5
+texture_normal = ExtResource("16_y0s8s")
+label = NodePath("../../../Left/RoomIcons/FloorIcon/Label")
 
-[node name="Label" type="Label" parent="Right/Deck/TextureRect" unique_id=1253117702]
+[node name="Label" type="Label" parent="Right/Deck/CardPileButton" unique_id=827572310]
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 23.0
-theme_override_font_sizes/font_size = 30
-text = "99
-"
-horizontal_alignment = 1
-vertical_alignment = 1
+theme_override_font_sizes/font_size = 25
+text = "99"
 
 [node name="Settings" type="MarginContainer" parent="Right" unique_id=929229721]
 layout_mode = 2

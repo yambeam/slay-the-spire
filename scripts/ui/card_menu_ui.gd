@@ -41,7 +41,8 @@ func _on_visuals_mouse_exited() -> void:
 	tween.tween_property(self, "scale", Vector2.ONE, 0.2)
 	
 func _on_visuals_gui_input(event: InputEvent) -> void:
-	pass # Replace with function body.
+	if event.is_action_pressed("left_mouse") or event.is_action_pressed("right_mouse"):
+		inspect_card_requested.emit(card)
 
 func _set_card(value: Card) -> void:
 	if not is_node_ready():

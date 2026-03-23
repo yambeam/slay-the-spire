@@ -17,6 +17,8 @@ const INCIDENT_SCENE := preload("res://scenes/rooms/incident_room/incident_room.
 @onready var rewards: Button = %rewards
 @onready var map: Button = %map
 @onready var incident: Button = %incident
+@onready var deck_view: DeckView = %DeckView
+@onready var top_bar: TopBar = %TopBar
 
 @export var run_startup: RunStartup
 
@@ -32,6 +34,9 @@ func _ready() -> void:
 			_start_run()
 		RunStartup.Type.CONTINUE_RUN:
 			print("加载游戏")
+	deck_view.card_pile = character.deck
+	top_bar.initialize(character)
+	top_bar.deck_view_requested.connect(deck_view.show_card_pile.bind("你在战斗中将会使用这里的所有卡牌。", false))
 
 func _start_run() -> void:
 	_setup_event_connections()

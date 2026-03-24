@@ -72,7 +72,7 @@ var keyword_info = {
 		"description": "从卡牌获得的格挡提高"
 	},
 	"格挡":{
-		"name": "格挡",
+		"name": "格挡]",
 		"description": "在回合开始前抵挡伤害"
 	}
 }
@@ -80,6 +80,7 @@ var keyword_info = {
 func get_keyword_description(key: String) -> String:
 	return keyword_info.get(key, {}).get("description", "")
 # 一般来说key和name是相同的，这里不考虑多语言
+
 func get_keyword_name(key: String) -> String:
 	return keyword_info.get(key, {}).get("name", "")
 

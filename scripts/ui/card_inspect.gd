@@ -5,7 +5,8 @@ signal last_card_requested
 signal next_card_requested
 
 @onready var color_rect: ColorRect = $ColorRect
-@onready var inspected_card: CenterContainer = $HBoxContainer/Control/InspectedCard
+@onready var inspected_card: CardInspectUI = %CardInspectUI
+
 @onready var last: Button = $HBoxContainer/LeftButtonContainer/Last
 @onready var next: Button = $HBoxContainer/RightButtonContainer/Next
 

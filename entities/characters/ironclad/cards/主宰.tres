@@ -1,0 +1,28 @@
+[gd_resource type="Resource" format=3 uid="uid://b4u1h22sin2el"]
+
+[ext_resource type="Script" uid="uid://cxgxfbwykbp84" path="res://scripts/costum_resources/numeric_entry.gd" id="1_0xl5q"]
+[ext_resource type="Texture2D" uid="uid://b8p12np" path="res://images/atlases/card_atlas.sprites/ironclad/dominate.tres" id="2_daffv"]
+[ext_resource type="Script" uid="uid://crcvx0yompece" path="res://entities/characters/ironclad/cards/主宰.gd" id="3_daffv"]
+[ext_resource type="AudioStream" uid="uid://dbe46o0jyq2x8" path="res://audio/SFX/dark_orb_channel.mp3" id="4_daffv"]
+
+[sub_resource type="Resource" id="Resource_s7go0"]
+script = ExtResource("1_0xl5q")
+type = 4
+base_value = 1
+placeholder = "stacks"
+affected_by = 3
+metadata/_custom_type_script = "uid://cxgxfbwykbp84"
+
+[resource]
+script = ExtResource("3_daffv")
+id = "主宰"
+type = 1
+target = 1
+cost = 1
+rarity = 1
+portrait = ExtResource("2_daffv")
+description = "[center]施加{stacks}层[color=gold]易伤[/color]。[/center][p][center]目标每有一层[color=gold]易伤[/color]，获得一点[color=gold]力量[/color]。[/center]"
+sound = ExtResource("4_daffv")
+numeric_entries = Array[ExtResource("1_0xl5q")]([SubResource("Resource_s7go0")])
+exhaust = true
+metadata/_custom_type_script = "uid://br1hibx18tv13"

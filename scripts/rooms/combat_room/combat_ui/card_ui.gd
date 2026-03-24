@@ -1,14 +1,6 @@
 class_name CardUI
 extends Control
 
-const CARD_PORTRAIT_BORDER_ATTACK_S = preload("res://images/atlases/ui_atlas.sprites/card/card_portrait_border_attack_s.tres")
-const CARD_PORTRAIT_BORDER_POWER_S = preload("res://images/atlases/ui_atlas.sprites/card/card_portrait_border_power_s.tres")
-const CARD_PORTRAIT_BORDER_SKILL_S = preload("res://images/atlases/ui_atlas.sprites/card/card_portrait_border_skill_s.tres")
-
-const CARD_FRAME_ATTACK_S = preload("res://images/atlases/ui_atlas.sprites/card/card_frame_attack_s.tres")
-const CARD_FRAME_POWER_S = preload("res://images/atlases/ui_atlas.sprites/card/card_frame_power_s.tres")
-const CARD_FRAME_SKILL_S = preload("res://images/atlases/ui_atlas.sprites/card/card_frame_skill_s.tres")
-
 
 @export var card: Card: set = _set_card
 @export var char_stats: CharacterStats: set = _set_char_stats
@@ -16,13 +8,6 @@ const CARD_FRAME_SKILL_S = preload("res://images/atlases/ui_atlas.sprites/card/c
 @onready var drop_point_area: Area2D = $DropPointArea
 @onready var card_state_machine: CardStateMachine = $CardStateMachine
 @onready var visuals: Control = $Visuals
-@onready var card_portrait: TextureRect = %CardPortrait
-@onready var portrait_border: TextureRect = %PortraitBorder
-@onready var card_frame: TextureRect = %CardFrame
-@onready var title_label: Label = %TitleLabel
-@onready var energy_label: Label = %EnergyLabel
-@onready var type_label: Label = %TypeLabel
-@onready var description_label: RichTextLabel = %DescriptionLabel
 
 var disabled: bool = false : set = _set_disabled
 var playable: bool = true : set = _set_playable
@@ -103,30 +88,7 @@ func _set_card(value: Card) -> void:
 		await ready
 	
 	card = value
-	card_portrait.texture = card.portrait
-	title_label.text = card.id
-	energy_label.text = str(card.cost)
-	description_label.text = card.description
-	var type_text: String
-	# TODO: 诅咒，状态
-	match card.type:
-		card.Type.ATTACK:
-			type_text = "攻击"
-			card_frame.texture = CARD_FRAME_ATTACK_S
-			portrait_border.texture = CARD_PORTRAIT_BORDER_ATTACK_S
-		card.Type.SKILL:
-			type_text = "技能"
-			card_frame.texture = CARD_FRAME_SKILL_S
-			portrait_border.texture = CARD_PORTRAIT_BORDER_SKILL_S
-		card.Type.POWER:
-			type_text = "能力"
-			card_frame.texture = CARD_FRAME_POWER_S
-			portrait_border.texture = CARD_PORTRAIT_BORDER_POWER_S
-		_:
-			type_text = "出错"
-			
-	type_label.text = type_text
-	description_label.text = card.get_default_description()
+	visuals.card = value
 
 func _set_playable(value: bool) -> void:
 	playable = value
@@ -159,7 +121,7 @@ func show_keyword_tooltip() -> void:
 		var desc: String = BuffLibrary.get_keyword_description(keyword)
 		KeywordTooltip.add_keyword(keyword_name, desc)
 	# preview时会scale到1.3，同时向上移动175px(显示tooltip需要0.2s,此时tween已经完成)
-	KeywordTooltip.global_position = global_position + Vector2(size.x * 1.4, 0)
+	KeywordTooltip.keyword_tooltip.global_position = global_position + Vector2(size.x * 1.4, 0)
 	KeywordTooltip.show()
 
 func _on_mouse_exited() -> void:
@@ -176,7 +138,7 @@ func _on_card_click_or_drag_or_aiming_ended(_card_ui: CardUI) -> void:
 	self.playable = char_stats.can_play_card(card)
 
 func set_description(source_: Creature, target_: Creature) -> void:
-	description_label.text = card.get_description(source_, target_)
+	visuals.set_description(card.get_description(source_, target_))
 
 func _on_drop_point_area_area_entered(area: Area2D) -> void:
 	if not targets.has(area):

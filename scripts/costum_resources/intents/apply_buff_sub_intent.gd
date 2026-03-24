@@ -16,7 +16,7 @@ func get_text() -> String:
 	return ""
 
 func get_intent_name() -> String:
-	return "强化"
+	return "[color=gold]强化[/color]"
 
 func get_intent_description() -> String:
-	return "这个敌人将要使用一个强化效果"
+	return "这个敌人将要使用一个[color=gold]强化效果[/color]"

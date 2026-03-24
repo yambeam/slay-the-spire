@@ -168,7 +168,7 @@ func show_keyword_tooltip() -> void:
 	for child: Buff in buff_manager.get_children():
 		KeywordTooltip.add_keyword(child.buff_name, child.get_description())
 	
-	KeywordTooltip.global_position = global_position + Vector2(hitbox.shape.size.x / 2, -hitbox.shape.size.y / 2)
+	KeywordTooltip.keyword_tooltip.global_position = global_position + Vector2(hitbox.shape.size.x / 2, -hitbox.shape.size.y / 2)
 	KeywordTooltip.show()
 
 func _on_after_applied_buff(context: Context) -> void:

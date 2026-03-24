@@ -18,7 +18,7 @@ var energy: int : set = _set_energy
 var deck: CardPile
 var discard_pile: CardPile
 var draw_pile: CardPile
-## TODO:消耗堆
+var exhaust_pile: CardPile
 
 func _set_energy(value: int) -> void:
 	energy = value
@@ -38,4 +38,5 @@ func create_instance() -> CharacterStats:
 	instance.deck = instance.starting_deck.duplicate()
 	instance.draw_pile = CardPile.new()
 	instance.discard_pile = CardPile.new()
+	instance.exhaust_pile = CardPile.new()
 	return instance

@@ -71,9 +71,9 @@ func get_text() -> String:
 func get_intent_name() -> String:
 	match type:
 		Type.ATTACK:
-			return "攻势"
+			return "[color=gold]攻势[/color]"
 		Type.DEFFEND:
-			return "守势"
+			return "[color=gold]守势[/color]"
 		_:
 			return ""
 
@@ -81,9 +81,9 @@ func get_intent_description() -> String:
 	match type:
 		Type.ATTACK:
 			if repeat > 1:
-				return "该敌人将要攻击造成{0}点伤害{1}次".format([final_value, repeat])
-			return "该敌人将要攻击造成{0}点伤害".format([final_value])
+				return "该敌人将要[color=gold]攻击[/color]造成{0}点伤害{1}次".format([final_value, repeat])
+			return "该敌人将要[color=gold]攻击[/color]造成{0}点伤害".format([final_value])
 		Type.DEFFEND:
-			return "这个敌人将在其回合获得格挡"
+			return "这个敌人将在其回合获得[color=gold]格挡[/color]"
 		_:
 			return ""

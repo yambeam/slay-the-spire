@@ -20,7 +20,7 @@ type = 2
 cost = 1
 rarity = 1
 portrait = ExtResource("2_61fru")
-description = "[center]获得{strength}点力量[/center]"
+description = "[center]获得{strength}点[color=gold]力量[/color]。[/center]"
 sound = ExtResource("4_61fru")
 numeric_entries = Array[ExtResource("1_qbqqq")]([SubResource("Resource_4ko5v")])
 metadata/_custom_type_script = "uid://br1hibx18tv13"

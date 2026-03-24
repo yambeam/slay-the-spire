@@ -51,6 +51,12 @@ func add_buff(buff_context: ApplyBuffContext) -> void:
 		buff_container.add_child(buff_ui)
 	after_applied_buff.emit(buff_context)
 
+func get_buff(buff_name: String) -> Buff:
+	for buff: Buff in buff_manager.get_children():
+		if buff.buff_name == buff_name:
+			return buff
+	return null
+
 func get_modifiers_by_type(type: Enums.NumericType, affect: Buff.AFFECT) -> Array:
 	var ret := []
 	for child: Buff in buff_manager.get_children():

@@ -31,4 +31,4 @@ func show_keyword_tooltip() -> void:
 	if not buff:
 		return
 	KeywordTooltip.add_keyword(buff.buff_name, buff.get_description())
-	KeywordTooltip.global_position = global_position + Vector2(size.x * 2, 0)
+	KeywordTooltip.keyword_tooltip.global_position = global_position + Vector2(size.x * 2, 0)

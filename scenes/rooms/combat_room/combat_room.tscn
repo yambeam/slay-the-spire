@@ -10,9 +10,9 @@
 [ext_resource type="PackedScene" uid="uid://deidb0dmylls" path="res://scenes/hand_manager/hand_manager.tscn" id="8_mj7tc"]
 [ext_resource type="PackedScene" uid="uid://dtc84mfyeh67u" path="res://scenes/ui/card_pile_button.tscn" id="10_7btib"]
 [ext_resource type="Texture2D" uid="uid://ce37xptc8x4au" path="res://images/packed/combat_ui/pile_button_count.png" id="11_hylje"]
-[ext_resource type="PackedScene" uid="uid://cwr534h73coes" path="res://scenes/rooms/combat_room/combat_ui/exhause_pile.tscn" id="11_sunpa"]
 [ext_resource type="Texture2D" uid="uid://lb7f7afwbapn" path="res://images/packed/combat_ui/discard_pile.png" id="12_4hrnf"]
 [ext_resource type="PackedScene" uid="uid://bdu3mvwj8syfb" path="res://scenes/card_target_selector/card_target_selector.tscn" id="12_83j5g"]
+[ext_resource type="Texture2D" uid="uid://dyk2ylwv2fgxp" path="res://images/packed/combat_ui/exhaust_pile.png" id="12_hylje"]
 [ext_resource type="Script" uid="uid://b7jbna8u8wfw1" path="res://scripts/rooms/combat_room/combat_ui/red_flash.gd" id="13_d1stk"]
 [ext_resource type="Texture2D" uid="uid://cvxy8ydgwomqh" path="res://images/rooms/underdocks/underdocks_01_a.png" id="14_fjeak"]
 [ext_resource type="PackedScene" uid="uid://bijk3yg4btssm" path="res://scenes/ui/deck_view.tscn" id="15_hylje"]
@@ -90,12 +90,6 @@ offset_right = 1493.0
 offset_bottom = 1155.0
 metadata/_edit_lock_ = true
 
-[node name="ExhaustPile" parent="CombatUI" unique_id=228360926 instance=ExtResource("11_sunpa")]
-offset_left = 1809.0
-offset_top = 669.0
-offset_right = 1968.0
-offset_bottom = 825.0
-
 [node name="DrawPileButton" parent="CombatUI" unique_id=1722351305 node_paths=PackedStringArray("label") instance=ExtResource("10_7btib")]
 unique_name_in_owner = true
 offset_left = 24.0
@@ -159,6 +153,26 @@ text = "99"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="ExhaustPileButton" parent="CombatUI" unique_id=2131986038 node_paths=PackedStringArray("label") instance=ExtResource("10_7btib")]
+offset_left = 1814.0
+offset_top = 660.0
+offset_right = 1914.0
+offset_bottom = 760.0
+texture_normal = ExtResource("12_hylje")
+label = NodePath("Label")
+
+[node name="Label" type="Label" parent="CombatUI/ExhaustPileButton" unique_id=1638297419]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 23
+text = "99"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="RedFlash" type="CanvasLayer" parent="." unique_id=919668335]
 layer = 2
 
@@ -187,6 +201,9 @@ visible = false
 
 [node name="DiscardPileView" parent="CardPileView" unique_id=1838611263 instance=ExtResource("15_hylje")]
 unique_name_in_owner = true
+visible = false
+
+[node name="ExhaustPileView" parent="CardPileView" unique_id=594777507 instance=ExtResource("15_hylje")]
 visible = false
 
 [node name="BackGroundContainer" type="Control" parent="." unique_id=1215282505]

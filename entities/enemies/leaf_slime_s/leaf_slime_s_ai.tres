@@ -1,0 +1,59 @@
+[gd_resource type="Resource" script_class="EnemyAI" format=3 uid="uid://bmuwcy553u8mu"]
+
+[ext_resource type="Script" uid="uid://ce34juwu5b0yr" path="res://scripts/costum_resources/intents/intent.gd" id="1_nmjdl"]
+[ext_resource type="Script" uid="uid://dpkht0suo8prh" path="res://scripts/costum_resources/enemy_ai.gd" id="2_45bih"]
+[ext_resource type="Script" uid="uid://iqqyr44teapg" path="res://scripts/costum_resources/intents/sub_intent.gd" id="2_851xv"]
+[ext_resource type="Texture2D" uid="uid://bvpum0wc2c6or" path="res://images/packed/intents/attack/intent_attack_1.png" id="3_rsknn"]
+[ext_resource type="AudioStream" uid="uid://bcwmh6adledx" path="res://audio/SFX/blunt_attack.mp3" id="4_6ocyn"]
+[ext_resource type="Texture2D" uid="uid://cdjfipfy2o2u8" path="res://images/packed/intents/attack/intent_attack_2.png" id="4_rsknn"]
+[ext_resource type="Texture2D" uid="uid://cfdd2dmjyy32j" path="res://images/packed/intents/buff/intent_buff_00.png" id="6_bh4vf"]
+[ext_resource type="Script" uid="uid://c2p6buhbk6em8" path="res://scripts/costum_resources/intents/apply_buff_sub_intent.gd" id="7_1qj4i"]
+[ext_resource type="AudioStream" uid="uid://dbe46o0jyq2x8" path="res://audio/SFX/dark_orb_channel.mp3" id="8_ihmm0"]
+
+[sub_resource type="Resource" id="Resource_6ocyn"]
+script = ExtResource("2_851xv")
+icon = ExtResource("3_rsknn")
+base_value = 4
+sound = ExtResource("4_6ocyn")
+metadata/_custom_type_script = "uid://iqqyr44teapg"
+
+[sub_resource type="Resource" id="Resource_e5uog"]
+script = ExtResource("1_nmjdl")
+sub_intents = Array[ExtResource("2_851xv")]([SubResource("Resource_6ocyn")])
+anim_name = "attack"
+metadata/_custom_type_script = "uid://ce34juwu5b0yr"
+
+[sub_resource type="Resource" id="Resource_h507v"]
+script = ExtResource("2_851xv")
+icon = ExtResource("4_rsknn")
+base_value = 3
+repeat = 3
+sound = ExtResource("4_6ocyn")
+metadata/_custom_type_script = "uid://iqqyr44teapg"
+
+[sub_resource type="Resource" id="Resource_bh4vf"]
+script = ExtResource("1_nmjdl")
+sub_intents = Array[ExtResource("2_851xv")]([SubResource("Resource_h507v")])
+anim_name = "cast"
+metadata/_custom_type_script = "uid://ce34juwu5b0yr"
+
+[sub_resource type="Resource" id="Resource_f7a7q"]
+script = ExtResource("7_1qj4i")
+buff_id = "力量"
+buff_all_allay = true
+type = 1
+icon = ExtResource("6_bh4vf")
+base_value = 2
+sound = ExtResource("8_ihmm0")
+metadata/_custom_type_script = "uid://c2p6buhbk6em8"
+
+[sub_resource type="Resource" id="Resource_qgql5"]
+script = ExtResource("1_nmjdl")
+sub_intents = Array[ExtResource("2_851xv")]([SubResource("Resource_f7a7q")])
+anim_name = "cast"
+metadata/_custom_type_script = "uid://ce34juwu5b0yr"
+
+[resource]
+script = ExtResource("2_45bih")
+intents = Array[ExtResource("1_nmjdl")]([SubResource("Resource_e5uog"), SubResource("Resource_bh4vf"), SubResource("Resource_qgql5")])
+metadata/_custom_type_script = "uid://dpkht0suo8prh"

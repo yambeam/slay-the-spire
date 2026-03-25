@@ -3,24 +3,28 @@ extends Creature
 
 @export var stats: EnemyStats : set = _set_enemy_stats
 
-@onready var intents: HBoxContainer = $Intents
+@onready var intents: Intents = $Intents
 @onready var hitbox: CollisionShape2D = $Hitbox
 
-var enemy_ai: EnemyActionPicker
-var current_action: EnemyAction : set = _set_current_action
+var enemy_ai: EnemyAI
+#var current_action: EnemyAction : set = _set_current_action
+var current_intent: Intent: set = _set_current_intent
 
 func _ready() -> void:
 	area_entered.connect(_on_area_entered)
 	area_exited.connect(_on_area_exited)
 	mouse_entered.connect(_on_mouse_entered)
 	mouse_exited.connect(_on_mouse_exited)
+	after_applied_buff.connect(_on_after_applied_buff)
 
-func add_buff(buff_context: ApplyBuffContext) -> void:
-	buff_context.buff_node.stacks = buff_context.amount	
-	if buff_manager.add_buff(buff_context):
-		var buff_ui := BUFF_UI.instantiate()
-		buff_ui.buff = buff_context.buff_node
-		buff_container.add_child(buff_ui)
+#func add_buff(buff_context: ApplyBuffContext) -> void:
+	#before_applied_buff.emit(buff_context)
+	#buff_context.buff_node.stacks = buff_context.amount	
+	#if buff_manager.add_buff(buff_context):
+		#var buff_ui := BUFF_UI.instantiate()
+		#buff_ui.buff = buff_context.buff_node
+		#buff_container.add_child(buff_ui)
+	#after_applied_buff.emit(buff_context)
 
 func gain_block(context: Context) -> void:
 	before_gain_block.emit(context)
@@ -30,22 +34,31 @@ func do_turn() -> void:
 	start_turn()
 	stats.block = 0
 	
-	if not current_action:
+	if not current_intent:
 		return
 		
-	spine_anim_state.set_animation(current_action.anim_name, true, 0)
+	execute_intent()
+	spine_anim_state.set_animation(current_intent.anim_name, true, 0)
 	spine_anim_state.add_animation("idle_loop", 0, true, 0)
-	current_action.perform_action()
 	await spine_manager.animation_completed
 	Events.enemy_action_completed.emit(self)	
-	update_action()
+	turn_ended.emit(self)
+	update_intent()
 
-func _set_current_action(value: EnemyAction) -> void:
-	current_action = value
-	# TODO: 修改意图
-	if not current_action:
+func execute_intent() -> void:
+	if not current_intent:
 		return
-	intents.update_intent(current_action.intent)
+	var player: Player = get_tree().get_first_node_in_group("ui_player")
+	for sub_intent: SubIntent in current_intent.sub_intents:
+		sub_intent.execute(self, [player])
+	intents.hide_intent()
+		
+func _set_current_intent(value: Intent) -> void:
+	current_intent = value
+	if not current_intent:
+		return
+	current_intent.calc_final_values(self, get_tree().get_first_node_in_group("ui_player"))
+	intents.update_intent(current_intent)
 
 func _set_enemy_stats(value: EnemyStats) -> void:
 	if not value:
@@ -61,31 +74,25 @@ func _set_enemy_stats(value: EnemyStats) -> void:
 func _setup_ai() -> void:
 	if enemy_ai:
 		enemy_ai.queue_free()
-	var new_ai :EnemyActionPicker = stats.ai.instantiate()
-	add_child(new_ai)
-	enemy_ai = new_ai
-	enemy_ai.enemy = self
-
+	enemy_ai = stats.ai
+	
 func start_turn() -> void:
 	turn_started.emit(self)
 
 func end_turn() -> void:
 	turn_ended.emit(self)
 
-func update_action() -> void:
+func update_intent() -> void:
 	if not enemy_ai:
 		return
-	if not current_action:
-		current_action = enemy_ai.get_action()
+	if not current_intent:
+		# TODO:修改
+		current_intent = enemy_ai.choose_intent(self, get_tree().get_first_node_in_group("ui_player"))
 		return
-	
-	var new_conditional_action := enemy_ai.get_first_conditional_action()
-	if new_conditional_action and current_action != new_conditional_action:
-		current_action = new_conditional_action
+
 	
 func _update_stats() -> void:
 	health_bar.update_stats(stats)
-	update_action()
 
 func _update_enemy() -> void:
 	if not stats is Stats:
@@ -153,11 +160,17 @@ func _on_mouse_exited() -> void:
 func show_keyword_tooltip() -> void:
 	#if buff_manager.get_child_count() == 0:
 		#return
-	for child: Buff in buff_manager.get_children():
-		KeywordTooltip.add_keyword(child.buff_name, child.get_description())
+	if current_intent:
+		for sub_intent: SubIntent in current_intent.sub_intents:
+			KeywordTooltip.add_keyword(sub_intent.get_intent_name(), sub_intent.get_intent_description())
 	if stats.has_block():
 		KeywordTooltip.add_keyword(BuffLibrary.keyword_info["格挡"]["name"], BuffLibrary.keyword_info["格挡"]["description"])
-	elif buff_manager.get_child_count() == 0:
-		return
-	KeywordTooltip.global_position = global_position + Vector2(hitbox.shape.size.x / 2, -hitbox.shape.size.y / 2)
+	for child: Buff in buff_manager.get_children():
+		KeywordTooltip.add_keyword(child.buff_name, child.get_description())
+	
+	KeywordTooltip.keyword_tooltip.global_position = global_position + Vector2(hitbox.shape.size.x / 2, -hitbox.shape.size.y / 2)
 	KeywordTooltip.show()
+
+func _on_after_applied_buff(context: Context) -> void:
+	current_intent.calc_final_values(self, context.source)
+	intents.update_intent(current_intent)

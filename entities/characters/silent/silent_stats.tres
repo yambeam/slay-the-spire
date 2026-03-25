@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="CharacterStats" format=3 uid="uid://cvpdulyymheub"]
+
+[ext_resource type="Texture2D" uid="uid://dlffnnvpfuhbw" path="res://images/ui/top_panel/character_icon_silent.png" id="1_20bg2"]
+[ext_resource type="SpineSkeletonDataResource" uid="uid://bqlhf04mk2866" path="res://animations/characters/silent/silent_skel_data.tres" id="1_caxby"]
+[ext_resource type="Script" uid="uid://dpde6spa48hlj" path="res://scripts/costum_resources/character_stats.gd" id="2_caxby"]
+[ext_resource type="Resource" uid="uid://no4eskllokyl" path="res://entities/characters/silent/silent_starting_deck.tres" id="4_aqrjq"]
+
+[resource]
+script = ExtResource("2_caxby")
+starting_deck = ExtResource("4_aqrjq")
+cards_per_turn = 5
+max_energy = 3
+character_name = "静默猎手"
+character_icon = ExtResource("1_20bg2")
+character_description = "这是猎人的描述"
+max_health = 66
+animation = ExtResource("1_caxby")
+metadata/_custom_type_script = "uid://dpde6spa48hlj"

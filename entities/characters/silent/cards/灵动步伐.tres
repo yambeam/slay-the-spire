@@ -17,10 +17,11 @@ metadata/_custom_type_script = "uid://cxgxfbwykbp84"
 script = ExtResource("3_54fe1")
 id = "灵动步伐"
 type = 2
+card_color = 1
 cost = 1
 rarity = 1
 portrait = ExtResource("2_54fe1")
-description = "[center]获得{dexterity}点敏捷[/center]"
+description = "[center]获得{dexterity}点[color=gold]敏捷[/color]。[/center]"
 sound = ExtResource("4_lsigb")
 numeric_entries = Array[ExtResource("1_ql8jm")]([SubResource("Resource_hbisn")])
 metadata/_custom_type_script = "uid://br1hibx18tv13"

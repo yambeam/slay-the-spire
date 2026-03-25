@@ -1,8 +1,9 @@
-extends HBoxContainer
+extends CanvasLayer
 
-@onready var tooltip_container_1: VBoxContainer =$VBoxContainer
-@onready var tooltip_container_2: VBoxContainer = $VBoxContainer2
-@onready var tooltip_timer: Timer = $TooltipTimer
+@onready var tooltip_container_1: VBoxContainer = %VBoxContainer
+@onready var tooltip_container_2: VBoxContainer = %VBoxContainer2
+@onready var tooltip_timer: Timer = %TooltipTimer
+@onready var keyword_tooltip: HBoxContainer = %KeywordTooltip
 
 const TOOLTIP_ENTRY = preload("res://globals/tooltip_entry.tscn")
 
@@ -11,6 +12,7 @@ var current_node: Node
 func _ready() -> void:
 	Events.tooltip_show_request.connect(_on_tooltip_show_requested)
 	Events.tooltip_hide_request.connect(_on_tooltip_hide_requested)
+	Events.combat_won.connect(hide)
 	tooltip_timer.timeout.connect(_on_timer_timeout)
 
 func clear():
@@ -20,13 +22,15 @@ func clear():
 		child.queue_free()
 
 func add_keyword(title, desc) -> void:
-	var tooltip_entry := TOOLTIP_ENTRY.instantiate()
-	tooltip_entry.setup(title, desc)
+	title = "[color=gold]" + title + "[/color]"
+	var tooltip_entry: ToolTipEntry = TOOLTIP_ENTRY.instantiate()
 	# 如果状态装不下了之后再说
-	if tooltip_container_1.get_child_count() < 4:
+	if tooltip_container_1.get_child_count() < 3:
 		tooltip_container_1.add_child(tooltip_entry)
 	else:
 		tooltip_container_2.add_child(tooltip_entry)
+	tooltip_entry.setup(title, desc)
+
 
 func extract_keyword(text: String) -> Array:
 	var found: Array[String] = []

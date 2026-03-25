@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://uxv6ncqktd1c"]
+
+[ext_resource type="Script" uid="uid://yldb61754eoh" path="res://scripts/ui/card_menu_ui.gd" id="1_wcoov"]
+[ext_resource type="Resource" uid="uid://rfrswfbanfy" path="res://entities/characters/ironclad/cards/打击.tres" id="2_5nlic"]
+[ext_resource type="PackedScene" uid="uid://b22g8dum6re3" path="res://scenes/ui/card_visuals.tscn" id="2_mcev2"]
+
+[node name="CenterContainer" type="CenterContainer" unique_id=946762981]
+offset_right = 179.0
+offset_bottom = 254.0
+pivot_offset = Vector2(118.5, 167.5)
+mouse_filter = 0
+script = ExtResource("1_wcoov")
+card = ExtResource("2_5nlic")
+
+[node name="CardMenuUI" type="Control" parent="." unique_id=199098501]
+custom_minimum_size = Vector2(237, 335)
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+
+[node name="Visuals" parent="CardMenuUI" unique_id=829210823 instance=ExtResource("2_mcev2")]
+layout_mode = 0
+scale = Vector2(0.8, 0.8)

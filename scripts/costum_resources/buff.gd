@@ -3,7 +3,9 @@ extends Node
 
 # SPECIAL一般是无法解除的buff
 enum Type {BUFF, DEBUFF, SPECIAL}
-var type
+enum AFFECT{SELF, TARGET, ALL}
+var type: Type
+var affect: AFFECT
 # 实际接受buff的对象
 var agent: Creature
 # 图标

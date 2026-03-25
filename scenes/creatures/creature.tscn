@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://cb16flm0r74mt"]
 
 [ext_resource type="Script" uid="uid://doeqctp26hq6y" path="res://scripts/creatures/creature.gd" id="1_32syg"]
-[ext_resource type="PackedScene" uid="uid://copfb0hm4hkcy" path="res://scenes/combat_ui/health_bar.tscn" id="2_j4eis"]
-[ext_resource type="PackedScene" uid="uid://cbir7pfgl5y7d" path="res://scenes/combat_ui/buff_container.tscn" id="3_bod4x"]
+[ext_resource type="PackedScene" uid="uid://copfb0hm4hkcy" path="res://scenes/rooms/combat_room/combat_ui/health_bar.tscn" id="2_j4eis"]
+[ext_resource type="PackedScene" uid="uid://cbir7pfgl5y7d" path="res://scenes/rooms/combat_room/combat_ui/buff_container.tscn" id="3_bod4x"]
 [ext_resource type="Script" uid="uid://bayy3j6ssj0g" path="res://scripts/utils/spine_manager.gd" id="5_qn62h"]
 [ext_resource type="Texture2D" uid="uid://hm3yndjsncmt" path="res://images/ui/combat/combat_reticle.png" id="6_dlany"]
 [ext_resource type="Script" uid="uid://beoly8uxrkebe" path="res://scripts/creatures/buff_manager.gd" id="7_ne82r"]

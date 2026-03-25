@@ -35,17 +35,10 @@ func _ready() -> void:
 	
 func _input(event:InputEvent) -> void:
 	if event.is_action_pressed("scroll_up"):
-		var new_y = camera_2d.position.y - SCROLL_SPEED
-	# 当向上滚动超出底部（更负）时，跳到顶部（0）
-		if new_y < -camera_edge_y-500:
-			new_y = 0
-		camera_2d.position.y = new_y
+			camera_2d.position.y = max(camera_2d.position.y - SCROLL_SPEED, -camera_edge_y)
 	elif event.is_action_pressed("scroll_down"):
-		var new_y = camera_2d.position.y + SCROLL_SPEED
-		# 当向下滚动超出顶部（正数）时，跳到底部（-camera_edge_y）
-		if new_y > 500:
-			new_y = -camera_edge_y
-		camera_2d.position.y = new_y
+		camera_2d.position.y = min(camera_2d.position.y + SCROLL_SPEED, 0)
+
 
 func generate_new_map() -> void:
 	floors_climbed =0

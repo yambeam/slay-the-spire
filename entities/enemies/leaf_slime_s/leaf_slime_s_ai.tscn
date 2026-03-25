@@ -2,20 +2,16 @@
 
 [ext_resource type="PackedScene" uid="uid://b06w3uca3vj26" path="res://entities/enemies/enemy_intent_picker.tscn" id="1_8ng87"]
 [ext_resource type="Script" uid="uid://v6ojdkrcyaus" path="res://entities/enemies/leaf_slime_s/weak_attack.gd" id="2_rls3m"]
-[ext_resource type="Script" uid="uid://ce34juwu5b0yr" path="res://scripts/costum_resources/intent_ui.gd" id="3_ge6bf"]
-[ext_resource type="AudioStream" uid="uid://bcwmh6adledx" path="res://audio/SFX/blunt_attack.mp3" id="4_fk83n"]
+[ext_resource type="Script" uid="uid://ce34juwu5b0yr" path="res://scripts/costum_resources/intents/intent.gd" id="3_ge6bf"]
+[ext_resource type="Script" uid="uid://iqqyr44teapg" path="res://scripts/costum_resources/intents/sub_intent.gd" id="4_ge6bf"]
 [ext_resource type="Script" uid="uid://db8jyp0whl5g6" path="res://entities/enemies/leaf_slime_s/double_attack.gd" id="5_gg02k"]
 
 [sub_resource type="Resource" id="Resource_r8nii"]
 script = ExtResource("3_ge6bf")
-values = Array[String](["5"])
-sound = ExtResource("4_fk83n")
 metadata/_custom_type_script = "uid://ce34juwu5b0yr"
 
 [sub_resource type="Resource" id="Resource_ge6bf"]
 script = ExtResource("3_ge6bf")
-values = Array[String](["3[font_size=18]x2"])
-sound = ExtResource("4_fk83n")
 metadata/_custom_type_script = "uid://ce34juwu5b0yr"
 
 [node name="leaf_slime_s_ai" unique_id=160467564 instance=ExtResource("1_8ng87")]

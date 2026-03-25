@@ -1,18 +1,32 @@
 class_name Card
 extends Resource
-# TODO: 诅咒,状态
 # 卡牌类型(攻击，技能，能力)
 enum Type {ATTACK, SKILL, POWER}
 # 卡牌目标类型
 enum Target {SELF, SINGLE_ENEMY, ALL_ENEMIES, EVERYONE}
 # 卡牌稀有度
-enum Rarity {COMMON, UNCOMMON, RARE}
+enum Rarity {COMMON, UNCOMMON, RARE, CURSED, STATUS}
+# 卡牌所属卡牌池
+enum COLOR {
+	RED,	# 铁甲战士
+	GREEN,	# 静默猎手
+	ORANGE, # 储君
+	PINK,	# 亡灵契约师
+	BLUE,	# 故障机器人
+	CURSE,  # 诅咒
+	COLORLESS, # 无色
+}
 
 ## TODO: 使用表格而不是使用资源文件存储数据
 @export_group("卡牌属性")
+## 卡牌名称
 @export var id: String
+## 卡牌类型
 @export var type: Type
+## 目标类型
 @export var target: Target
+## 卡牌属于那个角色池，详情见COLOR枚举
+@export var card_color: COLOR
 # TODO: X费
 @export var cost: int
 @export var rarity: Rarity
@@ -21,6 +35,11 @@ enum Rarity {COMMON, UNCOMMON, RARE}
 @export_multiline var description: String
 @export var sound: AudioStream
 @export var numeric_entries: Array[NumericEntry]
+# 注意这两个可以动态生成的词条不能在卡牌描述中写死
+# 是否带“消耗“词条
+@export var exhaust: bool
+# 是否带”虚无“词条
+@export var ethereal: bool
 
 
 func get_final_values(source_: Creature, target_: Creature) -> Dictionary:
@@ -30,15 +49,15 @@ func get_final_values(source_: Creature, target_: Creature) -> Dictionary:
 		var modifiers := []
 		match entry.affected_by:
 			NumericEntry.AFFECTED_BY.SELF:
-				modifiers = source_.get_modifiers_by_type(entry.type)
+				modifiers = source_.get_modifiers_by_type(entry.type, Buff.AFFECT.SELF)
 			NumericEntry.AFFECTED_BY.TARGET:
 				if target_:
-					modifiers = target_.get_modifiers_by_type(entry.type)
+					modifiers = target_.get_modifiers_by_type(entry.type, Buff.AFFECT.TARGET)
 			NumericEntry.AFFECTED_BY.BOTH:
 				if target_:
-					modifiers = NumericHelper.combine_modifiers(source_.get_modifiers_by_type(entry.type), target_.get_modifiers_by_type(entry.type))
+					modifiers = NumericHelper.combine_modifiers(source_.get_modifiers_by_type(entry.type, Buff.AFFECT.SELF), target_.get_modifiers_by_type(entry.type, Buff.AFFECT.TARGET))
 				else:
-					modifiers = source_.get_modifiers_by_type(entry.type)
+					modifiers = source_.get_modifiers_by_type(entry.type, Buff.AFFECT.SELF)
 			NumericEntry.AFFECTED_BY.NONE:
 				modifiers = []
 			_:
@@ -102,11 +121,17 @@ func get_description(source_: Creature, target_: Creature) -> String:
 					color = "green"
 					replacement = "[color={0}]{1}[/color]".format([color, final_value])
 				ret = ret.replace("{" + placeholder + "}", replacement)
-	return ret.format(numeric_dict)
+	return append_features(ret).format(numeric_dict)
 	
 func get_default_description() -> String:
 	var dict := {}
 	for entry: NumericEntry in numeric_entries:
 		dict[entry.placeholder] = entry.base_value
-	return description.format(dict)
-		
+	return append_features(description).format(dict)
+
+func append_features(desc: String) -> String:
+	if exhaust:
+		desc += "[p][center][color=gold]消耗。[/color][/center]"
+	if ethereal:
+		desc += "[p][center][color=gold]虚无。[/color][/center]"
+	return desc

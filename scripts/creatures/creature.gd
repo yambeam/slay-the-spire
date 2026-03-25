@@ -8,10 +8,14 @@ signal before_take_damage(context: Context)
 signal before_lose_health(context: Context)
 signal before_attack(context: Context)
 signal before_gain_block(context: Context)
+signal before_apply_buff(context: Context)
+signal after_apply_buff(context: Context)
+signal before_applied_buff(context: Context)
+signal after_applied_buff(context: Context)
 @warning_ignore_restore("unused_signal")
 # offset: 根据贴图大小调整各个组件
 
-const BUFF_UI = preload("res://scenes/combat_ui/buff_ui.tscn")
+const BUFF_UI = preload("res://scenes/rooms/combat_room/combat_ui/buff_ui.tscn")
 
 @onready var buff_container: GridContainer = $BuffContainer
 @onready var buff_manager: BuffManager = $BuffManager
@@ -28,20 +32,36 @@ func attack(context: Context) -> void:
 		child.before_take_damage.emit(damage_context)
 		child.take_damage(damage_context)
 
-func gain_block(context: Context) -> void:
+func gain_block(_context: Context) -> void:
 	pass
 
+func apply_buff(buff_context: ApplyBuffContext) -> void:
+	before_apply_buff.emit(buff_context)
+	buff_context.targets[0].add_buff(buff_context)
+	after_apply_buff.emit(buff_context)
+	
 func add_buff(buff_context: ApplyBuffContext) -> void:
+	before_applied_buff.emit(buff_context)
+	if not buff_context.buff_node:
+		return
 	buff_context.buff_node.stacks = buff_context.amount	
 	if buff_manager.add_buff(buff_context):
 		var buff_ui := BUFF_UI.instantiate()
 		buff_ui.buff = buff_context.buff_node
 		buff_container.add_child(buff_ui)
+	after_applied_buff.emit(buff_context)
 
-func get_modifiers_by_type(type: Enums.NumericType) -> Array:
+func get_buff(buff_name: String) -> Buff:
+	for buff: Buff in buff_manager.get_children():
+		if buff.buff_name == buff_name:
+			return buff
+	return null
+
+func get_modifiers_by_type(type: Enums.NumericType, affect: Buff.AFFECT) -> Array:
 	var ret := []
 	for child: Buff in buff_manager.get_children():
-		ret += child.get_modifiers_on_type(type)
+		if child.affect == affect or child.affect == Buff.AFFECT.ALL:
+			ret += child.get_modifiers_on_type(type)
 	return ret
 
 func start_turn() -> void:

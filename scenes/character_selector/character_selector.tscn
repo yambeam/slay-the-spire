@@ -2,12 +2,13 @@
 
 [ext_resource type="Script" uid="uid://t8ll61cgf0dr" path="res://scripts/character_selector/character_selector.gd" id="1_70e1j"]
 [ext_resource type="Script" uid="uid://bayy3j6ssj0g" path="res://scripts/utils/spine_manager.gd" id="2_70e1j"]
-[ext_resource type="Texture2D" uid="uid://daxc83v2oatx0" path="res://images/packed/character_select/char_select_ironclad.png" id="4_ysgu0"]
-[ext_resource type="Texture2D" uid="uid://b7aglyga6u0vm" path="res://images/packed/character_select/char_select_silent.png" id="5_h00ml"]
-[ext_resource type="Texture2D" uid="uid://otu4plfv86an" path="res://images/packed/character_select/char_select_regent.png" id="6_csu32"]
-[ext_resource type="Texture2D" uid="uid://fd73sxa61bj2" path="res://images/packed/character_select/char_select_necrobinder.png" id="7_v33eu"]
+[ext_resource type="Resource" uid="uid://kfd10rulosb7" path="res://scenes/run/run_start_up.tres" id="2_oyb0m"]
+[ext_resource type="Texture2D" uid="uid://tlpdt4b2r7sk" path="res://images/packed/character_select/char_select_ironclad.png" id="4_ysgu0"]
+[ext_resource type="Texture2D" uid="uid://bmvk3rd0mwitm" path="res://images/packed/character_select/char_select_silent.png" id="5_h00ml"]
+[ext_resource type="Texture2D" uid="uid://4rucvor0rrtj" path="res://images/packed/character_select/char_select_regent.png" id="6_csu32"]
+[ext_resource type="Texture2D" uid="uid://cj2aattj07pn5" path="res://images/packed/character_select/char_select_necrobinder.png" id="7_v33eu"]
 [ext_resource type="Texture2D" uid="uid://bb803i8" path="res://images/atlases/ui_atlas.sprites/back_button.tres" id="8_h00ml"]
-[ext_resource type="Texture2D" uid="uid://degmf1g3d7lbd" path="res://images/packed/character_select/char_select_defect.png" id="8_iu8gr"]
+[ext_resource type="Texture2D" uid="uid://du724etwv6c82" path="res://images/packed/character_select/char_select_defect.png" id="8_iu8gr"]
 [ext_resource type="Texture2D" uid="uid://cahogy5" path="res://images/atlases/compressed.sprites/back_button_arrow.tres" id="9_v33eu"]
 [ext_resource type="Texture2D" uid="uid://yefjak" path="res://images/atlases/ui_atlas.sprites/confirm_button.tres" id="10_iu8gr"]
 [ext_resource type="Texture2D" uid="uid://cp3mg3t" path="res://images/atlases/compressed.sprites/confirm_button_tick.tres" id="11_oyb0m"]
@@ -33,6 +34,7 @@ border_width_bottom = 2
 layout_mode = 3
 anchors_preset = 0
 script = ExtResource("1_70e1j")
+run_startup = ExtResource("2_oyb0m")
 
 [node name="backforsomechar" type="TextureRect" parent="." unique_id=93820554]
 layout_mode = 0

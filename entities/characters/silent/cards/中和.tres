@@ -24,8 +24,9 @@ metadata/_custom_type_script = "uid://cxgxfbwykbp84"
 script = ExtResource("3_3dlyd")
 id = "中和"
 target = 1
+card_color = 1
 portrait = ExtResource("2_rlxfg")
-description = "[center]造成{damage}点伤害，施加{weakness}层[url=虚弱]虚弱[/url][/center]"
+description = "[center]造成{damage}点伤害。[/center][p][center]施加{weakness}层[color=gold]虚弱[/color]。[/center]"
 sound = ExtResource("4_3dlyd")
 numeric_entries = Array[ExtResource("1_5v2x8")]([SubResource("Resource_3dlyd"), SubResource("Resource_7gmoc")])
 metadata/_custom_type_script = "uid://br1hibx18tv13"

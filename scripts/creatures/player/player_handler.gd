@@ -26,6 +26,7 @@ func start_turn() -> void:
 	draw_cards(char_stats.cards_per_turn)
 
 func end_turn() -> void:
+	player.end_turn()
 	discard_cards()
 
 func draw_card() -> void:
@@ -77,4 +78,7 @@ func reshuffle_deck_from_discard_pile() -> void:
 	char_stats.draw_pile.shuffle()
 
 func _on_card_played(card: Card) -> void:
-	char_stats.discard_pile.add_card(card)
+	if card.exhaust:
+		char_stats.exhaust_pile.add_card(card)
+	else:
+		char_stats.discard_pile.add_card(card)

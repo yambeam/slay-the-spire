@@ -3,36 +3,25 @@
 [ext_resource type="PackedScene" uid="uid://b06w3uca3vj26" path="res://entities/enemies/enemy_intent_picker.tscn" id="1_mgtwb"]
 [ext_resource type="Script" uid="uid://cpiu2ss1wfos0" path="res://entities/enemies/leaf_slime_m/attack_action.gd" id="2_uyiru"]
 [ext_resource type="Script" uid="uid://d4n2wao2k18as" path="res://entities/enemies/leaf_slime_m/attack_block_action.gd" id="3_0vsok"]
-[ext_resource type="Script" uid="uid://ce34juwu5b0yr" path="res://scripts/costum_resources/intent_ui.gd" id="3_e5hhr"]
-[ext_resource type="AudioStream" uid="uid://bcwmh6adledx" path="res://audio/SFX/blunt_attack.mp3" id="4_38wmp"]
+[ext_resource type="Script" uid="uid://ce34juwu5b0yr" path="res://scripts/costum_resources/intents/intent.gd" id="3_e5hhr"]
+[ext_resource type="Script" uid="uid://iqqyr44teapg" path="res://scripts/costum_resources/intents/sub_intent.gd" id="4_0sti7"]
 [ext_resource type="Script" uid="uid://6hsfcvkq5h3t" path="res://entities/enemies/leaf_slime_m/mega_attack_action.gd" id="4_e5hhr"]
 [ext_resource type="Script" uid="uid://bxf4q06mhs7dk" path="res://entities/enemies/leaf_slime_m/mega_block_action.gd" id="5_0vsok"]
-[ext_resource type="AudioStream" uid="uid://ug05j8ftscre" path="res://audio/SFX/glass_orb_passive.mp3" id="8_4siqk"]
 
 [sub_resource type="Resource" id="Resource_0sti7"]
 script = ExtResource("3_e5hhr")
-values = Array[String](["7"])
-sound = ExtResource("4_38wmp")
 metadata/_custom_type_script = "uid://ce34juwu5b0yr"
 
 [sub_resource type="Resource" id="Resource_e5hhr"]
 script = ExtResource("3_e5hhr")
-type = 12
-values = Array[String](["3", ""])
-sound = ExtResource("4_38wmp")
 metadata/_custom_type_script = "uid://ce34juwu5b0yr"
 
 [sub_resource type="Resource" id="Resource_38wmp"]
 script = ExtResource("3_e5hhr")
-values = Array[String](["13"])
-sound = ExtResource("4_38wmp")
 metadata/_custom_type_script = "uid://ce34juwu5b0yr"
 
 [sub_resource type="Resource" id="Resource_4siqk"]
 script = ExtResource("3_e5hhr")
-type = 3
-values = Array[String]([""])
-sound = ExtResource("8_4siqk")
 metadata/_custom_type_script = "uid://ce34juwu5b0yr"
 
 [node name="leaf_slime_m_ai" unique_id=160467564 instance=ExtResource("1_mgtwb")]

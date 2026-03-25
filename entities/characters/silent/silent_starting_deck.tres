@@ -1,0 +1,63 @@
+[gd_resource type="Resource" script_class="CardPile" format=3 uid="uid://no4eskllokyl"]
+
+[ext_resource type="Script" uid="uid://br1hibx18tv13" path="res://scripts/costum_resources/card.gd" id="1_26rvs"]
+[ext_resource type="Script" uid="uid://cxgxfbwykbp84" path="res://scripts/costum_resources/numeric_entry.gd" id="2_amwve"]
+[ext_resource type="Script" uid="uid://jvpf65gf7yuq" path="res://scripts/costum_resources/card_pile.gd" id="2_yv3q0"]
+[ext_resource type="Texture2D" uid="uid://lm4ti5" path="res://images/atlases/card_atlas.sprites/silent/footwork.tres" id="3_siwug"]
+[ext_resource type="Script" uid="uid://xd6ia8uvmgb2" path="res://entities/characters/silent/cards/灵动步伐.gd" id="4_dcdu6"]
+[ext_resource type="AudioStream" uid="uid://3lu4thc1wvg0" path="res://audio/SFX/dark_orb_evoke.mp3" id="5_acg44"]
+[ext_resource type="Texture2D" uid="uid://custti" path="res://images/atlases/card_atlas.sprites/silent/neutralize.tres" id="6_vvl52"]
+[ext_resource type="Script" uid="uid://cs30sa4fbqi21" path="res://entities/characters/silent/cards/中和.gd" id="7_askt4"]
+[ext_resource type="AudioStream" uid="uid://bcwmh6adledx" path="res://audio/SFX/blunt_attack.mp3" id="8_ifap8"]
+
+[sub_resource type="Resource" id="Resource_3dlyd"]
+script = ExtResource("2_amwve")
+base_value = 3
+placeholder = "damage"
+affected_by = 2
+metadata/_custom_type_script = "uid://cxgxfbwykbp84"
+
+[sub_resource type="Resource" id="Resource_7gmoc"]
+script = ExtResource("2_amwve")
+type = 4
+base_value = 1
+placeholder = "weakness"
+affected_by = 3
+metadata/_custom_type_script = "uid://cxgxfbwykbp84"
+
+[sub_resource type="Resource" id="Resource_amwve"]
+script = ExtResource("7_askt4")
+id = "中和"
+target = 1
+card_color = 1
+portrait = ExtResource("6_vvl52")
+description = "[center]造成{damage}点伤害。/n施加{weakness}层[color=gold]虚弱[/color]。[/center]"
+sound = ExtResource("8_ifap8")
+numeric_entries = Array[ExtResource("2_amwve")]([SubResource("Resource_3dlyd"), SubResource("Resource_7gmoc")])
+metadata/_custom_type_script = "uid://br1hibx18tv13"
+
+[sub_resource type="Resource" id="Resource_hbisn"]
+script = ExtResource("2_amwve")
+type = 4
+base_value = 2
+placeholder = "dexterity"
+affected_by = 3
+metadata/_custom_type_script = "uid://cxgxfbwykbp84"
+
+[sub_resource type="Resource" id="Resource_siwug"]
+script = ExtResource("4_dcdu6")
+id = "灵动步伐"
+type = 2
+card_color = 1
+cost = 1
+rarity = 1
+portrait = ExtResource("3_siwug")
+description = "[center]获得{dexterity}点[color=gold]敏捷[/color]。[/center]"
+sound = ExtResource("5_acg44")
+numeric_entries = Array[ExtResource("2_amwve")]([SubResource("Resource_hbisn")])
+metadata/_custom_type_script = "uid://br1hibx18tv13"
+
+[resource]
+script = ExtResource("2_yv3q0")
+cards = Array[ExtResource("1_26rvs")]([SubResource("Resource_amwve"), SubResource("Resource_siwug")])
+metadata/_custom_type_script = "uid://jvpf65gf7yuq"

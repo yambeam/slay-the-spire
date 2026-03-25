@@ -1,7 +1,7 @@
 class_name HandManager
 extends Control
 
-const CARD_UI = preload("res://scenes/ui/card_ui.tscn")
+const CARD_UI = preload("res://scenes/rooms/combat_room/combat_ui/card_ui.tscn")
 
 @export var char_stats: CharacterStats
 
@@ -101,7 +101,7 @@ func discard_card(card: CardUI) -> void:
 
 func discard_hand() -> void:
 	for child in get_children():
-		child.disabled = true
+		discard_card(child)
 
 func disable_hand() -> void:
 	for card_ui: CardUI in get_children():

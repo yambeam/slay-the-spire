@@ -26,7 +26,7 @@ id = "痛击"
 target = 1
 cost = 2
 portrait = ExtResource("1_1yq0f")
-description = "[center]造成{damage}点伤害，施加{vunlerable}层易伤[/center]"
+description = "[center]造成{damage}点伤害[/center][p][center]施加{vunlerable}层[color=gold]易伤[/color]。[/center]"
 sound = ExtResource("3_4yurv")
 numeric_entries = Array[ExtResource("1_kqsla")]([SubResource("Resource_4yurv"), SubResource("Resource_epc34")])
 metadata/_custom_type_script = "uid://br1hibx18tv13"

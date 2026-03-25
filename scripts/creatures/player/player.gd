@@ -108,7 +108,7 @@ func _on_card_played(card: Card) -> void:
 	if card.type == Card.Type.ATTACK:
 		spine_anim_state.set_animation("attack", false, 0)
 		spine_anim_state.add_animation("idle_loop", 0, true, 0)
-	elif card.type == Card.Type.SKILL:
+	else:
 		spine_anim_state.set_animation("cast", false, 0)
 		spine_anim_state.add_animation("idle_loop", 0, true, 0)
 	
@@ -127,5 +127,5 @@ func show_keyword_tooltip() -> void:
 		KeywordTooltip.add_keyword(BuffLibrary.keyword_info["格挡"]["name"], BuffLibrary.keyword_info["格挡"]["description"])
 	elif buff_manager.get_child_count() == 0:
 		return
-	KeywordTooltip.global_position = global_position + Vector2(hitbox.shape.size.x / 2, -hitbox.shape.size.y / 2)
+	KeywordTooltip.keyword_tooltip.global_position = global_position + Vector2(hitbox.shape.size.x / 2, -hitbox.shape.size.y / 2)
 	KeywordTooltip.show()

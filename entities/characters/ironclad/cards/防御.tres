@@ -18,7 +18,7 @@ id = "防御"
 type = 1
 cost = 1
 portrait = ExtResource("1_2fmq3")
-description = "[center]获得{block}点格挡[/center]"
+description = "[center]获得{block}点[color=gold]格挡[/color]。[/center]"
 sound = ExtResource("3_gvm3b")
 numeric_entries = Array[ExtResource("1_rknk0")]([SubResource("Resource_jo61m")])
 metadata/_custom_type_script = "uid://br1hibx18tv13"

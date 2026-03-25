@@ -1,6 +1,6 @@
 class_name ToolTip
 extends Panel
-
+# 弃用
 @onready var description: Label = %Description
 
 func set_text(text: String) -> void:

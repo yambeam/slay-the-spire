@@ -25,6 +25,12 @@ func get_description() -> String:
 func get_modifier() -> Array[Modifier]:
 	var modifier := Modifier.new(Enums.NumericType.BLOCK, stacks, 1.0, null)
 	return [modifier]
-
+	
+func remove_stack(amount: int):
+	stacks -= amount
+	if stacks == 0:
+		queue_free()
+	stack_changed.emit()
+	
 func _on_before_take_damage(context: Context) -> void:
 	context.amount += stacks

@@ -1,0 +1,301 @@
+[gd_scene format=3 uid="uid://cdcj73ue1lo5b"]
+
+[ext_resource type="Script" uid="uid://clww358gstah7" path="res://scripts/ui/top_bar.gd" id="1_dhe2k"]
+[ext_resource type="Texture2D" uid="uid://4s166a" path="res://images/atlases/ui_atlas.sprites/top_bar/top_bar.tres" id="1_x5rd1"]
+[ext_resource type="Texture2D" uid="uid://ch3nihw" path="res://images/atlases/ui_atlas.sprites/top_bar/top_bar_char_backdrop.tres" id="2_ltrmm"]
+[ext_resource type="Texture2D" uid="uid://x2neryjvbtwy" path="res://images/ui/top_panel/character_icon_ironclad.png" id="3_52e5t"]
+[ext_resource type="Texture2D" uid="uid://b75ih21" path="res://images/atlases/ui_atlas.sprites/top_bar/top_bar_ascension.tres" id="4_pdjxm"]
+[ext_resource type="Texture2D" uid="uid://bi1dpaj" path="res://images/atlases/ui_atlas.sprites/top_bar/top_bar_heart.tres" id="5_pdjxm"]
+[ext_resource type="Texture2D" uid="uid://jqn0hv" path="res://images/atlases/ui_atlas.sprites/top_bar/top_bar_gold.tres" id="6_iq0c2"]
+[ext_resource type="Texture2D" uid="uid://dc6bmjs4rlhtv" path="res://images/packed/potions/potion_placeholder.png" id="7_lb3d2"]
+[ext_resource type="Texture2D" uid="uid://1c6vpu" path="res://images/atlases/potion_outline_atlas.sprites/skill_potion.tres" id="8_t0dht"]
+[ext_resource type="Texture2D" uid="uid://b2h4440" path="res://images/atlases/potion_atlas.sprites/skill_potion.tres" id="9_5r65o"]
+[ext_resource type="Texture2D" uid="uid://c14vmk38al8" path="res://images/ui/run_history/unknown_treasure_outline.png" id="10_34ry2"]
+[ext_resource type="Texture2D" uid="uid://cfj73l724ab5r" path="res://images/ui/run_history/unknown_treasure.png" id="11_aw7m0"]
+[ext_resource type="Texture2D" uid="uid://bxj1tlj" path="res://images/atlases/ui_atlas.sprites/top_bar/top_bar_floor.tres" id="12_y0s8s"]
+[ext_resource type="Texture2D" uid="uid://bqliha840b7m5" path="res://images/ui/run_history/ceremonial_beast_boss_outline.png" id="13_dhe2k"]
+[ext_resource type="Texture2D" uid="uid://c2xn8o6xsv3f" path="res://images/ui/run_history/ceremonial_beast_boss.png" id="14_p4p88"]
+[ext_resource type="Texture2D" uid="uid://bqsbmj4" path="res://images/atlases/ui_atlas.sprites/top_bar/top_bar_map.tres" id="15_aw7m0"]
+[ext_resource type="PackedScene" uid="uid://dtc84mfyeh67u" path="res://scenes/ui/card_pile_button.tscn" id="16_dhe2k"]
+[ext_resource type="Texture2D" uid="uid://cnw38r1" path="res://images/atlases/ui_atlas.sprites/top_bar/top_bar_deck.tres" id="16_y0s8s"]
+[ext_resource type="Texture2D" uid="uid://bghd30q" path="res://images/atlases/ui_atlas.sprites/top_bar/top_bar_settings.tres" id="17_dhe2k"]
+
+[node name="TopBar" type="Control" unique_id=1162620190]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_dhe2k")
+
+[node name="BackGround" type="TextureRect" parent="." unique_id=1729661160]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -63.0
+offset_right = 63.0
+offset_bottom = -980.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_x5rd1")
+
+[node name="Left" type="HBoxContainer" parent="." unique_id=1368003169]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_constants/separation = 30
+
+[node name="AvatarContainer" type="MarginContainer" parent="Left" unique_id=116689830]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+
+[node name="AvatarBg" type="TextureRect" parent="Left/AvatarContainer" unique_id=1007574202]
+custom_minimum_size = Vector2(72, 72)
+layout_mode = 2
+texture = ExtResource("2_ltrmm")
+expand_mode = 1
+
+[node name="Avatar" type="TextureRect" parent="Left/AvatarContainer/AvatarBg" unique_id=814661428]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_52e5t")
+expand_mode = 1
+
+[node name="Accession" type="TextureRect" parent="Left/AvatarContainer/AvatarBg" unique_id=501056614]
+layout_mode = 0
+offset_left = 50.0
+offset_top = 36.0
+offset_right = 90.0
+offset_bottom = 76.0
+texture = ExtResource("4_pdjxm")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="AccessionLabel" type="Label" parent="Left/AvatarContainer/AvatarBg/Accession" unique_id=2128129691]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -12.0
+offset_top = -9.0
+offset_right = -2.0
+offset_bottom = 14.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "1"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TopBarHealth" type="HBoxContainer" parent="Left" unique_id=1686762269]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="TextureRect" type="TextureRect" parent="Left/TopBarHealth" unique_id=686430328]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+texture = ExtResource("5_pdjxm")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="Left/TopBarHealth" unique_id=1326422739]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.93333334, 0.28627452, 0.28627452, 1)
+theme_override_font_sizes/font_size = 25
+text = "66/66"
+
+[node name="TopBarGold" type="HBoxContainer" parent="Left" unique_id=753975025]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="TextureRect" type="TextureRect" parent="Left/TopBarGold" unique_id=393089635]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+texture = ExtResource("6_iq0c2")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="Left/TopBarGold" unique_id=1436858481]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.94509804, 0.78431374, 0.27058825, 1)
+theme_override_font_sizes/font_size = 25
+text = "999"
+
+[node name="TopBarPotion" type="MarginContainer" parent="Left" unique_id=1922999958]
+layout_mode = 2
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_bottom = 4
+
+[node name="PotionBackground" type="NinePatchRect" parent="Left/TopBarPotion" unique_id=1486016709]
+custom_minimum_size = Vector2(140, 0)
+layout_mode = 2
+texture = ExtResource("2_ltrmm")
+patch_margin_left = 32
+patch_margin_top = 32
+patch_margin_right = 32
+patch_margin_bottom = 32
+
+[node name="MarginContainer" type="MarginContainer" parent="Left/TopBarPotion" unique_id=1557939300]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_right = 10
+
+[node name="PotionPlaceHolder" type="HBoxContainer" parent="Left/TopBarPotion/MarginContainer" unique_id=965517919]
+layout_mode = 2
+
+[node name="Potion" type="MarginContainer" parent="Left/TopBarPotion/MarginContainer/PotionPlaceHolder" unique_id=436939580]
+layout_mode = 2
+
+[node name="OutLine" type="TextureRect" parent="Left/TopBarPotion/MarginContainer/PotionPlaceHolder/Potion" unique_id=303170568]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+expand_mode = 1
+stretch_mode = 5
+
+[node name="TextureRect" type="TextureRect" parent="Left/TopBarPotion/MarginContainer/PotionPlaceHolder/Potion" unique_id=1251378404]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+texture = ExtResource("7_lb3d2")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Potion2" type="MarginContainer" parent="Left/TopBarPotion/MarginContainer/PotionPlaceHolder" unique_id=853387106]
+layout_mode = 2
+
+[node name="OutLine" type="TextureRect" parent="Left/TopBarPotion/MarginContainer/PotionPlaceHolder/Potion2" unique_id=400637119]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+texture = ExtResource("8_t0dht")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="TextureRect" type="TextureRect" parent="Left/TopBarPotion/MarginContainer/PotionPlaceHolder/Potion2" unique_id=1972441723]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+texture = ExtResource("9_5r65o")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Potion3" type="MarginContainer" parent="Left/TopBarPotion/MarginContainer/PotionPlaceHolder" unique_id=903357657]
+layout_mode = 2
+
+[node name="OutLine" type="TextureRect" parent="Left/TopBarPotion/MarginContainer/PotionPlaceHolder/Potion3" unique_id=141765355]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="Left/TopBarPotion/MarginContainer/PotionPlaceHolder/Potion3" unique_id=924815197]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+texture = ExtResource("7_lb3d2")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="RoomIcons" type="HBoxContainer" parent="Left" unique_id=1544184524]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="RoomIconContainer" type="MarginContainer" parent="Left/RoomIcons" unique_id=1463475931]
+layout_mode = 2
+
+[node name="OutLine" type="TextureRect" parent="Left/RoomIcons/RoomIconContainer" unique_id=1141750554]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+texture = ExtResource("10_34ry2")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="TextureRect" type="TextureRect" parent="Left/RoomIcons/RoomIconContainer" unique_id=415337957]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+texture = ExtResource("11_aw7m0")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="FloorIcon" type="HBoxContainer" parent="Left/RoomIcons" unique_id=2040690790]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="Left/RoomIcons/FloorIcon" unique_id=1800520712]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+texture = ExtResource("12_y0s8s")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="Left/RoomIcons/FloorIcon" unique_id=580760073]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.6745098, 0.827451, 0.7529412, 1)
+theme_override_font_sizes/font_size = 25
+text = "10"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BossIcon" type="MarginContainer" parent="Left/RoomIcons" unique_id=1367207882]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="Left/RoomIcons/BossIcon" unique_id=861713810]
+modulate = Color(1, 1, 1, 0.73333335)
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+texture = ExtResource("13_dhe2k")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="TextureRect2" type="TextureRect" parent="Left/RoomIcons/BossIcon" unique_id=692479556]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+texture = ExtResource("14_p4p88")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Right" type="HBoxContainer" parent="." unique_id=785564838]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -40.0
+offset_bottom = 40.0
+grow_horizontal = 0
+theme_override_constants/separation = 20
+
+[node name="Map" type="MarginContainer" parent="Right" unique_id=1855333273]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="Right/Map" unique_id=1752182656]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+texture = ExtResource("15_aw7m0")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Deck" type="MarginContainer" parent="Right" unique_id=1917620061]
+layout_mode = 2
+
+[node name="CardPileButton" parent="Right/Deck" unique_id=1722351305 node_paths=PackedStringArray("label") instance=ExtResource("16_dhe2k")]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+texture_normal = ExtResource("16_y0s8s")
+label = NodePath("Label")
+
+[node name="Label" type="Label" parent="Right/Deck/CardPileButton" unique_id=827572310]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+theme_override_font_sizes/font_size = 25
+text = "99"
+
+[node name="Settings" type="MarginContainer" parent="Right" unique_id=929229721]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="Right/Settings" unique_id=37640327]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+texture = ExtResource("17_dhe2k")
+expand_mode = 1
+stretch_mode = 5

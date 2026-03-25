@@ -1,0 +1,66 @@
+[gd_scene format=3 uid="uid://dlp0rxa1b482m"]
+
+[ext_resource type="Script" uid="uid://cf0jmv71badp3" path="res://scripts/rooms/combat_room/combat_ui/energy_ui.gd" id="1_ln3uo"]
+[ext_resource type="Texture2D" uid="uid://btlw4vc3brx7t" path="res://images/ui/combat/energy_counters/ironclad/ironclad_orb_layer_1.png" id="1_yi4t3"]
+[ext_resource type="Texture2D" uid="uid://cgne87p4x0y8o" path="res://images/ui/combat/energy_counters/ironclad/ironclad_orb_layer_2.png" id="2_ln3uo"]
+[ext_resource type="Resource" uid="uid://bqq44kff15k4w" path="res://entities/characters/ironclad/ironclad_stats.tres" id="2_spmcu"]
+[ext_resource type="Texture2D" uid="uid://b5l37kuwvsfxw" path="res://images/ui/combat/energy_counters/ironclad/ironclad_orb_layer_3.png" id="3_spmcu"]
+[ext_resource type="Texture2D" uid="uid://7s0q7vjpfrjx" path="res://images/ui/combat/energy_counters/ironclad/ironclad_orb_layer_4.png" id="4_4pfr3"]
+[ext_resource type="Texture2D" uid="uid://d1wchqkyxmmc8" path="res://images/ui/combat/energy_counters/ironclad/ironclad_orb_layer_5.png" id="5_kmnhs"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_uibyu"]
+font_size = 50
+
+[node name="EnergyUI" type="Control" unique_id=1056468165]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -1664.0
+offset_bottom = -824.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ln3uo")
+char_stats = ExtResource("2_spmcu")
+
+[node name="Layer1" type="TextureRect" parent="." unique_id=1675742301]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("1_yi4t3")
+
+[node name="Layer2" type="TextureRect" parent="." unique_id=243842777]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("2_ln3uo")
+
+[node name="Layer3" type="TextureRect" parent="." unique_id=867320170]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("3_spmcu")
+
+[node name="Layer4" type="TextureRect" parent="." unique_id=462131055]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("4_4pfr3")
+
+[node name="Layer5" type="TextureRect" parent="." unique_id=1977801727]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("5_kmnhs")
+
+[node name="EnergyLabel" type="Label" parent="." unique_id=1710896053]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "3/3"
+label_settings = SubResource("LabelSettings_uibyu")
+horizontal_alignment = 1
+vertical_alignment = 1

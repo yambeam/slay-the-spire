@@ -1,0 +1,66 @@
+[gd_scene format=3 uid="uid://cunj3kh5og6dc"]
+
+[ext_resource type="Script" uid="uid://p5t5ynm0gru3" path="res://scripts/rooms/combat_room/combat_ui/card_ui.gd" id="1_s55cg"]
+[ext_resource type="Script" uid="uid://n32cyhvf6qam" path="res://scripts/hand_manager/card_state_machine/card_state_machine.gd" id="2_1kpl7"]
+[ext_resource type="PackedScene" uid="uid://b22g8dum6re3" path="res://scenes/ui/card_visuals.tscn" id="2_17lfd"]
+[ext_resource type="Resource" uid="uid://cbdwqvevklhm0" path="res://entities/characters/ironclad/cards/燃烧.tres" id="2_qqmtg"]
+[ext_resource type="Resource" uid="uid://bqq44kff15k4w" path="res://entities/characters/ironclad/ironclad_stats.tres" id="3_fi06d"]
+[ext_resource type="Script" uid="uid://r1hpyjdc572v" path="res://scripts/hand_manager/card_state_machine/card_base_state.gd" id="9_7cyci"]
+[ext_resource type="Script" uid="uid://h66064xnout6" path="res://scripts/hand_manager/card_state_machine/card_clicked_state.gd" id="10_0og8s"]
+[ext_resource type="Script" uid="uid://b3itqlw4pv3ga" path="res://scripts/hand_manager/card_state_machine/card_dragging_state.gd" id="11_2u763"]
+[ext_resource type="Script" uid="uid://c5ciu1i21f7tn" path="res://scripts/hand_manager/card_state_machine/card_aiming_state.gd" id="12_i2e1o"]
+[ext_resource type="Script" uid="uid://deyslpu2jebj4" path="res://scripts/hand_manager/card_state_machine/card_released_state.gd" id="13_pvsb8"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0og8s"]
+size = Vector2(300, 422)
+
+[node name="CardUI" type="Control" unique_id=883918395]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 300.0
+offset_bottom = 422.0
+pivot_offset = Vector2(150, 211)
+script = ExtResource("1_s55cg")
+card = ExtResource("2_qqmtg")
+char_stats = ExtResource("3_fi06d")
+
+[node name="DropPointArea" type="Area2D" parent="." unique_id=1533357214]
+collision_mask = 2
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DropPointArea" unique_id=1795295555]
+position = Vector2(150, 211)
+shape = SubResource("RectangleShape2D_0og8s")
+
+[node name="CardStateMachine" type="Node" parent="." unique_id=152135754 node_paths=PackedStringArray("initial_state", "card_ui")]
+script = ExtResource("2_1kpl7")
+initial_state = NodePath("CardBaseState")
+card_ui = NodePath("..")
+
+[node name="CardBaseState" type="Node" parent="CardStateMachine" unique_id=1411814012]
+script = ExtResource("9_7cyci")
+
+[node name="CardClickedState" type="Node" parent="CardStateMachine" unique_id=440843913]
+script = ExtResource("10_0og8s")
+state = 1
+
+[node name="CardDraggingState" type="Node" parent="CardStateMachine" unique_id=34916596]
+script = ExtResource("11_2u763")
+state = 2
+
+[node name="CardAimingState" type="Node" parent="CardStateMachine" unique_id=1080599145]
+script = ExtResource("12_i2e1o")
+state = 3
+
+[node name="CardReleasedState" type="Node" parent="CardStateMachine" unique_id=1367157191]
+script = ExtResource("13_pvsb8")
+state = 4
+
+[node name="Visuals" parent="." unique_id=829210823 instance=ExtResource("2_17lfd")]
+layout_mode = 0
+
+[connection signal="gui_input" from="." to="." method="_on_gui_input"]
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
+[connection signal="area_entered" from="DropPointArea" to="." method="_on_drop_point_area_area_entered"]
+[connection signal="area_exited" from="DropPointArea" to="." method="_on_drop_point_area_area_exited"]

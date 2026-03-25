@@ -14,13 +14,14 @@ func _init() -> void:
 	
 func _ready() -> void:
 	type = Type.DEBUFF
+	affect = AFFECT.SELF
 	if agent and agent.has_signal("before_gain_block"):
 		agent.connect("before_gain_block", _on_before_gain_block)
 	else:
 		printerr("该对象没有before_gain_block信号")
 		return
-	if agent and agent.has_signal("turn_started"):
-		agent.connect("turn_started", _on_turn_started)
+	if agent and agent.has_signal("turn_ended"):
+		agent.connect("turn_ended", _on_turn_ended)
 
 func get_modifier() -> Array[Modifier]:
 	var modifier := Modifier.new(Enums.NumericType.BLOCK, 0, 0.75, null)
@@ -29,5 +30,5 @@ func get_modifier() -> Array[Modifier]:
 func _on_before_gain_block(context: Context) -> void:
 	context.amount = int(context.amount * 0.75)
 
-func _on_turn_started(_creature: Node2D) -> void:
+func _on_turn_ended(_creature: Node2D) -> void:
 	remove_stack(1) 

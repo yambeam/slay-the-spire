@@ -1,5 +1,5 @@
 # meta-name: 敌人行动逻辑
-# meta-description: 敌人行动逻辑脚本的模板
+# meta-description: 敌人行动逻辑脚本的模板(已弃用，现在使用Intent资源配置敌人行动)
 # 记得把class_name删掉
 class_name MyEnemyAction
 extends EnemyAction

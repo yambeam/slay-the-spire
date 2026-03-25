@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="EnemyStats" format=3 uid="uid://bdt85ngfibtet"]
 
-[ext_resource type="PackedScene" uid="uid://byip6ctv4gdr5" path="res://entities/enemies/leaf_slime_m/leaf_slime_m_ai.tscn" id="1_avlbb"]
+[ext_resource type="Resource" uid="uid://tcbdqpsi4r8e" path="res://entities/enemies/leaf_slime_m/leaf_slime_m_ai.tres" id="1_avlbb"]
 [ext_resource type="Script" uid="uid://bjrlwk5w4gqtk" path="res://scripts/costum_resources/enemy_stats.gd" id="1_dbr30"]
 [ext_resource type="SpineSkeletonDataResource" uid="uid://bighcyss2jo7q" path="res://animations/monsters/leaf_slime_m/leaf_slime_m_skel_data.tres" id="1_e2o86"]
 

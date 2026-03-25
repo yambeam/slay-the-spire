@@ -1,0 +1,308 @@
+[gd_scene format=3 uid="uid://cjfw4hasfo8ik"]
+
+[ext_resource type="Script" uid="uid://blqos0ytgqhao" path="res://scripts/rooms/combat_room/combat_room.gd" id="1_fx62r"]
+[ext_resource type="Resource" uid="uid://bqq44kff15k4w" path="res://entities/characters/ironclad/ironclad_stats.tres" id="2_7btib"]
+[ext_resource type="AudioStream" uid="uid://b4jkiwnd4o7vc" path="res://audio/music/Clark Aboud - The Beyond.mp3" id="3_hylje"]
+[ext_resource type="Script" uid="uid://cyuwwr8gs0v4v" path="res://scripts/rooms/combat_room/combat_ui/combat_ui.gd" id="4_4hrnf"]
+[ext_resource type="Texture2D" uid="uid://jwynhqw8ayou" path="res://images/packed/combat_ui/end_turn_button.png" id="5_w1so4"]
+[ext_resource type="Texture2D" uid="uid://bnnrjotxgq0sx" path="res://images/packed/combat_ui/end_turn_button_glow.png" id="6_m2yy5"]
+[ext_resource type="PackedScene" uid="uid://dlp0rxa1b482m" path="res://scenes/rooms/combat_room/combat_ui/energy_ui.tscn" id="7_htae7"]
+[ext_resource type="PackedScene" uid="uid://deidb0dmylls" path="res://scenes/hand_manager/hand_manager.tscn" id="8_mj7tc"]
+[ext_resource type="PackedScene" uid="uid://dtc84mfyeh67u" path="res://scenes/ui/card_pile_button.tscn" id="10_7btib"]
+[ext_resource type="Texture2D" uid="uid://ce37xptc8x4au" path="res://images/packed/combat_ui/pile_button_count.png" id="11_hylje"]
+[ext_resource type="Texture2D" uid="uid://lb7f7afwbapn" path="res://images/packed/combat_ui/discard_pile.png" id="12_4hrnf"]
+[ext_resource type="PackedScene" uid="uid://bdu3mvwj8syfb" path="res://scenes/card_target_selector/card_target_selector.tscn" id="12_83j5g"]
+[ext_resource type="Texture2D" uid="uid://dyk2ylwv2fgxp" path="res://images/packed/combat_ui/exhaust_pile.png" id="12_hylje"]
+[ext_resource type="Script" uid="uid://b7jbna8u8wfw1" path="res://scripts/rooms/combat_room/combat_ui/red_flash.gd" id="13_d1stk"]
+[ext_resource type="Texture2D" uid="uid://cvxy8ydgwomqh" path="res://images/rooms/underdocks/underdocks_01_a.png" id="14_fjeak"]
+[ext_resource type="PackedScene" uid="uid://bijk3yg4btssm" path="res://scenes/ui/deck_view.tscn" id="15_hylje"]
+[ext_resource type="Texture2D" uid="uid://bnlf5ynahsy8u" path="res://images/rooms/underdocks/underdocks_02_a.png" id="15_s0f1l"]
+[ext_resource type="Texture2D" uid="uid://del54pxobtgf8" path="res://images/rooms/underdocks/underdocks_04_a.png" id="16_tey1o"]
+[ext_resource type="Texture2D" uid="uid://c6r8xp7wi3hkh" path="res://images/rooms/underdocks/underdocks_05_a.png" id="17_albe3"]
+[ext_resource type="Script" uid="uid://cqlaav8vqwmad" path="res://scripts/creatures/player/player_handler.gd" id="18_7rams"]
+[ext_resource type="PackedScene" uid="uid://c535efduugkl5" path="res://scenes/creatures/player/player.tscn" id="19_ry3up"]
+[ext_resource type="Script" uid="uid://bgjydn1xm3hu4" path="res://scripts/creatures/enemy/enemy_handler.gd" id="20_646qw"]
+[ext_resource type="PackedScene" uid="uid://dkx5per50m5cv" path="res://scenes/creatures/enemy/enemy.tscn" id="21_72xx8"]
+[ext_resource type="Resource" uid="uid://bdt85ngfibtet" path="res://entities/enemies/leaf_slime_m/leaf_slime_m.tres" id="22_j0csj"]
+[ext_resource type="Resource" uid="uid://6t0lxm3urof3" path="res://entities/enemies/leaf_slime_s/leaf_slime_s.tres" id="23_hsgn0"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_82is4"]
+font_size = 30
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vujjl"]
+size = Vector2(1920, 630)
+
+[node name="CombatRoom" type="Control" unique_id=18767815]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+mouse_filter = 1
+script = ExtResource("1_fx62r")
+char_stats = ExtResource("2_7btib")
+music = ExtResource("3_hylje")
+metadata/_edit_lock_ = true
+
+[node name="CombatUI" type="CanvasLayer" parent="." unique_id=661618034 groups=["ui_layer"]]
+script = ExtResource("4_4hrnf")
+
+[node name="EndTurn" type="Button" parent="CombatUI" unique_id=1064167628]
+offset_left = 1658.0
+offset_top = 802.0
+offset_right = 2178.0
+offset_bottom = 1066.0
+scale = Vector2(0.5, 0.5)
+icon = ExtResource("5_w1so4")
+flat = true
+
+[node name="EndTurnGlow" type="TextureRect" parent="CombatUI/EndTurn" unique_id=1768145151]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("6_m2yy5")
+
+[node name="EndTurnLabel" type="Label" parent="CombatUI/EndTurn" unique_id=1968776029]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "结束回合"
+label_settings = SubResource("LabelSettings_82is4")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="EnergyUI" parent="CombatUI" unique_id=1056468165 instance=ExtResource("7_htae7")]
+offset_left = 77.0
+offset_top = 798.0
+offset_right = -1587.0
+offset_bottom = -26.0
+scale = Vector2(0.6, 0.6)
+
+[node name="HandManager" parent="CombatUI" unique_id=828060318 instance=ExtResource("8_mj7tc")]
+offset_left = 193.0
+offset_top = 855.0
+offset_right = 1493.0
+offset_bottom = 1155.0
+metadata/_edit_lock_ = true
+
+[node name="DrawPileButton" parent="CombatUI" unique_id=1722351305 node_paths=PackedStringArray("label") instance=ExtResource("10_7btib")]
+unique_name_in_owner = true
+offset_left = 24.0
+offset_top = 963.0
+offset_right = 124.0
+offset_bottom = 1063.0
+label = NodePath("TextureRect/Label")
+metadata/_edit_lock_ = true
+
+[node name="TextureRect" type="TextureRect" parent="CombatUI/DrawPileButton" unique_id=585953156]
+layout_mode = 0
+offset_left = 52.0
+offset_top = 36.0
+offset_right = 122.0
+offset_bottom = 106.0
+mouse_filter = 2
+texture = ExtResource("11_hylje")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="CombatUI/DrawPileButton/TextureRect" unique_id=563060340]
+layout_mode = 0
+offset_left = 15.0
+offset_top = 19.0
+offset_right = 55.0
+offset_bottom = 47.0
+theme_override_font_sizes/font_size = 20
+text = "99"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="DiscardPileButton" parent="CombatUI" unique_id=1579447934 node_paths=PackedStringArray("label") instance=ExtResource("10_7btib")]
+unique_name_in_owner = true
+offset_left = 1812.0
+offset_top = 963.0
+offset_right = 1912.0
+offset_bottom = 1063.0
+texture_normal = ExtResource("12_4hrnf")
+label = NodePath("TextureRect/Label")
+metadata/_edit_lock_ = true
+
+[node name="TextureRect" type="TextureRect" parent="CombatUI/DiscardPileButton" unique_id=2026268013]
+layout_mode = 0
+offset_left = -31.0
+offset_top = 36.0
+offset_right = 39.0
+offset_bottom = 106.0
+mouse_filter = 2
+texture = ExtResource("11_hylje")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="CombatUI/DiscardPileButton/TextureRect" unique_id=1130453798]
+layout_mode = 0
+offset_left = 15.0
+offset_top = 19.0
+offset_right = 55.0
+offset_bottom = 47.0
+theme_override_font_sizes/font_size = 20
+text = "99"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ExhaustPileButton" parent="CombatUI" unique_id=2131986038 node_paths=PackedStringArray("label") instance=ExtResource("10_7btib")]
+offset_left = 1814.0
+offset_top = 660.0
+offset_right = 1914.0
+offset_bottom = 760.0
+texture_normal = ExtResource("12_hylje")
+label = NodePath("Label")
+
+[node name="Label" type="Label" parent="CombatUI/ExhaustPileButton" unique_id=1638297419]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 23
+text = "99"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="RedFlash" type="CanvasLayer" parent="." unique_id=919668335]
+layer = 2
+
+[node name="CardTargetSelector" parent="RedFlash" unique_id=20047492 instance=ExtResource("12_83j5g")]
+
+[node name="RedFlash" type="ColorRect" parent="RedFlash" unique_id=392927311]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(1, 0.20392157, 0.1254902, 0)
+script = ExtResource("13_d1stk")
+
+[node name="FlashTimer" type="Timer" parent="RedFlash/RedFlash" unique_id=436102311]
+wait_time = 0.1
+one_shot = true
+
+[node name="CardPileView" type="CanvasLayer" parent="." unique_id=653295741]
+layer = 3
+
+[node name="DrawPileView" parent="CardPileView" unique_id=1662556681 instance=ExtResource("15_hylje")]
+unique_name_in_owner = true
+visible = false
+
+[node name="DiscardPileView" parent="CardPileView" unique_id=1838611263 instance=ExtResource("15_hylje")]
+unique_name_in_owner = true
+visible = false
+
+[node name="ExhaustPileView" parent="CardPileView" unique_id=594777507 instance=ExtResource("15_hylje")]
+visible = false
+
+[node name="BackGroundContainer" type="Control" parent="." unique_id=1215282505]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="background1" type="TextureRect" parent="BackGroundContainer" unique_id=1629789452]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("14_fjeak")
+expand_mode = 1
+
+[node name="2" type="TextureRect" parent="BackGroundContainer" unique_id=1502299885]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("15_s0f1l")
+expand_mode = 1
+
+[node name="3" type="TextureRect" parent="BackGroundContainer" unique_id=1385248162]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("16_tey1o")
+expand_mode = 1
+
+[node name="4" type="TextureRect" parent="BackGroundContainer" unique_id=83263002]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("17_albe3")
+expand_mode = 1
+
+[node name="AddCard" type="Button" parent="." unique_id=952102186]
+layout_mode = 0
+offset_left = 852.0
+offset_top = 351.0
+offset_right = 1052.0
+offset_bottom = 451.0
+text = "抽牌"
+
+[node name="PlayerHandler" type="Node" parent="." unique_id=92196970 node_paths=PackedStringArray("hand_manager")]
+script = ExtResource("18_7rams")
+hand_manager = NodePath("../CombatUI/HandManager")
+
+[node name="CardDropArea" type="Area2D" parent="." unique_id=237894908]
+collision_layer = 2
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CardDropArea" unique_id=424395754]
+position = Vector2(959, 310)
+shape = SubResource("RectangleShape2D_vujjl")
+metadata/_edit_lock_ = true
+
+[node name="Player" parent="." unique_id=1710440414 instance=ExtResource("19_ry3up")]
+position = Vector2(402, 489)
+stats = ExtResource("2_7btib")
+
+[node name="EnemyHandler" type="Node2D" parent="." unique_id=385461736]
+script = ExtResource("20_646qw")
+
+[node name="Creature" parent="EnemyHandler" unique_id=1879124044 instance=ExtResource("21_72xx8")]
+position = Vector2(1265, 468)
+stats = ExtResource("22_j0csj")
+
+[node name="Creature2" parent="EnemyHandler" unique_id=1852437109 instance=ExtResource("21_72xx8")]
+position = Vector2(1691, 468)
+stats = ExtResource("23_hsgn0")
+
+[node name="BackToMap" type="Button" parent="." unique_id=629163078]
+custom_minimum_size = Vector2(200, 100)
+layout_mode = 0
+offset_left = 872.0
+offset_top = 177.0
+offset_right = 1072.0
+offset_bottom = 277.0
+text = "返回地图"
+
+[connection signal="pressed" from="AddCard" to="." method="_on_add_card_pressed"]
+[connection signal="pressed" from="BackToMap" to="." method="_on_back_to_map_pressed"]

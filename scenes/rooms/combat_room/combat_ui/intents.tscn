@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://doi41puqdenrn"]
+
+[ext_resource type="Script" uid="uid://51kwq6wwnhfq" path="res://scripts/rooms/combat_room/combat_ui/intents.gd" id="1_jmct2"]
+
+[node name="Intents" type="HBoxContainer" unique_id=2030278896]
+offset_right = 300.0
+offset_bottom = 100.0
+theme_override_constants/separation = 30
+alignment = 1
+script = ExtResource("1_jmct2")

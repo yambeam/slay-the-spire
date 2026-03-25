@@ -10,7 +10,6 @@ func add_buff(buff_context: ApplyBuffContext) -> bool:
 			exist_buff = child
 			break
 	if exist_buff:
-		print("exist")
 		exist_buff.add_stack(buff_node.stacks)
 		return false
 	else:

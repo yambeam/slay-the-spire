@@ -1,0 +1,24 @@
+[gd_resource type="Resource" format=3 uid="uid://ckuslsre8gkok"]
+
+[ext_resource type="Script" uid="uid://cxgxfbwykbp84" path="res://scripts/costum_resources/numeric_entry.gd" id="1_s678t"]
+[ext_resource type="Texture2D" uid="uid://croho4y" path="res://images/atlases/card_atlas.sprites/silent/acrobatics.tres" id="2_ymop5"]
+[ext_resource type="Script" uid="uid://yiuflfbsuia0" path="res://entities/characters/silent/cards/杂技.gd" id="3_6yoq3"]
+
+[sub_resource type="Resource" id="Resource_aml2j"]
+script = ExtResource("1_s678t")
+type = 5
+base_value = 3
+placeholder = "amount"
+affected_by = 3
+metadata/_custom_type_script = "uid://cxgxfbwykbp84"
+
+[resource]
+script = ExtResource("3_6yoq3")
+id = "杂技"
+type = 1
+card_color = 1
+cost = 1
+portrait = ExtResource("2_ymop5")
+description = "[center]抽{amount}张牌。[/center][p][center]弃1张牌。[/center]"
+numeric_entries = Array[ExtResource("1_s678t")]([SubResource("Resource_aml2j")])
+metadata/_custom_type_script = "uid://br1hibx18tv13"

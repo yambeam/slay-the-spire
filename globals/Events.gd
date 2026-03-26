@@ -21,7 +21,7 @@ signal target_unselected()
 signal player_hand_drawn
 signal player_hand_discarded
 signal player_turn_ended
-signal player_hited(text: String)
+signal player_talked(text: String, time: float)
 signal player_died
 signal player_hit
 ## 敌人相关

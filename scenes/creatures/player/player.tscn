@@ -3,11 +3,6 @@
 [ext_resource type="PackedScene" uid="uid://cb16flm0r74mt" path="res://scenes/creatures/creature.tscn" id="1_gw8ya"]
 [ext_resource type="Script" uid="uid://bw2yoey1sa2w8" path="res://scripts/creatures/player/player.gd" id="2_ydy0f"]
 [ext_resource type="SpineSkeletonDataResource" uid="uid://b8e4wst5vt8xh" path="res://animations/characters/ironclad/ironclad_skel_data.tres" id="3_etupx"]
-[ext_resource type="Texture2D" uid="uid://ul1oevmcxsoj" path="res://images/vfx/miasma_cloud.png" id="4_xi3l8"]
-
-[sub_resource type="LabelSettings" id="LabelSettings_t2d26"]
-font_size = 20
-font_color = Color(0.9764706, 0.38431373, 0.41960785, 1)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_eajrs"]
 size = Vector2(674, 816)
@@ -25,31 +20,6 @@ preview_animation = "-- Empty --"
 preview_frame = false
 preview_time = 0.0
 
-[node name="Hint" type="TextureRect" parent="." index="5" unique_id=1251435959]
-visible = false
-offset_left = 62.0
-offset_top = -428.0
-offset_right = 449.0
-offset_bottom = -222.0
-texture = ExtResource("4_xi3l8")
-expand_mode = 1
-
-[node name="HintLable" type="Label" parent="Hint" index="0" unique_id=1494684784]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-text = "这是测试语句"
-label_settings = SubResource("LabelSettings_t2d26")
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Timer" type="Timer" parent="." index="6" unique_id=1268341710]
-wait_time = 2.0
-one_shot = true
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="7" unique_id=1021674470]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="5" unique_id=1021674470]
 position = Vector2(0, -408)
 shape = SubResource("RectangleShape2D_eajrs")

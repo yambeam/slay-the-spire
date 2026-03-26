@@ -38,7 +38,7 @@ func add_card(card: Card) -> void:
 	new_card_ui.char_stats = char_stats
 
 ## 使手牌扇形排列
-func set_cards() -> void: 
+func set_cards(instant: bool = false) -> void: 
 	var card_count := get_child_count()
 	var card_uis := get_children()
 	
@@ -77,7 +77,11 @@ func set_cards() -> void:
 			card_ui.original_position = target_position
 			card_ui.original_rotation = target_rotation
 			card_ui.original_index = card_index	
-			card_ui.animate_set_card(target_position, target_rotation, tween_time)
+			if instant:
+				card_ui.position = target_position
+				card_ui.rotation_degrees = target_rotation
+			else:
+				card_ui.animate_set_card(target_position, target_rotation, tween_time)
 			
 func _on_card_previewed(pre_card: CardUI, to_preview: bool) -> void:
 	if to_preview:
@@ -91,22 +95,35 @@ func _on_card_previewed(pre_card: CardUI, to_preview: bool) -> void:
 	if pre_card:
 		var element :int = to_preview as int
 		for card_ui: CardUI in get_children():
-			var movement = sign(card_ui.original_index - pre_card.original_index) * element * offset
+			var movement: float
+			if abs(card_ui.original_index - pre_card.original_index) > 3:
+				movement = 0
+			else:
+				movement = sign(card_ui.original_index - pre_card.original_index) * element * offset
 			#card_ui.animate_to_position(card_ui.original_position + Vector2(movement, 0), tween_time)
 			#var tween := get_tree().create_tween()
 			#tween.set_parallel(true)
 			#tween.tween_property(card_ui, "position:x", card_ui.original_position.x + movement, tween_time)
-			card_ui.animate_to_position(card_ui.original_position + Vector2(movement, 0), tween_time)
+			if card_ui == pre_card:
+				card_ui.animate_preview(card_ui.original_position.x + movement, 1.3, 0, to_preview, tween_time)
+			else:
+				card_ui.animate_preview(card_ui.original_position.x + movement, 1.3, 0, false, tween_time)
+			#card_ui.animate_to_position(card_ui.original_position + Vector2(movement, 0), tween_time)
+			
 			#card_ui.movement_tween = create_tween()
 			#card_ui.movement_tween.tween_property(card_ui, "position:x", card_ui.original_position.x + movement, tween_time)
 
 # TODO: 卡牌消耗/移向弃牌堆动画
 func discard_card(card: CardUI) -> void:
 	card.queue_free()
+	# 等待card.queue_free()
+	await get_tree().process_frame
 	set_cards()
 
 func exhause_card(card: CardUI) -> void:
 	card.queue_free()
+	# 等待card.queue_free()
+	await get_tree().process_frame
 	set_cards()
 
 func remove_card(card: CardUI) -> void:

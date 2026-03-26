@@ -35,7 +35,6 @@ func multi_select(cards_to_choose: Array[Card], title: String, min_: int = 0, ma
 	return ret
 	
 func _start_selection(cards_to_choose: Array[Card], title: String, mode: Enums.SelectionMode) -> Array[Card]:
-	show()
 	current_mode = mode
 	# 需要复制吗？
 	#cards_list = cards.duplicate()
@@ -55,8 +54,9 @@ func _start_selection(cards_to_choose: Array[Card], title: String, mode: Enums.S
 		card_ui.toggled.connect(_on_card_toggled)
 	# 等待节点删除
 	await get_tree().process_frame
-	hand_manager.set_cards()
+	hand_manager.set_cards(true)
 	hint_label.text = title
+	show()
 	var ret: Array[Card]
 	ret = await card_selected
 	hide()

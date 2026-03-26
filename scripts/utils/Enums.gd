@@ -5,7 +5,8 @@ enum NumericType {
 	LOSE_HEALTH,
 	BLOCK,
 	HEAL,
-	BUFF_STACKS
+	BUFF_STACKS,
+	OTHERS
 }
 # 卡牌的选择状态
 enum SelectionMode{

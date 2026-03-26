@@ -32,7 +32,7 @@ func on_input(event: InputEvent) -> void:
 	
 	if not card_ui.playable:
 		card_state_machine_change_state_requested.emit(self, STATE.BASE)
-		Events.player_hited.emit("没有足够的能量")
+		Events.player_talked.emit("没有足够的能量", 2.5)
 		return
 	
 	if single_targetd and mouse_motion and card_ui.targets.size() > 0:

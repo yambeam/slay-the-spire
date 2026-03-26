@@ -1,6 +1,7 @@
 class_name CardUI
 extends Control
 
+# 处理选择卡牌逻辑
 signal toggled(card: CardUI)
 
 @export var card: Card: set = _set_card
@@ -73,6 +74,23 @@ func animate_to_position(new_position: Vector2, duration: float) -> void:
 	movement_tween = create_tween().set_trans(Tween.TRANS_CIRC).set_ease(Tween.EASE_OUT)
 	movement_tween.tween_property(self, "position", new_position, duration)
 
+func animate_preview(new_position_x, new_scale, new_rotation, to_preview, tween_time) -> void:
+	if movement_tween:
+		movement_tween.kill()
+	if tween:
+		tween.kill()
+	tween = create_tween().set_trans(Tween.TRANS_SINE).set_parallel(true)
+	movement_tween = create_tween().set_trans(Tween.TRANS_SINE)
+	if to_preview:
+		movement_tween.tween_property(self, "position", Vector2(new_position_x, original_position.y - 175), tween_time)
+		tween.tween_property(self, "scale", Vector2(new_scale, new_scale), tween_time)
+		tween.tween_property(self, "rotation_degrees", new_rotation, tween_time)
+	else:
+		movement_tween.tween_property(self, "position", Vector2(new_position_x, original_position.y), tween_time)
+		tween.tween_property(self, "scale", Vector2.ONE, tween_time)
+		tween.tween_property(self, "rotation_degrees", original_rotation, tween_time)
+
+# 弃用
 func animate_start_preview() -> void:
 	if movement_tween:
 		movement_tween.kill()
@@ -83,7 +101,7 @@ func animate_start_preview() -> void:
 	movement_tween.tween_property(self, "position:y", original_position.y - 175, 0.1).set_trans(Tween.TRANS_SINE)
 	tween.tween_property(self, "scale", Vector2(1.3, 1.3), 0.1)
 	tween.tween_property(self, "rotation_degrees", 0, 0.1).set_trans(Tween.TRANS_SINE)
-
+# 弃用
 func animate_end_preview() -> void:
 	if movement_tween:
 		movement_tween.kill()

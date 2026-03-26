@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://cbir7pfgl5y7d" path="res://scenes/rooms/combat_room/combat_ui/buff_container.tscn" id="3_bod4x"]
 [ext_resource type="Script" uid="uid://bayy3j6ssj0g" path="res://scripts/utils/spine_manager.gd" id="5_qn62h"]
 [ext_resource type="Texture2D" uid="uid://hm3yndjsncmt" path="res://images/ui/combat/combat_reticle.png" id="6_dlany"]
+[ext_resource type="PackedScene" uid="uid://bv5lhx0gj4ka3" path="res://scenes/ui/speech_bubble.tscn" id="7_32syg"]
 [ext_resource type="Script" uid="uid://beoly8uxrkebe" path="res://scripts/creatures/buff_manager.gd" id="7_ne82r"]
 
 [node name="Creature" type="Area2D" unique_id=465140807]
@@ -55,3 +56,10 @@ texture = ExtResource("6_dlany")
 
 [node name="BuffManager" type="Node" parent="." unique_id=1071170894]
 script = ExtResource("7_ne82r")
+
+[node name="SpeechBubble" parent="." unique_id=1782935771 instance=ExtResource("7_32syg")]
+visible = false
+offset_left = 209.0
+offset_top = -172.0
+offset_right = 209.0
+offset_bottom = -172.0

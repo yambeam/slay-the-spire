@@ -22,8 +22,12 @@ const BUFF_UI = preload("res://scenes/rooms/combat_room/combat_ui/buff_ui.tscn")
 @onready var reticles: Node2D = $Reticles
 @onready var health_bar: HealthBar = $HealthBar
 @onready var spine_manager: SpineManager = $SpineManager
+@onready var speech_bubble: SpeechBubble = $SpeechBubble
 
 var spine_anim_state: SpineAnimationState
+
+func speech(_text: String, _time: float = 2.5) -> void:
+	pass
 
 func attack(context: Context) -> void:
 	before_attack.emit(context)

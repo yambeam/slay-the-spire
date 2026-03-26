@@ -29,17 +29,20 @@ func end_turn() -> void:
 	player.end_turn()
 	discard_cards()
 
-func draw_card() -> void:
+func draw_card() -> Card:
 	reshuffle_deck_from_discard_pile()
 	if char_stats.draw_pile.is_empty():
 		# 抽牌堆与弃牌堆都没牌了
-		return
+		return null
+	var card = char_stats.draw_pile.draw_card()
+	# 抽牌堆满了直接放入弃牌堆
 	if hand_manager.get_child_count() >= 10:
-		# 手牌满了
-		return
-	hand_manager.add_card(char_stats.draw_pile.draw_card())
+		char_stats.discard_pile.add_card(card)
+		return null
+	hand_manager.add_card(card)
 	hand_manager.set_cards()
 	reshuffle_deck_from_discard_pile()
+	return card
 
 func draw_cards(amount: int) -> void:
 	var tween := create_tween()
@@ -51,9 +54,9 @@ func draw_cards(amount: int) -> void:
 		func(): Events.player_hand_drawn.emit()
 	)
 
-func disable_hand() -> void:
+func disable_hand(flag: bool = true) -> void:
 	for child:CardUI in hand_manager.get_children():
-		child.disabled = true
+		child.disabled = flag
 
 func discard_card(card: Card) -> void:
 	for child: CardUI in hand_manager.get_children():

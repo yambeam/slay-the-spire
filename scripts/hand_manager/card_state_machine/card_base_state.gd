@@ -30,7 +30,7 @@ func on_mouse_entered() -> void:
 	if card_ui.disabled:
 		return
 	Events.card_previewed.emit(card_ui, true)
-	card_ui.animate_start_preview()
+	#card_ui.animate_start_preview()
 	#card_ui.tween.kill()
 	#card_ui.tween = create_tween()
 	#card_ui.tween.set_parallel(true)
@@ -42,7 +42,7 @@ func on_mouse_exited() -> void:
 	if card_ui.disabled:
 		return
 	Events.card_previewed.emit(card_ui, false)
-	card_ui.animate_end_preview()
+	#card_ui.animate_end_preview()
 	#card_ui.tween.kill()
 	#card_ui.tween = create_tween()
 	#card_ui.tween.set_parallel(true)

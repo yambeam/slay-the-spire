@@ -28,6 +28,7 @@
 [ext_resource type="Texture2D" uid="uid://bcgn03j" path="res://images/atlases/card_atlas.sprites/necrobinder/sculpting_strike.tres" id="26_lm2nt"]
 [ext_resource type="Script" uid="uid://cj4qfukbhf6x8" path="res://entities/characters/necrobinder/雕琢打击.gd" id="27_jqanm"]
 [ext_resource type="Script" uid="uid://btp5g8uxwew6f" path="res://entities/characters/necrobinder/玷污.gd" id="27_lm2nt"]
+[ext_resource type="Resource" uid="uid://ckuslsre8gkok" path="res://entities/characters/silent/cards/杂技.tres" id="28_lm2nt"]
 
 [sub_resource type="Resource" id="Resource_sjnru"]
 script = ExtResource("2_t8brg")
@@ -258,5 +259,5 @@ metadata/_custom_type_script = "uid://br1hibx18tv13"
 
 [resource]
 script = ExtResource("2_pcwuu")
-cards = Array[ExtResource("1_6dnus")]([SubResource("Resource_au0bv"), SubResource("Resource_cyjvc"), SubResource("Resource_lmdw5"), SubResource("Resource_bsqa6"), SubResource("Resource_whuos"), SubResource("Resource_cilra"), SubResource("Resource_lm2nt"), SubResource("Resource_jqanm"), SubResource("Resource_q88nh"), SubResource("Resource_vp0wk"), SubResource("Resource_2qpn7")])
+cards = Array[ExtResource("1_6dnus")]([SubResource("Resource_au0bv"), SubResource("Resource_cyjvc"), SubResource("Resource_lmdw5"), SubResource("Resource_bsqa6"), SubResource("Resource_whuos"), SubResource("Resource_cilra"), SubResource("Resource_lm2nt"), SubResource("Resource_jqanm"), SubResource("Resource_q88nh"), SubResource("Resource_vp0wk"), SubResource("Resource_2qpn7"), ExtResource("28_lm2nt")])
 metadata/_custom_type_script = "uid://jvpf65gf7yuq"

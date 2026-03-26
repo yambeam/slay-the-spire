@@ -1,15 +1,16 @@
 class_name Player
 extends Creature
 
+# 玩家专属信号
+signal before_draw_card()
+signal after_draw_card(card: Card)
+
 
 @export var stats: CharacterStats : set = _set_char_stats
 @export var hand_selector: HandSelector
 @export var agent: PlayerHandler
 
 @onready var hitbox: CollisionShape2D = $CollisionShape2D
-@onready var hint_sprite: TextureRect = $Hint
-@onready var hint_lable: Label = $Hint/HintLable
-@onready var hint_timer: Timer = $Timer
 
 func _ready() -> void:
 	spine_manager.scale = Vector2(0.3, 0.3)
@@ -17,17 +18,13 @@ func _ready() -> void:
 	hitbox.position = Vector2(0, - hitbox.shape.size.y / 2)
 	mouse_entered.connect(_on_mouse_entered)
 	mouse_exited.connect(_on_mouse_exited)
-	Events.player_hited.connect(_hint)
 	Events.card_played.connect(_on_card_played)
-	hint_timer.timeout.connect(
-		func(): hint_sprite.visible = false
-	)
-	
-func _hint(hint_text: String) -> void:
-	hint_sprite.visible = true
-	hint_lable.text = hint_text
-	hint_timer.start(2.5)
+	Events.player_talked.connect(speech)
 
+func speech(text: String, time: float = 2.5) -> void:
+	speech_bubble.set_text(text, time)
+	speech_bubble.global_position = hitbox.global_position + Vector2(hitbox.shape.size.x, -hitbox.shape.size.y / 2)
+	speech_bubble.scale = spine_manager.scale * 2
 #func add_buff(buff_context: ApplyBuffContext) -> void:
 	#buff_context.buff_node.stacks = buff_context.amount	
 	#buff_manager.add_buff(buff_context)
@@ -38,12 +35,14 @@ func _hint(hint_text: String) -> void:
 func select(context: ChooseCardContext) -> void:
 	var selected: Array[Card]
 	agent.hide_hand()
+	agent.disable_hand()
 	if context.max_select > 1:
 		selected = await hand_selector.multi_select(context.cards as Array[Card], context.title, context.min_select, context.max_select)
 	else:
 		selected = await hand_selector.single_select(context.cards as Array[Card], context.title)
 	for card: Card in selected:
 		context.callback.call(card)
+	agent.disable_hand(false)
 	agent.show_hand()
 		
 func gain_block(context: Context) -> void:
@@ -57,6 +56,11 @@ func die() -> void:
 	spine_anim_state.set_animation("die", false, 0)
 	await spine_manager.animation_completed
 	Events.player_died.emit()
+
+func draw_card() -> void:
+	before_draw_card.emit()
+	var card: Card = agent.draw_card()
+	after_draw_card.emit(card)
 	
 func lose_health(context: Context) -> void:
 	if stats.health <= 0:

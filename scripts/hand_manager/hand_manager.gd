@@ -96,10 +96,11 @@ func _on_card_previewed(pre_card: CardUI, to_preview: bool) -> void:
 		var element :int = to_preview as int
 		for card_ui: CardUI in get_children():
 			var movement: float
-			if abs(card_ui.original_index - pre_card.original_index) > 3:
+			var delta = card_ui.original_index - pre_card.original_index
+			if abs(delta) > 3:
 				movement = 0
 			else:
-				movement = sign(card_ui.original_index - pre_card.original_index) * element * offset
+				movement = sign(delta) * (4 - abs(delta)) * element * offset
 			#card_ui.animate_to_position(card_ui.original_position + Vector2(movement, 0), tween_time)
 			#var tween := get_tree().create_tween()
 			#tween.set_parallel(true)

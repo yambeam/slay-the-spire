@@ -70,7 +70,6 @@ func _change_view(scene: PackedScene) -> Node:
 	if current_room.get_child_count() > 0:
 		current_room.get_child(0).queue_free()
 		
-	#get_tree().paused = false
 	var new_view := scene.instantiate()
 	current_room.add_child(new_view)
 	

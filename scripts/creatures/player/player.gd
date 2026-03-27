@@ -89,6 +89,13 @@ func take_damage(context: Context) -> void:
 		spine_anim_state.set_animation("hurt", false, 0)
 		spine_anim_state.add_animation("idle_loop", 0, true, 0)
 
+func put_card_in_discard_pile(card: Card) -> void:
+	agent.put_card_in_discard_pile(card)
+
+func put_card_in_draw_pile(card: Card, top:bool = false) -> void:
+	agent.put_card_in_draw_pile(card, top)
+	
+
 func get_hand_cards() -> Array[Card]:
 	return agent.get_hand()
 

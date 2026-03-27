@@ -24,6 +24,6 @@ rotation_curve = SubResource("Curve_wjthv")
 max_rotation = 20.0
 max_height = 100
 max_cards_amount = 10
-offset = 50
+offset = 30
 tween_time = 0.2
 max_width = Vector2(1300, 0)

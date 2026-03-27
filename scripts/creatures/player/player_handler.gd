@@ -113,6 +113,16 @@ func reshuffle_deck_from_discard_pile() -> void:
 	
 	char_stats.draw_pile.shuffle()
 
+func put_card_in_draw_pile(card: Card, top: bool = false) -> void:
+	if top:
+		char_stats.draw_pile.add_card_to_top(card)
+	else:
+		char_stats.draw_pile.add_card(card)
+		char_stats.draw_pile.shuffle()
+
+func put_card_in_discard_pile(card: Card) -> void:
+	char_stats.discard_pile.add_card(card)
+
 func _on_card_played(card: Card) -> void:
 	if card.type == card.Type.POWER:
 		# 能力牌打出后不进入任何牌堆
@@ -120,4 +130,4 @@ func _on_card_played(card: Card) -> void:
 	if card.exhaust:
 		char_stats.exhaust_pile.add_card(card)
 	else:
-		char_stats.discard_pile.add_card(card)
+		put_card_in_discard_pile(card)

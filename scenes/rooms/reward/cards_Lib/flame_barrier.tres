@@ -1,14 +1,14 @@
-[gd_resource type="Resource" format=3]
+[gd_resource type="Resource" script_class="Card" format=3 uid="uid://ubnwrrihmkrs"]
 
-[ext_resource type="Script" path="res://scripts/costum_resources/card.gd" id="1_card"]
-[ext_resource type="Script" path="res://scripts/costum_resources/numeric_entry.gd" id="2_numeric"]
-[ext_resource type="Texture2D" path="res://images/packed/card_portraits/ironclad/flame_barrier.png" id="3_portrait"]
+[ext_resource type="Script" uid="uid://br1hibx18tv13" path="res://scripts/costum_resources/card.gd" id="1_card"]
+[ext_resource type="Script" uid="uid://cxgxfbwykbp84" path="res://scripts/costum_resources/numeric_entry.gd" id="2_numeric"]
+[ext_resource type="Texture2D" uid="uid://ltnelxmatrsu" path="res://images/packed/card_portraits/ironclad/flame_barrier.png" id="3_portrait"]
 
 [sub_resource type="Resource" id="numeric_block_12"]
 script = ExtResource("2_numeric")
+type = 2
 base_value = 12
 placeholder = "block"
-type = 2
 
 [resource]
 script = ExtResource("1_card")
@@ -18,5 +18,4 @@ cost = 2
 rarity = 1
 portrait = ExtResource("3_portrait")
 description = "[center]获得{block}点格挡，每次被攻击反弹4点伤害。[/center]"
-sound = null
 numeric_entries = Array[ExtResource("2_numeric")]([SubResource("numeric_block_12")])

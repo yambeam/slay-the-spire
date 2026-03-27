@@ -1,0 +1,21 @@
+[gd_resource type="Resource" format=3 uid="uid://dqdqfe0bcpgp6"]
+
+[ext_resource type="Script" uid="uid://cxgxfbwykbp84" path="res://scripts/costum_resources/numeric_entry.gd" id="1_o32pn"]
+[ext_resource type="Texture2D" uid="uid://6ony3r" path="res://images/atlases/card_atlas.sprites/ironclad/anger.tres" id="2_o32pn"]
+[ext_resource type="Script" uid="uid://duaacoodwy158" path="res://entities/characters/ironclad/cards/愤怒.gd" id="3_o32pn"]
+[ext_resource type="AudioStream" uid="uid://bcwmh6adledx" path="res://audio/SFX/blunt_attack.mp3" id="4_u3nrw"]
+
+[sub_resource type="Resource" id="numeric_damage_6"]
+script = ExtResource("1_o32pn")
+base_value = 6
+placeholder = "damage"
+affected_by = 2
+
+[resource]
+script = ExtResource("3_o32pn")
+id = "愤怒"
+target = 1
+portrait = ExtResource("2_o32pn")
+description = "[center]造成{damage}点伤害。[/center][p][center]将一张愤怒复制品加入弃牌堆。[/center]"
+sound = ExtResource("4_u3nrw")
+numeric_entries = Array[ExtResource("1_o32pn")]([SubResource("numeric_damage_6")])

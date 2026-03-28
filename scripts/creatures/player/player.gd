@@ -2,7 +2,7 @@ class_name Player
 extends Creature
 
 # 玩家专属信号
-signal before_draw_card()
+signal before_draw_cards(context: DrawCardContext)
 signal after_draw_card(card: Card)
 
 
@@ -59,9 +59,21 @@ func die() -> void:
 	Events.player_died.emit()
 
 func draw_card() -> void:
-	before_draw_card.emit()
 	var card: Card = agent.draw_card()
 	after_draw_card.emit(card)
+
+func draw_cards(context: DrawCardContext) -> void:
+	before_draw_cards.emit(context)
+	if context.amount > 0:
+		var tween = create_tween()
+		for i in range(context.amount):
+			tween.tween_callback(draw_card)
+			tween.tween_interval(0.2)
+		await tween.finished
+
+func gain_energy(context: GainEnergyContext) -> void:
+	stats.energy += context.amount
+	
 	
 func lose_health(context: Context) -> void:
 	if stats.health <= 0:
@@ -107,7 +119,10 @@ func exhaust_card(card: Card) -> void:
 	agent.exhaust_card(card)
 
 func start_turn() -> void:
-	turn_started.emit(self)
+	before_turn_started.emit(self)
+	stats.block = 0
+	stats.energy = stats.max_energy
+	after_turn_started.emit(self)
 
 func end_turn() -> void:
 	turn_ended.emit(self)

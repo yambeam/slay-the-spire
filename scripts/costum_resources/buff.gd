@@ -15,9 +15,12 @@ signal stack_changed
 
 @export var stacks: int = 1 : set = _set_stacks
 var description: String
-var buff_name: String
+var buff_name: String 
+var stackable: bool = true
 
 func add_stack(amount: int):
+	if not stackable and stacks > 0:
+		return
 	stacks += amount
 	stack_changed.emit()
 	
@@ -41,5 +44,8 @@ func get_modifiers_on_type(type_: Enums.NumericType) -> Array:
 	return result	
 
 func _set_stacks(value: int) -> void:
-	stacks = value
+	if stackable:
+		stacks = value
+	else:
+		stacks = clampi(value, 0, 1)
 	stack_changed.emit()

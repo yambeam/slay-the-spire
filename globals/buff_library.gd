@@ -35,6 +35,16 @@ var buff_data = {
 		"name": "恶魔形态",
 		"description": "在每回合开始时，获得{stacks}层力量",
 		"icon": preload("res://images/powers/demon_form_power.png")
+	},
+	"壁垒":{
+		"name": "壁垒",
+		"description": "回合开始时格挡不会自动消失",
+		"icon": preload("res://images/powers/barricade_power.png")
+	},
+	"无法抽牌":{
+		"name": "无法抽牌",
+		"description": "本回合无法抽牌",
+		"icon": preload("res://images/powers/no_draw_power.png")
 	}
 }
 
@@ -45,7 +55,9 @@ var buff_scene = {
 	"脆弱": FragileDebuff,
 	"力量": StrengthBuff,
 	"敏捷": DexterityBuff,
-	"恶魔形态": DemonFormBuff
+	"恶魔形态": DemonFormBuff,
+	"壁垒": BarricadeBuff,
+	"无法抽牌": NoDrawDebuff
 }
 
 var keyword_info = {
@@ -88,6 +100,14 @@ var keyword_info = {
 	"虚无":{
 		"name": "虚无",
 		"description": "虚无牌在回合结束时如果仍在手牌中，自动被消耗"
+	},
+	"壁垒":{
+		"name": "壁垒",
+		"description": "回合开始时格挡不会自动消失",
+	},
+	"无法抽牌":{
+		"name": "无法抽牌",
+		"description": "本回合无法抽牌",
 	}
 }
 

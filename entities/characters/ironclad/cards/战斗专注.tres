@@ -1,0 +1,32 @@
+[gd_resource type="Resource" format=3 uid="uid://b2c13bouulo8c"]
+
+[ext_resource type="Script" uid="uid://cxgxfbwykbp84" path="res://scripts/costum_resources/numeric_entry.gd" id="1_t8xaw"]
+[ext_resource type="Texture2D" uid="uid://b03h6ce" path="res://images/atlases/card_atlas.sprites/ironclad/battle_trance.tres" id="2_pbrxi"]
+[ext_resource type="Script" uid="uid://b4wybeioqkpgo" path="res://entities/characters/ironclad/cards/战斗专注.gd" id="3_hsx36"]
+
+[sub_resource type="Resource" id="Resource_alu25"]
+script = ExtResource("1_t8xaw")
+type = 5
+base_value = 3
+placeholder = "cards"
+affected_by = 3
+metadata/_custom_type_script = "uid://cxgxfbwykbp84"
+
+[sub_resource type="Resource" id="Resource_b5dql"]
+script = ExtResource("1_t8xaw")
+type = 5
+base_value = 4
+placeholder = "cards"
+affected_by = 3
+metadata/_custom_type_script = "uid://cxgxfbwykbp84"
+
+[resource]
+script = ExtResource("3_hsx36")
+id = "战斗专注"
+type = 1
+rarity = 1
+portrait = ExtResource("2_pbrxi")
+base_description = "[center]抽{cards}张牌。[/center][p][center]本回合内[color=gold]无法抽牌[/color][/center]"
+base_numeric_entries = Array[ExtResource("1_t8xaw")]([SubResource("Resource_alu25")])
+upgraded_description = "[center]抽{cards}张牌。[/center][p][center]本回合内[color=gold]无法抽牌[/color][/center]"
+upgraded_numeric_entries = Array[ExtResource("1_t8xaw")]([SubResource("Resource_b5dql")])

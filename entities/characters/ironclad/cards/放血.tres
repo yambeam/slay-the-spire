@@ -1,0 +1,30 @@
+[gd_resource type="Resource" format=3 uid="uid://durx4ieeeb30h"]
+
+[ext_resource type="Script" uid="uid://cxgxfbwykbp84" path="res://scripts/costum_resources/numeric_entry.gd" id="1_5h6ck"]
+[ext_resource type="Texture2D" uid="uid://bbpfskx" path="res://images/atlases/card_atlas.sprites/ironclad/bloodletting.tres" id="2_mxsrm"]
+[ext_resource type="Script" uid="uid://c5voa5l6fqcew" path="res://entities/characters/ironclad/cards/放血.gd" id="3_ur2gw"]
+
+[sub_resource type="Resource" id="Resource_7yvx5"]
+script = ExtResource("1_5h6ck")
+type = 6
+base_value = 2
+placeholder = "energy"
+affected_by = 3
+metadata/_custom_type_script = "uid://cxgxfbwykbp84"
+
+[sub_resource type="Resource" id="Resource_s1170"]
+script = ExtResource("1_5h6ck")
+type = 6
+base_value = 3
+placeholder = "energy"
+affected_by = 3
+metadata/_custom_type_script = "uid://cxgxfbwykbp84"
+
+[resource]
+script = ExtResource("3_ur2gw")
+id = "放血"
+portrait = ExtResource("2_mxsrm")
+base_description = "[center]失去3点生命。[/center][p][center]获得{energy}点[color=gold]能量[/color]。[/center]"
+base_numeric_entries = Array[ExtResource("1_5h6ck")]([SubResource("Resource_7yvx5")])
+upgraded_description = "[center]失去3点生命。[/center][p][center]获得{energy}点[color=gold]能量[/color]。[/center]"
+upgraded_numeric_entries = Array[ExtResource("1_5h6ck")]([SubResource("Resource_s1170")])

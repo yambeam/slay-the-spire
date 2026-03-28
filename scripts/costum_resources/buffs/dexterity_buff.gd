@@ -33,4 +33,4 @@ func remove_stack(amount: int):
 	stack_changed.emit()
 	
 func _on_before_gain_block(context: Context) -> void:
-	context.modifiers.append(Enums.NumericType.BLOCK, stacks, 1.0, null)
+	context.modifiers.append(Modifier.new(Enums.NumericType.BLOCK, stacks, 1.0, null))

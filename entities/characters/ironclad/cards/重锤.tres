@@ -1,0 +1,35 @@
+[gd_resource type="Resource" script_class="Card" format=3 uid="uid://bfpgqg7mlesr4"]
+
+[ext_resource type="Script" uid="uid://br1hibx18tv13" path="res://scripts/costum_resources/card.gd" id="1_card"]
+[ext_resource type="Texture2D" uid="uid://b6s4nay" path="res://images/atlases/card_atlas.sprites/ironclad/bludgeon.tres" id="2_lqjib"]
+[ext_resource type="Script" uid="uid://cxgxfbwykbp84" path="res://scripts/costum_resources/numeric_entry.gd" id="2_numeric"]
+[ext_resource type="AudioStream" uid="uid://bcwmh6adledx" path="res://audio/SFX/blunt_attack.mp3" id="4_2tg84"]
+
+[sub_resource type="Resource" id="Resource_ch1fc"]
+script = ExtResource("2_numeric")
+base_value = 32
+placeholder = "damage"
+affected_by = 2
+metadata/_custom_type_script = "uid://cxgxfbwykbp84"
+
+[sub_resource type="Resource" id="Resource_etmdp"]
+script = ExtResource("2_numeric")
+base_value = 42
+placeholder = "damage"
+affected_by = 2
+metadata/_custom_type_script = "uid://cxgxfbwykbp84"
+
+[resource]
+script = ExtResource("1_card")
+id = "重锤"
+base_target = 1
+base_cost = 3
+rarity = 2
+portrait = ExtResource("2_lqjib")
+base_description = "[center]造成{damage}点伤害。[/center]"
+sound = ExtResource("4_2tg84")
+base_numeric_entries = Array[ExtResource("2_numeric")]([SubResource("Resource_ch1fc")])
+upgraded_target = 1
+upgraded_cost = 42
+upgraded_description = "[center]造成{damage}点伤害。[/center]"
+upgraded_numeric_entries = Array[ExtResource("2_numeric")]([SubResource("Resource_etmdp")])

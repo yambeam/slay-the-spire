@@ -1,0 +1,18 @@
+[gd_resource type="Resource" format=3 uid="uid://crx7od0tunyjb"]
+
+[ext_resource type="Script" uid="uid://cxgxfbwykbp84" path="res://scripts/costum_resources/numeric_entry.gd" id="1_idsb6"]
+[ext_resource type="Texture2D" uid="uid://cojmrrl" path="res://images/atlases/card_atlas.sprites/ironclad/barricade.tres" id="2_idsb6"]
+[ext_resource type="Script" uid="uid://blmwko8xvyfft" path="res://entities/characters/ironclad/cards/壁垒.gd" id="3_4j7bj"]
+[ext_resource type="AudioStream" uid="uid://dbe46o0jyq2x8" path="res://audio/SFX/dark_orb_channel.mp3" id="4_qe7q5"]
+
+[resource]
+script = ExtResource("3_4j7bj")
+id = "壁垒"
+type = 2
+base_cost = 3
+rarity = 2
+portrait = ExtResource("2_idsb6")
+base_description = "[center]你的[color=gold]格挡[/color]在回合开始时不会自动消失。[/center]"
+sound = ExtResource("4_qe7q5")
+upgraded_cost = 2
+upgraded_description = "[center]你的[color=gold]格挡[/color]在回合开始时不会自动消失。[/center]"

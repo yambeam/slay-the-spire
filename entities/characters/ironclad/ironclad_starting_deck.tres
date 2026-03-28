@@ -35,6 +35,10 @@
 [ext_resource type="Texture2D" uid="uid://croho4y" path="res://images/atlases/card_atlas.sprites/silent/acrobatics.tres" id="29_0nu07"]
 [ext_resource type="Script" uid="uid://yiuflfbsuia0" path="res://entities/characters/silent/cards/杂技.gd" id="30_ypxan"]
 [ext_resource type="Script" uid="uid://b2h28fgmhk2p3" path="res://entities/characters/ironclad/cards/武装.gd" id="34_b05o3"]
+[ext_resource type="Texture2D" uid="uid://cojmrrl" path="res://images/atlases/card_atlas.sprites/ironclad/barricade.tres" id="35_tbhg8"]
+[ext_resource type="Script" uid="uid://blmwko8xvyfft" path="res://entities/characters/ironclad/cards/壁垒.gd" id="36_0nu07"]
+[ext_resource type="Resource" uid="uid://b2c13bouulo8c" path="res://entities/characters/ironclad/cards/战斗专注.tres" id="37_ypxan"]
+[ext_resource type="Resource" uid="uid://durx4ieeeb30h" path="res://entities/characters/ironclad/cards/放血.tres" id="38_0nu07"]
 
 [sub_resource type="Resource" id="Resource_7w2ll"]
 script = ExtResource("2_t8brg")
@@ -68,7 +72,7 @@ placeholder = "stacks_2"
 affected_by = 3
 metadata/_custom_type_script = "uid://cxgxfbwykbp84"
 
-[sub_resource type="Resource" id="Resource_b05o3"]
+[sub_resource type="Resource" id="Resource_l52n2"]
 script = ExtResource("7_b05o3")
 id = "恶魔形态"
 type = 2
@@ -97,7 +101,7 @@ placeholder = "damage"
 affected_by = 2
 metadata/_custom_type_script = "uid://cxgxfbwykbp84"
 
-[sub_resource type="Resource" id="Resource_1n3x5"]
+[sub_resource type="Resource" id="Resource_fm77h"]
 script = ExtResource("9_bnn7l")
 id = "愤怒"
 base_target = 1
@@ -123,7 +127,7 @@ placeholder = "damage"
 affected_by = 2
 metadata/_custom_type_script = "uid://cxgxfbwykbp84"
 
-[sub_resource type="Resource" id="Resource_bnn7l"]
+[sub_resource type="Resource" id="Resource_j73b2"]
 script = ExtResource("7_whuos")
 id = "打击"
 base_target = 1
@@ -153,7 +157,7 @@ placeholder = "stacks"
 affected_by = 3
 metadata/_custom_type_script = "uid://cxgxfbwykbp84"
 
-[sub_resource type="Resource" id="Resource_tbhg8"]
+[sub_resource type="Resource" id="Resource_7anbg"]
 script = ExtResource("17_bnn7l")
 id = "燃烧"
 type = 2
@@ -198,7 +202,7 @@ placeholder = "stacks"
 affected_by = 3
 metadata/_custom_type_script = "uid://cxgxfbwykbp84"
 
-[sub_resource type="Resource" id="Resource_0nu07"]
+[sub_resource type="Resource" id="Resource_7vt7t"]
 script = ExtResource("13_2qpn7")
 id = "痛击"
 base_target = 1
@@ -228,7 +232,7 @@ placeholder = "damage"
 affected_by = 2
 metadata/_custom_type_script = "uid://cxgxfbwykbp84"
 
-[sub_resource type="Resource" id="Resource_ypxan"]
+[sub_resource type="Resource" id="Resource_7tgq7"]
 script = ExtResource("10_jqanm")
 id = "突破"
 base_target = 2
@@ -257,7 +261,7 @@ base_value = 7
 placeholder = "block"
 metadata/_custom_type_script = "uid://cxgxfbwykbp84"
 
-[sub_resource type="Resource" id="Resource_l52n2"]
+[sub_resource type="Resource" id="Resource_w365k"]
 script = ExtResource("4_cyjvc")
 id = "防御"
 type = 1
@@ -285,7 +289,7 @@ placeholder = "damage"
 affected_by = 2
 metadata/_custom_type_script = "uid://cxgxfbwykbp84"
 
-[sub_resource type="Resource" id="Resource_fm77h"]
+[sub_resource type="Resource" id="Resource_tpsvt"]
 script = ExtResource("27_lm2nt")
 id = "玷污"
 base_target = 1
@@ -316,7 +320,7 @@ placeholder = "damage"
 affected_by = 2
 metadata/_custom_type_script = "uid://cxgxfbwykbp84"
 
-[sub_resource type="Resource" id="Resource_j73b2"]
+[sub_resource type="Resource" id="Resource_t66ik"]
 script = ExtResource("27_jqanm")
 id = "雕琢打击"
 base_target = 1
@@ -362,7 +366,7 @@ placeholder = "stacks"
 affected_by = 3
 metadata/_custom_type_script = "uid://cxgxfbwykbp84"
 
-[sub_resource type="Resource" id="Resource_7anbg"]
+[sub_resource type="Resource" id="Resource_s8kql"]
 script = ExtResource("15_b05o3")
 id = "中和"
 base_target = 1
@@ -391,7 +395,7 @@ base_value = 4
 placeholder = "cards"
 metadata/_custom_type_script = "uid://cxgxfbwykbp84"
 
-[sub_resource type="Resource" id="Resource_7vt7t"]
+[sub_resource type="Resource" id="Resource_mcfjg"]
 script = ExtResource("30_ypxan")
 id = "杂技"
 type = 1
@@ -421,7 +425,7 @@ placeholder = "stacks"
 affected_by = 3
 metadata/_custom_type_script = "uid://cxgxfbwykbp84"
 
-[sub_resource type="Resource" id="Resource_7tgq7"]
+[sub_resource type="Resource" id="Resource_f4pnd"]
 script = ExtResource("20_ypxan")
 id = "灵动步伐"
 type = 2
@@ -453,7 +457,7 @@ placeholder = "stacks"
 affected_by = 3
 metadata/_custom_type_script = "uid://cxgxfbwykbp84"
 
-[sub_resource type="Resource" id="Resource_w365k"]
+[sub_resource type="Resource" id="Resource_3x2p2"]
 script = ExtResource("23_lmdw5")
 id = "主宰"
 type = 1
@@ -485,7 +489,7 @@ base_value = 5
 placeholder = "block"
 metadata/_custom_type_script = "uid://cxgxfbwykbp84"
 
-[sub_resource type="Resource" id="Resource_tpsvt"]
+[sub_resource type="Resource" id="Resource_d77ff"]
 script = ExtResource("34_b05o3")
 id = "武装"
 type = 1
@@ -501,7 +505,19 @@ upgraded_description = "[center]获得{block}点[color=gold]格挡[/color]。[/c
 upgraded_numeric_entries = Array[ExtResource("2_t8brg")]([SubResource("Resource_6o2r8")])
 upgraded = true
 
+[sub_resource type="Resource" id="Resource_0rf1a"]
+script = ExtResource("36_0nu07")
+id = "壁垒"
+type = 2
+base_cost = 3
+rarity = 2
+portrait = ExtResource("35_tbhg8")
+base_description = "[center]你的[color=gold]格挡[/color]在回合开始时不会自动消失。[/center]"
+sound = ExtResource("18_tbhg8")
+upgraded_cost = 2
+upgraded_description = "[center]你的[color=gold]格挡[/color]在回合开始时不会自动消失。[/center]"
+
 [resource]
 script = ExtResource("2_pcwuu")
-cards = Array[ExtResource("1_6dnus")]([SubResource("Resource_b05o3"), SubResource("Resource_1n3x5"), SubResource("Resource_bnn7l"), SubResource("Resource_tbhg8"), SubResource("Resource_0nu07"), SubResource("Resource_ypxan"), SubResource("Resource_l52n2"), SubResource("Resource_fm77h"), SubResource("Resource_j73b2"), SubResource("Resource_7anbg"), SubResource("Resource_7vt7t"), SubResource("Resource_7tgq7"), SubResource("Resource_w365k"), SubResource("Resource_tpsvt")])
+cards = Array[ExtResource("1_6dnus")]([SubResource("Resource_l52n2"), SubResource("Resource_fm77h"), SubResource("Resource_j73b2"), SubResource("Resource_7anbg"), SubResource("Resource_7vt7t"), SubResource("Resource_7tgq7"), SubResource("Resource_w365k"), SubResource("Resource_tpsvt"), SubResource("Resource_t66ik"), SubResource("Resource_s8kql"), SubResource("Resource_mcfjg"), SubResource("Resource_f4pnd"), SubResource("Resource_3x2p2"), SubResource("Resource_d77ff"), SubResource("Resource_0rf1a"), ExtResource("37_ypxan"), ExtResource("38_0nu07")])
 metadata/_custom_type_script = "uid://jvpf65gf7yuq"

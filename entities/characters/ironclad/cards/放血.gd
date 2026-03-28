@@ -7,6 +7,5 @@ func apply_effects(context: Context) -> void:
 	lose_health_effect.sound = sound
 	lose_health_effect.execute(lose_health_context)
 	
-	# 获得2点能量
-	#var gain_energy_effect := GainEnergyEffect.new()
-	#gain_energy_effect.execute(GainEnergyContext.new(context.source, 2))
+	var gain_energy_effect := GainEnergyEffect.new()
+	gain_energy_effect.execute(GainEnergyContext.new(context.source, context.targets, _get_numeric_entries()[0].base_value))

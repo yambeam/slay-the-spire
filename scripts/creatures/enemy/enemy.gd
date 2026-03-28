@@ -77,7 +77,9 @@ func _setup_ai() -> void:
 	enemy_ai = stats.ai
 	
 func start_turn() -> void:
-	turn_started.emit(self)
+	before_turn_started.emit(self)
+	stats.block = 0
+	after_turn_started.emit(self)
 
 func end_turn() -> void:
 	turn_ended.emit(self)

@@ -2,7 +2,8 @@ class_name Creature
 extends Area2D
 
 @warning_ignore_start("unused_signal")
-signal turn_started(creature: Creature)
+signal before_turn_started(creature: Creature)
+signal after_turn_started(creature: Creature)
 signal turn_ended(creature: Creature)
 signal before_take_damage(context: Context)
 signal before_lose_health(context: Context)
@@ -69,7 +70,8 @@ func get_modifiers_by_type(type: Enums.NumericType, affect: Buff.AFFECT) -> Arra
 	return ret
 
 func start_turn() -> void:
-	turn_started.emit(self)
+	before_turn_started.emit(self)
+	after_turn_started.emit(self)
 
 func end_turn() -> void:
 	turn_ended.emit(self)

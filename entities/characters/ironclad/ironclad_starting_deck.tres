@@ -1,13 +1,442 @@
 [gd_resource type="Resource" script_class="CardPile" format=3 uid="uid://hp2dus3ms3gm"]
 
 [ext_resource type="Script" uid="uid://br1hibx18tv13" path="res://scripts/costum_resources/card.gd" id="1_6dnus"]
-[ext_resource type="Resource" uid="uid://b4u1h22sin2el" path="res://entities/characters/ironclad/cards/主宰.tres" id="2_m2kuk"]
+[ext_resource type="Script" uid="uid://cxgxfbwykbp84" path="res://scripts/costum_resources/numeric_entry.gd" id="2_lm2nt"]
 [ext_resource type="Script" uid="uid://jvpf65gf7yuq" path="res://scripts/costum_resources/card_pile.gd" id="2_pcwuu"]
-[ext_resource type="Resource" uid="uid://b5jbjk3a0xd0q" path="res://entities/characters/ironclad/cards/防御.tres" id="3_e5arj"]
-[ext_resource type="Resource" uid="uid://rfrswfbanfy" path="res://entities/characters/ironclad/cards/打击.tres" id="4_ktihu"]
-[ext_resource type="Resource" uid="uid://by1y0dacb0le4" path="res://entities/characters/ironclad/cards/全身撞击.tres" id="5_44pr0"]
+[ext_resource type="Texture2D" uid="uid://b8p12np" path="res://images/atlases/card_atlas.sprites/ironclad/dominate.tres" id="3_jqanm"]
+[ext_resource type="Script" uid="uid://crcvx0yompece" path="res://entities/characters/ironclad/cards/主宰.gd" id="4_q88nh"]
+[ext_resource type="AudioStream" uid="uid://dbe46o0jyq2x8" path="res://audio/SFX/dark_orb_channel.mp3" id="5_vp0wk"]
+[ext_resource type="Texture2D" uid="uid://w1mk8x" path="res://images/atlases/card_atlas.sprites/ironclad/strike_ironclad.tres" id="6_2qpn7"]
+[ext_resource type="Script" uid="uid://c43aulk6qym1v" path="res://entities/characters/ironclad/cards/打击.gd" id="7_o2bww"]
+[ext_resource type="AudioStream" uid="uid://bcwmh6adledx" path="res://audio/SFX/blunt_attack.mp3" id="8_b05o3"]
+[ext_resource type="Texture2D" uid="uid://cxnepi0" path="res://images/atlases/card_atlas.sprites/ironclad/defend_ironclad.tres" id="9_1n3x5"]
+[ext_resource type="Script" uid="uid://b6koyyeqx1l35" path="res://entities/characters/ironclad/cards/防御.gd" id="10_bnn7l"]
+[ext_resource type="AudioStream" uid="uid://cnxfhtrl0n8nm" path="res://audio/SFX/frost_orb_passive.mp3" id="11_tbhg8"]
+[ext_resource type="Texture2D" uid="uid://b0e08xe" path="res://images/atlases/card_atlas.sprites/ironclad/body_slam.tres" id="12_0nu07"]
+[ext_resource type="Script" uid="uid://dgsxxid4tih78" path="res://entities/characters/ironclad/cards/全身撞击.gd" id="13_ypxan"]
+[ext_resource type="Texture2D" uid="uid://t28flj" path="res://images/atlases/card_atlas.sprites/ironclad/brand.tres" id="14_l52n2"]
+[ext_resource type="Script" uid="uid://ba5pp0i84fuub" path="res://entities/characters/ironclad/cards/烙印.gd" id="15_fm77h"]
+[ext_resource type="Texture2D" uid="uid://4566p1" path="res://images/atlases/card_atlas.sprites/ironclad/bully.tres" id="16_j73b2"]
+[ext_resource type="Script" uid="uid://d260ofonx8dkc" path="res://entities/characters/ironclad/cards/欺凌.gd" id="17_7anbg"]
+[ext_resource type="Texture2D" uid="uid://c08n4uo" path="res://images/atlases/card_atlas.sprites/ironclad/bash.tres" id="18_7vt7t"]
+[ext_resource type="Script" uid="uid://c88oxyuj67or7" path="res://entities/characters/ironclad/cards/痛击.gd" id="19_7tgq7"]
+[ext_resource type="Texture2D" uid="uid://cbwhwps" path="res://images/atlases/card_atlas.sprites/ironclad/burning_pact.tres" id="20_w365k"]
+[ext_resource type="Script" uid="uid://dq8f3cktw8dm6" path="res://entities/characters/ironclad/cards/燃烧契约.gd" id="21_tpsvt"]
+[ext_resource type="Texture2D" uid="uid://x6dqru" path="res://images/atlases/card_atlas.sprites/ironclad/thunderclap.tres" id="22_t66ik"]
+[ext_resource type="Script" uid="uid://coguyr7klivol" path="res://entities/characters/ironclad/cards/闪电霹雳.gd" id="23_s8kql"]
+[ext_resource type="AudioStream" uid="uid://ba4ets7sje2xy" path="res://audio/SFX/lightning_orb_evoke.mp3" id="24_mcfjg"]
+[ext_resource type="Texture2D" uid="uid://6rwx4n" path="res://images/atlases/card_atlas.sprites/ironclad/shrug_it_off.tres" id="25_f4pnd"]
+[ext_resource type="Script" uid="uid://ccn4rd333asft" path="res://entities/characters/ironclad/cards/耸肩无视.gd" id="26_3x2p2"]
+[ext_resource type="Texture2D" uid="uid://v5fhk" path="res://images/atlases/card_atlas.sprites/ironclad/armaments.tres" id="27_w5fpy"]
+[ext_resource type="Script" uid="uid://b2h28fgmhk2p3" path="res://entities/characters/ironclad/cards/武装.gd" id="28_wwecb"]
+
+[sub_resource type="Resource" id="Resource_daffv"]
+script = ExtResource("2_lm2nt")
+type = 4
+base_value = 1
+placeholder = "stacks"
+affected_by = 3
+metadata/_custom_type_script = "uid://cxgxfbwykbp84"
+
+[sub_resource type="Resource" id="Resource_s7go0"]
+script = ExtResource("2_lm2nt")
+type = 4
+base_value = 2
+placeholder = "stacks"
+affected_by = 3
+metadata/_custom_type_script = "uid://cxgxfbwykbp84"
+
+[sub_resource type="Resource" id="Resource_d77ff"]
+script = ExtResource("4_q88nh")
+id = "主宰"
+type = 1
+base_target = 1
+base_cost = 1
+rarity = 1
+portrait = ExtResource("3_jqanm")
+base_description = "[center]施加{stacks}层[color=gold]易伤[/color]。[/center][p][center]目标每有一层[color=gold]易伤[/color]，获得一层[color=gold]力量[/color]。[/center]"
+sound = ExtResource("5_vp0wk")
+base_numeric_entries = Array[ExtResource("2_lm2nt")]([SubResource("Resource_daffv")])
+exhaust = true
+upgraded_target = 1
+upgraded_cost = 1
+upgraded_description = "[center]施加{stacks}层[color=gold]易伤[/color]。[/center][p][center]目标每有一层[color=gold]易伤[/color]，获得一层[color=gold]力量[/color]。[/center]"
+upgraded_numeric_entries = Array[ExtResource("2_lm2nt")]([SubResource("Resource_s7go0")])
+metadata/_custom_type_script = "uid://br1hibx18tv13"
+
+[sub_resource type="Resource" id="Resource_sjnru"]
+script = ExtResource("2_lm2nt")
+base_value = 6
+placeholder = "damage"
+affected_by = 2
+metadata/_custom_type_script = "uid://cxgxfbwykbp84"
+
+[sub_resource type="Resource" id="Resource_5j0xq"]
+script = ExtResource("2_lm2nt")
+base_value = 9
+placeholder = "damage"
+affected_by = 2
+metadata/_custom_type_script = "uid://cxgxfbwykbp84"
+
+[sub_resource type="Resource" id="Resource_0rf1a"]
+script = ExtResource("7_o2bww")
+id = "打击"
+base_target = 1
+base_cost = 1
+portrait = ExtResource("6_2qpn7")
+base_description = "[center]造成{damage}点伤害。[/center]"
+sound = ExtResource("8_b05o3")
+base_numeric_entries = Array[ExtResource("2_lm2nt")]([SubResource("Resource_sjnru")])
+upgraded_target = 1
+upgraded_cost = 1
+upgraded_description = "[center]造成{damage}点伤害。[/center]"
+upgraded_numeric_entries = Array[ExtResource("2_lm2nt")]([SubResource("Resource_5j0xq")])
+metadata/_custom_type_script = "uid://br1hibx18tv13"
+
+[sub_resource type="Resource" id="Resource_rknk0"]
+script = ExtResource("2_lm2nt")
+type = 2
+base_value = 5
+placeholder = "block"
+metadata/_custom_type_script = "uid://cxgxfbwykbp84"
+
+[sub_resource type="Resource" id="Resource_jo61m"]
+script = ExtResource("2_lm2nt")
+type = 2
+base_value = 7
+placeholder = "block"
+metadata/_custom_type_script = "uid://cxgxfbwykbp84"
+
+[sub_resource type="Resource" id="Resource_ljlnu"]
+script = ExtResource("10_bnn7l")
+id = "防御"
+type = 1
+base_cost = 1
+portrait = ExtResource("9_1n3x5")
+base_description = "[center]获得{block}点[color=gold]格挡[/color]。[/center]"
+sound = ExtResource("11_tbhg8")
+base_numeric_entries = Array[ExtResource("2_lm2nt")]([SubResource("Resource_rknk0")])
+upgraded_cost = 1
+upgraded_description = "[center]获得{block}点[color=gold]格挡[/color]。[/center]"
+upgraded_numeric_entries = Array[ExtResource("2_lm2nt")]([SubResource("Resource_jo61m")])
+metadata/_custom_type_script = "uid://br1hibx18tv13"
+
+[sub_resource type="Resource" id="Resource_xgstt"]
+script = ExtResource("10_bnn7l")
+id = "防御"
+type = 1
+base_cost = 1
+portrait = ExtResource("9_1n3x5")
+base_description = "[center]获得{block}点[color=gold]格挡[/color]。[/center]"
+sound = ExtResource("11_tbhg8")
+base_numeric_entries = Array[ExtResource("2_lm2nt")]([SubResource("Resource_rknk0")])
+upgraded_cost = 1
+upgraded_description = "[center]获得{block}点[color=gold]格挡[/color]。[/center]"
+upgraded_numeric_entries = Array[ExtResource("2_lm2nt")]([SubResource("Resource_jo61m")])
+metadata/_custom_type_script = "uid://br1hibx18tv13"
+
+[sub_resource type="Resource" id="Resource_okqc7"]
+script = ExtResource("2_lm2nt")
+placeholder = "damage"
+affected_by = 2
+source = 1
+metadata/_custom_type_script = "uid://cxgxfbwykbp84"
+
+[sub_resource type="Resource" id="Resource_y5ppv"]
+script = ExtResource("2_lm2nt")
+placeholder = "damage"
+affected_by = 2
+source = 1
+metadata/_custom_type_script = "uid://cxgxfbwykbp84"
+
+[sub_resource type="Resource" id="Resource_4xgfn"]
+script = ExtResource("13_ypxan")
+id = "全身撞击"
+base_target = 1
+base_cost = 1
+portrait = ExtResource("12_0nu07")
+base_description = "[center]造成等同于格挡值的攻击伤害。[/center][p][center](造成{damage}点伤害。)[/center]"
+sound = ExtResource("8_b05o3")
+base_numeric_entries = Array[ExtResource("2_lm2nt")]([SubResource("Resource_okqc7")])
+upgraded_target = 1
+upgraded_description = "[center]造成等同于格挡值的攻击伤害。[/center][p][center](造成{damage}点伤害。)[/center]"
+upgraded_numeric_entries = Array[ExtResource("2_lm2nt")]([SubResource("Resource_y5ppv")])
+
+[sub_resource type="Resource" id="Resource_nfdik"]
+script = ExtResource("2_lm2nt")
+type = 4
+base_value = 1
+placeholder = "stacks"
+affected_by = 3
+metadata/_custom_type_script = "uid://cxgxfbwykbp84"
+
+[sub_resource type="Resource" id="Resource_5k5ep"]
+script = ExtResource("2_lm2nt")
+type = 4
+base_value = 2
+placeholder = "stacks"
+affected_by = 3
+metadata/_custom_type_script = "uid://cxgxfbwykbp84"
+
+[sub_resource type="Resource" id="Resource_uw5kw"]
+script = ExtResource("15_fm77h")
+id = "烙印"
+type = 1
+rarity = 2
+portrait = ExtResource("14_l52n2")
+base_description = "[center]失去1点生命。[/center][center][color=gold]消耗[/color]一张牌。[/center][p][center]获得{stacks}层力量。[/center]"
+base_numeric_entries = Array[ExtResource("2_lm2nt")]([SubResource("Resource_nfdik")])
+upgraded_description = "[center]失去1点生命。[/center][center][color=gold]消耗[/color]一张牌。[/center][p][center]获得{stacks}层力量。[/center]"
+upgraded_numeric_entries = Array[ExtResource("2_lm2nt")]([SubResource("Resource_5k5ep")])
+
+[sub_resource type="Resource" id="Resource_oq3ul"]
+script = ExtResource("2_lm2nt")
+base_value = 4
+placeholder = "damage"
+affected_by = 2
+source = 4
+extra_param = {
+"buff_name": "易伤",
+"factor": 2
+}
+metadata/_custom_type_script = "uid://cxgxfbwykbp84"
+
+[sub_resource type="Resource" id="Resource_4g3i7"]
+script = ExtResource("2_lm2nt")
+type = 7
+base_value = 2
+placeholder = "factor"
+affected_by = 3
+metadata/_custom_type_script = "uid://cxgxfbwykbp84"
+
+[sub_resource type="Resource" id="Resource_0ecuv"]
+script = ExtResource("2_lm2nt")
+base_value = 4
+placeholder = "damage"
+affected_by = 2
+source = 4
+extra_param = {
+"buff_name": "易伤",
+"factor": "3"
+}
+metadata/_custom_type_script = "uid://cxgxfbwykbp84"
+
+[sub_resource type="Resource" id="Resource_7swf0"]
+script = ExtResource("2_lm2nt")
+type = 7
+base_value = 3
+placeholder = "factor"
+affected_by = 3
+metadata/_custom_type_script = "uid://cxgxfbwykbp84"
+
+[sub_resource type="Resource" id="Resource_jui3x"]
+script = ExtResource("17_7anbg")
+id = "欺凌"
+base_target = 1
+rarity = 1
+portrait = ExtResource("16_j73b2")
+base_description = "[center]造成{damage}点伤害。[/center][p][center]敌人身上每有一层[color=gold]易伤[/color]就额外造成{factor}点伤害。[/center]"
+sound = ExtResource("8_b05o3")
+base_numeric_entries = Array[ExtResource("2_lm2nt")]([SubResource("Resource_oq3ul"), SubResource("Resource_4g3i7")])
+upgraded_target = 1
+upgraded_description = "[center]造成{damage}点伤害。[/center][p][center]敌人身上每有一层[color=gold]易伤[/color]就额外造成{factor}点伤害。[/center]"
+upgraded_numeric_entries = Array[ExtResource("2_lm2nt")]([SubResource("Resource_0ecuv"), SubResource("Resource_7swf0")])
+
+[sub_resource type="Resource" id="Resource_kqsla"]
+script = ExtResource("2_lm2nt")
+base_value = 8
+placeholder = "damage"
+affected_by = 2
+metadata/_custom_type_script = "uid://cxgxfbwykbp84"
+
+[sub_resource type="Resource" id="Resource_4yurv"]
+script = ExtResource("2_lm2nt")
+type = 4
+base_value = 2
+placeholder = "stacks"
+affected_by = 3
+metadata/_custom_type_script = "uid://cxgxfbwykbp84"
+
+[sub_resource type="Resource" id="Resource_epc34"]
+script = ExtResource("2_lm2nt")
+base_value = 10
+placeholder = "damage"
+affected_by = 2
+metadata/_custom_type_script = "uid://cxgxfbwykbp84"
+
+[sub_resource type="Resource" id="Resource_oc4jl"]
+script = ExtResource("2_lm2nt")
+type = 4
+base_value = 3
+placeholder = "stacks"
+affected_by = 3
+metadata/_custom_type_script = "uid://cxgxfbwykbp84"
+
+[sub_resource type="Resource" id="Resource_srj1s"]
+script = ExtResource("19_7tgq7")
+id = "痛击"
+base_target = 1
+base_cost = 2
+portrait = ExtResource("18_7vt7t")
+base_description = "[center]造成{damage}点伤害。[/center][p][center]施加{stacks}层[color=gold]易伤[/color]。[/center]"
+sound = ExtResource("8_b05o3")
+base_numeric_entries = Array[ExtResource("2_lm2nt")]([SubResource("Resource_kqsla"), SubResource("Resource_4yurv")])
+upgraded_target = 1
+upgraded_cost = 2
+upgraded_description = "[center]造成{damage}点伤害。[/center][p][center]施加{stacks}层[color=gold]易伤[/color]。[/center]"
+upgraded_numeric_entries = Array[ExtResource("2_lm2nt")]([SubResource("Resource_epc34"), SubResource("Resource_oc4jl")])
+upgraded = true
+metadata/_custom_type_script = "uid://br1hibx18tv13"
+
+[sub_resource type="Resource" id="Resource_d0f2e"]
+script = ExtResource("2_lm2nt")
+type = 5
+base_value = 2
+placeholder = "cards"
+affected_by = 3
+metadata/_custom_type_script = "uid://cxgxfbwykbp84"
+
+[sub_resource type="Resource" id="Resource_nehdt"]
+script = ExtResource("2_lm2nt")
+type = 5
+base_value = 3
+placeholder = "cards"
+affected_by = 3
+metadata/_custom_type_script = "uid://cxgxfbwykbp84"
+
+[sub_resource type="Resource" id="Resource_h6lfu"]
+script = ExtResource("21_tpsvt")
+id = "燃烧契约"
+type = 1
+base_cost = 1
+rarity = 1
+portrait = ExtResource("20_w365k")
+base_description = "[center][color=gold]消耗[/color]1张牌。[/center][p][center]抽{cards}张牌。[/center]"
+base_numeric_entries = Array[ExtResource("2_lm2nt")]([SubResource("Resource_d0f2e")])
+upgraded_cost = 1
+upgraded_description = "[center][color=gold]消耗[/color]1张牌。[/center][p][center]抽{cards}张牌。[/center]"
+upgraded_numeric_entries = Array[ExtResource("2_lm2nt")]([SubResource("Resource_nehdt")])
+
+[sub_resource type="Resource" id="Resource_kfv0u"]
+script = ExtResource("2_lm2nt")
+base_value = 4
+placeholder = "damage"
+affected_by = 2
+metadata/_custom_type_script = "uid://cxgxfbwykbp84"
+
+[sub_resource type="Resource" id="Resource_11s2g"]
+script = ExtResource("2_lm2nt")
+type = 4
+base_value = 1
+placeholder = "stacks"
+affected_by = 3
+metadata/_custom_type_script = "uid://cxgxfbwykbp84"
+
+[sub_resource type="Resource" id="Resource_tjdi3"]
+script = ExtResource("2_lm2nt")
+base_value = 7
+placeholder = "damage"
+affected_by = 2
+metadata/_custom_type_script = "uid://cxgxfbwykbp84"
+
+[sub_resource type="Resource" id="Resource_pejkc"]
+script = ExtResource("2_lm2nt")
+type = 4
+base_value = 1
+placeholder = "stacks"
+affected_by = 3
+metadata/_custom_type_script = "uid://cxgxfbwykbp84"
+
+[sub_resource type="Resource" id="Resource_v3y3y"]
+script = ExtResource("23_s8kql")
+id = "闪电霹雳"
+base_target = 2
+base_cost = 1
+portrait = ExtResource("22_t66ik")
+base_description = "[center]对所有敌人施加{damage}点伤害。[/center][p][center]施加{stacks}层[color=gold]易伤[/color]。[/center]"
+sound = ExtResource("24_mcfjg")
+base_numeric_entries = Array[ExtResource("2_lm2nt")]([SubResource("Resource_kfv0u"), SubResource("Resource_11s2g")])
+upgraded_target = 2
+upgraded_cost = 1
+upgraded_description = "[center]对所有敌人施加{damage}点伤害。[/center][p][center]施加{stacks}层[color=gold]易伤[/color]。[/center]"
+upgraded_numeric_entries = Array[ExtResource("2_lm2nt")]([SubResource("Resource_tjdi3"), SubResource("Resource_pejkc")])
+
+[sub_resource type="Resource" id="Resource_4m843"]
+script = ExtResource("2_lm2nt")
+type = 2
+base_value = 8
+placeholder = "block"
+affected_by = 2
+metadata/_custom_type_script = "uid://cxgxfbwykbp84"
+
+[sub_resource type="Resource" id="Resource_cemlr"]
+script = ExtResource("2_lm2nt")
+type = 5
+base_value = 1
+placeholder = "cards"
+affected_by = 3
+metadata/_custom_type_script = "uid://cxgxfbwykbp84"
+
+[sub_resource type="Resource" id="Resource_qyxni"]
+script = ExtResource("2_lm2nt")
+type = 2
+base_value = 11
+placeholder = "block"
+affected_by = 2
+metadata/_custom_type_script = "uid://cxgxfbwykbp84"
+
+[sub_resource type="Resource" id="Resource_k8l5r"]
+script = ExtResource("2_lm2nt")
+type = 5
+base_value = 1
+placeholder = "cards"
+affected_by = 3
+metadata/_custom_type_script = "uid://cxgxfbwykbp84"
+
+[sub_resource type="Resource" id="Resource_okrv3"]
+script = ExtResource("26_3x2p2")
+id = "耸肩无视"
+type = 1
+base_cost = 1
+portrait = ExtResource("25_f4pnd")
+base_description = "[center]获得{block}点[color=gold]格挡[/color]。[/center][p][center]抽{cards}张牌[/center]"
+sound = ExtResource("11_tbhg8")
+base_numeric_entries = Array[ExtResource("2_lm2nt")]([SubResource("Resource_4m843"), SubResource("Resource_cemlr")])
+upgraded_cost = 1
+upgraded_description = "[center]获得{block}点[color=gold]格挡[/color]。[/center][p][center]抽{cards}张牌[/center]"
+upgraded_numeric_entries = Array[ExtResource("2_lm2nt")]([SubResource("Resource_qyxni"), SubResource("Resource_k8l5r")])
+
+[sub_resource type="Resource" id="Resource_xctxy"]
+script = ExtResource("2_lm2nt")
+type = 2
+base_value = 5
+placeholder = "block"
+metadata/_custom_type_script = "uid://cxgxfbwykbp84"
+
+[sub_resource type="Resource" id="Resource_6o2r8"]
+script = ExtResource("2_lm2nt")
+type = 2
+base_value = 5
+placeholder = "block"
+metadata/_custom_type_script = "uid://cxgxfbwykbp84"
+
+[sub_resource type="Resource" id="Resource_l54as"]
+script = ExtResource("28_wwecb")
+id = "武装"
+type = 1
+base_cost = 1
+portrait = ExtResource("27_w5fpy")
+base_description = "[center]获得{block}点[color=gold]格挡[/color]。[/center]
+[center][color=gold]升级[/color]手牌中的一张卡牌。[/center]"
+sound = ExtResource("11_tbhg8")
+base_numeric_entries = Array[ExtResource("2_lm2nt")]([SubResource("Resource_xctxy")])
+upgraded_cost = 1
+upgraded_description = "[center]获得{block}点[color=gold]格挡[/color]。[/center]
+[center][color=gold]升级[/color]手牌中所有卡牌。[/center]"
+upgraded_numeric_entries = Array[ExtResource("2_lm2nt")]([SubResource("Resource_6o2r8")])
+upgraded = true
 
 [resource]
 script = ExtResource("2_pcwuu")
-cards = Array[ExtResource("1_6dnus")]([ExtResource("2_m2kuk"), ExtResource("3_e5arj"), ExtResource("4_ktihu"), ExtResource("3_e5arj"), ExtResource("3_e5arj"), ExtResource("5_44pr0")])
+cards = Array[ExtResource("1_6dnus")]([SubResource("Resource_d77ff"), SubResource("Resource_0rf1a"), SubResource("Resource_ljlnu"), SubResource("Resource_xgstt"), SubResource("Resource_4xgfn"), SubResource("Resource_uw5kw"), SubResource("Resource_jui3x"), SubResource("Resource_srj1s"), SubResource("Resource_h6lfu"), SubResource("Resource_v3y3y"), SubResource("Resource_okrv3"), SubResource("Resource_l54as")])
 metadata/_custom_type_script = "uid://jvpf65gf7yuq"

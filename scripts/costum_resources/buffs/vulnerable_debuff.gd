@@ -19,8 +19,8 @@ func _ready() -> void:
 	else:
 		printerr("该对象没有before_take_damage信号")
 		return
-	if agent and agent.has_signal("turn_started"):
-		agent.connect("turn_started", _on_turn_started)
+	if agent and agent.has_signal("turn_ended"):
+		agent.connect("turn_ended", _on_turn_ended)
 
 func get_modifier() -> Array[Modifier]:
 	var modifier := Modifier.new(Enums.NumericType.DAMAGE, 0, 1.5, null)
@@ -29,5 +29,5 @@ func get_modifier() -> Array[Modifier]:
 func _on_before_take_damage(context: Context) -> void:
 	context.modifiers.append(Modifier.new(Enums.NumericType.DAMAGE, 0, 1.5, null))
 
-func _on_turn_started(_creature: Node2D) -> void:
+func _on_turn_ended(_creature: Node2D) -> void:
 	remove_stack(1) 

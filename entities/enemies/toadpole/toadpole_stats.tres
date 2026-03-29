@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="EnemyStats" format=3 uid="uid://qd6x4mb1j81y"]
+
+[ext_resource type="Resource" uid="uid://cxknq7srym4sr" path="res://entities/enemies/toadpole/toadpole_ai.tres" id="1_m135s"]
+[ext_resource type="Script" uid="uid://bjrlwk5w4gqtk" path="res://scripts/costum_resources/enemy_stats.gd" id="1_tn2cd"]
+[ext_resource type="SpineSkeletonDataResource" uid="uid://8cm0rb3ot4e2" path="res://animations/monsters/toadpole/toadpole_skel_data.tres" id="2_1p057"]
+
+[resource]
+script = ExtResource("1_tn2cd")
+ai = ExtResource("1_m135s")
+max_health = 30
+animation = ExtResource("2_1p057")
+metadata/_custom_type_script = "uid://bjrlwk5w4gqtk"

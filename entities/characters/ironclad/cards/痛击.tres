@@ -48,5 +48,4 @@ upgraded_target = 1
 upgraded_cost = 2
 upgraded_description = "[center]造成{damage}点伤害。[/center][p][center]施加{stacks}层[color=gold]易伤[/color]。[/center]"
 upgraded_numeric_entries = Array[ExtResource("1_kqsla")]([SubResource("Resource_epc34"), SubResource("Resource_oc4jl")])
-upgraded = true
 metadata/_custom_type_script = "uid://br1hibx18tv13"

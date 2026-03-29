@@ -1,0 +1,62 @@
+[gd_resource type="Resource" format=3 uid="uid://cxknq7srym4sr"]
+
+[ext_resource type="Script" uid="uid://ce34juwu5b0yr" path="res://scripts/costum_resources/intents/intent.gd" id="1_vigx8"]
+[ext_resource type="Script" uid="uid://iqqyr44teapg" path="res://scripts/costum_resources/intents/sub_intent.gd" id="2_8bhho"]
+[ext_resource type="Texture2D" uid="uid://cdjfipfy2o2u8" path="res://images/packed/intents/attack/intent_attack_2.png" id="3_855rx"]
+[ext_resource type="AudioStream" uid="uid://bcwmh6adledx" path="res://audio/SFX/blunt_attack.mp3" id="4_uidce"]
+[ext_resource type="Texture2D" uid="uid://bueaoomrl3ifh" path="res://images/packed/intents/intent_buff.png" id="5_uidce"]
+[ext_resource type="Script" uid="uid://dpbv4m5rd0bbq" path="res://scripts/costum_resources/intents/apply_buff_sub_intent.gd" id="6_kkt1q"]
+[ext_resource type="Script" uid="uid://gjypfal5fy2c" path="res://entities/enemies/toadpole/toadpole_ai.gd" id="7_uidce"]
+
+[sub_resource type="Resource" id="Resource_kkt1q"]
+script = ExtResource("2_8bhho")
+icon = ExtResource("3_855rx")
+base_value = 7
+sound = ExtResource("4_uidce")
+metadata/_custom_type_script = "uid://iqqyr44teapg"
+
+[sub_resource type="Resource" id="Resource_68u33"]
+script = ExtResource("1_vigx8")
+sub_intents = Array[ExtResource("2_8bhho")]([SubResource("Resource_kkt1q")])
+intent_name = "Whirl"
+metadata/_custom_type_script = "uid://ce34juwu5b0yr"
+
+[sub_resource type="Resource" id="Resource_3o047"]
+script = ExtResource("2_8bhho")
+icon = ExtResource("3_855rx")
+base_value = 3
+repeat = 3
+sound = ExtResource("4_uidce")
+metadata/_custom_type_script = "uid://iqqyr44teapg"
+
+[sub_resource type="Resource" id="Resource_uidce"]
+script = ExtResource("6_kkt1q")
+buff_id = "荆棘"
+type = 1
+base_value = -2
+metadata/_custom_type_script = "uid://dpbv4m5rd0bbq"
+
+[sub_resource type="Resource" id="Resource_55nap"]
+script = ExtResource("1_vigx8")
+sub_intents = Array[ExtResource("2_8bhho")]([SubResource("Resource_3o047"), SubResource("Resource_uidce")])
+intent_name = "SpikeSpit"
+metadata/_custom_type_script = "uid://ce34juwu5b0yr"
+
+[sub_resource type="Resource" id="Resource_jw7gk"]
+script = ExtResource("6_kkt1q")
+buff_id = "荆棘"
+type = 1
+icon = ExtResource("5_uidce")
+base_value = 2
+metadata/_custom_type_script = "uid://dpbv4m5rd0bbq"
+
+[sub_resource type="Resource" id="Resource_h84lw"]
+script = ExtResource("1_vigx8")
+sub_intents = Array[ExtResource("2_8bhho")]([SubResource("Resource_jw7gk")])
+intent_name = "Spiken"
+metadata/_custom_type_script = "uid://ce34juwu5b0yr"
+
+[resource]
+script = ExtResource("7_uidce")
+intents = Array[ExtResource("1_vigx8")]([SubResource("Resource_68u33"), SubResource("Resource_55nap"), SubResource("Resource_h84lw")])
+metadata/_custom_type_script = "uid://dpkht0suo8prh"

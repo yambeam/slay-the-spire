@@ -65,7 +65,7 @@ func discard_card(card: Card) -> void:
 	printerr("player_handler")
 
 
-func exhaust_card(card: Card) -> void:
+func exhaust_hand_card(card: Card) -> void:
 	for child: CardUI in hand_manager.get_children():
 		if card == child.card:
 			hand_manager.exhaust_card(child)
@@ -75,6 +75,10 @@ func exhaust_card(card: Card) -> void:
 
 
 func discard_cards() -> void:
+	
+	if hand_manager.get_child_count() == 0:
+		Events.player_hand_discarded.emit()
+		return
 	var tween := create_tween()
 	for child: CardUI in hand_manager.get_children():
 		if child.card.ethereal:

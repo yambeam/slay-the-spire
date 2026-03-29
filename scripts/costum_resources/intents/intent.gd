@@ -11,7 +11,7 @@ extends Resource
 
 @export var sub_intents: Array[SubIntent]
 # 供自定义脚本识别
-@export var conditons: String
+@export var intent_name: String
 # 决定怪物使用的动画
 @export var anim_name: String
 

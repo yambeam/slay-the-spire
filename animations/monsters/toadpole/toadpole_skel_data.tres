@@ -1,4 +1,4 @@
-[gd_resource type="SpineSkeletonDataResource" load_steps=6 format=3 uid="uid://8cm0rb3ot4e2"]
+[gd_resource type="SpineSkeletonDataResource" format=3 uid="uid://8cm0rb3ot4e2"]
 
 [ext_resource type="SpineAtlasResource" uid="uid://b43ufmrvh71is" path="res://animations/monsters/toadpole/toadpole.atlas" id="1_w4pnv"]
 [ext_resource type="SpineSkeletonFileResource" uid="uid://bits3b007mj4n" path="res://animations/monsters/toadpole/toadpole.skel" id="2_4tc28"]

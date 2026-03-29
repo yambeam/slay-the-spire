@@ -1,0 +1,32 @@
+[gd_resource type="Resource" format=3 uid="uid://dk4qphec16bps"]
+
+[ext_resource type="Script" uid="uid://cxgxfbwykbp84" path="res://scripts/costum_resources/numeric_entry.gd" id="1_8q52p"]
+[ext_resource type="Texture2D" uid="uid://t28flj" path="res://images/atlases/card_atlas.sprites/ironclad/brand.tres" id="2_8q52p"]
+[ext_resource type="Script" uid="uid://ba5pp0i84fuub" path="res://entities/characters/ironclad/cards/烙印.gd" id="3_ekquc"]
+
+[sub_resource type="Resource" id="Resource_nfdik"]
+script = ExtResource("1_8q52p")
+type = 4
+base_value = 1
+placeholder = "stacks"
+affected_by = 3
+metadata/_custom_type_script = "uid://cxgxfbwykbp84"
+
+[sub_resource type="Resource" id="Resource_5k5ep"]
+script = ExtResource("1_8q52p")
+type = 4
+base_value = 2
+placeholder = "stacks"
+affected_by = 3
+metadata/_custom_type_script = "uid://cxgxfbwykbp84"
+
+[resource]
+script = ExtResource("3_ekquc")
+id = "烙印"
+type = 1
+rarity = 2
+portrait = ExtResource("2_8q52p")
+base_description = "[center]失去1点生命。[/center][center][color=gold]消耗[/color]一张牌。[/center][p][center]获得{stacks}层力量。[/center]"
+base_numeric_entries = Array[ExtResource("1_8q52p")]([SubResource("Resource_nfdik")])
+upgraded_description = "[center]失去1点生命。[/center][center][color=gold]消耗[/color]一张牌。[/center][p][center]获得{stacks}层力量。[/center]"
+upgraded_numeric_entries = Array[ExtResource("1_8q52p")]([SubResource("Resource_5k5ep")])

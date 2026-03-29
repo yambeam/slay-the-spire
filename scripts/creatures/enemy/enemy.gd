@@ -39,8 +39,8 @@ func do_turn() -> void:
 		
 	execute_intent()
 	spine_anim_state.set_animation(current_intent.anim_name, true, 0)
-	spine_anim_state.add_animation("idle_loop", 0, true, 0)
 	await spine_manager.animation_completed
+	spine_anim_state.set_animation(enemy_ai.get_idle_animation_name(), true, 0)
 	Events.enemy_action_completed.emit(self)	
 	turn_ended.emit(self)
 	update_intent()
@@ -49,8 +49,7 @@ func execute_intent() -> void:
 	if not current_intent:
 		return
 	var player: Player = get_tree().get_first_node_in_group("ui_player")
-	for sub_intent: SubIntent in current_intent.sub_intents:
-		sub_intent.execute(self, [player])
+	enemy_ai.execute_intent(self, player, current_intent)
 	intents.hide_intent()
 		
 func _set_current_intent(value: Intent) -> void:
@@ -108,7 +107,7 @@ func _update_enemy() -> void:
 	# 不等一帧的话get_animation_state返回的是null
 	await get_tree().process_frame
 	spine_anim_state = spine_manager.get_animation_state()
-	spine_anim_state.set_animation("idle_loop", true, 0)
+	spine_anim_state.set_animation(enemy_ai.get_idle_animation_name(), true, 0)
 	_update_stats()
 	
 func die() -> void:
@@ -116,7 +115,7 @@ func die() -> void:
 	health_bar.hide()
 	reticles.hide()
 	buff_container.hide()
-	spine_anim_state.set_animation("die", true, 0)
+	spine_anim_state.set_animation(enemy_ai.get_die_animation_name(), true, 0)
 	spine_manager.animation_completed.connect(
 		func (_x, _y, _z): queue_free()
 	)
@@ -131,20 +130,21 @@ func lose_health(context: Context) -> void:
 	if stats.health <= 0:
 		die()
 	else:
-		spine_anim_state.set_animation("hurt", true, 0)
-		spine_anim_state.add_animation("idle_loop", 0, true, 0)
+		spine_anim_state.set_animation(enemy_ai.get_hurt_animation_name(), true, 0)
+		spine_anim_state.add_animation(enemy_ai.get_idle_animation_name(), 0, true, 0)
 
 func take_damage(context: Context) -> void:
 	if stats.health <= 0:
 		return
 	before_take_damage.emit(context)
 	var hurt := stats.take_damage(context.get_final_value())
+	after_take_damage.emit(context)
 	
 	if stats.health <= 0:
 		die()
 	elif hurt:
-		spine_anim_state.set_animation("hurt", true, 0)
-		spine_anim_state.add_animation("idle_loop", 0, true, 0)
+		spine_anim_state.set_animation(enemy_ai.get_hurt_animation_name(), true, 0)
+		spine_anim_state.add_animation(enemy_ai.get_idle_animation_name(), 0, true, 0)
 
 
 func _on_area_entered(_area: Area2D) -> void:

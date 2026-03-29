@@ -24,8 +24,8 @@
 [ext_resource type="PackedScene" uid="uid://c535efduugkl5" path="res://scenes/creatures/player/player.tscn" id="19_ry3up"]
 [ext_resource type="Script" uid="uid://bgjydn1xm3hu4" path="res://scripts/creatures/enemy/enemy_handler.gd" id="20_646qw"]
 [ext_resource type="PackedScene" uid="uid://dkx5per50m5cv" path="res://scenes/creatures/enemy/enemy.tscn" id="21_72xx8"]
-[ext_resource type="Resource" uid="uid://bdt85ngfibtet" path="res://entities/enemies/leaf_slime_m/leaf_slime_m.tres" id="22_j0csj"]
 [ext_resource type="Resource" uid="uid://6t0lxm3urof3" path="res://entities/enemies/leaf_slime_s/leaf_slime_s.tres" id="23_hsgn0"]
+[ext_resource type="Resource" uid="uid://qd6x4mb1j81y" path="res://entities/enemies/toadpole/toadpole_stats.tres" id="25_4hrnf"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_82is4"]
 font_size = 30
@@ -295,7 +295,7 @@ script = ExtResource("20_646qw")
 
 [node name="Creature" parent="EnemyHandler" unique_id=1879124044 instance=ExtResource("21_72xx8")]
 position = Vector2(1265, 468)
-stats = ExtResource("22_j0csj")
+stats = ExtResource("25_4hrnf")
 
 [node name="Creature2" parent="EnemyHandler" unique_id=1852437109 instance=ExtResource("21_72xx8")]
 position = Vector2(1691, 468)

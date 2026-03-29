@@ -15,13 +15,13 @@ func _init() -> void:
 	
 func _ready() -> void:
 	type = Type.DEBUFF
-	if agent and agent.has_signal("turn_started"):
-		agent.connect("turn_started", _on_turn_started)
+	if agent and agent.has_signal("before_turn_started"):
+		agent.connect("before_turn_started", _on_before_turn_started)
 
 func get_description() -> String:
 	return description.format({"stacks": stacks})
 
-func _on_turn_started(_creature: Node2D) -> void:
+func _on_before_turn_started(_creature: Node2D) -> void:
 	var apply_buff_effect = ApplyBuffEffect.new()
 	apply_buff_effect.sound = buff_sound
 	apply_buff_effect.execute(ApplyBuffContext.new(agent, [agent], 2, StrengthBuff.new()))

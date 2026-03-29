@@ -13,10 +13,12 @@ enum Source{
 	FIXED, 
 	## 基于玩家格挡
 	PLAYER_BLOCK,
-	## 基于玩家力量
-	PLAYER_STRENGTH,
+	## 基于玩家buff层数
+	PLAYER_BUFF,
 	## 基于卡牌特定名称数量
-	CARD_COUNT_BY_NAME
+	CARD_COUNT_BY_NAME,
+	## 基于目标buff层数
+	TARGET_BUFF
 }
 
 @export var type: Enums.NumericType

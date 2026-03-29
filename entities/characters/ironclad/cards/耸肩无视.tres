@@ -1,0 +1,51 @@
+[gd_resource type="Resource" format=3 uid="uid://djt7dhsu34m5b"]
+
+[ext_resource type="Script" uid="uid://cxgxfbwykbp84" path="res://scripts/costum_resources/numeric_entry.gd" id="1_cemlr"]
+[ext_resource type="Texture2D" uid="uid://6rwx4n" path="res://images/atlases/card_atlas.sprites/ironclad/shrug_it_off.tres" id="2_k8l5r"]
+[ext_resource type="Script" uid="uid://ccn4rd333asft" path="res://entities/characters/ironclad/cards/耸肩无视.gd" id="3_ghvxp"]
+[ext_resource type="AudioStream" uid="uid://cnxfhtrl0n8nm" path="res://audio/SFX/frost_orb_passive.mp3" id="4_lwalr"]
+
+[sub_resource type="Resource" id="Resource_4m843"]
+script = ExtResource("1_cemlr")
+type = 2
+base_value = 8
+placeholder = "block"
+affected_by = 2
+metadata/_custom_type_script = "uid://cxgxfbwykbp84"
+
+[sub_resource type="Resource" id="Resource_cemlr"]
+script = ExtResource("1_cemlr")
+type = 5
+base_value = 1
+placeholder = "cards"
+affected_by = 3
+metadata/_custom_type_script = "uid://cxgxfbwykbp84"
+
+[sub_resource type="Resource" id="Resource_qyxni"]
+script = ExtResource("1_cemlr")
+type = 2
+base_value = 11
+placeholder = "block"
+affected_by = 2
+metadata/_custom_type_script = "uid://cxgxfbwykbp84"
+
+[sub_resource type="Resource" id="Resource_k8l5r"]
+script = ExtResource("1_cemlr")
+type = 5
+base_value = 1
+placeholder = "cards"
+affected_by = 3
+metadata/_custom_type_script = "uid://cxgxfbwykbp84"
+
+[resource]
+script = ExtResource("3_ghvxp")
+id = "耸肩无视"
+type = 1
+base_cost = 1
+portrait = ExtResource("2_k8l5r")
+base_description = "[center]获得{block}点[color=gold]格挡[/color]。[/center][p][center]抽{cards}张牌[/center]"
+sound = ExtResource("4_lwalr")
+base_numeric_entries = Array[ExtResource("1_cemlr")]([SubResource("Resource_4m843"), SubResource("Resource_cemlr")])
+upgraded_cost = 1
+upgraded_description = "[center]获得{block}点[color=gold]格挡[/color]。[/center][p][center]抽{cards}张牌[/center]"
+upgraded_numeric_entries = Array[ExtResource("1_cemlr")]([SubResource("Resource_qyxni"), SubResource("Resource_k8l5r")])

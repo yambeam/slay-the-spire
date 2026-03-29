@@ -97,7 +97,7 @@ func take_damage(context: Context) -> void:
 		return
 	before_take_damage.emit(context)
 	var hurt := stats.take_damage(context.get_final_value())
-	
+	after_take_damage.emit(context)
 	if stats.health <= 0:
 		die()
 	elif hurt:
@@ -134,8 +134,8 @@ func get_card_count_by_name(name: String) -> int:
 func discard_card(card: Card) -> void:
 	agent.discard_card(card)
 	
-func exhaust_card(card: Card) -> void:
-	agent.exhaust_card(card)
+func exhaust_hand_card(card: Card) -> void:
+	agent.exhaust_hand_card(card)
 
 func start_turn() -> void:
 	before_turn_started.emit(self)

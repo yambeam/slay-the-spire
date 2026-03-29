@@ -211,8 +211,11 @@ func _on_drop_point_area_area_exited(area: Area2D) -> void:
 func _on_char_stats_changed() -> void:
 	self.playable = char_stats.can_play_card(card)
 
-func _on_target_selected(target: Creature) -> void:
-	set_description(get_tree().get_first_node_in_group("ui_player"), target)
+func _on_target_selected(target: Creature, card_: Card) -> void:
+	# 如果更改目标的卡牌不是自身，不修改描述
+	if card_ == card:
+		set_description(get_tree().get_first_node_in_group("ui_player"), target)
 	
-func _on_target_unselected() -> void:
-	set_description(get_tree().get_first_node_in_group("ui_player"), null)
+func _on_target_unselected(card_) -> void:
+	if card_ == card:
+		set_description(get_tree().get_first_node_in_group("ui_player"), null)

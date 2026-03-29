@@ -52,7 +52,7 @@ enum COLOR {
 func get_final_values(source_: Creature, target_: Creature) -> Dictionary:
 	var ret = {}
 	for entry: NumericEntry in get_numeric_entries():
-		var base_value := _get_numeric_value(entry, source_)
+		var base_value := _get_numeric_value(entry, source_, target_)
 		var modifiers := []
 		match entry.affected_by:
 			# 这里感觉有问题
@@ -153,21 +153,31 @@ func upgrade() -> void:
 func get_numeric_entries() -> Array[NumericEntry]:
 	return upgraded_numeric_entries if upgraded else base_numeric_entries
 
-func _get_numeric_value(entry: NumericEntry, player: Player = null) -> int:
+func _get_numeric_value(entry: NumericEntry, player: Player = null, target: Creature = null) -> int:
 	match entry.source:
 		NumericEntry.Source.FIXED:
 			return entry.base_value
 		NumericEntry.Source.PLAYER_BLOCK:
 			return player.get_block()
-		NumericEntry.Source.PLAYER_STRENGTH:
+		NumericEntry.Source.PLAYER_BUFF:
 			# 暂时没做
 			return 0
+		NumericEntry.Source.TARGET_BUFF:
+			if not target:
+				return entry.base_value
+			else:
+				var buff = target.get_buff(entry.extra_param["buff_name"])
+				if buff:
+					# 有一个我没法复现的bug
+					return entry.base_value + buff.stacks * entry.extra_param["factor"]
+				else:
+					return entry.base_value
 		_:
 			print("未实现")
 			return 0
 
-func get_numeric_value(entries: Array[NumericEntry], index: int, player: Player = null) -> int:
-	return _get_numeric_value(entries[index], player)
+func get_numeric_value(entries: Array[NumericEntry], index: int, player: Player = null, target: Creature = null) -> int:
+	return _get_numeric_value(entries[index], player, target)
 
 func _get_default_description() -> String:
 	return upgraded_description if upgraded else base_description

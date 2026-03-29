@@ -33,4 +33,3 @@ upgraded_cost = 1
 upgraded_description = "[center]获得{block}点[color=gold]格挡[/color]。[/center]
 [center][color=gold]升级[/color]手牌中所有卡牌。[/center]"
 upgraded_numeric_entries = Array[ExtResource("1_xctxy")]([SubResource("Resource_6o2r8")])
-upgraded = true

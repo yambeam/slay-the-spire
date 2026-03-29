@@ -21,6 +21,9 @@ var stackable: bool = true
 func add_stack(amount: int):
 	if not stackable and stacks > 0:
 		return
+	elif amount < 0:
+		remove_stack(-amount)
+		return
 	stacks += amount
 	stack_changed.emit()
 	

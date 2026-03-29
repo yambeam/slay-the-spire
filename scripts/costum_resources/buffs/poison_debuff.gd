@@ -13,12 +13,12 @@ func _init() -> void:
 	
 func _ready() -> void:
 	type = Type.DEBUFF
-	if agent and agent.has_signal("turn_started"):
-		agent.connect("turn_started", _on_turn_started)
+	if agent and agent.has_signal("before_turn_started"):
+		agent.connect("before_turn_started", _on_before_turn_started)
 	else:
 		printerr("该对象没有turn_started信号")
 
-func _on_turn_started(target: Node) -> void:
+func _on_before_turn_started(target: Node) -> void:
 	target.lose_health(LoseHealthContext.new(self, [target], stacks))
 	remove_stack(1)
 

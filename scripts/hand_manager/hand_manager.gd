@@ -90,8 +90,8 @@ func _on_card_previewed(pre_card: CardUI, to_preview: bool) -> void:
 		pre_card.z_index = 0
 	# to_preview = true时周围卡牌散开，=false复原
 	var card_count := get_child_count()
-	if card_count == 1 or card_count == 0:
-		return
+	if card_count == 1:
+		pre_card.animate_preview(pre_card.original_position.x, 1.3, 0, to_preview, tween_time)
 	if pre_card:
 		var element :int = to_preview as int
 		for card_ui: CardUI in get_children():
@@ -106,7 +106,7 @@ func _on_card_previewed(pre_card: CardUI, to_preview: bool) -> void:
 			#tween.set_parallel(true)
 			#tween.tween_property(card_ui, "position:x", card_ui.original_position.x + movement, tween_time)
 			if card_ui == pre_card:
-				card_ui.animate_preview(card_ui.original_position.x + movement, 1.3, 0, to_preview, tween_time)
+				card_ui.animate_preview(card_ui.original_position.x, 1.3, 0, to_preview, tween_time)
 			else:
 				card_ui.animate_preview(card_ui.original_position.x + movement, 1.3, 0, false, tween_time)
 			#card_ui.animate_to_position(card_ui.original_position + Vector2(movement, 0), tween_time)
@@ -121,7 +121,7 @@ func discard_card(card: CardUI) -> void:
 	await get_tree().process_frame
 	set_cards()
 
-func exhause_card(card: CardUI) -> void:
+func exhaust_card(card: CardUI) -> void:
 	card.queue_free()
 	# 等待card.queue_free()
 	await get_tree().process_frame

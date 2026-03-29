@@ -1,14 +1,14 @@
 [gd_scene format=3 uid="uid://esqtcxj03gav"]
 
 [ext_resource type="Script" uid="uid://cqeflccjywpu3" path="res://scripts/rooms/reward/reward_room.gd" id="1_3yqlm"]
-[ext_resource type="Texture2D" uid="uid://bx4tt0y7pmtet" path="res://images/rooms/architect_victory/architect_victory_bg.png" id="2_5uj8g"]
+[ext_resource type="Texture2D" uid="uid://d2j6mr7oiuuyh" path="res://images/rooms/architect_victory/architect_victory_bg.png" id="2_5uj8g"]
 [ext_resource type="Resource" uid="uid://bqq44kff15k4w" path="res://entities/characters/ironclad/ironclad_stats.tres" id="2_bahxe"]
 [ext_resource type="Texture2D" uid="uid://kbk0da" path="res://images/atlases/ui_atlas.sprites/proceed_button.tres" id="2_ndhp0"]
-[ext_resource type="Texture2D" uid="uid://sx01rrq77xc5" path="res://images/ui/reward_screen/reward_banner.png" id="3_n1tme"]
-[ext_resource type="Texture2D" uid="uid://bjauvcjdk27p" path="res://images/ui/reward_screen/reward_panel.png" id="3_utlay"]
+[ext_resource type="Texture2D" uid="uid://bkbggtnccf6pi" path="res://images/ui/reward_screen/reward_banner.png" id="3_n1tme"]
+[ext_resource type="Texture2D" uid="uid://dkl8hnhyro3ob" path="res://images/ui/reward_screen/reward_panel.png" id="3_utlay"]
 [ext_resource type="PackedScene" uid="uid://bq24mr0k0p284" path="res://scenes/rooms/reward/reward_button.tscn" id="6_sjaqs"]
-[ext_resource type="Texture2D" uid="uid://ddl35ro6sbaca" path="res://images/ui/reward_screen/reward_icon_money.png" id="7_imf42"]
-[ext_resource type="Texture2D" uid="uid://04x1kbf6gpu2" path="res://images/ui/reward_screen/reward_icon_card.png" id="8_bahxe"]
+[ext_resource type="Texture2D" uid="uid://d3347tcytkmi7" path="res://images/ui/reward_screen/reward_icon_money.png" id="7_imf42"]
+[ext_resource type="Texture2D" uid="uid://dgcngikl4do6n" path="res://images/ui/reward_screen/reward_icon_card.png" id="8_bahxe"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_sjaqs"]
 texture = ExtResource("3_utlay")

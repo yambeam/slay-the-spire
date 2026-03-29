@@ -1,0 +1,50 @@
+[gd_resource type="Resource" format=3 uid="uid://bwfi2t422lab6"]
+
+[ext_resource type="Script" uid="uid://cxgxfbwykbp84" path="res://scripts/costum_resources/numeric_entry.gd" id="1_bvjlo"]
+[ext_resource type="Texture2D" uid="uid://x6dqru" path="res://images/atlases/card_atlas.sprites/ironclad/thunderclap.tres" id="2_s5fly"]
+[ext_resource type="Script" uid="uid://coguyr7klivol" path="res://entities/characters/ironclad/cards/闪电霹雳.gd" id="3_0t5dk"]
+[ext_resource type="AudioStream" uid="uid://ba4ets7sje2xy" path="res://audio/SFX/lightning_orb_evoke.mp3" id="4_ovux8"]
+
+[sub_resource type="Resource" id="Resource_kfv0u"]
+script = ExtResource("1_bvjlo")
+base_value = 4
+placeholder = "damage"
+affected_by = 2
+metadata/_custom_type_script = "uid://cxgxfbwykbp84"
+
+[sub_resource type="Resource" id="Resource_11s2g"]
+script = ExtResource("1_bvjlo")
+type = 4
+base_value = 1
+placeholder = "stacks"
+affected_by = 3
+metadata/_custom_type_script = "uid://cxgxfbwykbp84"
+
+[sub_resource type="Resource" id="Resource_tjdi3"]
+script = ExtResource("1_bvjlo")
+base_value = 7
+placeholder = "damage"
+affected_by = 2
+metadata/_custom_type_script = "uid://cxgxfbwykbp84"
+
+[sub_resource type="Resource" id="Resource_pejkc"]
+script = ExtResource("1_bvjlo")
+type = 4
+base_value = 1
+placeholder = "stacks"
+affected_by = 3
+metadata/_custom_type_script = "uid://cxgxfbwykbp84"
+
+[resource]
+script = ExtResource("3_0t5dk")
+id = "闪电霹雳"
+base_target = 2
+base_cost = 1
+portrait = ExtResource("2_s5fly")
+base_description = "[center]对所有敌人施加{damage}点伤害。[/center][p][center]施加{stacks}层[color=gold]易伤[/color]。[/center]"
+sound = ExtResource("4_ovux8")
+base_numeric_entries = Array[ExtResource("1_bvjlo")]([SubResource("Resource_kfv0u"), SubResource("Resource_11s2g")])
+upgraded_target = 2
+upgraded_cost = 1
+upgraded_description = "[center]对所有敌人施加{damage}点伤害。[/center][p][center]施加{stacks}层[color=gold]易伤[/color]。[/center]"
+upgraded_numeric_entries = Array[ExtResource("1_bvjlo")]([SubResource("Resource_tjdi3"), SubResource("Resource_pejkc")])

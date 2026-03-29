@@ -1,0 +1,59 @@
+[gd_resource type="Resource" format=3 uid="uid://upuj7jv770uk"]
+
+[ext_resource type="Script" uid="uid://cxgxfbwykbp84" path="res://scripts/costum_resources/numeric_entry.gd" id="1_dcc5o"]
+[ext_resource type="Texture2D" uid="uid://4566p1" path="res://images/atlases/card_atlas.sprites/ironclad/bully.tres" id="2_478sc"]
+[ext_resource type="Script" uid="uid://d260ofonx8dkc" path="res://entities/characters/ironclad/cards/欺凌.gd" id="3_nj3k8"]
+[ext_resource type="AudioStream" uid="uid://bcwmh6adledx" path="res://audio/SFX/blunt_attack.mp3" id="4_0qfxb"]
+
+[sub_resource type="Resource" id="Resource_oq3ul"]
+script = ExtResource("1_dcc5o")
+base_value = 4
+placeholder = "damage"
+affected_by = 2
+source = 4
+extra_param = {
+"buff_name": "易伤",
+"factor": 2
+}
+metadata/_custom_type_script = "uid://cxgxfbwykbp84"
+
+[sub_resource type="Resource" id="Resource_4g3i7"]
+script = ExtResource("1_dcc5o")
+type = 7
+base_value = 2
+placeholder = "factor"
+affected_by = 3
+metadata/_custom_type_script = "uid://cxgxfbwykbp84"
+
+[sub_resource type="Resource" id="Resource_0ecuv"]
+script = ExtResource("1_dcc5o")
+base_value = 4
+placeholder = "damage"
+affected_by = 2
+source = 4
+extra_param = {
+"buff_name": "易伤",
+"factor": "3"
+}
+metadata/_custom_type_script = "uid://cxgxfbwykbp84"
+
+[sub_resource type="Resource" id="Resource_7swf0"]
+script = ExtResource("1_dcc5o")
+type = 7
+base_value = 3
+placeholder = "factor"
+affected_by = 3
+metadata/_custom_type_script = "uid://cxgxfbwykbp84"
+
+[resource]
+script = ExtResource("3_nj3k8")
+id = "欺凌"
+base_target = 1
+rarity = 1
+portrait = ExtResource("2_478sc")
+base_description = "[center]造成{damage}点伤害。[/center][p][center]敌人身上每有一层[color=gold]易伤[/color]就额外造成{factor}点伤害。[/center]"
+sound = ExtResource("4_0qfxb")
+base_numeric_entries = Array[ExtResource("1_dcc5o")]([SubResource("Resource_oq3ul"), SubResource("Resource_4g3i7")])
+upgraded_target = 1
+upgraded_description = "[center]造成{damage}点伤害。[/center][p][center]敌人身上每有一层[color=gold]易伤[/color]就额外造成{factor}点伤害。[/center]"
+upgraded_numeric_entries = Array[ExtResource("1_dcc5o")]([SubResource("Resource_0ecuv"), SubResource("Resource_7swf0")])

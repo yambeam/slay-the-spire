@@ -45,6 +45,11 @@ var buff_data = {
 		"name": "无法抽牌",
 		"description": "本回合无法抽牌",
 		"icon": preload("res://images/powers/no_draw_power.png")
+	},
+	"荆棘":{
+		"name": "荆棘",
+		"description": "受到攻击伤害时，反弹{stacks}点伤害",
+		"icon": preload("res://images/powers/thorns_power.png")
 	}
 }
 
@@ -57,7 +62,8 @@ var buff_scene = {
 	"敏捷": DexterityBuff,
 	"恶魔形态": DemonFormBuff,
 	"壁垒": BarricadeBuff,
-	"无法抽牌": NoDrawDebuff
+	"无法抽牌": NoDrawDebuff,
+	"荆棘": ThornsBuff,
 }
 
 var keyword_info = {
@@ -108,6 +114,10 @@ var keyword_info = {
 	"无法抽牌":{
 		"name": "无法抽牌",
 		"description": "本回合无法抽牌",
+	},
+	"荆棘":{
+		"name": "荆棘",
+		"description": "受到攻击伤害时，反弹等同于荆棘层数点伤害",
 	}
 }
 

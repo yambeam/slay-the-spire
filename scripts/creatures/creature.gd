@@ -6,6 +6,7 @@ signal before_turn_started(creature: Creature)
 signal after_turn_started(creature: Creature)
 signal turn_ended(creature: Creature)
 signal before_take_damage(context: Context)
+signal after_take_damage(context: Context)
 signal before_lose_health(context: Context)
 signal before_attack(context: Context)
 signal before_gain_block(context: Context)
@@ -44,9 +45,9 @@ func apply_buff(buff_context: ApplyBuffContext) -> void:
 	buff_context.targets[0].add_buff(buff_context)
 	after_apply_buff.emit(buff_context)
 
-func has_buff(name: String) -> bool:
+func has_buff(name_: String) -> bool:
 	for child: Buff in buff_manager.get_children():
-		if child.buff_name == name:
+		if child.buff_name == name_:
 			return true
 	return false
 	

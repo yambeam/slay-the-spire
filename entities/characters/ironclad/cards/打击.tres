@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://w1mk8x" path="res://images/atlases/card_atlas.sprites/ironclad/strike_ironclad.tres" id="1_80w5b"]
 [ext_resource type="Script" uid="uid://cxgxfbwykbp84" path="res://scripts/costum_resources/numeric_entry.gd" id="1_nt8xv"]
 [ext_resource type="Script" uid="uid://c43aulk6qym1v" path="res://entities/characters/ironclad/cards/打击.gd" id="2_80w5b"]
-[ext_resource type="AudioStream" uid="uid://bcwmh6adledx" path="res://audio/SFX/blunt_attack.mp3" id="4_nt8xv"]
+[ext_resource type="AudioStream" uid="uid://bwkj3ged1cm0x" path="res://audio/SFX/blunt_attack.mp3" id="4_nt8xv"]
 
 [sub_resource type="Resource" id="Resource_sjnru"]
 script = ExtResource("1_nt8xv")

@@ -1,7 +1,5 @@
 [gd_resource type="Theme" format=3 uid="uid://bvrc4e27lr1dl"]
 
-[ext_resource type="FontFile" uid="uid://bgo5h1rnqi6op" path="res://fonts/zhs/NotoSansMonoCJKsc-Regular.otf" id="1_m6p45"]
-
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fit0h"]
 bg_color = Color(0.1764706, 0.1764706, 0.1764706, 0.98039216)
 border_width_left = 5
@@ -14,5 +12,4 @@ expand_margin_right = 10.0
 expand_margin_bottom = 10.0
 
 [resource]
-default_font = ExtResource("1_m6p45")
 Panel/styles/panel = SubResource("StyleBoxFlat_fit0h")

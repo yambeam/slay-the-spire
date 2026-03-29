@@ -43,7 +43,9 @@ func _on_new_run_pressed() -> void:
 
 
 func _on_settings_pressed() -> void:
+	var log=get_tree().change_scene_to_file("res://scenes/settings/settings.tscn")
 	print("settings button pressed")
+	print(log)
 	
 
 

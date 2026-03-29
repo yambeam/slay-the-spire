@@ -22,6 +22,7 @@ SFXPlayer="*res://globals/sfx_player.tscn"
 TooltipManager="*res://globals/tooltip_manager.gd"
 KeywordTooltip="*res://globals/keyword_tooltip.tscn"
 BuffLibrary="*res://globals/buff_library.gd"
+Game="*uid://ckhqrqwi4d4ji"
 
 [display]
 

@@ -5,7 +5,6 @@
 [ext_resource type="Script" uid="uid://cxgxfbwykbp84" path="res://scripts/costum_resources/numeric_entry.gd" id="2_t8brg"]
 [ext_resource type="Texture2D" uid="uid://cxnepi0" path="res://images/atlases/card_atlas.sprites/ironclad/defend_ironclad.tres" id="3_au0bv"]
 [ext_resource type="Script" uid="uid://b6koyyeqx1l35" path="res://entities/characters/ironclad/cards/防御.gd" id="4_cyjvc"]
-[ext_resource type="AudioStream" uid="uid://cnxfhtrl0n8nm" path="res://audio/SFX/frost_orb_passive.mp3" id="5_lmdw5"]
 [ext_resource type="Texture2D" uid="uid://w1mk8x" path="res://images/atlases/card_atlas.sprites/ironclad/strike_ironclad.tres" id="6_bsqa6"]
 [ext_resource type="Texture2D" uid="uid://v6vreg" path="res://images/atlases/card_atlas.sprites/ironclad/demon_form.tres" id="6_o2bww"]
 [ext_resource type="Script" uid="uid://bt5vtxq45orx" path="res://entities/characters/ironclad/cards/恶魔形态.gd" id="7_b05o3"]
@@ -14,7 +13,6 @@
 [ext_resource type="Script" uid="uid://duaacoodwy158" path="res://entities/characters/ironclad/cards/愤怒.gd" id="9_bnn7l"]
 [ext_resource type="Texture2D" uid="uid://cyokfre" path="res://images/atlases/card_atlas.sprites/ironclad/breakthrough.tres" id="9_lm2nt"]
 [ext_resource type="Script" uid="uid://mu7i5m4la2jn" path="res://entities/characters/ironclad/cards/突破.gd" id="10_jqanm"]
-[ext_resource type="AudioStream" uid="uid://bcwmh6adledx" path="res://audio/SFX/blunt_attack.mp3" id="11_q88nh"]
 [ext_resource type="Texture2D" uid="uid://c08n4uo" path="res://images/atlases/card_atlas.sprites/ironclad/bash.tres" id="12_vp0wk"]
 [ext_resource type="Script" uid="uid://c88oxyuj67or7" path="res://entities/characters/ironclad/cards/痛击.gd" id="13_2qpn7"]
 [ext_resource type="Texture2D" uid="uid://v5fhk" path="res://images/atlases/card_atlas.sprites/ironclad/armaments.tres" id="13_tbhg8"]
@@ -22,10 +20,8 @@
 [ext_resource type="Script" uid="uid://cs30sa4fbqi21" path="res://entities/characters/silent/cards/中和.gd" id="15_b05o3"]
 [ext_resource type="Texture2D" uid="uid://cikuvbk" path="res://images/atlases/card_atlas.sprites/ironclad/inflame.tres" id="16_1n3x5"]
 [ext_resource type="Script" uid="uid://d1sfqu2pct7s3" path="res://entities/characters/ironclad/cards/燃烧.gd" id="17_bnn7l"]
-[ext_resource type="AudioStream" uid="uid://dbe46o0jyq2x8" path="res://audio/SFX/dark_orb_channel.mp3" id="18_tbhg8"]
 [ext_resource type="Texture2D" uid="uid://lm4ti5" path="res://images/atlases/card_atlas.sprites/silent/footwork.tres" id="19_0nu07"]
 [ext_resource type="Script" uid="uid://xd6ia8uvmgb2" path="res://entities/characters/silent/cards/灵动步伐.gd" id="20_ypxan"]
-[ext_resource type="AudioStream" uid="uid://3lu4thc1wvg0" path="res://audio/SFX/dark_orb_evoke.mp3" id="21_l52n2"]
 [ext_resource type="Texture2D" uid="uid://b8p12np" path="res://images/atlases/card_atlas.sprites/ironclad/dominate.tres" id="22_cyjvc"]
 [ext_resource type="Script" uid="uid://crcvx0yompece" path="res://entities/characters/ironclad/cards/主宰.gd" id="23_lmdw5"]
 [ext_resource type="Texture2D" uid="uid://pafakq" path="res://images/atlases/card_atlas.sprites/necrobinder/defile.tres" id="26_cilra"]
@@ -57,6 +53,9 @@ placeholder = "stacks_2"
 affected_by = 3
 metadata/_custom_type_script = "uid://cxgxfbwykbp84"
 
+[sub_resource type="Resource" id="Resource_q88nh"]
+metadata/__load_path__ = "res://audio/SFX/dark_orb_channel.mp3"
+
 [sub_resource type="Resource" id="Resource_nbr5u"]
 script = ExtResource("2_t8brg")
 type = 4
@@ -81,7 +80,7 @@ base_cost = 3
 rarity = 2
 portrait = ExtResource("6_o2bww")
 base_description = "[center]获得{stacks_1}层[color=gold]力量[/color]。[/center][p][center]获得{stacks_2}层[color=gold]恶魔形态[/color]。[/center]"
-sound = ExtResource("18_tbhg8")
+sound = SubResource("Resource_q88nh")
 base_numeric_entries = Array[ExtResource("2_t8brg")]([SubResource("Resource_7w2ll"), SubResource("Resource_ym4su")])
 upgraded_cost = 3
 upgraded_description = "[center]获得{stacks_1}层[color=gold]力量[/color]。[/center][p][center]获得{stacks_2}层[color=gold]恶魔形态[/color]。[/center]"
@@ -94,6 +93,9 @@ base_value = 6
 placeholder = "damage"
 affected_by = 2
 metadata/_custom_type_script = "uid://cxgxfbwykbp84"
+
+[sub_resource type="Resource" id="Resource_vp0wk"]
+metadata/__load_path__ = "res://audio/SFX/blunt_attack.mp3"
 
 [sub_resource type="Resource" id="Resource_n5u4h"]
 script = ExtResource("2_t8brg")
@@ -108,7 +110,7 @@ id = "愤怒"
 base_target = 1
 portrait = ExtResource("8_1n3x5")
 base_description = "[center]造成{damage}点伤害。[/center][p][center]将该牌的一张复制放入[color=gold]弃牌堆[/color]。[/center]"
-sound = ExtResource("11_q88nh")
+sound = SubResource("Resource_vp0wk")
 base_numeric_entries = Array[ExtResource("2_t8brg")]([SubResource("Resource_o32pn")])
 upgraded_target = 1
 upgraded_description = "[center]造成{damage}点伤害。[/center][p][center]将该牌的一张复制放入[color=gold]弃牌堆[/color]。[/center]"
@@ -120,6 +122,9 @@ base_value = 6
 placeholder = "damage"
 affected_by = 2
 metadata/_custom_type_script = "uid://cxgxfbwykbp84"
+
+[sub_resource type="Resource" id="Resource_2qpn7"]
+metadata/__load_path__ = "res://audio/SFX/blunt_attack.mp3"
 
 [sub_resource type="Resource" id="Resource_5j0xq"]
 script = ExtResource("2_t8brg")
@@ -135,7 +140,7 @@ base_target = 1
 base_cost = 1
 portrait = ExtResource("6_bsqa6")
 base_description = "[center]造成{damage}点伤害。[/center]"
-sound = ExtResource("11_q88nh")
+sound = SubResource("Resource_2qpn7")
 base_numeric_entries = Array[ExtResource("2_t8brg")]([SubResource("Resource_sjnru")])
 upgraded_target = 1
 upgraded_cost = 1
@@ -150,6 +155,9 @@ base_value = 2
 placeholder = "stacks"
 affected_by = 3
 metadata/_custom_type_script = "uid://cxgxfbwykbp84"
+
+[sub_resource type="Resource" id="Resource_o2bww"]
+metadata/__load_path__ = "res://audio/SFX/dark_orb_channel.mp3"
 
 [sub_resource type="Resource" id="Resource_4ko5v"]
 script = ExtResource("2_t8brg")
@@ -166,7 +174,7 @@ base_cost = 1
 rarity = 1
 portrait = ExtResource("16_1n3x5")
 base_description = "[center]获得{stacks}层[color=gold]力量[/color]。[/center]"
-sound = ExtResource("18_tbhg8")
+sound = SubResource("Resource_o2bww")
 base_numeric_entries = Array[ExtResource("2_t8brg")]([SubResource("Resource_61fru")])
 upgraded_cost = 1
 upgraded_description = "[center]获得{stacks}层[color=gold]力量[/color]。[/center]"
@@ -187,6 +195,9 @@ base_value = 2
 placeholder = "stacks"
 affected_by = 3
 metadata/_custom_type_script = "uid://cxgxfbwykbp84"
+
+[sub_resource type="Resource" id="Resource_t66ik"]
+metadata/__load_path__ = "res://audio/SFX/blunt_attack.mp3"
 
 [sub_resource type="Resource" id="Resource_epc34"]
 script = ExtResource("2_t8brg")
@@ -210,7 +221,7 @@ base_target = 1
 base_cost = 2
 portrait = ExtResource("12_vp0wk")
 base_description = "[center]造成{damage}点伤害。[/center][p][center]施加{stacks}层[color=gold]易伤[/color]。[/center]"
-sound = ExtResource("11_q88nh")
+sound = SubResource("Resource_t66ik")
 base_numeric_entries = Array[ExtResource("2_t8brg")]([SubResource("Resource_kqsla"), SubResource("Resource_4yurv")])
 upgraded_target = 1
 upgraded_cost = 2
@@ -226,6 +237,9 @@ placeholder = "damage"
 affected_by = 2
 metadata/_custom_type_script = "uid://cxgxfbwykbp84"
 
+[sub_resource type="Resource" id="Resource_s8kql"]
+metadata/__load_path__ = "res://audio/SFX/blunt_attack.mp3"
+
 [sub_resource type="Resource" id="Resource_x87t1"]
 script = ExtResource("2_t8brg")
 base_value = 13
@@ -240,7 +254,7 @@ base_target = 2
 base_cost = 1
 portrait = ExtResource("9_lm2nt")
 base_description = "[center]失去1点生命。[/center][p][center]对所有敌人照成{damage}点伤害。[/center]"
-sound = ExtResource("11_q88nh")
+sound = SubResource("Resource_s8kql")
 base_numeric_entries = Array[ExtResource("2_t8brg")]([SubResource("Resource_7hojj")])
 upgraded_target = 2
 upgraded_cost = 1
@@ -254,6 +268,9 @@ type = 2
 base_value = 5
 placeholder = "block"
 metadata/_custom_type_script = "uid://cxgxfbwykbp84"
+
+[sub_resource type="Resource" id="Resource_mcfjg"]
+metadata/__load_path__ = "res://audio/SFX/frost_orb_passive.mp3"
 
 [sub_resource type="Resource" id="Resource_jo61m"]
 script = ExtResource("2_t8brg")
@@ -269,7 +286,7 @@ type = 1
 base_cost = 1
 portrait = ExtResource("3_au0bv")
 base_description = "[center]获得{block}点[color=gold]格挡[/color]。[/center]"
-sound = ExtResource("5_lmdw5")
+sound = SubResource("Resource_mcfjg")
 base_numeric_entries = Array[ExtResource("2_t8brg")]([SubResource("Resource_rknk0")])
 upgraded_cost = 1
 upgraded_description = "[center]获得{block}点[color=gold]格挡[/color]。[/center]"
@@ -282,6 +299,9 @@ base_value = 13
 placeholder = "damage"
 affected_by = 2
 metadata/_custom_type_script = "uid://cxgxfbwykbp84"
+
+[sub_resource type="Resource" id="Resource_f4pnd"]
+metadata/__load_path__ = "res://audio/SFX/blunt_attack.mp3"
 
 [sub_resource type="Resource" id="Resource_fs1rm"]
 script = ExtResource("2_t8brg")
@@ -298,7 +318,7 @@ card_color = 3
 base_cost = 1
 portrait = ExtResource("26_cilra")
 base_description = "[center]造成{damage}点伤害。[/center]"
-sound = ExtResource("11_q88nh")
+sound = SubResource("Resource_f4pnd")
 base_numeric_entries = Array[ExtResource("2_t8brg")]([SubResource("Resource_u3761")])
 ethereal = true
 upgraded_target = 1
@@ -313,6 +333,9 @@ base_value = 7
 placeholder = "damage"
 affected_by = 2
 metadata/_custom_type_script = "uid://cxgxfbwykbp84"
+
+[sub_resource type="Resource" id="Resource_3x2p2"]
+metadata/__load_path__ = "res://audio/SFX/blunt_attack.mp3"
 
 [sub_resource type="Resource" id="Resource_qdl3f"]
 script = ExtResource("2_t8brg")
@@ -329,7 +352,7 @@ card_color = 3
 base_cost = 1
 portrait = ExtResource("26_lm2nt")
 base_description = "[center]造成{damage}点伤害。[/center][p][center]选择一张手牌施加[color=gold]虚无[/color]。[/center]"
-sound = ExtResource("11_q88nh")
+sound = SubResource("Resource_3x2p2")
 base_numeric_entries = Array[ExtResource("2_t8brg")]([SubResource("Resource_ppitb")])
 upgraded_target = 1
 upgraded_cost = 1
@@ -351,6 +374,9 @@ base_value = 1
 placeholder = "stacks"
 affected_by = 3
 metadata/_custom_type_script = "uid://cxgxfbwykbp84"
+
+[sub_resource type="Resource" id="Resource_d77ff"]
+metadata/__load_path__ = "res://audio/SFX/blunt_attack.mp3"
 
 [sub_resource type="Resource" id="Resource_x0ua3"]
 script = ExtResource("2_t8brg")
@@ -374,7 +400,7 @@ base_target = 1
 card_color = 1
 portrait = ExtResource("14_o2bww")
 base_description = "[center]造成{damage}点伤害。[/center][p][center]施加{stacks}层[color=gold]虚弱[/color]。[/center]"
-sound = ExtResource("11_q88nh")
+sound = SubResource("Resource_d77ff")
 base_numeric_entries = Array[ExtResource("2_t8brg")]([SubResource("Resource_3dlyd"), SubResource("Resource_7gmoc")])
 upgraded_target = 1
 upgraded_description = "[center]造成{damage}点伤害。[/center][p][center]施加{stacks}层[color=gold]虚弱[/color]。[/center]"
@@ -418,6 +444,9 @@ placeholder = "stacks"
 affected_by = 3
 metadata/_custom_type_script = "uid://cxgxfbwykbp84"
 
+[sub_resource type="Resource" id="Resource_0rf1a"]
+metadata/__load_path__ = "res://audio/SFX/dark_orb_evoke.mp3"
+
 [sub_resource type="Resource" id="Resource_wwecb"]
 script = ExtResource("2_t8brg")
 type = 4
@@ -435,7 +464,7 @@ base_cost = 1
 rarity = 1
 portrait = ExtResource("19_0nu07")
 base_description = "[center]获得{stacks}层[color=gold]敏捷[/color]。[/center]"
-sound = ExtResource("21_l52n2")
+sound = SubResource("Resource_0rf1a")
 base_numeric_entries = Array[ExtResource("2_t8brg")]([SubResource("Resource_w5fpy")])
 upgraded_cost = 1
 upgraded_description = "[center]获得{stacks}层[color=gold]敏捷[/color]。[/center]"
@@ -449,6 +478,9 @@ base_value = 1
 placeholder = "stacks"
 affected_by = 3
 metadata/_custom_type_script = "uid://cxgxfbwykbp84"
+
+[sub_resource type="Resource" id="Resource_ljlnu"]
+metadata/__load_path__ = "res://audio/SFX/dark_orb_channel.mp3"
 
 [sub_resource type="Resource" id="Resource_s7go0"]
 script = ExtResource("2_t8brg")
@@ -467,7 +499,7 @@ base_cost = 1
 rarity = 1
 portrait = ExtResource("22_cyjvc")
 base_description = "[center]施加{stacks}层[color=gold]易伤[/color]。[/center][p][center]目标每有一层[color=gold]易伤[/color]，获得一层[color=gold]力量[/color]。[/center]"
-sound = ExtResource("18_tbhg8")
+sound = SubResource("Resource_ljlnu")
 base_numeric_entries = Array[ExtResource("2_t8brg")]([SubResource("Resource_daffv")])
 exhaust = true
 upgraded_target = 1
@@ -482,6 +514,9 @@ type = 2
 base_value = 5
 placeholder = "block"
 metadata/_custom_type_script = "uid://cxgxfbwykbp84"
+
+[sub_resource type="Resource" id="Resource_xgstt"]
+metadata/__load_path__ = "res://audio/SFX/frost_orb_passive.mp3"
 
 [sub_resource type="Resource" id="Resource_6o2r8"]
 script = ExtResource("2_t8brg")
@@ -498,7 +533,7 @@ base_cost = 1
 portrait = ExtResource("13_tbhg8")
 base_description = "[center]获得{block}点[color=gold]格挡[/color]。[/center]
 [center][color=gold]升级[/color]手牌中的一张卡牌。[/center]"
-sound = ExtResource("5_lmdw5")
+sound = SubResource("Resource_xgstt")
 base_numeric_entries = Array[ExtResource("2_t8brg")]([SubResource("Resource_xctxy")])
 upgraded_cost = 1
 upgraded_description = "[center]获得{block}点[color=gold]格挡[/color]。[/center]

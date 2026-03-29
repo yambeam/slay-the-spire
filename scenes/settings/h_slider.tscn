@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://0ek3vhap4ak1"]
+
+[ext_resource type="Script" uid="uid://u07fftsw5r3o" path="res://scripts/settings/h_slider.gd" id="1_m6lev"]
+
+[node name="HSlider" type="HSlider" unique_id=938607398]
+offset_left = 170.99994
+offset_top = 343.0
+offset_right = 344.8999
+offset_bottom = 359.0
+scale = Vector2(10, 10)
+max_value = 1.0
+step = 0.01
+script = ExtResource("1_m6lev")

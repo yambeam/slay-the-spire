@@ -1,22 +1,10 @@
-[gd_resource type="Resource" format=3]
+[gd_resource type="Resource" script_class="Card" format=3 uid="uid://cme246kj1hxrq"]
 
-[ext_resource type="Script" path="res://scripts/costum_resources/card.gd" id="1_card"]
-[ext_resource type="Script" path="res://scripts/costum_resources/numeric_entry.gd" id="2_numeric"]
-[ext_resource type="Texture2D" path="res://images/packed/card_portraits/ironclad/tank.png" id="3_portrait"]
-
-[sub_resource type="Resource" id="numeric_block_15"]
-script = ExtResource("2_numeric")
-base_value = 15
-placeholder = "block"
-type = 2
+[ext_resource type="Script" uid="uid://br1hibx18tv13" path="res://scripts/costum_resources/card.gd" id="1_card"]
+[ext_resource type="Script" uid="uid://cxgxfbwykbp84" path="res://scripts/costum_resources/numeric_entry.gd" id="2_numeric"]
+[ext_resource type="Texture2D" uid="uid://cee8v7op2v0e2" path="res://images/packed/card_portraits/ironclad/tank.png" id="3_portrait"]
 
 [resource]
 script = ExtResource("1_card")
 id = "坦克"
-target = 2
-cost = 2
-rarity = 0
 portrait = ExtResource("3_portrait")
-description = "[center]获得{block}点格挡。[/center]"
-sound = null
-numeric_entries = Array[ExtResource("2_numeric")]([SubResource("numeric_block_15")])

@@ -137,7 +137,7 @@ func lose_health(context: Context) -> void:
 func take_damage(context: Context) -> void:
 	if stats.health <= 0:
 		return
-	
+	before_take_damage.emit(context)
 	var hurt := stats.take_damage(context.get_final_value())
 	
 	if stats.health <= 0:

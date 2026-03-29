@@ -3,7 +3,7 @@ extends Card
 func apply_effects(context: Context) -> void:
 	var apply_buff_effect := ApplyBuffEffect.new()
 	apply_buff_effect.execute(ApplyBuffContext.new(context.source, \
-	context.targets, _get_numeric_entries()[0].base_value, VulnerableDebuff.new()))
+	context.targets, get_numeric_value(get_numeric_entries(), 0), VulnerableDebuff.new()))
 	# 该卡牌为单目标
 	var buff_node: Buff = context.targets[0].get_buff("易伤")
 	if not buff_node:

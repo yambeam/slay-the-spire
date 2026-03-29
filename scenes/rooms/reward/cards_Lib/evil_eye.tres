@@ -1,29 +1,11 @@
-[gd_resource type="Resource" format=3]
+[gd_resource type="Resource" script_class="Card" format=3 uid="uid://im2v4vy8v4si"]
 
-[ext_resource type="Script" path="res://scripts/costum_resources/card.gd" id="1_card"]
-[ext_resource type="Script" path="res://scripts/costum_resources/numeric_entry.gd" id="2_numeric"]
-[ext_resource type="Texture2D" path="res://images/packed/card_portraits/ironclad/evil_eye.png" id="3_portrait"]
-
-[sub_resource type="Resource" id="numeric_damage_5"]
-script = ExtResource("2_numeric")
-base_value = 5
-placeholder = "damage"
-affected_by = 2
-
-[sub_resource type="Resource" id="numeric_weak_1"]
-script = ExtResource("2_numeric")
-base_value = 1
-placeholder = "weak"
-type = 4
-affected_by = 3
+[ext_resource type="Script" uid="uid://br1hibx18tv13" path="res://scripts/costum_resources/card.gd" id="1_card"]
+[ext_resource type="Script" uid="uid://cxgxfbwykbp84" path="res://scripts/costum_resources/numeric_entry.gd" id="2_numeric"]
+[ext_resource type="Texture2D" uid="uid://rkb878jupmbc" path="res://images/packed/card_portraits/ironclad/evil_eye.png" id="3_portrait"]
 
 [resource]
 script = ExtResource("1_card")
 id = "邪眼"
-target = 1
-cost = 1
 rarity = 1
 portrait = ExtResource("3_portrait")
-description = "[center]造成{damage}点伤害。施加{weak}层虚弱。抽1张牌。[/center]"
-sound = null
-numeric_entries = Array[ExtResource("2_numeric")]([SubResource("numeric_damage_5"), SubResource("numeric_weak_1")])

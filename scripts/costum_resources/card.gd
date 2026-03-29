@@ -51,8 +51,8 @@ enum COLOR {
 
 func get_final_values(source_: Creature, target_: Creature) -> Dictionary:
 	var ret = {}
-	for entry: NumericEntry in _get_numeric_entries():
-		var base_value := entry.base_value
+	for entry: NumericEntry in get_numeric_entries():
+		var base_value := _get_numeric_value(entry, source_)
 		var modifiers := []
 		match entry.affected_by:
 			# 这里感觉有问题
@@ -118,7 +118,7 @@ func get_description(source_: Creature, target_: Creature) -> String:
 	for placeholder: String in numeric_dict.keys():
 		final_value = numeric_dict[placeholder]
 		replacement = str(final_value)
-		for numeric_entry in _get_numeric_entries():
+		for numeric_entry in get_numeric_entries():
 			if numeric_entry.placeholder == placeholder:
 				if numeric_entry.base_value == final_value:
 					continue
@@ -133,7 +133,7 @@ func get_description(source_: Creature, target_: Creature) -> String:
 	
 func get_default_description() -> String:
 	var dict := {}
-	for entry: NumericEntry in _get_numeric_entries():
+	for entry: NumericEntry in get_numeric_entries():
 		dict[entry.placeholder] = entry.base_value
 	return append_features(_get_default_description()).format(dict)
 
@@ -150,8 +150,24 @@ func append_features(desc: String) -> String:
 func upgrade() -> void:
 	upgraded = true
 
-func _get_numeric_entries() -> Array[NumericEntry]:
+func get_numeric_entries() -> Array[NumericEntry]:
 	return upgraded_numeric_entries if upgraded else base_numeric_entries
+
+func _get_numeric_value(entry: NumericEntry, player: Player = null) -> int:
+	match entry.source:
+		NumericEntry.Source.FIXED:
+			return entry.base_value
+		NumericEntry.Source.PLAYER_BLOCK:
+			return player.get_block()
+		NumericEntry.Source.PLAYER_STRENGTH:
+			# 暂时没做
+			return 0
+		_:
+			print("未实现")
+			return 0
+
+func get_numeric_value(entries: Array[NumericEntry], index: int, player: Player = null) -> int:
+	return _get_numeric_value(entries[index], player)
 
 func _get_default_description() -> String:
 	return upgraded_description if upgraded else base_description

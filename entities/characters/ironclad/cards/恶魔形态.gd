@@ -1,10 +1,10 @@
 extends Card
 
 func apply_effects(context: Context) -> void:
-	var numeric_entries: Array[NumericEntry] = _get_numeric_entries()
+	var numeric_entries: Array[NumericEntry] = get_numeric_entries()
 	var apply_buff_effect := ApplyBuffEffect.new()
 	apply_buff_effect.execute(ApplyBuffContext.new(context.source, \
-	[context.source], numeric_entries[0].base_value, StrengthBuff.new()))
+	[context.source], get_numeric_value(numeric_entries, 0), StrengthBuff.new()))
 	apply_buff_effect.sound = sound
 	apply_buff_effect.execute(ApplyBuffContext.new(context.source,\
-	[context.source], numeric_entries[1].base_value, DemonFormBuff.new()))
+	[context.source], get_numeric_value(numeric_entries, 1), DemonFormBuff.new()))

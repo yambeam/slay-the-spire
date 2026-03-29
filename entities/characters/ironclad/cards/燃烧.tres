@@ -15,6 +15,7 @@ metadata/_custom_type_script = "uid://cxgxfbwykbp84"
 
 [sub_resource type="Resource" id="Resource_4ko5v"]
 script = ExtResource("1_qbqqq")
+type = 4
 base_value = 3
 placeholder = "stacks"
 affected_by = 3

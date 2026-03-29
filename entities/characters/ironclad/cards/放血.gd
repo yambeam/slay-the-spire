@@ -8,4 +8,4 @@ func apply_effects(context: Context) -> void:
 	lose_health_effect.execute(lose_health_context)
 	
 	var gain_energy_effect := GainEnergyEffect.new()
-	gain_energy_effect.execute(GainEnergyContext.new(context.source, context.targets, _get_numeric_entries()[0].base_value))
+	gain_energy_effect.execute(GainEnergyContext.new(context.source, context.targets, get_numeric_value(get_numeric_entries(), 0)))

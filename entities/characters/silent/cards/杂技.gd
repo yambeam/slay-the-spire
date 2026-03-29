@@ -4,7 +4,7 @@ extends Card
 
 func apply_effects(context: Context) -> void:
 	var draw_card_effect = DrawCardEffect.new()
-	await draw_card_effect.execute(DrawCardContext.new(context.source, [context.source], _get_numeric_entries()[0].base_value))
+	await draw_card_effect.execute(DrawCardContext.new(context.source, [context.source], get_numeric_value(get_numeric_entries(), 0)))
 	var choose_card_effect = ChooseCardEffect.new()
 	var source: Player = context.source
 	choose_card_effect.execute(ChooseCardContext.new(source, source.get_hand_cards(), \

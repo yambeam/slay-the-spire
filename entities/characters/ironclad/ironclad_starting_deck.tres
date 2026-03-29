@@ -39,6 +39,7 @@
 [ext_resource type="Script" uid="uid://blmwko8xvyfft" path="res://entities/characters/ironclad/cards/壁垒.gd" id="36_0nu07"]
 [ext_resource type="Resource" uid="uid://b2c13bouulo8c" path="res://entities/characters/ironclad/cards/战斗专注.tres" id="37_ypxan"]
 [ext_resource type="Resource" uid="uid://durx4ieeeb30h" path="res://entities/characters/ironclad/cards/放血.tres" id="38_0nu07"]
+[ext_resource type="Resource" uid="uid://by1y0dacb0le4" path="res://entities/characters/ironclad/cards/全身撞击.tres" id="39_ypxan"]
 
 [sub_resource type="Resource" id="Resource_7w2ll"]
 script = ExtResource("2_t8brg")
@@ -519,5 +520,5 @@ upgraded_description = "[center]你的[color=gold]格挡[/color]在回合开始�
 
 [resource]
 script = ExtResource("2_pcwuu")
-cards = Array[ExtResource("1_6dnus")]([SubResource("Resource_l52n2"), SubResource("Resource_fm77h"), SubResource("Resource_j73b2"), SubResource("Resource_7anbg"), SubResource("Resource_7vt7t"), SubResource("Resource_7tgq7"), SubResource("Resource_w365k"), SubResource("Resource_tpsvt"), SubResource("Resource_t66ik"), SubResource("Resource_s8kql"), SubResource("Resource_mcfjg"), SubResource("Resource_f4pnd"), SubResource("Resource_3x2p2"), SubResource("Resource_d77ff"), SubResource("Resource_0rf1a"), ExtResource("37_ypxan"), ExtResource("38_0nu07")])
+cards = Array[ExtResource("1_6dnus")]([SubResource("Resource_l52n2"), SubResource("Resource_fm77h"), SubResource("Resource_j73b2"), SubResource("Resource_7anbg"), SubResource("Resource_7vt7t"), SubResource("Resource_7tgq7"), SubResource("Resource_w365k"), SubResource("Resource_tpsvt"), SubResource("Resource_t66ik"), SubResource("Resource_s8kql"), SubResource("Resource_mcfjg"), SubResource("Resource_f4pnd"), SubResource("Resource_3x2p2"), SubResource("Resource_d77ff"), SubResource("Resource_0rf1a"), ExtResource("37_ypxan"), ExtResource("38_0nu07"), ExtResource("39_ypxan")])
 metadata/_custom_type_script = "uid://jvpf65gf7yuq"

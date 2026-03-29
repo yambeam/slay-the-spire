@@ -1,0 +1,33 @@
+[gd_resource type="Resource" format=3 uid="uid://by1y0dacb0le4"]
+
+[ext_resource type="Script" uid="uid://cxgxfbwykbp84" path="res://scripts/costum_resources/numeric_entry.gd" id="1_roarb"]
+[ext_resource type="Texture2D" uid="uid://b0e08xe" path="res://images/atlases/card_atlas.sprites/ironclad/body_slam.tres" id="2_rs3un"]
+[ext_resource type="Script" uid="uid://dgsxxid4tih78" path="res://entities/characters/ironclad/cards/全身撞击.gd" id="3_roarb"]
+[ext_resource type="AudioStream" uid="uid://bcwmh6adledx" path="res://audio/SFX/blunt_attack.mp3" id="4_6j04b"]
+
+[sub_resource type="Resource" id="Resource_okqc7"]
+script = ExtResource("1_roarb")
+placeholder = "damage"
+affected_by = 2
+source = 1
+metadata/_custom_type_script = "uid://cxgxfbwykbp84"
+
+[sub_resource type="Resource" id="Resource_y5ppv"]
+script = ExtResource("1_roarb")
+placeholder = "damage"
+affected_by = 2
+source = 1
+metadata/_custom_type_script = "uid://cxgxfbwykbp84"
+
+[resource]
+script = ExtResource("3_roarb")
+id = "全身撞击"
+base_target = 1
+base_cost = 1
+portrait = ExtResource("2_rs3un")
+base_description = "[center]造成等同于格挡值的攻击伤害。[/center][p][center](造成{damage}点伤害。)[/center]"
+sound = ExtResource("4_6j04b")
+base_numeric_entries = Array[ExtResource("1_roarb")]([SubResource("Resource_okqc7")])
+upgraded_target = 1
+upgraded_description = "[center]造成等同于格挡值的攻击伤害。[/center][p][center](造成{damage}点伤害。)[/center]"
+upgraded_numeric_entries = Array[ExtResource("1_roarb")]([SubResource("Resource_y5ppv")])

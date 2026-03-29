@@ -6,5 +6,5 @@ func apply_effects(context: Context) -> void:
 	var apply_buff_effect := ApplyBuffEffect.new()
 	apply_buff_effect.sound = sound
 	apply_buff_effect.execute(ApplyBuffContext.new(context.source, \
-	context.targets, 2, StrengthBuff.new()))
+	context.targets, get_numeric_value(get_numeric_entries(), 0), StrengthBuff.new()))
 	

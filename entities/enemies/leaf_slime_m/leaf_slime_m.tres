@@ -1,12 +1,58 @@
 [gd_resource type="Resource" script_class="EnemyStats" format=3 uid="uid://bdt85ngfibtet"]
 
-[ext_resource type="Resource" uid="uid://tcbdqpsi4r8e" path="res://entities/enemies/leaf_slime_m/leaf_slime_m_ai.tres" id="1_avlbb"]
 [ext_resource type="Script" uid="uid://bjrlwk5w4gqtk" path="res://scripts/costum_resources/enemy_stats.gd" id="1_dbr30"]
 [ext_resource type="SpineSkeletonDataResource" uid="uid://bighcyss2jo7q" path="res://animations/monsters/leaf_slime_m/leaf_slime_m_skel_data.tres" id="1_e2o86"]
+[ext_resource type="Script" uid="uid://ce34juwu5b0yr" path="res://scripts/costum_resources/intents/intent.gd" id="1_mdlnb"]
+[ext_resource type="Script" uid="uid://iqqyr44teapg" path="res://scripts/costum_resources/intents/sub_intent.gd" id="2_ueg12"]
+[ext_resource type="Texture2D" uid="uid://cdjfipfy2o2u8" path="res://images/packed/intents/attack/intent_attack_2.png" id="3_y2jx0"]
+[ext_resource type="AudioStream" uid="uid://bcwmh6adledx" path="res://audio/SFX/blunt_attack.mp3" id="4_q4gbd"]
+[ext_resource type="Texture2D" uid="uid://bihrw7avwc3xa" path="res://images/ui/combat/block.png" id="5_4s6k1"]
+[ext_resource type="AudioStream" uid="uid://cnxfhtrl0n8nm" path="res://audio/SFX/frost_orb_passive.mp3" id="6_lb31l"]
+[ext_resource type="Texture2D" uid="uid://bvpum0wc2c6or" path="res://images/packed/intents/attack/intent_attack_1.png" id="7_sjj6x"]
+[ext_resource type="Script" uid="uid://dpkht0suo8prh" path="res://scripts/costum_resources/enemy_ai.gd" id="8_3jati"]
+
+[sub_resource type="Resource" id="Resource_et3dl"]
+script = ExtResource("2_ueg12")
+icon = ExtResource("3_y2jx0")
+base_value = 7
+sound = ExtResource("4_q4gbd")
+metadata/_custom_type_script = "uid://iqqyr44teapg"
+
+[sub_resource type="Resource" id="Resource_ldd8u"]
+script = ExtResource("1_mdlnb")
+sub_intents = Array[ExtResource("2_ueg12")]([SubResource("Resource_et3dl")])
+anim_name = "attack"
+metadata/_custom_type_script = "uid://ce34juwu5b0yr"
+
+[sub_resource type="Resource" id="Resource_kvjr0"]
+script = ExtResource("2_ueg12")
+type = 3
+icon = ExtResource("5_4s6k1")
+base_value = 8
+sound = ExtResource("6_lb31l")
+metadata/_custom_type_script = "uid://iqqyr44teapg"
+
+[sub_resource type="Resource" id="Resource_nfbet"]
+script = ExtResource("2_ueg12")
+icon = ExtResource("7_sjj6x")
+base_value = 3
+sound = ExtResource("4_q4gbd")
+metadata/_custom_type_script = "uid://iqqyr44teapg"
+
+[sub_resource type="Resource" id="Resource_tgs2r"]
+script = ExtResource("1_mdlnb")
+sub_intents = Array[ExtResource("2_ueg12")]([SubResource("Resource_kvjr0"), SubResource("Resource_nfbet")])
+anim_name = "cast"
+metadata/_custom_type_script = "uid://ce34juwu5b0yr"
+
+[sub_resource type="Resource" id="Resource_l5p8h"]
+script = ExtResource("8_3jati")
+intents = Array[ExtResource("1_mdlnb")]([SubResource("Resource_ldd8u"), SubResource("Resource_tgs2r")])
+metadata/_custom_type_script = "uid://dpkht0suo8prh"
 
 [resource]
 script = ExtResource("1_dbr30")
-ai = ExtResource("1_avlbb")
+ai = SubResource("Resource_l5p8h")
 max_health = 18
 animation = ExtResource("1_e2o86")
 metadata/_custom_type_script = "uid://bjrlwk5w4gqtk"

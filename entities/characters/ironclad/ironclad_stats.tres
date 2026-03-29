@@ -2,7 +2,7 @@
 
 [ext_resource type="SpineSkeletonDataResource" uid="uid://b8e4wst5vt8xh" path="res://animations/characters/ironclad/ironclad_skel_data.tres" id="1_e3vkd"]
 [ext_resource type="Script" uid="uid://dpde6spa48hlj" path="res://scripts/costum_resources/character_stats.gd" id="1_orbop"]
-[ext_resource type="Texture2D" uid="uid://cuet3j3nkm7qr" path="res://images/ui/top_panel/character_icon_ironclad.png" id="2_e3vkd"]
+[ext_resource type="Texture2D" uid="uid://x2neryjvbtwy" path="res://images/ui/top_panel/character_icon_ironclad.png" id="2_e3vkd"]
 [ext_resource type="Resource" uid="uid://dj2uogmuhqx44" path="res://scenes/rooms/reward/Draftable_cards.tres" id="3_e3340"]
 [ext_resource type="Resource" uid="uid://hp2dus3ms3gm" path="res://entities/characters/ironclad/ironclad_starting_deck.tres" id="3_spq8r"]
 

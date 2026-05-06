@@ -277,7 +277,7 @@ func rebuild_for_stage(stats: RunStats) -> void:
 	_clear_map()
 	generate_new_map()
 
-	# 🎨 根据当前阶段换背景
+	#根据当前阶段换背景
 	_apply_stage_background(stats.current_stage)
 
 	# 激活起点房间
@@ -326,7 +326,7 @@ func _apply_stage_background(stage: int) -> void:
 		legend_bg_rect.texture = load(paths["legend_bg"])
 
 
-# 播放阶段过渡动画
+
 func play_stage_transition(stage: int) -> void:
 	rebuild_for_stage(run_stats)
 	camera_2d.position.y = -camera_edge_y
@@ -342,7 +342,7 @@ func play_stage_transition(stage: int) -> void:
 
 	scroll_enabled = true
 
-# 创建 ACT 提示控件
+
 func _create_act_label(stage: int) -> void:
 	# 创建一个专用的 CanvasLayer，确保 UI 始终在相机之上
 	var canvas = CanvasLayer.new()
@@ -355,11 +355,10 @@ func _create_act_label(stage: int) -> void:
 	label.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
 	label.add_theme_font_size_override("font_size", 80)
 	label.add_theme_color_override("font_color", Color.WHITE)
-	label.set_anchors_preset(Control.PRESET_FULL_RECT)   # 全屏居中
-	label.modulate.a = 0.0   # 从完全透明开始
+	label.set_anchors_preset(Control.PRESET_FULL_RECT)  
+	label.modulate.a = 0.0  
 	canvas.add_child(label)
 
-	# 淡入 → 停留 → 淡出 → 自动销毁
 	var t = create_tween()
 	t.tween_property(label, "modulate:a", 1.0, 0.5)
 	t.tween_interval(1.5)   # 在全黑背景下显示 1.5 秒（可调整）

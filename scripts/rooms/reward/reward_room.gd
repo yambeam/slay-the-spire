@@ -54,13 +54,15 @@ func add_rewards(room: Room, context: RewardContext) -> void:
 	if room.enemy_encounter.type == EnemyEncounter.Type.BOSS:
 		context.all_rare = true
 		context.extra_relic_count += 1
-	if room.enemy_encounter.type == EnemyEncounter.Type.ELITE:
+	elif room.enemy_encounter.type == EnemyEncounter.Type.ELITE:
 		context.extra_relic_count += 1
 	
 	
 	_randomize_extra_potion_rewards(room,context)
 	print("额外遗物数量: ", context.extra_relic_count)
 	print("额外药水数量: ", context.extra_potion_count)	
+	print("相关金币数量: ",context.extra_gold)
+	print("相关卡牌数量: ",context.extra_card_count)
 	add_gold_reward(room.enemy_encounter.roll_gold_reward())
 	add_card_reward(context)
 
@@ -68,13 +70,13 @@ func add_rewards(room: Room, context: RewardContext) -> void:
 	for i in range(context.extra_card_count):
 		add_card_reward(context)
 
-	# 额外药水（使用加权随机）
+	# 额外药水
 	for i in range(context.extra_potion_count):
 		var potion = _get_random_weighted_potion()
 		if potion:
 			add_potion_reward(potion)
 
-	# 额外遗物（使用加权随机）
+	# 额外遗物
 	for i in range(context.extra_relic_count):
 		var relic = _get_random_weighted_relic()
 		if relic:
@@ -96,8 +98,9 @@ func add_gold_reward(amount:int)->void:
 	var gold_reward:=REWARD_BUTTON.instantiate()as RewardButton
 	gold_reward.reward_icon=GOLD_ICON
 	gold_reward.reward_text =GOLD_TEXT % amount
-	gold_reward.pressed.connect(_on_gold_reward_taken.bind(amount))
+	gold_reward.pressed.connect(_on_gold_reward_taken.bind(gold_reward,amount))
 	rewards.add_child.call_deferred(gold_reward)
+
 
 func add_potion_reward(potion: Potion) -> void:
 	var potion_reward := REWARD_BUTTON.instantiate() as RewardButton
@@ -106,8 +109,12 @@ func add_potion_reward(potion: Potion) -> void:
 		potion_reward.reward_text = potion.potion_name
 		potion_reward.pressed.connect(
 			func():
-				if run_stats:
-					run_stats.add_potion(potion)
+				if _is_potion_slot_full():
+					_play_shake_feedback(potion_reward)
+				else:
+					if run_stats:
+						run_stats.add_potion(potion)
+					potion_reward.queue_free()
 		)
 		rewards.call_deferred("add_child", potion_reward)
 
@@ -120,13 +127,15 @@ func add_relic_reward(relic: Relic) -> void:
 			func():
 				if run_stats:
 					run_stats.add_relic(relic)
+					relic_reward.queue_free()
 		)
 	rewards.call_deferred("add_child", relic_reward)
 	
-func _on_gold_reward_taken(amount: int) -> void:
+func _on_gold_reward_taken(gold_reward:RewardButton,amount: int) -> void:
 	if not run_stats:
 		return
 	run_stats.gold += amount
+	gold_reward.queue_free()
 
 #回退
 func _on_button_pressed() -> void:
@@ -136,15 +145,16 @@ func add_card_reward(context: RewardContext)->void:
 	var card_reward := REWARD_BUTTON.instantiate() as RewardButton
 	card_reward.reward_icon=CARD_ICON
 	card_reward.reward_text =CARD_TEXT
-	card_reward.pressed.connect(_show_card_rewards.bind(context))
+	card_reward.pressed.connect(_show_card_rewards.bind(card_reward,context))
 	rewards.add_child.call_deferred(card_reward)
 	
-func _show_card_rewards(context: RewardContext)->void:
+func _show_card_rewards(card_reward:RewardButton,context: RewardContext)->void:
 	if not run_stats or not character_stats:
 		return
 	var card_rewards := CARD_REWARDS.instantiate() as CardRewards
 	add_child(card_rewards)
 	card_rewards.card_reward_selected.connect(_on_card_reward_taken)
+	card_reward.queue_free()
 	
 	var card_reward_array:Array[Card]=[]
 	#var available_cards:Array[Card]=character_stats.draftable_cards.cards.duplicate(true)
@@ -332,3 +342,17 @@ func _randomize_extra_potion_rewards(room: Room, context: RewardContext) -> void
 	if randf() < chance:
 		context.extra_potion_count += bonus_amount
 		print("幸运！额外获得药水 x%d" % bonus_amount)
+
+
+func _play_shake_feedback(btn: Control) -> void:
+	var orig_x = btn.position.x
+	var t := create_tween()
+	t.tween_property(btn, "position:x", orig_x - 8, 0.05)
+	t.tween_property(btn, "position:x", orig_x + 8, 0.05)
+	t.tween_property(btn, "position:x", orig_x, 0.05)
+	# 可同时加短暂红色闪烁
+	btn.modulate = Color.RED
+	t.tween_callback(func(): btn.modulate = Color.WHITE)
+
+func _is_potion_slot_full() -> bool:
+	return run_stats.potions.back() != null;

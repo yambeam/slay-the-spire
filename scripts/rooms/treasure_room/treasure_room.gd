@@ -16,6 +16,7 @@ const RELIC_UI_SCENE = preload("res://scenes/relichandler/relic_ui.tscn")
 @onready var color_rect: ColorRect = $ColorRect
 @onready var proceed_button: Button = $Button
 @onready var relic_display: Control = $HandsContainer/Control
+@onready var light: PointLight2D = $Chest/PointLight2D
 
 @onready var sparkles: CPUParticles2D = $Chest/Sparkles
 
@@ -60,7 +61,7 @@ func _on_chest_gui_input(event: InputEvent):
 func _open_chest():
 	is_opened = true
 
-
+	_on_chest_mouse_exited()
 	if sparkles:
 		sparkles.emitting = false
 
@@ -71,8 +72,8 @@ func _open_chest():
 	if chest.get_global_rect().has_point(get_global_mouse_position()):
 		var hide_tween = create_tween()
 		hide_tween.tween_property(line_2d, "modulate:a", 0.0, 0.0)
-
-	await get_tree().create_timer(1.0).timeout
+	light.energy = 0.0
+	#await get_tree().create_timer(1.0).timeout
 	%GoldExplosion.emitting = true
 	_give_reward()
 	proceed_button.visible = true

@@ -14,7 +14,6 @@ func _ready():
 	mouse_exited.connect(_on_mouse_exited)
 
 func _on_mouse_entered():
-	# 悬浮时，将颜色调暗（例如亮度乘以0.7）
 	self_modulate = Color(0.7, 0.7, 0.7)
 
 func _on_mouse_exited():
@@ -35,5 +34,6 @@ func set_reward_text(new_text:String)->void:
 
 
 func _on_pressed() -> void:
-	queue_free()
+	#queue_free()
+	pass
 	

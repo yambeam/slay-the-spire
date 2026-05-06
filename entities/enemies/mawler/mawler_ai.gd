@@ -11,12 +11,12 @@ func execute_intent(source: Creature, target: Creature, current_intent: Intent) 
 
 func choose_intent(_source: Creature, _target: Creature) -> Intent:
 	if last_action == "":
-		return get_intent_by_name(intents, "Claw")
+		return get_intent_by_name("Claw")
 	var available_intents : Array[Intent] = []
 	if not roared:
-		available_intents.append(get_intent_by_name(intents, "Roar"))
+		available_intents.append(get_intent_by_name("Roar"))
 	if last_action != "Claw":
-		available_intents.append(get_intent_by_name(intents, "Claw"))
+		available_intents.append(get_intent_by_name("Claw"))
 	if last_action != "RipAndTear":
-		available_intents.append(get_intent_by_name(intents, "RipAndTear"))
+		available_intents.append(get_intent_by_name("RipAndTear"))
 	return random_intent(available_intents)

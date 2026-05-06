@@ -1,0 +1,32 @@
+[gd_resource type="Resource" script_class="Relic" format=3 uid="uid://cxdtdodsvqa8a"]
+
+[ext_resource type="Script" uid="uid://cgmi6f3o7leik" path="res://scripts/costum_resources/effect.gd" id="1_7tbsx"]
+[ext_resource type="Script" uid="uid://bvf88v88tbaks" path="res://scripts/costum_resources/relic.gd" id="2_neuof"]
+[ext_resource type="Resource" uid="uid://dy6f6ic2oxhau" path="res://entities/cards/colorless/冷光.tres" id="2_nqos7"]
+[ext_resource type="Script" uid="uid://dtok21t0ujjui" path="res://scripts/costum_resources/numeric_provider.gd" id="3_v3gmd"]
+[ext_resource type="Script" uid="uid://bfd4cqklwdhs3" path="res://scripts/costum_resources/effects/put_card_effect.gd" id="4_lndcq"]
+[ext_resource type="Texture2D" uid="uid://bbj3ers" path="res://images/atlases/relic_atlas.sprites/radiant_pearl.tres" id="5_w0jqn"]
+
+[sub_resource type="Resource" id="Resource_d0gvw"]
+script = ExtResource("3_v3gmd")
+fixed_value = 1
+metadata/_custom_type_script = "uid://dtok21t0ujjui"
+
+[sub_resource type="Resource" id="Resource_8q7c5"]
+script = ExtResource("4_lndcq")
+where = 2
+card_to_put = ExtResource("2_nqos7")
+put_card_count_provider = SubResource("Resource_d0gvw")
+target_type = 1
+metadata/_custom_type_script = "uid://bfd4cqklwdhs3"
+
+[resource]
+script = ExtResource("2_neuof")
+relic_name = "发光珍珠"
+id = "radiant_pearl"
+icon = ExtResource("5_w0jqn")
+description = "在每场战斗开始时，将1张[color=gold]冷光[/color]加入你的[color=gold]手牌[/color]"
+trigger_type = 2
+rarity = 32
+effects = Array[ExtResource("1_7tbsx")]([SubResource("Resource_8q7c5")])
+metadata/_custom_type_script = "uid://bvf88v88tbaks"

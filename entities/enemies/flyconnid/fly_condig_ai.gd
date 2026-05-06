@@ -33,5 +33,5 @@ func choose_intent(_source: Creature, _target: Creature) -> Intent:
 		available_intents.append("FrailSpores")
 	if available_intents.is_empty():
 		available_intents.append("VulnerableSpores")
-	return get_intent_by_name(intents, available_intents.pick_random())
+	return get_intent_by_name(available_intents.pick_random())
 		

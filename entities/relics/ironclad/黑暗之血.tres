@@ -1,0 +1,29 @@
+[gd_resource type="Resource" script_class="Relic" format=3 uid="uid://capkbypruoswr"]
+
+[ext_resource type="Script" uid="uid://cgmi6f3o7leik" path="res://scripts/costum_resources/effect.gd" id="1_ivrjm"]
+[ext_resource type="Script" uid="uid://bvf88v88tbaks" path="res://scripts/costum_resources/relic.gd" id="2_cis0s"]
+[ext_resource type="Script" uid="uid://dtok21t0ujjui" path="res://scripts/costum_resources/numeric_provider.gd" id="2_feimd"]
+[ext_resource type="Script" uid="uid://da1srbssi025l" path="res://scripts/costum_resources/effects/heal_effect.gd" id="3_ohksq"]
+[ext_resource type="Texture2D" uid="uid://chchyvi" path="res://images/atlases/relic_atlas.sprites/black_blood.tres" id="4_thwvx"]
+
+[sub_resource type="Resource" id="Resource_wiwu2"]
+script = ExtResource("2_feimd")
+fixed_value = 12
+metadata/_custom_type_script = "uid://dtok21t0ujjui"
+
+[sub_resource type="Resource" id="Resource_tj5vw"]
+script = ExtResource("3_ohksq")
+heal_provider = SubResource("Resource_wiwu2")
+target_type = 1
+metadata/_custom_type_script = "uid://da1srbssi025l"
+
+[resource]
+script = ExtResource("2_cis0s")
+relic_name = "黑暗之血"
+id = "black_blood"
+icon = ExtResource("4_thwvx")
+description = "战斗结束时，回复12点生命"
+trigger_type = 4
+rarity = 8
+effects = Array[ExtResource("1_ivrjm")]([SubResource("Resource_tj5vw")])
+metadata/_custom_type_script = "uid://bvf88v88tbaks"

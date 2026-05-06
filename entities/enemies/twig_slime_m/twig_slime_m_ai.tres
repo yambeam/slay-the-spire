@@ -3,13 +3,11 @@
 [ext_resource type="Script" uid="uid://ce34juwu5b0yr" path="res://scripts/costum_resources/intents/intent.gd" id="1_eb8np"]
 [ext_resource type="Script" uid="uid://iqqyr44teapg" path="res://scripts/costum_resources/intents/sub_intent.gd" id="2_iq7g1"]
 [ext_resource type="Script" uid="uid://dtok21t0ujjui" path="res://scripts/costum_resources/numeric_provider.gd" id="3_bja22"]
-[ext_resource type="Texture2D" uid="uid://c4qea6ui2gksn" path="res://images/packed/intents/attack/intent_attack_3.png" id="3_l0uf7"]
 [ext_resource type="Script" uid="uid://vkklgv0ma0yf" path="res://scripts/costum_resources/effects/attack_effect.gd" id="4_72cov"]
 [ext_resource type="Script" uid="uid://bces7ijyodhmv" path="res://scripts/costum_resources/intents/attack_sub_intent.gd" id="6_n3jbk"]
 [ext_resource type="Script" uid="uid://dvy1chg4qtsxv" path="res://entities/enemies/twig_slime_m/twig_slime_m_ai.gd" id="7_iq7g1"]
 [ext_resource type="Resource" uid="uid://by2gga1uh715e" path="res://entities/cards/status_cards/粘液.tres" id="7_omsx0"]
 [ext_resource type="Script" uid="uid://bfd4cqklwdhs3" path="res://scripts/costum_resources/effects/put_card_effect.gd" id="8_lgsya"]
-[ext_resource type="Texture2D" uid="uid://s3dma6tta5n3" path="res://images/packed/intents/intent_status_card.png" id="9_s8frv"]
 [ext_resource type="Script" uid="uid://b3b84q5sqt5kj" path="res://scripts/costum_resources/intents/put_card_sub_intent.gd" id="10_mx03p"]
 
 [sub_resource type="Resource" id="Resource_bcvpa"]
@@ -30,7 +28,6 @@ metadata/_custom_type_script = "uid://vkklgv0ma0yf"
 [sub_resource type="Resource" id="Resource_hkbof"]
 script = ExtResource("6_n3jbk")
 damage_provider = SubResource("Resource_bcvpa")
-icon = ExtResource("3_l0uf7")
 effect = SubResource("Resource_4dbbd")
 metadata/_custom_type_script = "uid://bces7ijyodhmv"
 
@@ -61,7 +58,7 @@ metadata/_custom_type_script = "uid://dtok21t0ujjui"
 [sub_resource type="Resource" id="Resource_63tyx"]
 script = ExtResource("10_mx03p")
 numeric_provider = SubResource("Resource_ax738")
-icon = ExtResource("9_s8frv")
+type = 10
 effect = SubResource("Resource_darhx")
 metadata/_custom_type_script = "uid://b3b84q5sqt5kj"
 

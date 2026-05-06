@@ -52,8 +52,6 @@ func set_cards(instant: bool = false) -> void:
 	elif card_count == 1:
 		var tween := create_tween()
 		var card_ui: CardUI = card_uis[0]
-		if card_ui.discarded:
-			return
 		card_ui.original_position = max_width / 2
 		card_ui.original_position.y -= max_height
 		card_ui.original_rotation = 0.0;
@@ -68,8 +66,6 @@ func set_cards(instant: bool = false) -> void:
 		var card_ui: CardUI
 		for card_index in card_count:
 			card_ui = card_uis[card_index]
-			if card_ui.discarded:
-				continue
 			# !godot中两个操作数都是整数时执行整数除法
 			# 卡牌超出上限时不预留卡牌之间的空间(一般不会出现这种情况
 			if card_count > max_cards_amount:
@@ -147,7 +143,6 @@ func find_card_ui(card: Card) -> CardUI:
 func discard_hand() -> void:
 	for child: CardUI in get_children():
 		child.card.first_play_free = false
-		child.discarded = true
 		Events.card_discarded.emit(child)
 
 func disable_hand() -> void:

@@ -1,0 +1,14 @@
+[gd_resource type="Resource" format=3 uid="uid://xyk2hampa25j"]
+
+[ext_resource type="Script" uid="uid://cgmi6f3o7leik" path="res://scripts/costum_resources/effect.gd" id="1_lnh0y"]
+[ext_resource type="Texture2D" uid="uid://cn01pq5" path="res://images/atlases/relic_atlas.sprites/glass_eye.tres" id="2_x2ad2"]
+[ext_resource type="Script" uid="uid://diknj10w17ffj" path="res://entities/relics/ancient_orobas/玻璃眼珠.gd" id="3_5tlae"]
+
+[resource]
+script = ExtResource("3_5tlae")
+relic_name = "玻璃眼珠"
+id = "glass_eye"
+icon = ExtResource("2_x2ad2")
+description = "拾取时，从5张普通卡，5张罕见卡，5张稀有卡中选择任意张加入牌组"
+rarity = 32
+metadata/_custom_type_script = "uid://bvf88v88tbaks"

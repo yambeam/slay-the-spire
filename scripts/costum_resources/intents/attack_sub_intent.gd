@@ -28,3 +28,10 @@ func _get_final_value(base_value: int) -> int:
 		else:
 			modifiers = source.get_modifiers_by_type(Enums.NumericType.DAMAGE, BuffResource.AFFECT.SELF)
 		return NumericHelper.apply_modifiers(base_value, modifiers)		
+
+func get_total_damage() -> int:
+	var repeat = 1
+	var damage: int = _get_final_value(damage_provider.get_value(null, {}))
+	if repeat_provider:
+		repeat = repeat_provider.get_value(null, {})
+	return damage * repeat

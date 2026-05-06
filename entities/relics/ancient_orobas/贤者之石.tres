@@ -1,0 +1,30 @@
+[gd_resource type="Resource" format=3 uid="uid://doo2i31wuej74"]
+
+[ext_resource type="Script" uid="uid://cgmi6f3o7leik" path="res://scripts/costum_resources/effect.gd" id="1_ur8rt"]
+[ext_resource type="Script" uid="uid://dtok21t0ujjui" path="res://scripts/costum_resources/numeric_provider.gd" id="2_q0jqs"]
+[ext_resource type="Script" uid="uid://b8qfrs61nmcix" path="res://scripts/costum_resources/effects/apply_buff_effect.gd" id="3_rtkgd"]
+[ext_resource type="Texture2D" uid="uid://lim1xq" path="res://images/atlases/relic_atlas.sprites/philosophers_stone.tres" id="4_cmi24"]
+[ext_resource type="Script" uid="uid://dhirv5ldkon5t" path="res://entities/relics/ancient_orobas/贤者之石.gd" id="5_q0jqs"]
+
+[sub_resource type="Resource" id="Resource_5xh22"]
+script = ExtResource("2_q0jqs")
+fixed_value = 1
+metadata/_custom_type_script = "uid://dtok21t0ujjui"
+
+[sub_resource type="Resource" id="Resource_p6ben"]
+script = ExtResource("3_rtkgd")
+buff_name = "力量"
+buff_stack_provider = SubResource("Resource_5xh22")
+target_type = 3
+metadata/_custom_type_script = "uid://b8qfrs61nmcix"
+
+[resource]
+script = ExtResource("5_q0jqs")
+relic_name = "贤者之石"
+id = "philosophers_stone"
+icon = ExtResource("4_cmi24")
+description = "在每回合开始时获得1点[color=gold]能量[/color]所有敌人初始获得1点[color=gold]力量[/color]"
+trigger_type = 2
+rarity = 32
+effects = Array[ExtResource("1_ur8rt")]([SubResource("Resource_p6ben")])
+metadata/_custom_type_script = "uid://bvf88v88tbaks"

@@ -42,6 +42,8 @@ signal player_turn_ended
 signal player_talked(text: String, time: float)
 signal player_died
 signal player_hit
+#专门用于处理玩家在除战斗房间之外的房间死亡的事件
+signal player_died_outside
 ## 敌人相关
 signal enemy_action_completed(enemy: Enemy)
 signal enemy_turn_ended

@@ -1,0 +1,14 @@
+[gd_resource type="Resource" format=3 uid="uid://d2dx7k0chqy1a"]
+
+[ext_resource type="Script" uid="uid://cgmi6f3o7leik" path="res://scripts/costum_resources/effect.gd" id="1_rvj0k"]
+[ext_resource type="Texture2D" uid="uid://bisusu2" path="res://images/atlases/relic_atlas.sprites/electric_shrymp.tres" id="2_sbh7d"]
+[ext_resource type="Script" uid="uid://fmbv4n4c6qjb" path="res://entities/relics/ancient_orobas/放电异虾.gd" id="3_thio1"]
+
+[resource]
+script = ExtResource("3_thio1")
+relic_name = "放电异虾"
+id = "electric_shrymp"
+icon = ExtResource("2_sbh7d")
+description = "拾起时，选择两张牌为它们[color=gold]]附魔[/color]：[color=purple]注能[/color]"
+rarity = 32
+metadata/_custom_type_script = "uid://bvf88v88tbaks"

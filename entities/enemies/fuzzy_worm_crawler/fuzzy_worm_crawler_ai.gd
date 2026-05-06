@@ -15,15 +15,15 @@ func execute_intent(source: Creature, target: Creature, current_intent: Intent) 
 func choose_intent(_source: Creature, _target: Creature) -> Intent:
 	match last_action:
 		"":
-			return get_intent_by_name(intents, "AcidGoop")
+			return get_intent_by_name("AcidGoop")
 		"AcidGoop":
 			if acid_goop_count == 2:
 				acid_goop_count = 0
-				return get_intent_by_name(intents, "Inhale")
+				return get_intent_by_name("Inhale")
 			else:
-				return get_intent_by_name(intents, "AcidGoop")
+				return get_intent_by_name("AcidGoop")
 		"Inhale":
-			return get_intent_by_name(intents, "AcidGoop")
+			return get_intent_by_name("AcidGoop")
 		_:
 			return random_intent(intents)
 

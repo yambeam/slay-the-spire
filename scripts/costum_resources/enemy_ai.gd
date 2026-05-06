@@ -20,11 +20,18 @@ func choose_intent(source: Creature, target: Creature) -> Intent:
 func random_intent(intents_: Array[Intent]) -> Intent:
 	return intents_[randi() % intents_.size()]
 
-func get_intent_by_name(intents_: Array[Intent], intent_name: String) -> Intent:
-	for intent: Intent in intents_:
+#func get_intent_by_name(intents_: Array[Intent], intent_name: String) -> Intent:
+	#for intent: Intent in intents_:
+		#if intent.intent_name == intent_name:
+			#return intent
+	#return null
+
+func get_intent_by_name(intent_name: String) -> Intent:
+	for intent: Intent in intents:
 		if intent.intent_name == intent_name:
 			return intent
 	return null
+	
 
 func get_die_animation_name() -> String:
 	return "die"

@@ -2,6 +2,8 @@
 
 [ext_resource type="PackedScene" uid="uid://0ek3vhap4ak1" path="res://scenes/settings/h_slider.tscn" id="1_26ncd"]
 [ext_resource type="Script" uid="uid://dkrhtfiqlks1n" path="res://scripts/settings/settings.gd" id="1_vu5fi"]
+[ext_resource type="FontFile" uid="uid://dqmshhaunu4jy" path="res://fonts/zhs/SourceHanSerifSC-Bold.otf" id="2_v1hle"]
+[ext_resource type="Texture2D" uid="uid://cqcqqdw" path="res://images/atlases/ui_atlas.sprites/settings_tab_selected.tres" id="2_vghtj"]
 [ext_resource type="Texture2D" uid="uid://bb803i8" path="res://images/atlases/ui_atlas.sprites/back_button.tres" id="3_1slea"]
 [ext_resource type="Texture2D" uid="uid://cahogy5" path="res://images/atlases/compressed.sprites/back_button_arrow.tres" id="4_v1hle"]
 
@@ -21,7 +23,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0, 0, 0, 0.19607843)
+color = Color(0, 0, 0, 0.6509804)
 
 [node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1541290643]
 layout_mode = 1
@@ -37,12 +39,27 @@ offset_bottom = 504.5
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 50
+alignment = 1
 
-[node name="Label" type="Label" parent="VBoxContainer" unique_id=740475859]
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer" unique_id=128445083]
+custom_minimum_size = Vector2(0, 150)
 layout_mode = 2
-theme_override_font_sizes/font_size = 75
-text = "设置
-"
+texture = ExtResource("2_vghtj")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="VBoxContainer/TextureRect" unique_id=739188886]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 0.9647059, 0.8862745, 1)
+theme_override_colors/font_outline_color = Color(0.3764706, 0.3137255, 0.23921569, 1)
+theme_override_constants/outline_size = 15
+theme_override_fonts/font = ExtResource("2_v1hle")
+theme_override_font_sizes/font_size = 60
+text = "设置"
 horizontal_alignment = 1
 vertical_alignment = 1
 

@@ -4,12 +4,9 @@
 [ext_resource type="Script" uid="uid://iqqyr44teapg" path="res://scripts/costum_resources/intents/sub_intent.gd" id="2_oleog"]
 [ext_resource type="Script" uid="uid://dtok21t0ujjui" path="res://scripts/costum_resources/numeric_provider.gd" id="3_uym0m"]
 [ext_resource type="Script" uid="uid://vkklgv0ma0yf" path="res://scripts/costum_resources/effects/attack_effect.gd" id="4_skbh5"]
-[ext_resource type="Texture2D" uid="uid://bkbn4fvc4je43" path="res://images/packed/intents/attack/intent_attack_2.png" id="5_p2ne6"]
 [ext_resource type="Script" uid="uid://bces7ijyodhmv" path="res://scripts/costum_resources/intents/attack_sub_intent.gd" id="6_ne2ja"]
 [ext_resource type="Script" uid="uid://b8qfrs61nmcix" path="res://scripts/costum_resources/effects/apply_buff_effect.gd" id="7_myb4r"]
-[ext_resource type="Texture2D" uid="uid://dw78dtm04qmtp" path="res://images/packed/intents/intent_debuff.png" id="8_07hc5"]
 [ext_resource type="Script" uid="uid://c2p6buhbk6em8" path="res://scripts/costum_resources/intents/apply_debuff_sub_intent.gd" id="9_5hryg"]
-[ext_resource type="Texture2D" uid="uid://c4qea6ui2gksn" path="res://images/packed/intents/attack/intent_attack_3.png" id="10_tt2ds"]
 [ext_resource type="Script" uid="uid://dpbv4m5rd0bbq" path="res://scripts/costum_resources/intents/apply_buff_sub_intent.gd" id="11_vy1qo"]
 [ext_resource type="Script" uid="uid://tkmkfd31xau8" path="res://entities/enemies/flyconnid/fly_condig_ai.gd" id="12_oleog"]
 
@@ -32,7 +29,6 @@ metadata/_custom_type_script = "uid://vkklgv0ma0yf"
 [sub_resource type="Resource" id="Resource_81sut"]
 script = ExtResource("6_ne2ja")
 damage_provider = SubResource("Resource_fah07")
-icon = ExtResource("5_p2ne6")
 effect = SubResource("Resource_sigpv")
 metadata/_custom_type_script = "uid://bces7ijyodhmv"
 
@@ -51,7 +47,6 @@ metadata/_custom_type_script = "uid://b8qfrs61nmcix"
 [sub_resource type="Resource" id="Resource_wkncv"]
 script = ExtResource("9_5hryg")
 type = 3
-icon = ExtResource("8_07hc5")
 effect = SubResource("Resource_shxy0")
 metadata/_custom_type_script = "uid://c2p6buhbk6em8"
 
@@ -81,7 +76,6 @@ metadata/_custom_type_script = "uid://vkklgv0ma0yf"
 [sub_resource type="Resource" id="Resource_3dl2m"]
 script = ExtResource("6_ne2ja")
 damage_provider = SubResource("Resource_u6u3m")
-icon = ExtResource("10_tt2ds")
 effect = SubResource("Resource_xuu1d")
 metadata/_custom_type_script = "uid://bces7ijyodhmv"
 
@@ -107,7 +101,6 @@ metadata/_custom_type_script = "uid://b8qfrs61nmcix"
 [sub_resource type="Resource" id="Resource_ghmje"]
 script = ExtResource("11_vy1qo")
 type = 3
-icon = ExtResource("8_07hc5")
 effect = SubResource("Resource_8j458")
 metadata/_custom_type_script = "uid://dpbv4m5rd0bbq"
 

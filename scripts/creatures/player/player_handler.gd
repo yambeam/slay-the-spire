@@ -102,7 +102,6 @@ func exhaust_hand_card(card: Card) -> void:
 
 
 func discard_cards() -> void:
-	
 	if hand_manager.get_child_count() == 0:
 		Events.player_hand_discarded.emit()
 		return

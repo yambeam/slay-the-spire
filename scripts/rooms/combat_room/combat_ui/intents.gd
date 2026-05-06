@@ -12,7 +12,6 @@ func update_intent(intent_: Intent) -> void:
 	new_uis = clampi(new_uis, 0, new_uis)
 	for i in range(new_uis):
 		add_child(IntentUi.instantiate())
-	
 	update_display(intent_)
 
 func update_display(intent_: Intent) -> void:

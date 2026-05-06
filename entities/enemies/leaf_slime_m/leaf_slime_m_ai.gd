@@ -8,11 +8,11 @@ func execute_intent(source: Creature, target: Creature, current_intent: Intent) 
 
 func choose_intent(_source: Creature, _target: Creature) -> Intent:
 	if last_action == "":
-		return get_intent_by_name(intents, "StickyShot")
+		return get_intent_by_name("StickyShot")
 	elif last_action == "StickyShot":
-		return get_intent_by_name(intents, "ClumpShot")
+		return get_intent_by_name("ClumpShot")
 	elif last_action == "ClumpShot":
-		return get_intent_by_name(intents, "StickyShot")
+		return get_intent_by_name("StickyShot")
 	else:
 		return random_intent(intents)
 		

@@ -22,13 +22,13 @@ func execute_intent(source: Creature, target: Creature, current_intent: Intent) 
 func choose_intent(_source: Creature, _target: Creature) -> Intent:
 	match last_action:
 		"":
-			return random_intent([get_intent_by_name(intents, "Spiken"), get_intent_by_name(intents, "Whirl")])
+			return random_intent([get_intent_by_name("Spiken"), get_intent_by_name("Whirl")])
 		"Whirl":
-			return get_intent_by_name(intents, "Spiken")
+			return get_intent_by_name("Spiken")
 		"Spiken":
-			return get_intent_by_name(intents, "SpikeSpit")
+			return get_intent_by_name("SpikeSpit")
 		"SpikeSpit":
-			return get_intent_by_name(intents, "Whirl")
+			return get_intent_by_name("Whirl")
 		_:
 			return random_intent(intents)
 

@@ -36,7 +36,6 @@ func gain_block(context: Context) -> void:
 func do_turn() -> void:
 	start_turn()
 	
-	
 	if not current_intent:
 		return
 	
@@ -59,11 +58,10 @@ func do_turn() -> void:
 	
 
 func execute_intent() -> void:
-	if not current_intent:
-		return
 	var player: Player = get_tree().get_first_node_in_group("ui_player")
-	await enemy_ai.execute_intent(self, player, current_intent)
 	intents.hide_intent()
+	enemy_ai.execute_intent(self, player, current_intent)
+	
 		
 func _set_current_intent(value: Intent) -> void:
 	current_intent = value

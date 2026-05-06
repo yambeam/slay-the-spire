@@ -31,8 +31,8 @@ var potions: Array[Potion] = []
 ## 遗物
 var relics: Array[Relic] = []
 
-##当前房间
-var current_room: Room
+###当前房间
+#var current_room: Room
 
 ##当前阶段
 var current_stage : int = 1
@@ -47,6 +47,8 @@ var max_stage : int = 2
 #地图数据
 @export var map_data: Array[Array] = []   # 保存整个地图数据（Room 资源数组）
 @export var floors_climbed: int = 0       # 已攀爬的层数（已解锁的最高楼层索引，0-based）
+
+@export var current_room:Room
 
 func _init() -> void:
 	init_potion_slots()
@@ -77,6 +79,13 @@ func add_relic(relic: Relic) -> void:
 func remove_relic(relic: Relic) -> void:
 	relics.remove_at(relics.find(relic))
 	relic_removed.emit(relic)
+
+func remove_relic_by_name(relic_name: String) -> bool:
+	for relic: Relic in relics:
+		if relic.relic_name == relic_name:
+			remove_relic(relic)
+			return true
+	return false
 			
 func remove_potion(index: int) -> void:
 	if index >= max_potion_slots:
@@ -116,6 +125,36 @@ func _set_max_potion_slots(value: int) -> void:
 	max_potion_slots = value
 	potion_slots_changed.emit()
 
+#统计当前药水数量
+func potion_count()->int:
+	var count:int=0
+	for i in range(potions.size()):
+		if potions[i] != null:
+			count+=1
+	return count
+	
+	
+#统计当前遗物数量
+func relic_count()->int:
+	var count:int=0
+	for i in range(relics.size()):
+		if relics[i] != null:
+			count+=1
+	return count
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 ## 推进到下一个阶段
 func advance_stage() -> void:
 	if current_stage >= max_stage:

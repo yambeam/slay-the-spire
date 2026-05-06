@@ -4,10 +4,8 @@
 [ext_resource type="Script" uid="uid://iqqyr44teapg" path="res://scripts/costum_resources/intents/sub_intent.gd" id="2_v4vqt"]
 [ext_resource type="Script" uid="uid://dtok21t0ujjui" path="res://scripts/costum_resources/numeric_provider.gd" id="3_2f15q"]
 [ext_resource type="Script" uid="uid://vkklgv0ma0yf" path="res://scripts/costum_resources/effects/attack_effect.gd" id="4_haliv"]
-[ext_resource type="Texture2D" uid="uid://b6te4h7u0cikh" path="res://images/packed/intents/attack/intent_attack_1.png" id="5_28dnn"]
 [ext_resource type="Script" uid="uid://bces7ijyodhmv" path="res://scripts/costum_resources/intents/attack_sub_intent.gd" id="6_8wx04"]
 [ext_resource type="Script" uid="uid://b8qfrs61nmcix" path="res://scripts/costum_resources/effects/apply_buff_effect.gd" id="7_0u6qi"]
-[ext_resource type="Texture2D" uid="uid://epusnbog8ryc" path="res://images/packed/intents/intent_buff.png" id="8_ccrrg"]
 [ext_resource type="Script" uid="uid://dpbv4m5rd0bbq" path="res://scripts/costum_resources/intents/apply_buff_sub_intent.gd" id="9_qqpvn"]
 [ext_resource type="Script" uid="uid://dpkht0suo8prh" path="res://scripts/costum_resources/enemy_ai.gd" id="10_2211u"]
 
@@ -30,7 +28,6 @@ metadata/_custom_type_script = "uid://vkklgv0ma0yf"
 [sub_resource type="Resource" id="Resource_cbcgv"]
 script = ExtResource("6_8wx04")
 damage_provider = SubResource("Resource_iwqc6")
-icon = ExtResource("5_28dnn")
 effect = SubResource("Resource_r0tl3")
 metadata/_custom_type_script = "uid://bces7ijyodhmv"
 
@@ -49,7 +46,6 @@ metadata/_custom_type_script = "uid://b8qfrs61nmcix"
 [sub_resource type="Resource" id="Resource_wpftp"]
 script = ExtResource("9_qqpvn")
 type = 1
-icon = ExtResource("8_ccrrg")
 effect = SubResource("Resource_akh2s")
 metadata/_custom_type_script = "uid://dpbv4m5rd0bbq"
 

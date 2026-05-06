@@ -55,6 +55,8 @@ func animate_fly_to_deck(card: Control, to_discard_pile: bool = true) -> void:
 		card_fly_vfx = CardFlyVFX.new(card, discard_pile_position, char_stats.color)
 	else:
 		card_fly_vfx = CardFlyVFX.new(card, draw_pile_position, char_stats.color)
+	if card.get_parent():
+		card.reparent(sfx_layer)
 	sfx_layer.call_deferred("add_child", card_fly_vfx)
 
 func animate_shuffle_deck(count: int, character_color: CharacterStats.COLOR) -> void:

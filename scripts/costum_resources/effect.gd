@@ -12,9 +12,13 @@ enum TargetType{
 @export var target_type: TargetType = TargetType.NONE
 @export var animation_name: String = ""
 @export var animation_delay: float = 0.1
+@export var sound: AudioStream
+@export var sound_delay: float = 0.1
 
 func execute(source: Node, card_context: Dictionary = {}, previous_result: Variant = null) -> Variant:
 	var targets = get_targets(source, card_context)
+	if sound:
+		_play_sound_after_delay(source)
 	return await apply(source, targets, card_context, previous_result)
 
 func get_targets(source: Node, card_context: Dictionary) -> Array[Node]:
@@ -38,3 +42,8 @@ func get_targets(source: Node, card_context: Dictionary) -> Array[Node]:
 # 虚函数
 func apply(_source: Node, _targets: Array[Node], _card_context: Dictionary, _previous_result: Variant = null) -> Variant:
 	return null
+
+func _play_sound_after_delay(source: Node) -> void:
+	if sound_delay > 0:
+		await source.get_tree().create_timer(sound_delay).timeout
+	SFXPlayer.play(sound)	

@@ -1,0 +1,14 @@
+[gd_resource type="Resource" format=3 uid="uid://blf7pr4jyue5b"]
+
+[ext_resource type="Script" uid="uid://cgmi6f3o7leik" path="res://scripts/costum_resources/effect.gd" id="1_vxd4d"]
+[ext_resource type="Texture2D" uid="uid://it47o8" path="res://images/atlases/relic_atlas.sprites/alchemical_coffer.tres" id="2_xixup"]
+[ext_resource type="Script" uid="uid://blm2fd8el543h" path="res://entities/relics/ancient_orobas/炼金箱.gd" id="3_52rpy"]
+
+[resource]
+script = ExtResource("3_52rpy")
+relic_name = "炼金箱"
+id = "alchemical_offer"
+icon = ExtResource("2_xixup")
+description = "拾起时，获得4个药水栏位，然后用随机药水填满你的药水栏"
+rarity = 32
+metadata/_custom_type_script = "uid://bvf88v88tbaks"

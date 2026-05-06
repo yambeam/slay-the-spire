@@ -6,13 +6,11 @@
 [ext_resource type="Script" uid="uid://dtok21t0ujjui" path="res://scripts/costum_resources/numeric_provider.gd" id="3_3t3x4"]
 [ext_resource type="PackedScene" uid="uid://cvoqhpj7w5j8b" path="res://scenes/creature_visuals/toad_pole.tscn" id="3_m135s"]
 [ext_resource type="Script" uid="uid://vkklgv0ma0yf" path="res://scripts/costum_resources/effects/attack_effect.gd" id="4_vedxq"]
-[ext_resource type="Texture2D" uid="uid://bkbn4fvc4je43" path="res://images/packed/intents/attack/intent_attack_2.png" id="5_8gyfs"]
 [ext_resource type="Script" uid="uid://bces7ijyodhmv" path="res://scripts/costum_resources/intents/attack_sub_intent.gd" id="6_lp2mx"]
 [ext_resource type="Script" uid="uid://cgmi6f3o7leik" path="res://scripts/costum_resources/effect.gd" id="7_v4l63"]
 [ext_resource type="Script" uid="uid://c8ly86kb5vc65" path="res://scripts/costum_resources/effects/iteration_effect.gd" id="8_s8vbf"]
 [ext_resource type="Script" uid="uid://b8qfrs61nmcix" path="res://scripts/costum_resources/effects/apply_buff_effect.gd" id="9_so7iu"]
 [ext_resource type="Script" uid="uid://dpbv4m5rd0bbq" path="res://scripts/costum_resources/intents/apply_buff_sub_intent.gd" id="10_qmx5h"]
-[ext_resource type="Texture2D" uid="uid://epusnbog8ryc" path="res://images/packed/intents/intent_buff.png" id="11_508y6"]
 [ext_resource type="Script" uid="uid://gjypfal5fy2c" path="res://entities/enemies/toadpole/toadpole_ai.gd" id="12_yfwc1"]
 
 [sub_resource type="Resource" id="Resource_tmb7p"]
@@ -34,7 +32,6 @@ metadata/_custom_type_script = "uid://vkklgv0ma0yf"
 [sub_resource type="Resource" id="Resource_s3hed"]
 script = ExtResource("6_lp2mx")
 damage_provider = SubResource("Resource_tmb7p")
-icon = ExtResource("5_8gyfs")
 effect = SubResource("Resource_hxcke")
 metadata/_custom_type_script = "uid://bces7ijyodhmv"
 
@@ -80,7 +77,6 @@ metadata/_custom_type_script = "uid://dtok21t0ujjui"
 script = ExtResource("6_lp2mx")
 damage_provider = SubResource("Resource_byp0t")
 repeat_provider = SubResource("Resource_dxe34")
-icon = ExtResource("5_8gyfs")
 effect = SubResource("Resource_p05pq")
 metadata/_custom_type_script = "uid://bces7ijyodhmv"
 
@@ -123,7 +119,6 @@ metadata/_custom_type_script = "uid://b8qfrs61nmcix"
 [sub_resource type="Resource" id="Resource_pvm40"]
 script = ExtResource("10_qmx5h")
 type = 1
-icon = ExtResource("11_508y6")
 effect = SubResource("Resource_i6lxq")
 metadata/_custom_type_script = "uid://dpbv4m5rd0bbq"
 

@@ -6,7 +6,16 @@
 [ext_resource type="SpineSkeletonDataResource" uid="uid://byxuoj7vn2530" path="res://animations/backgrounds/mainmenu/logo/main_menu_logo_skel_data.tres" id="3_wem23"]
 [ext_resource type="Script" uid="uid://bayy3j6ssj0g" path="res://scripts/utils/spine_manager.gd" id="4_3ovsr"]
 [ext_resource type="SpineSkeletonDataResource" uid="uid://bbgijkibj2fr2" path="res://animations/backgrounds/mainmenu/top/main_menu_top_skel_data.tres" id="4_uqeha"]
+[ext_resource type="FontFile" uid="uid://dqmshhaunu4jy" path="res://fonts/zhs/SourceHanSerifSC-Bold.otf" id="7_4xg86"]
 [ext_resource type="PackedScene" uid="uid://blvum03eav360" path="res://scenes/settings/settings.tscn" id="7_5seab"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_5seab"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_4xg86"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_thkx5"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_x2yjq"]
 
 [node name="main_menu" type="Control" unique_id=1550050227]
 layout_mode = 3
@@ -63,35 +72,43 @@ anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -471.0
 offset_top = 92.0
-offset_right = -74.0
-offset_bottom = 467.0
+offset_right = 2.0
+offset_bottom = 513.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/separation = 20
+theme_override_constants/separation = 35
 
 [node name="Continue" type="Button" parent="VBoxContainer" unique_id=1891216314]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(200, 75)
 layout_mode = 2
+theme_override_fonts/font = ExtResource("7_4xg86")
 theme_override_font_sizes/font_size = 35
+theme_override_styles/normal = SubResource("StyleBoxEmpty_5seab")
 text = "Continue "
 
 [node name="New Run" type="Button" parent="VBoxContainer" unique_id=1836192132]
 custom_minimum_size = Vector2(200, 75)
 layout_mode = 2
+theme_override_fonts/font = ExtResource("7_4xg86")
 theme_override_font_sizes/font_size = 35
+theme_override_styles/normal = SubResource("StyleBoxEmpty_4xg86")
 text = "New Run"
 
 [node name="Settings" type="Button" parent="VBoxContainer" unique_id=1790442655]
 custom_minimum_size = Vector2(200, 75)
 layout_mode = 2
+theme_override_fonts/font = ExtResource("7_4xg86")
 theme_override_font_sizes/font_size = 35
+theme_override_styles/normal = SubResource("StyleBoxEmpty_thkx5")
 text = "Settings"
 
 [node name="Quit" type="Button" parent="VBoxContainer" unique_id=140053480]
 custom_minimum_size = Vector2(200, 75)
 layout_mode = 2
+theme_override_fonts/font = ExtResource("7_4xg86")
 theme_override_font_sizes/font_size = 35
+theme_override_styles/normal = SubResource("StyleBoxEmpty_x2yjq")
 text = "Quit
 "
 

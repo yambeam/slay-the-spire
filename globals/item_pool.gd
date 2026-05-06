@@ -154,6 +154,25 @@ var enchantment_dict := {
 	
 }
 
+var intent_dict := {
+	"attack1": preload("res://images/packed/intents/attack/intent_attack_1.png"),
+	"attack2": preload("res://images/packed/intents/attack/intent_attack_2.png"),
+	"attack3": preload("res://images/packed/intents/attack/intent_attack_3.png"),
+	"attack4": preload("res://images/packed/intents/attack/intent_attack_4.png"),
+	"attack5": preload("res://images/packed/intents/attack/intent_attack_5.png"),
+	"buff": preload("res://images/packed/intents/buff/intent_buff_00.png"),
+	"card_debuff": preload("res://images/packed/intents/intent_card_debuff.png"),
+	"debuff": preload("res://images/packed/intents/intent_debuff.png"),
+	"deffend": preload("res://images/packed/intents/intent_defend.png"),
+	"escape": preload("res://images/packed/intents/intent_escape.png"),
+	"heal": preload("res://images/packed/intents/intent_heal.png"),
+	"sleep": preload("res://images/packed/intents/intent_sleep.png"),
+	"status": preload("res://images/packed/intents/intent_status_card.png"),
+	"stun": preload("res://images/packed/intents/intent_stun.png"),
+	"summon": preload("res://images/packed/intents/intent_summon.png"),
+	"unknown": preload("res://images/packed/intents/intent_unknown.png")
+}
+
 var card_color_mask: int = 0b1111111
 var card_type_mask: int = 0b11111
 var card_rarity_mask: int = 0b11111

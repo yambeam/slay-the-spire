@@ -1,0 +1,13 @@
+[gd_resource type="Resource" format=3 uid="uid://gnijej17yk8n"]
+
+[ext_resource type="Script" uid="uid://cgmi6f3o7leik" path="res://scripts/costum_resources/effect.gd" id="1_sgyxe"]
+[ext_resource type="Script" uid="uid://dbs43c57477nu" path="res://entities/relics/ancient_orobas/欧洛巴斯之触.gd" id="2_6krao"]
+[ext_resource type="Texture2D" uid="uid://cqu48ug" path="res://images/atlases/relic_atlas.sprites/touch_of_orobas.tres" id="2_amxbq"]
+
+[resource]
+script = ExtResource("2_6krao")
+relic_name = "欧洛巴斯之触"
+id = "touch_of_orobas"
+icon = ExtResource("2_amxbq")
+description = "拾起时，将你的初始遗物替换为先古版本"
+metadata/_custom_type_script = "uid://bvf88v88tbaks"

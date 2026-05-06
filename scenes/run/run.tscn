@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://cdcj73ue1lo5b" path="res://scenes/ui/top_bar/top_bar.tscn" id="4_o4jfg"]
 [ext_resource type="PackedScene" uid="uid://bijk3yg4btssm" path="res://scenes/ui/deck_view.tscn" id="5_gqbdr"]
 [ext_resource type="PackedScene" uid="uid://c00rm6aktjcg8" path="res://scenes/settings/pause_menu.tscn" id="6_5o40y"]
+[ext_resource type="PackedScene" uid="uid://d3g5crq5m21wy" path="res://scenes/settings/death_settlement.tscn" id="7_0tt4g"]
 
 [node name="Run" type="Node" unique_id=185755344]
 script = ExtResource("1_l7o68")
@@ -84,4 +85,8 @@ visible = false
 [node name="PauseMenu" parent="." unique_id=1067367733 instance=ExtResource("6_5o40y")]
 process_mode = 3
 layer = 5
+visible = false
+
+[node name="death_settlement" parent="." unique_id=847506507 instance=ExtResource("7_0tt4g")]
+process_mode = 3
 visible = false

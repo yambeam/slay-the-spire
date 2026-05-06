@@ -33,6 +33,7 @@ const BATTLE_REWARD_SCENE = preload("res://scenes/rooms/reward/reward_room.tscn"
 @onready var deck_view: DeckView = %DeckView
 @onready var select_deck_view: DeckView = %SelectDeckView
 @onready var pause_menu: PauseMenu = $PauseMenu
+@onready var death_settlement: DeathSettlement = $death_settlement
 
 @export var run_startup: RunStartup
 
@@ -40,7 +41,11 @@ var character: CharacterStats
 var stats: RunStats
 var save_data: SaveGame
 
-var loading_status: int = 0
+
+#杀掉的精英怪数量
+@export var elite_mob_killed:int = 0
+@export var loading_status: int = 0
+
 
 # 标记 Boss 战后是否需要进入阶段切换
 var _pending_stage_transition: bool = false
@@ -52,6 +57,12 @@ func _ready() -> void:
 		func():
 			get_tree().change_scene_to_file(MAIN_MENU_PATH)
 	)
+	death_settlement.DeathSettlementBackToMainMenu.connect(
+		func():
+			save_data.delete_data()
+			get_tree().change_scene_to_file(MAIN_MENU_PATH)
+	)
+	
 	Events.map_room_selected.connect(_on_map_room_selected)
 	match run_startup.type:
 		RunStartup.Type.NEW_RUN:
@@ -65,9 +76,10 @@ func _on_map_room_selected(room: Room) -> void:
 	print("进入房间，保存游戏")
 	map_node.last_room = room
 	_save_run(false)
-	
 	match room.type:
 		Room.Type.MONSTER, Room.Type.ELITE, Room.Type.BOSS:
+			if room.type==Room.Type.ELITE:
+				elite_mob_killed+=1
 			_on_combat_room_entered(room)
 			Events.combat_room_entered.emit(room, stats, character)
 			return
@@ -275,6 +287,9 @@ func _setup_event_connections() -> void:
 			await get_tree().process_frame
 			_on_combat_won(context)
 	)
+	Events.player_died_outside.connect(_on_player_died_outside)
+	Events.player_died.connect(on_player_died)
+	Events.combat_reward_exited.connect(_on_room_exited)
 	# ★ 修改：战斗奖励退出使用分流函数
 	Events.combat_reward_exited.connect(_on_combat_reward_exited)
 	
@@ -299,6 +314,24 @@ func _setup_event_connections() -> void:
 	# 先古遗物选择信号
 	Events.ancient_relic_selected.connect(_on_ancient_relic_selected)
 
+func _on_player_died_outside()->void:
+	
+	if stats.current_room.type not in [Room.Type.MONSTER, Room.Type.BOSS,Room.Type.ELITE]:
+		on_player_died()
+		
+
+func on_player_died()->void:
+	get_tree().paused=true
+	death_settlement.char_stats=character
+	death_settlement.run_stats=stats
+	
+	print("角色死亡")
+	if stats.current_room.type==Room.Type.ELITE:
+		elite_mob_killed-=1
+	death_settlement.init(elite_mob_killed)
+	death_settlement.show()
+	
+
 func _on_rewards_pressed():
 	await _change_view(COMBAT_REWARD_SCENE)
 
@@ -318,6 +351,9 @@ func _show_map() -> void:
 	if current_room.get_child_count() > 0:
 		current_room.get_child(0).hide()
 	map_node.show_map()
+	
+	if stats.current_room!=null:
+		stats.current_room.type=Room.Type.NOT_ASSIGNED
 	_save_run(true)
 
 func _on_map_exited() -> void:

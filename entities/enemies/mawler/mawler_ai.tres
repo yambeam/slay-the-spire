@@ -3,13 +3,10 @@
 [ext_resource type="Script" uid="uid://ce34juwu5b0yr" path="res://scripts/costum_resources/intents/intent.gd" id="1_6ug65"]
 [ext_resource type="Script" uid="uid://iqqyr44teapg" path="res://scripts/costum_resources/intents/sub_intent.gd" id="2_s0bsw"]
 [ext_resource type="Script" uid="uid://dtok21t0ujjui" path="res://scripts/costum_resources/numeric_provider.gd" id="3_1sjmy"]
-[ext_resource type="Texture2D" uid="uid://bkbn4fvc4je43" path="res://images/packed/intents/attack/intent_attack_2.png" id="3_rdlbt"]
 [ext_resource type="Script" uid="uid://vkklgv0ma0yf" path="res://scripts/costum_resources/effects/attack_effect.gd" id="4_wihbp"]
-[ext_resource type="Texture2D" uid="uid://c4qea6ui2gksn" path="res://images/packed/intents/attack/intent_attack_3.png" id="6_1sjmy"]
 [ext_resource type="Script" uid="uid://bces7ijyodhmv" path="res://scripts/costum_resources/intents/attack_sub_intent.gd" id="6_4dukl"]
 [ext_resource type="Script" uid="uid://b8qfrs61nmcix" path="res://scripts/costum_resources/effects/apply_buff_effect.gd" id="7_blu71"]
 [ext_resource type="Script" uid="uid://b22e8tmlhbsr2" path="res://entities/enemies/mawler/mawler_ai.gd" id="7_s0bsw"]
-[ext_resource type="Texture2D" uid="uid://dw78dtm04qmtp" path="res://images/packed/intents/intent_debuff.png" id="8_o41rq"]
 [ext_resource type="Script" uid="uid://c2p6buhbk6em8" path="res://scripts/costum_resources/intents/apply_debuff_sub_intent.gd" id="9_ynl85"]
 
 [sub_resource type="Resource" id="Resource_3e22h"]
@@ -37,7 +34,6 @@ metadata/_custom_type_script = "uid://dtok21t0ujjui"
 script = ExtResource("6_4dukl")
 damage_provider = SubResource("Resource_3e22h")
 repeat_provider = SubResource("Resource_na3w8")
-icon = ExtResource("3_rdlbt")
 effect = SubResource("Resource_3optf")
 metadata/_custom_type_script = "uid://bces7ijyodhmv"
 
@@ -62,7 +58,7 @@ metadata/_custom_type_script = "uid://b8qfrs61nmcix"
 
 [sub_resource type="Resource" id="Resource_oa5lr"]
 script = ExtResource("9_ynl85")
-icon = ExtResource("8_o41rq")
+type = 4
 effect = SubResource("Resource_j7p16")
 metadata/_custom_type_script = "uid://c2p6buhbk6em8"
 
@@ -98,7 +94,6 @@ metadata/_custom_type_script = "uid://dtok21t0ujjui"
 script = ExtResource("6_4dukl")
 damage_provider = SubResource("Resource_4mllp")
 repeat_provider = SubResource("Resource_hxn6n")
-icon = ExtResource("6_1sjmy")
 effect = SubResource("Resource_14rs2")
 metadata/_custom_type_script = "uid://bces7ijyodhmv"
 

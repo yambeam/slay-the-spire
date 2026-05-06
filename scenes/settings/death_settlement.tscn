@@ -1,0 +1,233 @@
+[gd_scene format=3 uid="uid://d3g5crq5m21wy"]
+
+[ext_resource type="Script" uid="uid://xhe7uvgp7qq7" path="res://scripts/settings/death_settlement.gd" id="1_ry4xd"]
+[ext_resource type="Texture2D" uid="uid://sx01rrq77xc5" path="res://images/ui/reward_screen/reward_banner.png" id="2_veeh6"]
+[ext_resource type="FontFile" uid="uid://dqmshhaunu4jy" path="res://fonts/zhs/SourceHanSerifSC-Bold.otf" id="3_nmcoe"]
+[ext_resource type="Texture2D" uid="uid://bxj1tlj" path="res://images/atlases/ui_atlas.sprites/top_bar/top_bar_floor.tres" id="4_70kxk"]
+[ext_resource type="Texture2D" uid="uid://dk8q8fohbmrya" path="res://images/packed/statistics_screen/stats_monsters.png" id="5_prm7m"]
+[ext_resource type="Texture2D" uid="uid://jqn0hv" path="res://images/atlases/ui_atlas.sprites/top_bar/top_bar_gold.tres" id="6_lol8r"]
+[ext_resource type="FontFile" uid="uid://vcj7kdt70rkq" path="res://fonts/zhs/NotoSansMonoCJKsc-Regular.otf" id="7_sdna4"]
+[ext_resource type="Texture2D" uid="uid://dajvuh5cic75m" path="res://images/ui/game_over_screen/discovery_card.png" id="8_5i1av"]
+[ext_resource type="Texture2D" uid="uid://bfywd2kvnv1xp" path="res://images/ui/game_over_screen/discovery_relic.png" id="9_wmf22"]
+[ext_resource type="Texture2D" uid="uid://bwx4fo5lves4u" path="res://images/ui/game_over_screen/discovery_potion.png" id="11_d1jni"]
+[ext_resource type="Texture2D" uid="uid://crkxl3yo0bwbs" path="res://images/packed/combat_ui/end_turn_button.png" id="12_jadew"]
+
+[node name="death_settlement" type="CanvasLayer" unique_id=847506507]
+script = ExtResource("1_ry4xd")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1557087406]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.81960785)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1333725820]
+offset_left = 600.0
+offset_top = 100.0
+offset_right = 1330.0
+offset_bottom = 996.0
+theme_override_constants/separation = 30
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer" unique_id=1222045722]
+custom_minimum_size = Vector2(0, 150)
+layout_mode = 2
+texture = ExtResource("2_veeh6")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="VBoxContainer/TextureRect" unique_id=890167364]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 102.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(1, 0.9647059, 0.8862745, 1)
+theme_override_colors/font_outline_color = Color(0.3764706, 0.3137255, 0.23921569, 1)
+theme_override_constants/outline_size = 15
+theme_override_fonts/font = ExtResource("3_nmcoe")
+theme_override_font_sizes/font_size = 60
+text = "惨败"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="VBoxContainer" unique_id=624818085]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.95686275, 0.37254903, 0.3764706, 1)
+theme_override_font_sizes/font_size = 30
+text = "这就是我的运气么......"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer" unique_id=699775891]
+layout_mode = 2
+theme_override_constants/separation = 25
+alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/VBoxContainer" unique_id=644831795]
+layout_mode = 2
+theme_override_constants/separation = 50
+
+[node name="ColorRect" type="ColorRect" parent="VBoxContainer/VBoxContainer/HBoxContainer" unique_id=696797518]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+color = Color(1, 1, 1, 0)
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/VBoxContainer/HBoxContainer" unique_id=257344420]
+layout_mode = 2
+texture = ExtResource("4_70kxk")
+expand_mode = 2
+
+[node name="floor_climed" type="Label" parent="VBoxContainer/VBoxContainer/HBoxContainer" unique_id=857659629]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_colors/font_color = Color(1, 0.9647059, 0.8862745, 1)
+theme_override_colors/font_outline_color = Color(0.3764706, 0.3137255, 0.23921569, 1)
+theme_override_constants/outline_size = 15
+theme_override_font_sizes/font_size = 50
+text = "攀爬楼层："
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer/VBoxContainer" unique_id=337354234]
+layout_mode = 2
+theme_override_constants/separation = 50
+
+[node name="ColorRect" type="ColorRect" parent="VBoxContainer/VBoxContainer/HBoxContainer2" unique_id=1986013134]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+color = Color(1, 1, 1, 0)
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/VBoxContainer/HBoxContainer2" unique_id=1388105148]
+layout_mode = 2
+texture = ExtResource("5_prm7m")
+expand_mode = 2
+
+[node name="monster_killed" type="Label" parent="VBoxContainer/VBoxContainer/HBoxContainer2" unique_id=535628853]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_colors/font_color = Color(1, 0.9647059, 0.8862745, 1)
+theme_override_colors/font_outline_color = Color(0.3764706, 0.3137255, 0.23921569, 1)
+theme_override_constants/outline_size = 15
+theme_override_font_sizes/font_size = 50
+text = "击杀精英："
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="VBoxContainer/VBoxContainer" unique_id=78536350]
+layout_mode = 2
+theme_override_constants/separation = 50
+
+[node name="ColorRect" type="ColorRect" parent="VBoxContainer/VBoxContainer/HBoxContainer3" unique_id=1894396097]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+color = Color(1, 1, 1, 0)
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/VBoxContainer/HBoxContainer3" unique_id=2124276120]
+layout_mode = 2
+texture = ExtResource("6_lol8r")
+expand_mode = 2
+
+[node name="gold_obtained" type="Label" parent="VBoxContainer/VBoxContainer/HBoxContainer3" unique_id=487815605]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_colors/font_color = Color(1, 0.9647059, 0.8862745, 1)
+theme_override_colors/font_outline_color = Color(0.3764706, 0.3137255, 0.23921569, 1)
+theme_override_constants/outline_size = 15
+theme_override_font_sizes/font_size = 50
+text = "获得金币："
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label" type="Label" parent="VBoxContainer" unique_id=1104583386]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.9647059, 0.8862745, 1)
+theme_override_fonts/font = ExtResource("7_sdna4")
+theme_override_font_sizes/font_size = 50
+text = "持有"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer" unique_id=175172920]
+layout_mode = 2
+alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/HBoxContainer" unique_id=2014759077]
+layout_mode = 2
+texture = ExtResource("8_5i1av")
+
+[node name="dicovered_card" type="Label" parent="VBoxContainer/HBoxContainer" unique_id=1503845722]
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_fonts/font = ExtResource("7_sdna4")
+theme_override_font_sizes/font_size = 50
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ColorRect" type="ColorRect" parent="VBoxContainer/HBoxContainer" unique_id=722297609]
+custom_minimum_size = Vector2(70, 0)
+layout_mode = 2
+color = Color(1, 1, 1, 0)
+
+[node name="TextureRect2" type="TextureRect" parent="VBoxContainer/HBoxContainer" unique_id=414251050]
+layout_mode = 2
+texture = ExtResource("9_wmf22")
+
+[node name="dicovered_relic" type="Label" parent="VBoxContainer/HBoxContainer" unique_id=373270262]
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_fonts/font = ExtResource("7_sdna4")
+theme_override_font_sizes/font_size = 50
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ColorRect3" type="ColorRect" parent="VBoxContainer/HBoxContainer" unique_id=1947966600]
+custom_minimum_size = Vector2(70, 0)
+layout_mode = 2
+color = Color(1, 1, 1, 0)
+
+[node name="TextureRect4" type="TextureRect" parent="VBoxContainer/HBoxContainer" unique_id=1016482376]
+layout_mode = 2
+texture = ExtResource("11_d1jni")
+
+[node name="discovered_potion" type="Label" parent="VBoxContainer/HBoxContainer" unique_id=585380073]
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_fonts/font = ExtResource("7_sdna4")
+theme_override_font_sizes/font_size = 50
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ColorRect4" type="ColorRect" parent="VBoxContainer/HBoxContainer" unique_id=296718932]
+custom_minimum_size = Vector2(70, 0)
+layout_mode = 2
+color = Color(1, 1, 1, 0)
+
+[node name="TextureButton" type="TextureButton" parent="." unique_id=338836670]
+offset_left = 703.0
+offset_top = 825.0
+offset_right = 1215.0
+offset_bottom = 1081.0
+texture_normal = ExtResource("12_jadew")
+stretch_mode = 0
+
+[node name="Label" type="Label" parent="TextureButton" unique_id=1029403967]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 0.9647059, 0.8862745, 1)
+theme_override_colors/font_outline_color = Color(0.50980395, 0.47843137, 0.3137255, 1)
+theme_override_constants/outline_size = 15
+theme_override_fonts/font = ExtResource("7_sdna4")
+theme_override_font_sizes/font_size = 50
+text = "主菜单"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="pressed" from="TextureButton" to="." method="_on_texture_button_pressed"]

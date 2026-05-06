@@ -1,0 +1,30 @@
+[gd_resource type="Resource" script_class="Relic" format=3 uid="uid://c5nwsvoul10lp"]
+
+[ext_resource type="Script" uid="uid://cgmi6f3o7leik" path="res://scripts/costum_resources/effect.gd" id="1_caic4"]
+[ext_resource type="Script" uid="uid://bvf88v88tbaks" path="res://scripts/costum_resources/relic.gd" id="2_1us1k"]
+[ext_resource type="Script" uid="uid://dtok21t0ujjui" path="res://scripts/costum_resources/numeric_provider.gd" id="2_a1ful"]
+[ext_resource type="Script" uid="uid://dnv7chuoeoi6y" path="res://scripts/costum_resources/effects/block_effect.gd" id="3_21d1k"]
+[ext_resource type="Texture2D" uid="uid://bvtdsot" path="res://images/atlases/relic_atlas.sprites/sand_castle.tres" id="4_mynnp"]
+
+[sub_resource type="Resource" id="Resource_52w8m"]
+script = ExtResource("2_a1ful")
+fixed_value = 7
+metadata/_custom_type_script = "uid://dtok21t0ujjui"
+
+[sub_resource type="Resource" id="Resource_a1lrh"]
+script = ExtResource("3_21d1k")
+block_provider = SubResource("Resource_52w8m")
+no_modifiers = true
+target_type = 1
+metadata/_custom_type_script = "uid://dnv7chuoeoi6y"
+
+[resource]
+script = ExtResource("2_1us1k")
+relic_name = "沙堡"
+id = "sand_castle"
+icon = ExtResource("4_mynnp")
+description = "回合开始时获得7点[color=gold]格挡[/color]"
+trigger_type = 1
+rarity = 32
+effects = Array[ExtResource("1_caic4")]([SubResource("Resource_a1lrh")])
+metadata/_custom_type_script = "uid://bvf88v88tbaks"

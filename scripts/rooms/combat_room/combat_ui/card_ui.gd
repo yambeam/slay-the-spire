@@ -13,8 +13,6 @@ signal toggled(card: CardUI)
 
 var disabled: bool = false : set = _set_disabled
 var playable: bool = true : set = _set_playable
-# 已经被弃牌/打出，不在参与任何交互
-var discarded: bool = false: set = _set_discarded
 
 var targets: Array[Node]
 
@@ -142,19 +140,13 @@ func set_card(value: Card) -> void:
 		visuals.set_hightlight(playable, card.has_highlight_condition(player, null))
 
 func _set_playable(value: bool) -> void:
-	playable = value
-	visuals.set_hightlight(playable, card.has_highlight_condition(player, null))
-	# TODO:改变卡牌外观
+	if card.playable:
+		playable = value
+		visuals.set_hightlight(playable, card.has_highlight_condition(player, null))
 
 func _set_disabled(value: bool) -> void:
 	disabled = value
-
-func _set_discarded(value: bool) -> void:
-	discarded = value
-	if !value:
-		disabled = true
 		
-
 func _input(event: InputEvent) -> void:
 	if disabled:
 		return

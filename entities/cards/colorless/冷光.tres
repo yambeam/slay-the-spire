@@ -1,0 +1,70 @@
+[gd_resource type="Resource" script_class="Card" format=3 uid="uid://dy6f6ic2oxhau"]
+
+[ext_resource type="Script" uid="uid://cxgxfbwykbp84" path="res://scripts/costum_resources/numeric_entry.gd" id="1_llbu0"]
+[ext_resource type="Script" uid="uid://cgmi6f3o7leik" path="res://scripts/costum_resources/effect.gd" id="2_5a6uw"]
+[ext_resource type="Script" uid="uid://dtok21t0ujjui" path="res://scripts/costum_resources/numeric_provider.gd" id="2_eao32"]
+[ext_resource type="Script" uid="uid://br1hibx18tv13" path="res://scripts/costum_resources/card.gd" id="3_0tl12"]
+[ext_resource type="Script" uid="uid://c6kvghrfcdtp7" path="res://scripts/costum_resources/effects/gain_energy_effect.gd" id="4_e34o4"]
+[ext_resource type="Texture2D" uid="uid://vnfe7w" path="res://images/atlases/card_atlas.sprites/token/luminesce.tres" id="5_qq4ko"]
+
+[sub_resource type="Resource" id="Resource_t5hc5"]
+script = ExtResource("2_eao32")
+fixed_value = 2
+metadata/_custom_type_script = "uid://dtok21t0ujjui"
+
+[sub_resource type="Resource" id="Resource_sqvmp"]
+script = ExtResource("1_llbu0")
+numeric_type = 6
+numeric_provider = SubResource("Resource_t5hc5")
+placeholder = "energy"
+affected_by = 3
+metadata/_custom_type_script = "uid://cxgxfbwykbp84"
+
+[sub_resource type="Resource" id="Resource_08ya0"]
+script = ExtResource("2_eao32")
+fixed_value = 2
+metadata/_custom_type_script = "uid://dtok21t0ujjui"
+
+[sub_resource type="Resource" id="Resource_tr8p5"]
+script = ExtResource("4_e34o4")
+energy_provider = SubResource("Resource_08ya0")
+target_type = 1
+metadata/_custom_type_script = "uid://c6kvghrfcdtp7"
+
+[sub_resource type="Resource" id="Resource_epl3s"]
+script = ExtResource("2_eao32")
+fixed_value = 3
+metadata/_custom_type_script = "uid://dtok21t0ujjui"
+
+[sub_resource type="Resource" id="Resource_ofi35"]
+script = ExtResource("4_e34o4")
+energy_provider = SubResource("Resource_epl3s")
+metadata/_custom_type_script = "uid://c6kvghrfcdtp7"
+
+[sub_resource type="Resource" id="Resource_b7r3i"]
+script = ExtResource("2_eao32")
+fixed_value = 3
+metadata/_custom_type_script = "uid://dtok21t0ujjui"
+
+[sub_resource type="Resource" id="Resource_n82wa"]
+script = ExtResource("1_llbu0")
+numeric_type = 6
+numeric_provider = SubResource("Resource_b7r3i")
+placeholder = "energy"
+metadata/_custom_type_script = "uid://cxgxfbwykbp84"
+
+[resource]
+script = ExtResource("3_0tl12")
+id = "冷光"
+type = 2
+card_color = 64
+discoverable = false
+draftable = false
+effects = Array[ExtResource("2_5a6uw")]([SubResource("Resource_tr8p5")])
+portrait = ExtResource("5_qq4ko")
+base_description = "[center]获得{energy}点能量。[/center]"
+base_numeric_entries = Array[ExtResource("1_llbu0")]([SubResource("Resource_sqvmp")])
+upgraded_description = "[center]获得{energy}点能量。[/center]"
+upgraded_numeric_entries = Array[ExtResource("1_llbu0")]([SubResource("Resource_n82wa")])
+upgraded_effects = Array[ExtResource("2_5a6uw")]([SubResource("Resource_ofi35")])
+metadata/_custom_type_script = "uid://br1hibx18tv13"

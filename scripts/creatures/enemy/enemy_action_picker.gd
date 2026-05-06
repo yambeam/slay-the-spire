@@ -1,3 +1,4 @@
+### Deprecated
 class_name EnemyActionPicker
 extends Node
 

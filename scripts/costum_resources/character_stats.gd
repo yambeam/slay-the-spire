@@ -82,5 +82,5 @@ func take_damage(damage: int) -> int:
 	health -= actual_damage
 	if health<=0:
 		print("角色生命值小于0，角色死亡")
-		Events.player_died.emit()
+		Events.player_died_outside.emit()
 	return actual_damage

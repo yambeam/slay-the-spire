@@ -3,18 +3,13 @@
 [ext_resource type="Script" uid="uid://ce34juwu5b0yr" path="res://scripts/costum_resources/intents/intent.gd" id="1_sodlo"]
 [ext_resource type="Script" uid="uid://iqqyr44teapg" path="res://scripts/costum_resources/intents/sub_intent.gd" id="2_n1pwd"]
 [ext_resource type="Script" uid="uid://dtok21t0ujjui" path="res://scripts/costum_resources/numeric_provider.gd" id="3_aa4qt"]
-[ext_resource type="Texture2D" uid="uid://bkbn4fvc4je43" path="res://images/packed/intents/attack/intent_attack_2.png" id="3_bnrly"]
 [ext_resource type="Script" uid="uid://vkklgv0ma0yf" path="res://scripts/costum_resources/effects/attack_effect.gd" id="4_3aukq"]
-[ext_resource type="Texture2D" uid="uid://c4qea6ui2gksn" path="res://images/packed/intents/attack/intent_attack_3.png" id="4_oe3fb"]
 [ext_resource type="Script" uid="uid://bces7ijyodhmv" path="res://scripts/costum_resources/intents/attack_sub_intent.gd" id="6_bmosx"]
-[ext_resource type="Texture2D" uid="uid://c2k4h5pb77hob" path="res://images/packed/intents/attack/intent_attack_4.png" id="8_yjrj0"]
 [ext_resource type="Resource" uid="uid://djvmk3f4ikvji" path="res://entities/cards/status_cards/伤口.tres" id="9_2g6j5"]
 [ext_resource type="Script" uid="uid://cwa7i0gle4vi5" path="res://entities/enemies/vantom/vantom_ai.gd" id="10_27bsf"]
 [ext_resource type="Script" uid="uid://bfd4cqklwdhs3" path="res://scripts/costum_resources/effects/put_card_effect.gd" id="10_cxmbc"]
-[ext_resource type="Texture2D" uid="uid://s3dma6tta5n3" path="res://images/packed/intents/intent_status_card.png" id="11_3m854"]
 [ext_resource type="Script" uid="uid://b3b84q5sqt5kj" path="res://scripts/costum_resources/intents/put_card_sub_intent.gd" id="12_kygs6"]
 [ext_resource type="Script" uid="uid://b8qfrs61nmcix" path="res://scripts/costum_resources/effects/apply_buff_effect.gd" id="13_7igu1"]
-[ext_resource type="Texture2D" uid="uid://epusnbog8ryc" path="res://images/packed/intents/intent_buff.png" id="14_u2l8y"]
 [ext_resource type="Script" uid="uid://dpbv4m5rd0bbq" path="res://scripts/costum_resources/intents/apply_buff_sub_intent.gd" id="15_e0yg3"]
 
 [sub_resource type="Resource" id="Resource_7gxds"]
@@ -36,7 +31,6 @@ metadata/_custom_type_script = "uid://vkklgv0ma0yf"
 [sub_resource type="Resource" id="Resource_ytjuq"]
 script = ExtResource("6_bmosx")
 damage_provider = SubResource("Resource_7gxds")
-icon = ExtResource("3_bnrly")
 effect = SubResource("Resource_rbigm")
 metadata/_custom_type_script = "uid://bces7ijyodhmv"
 
@@ -72,7 +66,6 @@ metadata/_custom_type_script = "uid://dtok21t0ujjui"
 script = ExtResource("6_bmosx")
 damage_provider = SubResource("Resource_xc4vh")
 repeat_provider = SubResource("Resource_buf08")
-icon = ExtResource("4_oe3fb")
 effect = SubResource("Resource_oxnlu")
 metadata/_custom_type_script = "uid://bces7ijyodhmv"
 
@@ -102,7 +95,6 @@ metadata/_custom_type_script = "uid://vkklgv0ma0yf"
 [sub_resource type="Resource" id="Resource_hdfee"]
 script = ExtResource("6_bmosx")
 damage_provider = SubResource("Resource_8ctln")
-icon = ExtResource("8_yjrj0")
 effect = SubResource("Resource_madhx")
 metadata/_custom_type_script = "uid://bces7ijyodhmv"
 
@@ -127,7 +119,7 @@ metadata/_custom_type_script = "uid://dtok21t0ujjui"
 [sub_resource type="Resource" id="Resource_cxmbc"]
 script = ExtResource("12_kygs6")
 numeric_provider = SubResource("Resource_2g6j5")
-icon = ExtResource("11_3m854")
+type = 10
 effect = SubResource("Resource_yjrj0")
 metadata/_custom_type_script = "uid://b3b84q5sqt5kj"
 
@@ -153,7 +145,6 @@ metadata/_custom_type_script = "uid://b8qfrs61nmcix"
 [sub_resource type="Resource" id="Resource_pg4wj"]
 script = ExtResource("15_e0yg3")
 type = 1
-icon = ExtResource("14_u2l8y")
 effect = SubResource("Resource_xufcp")
 metadata/_custom_type_script = "uid://dpbv4m5rd0bbq"
 

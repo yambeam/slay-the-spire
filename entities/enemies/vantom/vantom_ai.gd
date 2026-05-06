@@ -25,14 +25,14 @@ func execute_intent(source: Creature, target: Creature, current_intent: Intent) 
 func choose_intent(_source: Creature, _target: Creature) -> Intent:
 	match last_action:
 		"":
-			return get_intent_by_name(intents, "InkStain")
+			return get_intent_by_name("InkStain")
 		"InkStain":
-			return get_intent_by_name(intents, "InkSpade")
+			return get_intent_by_name("InkSpade")
 		"InkSpade":
-			return get_intent_by_name(intents, "Dismental")
+			return get_intent_by_name("Dismental")
 		"Dismental":
-			return get_intent_by_name(intents, "ChargeUp")
+			return get_intent_by_name("ChargeUp")
 		"ChargeUp":
-			return get_intent_by_name(intents, "InkStain")
+			return get_intent_by_name("InkStain")
 		_:
 			return random_intent(intents)

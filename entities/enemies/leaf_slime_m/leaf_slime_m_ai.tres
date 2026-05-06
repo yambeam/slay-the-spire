@@ -3,13 +3,11 @@
 [ext_resource type="Script" uid="uid://ce34juwu5b0yr" path="res://scripts/costum_resources/intents/intent.gd" id="1_et3dl"]
 [ext_resource type="Script" uid="uid://iqqyr44teapg" path="res://scripts/costum_resources/intents/sub_intent.gd" id="2_ldd8u"]
 [ext_resource type="Script" uid="uid://dtok21t0ujjui" path="res://scripts/costum_resources/numeric_provider.gd" id="3_nfbet"]
-[ext_resource type="Texture2D" uid="uid://bkbn4fvc4je43" path="res://images/packed/intents/attack/intent_attack_2.png" id="3_vqc1p"]
 [ext_resource type="Script" uid="uid://vkklgv0ma0yf" path="res://scripts/costum_resources/effects/attack_effect.gd" id="4_tgs2r"]
 [ext_resource type="Script" uid="uid://bces7ijyodhmv" path="res://scripts/costum_resources/intents/attack_sub_intent.gd" id="6_nfbet"]
 [ext_resource type="Resource" uid="uid://by2gga1uh715e" path="res://entities/cards/status_cards/粘液.tres" id="7_sj1l8"]
 [ext_resource type="Script" uid="uid://bfd4cqklwdhs3" path="res://scripts/costum_resources/effects/put_card_effect.gd" id="8_0j6ds"]
 [ext_resource type="Script" uid="uid://bmnqyhqm6pv8y" path="res://entities/enemies/leaf_slime_m/leaf_slime_m_ai.gd" id="8_et3dl"]
-[ext_resource type="Texture2D" uid="uid://s3dma6tta5n3" path="res://images/packed/intents/intent_status_card.png" id="9_xkl8f"]
 [ext_resource type="Script" uid="uid://b3b84q5sqt5kj" path="res://scripts/costum_resources/intents/put_card_sub_intent.gd" id="10_quecm"]
 
 [sub_resource type="Resource" id="Resource_tgs2r"]
@@ -31,7 +29,6 @@ metadata/_custom_type_script = "uid://vkklgv0ma0yf"
 [sub_resource type="Resource" id="Resource_xkl8f"]
 script = ExtResource("6_nfbet")
 damage_provider = SubResource("Resource_tgs2r")
-icon = ExtResource("3_vqc1p")
 effect = SubResource("Resource_0j6ds")
 metadata/_custom_type_script = "uid://bces7ijyodhmv"
 
@@ -64,7 +61,6 @@ metadata/_custom_type_script = "uid://dtok21t0ujjui"
 script = ExtResource("10_quecm")
 numeric_provider = SubResource("Resource_lvldk")
 type = 10
-icon = ExtResource("9_xkl8f")
 effect = SubResource("Resource_ltkp2")
 metadata/_custom_type_script = "uid://b3b84q5sqt5kj"
 

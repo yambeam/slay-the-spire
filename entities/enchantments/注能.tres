@@ -1,0 +1,13 @@
+[gd_resource type="Resource" format=3 uid="uid://cvmnlqg1m1qky"]
+
+[ext_resource type="Texture2D" uid="uid://dyy502ug2q3y" path="res://images/enchantments/imbued.png" id="1_c15c6"]
+[ext_resource type="Script" uid="uid://yq0ywr4envco" path="res://entities/enchantments/注能.gd" id="2_c15c6"]
+
+[resource]
+script = ExtResource("2_c15c6")
+id = "inbued"
+enchantment_name = "注能"
+description = "打出这张牌后获得{stacks}点能量"
+icon = ExtResource("1_c15c6")
+stacks = 1
+metadata/_custom_type_script = "uid://bohadu72l6n53"

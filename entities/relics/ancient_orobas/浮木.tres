@@ -1,0 +1,47 @@
+[gd_resource type="Resource" script_class="Relic" format=3 uid="uid://b6lo0t63drngi"]
+
+[ext_resource type="Script" uid="uid://cgmi6f3o7leik" path="res://scripts/costum_resources/effect.gd" id="1_ieecu"]
+[ext_resource type="Script" uid="uid://dtok21t0ujjui" path="res://scripts/costum_resources/numeric_provider.gd" id="2_4s1ah"]
+[ext_resource type="Script" uid="uid://bvf88v88tbaks" path="res://scripts/costum_resources/relic.gd" id="2_inw0s"]
+[ext_resource type="Script" uid="uid://dd8cefu454sp5" path="res://scripts/costum_resources/effects/draw_card_effect.gd" id="3_wejke"]
+[ext_resource type="Script" uid="uid://c8ly86kb5vc65" path="res://scripts/costum_resources/effects/iteration_effect.gd" id="4_38fk3"]
+[ext_resource type="Script" uid="uid://b8qfrs61nmcix" path="res://scripts/costum_resources/effects/apply_buff_effect.gd" id="5_81b0m"]
+[ext_resource type="Texture2D" uid="uid://cuuuaj5" path="res://images/atlases/relic_atlas.sprites/driftwood.tres" id="6_no8tr"]
+
+[sub_resource type="Resource" id="Resource_45xka"]
+script = ExtResource("2_4s1ah")
+fixed_value = 3
+metadata/_custom_type_script = "uid://dtok21t0ujjui"
+
+[sub_resource type="Resource" id="Resource_doofi"]
+script = ExtResource("3_wejke")
+metadata/_custom_type_script = "uid://dd8cefu454sp5"
+
+[sub_resource type="Resource" id="Resource_03l6y"]
+script = ExtResource("4_38fk3")
+count_provider = SubResource("Resource_45xka")
+effects = Array[ExtResource("1_ieecu")]([SubResource("Resource_doofi")])
+metadata/_custom_type_script = "uid://c8ly86kb5vc65"
+
+[sub_resource type="Resource" id="Resource_4bkf5"]
+script = ExtResource("2_4s1ah")
+fixed_value = 1
+metadata/_custom_type_script = "uid://dtok21t0ujjui"
+
+[sub_resource type="Resource" id="Resource_0mu01"]
+script = ExtResource("5_81b0m")
+buff_name = "无法抽牌"
+buff_stack_provider = SubResource("Resource_4bkf5")
+target_type = 1
+metadata/_custom_type_script = "uid://b8qfrs61nmcix"
+
+[resource]
+script = ExtResource("2_inw0s")
+relic_name = "浮木"
+id = "driftwood"
+icon = ExtResource("6_no8tr")
+description = "在你的回合开始时，额外抽2张牌，本回合无法再抽牌"
+trigger_type = 1
+rarity = 32
+effects = Array[ExtResource("1_ieecu")]([SubResource("Resource_03l6y"), SubResource("Resource_0mu01")])
+metadata/_custom_type_script = "uid://bvf88v88tbaks"

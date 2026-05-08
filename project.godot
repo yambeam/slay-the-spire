@@ -35,8 +35,9 @@ SFXPlayer="*res://globals/sfx_player.tscn"
 TooltipManager="*res://globals/tooltip_manager.gd"
 KeywordTooltip="*res://globals/keyword_tooltip.tscn"
 BuffLibrary="*res://globals/buff_library.gd"
-Game="*uid://ckhqrqwi4d4ji"
+GameManager="*uid://ckhqrqwi4d4ji"
 ItemPool="*uid://d2kmliv2m0fqo"
+MouseCursor="*uid://qo7dfe4uhn80"
 
 [display]
 
@@ -44,6 +45,7 @@ window/size/viewport_width=1920
 window/size/viewport_height=1080
 window/stretch/mode="canvas_items"
 window/stretch/aspect="expand"
+mouse_cursor/custom_image="uid://c81ujylxglbau"
 
 [editor]
 

@@ -66,6 +66,7 @@ func _ready() -> void:
 	Events.map_room_selected.connect(_on_map_room_selected)
 	match run_startup.type:
 		RunStartup.Type.NEW_RUN:
+			SaveGame.delete_data()
 			character = run_startup.picked_character.create_instance()
 			_start_run()
 		RunStartup.Type.CONTINUE_RUN:

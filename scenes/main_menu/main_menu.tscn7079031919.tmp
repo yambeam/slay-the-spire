@@ -8,7 +8,6 @@
 [ext_resource type="SpineSkeletonDataResource" uid="uid://bbgijkibj2fr2" path="res://animations/backgrounds/mainmenu/top/main_menu_top_skel_data.tres" id="4_uqeha"]
 [ext_resource type="PackedScene" uid="uid://blvum03eav360" path="res://scenes/settings/settings.tscn" id="7_5seab"]
 [ext_resource type="PackedScene" uid="uid://daa628w54ouws" path="res://scenes/main_menu/main_menu_button.tscn" id="7_x2yjq"]
-[ext_resource type="PackedScene" uid="uid://bv0rrfhkiiomf" path="res://scenes/character_selector/character_selector.tscn" id="8_thkx5"]
 
 [node name="main_menu" type="Control" unique_id=1550050227]
 layout_mode = 3
@@ -85,14 +84,6 @@ text = "Settings"
 [node name="Quit" parent="VBoxContainer" unique_id=23848942 instance=ExtResource("7_x2yjq")]
 layout_mode = 2
 text = "Quit"
-
-[node name="character_selector" parent="." unique_id=765309063 instance=ExtResource("8_thkx5")]
-visible = false
-layout_mode = 0
-offset_left = 11.0
-offset_top = -7.0
-offset_right = 11.0
-offset_bottom = -7.0
 
 [node name="settingscene" parent="." unique_id=663435682 instance=ExtResource("7_5seab")]
 process_mode = 3

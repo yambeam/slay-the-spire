@@ -1,0 +1,49 @@
+[gd_scene format=3 uid="uid://daa628w54ouws"]
+
+[ext_resource type="Script" uid="uid://e8or52ajhet8" path="res://scripts/main_menu/main_menu_button.gd" id="1_6dnpj"]
+[ext_resource type="Texture2D" uid="uid://1gpaub1jfjsd" path="res://images/packed/main_menu/main_menu_button_highlight.png" id="2_22awc"]
+[ext_resource type="FontFile" uid="uid://dqmshhaunu4jy" path="res://fonts/zhs/SourceHanSerifSC-Bold.otf" id="3_xc1rk"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_7sl1c"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ruo4s"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_htqr8"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_6dnpj"]
+
+[node name="main_menu_button" type="HBoxContainer" unique_id=2006624427]
+offset_right = 320.0
+offset_bottom = 75.0
+theme_override_constants/separation = 20
+alignment = 1
+script = ExtResource("1_6dnpj")
+
+[node name="leftwing" type="TextureRect" parent="." unique_id=1157227278]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+texture = ExtResource("2_22awc")
+
+[node name="button" type="Button" parent="." unique_id=957423094]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(200, 75)
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.9647059, 0.8862745, 1)
+theme_override_colors/font_hover_color = Color(0.9372549, 0.78431374, 0.31764707, 1)
+theme_override_colors/font_outline_color = Color(0.1254902, 0.14117648, 0.16078432, 1)
+theme_override_constants/outline_size = 20
+theme_override_fonts/font = ExtResource("3_xc1rk")
+theme_override_font_sizes/font_size = 40
+theme_override_styles/normal = SubResource("StyleBoxEmpty_7sl1c")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_ruo4s")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_htqr8")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_6dnpj")
+text = "Continue "
+
+[node name="rightwing" type="TextureRect" parent="." unique_id=1451108301]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+texture = ExtResource("2_22awc")
+flip_h = true
+
+[connection signal="pressed" from="button" to="." method="_on_button_pressed"]

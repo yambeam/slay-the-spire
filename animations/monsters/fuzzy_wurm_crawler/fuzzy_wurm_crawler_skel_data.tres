@@ -1,7 +1,7 @@
 [gd_resource type="SpineSkeletonDataResource" format=3 uid="uid://cwgncaf2jt588"]
 
-[ext_resource type="SpineAtlasResource" uid="uid://br7qvdotg4inp" path="res://animations/monsters/fuzzy_wurm_crawler/fuzzy_wurm_crawler.atlas" id="1_hb6j3"]
-[ext_resource type="SpineSkeletonFileResource" uid="uid://dbl686h5m8y4q" path="res://animations/monsters/fuzzy_wurm_crawler/fuzzy_wurm_crawler.skel" id="2_w3dt5"]
+[ext_resource type="SpineAtlasResource" uid="uid://d26m5asb7fpk2" path="res://animations/monsters/fuzzy_wurm_crawler/fuzzy_wurm_crawler.atlas" id="1_hb6j3"]
+[ext_resource type="SpineSkeletonFileResource" uid="uid://bq25i228yu1gc" path="res://animations/monsters/fuzzy_wurm_crawler/fuzzy_wurm_crawler.skel" id="2_w3dt5"]
 
 [sub_resource type="SpineAnimationMix" id="SpineAnimationMix_3r8p6"]
 from = "attack"

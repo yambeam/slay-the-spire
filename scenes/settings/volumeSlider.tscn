@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://0ek3vhap4ak1"]
+
+[ext_resource type="Texture2D" uid="uid://5a8465" path="res://images/atlases/ui_atlas.sprites/scrollbar_train_large.tres" id="1_2elfj"]
+[ext_resource type="Script" uid="uid://u07fftsw5r3o" path="res://scripts/settings/volumeSlider.gd" id="1_e3x03"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_e3x03"]
+draw_center = false
+border_width_top = 7
+border_width_bottom = 7
+border_color = Color(0.36078432, 0.4509804, 0.45882353, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+corner_detail = 10
+
+[node name="volumeSlider" type="HSlider" unique_id=938607398]
+offset_left = 170.99994
+offset_top = 343.0
+offset_right = 344.8999
+offset_bottom = 359.0
+scale = Vector2(10, 10)
+theme_override_icons/grabber = ExtResource("1_2elfj")
+theme_override_icons/grabber_highlight = ExtResource("1_2elfj")
+theme_override_styles/slider = SubResource("StyleBoxFlat_e3x03")
+max_value = 1.0
+step = 0.01
+script = ExtResource("1_e3x03")

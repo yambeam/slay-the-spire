@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://cxm0iyd" path="res://images/atlases/compressed.sprites/back_button_outline.tres" id="3_tratq"]
 [ext_resource type="Texture2D" uid="uid://cahogy5" path="res://images/atlases/compressed.sprites/back_button_arrow.tres" id="4_yfbmn"]
 [ext_resource type="PackedScene" uid="uid://d0prug5ikaswq" path="res://scenes/settings/buttons.tscn" id="5_8ady0"]
+[ext_resource type="PackedScene" uid="uid://blvum03eav360" path="res://scenes/settings/settings.tscn" id="8_a155m"]
 
 [node name="PauseMenu" type="CanvasLayer" unique_id=1067367733]
 script = ExtResource("1_a155m")
@@ -57,6 +58,9 @@ offset_bottom = 1015.0
 texture_normal = ExtResource("2_o2k2b")
 out_line_texture = ExtResource("3_tratq")
 icon_texture = ExtResource("4_yfbmn")
+
+[node name="settings" parent="." unique_id=663435682 instance=ExtResource("8_a155m")]
+visible = false
 
 [connection signal="pressed" from="VBoxContainer/continueButton" to="." method="_on_continue_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/settingButton" to="." method="_on_setting_button_pressed"]

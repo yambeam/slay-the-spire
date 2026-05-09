@@ -37,7 +37,7 @@ func initialize(stats: CharacterStats) -> void:
 	relic_handler.initialize(run_stats)
 	# 测试用
 	var tween = create_tween()
-	tween.tween_callback(func(): run_stats.add_potion(preload("res://entities/potions/火焰药水.tres")))
+	tween.tween_callback(func(): run_stats.add_potion(preload("res://entities/potions/灾厄药水.tres")))
 	tween.tween_interval(1.0)
 	#tween.tween_callback(func(): run_stats.add_potion(preload("res://entities/potions/癫狂之触.tres")))
 	#tween.tween_interval(1.0)

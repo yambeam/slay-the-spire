@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="BuffResource" format=3 uid="uid://b1ic763kg68hg"]
+
+[ext_resource type="Script" uid="uid://c1n4sywvfnffx" path="res://scripts/costum_resources/buff_resource.gd" id="1_pb1ee"]
+[ext_resource type="Script" uid="uid://d17otqvaly3l2" path="res://scripts/costum_resources/buffs/sleep_debuff.gd" id="1_v5hm0"]
+[ext_resource type="Texture2D" uid="uid://d20ryafprp1ux" path="res://images/powers/asleep_power.png" id="2_ub5u2"]
+
+[resource]
+script = ExtResource("1_pb1ee")
+buff_id = "asleep"
+buff_name = "沉睡"
+description = "{stacks}个回合后或受到伤害后醒来。"
+icon = ExtResource("2_ub5u2")
+buff_type = 1
+buff_script = ExtResource("1_v5hm0")
+metadata/_custom_type_script = "uid://c1n4sywvfnffx"

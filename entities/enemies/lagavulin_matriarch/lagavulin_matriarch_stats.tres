@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="EnemyStats" format=3 uid="uid://bg6cayyv4u2u2"]
+
+[ext_resource type="Resource" uid="uid://nguumc4fgmo4" path="res://entities/enemies/lagavulin_matriarch/lagavulin_matriarch_ai.tres" id="1_n0ndg"]
+[ext_resource type="Script" uid="uid://bjrlwk5w4gqtk" path="res://scripts/costum_resources/enemy_stats.gd" id="1_xwa8d"]
+[ext_resource type="PackedScene" uid="uid://cj51k2kwnmk23" path="res://scenes/creature_visuals/lagavulin_matriarch.tscn" id="3_yhhd5"]
+
+[resource]
+script = ExtResource("1_xwa8d")
+ai = ExtResource("1_n0ndg")
+enemy_name = "乐嘉维林族母"
+hightest_max_health = 233
+lowest_max_health = 233
+visuals_scene = ExtResource("3_yhhd5")
+metadata/_custom_type_script = "uid://bjrlwk5w4gqtk"

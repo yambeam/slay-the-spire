@@ -123,10 +123,9 @@ func _on_card_previewed(pre_card: CardUI, to_preview: bool) -> void:
 func discard_card(card: CardUI) -> void:
 	# 从手牌中移出时去掉本回合打出免费的标记
 	card.card.first_play_free = false
-	card.discarded = true
 	Events.card_discarded.emit(card)
 	set_cards()
-	
+
 func exhaust_card(card: CardUI) -> void:
 	Events.card_exhausted.emit(card.card)
 	card.queue_free()

@@ -16,8 +16,7 @@ func execute_intent(source: Creature, target: Creature, current_intent: Intent) 
 		_:
 			pass
 	last_action = current_intent.intent_name
-	for sub_intent: SubIntent in current_intent.sub_intents:
-		sub_intent.execute()
+	super.execute_intent(source, target, current_intent)
 
 func choose_intent(_source: Creature, _target: Creature) -> Intent:
 	match last_action:

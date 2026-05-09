@@ -169,8 +169,9 @@ func remove_card_in_draw_pile(card: Card) -> void:
 func remove_card_in_hand(card: Card) -> void:
 	for child: CardUI in hand_manager.get_children():
 		if child.card == card:
-			hand_manager.discard_card(child)
+			hand_manager.remove_child(child)
 			return
+	hand_manager.set_cards()
 
 func update_hand() -> void:
 	hand_manager.update_hand()

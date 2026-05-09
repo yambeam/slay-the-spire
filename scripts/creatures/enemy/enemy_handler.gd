@@ -30,7 +30,10 @@ func setup_enemies(encounter: EnemyEncounter) -> void:
 			
 		var initial_buff: Dictionary = enemy_entry.initial_buff
 		for key in initial_buff:
-			new_enemy.add_buff(ApplyBuffContext.new(new_enemy, new_enemy, initial_buff[key], key))
+			if key == "格挡":
+				new_enemy.gain_block(GainBlockContext.new(new_enemy, new_enemy, initial_buff[key], [], true))
+			else:
+				new_enemy.add_buff(ApplyBuffContext.new(new_enemy, new_enemy, initial_buff[key], key))
 		#new_enemy.ready.connect(
 			#func():
 				#var buffs := enemy_entry.get_initial_buffs()

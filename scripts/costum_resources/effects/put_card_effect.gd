@@ -4,7 +4,8 @@ extends Effect
 enum CardSource{
 	SPECIFIED, # 导出的卡牌
 	COPY_OF_PLAYING_CARD, # 只用卡牌的effect中允许使用
-	RANDOM_FROM_POOL
+	RANDOM_FROM_POOL,
+	PREVOUSE_RESULT
 }
 
 enum Where{
@@ -41,6 +42,8 @@ func apply(source_: Node, targets: Array[Node], card_context: Dictionary, previo
 			for i in range(len(cards)):
 				cards[i] = cards[i].duplicate()
 			cards_to_add = cards
+		CardSource.PREVOUSE_RESULT:
+			cards_to_add = [previous_result as Card]
 	
 	for target: Creature in targets:
 		if target is Player:

@@ -9,6 +9,8 @@ extends Creature
 var enemy_ai: EnemyAI
 #var current_action: EnemyAction : set = _set_current_action
 var current_intent: Intent: set = _set_current_intent
+# 遭遇战中怪物的index,主要是为了确定意图
+var encounter_index := 0
 
 var visuals: CreatureVisuals
 var spine_manager: SpineManager
@@ -44,7 +46,7 @@ func do_turn() -> void:
 		return		
 	
 	# 在这个函数中设置了动画名称，必须在动画开始前调用
-	execute_intent()
+	await execute_intent()
 	if current_intent.anim_name != "":
 		var track_entry := spine_anim_state.set_animation(current_intent.anim_name, true, 0)
 		spine_anim_state.add_animation(enemy_ai.get_idle_animation_name(), 0, true, 0)
@@ -61,7 +63,7 @@ func do_turn() -> void:
 func execute_intent() -> void:
 	var player: Player = get_tree().get_first_node_in_group("ui_player")
 	intents.hide_intent()
-	enemy_ai.execute_intent(self, player, current_intent)
+	await enemy_ai.execute_intent(self, player, current_intent)
 	
 		
 func _set_current_intent(value: Intent) -> void:

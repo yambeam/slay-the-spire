@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="BuffResource" format=3 uid="uid://yk6beev2gmct"]
+
+[ext_resource type="Script" uid="uid://c4knnb2g7giyq" path="res://scripts/costum_resources/buffs/lose_health_on_turn_ended.gd" id="1_43ptd"]
+[ext_resource type="Script" uid="uid://c1n4sywvfnffx" path="res://scripts/costum_resources/buff_resource.gd" id="1_qb7p6"]
+[ext_resource type="Texture2D" uid="uid://dmjp0lw1n1otb" path="res://images/powers/mind_rot_power.png" id="2_mr2t0"]
+
+[resource]
+script = ExtResource("1_qb7p6")
+buff_id = "mind_rot"
+buff_name = "心灵腐化"
+description = "回合结束时失去{stacks}点生命"
+icon = ExtResource("2_mr2t0")
+buff_type = 1
+buff_script = ExtResource("1_43ptd")
+metadata/_custom_type_script = "uid://c1n4sywvfnffx"

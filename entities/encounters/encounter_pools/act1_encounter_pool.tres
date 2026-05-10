@@ -20,6 +20,7 @@
 [ext_resource type="Resource" uid="uid://kgpjjxthep23" path="res://entities/encounters/act1/one_byrdonis.tres" id="17_nvtwo"]
 [ext_resource type="Resource" uid="uid://bx4gxk6i1joc2" path="res://entities/encounters/act1/one_bygone_effigy.tres" id="18_q6si1"]
 [ext_resource type="Resource" uid="uid://bg6cayyv4u2u2" path="res://entities/enemies/lagavulin_matriarch/lagavulin_matriarch_stats.tres" id="19_j2cuc"]
+[ext_resource type="Resource" uid="uid://b4vq5focbvrnj" path="res://entities/encounters/act2/knowledge_demon.tres" id="21_cu8jw"]
 
 [sub_resource type="Resource" id="Resource_e7ryn"]
 script = ExtResource("9_4vgo2")
@@ -213,5 +214,5 @@ metadata/_custom_type_script = "uid://dgu4qpyr0pnnb"
 
 [resource]
 script = ExtResource("2_r6wps")
-pool = Array[ExtResource("1_8b4wf")]([SubResource("Resource_x8afg"), SubResource("Resource_cu8jw"), SubResource("Resource_5uous"), SubResource("Resource_bgxud"), SubResource("Resource_f7qwd"), SubResource("Resource_36jb8"), SubResource("Resource_gxx7m"), SubResource("Resource_o2qns"), ExtResource("14_oisqt"), ExtResource("15_15xrl"), ExtResource("16_5fgax"), ExtResource("17_nvtwo"), ExtResource("18_q6si1"), SubResource("Resource_8nwoh")])
+pool = Array[ExtResource("1_8b4wf")]([SubResource("Resource_x8afg"), SubResource("Resource_cu8jw"), SubResource("Resource_5uous"), SubResource("Resource_bgxud"), SubResource("Resource_f7qwd"), SubResource("Resource_36jb8"), SubResource("Resource_gxx7m"), SubResource("Resource_o2qns"), ExtResource("14_oisqt"), ExtResource("15_15xrl"), ExtResource("16_5fgax"), ExtResource("17_nvtwo"), ExtResource("18_q6si1"), SubResource("Resource_8nwoh"), ExtResource("21_cu8jw")])
 metadata/_custom_type_script = "uid://ctyh7cm7a03s2"

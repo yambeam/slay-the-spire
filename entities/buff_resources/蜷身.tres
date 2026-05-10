@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="BuffResource" format=3 uid="uid://bqvxrxyoxckto"]
+
+[ext_resource type="Script" uid="uid://c1n4sywvfnffx" path="res://scripts/costum_resources/buff_resource.gd" id="1_7gj12"]
+[ext_resource type="Script" uid="uid://dbova8uekfahr" path="res://scripts/costum_resources/buffs/curl_up_buff.gd" id="1_37qdh"]
+[ext_resource type="Texture2D" uid="uid://b47wkgkrya5ui" path="res://images/powers/curl_up_power.png" id="2_4y42s"]
+
+[resource]
+script = ExtResource("1_7gj12")
+buff_id = "curl_up"
+buff_name = "蜷身"
+description = "下一次受到伤害后获得{stacks}点格挡"
+icon = ExtResource("2_4y42s")
+buff_script = ExtResource("1_37qdh")
+metadata/_custom_type_script = "uid://c1n4sywvfnffx"

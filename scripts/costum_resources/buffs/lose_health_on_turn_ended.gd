@@ -1,9 +1,6 @@
 # 记得改类名
 class_name LoseHealthOnTurnEnded
 extends Buff
-
-
-
 	
 func initialize() -> void:
 	if agent and agent.has_signal("turn_ended"):

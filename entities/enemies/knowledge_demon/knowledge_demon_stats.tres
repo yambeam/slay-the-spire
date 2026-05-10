@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="EnemyStats" format=3 uid="uid://bswc5itc2oa4i"]
+
+[ext_resource type="Script" uid="uid://bjrlwk5w4gqtk" path="res://scripts/costum_resources/enemy_stats.gd" id="1_f0b1h"]
+[ext_resource type="Resource" uid="uid://dgn1vc633ihej" path="res://entities/enemies/knowledge_demon/knowledge_ai.tres" id="1_nayj5"]
+[ext_resource type="PackedScene" uid="uid://vu08bk6mvdbt" path="res://scenes/creature_visuals/knowledge_demon.tscn" id="3_ff5yc"]
+
+[resource]
+script = ExtResource("1_f0b1h")
+ai = ExtResource("1_nayj5")
+enemy_name = "知识恶魔"
+hightest_max_health = 400
+lowest_max_health = 400
+visuals_scene = ExtResource("3_ff5yc")
+metadata/_custom_type_script = "uid://bjrlwk5w4gqtk"

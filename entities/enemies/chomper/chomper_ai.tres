@@ -1,0 +1,97 @@
+[gd_resource type="Resource" format=3 uid="uid://b8fbx38hiskef"]
+
+[ext_resource type="Script" uid="uid://ce34juwu5b0yr" path="res://scripts/costum_resources/intents/intent.gd" id="1_36n8t"]
+[ext_resource type="Script" uid="uid://iqqyr44teapg" path="res://scripts/costum_resources/intents/sub_intent.gd" id="2_otwbl"]
+[ext_resource type="Script" uid="uid://dtok21t0ujjui" path="res://scripts/costum_resources/numeric_provider.gd" id="3_cymok"]
+[ext_resource type="Script" uid="uid://cgmi6f3o7leik" path="res://scripts/costum_resources/effect.gd" id="4_3o573"]
+[ext_resource type="Script" uid="uid://vkklgv0ma0yf" path="res://scripts/costum_resources/effects/attack_effect.gd" id="5_afkid"]
+[ext_resource type="Script" uid="uid://c8ly86kb5vc65" path="res://scripts/costum_resources/effects/iteration_effect.gd" id="6_cn6jr"]
+[ext_resource type="Script" uid="uid://bces7ijyodhmv" path="res://scripts/costum_resources/intents/attack_sub_intent.gd" id="7_2jyf5"]
+[ext_resource type="Resource" uid="uid://d0i3ewebiy3pg" path="res://entities/cards/status_cards/眩晕.tres" id="8_3o573"]
+[ext_resource type="Script" uid="uid://b3b84q5sqt5kj" path="res://scripts/costum_resources/intents/put_card_sub_intent.gd" id="8_r3klb"]
+[ext_resource type="Script" uid="uid://bfd4cqklwdhs3" path="res://scripts/costum_resources/effects/put_card_effect.gd" id="9_afkid"]
+[ext_resource type="Script" uid="uid://denyr6tan2mou" path="res://entities/enemies/chomper/chomper_ai.gd" id="11_3o573"]
+
+[sub_resource type="Resource" id="Resource_prr76"]
+script = ExtResource("3_cymok")
+fixed_value = 8
+metadata/_custom_type_script = "uid://dtok21t0ujjui"
+
+[sub_resource type="Resource" id="Resource_asacf"]
+script = ExtResource("3_cymok")
+fixed_value = 2
+metadata/_custom_type_script = "uid://dtok21t0ujjui"
+
+[sub_resource type="Resource" id="Resource_w63a2"]
+script = ExtResource("3_cymok")
+fixed_value = 8
+metadata/_custom_type_script = "uid://dtok21t0ujjui"
+
+[sub_resource type="Resource" id="Resource_0b1qp"]
+script = ExtResource("5_afkid")
+damage_provider = SubResource("Resource_w63a2")
+target_type = 2
+metadata/_custom_type_script = "uid://vkklgv0ma0yf"
+
+[sub_resource type="Resource" id="Resource_cxebf"]
+script = ExtResource("6_cn6jr")
+count_provider = SubResource("Resource_asacf")
+effects = Array[ExtResource("4_3o573")]([SubResource("Resource_0b1qp")])
+target_type = 2
+metadata/_custom_type_script = "uid://c8ly86kb5vc65"
+
+[sub_resource type="Resource" id="Resource_fhn7i"]
+script = ExtResource("3_cymok")
+fixed_value = 2
+metadata/_custom_type_script = "uid://dtok21t0ujjui"
+
+[sub_resource type="Resource" id="Resource_ed6ko"]
+script = ExtResource("7_2jyf5")
+damage_provider = SubResource("Resource_prr76")
+repeat_provider = SubResource("Resource_fhn7i")
+effect = SubResource("Resource_cxebf")
+metadata/_custom_type_script = "uid://bces7ijyodhmv"
+
+[sub_resource type="Resource" id="Resource_bmf61"]
+script = ExtResource("1_36n8t")
+sub_intents = Array[ExtResource("2_otwbl")]([SubResource("Resource_ed6ko")])
+intent_name = "Clamp"
+anim_name = "attack"
+metadata/_custom_type_script = "uid://ce34juwu5b0yr"
+
+[sub_resource type="Resource" id="Resource_cn6jr"]
+script = ExtResource("3_cymok")
+fixed_value = 3
+metadata/_custom_type_script = "uid://dtok21t0ujjui"
+
+[sub_resource type="Resource" id="Resource_2jyf5"]
+script = ExtResource("9_afkid")
+where = 1
+card_to_put = ExtResource("8_3o573")
+put_card_count_provider = SubResource("Resource_cn6jr")
+target_type = 2
+metadata/_custom_type_script = "uid://bfd4cqklwdhs3"
+
+[sub_resource type="Resource" id="Resource_tatnb"]
+script = ExtResource("3_cymok")
+fixed_value = 3
+metadata/_custom_type_script = "uid://dtok21t0ujjui"
+
+[sub_resource type="Resource" id="Resource_ffx1w"]
+script = ExtResource("8_r3klb")
+numeric_provider = SubResource("Resource_tatnb")
+type = 10
+effect = SubResource("Resource_2jyf5")
+metadata/_custom_type_script = "uid://b3b84q5sqt5kj"
+
+[sub_resource type="Resource" id="Resource_xoyqr"]
+script = ExtResource("1_36n8t")
+sub_intents = Array[ExtResource("2_otwbl")]([SubResource("Resource_ffx1w")])
+intent_name = "Screech"
+anim_name = "cast"
+metadata/_custom_type_script = "uid://ce34juwu5b0yr"
+
+[resource]
+script = ExtResource("11_3o573")
+intents = Array[ExtResource("1_36n8t")]([SubResource("Resource_bmf61"), SubResource("Resource_xoyqr")])
+metadata/_custom_type_script = "uid://dpkht0suo8prh"

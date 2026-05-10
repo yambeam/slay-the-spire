@@ -233,4 +233,4 @@ func _on_target_selected(target: Creature, card_: Card) -> void:
 func _on_target_unselected(card_) -> void:
 	if card_ == card:
 		set_description(get_tree().get_first_node_in_group("ui_player"), null)
-		visuals.set_hightlight(playable, card.has_highlight_condition(player, null))
+		visuals.set_hightlight(playable and card.playable, card.has_highlight_condition(player, null))

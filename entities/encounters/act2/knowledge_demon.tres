@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="EnemyEncounter" format=3 uid="uid://b4vq5focbvrnj"]
+
+[ext_resource type="Script" uid="uid://dw53gdpom3gn6" path="res://scripts/costum_resources/enemy_entry.gd" id="1_ilvce"]
+[ext_resource type="Script" uid="uid://dgu4qpyr0pnnb" path="res://scripts/costum_resources/enemy_encounter.gd" id="2_d0636"]
+[ext_resource type="Resource" uid="uid://bswc5itc2oa4i" path="res://entities/enemies/knowledge_demon/knowledge_demon_stats.tres" id="2_eylna"]
+
+[sub_resource type="Resource" id="Resource_vnhpo"]
+script = ExtResource("1_ilvce")
+enemy_stats = ExtResource("2_eylna")
+position = Vector2(1385, 600)
+metadata/_custom_type_script = "uid://dw53gdpom3gn6"
+
+[resource]
+script = ExtResource("2_d0636")
+weight = 10.0
+enemy_entries = Array[ExtResource("1_ilvce")]([SubResource("Resource_vnhpo")])
+encounter_name = "芝士恶魔"
+metadata/_custom_type_script = "uid://dgu4qpyr0pnnb"

@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="EnemyStats" format=3 uid="uid://b3r7ss8vi1v83"]
+
+[ext_resource type="Resource" uid="uid://clg3jpa0dddvl" path="res://entities/enemies/punch_construct/punch_construct_ai.tres" id="1_khuhn"]
+[ext_resource type="Script" uid="uid://bjrlwk5w4gqtk" path="res://scripts/costum_resources/enemy_stats.gd" id="1_r4rpp"]
+[ext_resource type="PackedScene" uid="uid://cf2tb4fw2caev" path="res://scenes/creature_visuals/punch_construct.tscn" id="3_3h1gt"]
+
+[resource]
+script = ExtResource("1_r4rpp")
+ai = ExtResource("1_khuhn")
+enemy_name = "拳击构装体"
+hightest_max_health = 60
+lowest_max_health = 60
+visuals_scene = ExtResource("3_3h1gt")
+metadata/_custom_type_script = "uid://bjrlwk5w4gqtk"

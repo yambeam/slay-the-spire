@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="EnemyStats" format=3 uid="uid://c83ptqac3gw05"]
+
+[ext_resource type="Resource" uid="uid://n50tnfju3cei" path="res://entities/enemies/louse_progenetitor/louse_progenitor_ai.tres" id="1_77cgd"]
+[ext_resource type="Script" uid="uid://bjrlwk5w4gqtk" path="res://scripts/costum_resources/enemy_stats.gd" id="1_okpys"]
+[ext_resource type="PackedScene" uid="uid://cvkyjsctst0b4" path="res://scenes/creature_visuals/louse_progenitor.tscn" id="3_ayqo3"]
+
+[resource]
+script = ExtResource("1_okpys")
+ai = ExtResource("1_77cgd")
+enemy_name = "虱虫之母"
+hightest_max_health = 136
+lowest_max_health = 134
+visuals_scene = ExtResource("3_ayqo3")
+metadata/_custom_type_script = "uid://bjrlwk5w4gqtk"

@@ -5,7 +5,7 @@ extends Effect
 
 func execute(source: Node, card_context: Dictionary = {}, previous_result: Variant = null) -> Variant:
 	if previous_result is Dictionary:
-		var cards: Array[Card] = previous_result["selected_cards"]
+		var cards: Array = previous_result["selected_cards"]
 		var total: int = 0
 		for card: Card in cards:
 			var context = card_context.duplicate()

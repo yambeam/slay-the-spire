@@ -20,9 +20,9 @@ func setup_enemies(encounter: EnemyEncounter) -> void:
 		enemy.queue_free()
 	for enemy_entry : EnemyEntry in encounter.enemy_entries:
 		var new_enemy: Enemy = EnemyScene.instantiate()
+		new_enemy.encounter_index = enemy_entry.index
 		new_enemy.position = enemy_entry.position
 		new_enemy.stats = enemy_entry.enemy_stats.create_instance()
-		
 		
 		add_child(new_enemy)
 		if !new_enemy.is_node_ready():
@@ -43,6 +43,8 @@ func setup_enemies(encounter: EnemyEncounter) -> void:
 		
 
 func start_turn() -> void:
+	# 等待一小段时间再开始敌人回合
+	await get_tree().create_timer(0.4).timeout
 	if get_child_count() == 0:
 		return
 	

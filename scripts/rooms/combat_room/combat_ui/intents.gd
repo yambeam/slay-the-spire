@@ -9,9 +9,12 @@ var intent: Intent
 
 func update_intent(intent_: Intent) -> void:
 	var new_uis :int = intent_.sub_intents.size() - get_child_count()
-	new_uis = clampi(new_uis, 0, new_uis)
-	for i in range(new_uis):
-		add_child(IntentUi.instantiate())
+	if new_uis > 0:
+		for i in range(new_uis):
+			add_child(IntentUi.instantiate())
+	else:
+		for i in range(abs(new_uis)):
+			remove_child(get_child(-1))
 	update_display(intent_)
 
 func update_display(intent_: Intent) -> void:

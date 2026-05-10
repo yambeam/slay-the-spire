@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="BuffResource" format=3 uid="uid://bw1c1sxgkpup1"]
+
+[ext_resource type="Script" uid="uid://cw2hcl4mmjgmq" path="res://scripts/costum_resources/buffs/take_damage_over_turn_debuff.gd" id="1_7e5y4"]
+[ext_resource type="Script" uid="uid://c1n4sywvfnffx" path="res://scripts/costum_resources/buff_resource.gd" id="1_gi6jd"]
+[ext_resource type="Texture2D" uid="uid://cxaa1oep6l36o" path="res://images/powers/disintegration_power.png" id="2_itr23"]
+
+[resource]
+script = ExtResource("1_gi6jd")
+buff_id = "disintegration"
+buff_name = "瓦解"
+description = "回合结束时受到{stacks}点伤害"
+icon = ExtResource("2_itr23")
+buff_type = 1
+buff_script = ExtResource("1_7e5y4")
+metadata/_custom_type_script = "uid://c1n4sywvfnffx"

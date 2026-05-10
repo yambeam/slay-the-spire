@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="Card" format=3 uid="uid://d0i3ewebiy3pg"]
+
+[ext_resource type="Script" uid="uid://cxgxfbwykbp84" path="res://scripts/costum_resources/numeric_entry.gd" id="1_4rbvd"]
+[ext_resource type="Script" uid="uid://cgmi6f3o7leik" path="res://scripts/costum_resources/effect.gd" id="2_afa48"]
+[ext_resource type="Script" uid="uid://br1hibx18tv13" path="res://scripts/costum_resources/card.gd" id="3_5sluo"]
+[ext_resource type="Texture2D" uid="uid://whvo1a" path="res://images/atlases/card_atlas.sprites/status/dazed.tres" id="3_afa48"]
+
+[resource]
+script = ExtResource("3_5sluo")
+id = "眩晕"
+type = 8
+card_color = 64
+rarity = 16
+discoverable = false
+draftable = false
+portrait = ExtResource("3_afa48")
+base_description = "[center]无法被打出。[/center]"
+ethereal = true
+playable = false
+upgradable = false
+metadata/_custom_type_script = "uid://br1hibx18tv13"

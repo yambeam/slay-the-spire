@@ -1,0 +1,35 @@
+[gd_resource type="Resource" script_class="Card" format=3 uid="uid://b1aubck7fqd6b"]
+
+[ext_resource type="Script" uid="uid://cxgxfbwykbp84" path="res://scripts/costum_resources/numeric_entry.gd" id="1_83mkx"]
+[ext_resource type="Script" uid="uid://cgmi6f3o7leik" path="res://scripts/costum_resources/effect.gd" id="2_nwi74"]
+[ext_resource type="Script" uid="uid://dtok21t0ujjui" path="res://scripts/costum_resources/numeric_provider.gd" id="3_b0mjo"]
+[ext_resource type="Script" uid="uid://br1hibx18tv13" path="res://scripts/costum_resources/card.gd" id="3_g43k7"]
+[ext_resource type="Script" uid="uid://b8qfrs61nmcix" path="res://scripts/costum_resources/effects/apply_buff_effect.gd" id="4_6s867"]
+[ext_resource type="Texture2D" uid="uid://60mqew" path="res://images/atlases/card_atlas.sprites/token/beta/sloth.tres" id="5_8y4mk"]
+
+[sub_resource type="Resource" id="Resource_bepcg"]
+script = ExtResource("3_b0mjo")
+fixed_value = 4
+metadata/_custom_type_script = "uid://dtok21t0ujjui"
+
+[sub_resource type="Resource" id="Resource_isrwv"]
+script = ExtResource("4_6s867")
+buff_name = "懒惰"
+buff_stack_provider = SubResource("Resource_bepcg")
+target_type = 1
+metadata/_custom_type_script = "uid://b8qfrs61nmcix"
+
+[resource]
+script = ExtResource("3_g43k7")
+id = "懒惰"
+type = 8
+card_color = 64
+rarity = 16
+discoverable = false
+draftable = false
+effects = Array[ExtResource("2_nwi74")]([SubResource("Resource_isrwv")])
+portrait = ExtResource("5_8y4mk")
+base_description = "[center]当你每回合打出第4张牌时，强制结束回合。[/center]"
+playable = false
+upgradable = false
+metadata/_custom_type_script = "uid://br1hibx18tv13"

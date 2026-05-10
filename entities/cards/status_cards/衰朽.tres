@@ -1,0 +1,35 @@
+[gd_resource type="Resource" script_class="Card" format=3 uid="uid://ciuvsfuh1u8bc"]
+
+[ext_resource type="Script" uid="uid://cxgxfbwykbp84" path="res://scripts/costum_resources/numeric_entry.gd" id="1_fus2o"]
+[ext_resource type="Script" uid="uid://cgmi6f3o7leik" path="res://scripts/costum_resources/effect.gd" id="2_fws1s"]
+[ext_resource type="Script" uid="uid://dtok21t0ujjui" path="res://scripts/costum_resources/numeric_provider.gd" id="3_c4ghf"]
+[ext_resource type="Script" uid="uid://br1hibx18tv13" path="res://scripts/costum_resources/card.gd" id="3_yef14"]
+[ext_resource type="Script" uid="uid://b8qfrs61nmcix" path="res://scripts/costum_resources/effects/apply_buff_effect.gd" id="4_8jhws"]
+[ext_resource type="Texture2D" uid="uid://nx3sd2" path="res://images/atlases/card_atlas.sprites/token/beta/waste_away.tres" id="5_53lsk"]
+
+[sub_resource type="Resource" id="Resource_axake"]
+script = ExtResource("3_c4ghf")
+fixed_value = 1
+metadata/_custom_type_script = "uid://dtok21t0ujjui"
+
+[sub_resource type="Resource" id="Resource_nmi37"]
+script = ExtResource("4_8jhws")
+buff_name = "衰朽"
+buff_stack_provider = SubResource("Resource_axake")
+target_type = 1
+metadata/_custom_type_script = "uid://b8qfrs61nmcix"
+
+[resource]
+script = ExtResource("3_yef14")
+id = "腐朽"
+type = 8
+card_color = 64
+rarity = 16
+discoverable = false
+draftable = false
+effects = Array[ExtResource("2_fws1s")]([SubResource("Resource_nmi37")])
+portrait = ExtResource("5_53lsk")
+base_description = "[center]回合开始时失去1点能量。[/center]"
+playable = false
+upgradable = false
+metadata/_custom_type_script = "uid://br1hibx18tv13"

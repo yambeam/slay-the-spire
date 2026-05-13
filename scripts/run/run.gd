@@ -228,7 +228,8 @@ func _setup_top_bar() -> void:
 	top_bar.initialize(character)
 	top_bar.deck_view_requested.connect(deck_view.show_card_pile.bind("你在战斗中将会使用这里的所有卡牌。", false))
 	top_bar.select_deck_view = select_deck_view
-	top_bar.relic_handler.add_relic(character.starting_relic)
+	#top_bar.relic_handler.add_relic(character.starting_relic)
+	stats.add_relic(character.starting_relic)
 	top_bar.settings_requested.connect(handleSettingsRequest)
 
 func handleSettingsRequest() -> void:
@@ -244,15 +245,19 @@ func _change_view(scene: PackedScene) -> Node:
 
 # ========== 战斗奖励与阶段切换 ==========
 func _on_combat_won(context: RewardContext) -> void:
+	if map_node.last_room and map_node.last_room.type == Room.Type.BOSS:
+		if stats.current_stage >= stats.max_stage:
+			_victory()
+			return
+		_pending_stage_transition = true
+		print("boss房胜利")
 	var reward_scene := await _change_view(BATTLE_REWARD_SCENE) as BattleReward
 	reward_scene.run_stats = stats
 	reward_scene.character_stats = character
 	reward_scene.add_rewards(map_node.last_room, context)
 
 	
-	if map_node.last_room and map_node.last_room.type == Room.Type.BOSS:
-		_pending_stage_transition = true
-		print("boss房胜利")
+	
 
 func _on_combat_reward_exited() -> void:
 	_on_room_exited()
@@ -266,19 +271,20 @@ func _transition_to_next_stage() -> void:
 	#for child in current_room.get_children():
 		#child.queue_free()
 	# 1. 推进阶段（current_stage 从 1 变为 2）
-	stats.advance_stage()
+	if stats.current_stage < stats.max_stage:
+		stats.advance_stage()
 	print("当前阶段:",stats.current_stage);
 	# 2. 重置旧地图数据（清空地图数组和楼层计数）
 	stats.reset_map()
 	
 	map_node.play_stage_transition(stats.current_stage)
-	print("当前地图数据置空")
-	# 3. 重建第二阶段地图（起点自动为 Ancient 房间）
-	print("======开始重建地图数据*")
-	#map_node.rebuild_for_stage(stats)
-	print("======结束*")
-	# 4. 显示新地图，玩家站在起点（没有任何弹出窗口）
-	print("=======展示地图")
+	#print("当前地图数据置空")
+	## 3. 重建第二阶段地图（起点自动为 Ancient 房间）
+	#print("======开始重建地图数据*")
+	##map_node.rebuild_for_stage(stats)
+	#print("======结束*")
+	## 4. 显示新地图，玩家站在起点（没有任何弹出窗口）
+	#print("=======展示地图")
 	#_show_map()
 
 func _setup_event_connections() -> void:
@@ -434,3 +440,10 @@ func _on_shop_entered(room: Room) -> void:
 	current_room.add_child.call_deferred(new_view)
 	
 	Events.shop_entered.emit(room, stats, character)
+
+
+func _victory() -> void:
+	# 删除本次存档
+	save_data.delete_data()
+	# 返回主菜单
+	get_tree().change_scene_to_file(MAIN_MENU_PATH)

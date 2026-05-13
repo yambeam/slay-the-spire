@@ -328,19 +328,20 @@ func _apply_stage_background(stage: int) -> void:
 
 
 func play_stage_transition(stage: int) -> void:
-	rebuild_for_stage(run_stats)
-	camera_2d.position.y = -camera_edge_y
-	old_camera_2d_position_y = 0.0
-	show()
-	scroll_enabled = false
+	if stage <= run_stats.max_stage:
+		rebuild_for_stage(run_stats)
+		camera_2d.position.y = -camera_edge_y
+		old_camera_2d_position_y = 0.0
+		show()
+		scroll_enabled = false
+		_create_act_label(stage)
+		var tween = create_tween().set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
+		tween.tween_property(camera_2d, "position:y", 0.0, 2.0)
+		await tween.finished
 
-	_create_act_label(stage)
-
-	var tween = create_tween().set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
-	tween.tween_property(camera_2d, "position:y", 0.0, 2.0)
-	await tween.finished
-
-	scroll_enabled = true
+		scroll_enabled = true
+	else:
+		pass
 
 
 func _create_act_label(stage: int) -> void:

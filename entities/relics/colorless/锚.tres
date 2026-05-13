@@ -24,5 +24,6 @@ relic_name = "锚"
 id = "anchor"
 icon = ExtResource("1_8ija3")
 description = "第一回合开始后，获得10点[color=gold]格挡[/color]"
+trigger_type = 1
 effects = Array[ExtResource("1_0bgrq")]([SubResource("Resource_vgr1h")])
 metadata/_custom_type_script = "uid://bvf88v88tbaks"

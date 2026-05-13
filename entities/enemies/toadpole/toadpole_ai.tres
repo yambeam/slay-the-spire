@@ -9,6 +9,7 @@
 [ext_resource type="Script" uid="uid://cgmi6f3o7leik" path="res://scripts/costum_resources/effect.gd" id="7_jw7gk"]
 [ext_resource type="Script" uid="uid://gjypfal5fy2c" path="res://entities/enemies/toadpole/toadpole_ai.gd" id="7_uidce"]
 [ext_resource type="Script" uid="uid://c8ly86kb5vc65" path="res://scripts/costum_resources/effects/iteration_effect.gd" id="8_h84lw"]
+[ext_resource type="Script" uid="uid://bgdkwbdihbpk5" path="res://scripts/costum_resources/effects/foreach_effect.gd" id="9_55nap"]
 [ext_resource type="Script" uid="uid://dpbv4m5rd0bbq" path="res://scripts/costum_resources/intents/apply_buff_sub_intent.gd" id="9_w40we"]
 
 [sub_resource type="Resource" id="Resource_tmb7p"]
@@ -44,27 +45,44 @@ script = ExtResource("3_3o047")
 fixed_value = 3
 metadata/_custom_type_script = "uid://dtok21t0ujjui"
 
+[sub_resource type="Resource" id="Resource_jw7gk"]
+script = ExtResource("3_3o047")
+fixed_value = 3
+metadata/_custom_type_script = "uid://dtok21t0ujjui"
+
+[sub_resource type="Resource" id="Resource_gbs82"]
+script = ExtResource("3_3o047")
+fixed_value = 3
+metadata/_custom_type_script = "uid://dtok21t0ujjui"
+
 [sub_resource type="Resource" id="Resource_w40we"]
-script = ExtResource("3_3o047")
-fixed_value = 3
-metadata/_custom_type_script = "uid://dtok21t0ujjui"
-
-[sub_resource type="Resource" id="Resource_yns4a"]
-script = ExtResource("3_3o047")
-fixed_value = 3
-metadata/_custom_type_script = "uid://dtok21t0ujjui"
-
-[sub_resource type="Resource" id="Resource_s6byx"]
 script = ExtResource("4_55nap")
-damage_provider = SubResource("Resource_yns4a")
+damage_provider = SubResource("Resource_gbs82")
 target_type = 2
 metadata/_custom_type_script = "uid://vkklgv0ma0yf"
 
-[sub_resource type="Resource" id="Resource_p05pq"]
+[sub_resource type="Resource" id="Resource_yns4a"]
 script = ExtResource("8_h84lw")
-count_provider = SubResource("Resource_w40we")
-effects = Array[ExtResource("7_jw7gk")]([SubResource("Resource_s6byx")])
+count_provider = SubResource("Resource_jw7gk")
+effects = Array[ExtResource("7_jw7gk")]([SubResource("Resource_w40we")])
 metadata/_custom_type_script = "uid://c8ly86kb5vc65"
+
+[sub_resource type="Resource" id="Resource_s6byx"]
+script = ExtResource("3_3o047")
+fixed_value = -2
+metadata/_custom_type_script = "uid://dtok21t0ujjui"
+
+[sub_resource type="Resource" id="Resource_p05pq"]
+script = ExtResource("7_h84lw")
+buff_name = "荆棘"
+buff_stack_provider = SubResource("Resource_s6byx")
+target_type = 1
+metadata/_custom_type_script = "uid://b8qfrs61nmcix"
+
+[sub_resource type="Resource" id="Resource_jwhji"]
+script = ExtResource("9_55nap")
+effects = Array[ExtResource("7_jw7gk")]([SubResource("Resource_yns4a"), SubResource("Resource_p05pq")])
+metadata/_custom_type_script = "uid://bgdkwbdihbpk5"
 
 [sub_resource type="Resource" id="Resource_dxe34"]
 script = ExtResource("3_3o047")
@@ -75,30 +93,12 @@ metadata/_custom_type_script = "uid://dtok21t0ujjui"
 script = ExtResource("6_jw7gk")
 damage_provider = SubResource("Resource_byp0t")
 repeat_provider = SubResource("Resource_dxe34")
-effect = SubResource("Resource_p05pq")
+effect = SubResource("Resource_jwhji")
 metadata/_custom_type_script = "uid://bces7ijyodhmv"
-
-[sub_resource type="Resource" id="Resource_3o047"]
-script = ExtResource("3_3o047")
-fixed_value = -2
-metadata/_custom_type_script = "uid://dtok21t0ujjui"
-
-[sub_resource type="Resource" id="Resource_jw7gk"]
-script = ExtResource("7_h84lw")
-buff_name = "荆棘"
-buff_stack_provider = SubResource("Resource_3o047")
-target_type = 1
-metadata/_custom_type_script = "uid://b8qfrs61nmcix"
-
-[sub_resource type="Resource" id="Resource_gbs82"]
-script = ExtResource("9_w40we")
-type = 1
-effect = SubResource("Resource_jw7gk")
-metadata/_custom_type_script = "uid://dpbv4m5rd0bbq"
 
 [sub_resource type="Resource" id="Resource_55nap"]
 script = ExtResource("1_vigx8")
-sub_intents = Array[ExtResource("2_8bhho")]([SubResource("Resource_ve1yo"), SubResource("Resource_gbs82")])
+sub_intents = Array[ExtResource("2_8bhho")]([SubResource("Resource_ve1yo")])
 intent_name = "SpikeSpit"
 metadata/_custom_type_script = "uid://ce34juwu5b0yr"
 

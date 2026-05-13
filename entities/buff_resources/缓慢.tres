@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="BuffResource" format=3 uid="uid://cpfgaxuxq8x61"]
+
+[ext_resource type="Script" uid="uid://c1n4sywvfnffx" path="res://scripts/costum_resources/buff_resource.gd" id="1_1f7r7"]
+[ext_resource type="Script" uid="uid://cdbmnltobmaoi" path="res://scripts/costum_resources/buffs/slow_debuff.gd" id="1_slfjv"]
+[ext_resource type="Texture2D" uid="uid://bu51b8mb4jyxl" path="res://images/powers/slow_power.png" id="1_y7nue"]
+
+[resource]
+script = ExtResource("1_1f7r7")
+buff_id = "slow"
+buff_name = "缓慢"
+description = "你在本回合内每打出一张牌，该敌人本回合从攻击牌中受到的伤害增加10%"
+icon = ExtResource("1_y7nue")
+buff_type = 1
+affect = 1
+buff_script = ExtResource("1_slfjv")
+metadata/_custom_type_script = "uid://c1n4sywvfnffx"

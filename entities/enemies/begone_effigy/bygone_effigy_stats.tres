@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="EnemyStats" format=3 uid="uid://cq8n32vfju6x7"]
+
+[ext_resource type="Resource" uid="uid://hu8mrynv2l65" path="res://entities/enemies/begone_effigy/bygone_effigy_ai.tres" id="1_lg2i4"]
+[ext_resource type="Script" uid="uid://bjrlwk5w4gqtk" path="res://scripts/costum_resources/enemy_stats.gd" id="1_uwrdf"]
+[ext_resource type="PackedScene" uid="uid://bunb8k1stypda" path="res://scenes/creature_visuals/bygone_effigy.tscn" id="3_al4xu"]
+
+[resource]
+script = ExtResource("1_uwrdf")
+ai = ExtResource("1_lg2i4")
+enemy_name = "旧日雕像"
+hightest_max_health = 132
+lowest_max_health = 132
+visuals_scene = ExtResource("3_al4xu")
+metadata/_custom_type_script = "uid://bjrlwk5w4gqtk"

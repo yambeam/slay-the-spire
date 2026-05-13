@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="BuffResource" format=3 uid="uid://b7hr3sffvkjtn"]
+
+[ext_resource type="Script" uid="uid://c1n4sywvfnffx" path="res://scripts/costum_resources/buff_resource.gd" id="1_5yegb"]
+[ext_resource type="Texture2D" uid="uid://bv8s7jol4xvup" path="res://images/powers/territorial_power.png" id="1_csb38"]
+[ext_resource type="Script" uid="uid://bna5ytw8lj7ml" path="res://scripts/costum_resources/buffs/territorial_buff.gd" id="1_slxmf"]
+
+[resource]
+script = ExtResource("1_5yegb")
+buff_id = "territorial"
+buff_name = "领地意识"
+description = "回合结束时获得{stacks}点力量"
+icon = ExtResource("1_csb38")
+buff_script = ExtResource("1_slxmf")
+metadata/_custom_type_script = "uid://c1n4sywvfnffx"

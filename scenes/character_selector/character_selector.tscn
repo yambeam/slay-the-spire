@@ -1,17 +1,20 @@
 [gd_scene format=3 uid="uid://bv0rrfhkiiomf"]
 
 [ext_resource type="Script" uid="uid://t8ll61cgf0dr" path="res://scripts/character_selector/character_selector.gd" id="1_70e1j"]
-[ext_resource type="Script" uid="uid://bayy3j6ssj0g" path="res://scripts/utils/spine_manager.gd" id="2_70e1j"]
 [ext_resource type="Resource" uid="uid://kfd10rulosb7" path="res://scenes/run/run_start_up.tres" id="2_oyb0m"]
-[ext_resource type="Texture2D" uid="uid://tlpdt4b2r7sk" path="res://images/packed/character_select/char_select_ironclad.png" id="4_ysgu0"]
-[ext_resource type="Texture2D" uid="uid://bmvk3rd0mwitm" path="res://images/packed/character_select/char_select_silent.png" id="5_h00ml"]
-[ext_resource type="Texture2D" uid="uid://4rucvor0rrtj" path="res://images/packed/character_select/char_select_regent.png" id="6_csu32"]
-[ext_resource type="Texture2D" uid="uid://cj2aattj07pn5" path="res://images/packed/character_select/char_select_necrobinder.png" id="7_v33eu"]
+[ext_resource type="SpineSkeletonDataResource" uid="uid://dup7jlcdcvt6" path="res://animations/character_select/ironclad/characterselect_ironclad_skel_data.tres" id="3_w1oug"]
+[ext_resource type="Texture2D" uid="uid://daxc83v2oatx0" path="res://images/packed/character_select/char_select_ironclad.png" id="4_ysgu0"]
+[ext_resource type="Texture2D" uid="uid://b7aglyga6u0vm" path="res://images/packed/character_select/char_select_silent.png" id="5_h00ml"]
+[ext_resource type="Texture2D" uid="uid://otu4plfv86an" path="res://images/packed/character_select/char_select_regent.png" id="6_csu32"]
+[ext_resource type="Texture2D" uid="uid://fd73sxa61bj2" path="res://images/packed/character_select/char_select_necrobinder.png" id="7_v33eu"]
 [ext_resource type="Texture2D" uid="uid://bb803i8" path="res://images/atlases/ui_atlas.sprites/back_button.tres" id="8_h00ml"]
-[ext_resource type="Texture2D" uid="uid://du724etwv6c82" path="res://images/packed/character_select/char_select_defect.png" id="8_iu8gr"]
+[ext_resource type="Texture2D" uid="uid://degmf1g3d7lbd" path="res://images/packed/character_select/char_select_defect.png" id="8_iu8gr"]
 [ext_resource type="Texture2D" uid="uid://cahogy5" path="res://images/atlases/compressed.sprites/back_button_arrow.tres" id="9_v33eu"]
-[ext_resource type="Texture2D" uid="uid://yefjak" path="res://images/atlases/ui_atlas.sprites/confirm_button.tres" id="10_iu8gr"]
+[ext_resource type="Texture2D" uid="uid://b1ommqi" path="res://images/atlases/compressed.sprites/confirm_button_outline.tres" id="10_w1oug"]
 [ext_resource type="Texture2D" uid="uid://cp3mg3t" path="res://images/atlases/compressed.sprites/confirm_button_tick.tres" id="11_oyb0m"]
+[ext_resource type="PackedScene" uid="uid://tnl8udgtv6w5" path="res://scenes/ui/comfirm_button.tscn" id="11_t44b0"]
+[ext_resource type="Texture2D" uid="uid://cxm0iyd" path="res://images/atlases/compressed.sprites/back_button_outline.tres" id="13_inhpf"]
+[ext_resource type="PackedScene" uid="uid://cf0mkjn46w7tf" path="res://scenes/character_selector/character_description.tscn" id="15_inhpf"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ysgu0"]
 draw_center = false
@@ -37,15 +40,16 @@ script = ExtResource("1_70e1j")
 run_startup = ExtResource("2_oyb0m")
 
 [node name="backforsomechar" type="TextureRect" parent="." unique_id=93820554]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+layout_mode = 1
 
-[node name="background" type="SpineSprite" parent="." unique_id=1056861416]
-position = Vector2(-80, -1)
+[node name="background" type="SpineSprite" parent="." unique_id=353797261]
+skeleton_data_res = ExtResource("3_w1oug")
+preview_skin = "Default"
+preview_animation = "-- Empty --"
+preview_frame = false
+preview_time = 0.0
+position = Vector2(-92, 3)
 scale = Vector2(0.45, 0.45)
-script = ExtResource("2_70e1j")
-metadata/_custom_type_script = "uid://bayy3j6ssj0g"
 
 [node name="character_buttons" type="HBoxContainer" parent="." unique_id=511320880]
 layout_mode = 1
@@ -54,10 +58,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 383.0
-offset_top = 725.0
-offset_right = 1252.0
-offset_bottom = 928.0
+offset_left = 356.0
+offset_top = 746.0
+offset_right = 1218.0
+offset_bottom = 951.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 40
@@ -89,6 +93,7 @@ icon_alignment = 1
 layout_mode = 2
 theme_override_styles/pressed = SubResource("StyleBoxFlat_ysgu0")
 theme_override_styles/hover = SubResource("StyleBoxFlat_x26dg")
+disabled = true
 toggle_mode = true
 button_group = SubResource("ButtonGroup_x26dg")
 text = "
@@ -100,6 +105,7 @@ icon_alignment = 1
 layout_mode = 2
 theme_override_styles/pressed = SubResource("StyleBoxFlat_ysgu0")
 theme_override_styles/hover = SubResource("StyleBoxFlat_x26dg")
+disabled = true
 toggle_mode = true
 button_group = SubResource("ButtonGroup_x26dg")
 text = "
@@ -111,6 +117,7 @@ icon_alignment = 1
 layout_mode = 2
 theme_override_styles/pressed = SubResource("StyleBoxFlat_ysgu0")
 theme_override_styles/hover = SubResource("StyleBoxFlat_x26dg")
+disabled = true
 toggle_mode = true
 button_group = SubResource("ButtonGroup_x26dg")
 text = "
@@ -118,47 +125,42 @@ text = "
 icon = ExtResource("8_iu8gr")
 icon_alignment = 1
 
-[node name="Button" type="Button" parent="." unique_id=1167858637]
-layout_mode = 1
-offset_left = 6.0
-offset_top = 771.0
-offset_right = 218.0
-offset_bottom = 905.0
-metadata/_edit_group_ = true
-
-[node name="BackButton" type="Sprite2D" parent="Button" unique_id=2020223669]
-position = Vector2(111, 74)
-scale = Vector2(0.75333333, 0.85148513)
-texture = ExtResource("8_h00ml")
-
-[node name="BackButtonArrow" type="Sprite2D" parent="Button/BackButton" unique_id=364061837]
-position = Vector2(-43.805305, -11.744202)
-scale = Vector2(0.98082596, 0.7698967)
-texture = ExtResource("9_v33eu")
-
-[node name="start" type="Button" parent="." unique_id=2036066575]
+[node name="start" parent="." unique_id=959760777 instance=ExtResource("11_t44b0")]
 layout_mode = 0
-offset_left = 1680.0
-offset_top = 776.0
-offset_right = 1912.0
-offset_bottom = 915.0
-theme_override_font_sizes/font_size = 50
-metadata/_edit_group_ = true
+offset_left = 1678.0
+offset_top = 757.0
+offset_right = 1978.0
+offset_bottom = 959.0
+out_line_texture = ExtResource("10_w1oug")
+icon_texture = ExtResource("11_oyb0m")
 
-[node name="ConfirmButton" type="Sprite2D" parent="start" unique_id=1325895012]
-position = Vector2(95, 75)
-scale = Vector2(0.81, 0.8118812)
-texture = ExtResource("10_iu8gr")
+[node name="Button" parent="." unique_id=1471404763 instance=ExtResource("11_t44b0")]
+layout_mode = 0
+offset_left = -65.0
+offset_top = 813.0
+offset_right = 235.0
+offset_bottom = 1015.0
+texture_normal = ExtResource("8_h00ml")
+out_line_texture = ExtResource("13_inhpf")
+icon_texture = ExtResource("9_v33eu")
 
-[node name="ConfirmButtonTick" type="Sprite2D" parent="start/ConfirmButton" unique_id=1611630571]
-position = Vector2(35.802467, -8.621923)
-scale = Vector2(0.76666665, 0.6944445)
-texture = ExtResource("11_oyb0m")
+[node name="CharacterDescription" parent="." unique_id=1439505153 instance=ExtResource("15_inhpf")]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 647.0
+offset_top = 440.0
+offset_right = 647.0
+offset_bottom = 440.0
+scale = Vector2(0.5, 0.5)
 
 [connection signal="pressed" from="character_buttons/ironclad" to="." method="_on_ironclad_pressed"]
 [connection signal="pressed" from="character_buttons/silent" to="." method="_on_silent_pressed"]
 [connection signal="pressed" from="character_buttons/regent" to="." method="_on_regent_pressed"]
 [connection signal="pressed" from="character_buttons/necrobinder" to="." method="_on_necrobinder_pressed"]
 [connection signal="pressed" from="character_buttons/defect" to="." method="_on_defect_pressed"]
-[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="start" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

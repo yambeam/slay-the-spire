@@ -11,7 +11,8 @@ func set_up_intents(source: Creature, target: Creature) -> void:
 
 func execute_intent(source: Creature, target: Creature, current_intent: Intent) -> void:
 	for sub_intent: SubIntent in current_intent.sub_intents:
-		await sub_intent.execute()
+		if sub_intent:
+			await sub_intent.execute()
 
 func choose_intent(source: Creature, target: Creature) -> Intent:
 	var intent: Intent = random_intent(intents)

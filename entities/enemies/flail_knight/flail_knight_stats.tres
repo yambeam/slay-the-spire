@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="EnemyStats" format=3 uid="uid://b8lssuknmjvd6"]
+
+[ext_resource type="Resource" uid="uid://s4p2f06lj3ur" path="res://entities/enemies/flail_knight/flail_knight_ai.tres" id="1_air4i"]
+[ext_resource type="Script" uid="uid://bjrlwk5w4gqtk" path="res://scripts/costum_resources/enemy_stats.gd" id="1_vp3gb"]
+[ext_resource type="PackedScene" uid="uid://hr1mol3x2a6i" path="res://scenes/creature_visuals/flail_knight.tscn" id="3_eekvi"]
+
+[resource]
+script = ExtResource("1_vp3gb")
+ai = ExtResource("1_air4i")
+enemy_name = "连枷骑士"
+hightest_max_health = 108
+lowest_max_health = 108
+visuals_scene = ExtResource("3_eekvi")
+metadata/_custom_type_script = "uid://bjrlwk5w4gqtk"

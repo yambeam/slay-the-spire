@@ -3,7 +3,9 @@ extends Resource
 
 @export var enemy_stats: EnemyStats
 @export var position: Vector2
+@export var index: int = 0
 @export var initial_buff: Dictionary
+
 
 #
 #func get_initial_buffs() -> Dictionary:

@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="BuffResource" format=3 uid="uid://b2b6rqkwefop7"]
+
+[ext_resource type="Script" uid="uid://cwgmafddtnlhu" path="res://scripts/costum_resources/buffs/lazinessDebuff.gd" id="1_rinkg"]
+[ext_resource type="Script" uid="uid://c1n4sywvfnffx" path="res://scripts/costum_resources/buff_resource.gd" id="1_tfkl1"]
+[ext_resource type="Texture2D" uid="uid://cqwwh0xwm176p" path="res://images/powers/sloth_power.png" id="1_wthw5"]
+
+[resource]
+script = ExtResource("1_tfkl1")
+buff_id = "sloth"
+buff_name = "懒惰"
+description = "在你打出第{stacks}张牌后强制结束回合"
+icon = ExtResource("1_wthw5")
+buff_type = 1
+stackable = false
+buff_script = ExtResource("1_rinkg")
+metadata/_custom_type_script = "uid://c1n4sywvfnffx"

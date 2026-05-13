@@ -1,0 +1,35 @@
+[gd_resource type="Resource" script_class="Card" format=3 uid="uid://bry5swqjnv0eh"]
+
+[ext_resource type="Script" uid="uid://cxgxfbwykbp84" path="res://scripts/costum_resources/numeric_entry.gd" id="1_ixsw4"]
+[ext_resource type="Script" uid="uid://cgmi6f3o7leik" path="res://scripts/costum_resources/effect.gd" id="2_x8ci8"]
+[ext_resource type="Script" uid="uid://dtok21t0ujjui" path="res://scripts/costum_resources/numeric_provider.gd" id="3_2p33u"]
+[ext_resource type="Script" uid="uid://br1hibx18tv13" path="res://scripts/costum_resources/card.gd" id="3_thsd1"]
+[ext_resource type="Script" uid="uid://b8qfrs61nmcix" path="res://scripts/costum_resources/effects/apply_buff_effect.gd" id="4_yenvd"]
+[ext_resource type="Texture2D" uid="uid://n283jd" path="res://images/atlases/card_atlas.sprites/token/disintegration.tres" id="5_emj3t"]
+
+[sub_resource type="Resource" id="Resource_lvler"]
+script = ExtResource("3_2p33u")
+fixed_value = 7
+metadata/_custom_type_script = "uid://dtok21t0ujjui"
+
+[sub_resource type="Resource" id="Resource_sq8rs"]
+script = ExtResource("4_yenvd")
+buff_name = "瓦解"
+buff_stack_provider = SubResource("Resource_lvler")
+target_type = 1
+metadata/_custom_type_script = "uid://b8qfrs61nmcix"
+
+[resource]
+script = ExtResource("3_thsd1")
+id = "瓦解"
+type = 8
+card_color = 64
+rarity = 16
+discoverable = false
+draftable = false
+effects = Array[ExtResource("2_x8ci8")]([SubResource("Resource_sq8rs")])
+portrait = ExtResource("5_emj3t")
+base_description = "[center]回合结束时受到7点伤害。[/center]"
+playable = false
+upgradable = false
+metadata/_custom_type_script = "uid://br1hibx18tv13"

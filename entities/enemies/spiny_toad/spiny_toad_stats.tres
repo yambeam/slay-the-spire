@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="EnemyStats" format=3 uid="uid://db2u75t3xdo8g"]
+
+[ext_resource type="Resource" uid="uid://djvoybh4rp68n" path="res://entities/enemies/spiny_toad/spiny_toad_ai.tres" id="1_b3w21"]
+[ext_resource type="Script" uid="uid://bjrlwk5w4gqtk" path="res://scripts/costum_resources/enemy_stats.gd" id="1_isg5m"]
+[ext_resource type="PackedScene" uid="uid://dimc7extoakrk" path="res://scenes/creature_visuals/spiny_toad.tscn" id="3_02hq5"]
+
+[resource]
+script = ExtResource("1_isg5m")
+ai = ExtResource("1_b3w21")
+enemy_name = "棘刺蟾蜍"
+hightest_max_health = 119
+lowest_max_health = 116
+visuals_scene = ExtResource("3_02hq5")
+metadata/_custom_type_script = "uid://bjrlwk5w4gqtk"

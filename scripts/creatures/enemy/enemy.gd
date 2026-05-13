@@ -9,6 +9,8 @@ extends Creature
 var enemy_ai: EnemyAI
 #var current_action: EnemyAction : set = _set_current_action
 var current_intent: Intent: set = _set_current_intent
+# 遭遇战中怪物的index,主要是为了确定意图
+var encounter_index := 0
 
 var visuals: CreatureVisuals
 var spine_manager: SpineManager
@@ -44,13 +46,14 @@ func do_turn() -> void:
 		return		
 	
 	# 在这个函数中设置了动画名称，必须在动画开始前调用
-	execute_intent()
-	
-	var track_entry := spine_anim_state.set_animation(current_intent.anim_name, true, 0)
-	spine_anim_state.add_animation(enemy_ai.get_idle_animation_name(), 0, true, 0)
-
-	# 使用await spine_manager.animation_completed有时会出现等待idle_animation结束才发出信号的情况，干脆等待动画时间
-	await get_tree().create_timer(track_entry.get_animation_end()).timeout
+	await execute_intent()
+	if current_intent.anim_name != "":
+		var track_entry := spine_anim_state.set_animation(current_intent.anim_name, true, 0)
+		spine_anim_state.add_animation(enemy_ai.get_idle_animation_name(), 0, true, 0)
+		# 使用await spine_manager.animation_completed有时会出现等待idle_animation结束才发出信号的情况，干脆等待动画时间
+		await get_tree().create_timer(track_entry.get_animation_end()).timeout
+	else:
+		await get_tree().create_timer(0.4).timeout
 	
 	Events.enemy_action_completed.emit(self)	
 	turn_ended.emit(self)
@@ -60,7 +63,7 @@ func do_turn() -> void:
 func execute_intent() -> void:
 	var player: Player = get_tree().get_first_node_in_group("ui_player")
 	intents.hide_intent()
-	enemy_ai.execute_intent(self, player, current_intent)
+	await enemy_ai.execute_intent(self, player, current_intent)
 	
 		
 func _set_current_intent(value: Intent) -> void:
@@ -186,6 +189,7 @@ func take_damage(context: Context) -> int:
 	var final_value: int = context.get_final_value()
 	var actual_damage := stats.take_damage(final_value)
 	damage_number_spawner.spawn_damage_label(actual_damage, actual_damage == 0 and final_value != 0)
+	context.amount = actual_damage
 	after_take_damage.emit(context)
 	
 	if stats.health <= 0:

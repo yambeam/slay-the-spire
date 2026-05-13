@@ -13,5 +13,5 @@ func get_description() -> String:
 	return description.format({"stacks": stacks})
 
 func _on_turn_ended(player: Creature) -> void:
-	(player as Player).gain_block(GainBlockContext.new(player, player, stacks, [], true))
+	agent.gain_block(GainBlockContext.new(player, player, stacks, [], true))
 	remove_stack(1)

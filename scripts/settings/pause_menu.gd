@@ -7,10 +7,20 @@ signal save_and_quit
 @onready var save_button: TextureButton = $VBoxContainer/saveButton
 @onready var back_button: ComfirmButton = $BackButton
 
+@onready var settings: Settings = $settings
+
+func _ready() -> void:
+	settings.settings_exited.connect(handleSettings)
+
+func handleSettings()->void:
+	settings.hide()
+	get_tree().paused=false	
+	
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("pause"):
 		if visible:
+			settings.hide()
 			_unpause()
 		else:
 			_pause()
@@ -30,7 +40,7 @@ func _on_continue_button_pressed() -> void:
 
 
 func _on_setting_button_pressed() -> void:
-	
+	settings.show()
 	pass # Replace with function body.
 
 

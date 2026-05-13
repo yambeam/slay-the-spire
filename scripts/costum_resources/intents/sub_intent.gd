@@ -25,7 +25,8 @@ var target: Creature
 
 
 func execute() -> void:
-	await effect.execute(source, {"targets": [target] as Array[Node]}, null)
+	if effect:
+		await effect.execute(source, {"targets": [target] as Array[Node]}, null)
 
 func get_text() -> String:
 	#match type:

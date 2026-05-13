@@ -7,16 +7,16 @@
 [ext_resource type="Texture2D" uid="uid://y7ywed" path="res://images/atlases/potion_atlas.sprites/potion_of_doom.tres" id="4_kchby"]
 [ext_resource type="Texture2D" uid="uid://bby27pm" path="res://images/atlases/potion_outline_atlas.sprites/potion_of_doom.tres" id="5_q5nl7"]
 
-[sub_resource type="Resource" id="Resource_lo23p"]
+[sub_resource type="Resource" id="Resource_w4vx8"]
 script = ExtResource("2_w4vx8")
 fixed_value = 10
 metadata/_custom_type_script = "uid://dtok21t0ujjui"
 
-[sub_resource type="Resource" id="Resource_u4nt2"]
+[sub_resource type="Resource" id="Resource_fb8tu"]
 script = ExtResource("3_fb8tu")
 source = 1
 where = 2
-random_play_count_provider = SubResource("Resource_lo23p")
+random_play_count_provider = SubResource("Resource_w4vx8")
 metadata/_custom_type_script = "uid://cls6in5kdu2mo"
 
 [resource]
@@ -28,5 +28,5 @@ icon = ExtResource("4_kchby")
 outline_icon = ExtResource("5_q5nl7")
 rarity = 4
 potion_color = 1
-effects = Array[ExtResource("1_n6l3g")]([SubResource("Resource_u4nt2")])
+effects = Array[ExtResource("1_n6l3g")]([SubResource("Resource_fb8tu")])
 metadata/_custom_type_script = "uid://bumkvpbom08xn"

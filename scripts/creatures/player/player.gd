@@ -47,6 +47,10 @@ func speech(text: String, time: float = 2.5) -> void:
 	#buff_ui.buff = buff_context.buff_node
 	#buff_container.add_child(buff_ui)
 
+func choice_for_cards(cards_to_choose: Array[Card]) -> Card:
+	var card: Card = await discover_view.select(cards_to_choose, false, false, false)
+	return card
+	
 func discover_card(context: DiscoverContext) -> void:
 	var availabel_cards := ItemPool.get_discoverable_cards(context.color, context.type, context.rarity)
 	availabel_cards.shuffle()

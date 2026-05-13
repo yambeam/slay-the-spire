@@ -1,0 +1,137 @@
+[gd_scene format=3 uid="uid://cf0mkjn46w7tf"]
+
+[ext_resource type="Script" uid="uid://7kqh38ny51bx" path="res://scripts/character_selector/character_description.gd" id="1_6egbj"]
+[ext_resource type="Texture2D" uid="uid://bi1dpaj" path="res://images/atlases/ui_atlas.sprites/top_bar/top_bar_heart.tres" id="2_7nqjp"]
+[ext_resource type="FontFile" uid="uid://vcj7kdt70rkq" path="res://fonts/zhs/NotoSansMonoCJKsc-Regular.otf" id="2_o2w45"]
+[ext_resource type="Texture2D" uid="uid://jqn0hv" path="res://images/atlases/ui_atlas.sprites/top_bar/top_bar_gold.tres" id="3_o2w45"]
+[ext_resource type="Texture2D" uid="uid://be7j1tasahf4r" path="res://images/relics/burning_blood.png" id="4_oi0cu"]
+
+[node name="CharacterDescription" type="Control" unique_id=1439505153]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_6egbj")
+
+[node name="PanelContainer" type="PanelContainer" parent="." unique_id=686524500]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -774.0
+offset_top = -468.25
+offset_right = 774.0
+offset_bottom = 468.25
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer" unique_id=190649639]
+layout_mode = 2
+theme_override_constants/separation = 15
+
+[node name="ColorRect" type="ColorRect" parent="PanelContainer/HBoxContainer" unique_id=1987633699]
+modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/HBoxContainer" unique_id=198696082]
+layout_mode = 2
+theme_override_constants/separation = 20
+alignment = 1
+
+[node name="char_name" type="Label" parent="PanelContainer/HBoxContainer/VBoxContainer" unique_id=979330190]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.9372549, 0.78431374, 0.31764707, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 0.21568628)
+theme_override_constants/outline_size = 50
+theme_override_fonts/font = ExtResource("2_o2w45")
+theme_override_font_sizes/font_size = 150
+text = "铁甲战士"
+vertical_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/HBoxContainer/VBoxContainer" unique_id=68966904]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="PanelContainer/HBoxContainer/VBoxContainer/HBoxContainer" unique_id=223094985]
+layout_mode = 2
+texture = ExtResource("2_7nqjp")
+
+[node name="HP" type="Label" parent="PanelContainer/HBoxContainer/VBoxContainer/HBoxContainer" unique_id=1369979932]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.972549, 0.38039216, 0.38039216, 1)
+theme_override_font_sizes/font_size = 70
+text = "80/80"
+
+[node name="ColorRect" type="ColorRect" parent="PanelContainer/HBoxContainer/VBoxContainer/HBoxContainer" unique_id=1700716112]
+modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+
+[node name="TextureRect2" type="TextureRect" parent="PanelContainer/HBoxContainer/VBoxContainer/HBoxContainer" unique_id=1634370367]
+layout_mode = 2
+texture = ExtResource("3_o2w45")
+
+[node name="gold" type="Label" parent="PanelContainer/HBoxContainer/VBoxContainer/HBoxContainer" unique_id=1993820014]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.8627451, 0.70980394, 0.2901961, 1)
+theme_override_font_sizes/font_size = 70
+text = "99"
+
+[node name="description" type="Label" parent="PanelContainer/HBoxContainer/VBoxContainer" unique_id=346981149]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.9843137, 0.94509804, 0.87058824, 1)
+theme_override_fonts/font = ExtResource("2_o2w45")
+theme_override_font_sizes/font_size = 50
+text = "铁甲军团最后的士兵。
+并非出自自身的意愿，用刀剑与烈焰击溃敌人们。"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="PanelContainer/HBoxContainer/VBoxContainer" unique_id=1951347084]
+layout_mode = 2
+
+[node name="relic" type="TextureRect" parent="PanelContainer/HBoxContainer/VBoxContainer/HBoxContainer2" unique_id=321466412]
+layout_mode = 2
+texture = ExtResource("4_oi0cu")
+expand_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/HBoxContainer/VBoxContainer/HBoxContainer2" unique_id=325571694]
+layout_mode = 2
+theme_override_constants/separation = 15
+alignment = 1
+
+[node name="relicName" type="Label" parent="PanelContainer/HBoxContainer/VBoxContainer/HBoxContainer2/VBoxContainer" unique_id=1960844449]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.7607843, 0.6156863, 0.2509804, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 0.4627451)
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("2_o2w45")
+theme_override_font_sizes/font_size = 70
+text = "燃烧之血"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/HBoxContainer/VBoxContainer/HBoxContainer2/VBoxContainer" unique_id=656423941]
+layout_mode = 2
+
+[node name="desc_of_relic1" type="Label" parent="PanelContainer/HBoxContainer/VBoxContainer/HBoxContainer2/VBoxContainer/HBoxContainer" unique_id=1860557669]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.9490196, 0.8745098, 1)
+theme_override_fonts/font = ExtResource("2_o2w45")
+theme_override_font_sizes/font_size = 50
+text = "在战斗结束时，回复"
+
+[node name="desc_of_relic2" type="Label" parent="PanelContainer/HBoxContainer/VBoxContainer/HBoxContainer2/VBoxContainer/HBoxContainer" unique_id=913442689]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.48235294, 0.93333334, 0, 1)
+theme_override_fonts/font = ExtResource("2_o2w45")
+theme_override_font_sizes/font_size = 50
+text = "6"
+
+[node name="desc_of_relic3" type="Label" parent="PanelContainer/HBoxContainer/VBoxContainer/HBoxContainer2/VBoxContainer/HBoxContainer" unique_id=25060865]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.9490196, 0.8745098, 1)
+theme_override_fonts/font = ExtResource("2_o2w45")
+theme_override_font_sizes/font_size = 50
+text = "点生命"

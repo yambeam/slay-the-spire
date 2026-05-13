@@ -1,11 +1,16 @@
 [gd_scene format=3 uid="uid://blvum03eav360"]
 
-[ext_resource type="PackedScene" uid="uid://0ek3vhap4ak1" path="res://scenes/settings/h_slider.tscn" id="1_26ncd"]
+[ext_resource type="PackedScene" uid="uid://0ek3vhap4ak1" path="res://scenes/settings/volumeSlider.tscn" id="1_26ncd"]
 [ext_resource type="Script" uid="uid://dkrhtfiqlks1n" path="res://scripts/settings/settings.gd" id="1_vu5fi"]
 [ext_resource type="FontFile" uid="uid://dqmshhaunu4jy" path="res://fonts/zhs/SourceHanSerifSC-Bold.otf" id="2_v1hle"]
 [ext_resource type="Texture2D" uid="uid://cqcqqdw" path="res://images/atlases/ui_atlas.sprites/settings_tab_selected.tres" id="2_vghtj"]
 [ext_resource type="Texture2D" uid="uid://bb803i8" path="res://images/atlases/ui_atlas.sprites/back_button.tres" id="3_1slea"]
+[ext_resource type="FontFile" uid="uid://vcj7kdt70rkq" path="res://fonts/zhs/NotoSansMonoCJKsc-Regular.otf" id="4_p7ghj"]
 [ext_resource type="Texture2D" uid="uid://cahogy5" path="res://images/atlases/compressed.sprites/back_button_arrow.tres" id="4_v1hle"]
+[ext_resource type="PackedScene" uid="uid://tnl8udgtv6w5" path="res://scenes/ui/comfirm_button.tscn" id="5_vimye"]
+[ext_resource type="Texture2D" uid="uid://cxm0iyd" path="res://images/atlases/compressed.sprites/back_button_outline.tres" id="7_p7ghj"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_p7ghj"]
 
 [node name="settings" type="Control" unique_id=663435682]
 layout_mode = 3
@@ -23,7 +28,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0, 0, 0, 0.6509804)
+color = Color(0, 0, 0, 0.8509804)
 
 [node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1541290643]
 layout_mode = 1
@@ -64,74 +69,146 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="audiosettings" type="PanelContainer" parent="VBoxContainer" unique_id=851119975]
-custom_minimum_size = Vector2(0, 700)
+custom_minimum_size = Vector2(1100, 700)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_p7ghj")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/audiosettings" unique_id=182127866]
+layout_mode = 2
+theme_override_constants/separation = 100
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/audiosettings/VBoxContainer" unique_id=550920515]
 layout_mode = 2
 
-[node name="GridContainer" type="GridContainer" parent="VBoxContainer/audiosettings" unique_id=1555939488]
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/audiosettings/VBoxContainer/VBoxContainer" unique_id=1640248405]
 layout_mode = 2
-theme_override_constants/h_separation = 50
-theme_override_constants/v_separation = 150
-columns = 2
 
-[node name="Label" type="Label" parent="VBoxContainer/audiosettings/GridContainer" unique_id=50637469]
-custom_minimum_size = Vector2(0, 100)
+[node name="Label" type="Label" parent="VBoxContainer/audiosettings/VBoxContainer/VBoxContainer/HBoxContainer" unique_id=321964951]
 layout_mode = 2
+theme_override_colors/font_color = Color(0.9529412, 0.91764706, 0.84313726, 1)
+theme_override_colors/font_outline_color = Color(0.3764706, 0.3137255, 0.23921569, 1)
+theme_override_constants/outline_size = 20
+theme_override_fonts/font = ExtResource("4_p7ghj")
 theme_override_font_sizes/font_size = 50
-text = "主音量"
-horizontal_alignment = 2
+text = "全局音量"
 vertical_alignment = 1
 
-[node name="HSlider" parent="VBoxContainer/audiosettings/GridContainer" unique_id=938607398 instance=ExtResource("1_26ncd")]
+[node name="ColorRect" type="ColorRect" parent="VBoxContainer/audiosettings/VBoxContainer/VBoxContainer/HBoxContainer" unique_id=1181606452]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+color = Color(1, 1, 1, 0)
+
+[node name="Label4" type="Label" parent="VBoxContainer/audiosettings/VBoxContainer/VBoxContainer/HBoxContainer" unique_id=95064726]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.9529412, 0.91764706, 0.84313726, 1)
+theme_override_fonts/font = ExtResource("4_p7ghj")
+theme_override_font_sizes/font_size = 50
+text = "100%"
+vertical_alignment = 1
+
+[node name="slider" parent="VBoxContainer/audiosettings/VBoxContainer/VBoxContainer/HBoxContainer" unique_id=938607398 instance=ExtResource("1_26ncd")]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 4
 
-[node name="Label2" type="Label" parent="VBoxContainer/audiosettings/GridContainer" unique_id=1714487158]
-custom_minimum_size = Vector2(0, 100)
+[node name="ColorRect" type="ColorRect" parent="VBoxContainer/audiosettings/VBoxContainer/VBoxContainer" unique_id=1062042445]
+custom_minimum_size = Vector2(0, 5)
 layout_mode = 2
+color = Color(0.3019608, 0.2784314, 0.23137255, 1)
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="VBoxContainer/audiosettings/VBoxContainer" unique_id=1160804507]
+layout_mode = 2
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer/audiosettings/VBoxContainer/VBoxContainer2" unique_id=188735383]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/audiosettings/VBoxContainer/VBoxContainer2/HBoxContainer2" unique_id=129444877]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.9529412, 0.91764706, 0.84313726, 1)
+theme_override_colors/font_outline_color = Color(0.3764706, 0.3137255, 0.23921569, 1)
+theme_override_constants/outline_size = 20
+theme_override_fonts/font = ExtResource("4_p7ghj")
 theme_override_font_sizes/font_size = 50
-text = "音乐"
-horizontal_alignment = 2
+text = "音乐音量"
 vertical_alignment = 1
 
-[node name="HSlider2" parent="VBoxContainer/audiosettings/GridContainer" unique_id=1841733309 instance=ExtResource("1_26ncd")]
+[node name="ColorRect" type="ColorRect" parent="VBoxContainer/audiosettings/VBoxContainer/VBoxContainer2/HBoxContainer2" unique_id=1192657266]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+color = Color(1, 1, 1, 0)
+
+[node name="Label4" type="Label" parent="VBoxContainer/audiosettings/VBoxContainer/VBoxContainer2/HBoxContainer2" unique_id=1250877376]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.9529412, 0.91764706, 0.84313726, 1)
+theme_override_fonts/font = ExtResource("4_p7ghj")
+theme_override_font_sizes/font_size = 50
+text = "100%"
+vertical_alignment = 1
+
+[node name="HSlider2" parent="VBoxContainer/audiosettings/VBoxContainer/VBoxContainer2/HBoxContainer2" unique_id=784750013 instance=ExtResource("1_26ncd")]
 custom_minimum_size = Vector2(0, 100)
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 4
 bus = &"Music"
 
-[node name="Label3" type="Label" parent="VBoxContainer/audiosettings/GridContainer" unique_id=1592418914]
-custom_minimum_size = Vector2(0, 100)
+[node name="ColorRect" type="ColorRect" parent="VBoxContainer/audiosettings/VBoxContainer/VBoxContainer2" unique_id=433810065]
+custom_minimum_size = Vector2(0, 5)
 layout_mode = 2
+color = Color(0.3019608, 0.2784314, 0.23137255, 1)
+
+[node name="VBoxContainer3" type="VBoxContainer" parent="VBoxContainer/audiosettings/VBoxContainer" unique_id=1414421445]
+layout_mode = 2
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="VBoxContainer/audiosettings/VBoxContainer/VBoxContainer3" unique_id=2143895795]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/audiosettings/VBoxContainer/VBoxContainer3/HBoxContainer3" unique_id=1168420180]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.9529412, 0.91764706, 0.84313726, 1)
+theme_override_colors/font_outline_color = Color(0.3764706, 0.3137255, 0.23921569, 1)
+theme_override_constants/outline_size = 20
+theme_override_fonts/font = ExtResource("4_p7ghj")
 theme_override_font_sizes/font_size = 50
-text = "音效"
-horizontal_alignment = 2
+text = "音效音量"
 vertical_alignment = 1
 
-[node name="HSlider3" parent="VBoxContainer/audiosettings/GridContainer" unique_id=156122666 instance=ExtResource("1_26ncd")]
+[node name="ColorRect" type="ColorRect" parent="VBoxContainer/audiosettings/VBoxContainer/VBoxContainer3/HBoxContainer3" unique_id=942935802]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+color = Color(1, 1, 1, 0)
+
+[node name="Label4" type="Label" parent="VBoxContainer/audiosettings/VBoxContainer/VBoxContainer3/HBoxContainer3" unique_id=889416449]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.9529412, 0.91764706, 0.84313726, 1)
+theme_override_fonts/font = ExtResource("4_p7ghj")
+theme_override_font_sizes/font_size = 50
+text = "100%"
+vertical_alignment = 1
+
+[node name="HSlider3" parent="VBoxContainer/audiosettings/VBoxContainer/VBoxContainer3/HBoxContainer3" unique_id=1140906753 instance=ExtResource("1_26ncd")]
 custom_minimum_size = Vector2(500, 100)
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 4
 bus = &"SFX"
 
-[node name="Button" type="Button" parent="." unique_id=1798759041]
+[node name="ColorRect" type="ColorRect" parent="VBoxContainer/audiosettings/VBoxContainer/VBoxContainer3" unique_id=426604121]
+custom_minimum_size = Vector2(0, 5)
+layout_mode = 2
+color = Color(0.3019608, 0.2784314, 0.23137255, 1)
+
+[node name="Button" parent="." unique_id=959760777 instance=ExtResource("5_vimye")]
 layout_mode = 0
-offset_left = 6.0
-offset_top = 771.0
-offset_right = 218.0
-offset_bottom = 905.0
-metadata/_edit_group_ = true
-
-[node name="BackButton" type="Sprite2D" parent="Button" unique_id=1882323053]
-position = Vector2(111, 74)
-scale = Vector2(0.75333333, 0.85148513)
-texture = ExtResource("3_1slea")
-
-[node name="BackButtonArrow" type="Sprite2D" parent="Button/BackButton" unique_id=157034829]
-position = Vector2(-43.805305, -11.744202)
-scale = Vector2(0.98082596, 0.7698967)
-texture = ExtResource("4_v1hle")
+offset_left = -65.0
+offset_top = 813.0
+offset_right = 235.0
+offset_bottom = 1015.0
+texture_normal = ExtResource("3_1slea")
+out_line_texture = ExtResource("7_p7ghj")
+icon_texture = ExtResource("4_v1hle")
 
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

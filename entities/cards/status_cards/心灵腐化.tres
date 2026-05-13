@@ -1,0 +1,35 @@
+[gd_resource type="Resource" script_class="Card" format=3 uid="uid://d1ogtuh48o0sj"]
+
+[ext_resource type="Script" uid="uid://cxgxfbwykbp84" path="res://scripts/costum_resources/numeric_entry.gd" id="1_dixcn"]
+[ext_resource type="Script" uid="uid://cgmi6f3o7leik" path="res://scripts/costum_resources/effect.gd" id="2_no6qp"]
+[ext_resource type="Script" uid="uid://br1hibx18tv13" path="res://scripts/costum_resources/card.gd" id="3_utna6"]
+[ext_resource type="Script" uid="uid://dtok21t0ujjui" path="res://scripts/costum_resources/numeric_provider.gd" id="3_yj6n8"]
+[ext_resource type="Script" uid="uid://b8qfrs61nmcix" path="res://scripts/costum_resources/effects/apply_buff_effect.gd" id="4_lqbqh"]
+[ext_resource type="Texture2D" uid="uid://t4763r" path="res://images/atlases/card_atlas.sprites/token/mind_rot.tres" id="5_3sdto"]
+
+[sub_resource type="Resource" id="Resource_p6kam"]
+script = ExtResource("3_yj6n8")
+fixed_value = 3
+metadata/_custom_type_script = "uid://dtok21t0ujjui"
+
+[sub_resource type="Resource" id="Resource_aycgt"]
+script = ExtResource("4_lqbqh")
+buff_name = "心灵腐化"
+buff_stack_provider = SubResource("Resource_p6kam")
+target_type = 1
+metadata/_custom_type_script = "uid://b8qfrs61nmcix"
+
+[resource]
+script = ExtResource("3_utna6")
+id = "心灵腐化"
+type = 8
+card_color = 64
+rarity = 16
+discoverable = false
+draftable = false
+effects = Array[ExtResource("2_no6qp")]([SubResource("Resource_aycgt")])
+portrait = ExtResource("5_3sdto")
+base_description = "[center]回合结束时失去3点生命。[/center]"
+playable = false
+upgradable = false
+metadata/_custom_type_script = "uid://br1hibx18tv13"

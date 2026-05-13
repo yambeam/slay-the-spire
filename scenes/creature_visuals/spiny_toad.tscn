@@ -1,0 +1,32 @@
+[gd_scene format=3 uid="uid://dimc7extoakrk"]
+
+[ext_resource type="Script" uid="uid://b2nmxu6nwwuhu" path="res://scripts/creature_visuals.gd" id="1_v4w5y"]
+[ext_resource type="SpineSkeletonDataResource" uid="uid://b3vsofkyw3hja" path="res://animations/monsters/spiny_toad/spiny_toad_skel_data.tres" id="2_6nyrj"]
+[ext_resource type="Script" uid="uid://bayy3j6ssj0g" path="res://scripts/utils/spine_manager.gd" id="3_rs12i"]
+
+[node name="SpinyToad" type="Node2D" unique_id=2123043038]
+script = ExtResource("1_v4w5y")
+
+[node name="Visuals" type="SpineSprite" parent="." unique_id=503982627]
+skeleton_data_res = ExtResource("2_6nyrj")
+preview_skin = "Default"
+preview_animation = "-- Empty --"
+preview_frame = false
+preview_time = 0.0
+position = Vector2(0, -25)
+scale = Vector2(0.275, 0.275)
+script = ExtResource("3_rs12i")
+metadata/_custom_type_script = "uid://bayy3j6ssj0g"
+
+[node name="Bounds" type="Control" parent="." unique_id=1288543318]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -255.0
+offset_top = -418.0
+offset_right = 351.0
+offset_bottom = 1.0
+size_flags_horizontal = 4
+mouse_filter = 2
+
+[node name="IntentPoint" type="Marker2D" parent="." unique_id=1488931005]
+position = Vector2(0, -441)

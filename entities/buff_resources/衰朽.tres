@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="BuffResource" format=3 uid="uid://cnaoj7ea2bfmg"]
+
+[ext_resource type="Script" uid="uid://c1n4sywvfnffx" path="res://scripts/costum_resources/buff_resource.gd" id="1_bcd6n"]
+[ext_resource type="Script" uid="uid://cycndxfsapn24" path="res://scripts/costum_resources/buffs/lose_energy_on_turn_started.gd" id="1_xn5t4"]
+[ext_resource type="Texture2D" uid="uid://bxjb5k5sxy6rj" path="res://images/powers/waste_away_power.png" id="2_c0fw8"]
+
+[resource]
+script = ExtResource("1_bcd6n")
+buff_id = "waste_away"
+buff_name = "衰朽"
+description = "回合开始时失去{stacks}点能量"
+icon = ExtResource("2_c0fw8")
+buff_type = 1
+buff_script = ExtResource("1_xn5t4")
+metadata/_custom_type_script = "uid://c1n4sywvfnffx"

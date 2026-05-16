@@ -28,3 +28,5 @@ mouse_filter = 2
 
 [node name="IntentPoint" type="Marker2D" parent="." unique_id=727782131]
 position = Vector2(0, -176)
+
+[node name="SpeechPoint" type="Marker2D" parent="." unique_id=431678573]

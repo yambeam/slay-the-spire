@@ -7,23 +7,24 @@ const COLLISION_SCALE := 0.7
 
 signal selected(room: Room)
 
-const ICONS := {
+var ICONS := {
 	Room.Type.NOT_ASSIGNED: [null, Vector2.ONE],
-	Room.Type.MONSTER: [preload("res://images/atlases/ui_atlas.sprites/map/icons/map_monster.tres"), Vector2.ONE],
-	Room.Type.TREASURE: [preload("res://images/atlases/ui_atlas.sprites/map/icons/map_chest.tres"), Vector2.ONE],
-	Room.Type.CAMPFIRE: [preload("res://images/atlases/ui_atlas.sprites/map/icons/map_rest.tres"), Vector2(0.6, 0.6)],
-	Room.Type.SHOP: [preload("res://images/atlases/ui_atlas.sprites/map/icons/map_shop.tres"), Vector2(0.6, 0.6)],
+	Room.Type.MONSTER: [ResourceLoader.load("res://images/atlases/ui_atlas.sprites/map/icons/map_monster.tres"), Vector2.ONE],
+	Room.Type.TREASURE: [ResourceLoader.load("res://images/atlases/ui_atlas.sprites/map/icons/map_chest.tres"), Vector2.ONE],
+	Room.Type.CAMPFIRE: [ResourceLoader.load("res://images/atlases/ui_atlas.sprites/map/icons/map_rest.tres"), Vector2(0.6, 0.6)],
+	Room.Type.SHOP: [ResourceLoader.load("res://images/atlases/ui_atlas.sprites/map/icons/map_shop.tres"), Vector2(0.6, 0.6)],
 	# todo vantom.tres
 	Room.Type.BOSS: {
-		1: [preload("res://images/map/placeholder/vantom_boss_icon.png"), Vector2(1.25, 1.25)],
-		2: [preload("res://images/map/placeholder/doormaker_boss_icon.png"), Vector2(1.25, 1.25)]   # 你的新图标
+		"vantom": [preload("res://images/map/placeholder/vantom_boss_icon.png"), Vector2(1.25, 1.25)],
+		"lagavulin_matriarch":[preload("res://images/map/placeholder/lagavulin_matriarch_boss_icon.png"), Vector2(1.25, 1.25)],
+		"knowledge_demon": [preload("res://images/map/placeholder/knowledge_demon_boss_icon.png"), Vector2(1.25, 1.25)]   # 你的新图标
 	},
 	Room.Type.ANCIENT: {
-		1: [preload("res://images/atlases/ui_atlas.sprites/map/ancients/ancient_node_neow.tres"), Vector2.ONE],
-		2: [preload("res://images/atlases/ui_atlas.sprites/map/ancients/ancient_node_orobas.tres"), Vector2.ONE]   # 奥罗巴斯图标
+		1: [ResourceLoader.load("res://images/atlases/ui_atlas.sprites/map/ancients/ancient_node_neow.tres"), Vector2.ONE],
+		2: [ResourceLoader.load("res://images/atlases/ui_atlas.sprites/map/ancients/ancient_node_orobas.tres"), Vector2.ONE]   # 奥罗巴斯图标
 	},
-	Room.Type.ELITE: [preload("res://images/atlases/ui_atlas.sprites/map/icons/map_elite.tres"), Vector2.ONE],
-	Room.Type.UNKNOWN: [preload("res://images/atlases/ui_atlas.sprites/map/icons/map_unknown.tres"), Vector2.ONE],
+	Room.Type.ELITE: [ResourceLoader.load("res://images/atlases/ui_atlas.sprites/map/icons/map_elite.tres"), Vector2.ONE],
+	Room.Type.UNKNOWN: [ResourceLoader.load("res://images/atlases/ui_atlas.sprites/map/icons/map_unknown.tres"), Vector2.ONE],
 }
 
 @onready var highlight_sprite: Sprite2D = $Visuals/highlight
@@ -66,9 +67,21 @@ func set_room(new_data: Room) -> void:
 	var stage := 1
 	if run and run.stats:
 		stage = run.stats.current_stage
-		
+	
+	var type_data
 	# 从 ICONS 字典中取出对应类型的图标数据
-	var type_data = ICONS[room.type]
+	if room.type == Room.Type.BOSS:
+		match room.enemy_encounter.encounter_name:
+			"vantom":
+				type_data = ICONS[room.type]["vantom"]
+			"lagavulin_matriarch":
+				type_data = ICONS[room.type]["lagavulin_matriarch"]
+			"knowledge_demon":
+				type_data = ICONS[room.type]["knowledge_demon"]
+			_:
+				type_data = ICONS[room.type]["vantom"]
+	else:
+		type_data = ICONS[room.type]
 	var entry: Array
 
 	# 判断是数组（单一阶段）还是字典（多阶段）

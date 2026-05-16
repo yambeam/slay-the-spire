@@ -17,7 +17,6 @@ enum Type{
 }
 
 @export var type: Type
-@export var sound: AudioStream
 @export var effect: Effect
 
 var source: Creature

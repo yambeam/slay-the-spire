@@ -12,7 +12,8 @@ metadata/_custom_type_script = "uid://dw53gdpom3gn6"
 
 [resource]
 script = ExtResource("2_d0636")
-weight = 10.0
+type = 3
+weight = 1.0
 enemy_entries = Array[ExtResource("1_ilvce")]([SubResource("Resource_vnhpo")])
 encounter_name = "芝士恶魔"
 metadata/_custom_type_script = "uid://dgu4qpyr0pnnb"

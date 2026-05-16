@@ -1,0 +1,24 @@
+[gd_resource type="Resource" script_class="EnemyEncounter" format=3 uid="uid://d0qb73gwmfteb"]
+
+[ext_resource type="Script" uid="uid://dw53gdpom3gn6" path="res://scripts/costum_resources/enemy_entry.gd" id="1_0l8ox"]
+[ext_resource type="Resource" uid="uid://bg6cayyv4u2u2" path="res://entities/enemies/lagavulin_matriarch/lagavulin_matriarch_stats.tres" id="2_chhvs"]
+[ext_resource type="Script" uid="uid://dgu4qpyr0pnnb" path="res://scripts/costum_resources/enemy_encounter.gd" id="3_055sq"]
+
+[sub_resource type="Resource" id="Resource_sljyl"]
+script = ExtResource("1_0l8ox")
+enemy_stats = ExtResource("2_chhvs")
+position = Vector2(1385, 600)
+initial_buff = {
+"格挡": 12,
+"沉睡": 3,
+"覆甲": 12
+}
+metadata/_custom_type_script = "uid://dw53gdpom3gn6"
+
+[resource]
+script = ExtResource("3_055sq")
+type = 3
+weight = 1.0
+enemy_entries = Array[ExtResource("1_0l8ox")]([SubResource("Resource_sljyl")])
+encounter_name = "lagavulin_matriarch"
+metadata/_custom_type_script = "uid://dgu4qpyr0pnnb"

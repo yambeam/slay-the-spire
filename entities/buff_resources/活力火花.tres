@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="BuffResource" format=3 uid="uid://cabodrkmgxb4g"]
+
+[ext_resource type="Script" uid="uid://c1n4sywvfnffx" path="res://scripts/costum_resources/buff_resource.gd" id="1_mypqj"]
+[ext_resource type="Script" uid="uid://bhci1jlqnduvh" path="res://scripts/costum_resources/buffs/vital_spark_buff.gd" id="1_wvmev"]
+[ext_resource type="Texture2D" uid="uid://26uuq6t7my5k" path="res://images/powers/vital_spark_power.png" id="2_i8my3"]
+
+[resource]
+script = ExtResource("1_mypqj")
+buff_id = "vital_spark"
+buff_name = "活力火花"
+description = "每回合第一次受到攻击时给予攻击者{stacks}点能量"
+icon = ExtResource("2_i8my3")
+buff_script = ExtResource("1_wvmev")
+metadata/_custom_type_script = "uid://c1n4sywvfnffx"

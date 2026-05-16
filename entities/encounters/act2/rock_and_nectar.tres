@@ -1,0 +1,26 @@
+[gd_resource type="Resource" script_class="EnemyEncounter" format=3 uid="uid://co7122un8y5u1"]
+
+[ext_resource type="Script" uid="uid://dw53gdpom3gn6" path="res://scripts/costum_resources/enemy_entry.gd" id="1_a57vm"]
+[ext_resource type="Resource" uid="uid://dm7vkcjb416c3" path="res://entities/enemies/bowlbugs/bowlbug_rock/bowlbug_stats.tres" id="2_17b4h"]
+[ext_resource type="Script" uid="uid://dgu4qpyr0pnnb" path="res://scripts/costum_resources/enemy_encounter.gd" id="2_bkceh"]
+[ext_resource type="Resource" uid="uid://ccia2pqsso7t6" path="res://entities/enemies/bowlbugs/bowlbug_nectar/bowlbug_nectar_stats.tres" id="3_am8i5"]
+
+[sub_resource type="Resource" id="Resource_m3pgs"]
+script = ExtResource("1_a57vm")
+enemy_stats = ExtResource("2_17b4h")
+position = Vector2(1200, 600)
+metadata/_custom_type_script = "uid://dw53gdpom3gn6"
+
+[sub_resource type="Resource" id="Resource_xartq"]
+script = ExtResource("1_a57vm")
+enemy_stats = ExtResource("3_am8i5")
+position = Vector2(1700, 600)
+index = 1
+metadata/_custom_type_script = "uid://dw53gdpom3gn6"
+
+[resource]
+script = ExtResource("2_bkceh")
+weight = 0.5
+enemy_entries = Array[ExtResource("1_a57vm")]([SubResource("Resource_m3pgs"), SubResource("Resource_xartq")])
+encounter_name = "rock_and_nectar"
+metadata/_custom_type_script = "uid://dgu4qpyr0pnnb"

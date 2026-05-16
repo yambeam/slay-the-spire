@@ -1,4 +1,4 @@
-[gd_resource type="SpineSkeletonDataResource" load_steps=7 format=3 uid="uid://td55t4kpjmma"]
+[gd_resource type="SpineSkeletonDataResource" format=3 uid="uid://td55t4kpjmma"]
 
 [ext_resource type="SpineAtlasResource" uid="uid://dv6r6gwlrmq2k" path="res://animations/monsters/entomancer/entomancer.atlas" id="1_sjupi"]
 [ext_resource type="SpineSkeletonFileResource" uid="uid://dwr5toh7erusf" path="res://animations/monsters/entomancer/entomancer.skel" id="2_h6ixv"]

@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="EnemyStats" format=3 uid="uid://cr4eownhe5jgy"]
+
+[ext_resource type="Resource" uid="uid://bfmtr0s1gerve" path="res://entities/enemies/myte/myte_ai.tres" id="1_fsk1w"]
+[ext_resource type="Script" uid="uid://bjrlwk5w4gqtk" path="res://scripts/costum_resources/enemy_stats.gd" id="1_lmlx7"]
+[ext_resource type="PackedScene" uid="uid://ddpj27lrqnaea" path="res://scenes/creature_visuals/myte.tscn" id="3_7r4x1"]
+
+[resource]
+script = ExtResource("1_lmlx7")
+ai = ExtResource("1_fsk1w")
+enemy_name = "异螨"
+hightest_max_health = 42
+lowest_max_health = 37
+visuals_scene = ExtResource("3_7r4x1")
+metadata/_custom_type_script = "uid://bjrlwk5w4gqtk"

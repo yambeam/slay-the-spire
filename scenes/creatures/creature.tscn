@@ -57,11 +57,12 @@ texture = ExtResource("6_dlany")
 script = ExtResource("7_ne82r")
 
 [node name="SpeechBubble" parent="." unique_id=1782935771 instance=ExtResource("7_32syg")]
-visible = false
-offset_left = 209.0
-offset_top = -172.0
-offset_right = 209.0
-offset_bottom = -172.0
+top_level = true
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 0.0
+offset_bottom = 0.0
+mouse_filter = 2
 
 [node name="NamePlate" type="Control" parent="." unique_id=706061852]
 modulate = Color(1, 1, 1, 0)

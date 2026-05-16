@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="BuffResource" format=3 uid="uid://dp4acrsjikrkb"]
+
+[ext_resource type="Script" uid="uid://jv35twtohp6g" path="res://scripts/costum_resources/buffs/personal_hive_buff.gd" id="1_ds7n0"]
+[ext_resource type="Script" uid="uid://c1n4sywvfnffx" path="res://scripts/costum_resources/buff_resource.gd" id="1_yvss7"]
+[ext_resource type="Texture2D" uid="uid://5y2vgtmuon2o" path="res://images/powers/personal_hive_power.png" id="2_ivsln"]
+
+[resource]
+script = ExtResource("1_yvss7")
+buff_id = "persional_hive"
+buff_name = "人体蜂房"
+description = "每当这个敌人被击中时，在你的[color=gold]抽牌堆[/color]中{stacks}张加入[color=gold]晕眩[/color]，每回合最多触发3次。"
+icon = ExtResource("2_ivsln")
+buff_script = ExtResource("1_ds7n0")
+metadata/_custom_type_script = "uid://c1n4sywvfnffx"

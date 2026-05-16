@@ -19,7 +19,7 @@ metadata/_custom_type_script = "uid://dw53gdpom3gn6"
 
 [resource]
 script = ExtResource("2_2exqa")
-weight = 1.0
+weight = 0.5
 enemy_entries = Array[ExtResource("1_622bt")]([SubResource("Resource_ottcx"), SubResource("Resource_xnbka")])
 encounter_name = "群架"
 metadata/_custom_type_script = "uid://dgu4qpyr0pnnb"

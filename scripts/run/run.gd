@@ -20,14 +20,6 @@ const BATTLE_REWARD_SCENE = preload("res://scenes/rooms/reward/reward_room.tscn"
 
 @onready var current_room: Node = $CurrentRoom
 
-@onready var combat: Button = %combat
-@onready var treasure: Button = %treasure
-@onready var shop: Button = %shop
-@onready var campfire: Button = %campfire
-@onready var rewards: Button = %rewards
-@onready var incident: Button = %incident
-
-@onready var map: Button = %map
 @onready var map_node: Map = $Map
 @onready var top_bar: TopBar = %TopBar
 @onready var deck_view: DeckView = %DeckView
@@ -46,6 +38,9 @@ var save_data: SaveGame
 @export var elite_mob_killed:int = 0
 @export var loading_status: int = 0
 
+@export var act1_encounter_pool: EnemyEncounterPool
+@export var act2_encounter_pool: EnemyEncounterPool
+@export var mob_killed_this_act: int = 0
 
 # 标记 Boss 战后是否需要进入阶段切换
 var _pending_stage_transition: bool = false
@@ -181,6 +176,9 @@ func _start_run() -> void:
 	ItemPool.init_item_pool(character.color)
 	save_data = SaveGame.new()
 	_show_map()
+	
+	act1_encounter_pool.setup()
+	act2_encounter_pool.setup()
 
 func _save_run(was_on_map: bool) -> void:
 	save_data.run_stats = stats
@@ -303,15 +301,6 @@ func _setup_event_connections() -> void:
 	Events.ancient_exited.connect(_on_room_exited)
 	
 	Events.map_exited.connect(_on_map_exited)
-	map.pressed.connect(_show_map)
-	
-	# 测试按钮（调试用）
-	combat.pressed.connect(_on_combat_room_entered.bind(null))
-	rewards.pressed.connect(_on_rewards_pressed)
-	treasure.pressed.connect(_on_treasure_pressed)
-	shop.pressed.connect(_on_shop_pressed)
-	campfire.pressed.connect(_on_campfire_pressed)
-	incident.pressed.connect(_on_incident_pressed)
 	
 	# 先古遗物选择信号
 	Events.ancient_relic_selected.connect(_on_ancient_relic_selected)
@@ -382,6 +371,28 @@ func _on_room_exited() -> void:
 
 # ========== 房间入口 ==========
 func _on_combat_room_entered(room: Room = null) -> void:
+	var encounter_pool: EnemyEncounterPool = act1_encounter_pool if stats.current_stage == 1 else act2_encounter_pool 
+	match room.type:
+		Room.Type.BOSS:
+			mob_killed_this_act = 0
+		Room.Type.ELITE:
+			room.enemy_encounter = encounter_pool.get_random_encounter_by_type(EnemyEncounter.Type.ELITE)
+		Room.Type.MONSTER, Room.Type.UNKNOWN:
+			# 第一章前三个遭遇战从弱怪池中选取
+			# 第二章前两个遭遇战从弱怪池中选取
+			mob_killed_this_act += 1
+			if stats.current_stage == 1:
+				if mob_killed_this_act <= 3:
+					room.enemy_encounter = encounter_pool.get_random_encounter_by_type(EnemyEncounter.Type.WEAK)
+				else:
+					room.enemy_encounter = encounter_pool.get_random_encounter_by_type(EnemyEncounter.Type.STRONG)
+			else:
+				# act2
+				if mob_killed_this_act <= 2:
+					room.enemy_encounter = encounter_pool.get_random_encounter_by_type(EnemyEncounter.Type.WEAK)
+				else:
+					room.enemy_encounter = encounter_pool.get_random_encounter_by_type(EnemyEncounter.Type.STRONG)
+	print(room.enemy_encounter)
 	var battle_scene: CombatRoom = await _change_view(COMBAT_SCENE)
 	battle_scene.char_stats = character
 	if room:

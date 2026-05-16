@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="EnemyStats" format=3 uid="uid://dm7vkcjb416c3"]
+
+[ext_resource type="Resource" uid="uid://d24tet6gsquyq" path="res://entities/enemies/bowlbugs/bowlbug_rock/bowlbug_rock.tres" id="1_3q1kv"]
+[ext_resource type="Script" uid="uid://bjrlwk5w4gqtk" path="res://scripts/costum_resources/enemy_stats.gd" id="1_81aw6"]
+[ext_resource type="PackedScene" uid="uid://oswripc2t5da" path="res://scenes/creature_visuals/bowl_bug_rock.tscn" id="3_t0hr1"]
+
+[resource]
+script = ExtResource("1_81aw6")
+ai = ExtResource("1_3q1kv")
+enemy_name = "盛碗虫（石）"
+hightest_max_health = 48
+lowest_max_health = 45
+visuals_scene = ExtResource("3_t0hr1")
+metadata/_custom_type_script = "uid://bjrlwk5w4gqtk"

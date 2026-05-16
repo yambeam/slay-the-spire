@@ -38,8 +38,9 @@ func _ready() -> void:
 	
 func speech(text: String, time: float = 2.5) -> void:
 	speech_bubble.set_text(text, time)
-	speech_bubble.global_position = hitbox.global_position + Vector2(hitbox.shape.size.x, -hitbox.shape.size.y / 2)
-	speech_bubble.scale = spine_manager.scale * 2
+	# speech_bubble是一个control没有offset属性，所以只能硬编码了
+	speech_bubble.global_position = visuals.speech_point.global_position + Vector2(84, -81) * spine_manager.scale * 2
+	#speech_bubble.global_position = hitbox.global_position + Vector2(hitbox.shape.size.x, -hitbox.shape.size.y / 2)
 #func add_buff(buff_context: ApplyBuffContext) -> void:
 	#buff_context.buff_node.stacks = buff_context.amount	
 	#buff_manager.add_buff(buff_context)

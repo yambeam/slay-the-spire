@@ -1,0 +1,39 @@
+[gd_resource type="Resource" script_class="EnemyEncounterPool" format=3 uid="uid://3o70fx1m2x0e"]
+
+[ext_resource type="Script" uid="uid://dgu4qpyr0pnnb" path="res://scripts/costum_resources/enemy_encounter.gd" id="1_06huf"]
+[ext_resource type="Resource" uid="uid://b4vq5focbvrnj" path="res://entities/encounters/act2/knowledge_demon.tres" id="2_xfepb"]
+[ext_resource type="Script" uid="uid://dw53gdpom3gn6" path="res://scripts/costum_resources/enemy_entry.gd" id="3_likiq"]
+[ext_resource type="Resource" uid="uid://daejrtshhhl3g" path="res://entities/enemies/entomancer/entomancer_stats.tres" id="4_r4c8p"]
+[ext_resource type="Resource" uid="uid://b8lottlcysvyu" path="res://entities/encounters/act2/infested_prism.tres" id="5_l7c64"]
+[ext_resource type="Resource" uid="uid://c2indsyhpy6fb" path="res://entities/encounters/act2/louse_progenitor.tres" id="6_82gwx"]
+[ext_resource type="Resource" uid="uid://cnlu441sntj25" path="res://entities/encounters/act2/flail_knight.tres" id="7_5k2ib"]
+[ext_resource type="Resource" uid="uid://bhfgovrvkrxtr" path="res://entities/encounters/act2/one_spiny_toad.tres" id="8_ag4wm"]
+[ext_resource type="Resource" uid="uid://b12xygdl0cwm7" path="res://entities/encounters/act2/two_chompers.tres" id="9_b3gja"]
+[ext_resource type="Resource" uid="uid://cgtvutmdxds4i" path="res://entities/encounters/act2/two_punch_construct.tres" id="10_1w2hq"]
+[ext_resource type="Resource" uid="uid://co7122un8y5u1" path="res://entities/encounters/act2/rock_and_nectar.tres" id="11_48d4i"]
+[ext_resource type="Resource" uid="uid://d20rtj2eblr2e" path="res://entities/encounters/act2/rock_and_web.tres" id="12_6msmv"]
+[ext_resource type="Script" uid="uid://ctyh7cm7a03s2" path="res://scripts/costum_resources/enemy_encounter_pool.gd" id="13_jclt2"]
+[ext_resource type="Resource" uid="uid://dttelsmyktu0g" path="res://entities/encounters/act2/threesome.tres" id="13_xfepb"]
+[ext_resource type="Resource" uid="uid://b1njtqpaj5cil" path="res://entities/encounters/act2/two_mytes.tres" id="14_likiq"]
+
+[sub_resource type="Resource" id="Resource_buo2b"]
+script = ExtResource("3_likiq")
+enemy_stats = ExtResource("4_r4c8p")
+position = Vector2(1385, 600)
+initial_buff = {
+"人体蜂房": 1
+}
+metadata/_custom_type_script = "uid://dw53gdpom3gn6"
+
+[sub_resource type="Resource" id="Resource_jk3ay"]
+script = ExtResource("1_06huf")
+type = 2
+weight = 1.0
+enemy_entries = Array[ExtResource("3_likiq")]([SubResource("Resource_buo2b")])
+encounter_name = "entomancer"
+metadata/_custom_type_script = "uid://dgu4qpyr0pnnb"
+
+[resource]
+script = ExtResource("13_jclt2")
+pool = Array[ExtResource("1_06huf")]([ExtResource("2_xfepb"), SubResource("Resource_jk3ay"), ExtResource("5_l7c64"), ExtResource("6_82gwx"), ExtResource("7_5k2ib"), ExtResource("8_ag4wm"), ExtResource("9_b3gja"), ExtResource("10_1w2hq"), ExtResource("11_48d4i"), ExtResource("12_6msmv"), ExtResource("13_xfepb"), ExtResource("14_likiq")])
+metadata/_custom_type_script = "uid://ctyh7cm7a03s2"

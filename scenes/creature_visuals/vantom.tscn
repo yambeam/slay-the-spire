@@ -39,3 +39,5 @@ position = Vector2(1, -348)
 
 [node name="MegaTailPoint" type="Marker2D" parent="." unique_id=461687081]
 position = Vector2(-517, -387)
+
+[node name="SpeechPoint" type="Marker2D" parent="." unique_id=1146829660]

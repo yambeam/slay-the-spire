@@ -271,3 +271,10 @@ func set_hitbox() -> void:
 	
 	name_plate.size.x = bound_size.x
 	name_plate.position = hp_bar_position + Vector2(0, 10)
+
+func speech(text: String, time: float = 2.5) -> void:
+	speech_bubble.set_text(text, time)
+	speech_bubble.speech_sprite.scale.x = -1
+	speech_bubble.global_position = visuals.speech_point.global_position - Vector2(64, 61) * spine_manager.scale * 2
+	
+	#speech_bubble.global_position = hitbox.global_position + Vector2(hitbox.shape.size.x, -hitbox.shape.size.y / 2)

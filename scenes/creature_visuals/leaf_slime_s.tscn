@@ -28,3 +28,5 @@ offset_left = -60.0
 offset_top = -101.0
 offset_right = 56.0
 mouse_filter = 2
+
+[node name="SpeechPoint" type="Marker2D" parent="." unique_id=1794846200]

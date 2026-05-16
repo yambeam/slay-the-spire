@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://blqos0ytgqhao" path="res://scripts/rooms/combat_room/combat_room.gd" id="1_fx62r"]
 [ext_resource type="Resource" uid="uid://bqq44kff15k4w" path="res://entities/characters/ironclad/ironclad_stats.tres" id="2_7btib"]
-[ext_resource type="Resource" uid="uid://d2ev4fm055apj" path="res://entities/encounters/act1/vantom_boss.tres" id="2_hylje"]
+[ext_resource type="Resource" uid="uid://d2ev4fm055apj" path="res://entities/encounters/act1/vantom.tres" id="2_hylje"]
 [ext_resource type="AudioStream" uid="uid://b4jkiwnd4o7vc" path="res://audio/music/Clark Aboud - The Beyond.mp3" id="3_hylje"]
 [ext_resource type="Script" uid="uid://cyuwwr8gs0v4v" path="res://scripts/rooms/combat_room/combat_ui/combat_ui.gd" id="4_4hrnf"]
 [ext_resource type="Texture2D" uid="uid://jwynhqw8ayou" path="res://images/packed/combat_ui/end_turn_button.png" id="5_w1so4"]

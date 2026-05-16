@@ -71,7 +71,6 @@ target_type = 1
 metadata/_custom_type_script = "uid://b8qfrs61nmcix"
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_pvgax"]
-load_path = "res://.godot/imported/card_atlas_2.png-b839d300f2a53ba5863bc17e02165eea.bptc.ctex"
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_wf7x1"]
 atlas = SubResource("CompressedTexture2D_pvgax")
@@ -139,7 +138,6 @@ target_type = 1
 metadata/_custom_type_script = "uid://b8qfrs61nmcix"
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_req6s"]
-load_path = "res://.godot/imported/card_atlas_2.png-b839d300f2a53ba5863bc17e02165eea.bptc.ctex"
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_s4gnw"]
 atlas = SubResource("CompressedTexture2D_req6s")

@@ -5,8 +5,8 @@ const CARD_MENU_UI_SCENE = preload("res://scenes/ui/card_menu_ui.tscn")
 #const POTION_PILE_PATH = "res://entities/merchant/potions/shop_potions.tres"
 
 # 商品价格随机区间
-const RELIC_PRICE_MIN := 100
-const RELIC_PRICE_MAX := 150
+const RELIC_PRICE_MIN := 200
+const RELIC_PRICE_MAX := 400
 
 const POTION_PRICE_MIN := 40
 const POTION_PRICE_MAX := 80
@@ -267,10 +267,13 @@ func _populate_relics() -> void:
 		return
 
 
-	var mask = character_color | Card.COLOR.COLORLESS
-	var all_relics = ItemPool.get_relics_by_color(mask)
+	var maskColor = character_color | Relic.COLOR.COLORLESS
+	var maskRarity = Relic.Rarity.COMMON | Relic.Rarity.UNCOMMON | Relic.Rarity.SHOP_RELIC | Relic.Rarity.RARE | Relic.Rarity.EVENT
+	
+	
+	var all_relics = ItemPool.get_relics(maskColor,maskRarity)
 	for i in all_relics:
-		print("预备遗物:",i.relic_name,",color:",i.relic_color)
+		print("预备遗物:",i.relic_name,",color:",i.relic_color,",rarity:",i.rarity)
 	#var character_relic_pile: Array = ItemPool.get_relics_by_color(character_color)
 	#var colorless_relic_pile: Array = ItemPool.get_relics_by_color(Card.COLOR.COLORLESS)
 
@@ -430,7 +433,8 @@ func _on_card_purchased(shop_item: ShopItem, card_node: MerchantCard) -> void:
 	run_stats.gold -= shop_item.shop_price
 #	卡牌复制
 	_add_card_to_deck(shop_item.item_data.duplicate())
-	card_node.queue_free()
+	card_node.visible = false
+	card_node.set_meta("purchased", true)
 	_say_random("purchase_success", 2.0)	
 	#print("成功购买卡牌：", card.id)
 
@@ -441,7 +445,8 @@ func _on_relic_purchased(shop_item: ShopItem, relic_node: MerchantRelic) -> void
 		return
 	run_stats.gold -= shop_item.shop_price
 	run_stats.add_relic(shop_item.item_data)
-	relic_node.queue_free()
+	relic_node.visible = false
+	relic_node.set_meta("purchased", true)
 	_say_random("purchase_success", 2.0)
 	#print("成功购买遗物：", relic.relic_name)
 	
@@ -455,7 +460,8 @@ func _on_potion_purchased(shop_item: ShopItem, potion_node: MerchantPotion) -> v
 		run_stats.gold += shop_item.shop_price
 		_say_random("potion_full", 1.5)
 		return
-	potion_node.queue_free()
+	potion_node.visible = false
+	potion_node.set_meta("purchased", true)
 	_say_random("purchase_success", 2.0)
 	#print("成功购买药水：", potion.potion_name)
 	
@@ -657,11 +663,23 @@ func _create_card_shop_item(card: Card) -> ShopItem:
 		return ShopItem.new(card, base_price, false, 0)
 
 func _create_relic_shop_item(relic: Relic) -> ShopItem:
-	var price = randi_range(RELIC_PRICE_MIN, RELIC_PRICE_MAX)
+	var price = 0
+	if relic.rarity == Relic.Rarity.COMMON:
+		price = randi_range(RELIC_PRICE_MIN*0.2, RELIC_PRICE_MIN*0.4)
+	elif relic.rarity == Relic.Rarity.UNCOMMON||relic.rarity == Relic.Rarity.SHOP_RELIC||relic.rarity == Relic.Rarity.EVENT:
+		price = randi_range(RELIC_PRICE_MIN*0.4, RELIC_PRICE_MAX*0.4)
+	else:
+		price = randi_range(RELIC_PRICE_MAX*0.4, RELIC_PRICE_MAX*0.6)
 	return ShopItem.new(relic, price, false, 0)
 
 func _create_potion_shop_item(potion: Potion) -> ShopItem:
-	var price = randi_range(POTION_PRICE_MIN, POTION_PRICE_MAX)
+	var price = 0
+	if potion.rarity == Potion.Rarity.COMMON:
+		price = randi_range(POTION_PRICE_MIN, POTION_PRICE_MAX)
+	elif potion.rarity == Potion.Rarity.COMMON:
+		price = randi_range(POTION_PRICE_MAX, POTION_PRICE_MAX*1.4)
+	else:
+		price = randi_range(POTION_PRICE_MAX*1.5, POTION_PRICE_MAX*1.9)
 	return ShopItem.new(potion, price, false, 0)
 
 func _get_run_node() -> Run:
@@ -749,6 +767,10 @@ func _shake_node(node: Control, intensity: float = 5.0, duration: float = 0.15) 
 # 输入处理
 # ============================================
 func _input(event: InputEvent) -> void:
+	if event is InputEventMouseButton:
+		var mb := event as InputEventMouseButton
+		if mb.button_index == MOUSE_BUTTON_WHEEL_UP or mb.button_index == MOUSE_BUTTON_WHEEL_DOWN:
+			accept_event() 
 	if event is InputEventMouseMotion:
 		_handle_mouse_motion(event)
 		return
@@ -818,3 +840,226 @@ func _get_character_color_mask(char_name: String) -> int:
 		"silent":   return Card.COLOR.GREEN
 		# 后续添加其他角色时扩展此处
 		_: return 0
+
+
+#保存功能
+#立即收回仓库
+func _close_inventory_immediate() -> void:
+	if not slots_container:
+		return
+	# 如果容器被移到了根节点，放回 inventory 下
+	if slots_container.get_parent() != inventory:
+		slots_container.reparent(inventory)
+	slots_container.visible = false
+	# 重置位置到屏幕上方（与初始化位置一致）
+	var target_x = slots_container.get_meta("target_position", Vector2.ZERO).x
+	slots_container.position = Vector2(target_x, -slots_container.size.y)
+	slots_container.modulate.a = 1.0
+	back_button.visible = false
+	if backstop:
+		backstop.visible = false
+		backstop.modulate.a = 0.0
+	_reset_hand_immediately()
+
+func get_save_state() -> Dictionary:
+	# 强制关闭库存（无动画）
+	if slots_container and slots_container.visible:
+		_close_inventory_immediate()
+
+	var state := {
+		"cards_populated": cards_populated,
+		"card_removal_purchased": false,
+		"slots": {},           # 结构：{容器名: [槽位状态, ...]}
+		"inventory_open": false   # 始终保持不打开
+	}
+
+	if not is_instance_valid(card_removal_node) or not card_removal_node.visible:
+		state["card_removal_purchased"] = true
+
+	for container_name in ["CharacterCards", "ColorlessCards", "Relics", "Potions"]:
+		var container = slots_container.get_node_or_null(container_name)
+		if not container:
+			continue
+		var children = container.get_children()
+		var slot_states: Array = []
+		for i in range(children.size()):
+			var child = children[i]
+			var slot_info := {
+				"index": i,
+				"visible": child.visible,
+				"purchased": child.get_meta("purchased", false)
+			}
+			if child.visible:
+				var shop_item: ShopItem = child.get_shop_item()
+				if shop_item:
+					slot_info["resource_path"] = shop_item.item_data.resource_path
+					slot_info["price"] = shop_item.shop_price
+					slot_info["on_sale"] = shop_item.on_sale
+					slot_info["original_price"] = shop_item.original_price
+				else:
+					slot_info["empty"] = true
+			slot_states.append(slot_info)
+		state["slots"][container_name] = slot_states
+
+	return state
+
+
+func set_save_state(state: Dictionary) -> void:
+	if state.is_empty():
+		return
+
+	if not run_stats:
+		_initialize_run_stats()
+
+	cards_populated = state.get("cards_populated", false)
+	if state.get("card_removal_purchased", false):
+		if is_instance_valid(card_removal_node):
+			card_removal_node.visible = false
+			card_removal_node.set_meta("purchased", true)
+
+	# 库存始终保持关闭（你最后的要求）
+	# 隐藏所有槽位，清空商品数据及标记
+	for container_name in ["CharacterCards", "ColorlessCards", "Relics", "Potions"]:
+		var container = slots_container.get_node_or_null(container_name)
+		if not container:
+			continue
+		for child in container.get_children():
+			child.visible = false
+			child.set_meta("purchased", false)
+			if child.has_method("clear_shop_item"):
+				child.clear_shop_item()
+
+	# 按保存的槽位顺序恢复
+	var slots_state = state.get("slots", {})
+	for container_name in slots_state.keys():
+		var container = slots_container.get_node_or_null(container_name)
+		if not container:
+			continue
+		var saved_slots: Array = slots_state[container_name]
+		var children = container.get_children()
+		for slot_info in saved_slots:
+			var idx = slot_info["index"]
+			if idx < 0 or idx >= children.size():
+				continue
+			var child = children[idx]
+			if slot_info.get("visible") and slot_info.has("resource_path"):
+				# 有商品 → 显示并恢复
+				var item_data = load(slot_info["resource_path"])
+				if item_data:
+					var shop_item := ShopItem.new(
+						item_data,
+						slot_info["price"],
+						slot_info["on_sale"],
+						slot_info["original_price"]
+					)
+					child.visible = true
+					child.set_meta("purchased", false)
+					child.set_shop_item(shop_item)
+					if run_stats:
+						child.set_run_stats(run_stats)
+					# 重连信号
+					_connect_signals_for_child(child, container_name)
+			elif slot_info.get("purchased", false):
+				# 已购买的空位 → 保持隐藏，标记 purchased
+				child.visible = false
+				child.set_meta("purchased", true)
+				if child.has_method("clear_shop_item"):
+					child.clear_shop_item()
+			else:
+				# 未使用的空位 → 隐藏，无标记
+				child.visible = false
+				child.set_meta("purchased", false)
+				if child.has_method("clear_shop_item"):
+					child.clear_shop_item()
+
+	_update_all_affordability()
+
+
+# 恢复时重连信号的辅助函数（添加在文件中）
+func _connect_signals_for_child(child: Node, container_name: String) -> void:
+	if child is MerchantCard:
+		if not child.card_clicked.is_connected(_on_card_purchased):
+			child.card_clicked.connect(_on_card_purchased.bind(child))
+		_connect_hand_signals(child)
+	elif child is MerchantRelic:
+		_connect_click_signal(child, "relic_clicked", _on_relic_purchased)
+		_connect_hand_signals(child)
+	elif child is MerchantPotion:
+		_connect_click_signal(child, "potion_clicked", _on_potion_purchased)
+		_connect_hand_signals(child)
+
+# 快速显示库存（无滑下动画）
+func _show_inventory_instant() -> void:
+	if not slots_container:
+		return
+	slots_container.visible = true
+	var root = get_tree().root
+	if slots_container.get_parent() != root:
+		slots_container.reparent(root)
+	slots_container.z_index = 3
+	slots_container.position = slots_container.get_meta("target_position", Vector2.ZERO)
+	slots_container.modulate.a = 1.0
+	back_button.visible = true
+	back_button.z_index = 10
+	if backstop:
+		backstop.visible = true
+		backstop.modulate.a = 0.7
+
+
+# 根据类型恢复商品到对应容器
+func _restore_good(shop_item: ShopItem, type: String) -> void:
+	match type:
+		"card":
+			for container_name in ["CharacterCards", "ColorlessCards"]:
+				var container = slots_container.get_node_or_null(container_name)
+				if not container:
+					continue
+				for child in container.get_children():
+					if not child.visible and child is MerchantCard:
+						child.visible = true
+						child.set_shop_item(shop_item)
+						if run_stats:
+							child.set_run_stats(run_stats)
+						_connect_card_signals(child)
+						return
+		"relic":
+			var container = slots_container.get_node_or_null("Relics")
+			if not container:
+				return
+			for child in container.get_children():
+				if not child.visible and child is MerchantRelic:
+					child.visible = true
+					child.set_shop_item(shop_item)
+					child.set_run_stats(run_stats)
+					_connect_click_signal(child, "relic_clicked", _on_relic_purchased)
+					_connect_hand_signals(child)
+					return
+		"potion":
+			var container = slots_container.get_node_or_null("Potions")
+			if not container:
+				return
+			for child in container.get_children():
+				if not child.visible and child is MerchantPotion:
+					child.visible = true
+					child.set_shop_item(shop_item)
+					child.set_run_stats(run_stats)
+					_connect_click_signal(child, "potion_clicked", _on_potion_purchased)
+					_connect_hand_signals(child)
+					return
+	# 如果没有空闲槽位（理论上不会），打印警告
+	print("警告：无法恢复商品，无空闲槽位：", type)
+
+
+# 判断槽位类型（辅助函数）
+func _get_good_type(node: Node) -> String:
+	if node is MerchantCard:
+		return "card"
+	if node is MerchantRelic:
+		return "relic"
+	if node is MerchantPotion:
+		return "potion"
+	return ""
+
+
+
+	

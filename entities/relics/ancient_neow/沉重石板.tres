@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://cgmi6f3o7leik" path="res://scripts/costum_resources/effect.gd" id="1_q4wr4"]
 [ext_resource type="Texture2D" uid="uid://beaqff6" path="res://images/atlases/relic_atlas.sprites/runic_cube.tres" id="2_31ds0"]
-[ext_resource type="Script" uid="uid://djhv36jnyama7" path="res://entities/relics/ancient/沉重石板.gd" id="2_q4wr4"]
+[ext_resource type="Script" uid="uid://djhv36jnyama7" path="res://entities/relics/ancient_neow/沉重石板.gd" id="2_q4wr4"]
 
 [resource]
 script = ExtResource("2_q4wr4")
@@ -10,4 +10,5 @@ relic_name = "沉重石板"
 id = "hefty_tablet"
 icon = ExtResource("2_31ds0")
 description = "拾起时，从5张[color=gold]稀有牌[/color]中选择1张加入你的牌组，同时将1张[color=red]受伤[/color]加入你的[color=gold]牌组[/color]"
+rarity = 32
 metadata/_custom_type_script = "uid://bvf88v88tbaks"

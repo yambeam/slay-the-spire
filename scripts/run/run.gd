@@ -41,11 +41,13 @@ var character: CharacterStats
 var stats: RunStats
 var save_data: SaveGame
 
+var is_scroll_blocked: bool = false
 
 #杀掉的精英怪数量
 @export var elite_mob_killed:int = 0
 @export var loading_status: int = 0
 
+var is_on_map: bool = true
 
 # 标记 Boss 战后是否需要进入阶段切换
 var _pending_stage_transition: bool = false
@@ -55,6 +57,8 @@ func _ready() -> void:
 		return
 	pause_menu.save_and_quit.connect(
 		func():
+			var on_map := is_on_map  # 假设 Map 节点有 visible 属性；若无，需手动维护 is_on_map 变量
+			_save_run(on_map)
 			get_tree().change_scene_to_file(MAIN_MENU_PATH)
 	)
 	death_settlement.DeathSettlementBackToMainMenu.connect(
@@ -74,7 +78,10 @@ func _ready() -> void:
 			print("加载游戏")
 
 func _on_map_room_selected(room: Room) -> void:
-	print("进入房间，保存游戏")
+	
+	is_scroll_blocked = true
+	is_on_map = false
+	#print("进入房间，保存游戏")
 	map_node.last_room = room
 	_save_run(false)
 	match room.type:
@@ -179,40 +186,12 @@ func _start_run() -> void:
 	_setup_top_bar()
 	map_node.init(stats)
 	ItemPool.init_item_pool(character.color)
+	
+#	保存数据
 	save_data = SaveGame.new()
 	_show_map()
 
-func _save_run(was_on_map: bool) -> void:
-	save_data.run_stats = stats
-	save_data.char_stats = character
-	save_data.current_deck = character.deck
-	save_data.current_health = character.health
-	save_data.last_room = map_node.last_room
-	save_data.was_on_map = was_on_map
-	save_data.potions = stats.potions
-	save_data.relics = stats.relics
-	save_data.save_data()
 
-func _load_run() -> void:
-	save_data = SaveGame.load_data()
-	assert(save_data, "could not load last save")
-	character = save_data.char_stats
-	stats = save_data.run_stats
-	character.deck = save_data.current_deck
-	character.health = save_data.current_health
-	ItemPool.init_item_pool(character.color)
-	for potion in save_data.potions:
-		print("加载药水")
-		stats.add_potion(potion)
-	stats.relics = save_data.relics
-	_load_up_top_bar()
-	_setup_event_connections()
-	map_node.load_map(stats, save_data.last_room)
-	if save_data.last_room and not save_data.was_on_map:
-		print("was on map : false")
-		_on_map_room_selected(save_data.last_room)
-	else:
-		_show_map()
 
 func _load_up_top_bar() -> void:
 	top_bar.run_stats = stats
@@ -296,7 +275,7 @@ func _setup_event_connections() -> void:
 	)
 	Events.player_died_outside.connect(_on_player_died_outside)
 	Events.player_died.connect(on_player_died)
-	Events.combat_reward_exited.connect(_on_room_exited)
+	#Events.combat_reward_exited.connect(_on_room_exited)
 	# ★ 修改：战斗奖励退出使用分流函数
 	Events.combat_reward_exited.connect(_on_combat_reward_exited)
 	
@@ -355,12 +334,13 @@ func _on_incident_pressed():
 	_on_incident_room_entered(null)
 
 func _show_map() -> void:
+	is_on_map = true
 	if current_room.get_child_count() > 0:
 		current_room.get_child(0).hide()
 	map_node.show_map()
 	
-	if stats.current_room!=null:
-		stats.current_room.type=Room.Type.NOT_ASSIGNED
+	#if stats.current_room!=null:
+		#stats.current_room.type=Room.Type.NOT_ASSIGNED
 	_save_run(true)
 
 func _on_map_exited() -> void:
@@ -372,6 +352,8 @@ func _on_map_exited() -> void:
 func _on_room_exited() -> void:
 	#print(">>> _on_room_exited START")
 	#print("current_room children: ", current_room.get_children())
+	is_scroll_blocked = false
+	is_on_map = true
 	if current_room.get_child_count() > 0:
 		var child = current_room.get_child(0)
 		#print("Removing child: ", child.name)
@@ -383,7 +365,7 @@ func _on_room_exited() -> void:
 		#print("No child to remove")
 	map_node.complete_current_room()
 	_show_map()
-	print(">>> _on_room_exited END")
+	#print(">>> _on_room_exited END")
 
 # ========== 房间入口 ==========
 func _on_combat_room_entered(room: Room = null) -> void:
@@ -401,15 +383,13 @@ func _on_treasure_room_entered(room: Room) -> void:
 	await _change_view(TREASURE_SCENE)
 
 func _on_ancient_room_entered(room: Room) -> void:
-	var scene: PackedScene
-	if stats.current_stage == 1:
-		scene = ANCIENT_SCENE_NEOW
-	else:
-		scene = ANCIENT_SCENE_OROBAS
-
-	var ancient = scene.instantiate()
-	ancient.current_stage = stats.current_stage   
-	current_room.add_child(ancient)  
+	if current_room.get_child_count() > 0:
+		current_room.get_child(0).queue_free()
+	var ancient = _get_ancient_scene().instantiate()
+	ancient.current_stage = stats.current_stage
+	current_room.add_child(ancient)
+	ancient.initialize_new()   
+	_save_run(false)            
 		
 func _on_ancient_relic_selected(relic: Relic) -> void:
 	if stats:
@@ -448,3 +428,179 @@ func _victory() -> void:
 	save_data.delete_data()
 	# 返回主菜单
 	get_tree().change_scene_to_file(MAIN_MENU_PATH)
+
+
+
+#=========存档相关==
+func _save_run(on_map: bool) -> void:
+	#人物数据
+	save_data.run_stats = stats
+	save_data.char_stats = character
+	save_data.current_deck = character.deck
+	save_data.current_health = character.health
+	save_data.potions = stats.potions
+	save_data.relics = stats.relics
+	
+	save_data.map_camera_y = map_node.camera_2d.position.y
+	save_data.map_old_camera_y = map_node.old_camera_2d_position_y
+
+	#地图相关
+	save_data.last_room = map_node.last_room
+	if on_map:
+		save_data.state = SaveGame.State.ON_MAP
+		save_data.room_type = Room.Type.NOT_ASSIGNED
+		save_data.room_state = {}
+	else:
+		if current_room.get_child_count() > 0 and current_room.get_child(0) is BattleReward:
+			save_data.is_battle_reward = true
+		else:
+			save_data.is_battle_reward = false
+		save_data.room_state = _collect_room_state()
+		save_data.state = SaveGame.State.IN_ROOM
+		save_data.room_type = map_node.last_room.type if map_node.last_room else Room.Type.NOT_ASSIGNED
+		save_data.room_state = _collect_room_state()   #保存当前房间状态
+		
+	
+	# 收集每个房间的类型
+	var types := []
+	for floor in stats.map_data:
+		var row_types := []
+		for room: Room in floor:
+			row_types.append(room.type)          # 存枚举值（int）
+		types.append(row_types)
+	save_data.map_types = types
+
+	# 收集已选房间坐标
+	var sel := []
+	for floor in stats.map_data:
+		for room: Room in floor:
+			if room.selected:
+				sel.append([room.row, room.column])
+	save_data.selected_rooms = sel
+	
+	save_data.save_data()
+	
+	var test_save := SaveGame.load_data()
+	if test_save:
+		print("[DEBUG] 存档中的 room_state: ", test_save.room_state)
+	else:
+		print("[DEBUG] 存档写入失败！")
+
+func _load_run() -> void:
+	save_data = SaveGame.load_data()
+	assert(save_data, "Could not load last save")
+	
+	#人物数据加载	
+	character = save_data.char_stats
+	stats = save_data.run_stats
+	character.deck = save_data.current_deck
+	character.health = save_data.current_health
+	ItemPool.init_item_pool(character.color)
+	for potion in save_data.potions:
+		stats.add_potion(potion)
+	stats.relics = save_data.relics
+
+	_load_up_top_bar()
+	_setup_event_connections()
+	
+	# 恢复每个房间的类型
+	for i in min(stats.map_data.size(), save_data.map_types.size()):
+		var row_types = save_data.map_types[i]
+		var floor = stats.map_data[i]
+		for j in min(floor.size(), row_types.size()):
+			floor[j].type = row_types[j]
+
+	# 恢复已选状态
+	for coord in save_data.selected_rooms:
+		var r = coord[0]
+		var c = coord[1]
+		if r < stats.map_data.size() and c < stats.map_data[r].size():
+			stats.map_data[r][c].selected = true
+	
+	# 恢复相机位置
+	map_node.camera_2d.position.y = save_data.map_camera_y
+	map_node.old_camera_2d_position_y = save_data.map_old_camera_y
+	
+	map_node.load_map(stats, save_data.last_room)
+
+	match save_data.state:
+		SaveGame.State.ON_MAP:
+			is_on_map = true
+			_show_map()
+		SaveGame.State.IN_ROOM:
+			is_on_map = false
+			_restore_room(save_data.room_type, save_data.last_room)
+		_:
+			is_on_map = true
+			_show_map()  # 安全回退
+
+func _collect_room_state() -> Dictionary:
+	if current_room.get_child_count() == 0:
+		return {}
+	var scene = current_room.get_child(0)
+	if scene.has_method("get_save_state"):
+		return scene.get_save_state()
+	return {}
+
+func _apply_room_state(scene: Node, state: Dictionary) -> void:
+	if scene.has_method("set_save_state"):
+		scene.set_save_state(state)
+		
+func _restore_room(type: Room.Type, room: Room) -> void:
+	is_on_map = false
+	var state_to_apply := save_data.room_state.duplicate()  # 取出存档中的状态
+	
+	if save_data.is_battle_reward:
+		var reward_scene = BATTLE_REWARD_SCENE.instantiate()
+		current_room.add_child(reward_scene)
+		reward_scene.run_stats = stats
+		reward_scene.character_stats = character          # ← 新增这两行
+		if reward_scene.has_method("set_save_state"):
+			reward_scene.set_save_state(state_to_apply)
+		return
+	
+	match type:
+		Room.Type.MONSTER, Room.Type.ELITE, Room.Type.BOSS:
+			# ... 战斗房间无需特殊状态，可忽略
+			_on_combat_room_entered(room)
+		Room.Type.TREASURE:
+			var treasure_scene = TREASURE_SCENE.instantiate()
+			current_room.add_child(treasure_scene)
+			if treasure_scene.has_method("set_save_state"):
+				treasure_scene.set_save_state(state_to_apply)
+		Room.Type.SHOP:
+			var shop_scene = SHOP_SCENE.instantiate()
+			current_room.add_child(shop_scene)
+			if shop_scene.has_method("set_save_state"):
+				shop_scene.set_save_state(state_to_apply)
+			# 如果商店也有状态，应用之
+		Room.Type.CAMPFIRE:
+			_on_campfire_room_entered(room)
+		Room.Type.UNKNOWN:
+			_handle_unknown_room(room)
+		Room.Type.ANCIENT:
+			# 先古房间：在进入时会加载对应场景，然后应用状态
+			var ancient_scene = _get_ancient_scene()
+			var ancient = ancient_scene.instantiate()
+			ancient.current_stage = stats.current_stage
+			current_room.add_child(ancient)
+			ancient.restore_state(state_to_apply)
+			return  # 避免重复调用 _on_ancient_room_entered
+		_:
+			_show_map()
+			return
+
+
+
+func _get_ancient_scene() -> PackedScene:
+	if stats.current_stage == 1:
+		return ANCIENT_SCENE_NEOW
+	else:
+		return ANCIENT_SCENE_OROBAS
+
+
+func _input(event: InputEvent) -> void:
+	if is_scroll_blocked and event is InputEventMouseButton:
+		var mb := event as InputEventMouseButton
+		if mb.button_index == MOUSE_BUTTON_WHEEL_UP or mb.button_index == MOUSE_BUTTON_WHEEL_DOWN:
+			get_viewport().set_input_as_handled()

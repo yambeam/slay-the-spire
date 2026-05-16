@@ -31,7 +31,7 @@ const STAGE_BACKGROUNDS = {
 @onready var legend: Legend = $Legend_background/Legend
 @onready var legendAll: CanvasLayer = $Legend_background
 
-@export var scroll_enabled: bool = true   # 滚动是否可用
+@export var scroll_enabled: bool = true   
 
 #var map_data: Array[Array]
 #var floors_climbed: int
@@ -104,7 +104,7 @@ func init(stats:RunStats) -> void:
 func _input(event:InputEvent) -> void:
 	#print("Map._input received: ", event, " scroll_enabled: ", scroll_enabled)
 	if not scroll_enabled:
-		return                     # 禁用滚动时直接返回
+		return                     
 	if event.is_action_pressed("scroll_up"):
 		camera_2d.position.y = max(camera_2d.position.y - SCROLL_SPEED, -camera_edge_y)
 	elif event.is_action_pressed("scroll_down"):
@@ -126,6 +126,8 @@ func load_map(stats:RunStats,last_room_climbed:Room)->void:
 		unlock_next_rooms()
 	else:
 		unlock_floor()
+		
+	_restore_line_visibility()  
 	
 func create_map() -> void:
 	for current_floor: Array in run_stats.map_data:
@@ -166,24 +168,25 @@ func hide_map() -> void:
 	
 func _spawn_room(room: Room) -> void:
 	var new_map_room := MAP_ROOM.instantiate() as MapRoom
-	rooms.add_child(new_map_room)   # 先加入场景树，让 @onready 变量完成初始化
+	rooms.add_child(new_map_room)   
 	
-	# 现在可以安全访问 Select_Circle 了
+	#将对应的点击范围按比例缩小
 	if room.type == Room.Type.CAMPFIRE or room.type == Room.Type.SHOP:
 		new_map_room.scale = Vector2(1.4, 1.4)
 		new_map_room.Select_Circle.scale = Vector2(1.0, 1.0 )
 	else:
 		new_map_room.scale = Vector2(1.0005, 1.0005)
 		new_map_room.Select_Circle.scale = Vector2(1.3,1.3)
+		
 	new_map_room.room = room
 	new_map_room.selected.connect(_on_map_room_selected)
 	_connect_lines(room)
 	
 	new_map_room._update_collision_scale()
 	
-	if room.selected and room.row < run_stats.floors_climbed:
-		if room.type != Room.Type.ANCIENT and room.type != Room.Type.BOSS:
-			new_map_room.show_selected()
+	#if room.selected:
+		#if room.type != Room.Type.ANCIENT and room.type != Room.Type.BOSS:
+			#new_map_room.show_selected()
 		
 	new_map_room.original_scale = new_map_room.scale
 		
@@ -196,9 +199,14 @@ func _connect_lines(room: Room) -> void:
 		new_map_line.add_point(next.position)
 		# 设置初始透明度（ 0.2 ）
 		new_map_line.modulate = Color(1, 1, 1, 0.1)
+		
+		# 保存两端房间引用
+		new_map_line.set_meta("room_a", room)
+		new_map_line.set_meta("room_b", next)
 		lines.add_child(new_map_line)
 		#print("连线已添加，从 ", room.position, " 到 ", next.position, "，节点数：", lines.get_child_count())
-		
+	
+	
 func _on_map_room_selected(room: Room) -> void:
 	#print("=== _on_map_room_selected 被调用 ===")
 	run_stats.current_room = room
@@ -365,3 +373,11 @@ func _create_act_label(stage: int) -> void:
 	t.tween_interval(1.5)   # 在全黑背景下显示 1.5 秒（可调整）
 	t.tween_property(label, "modulate:a", 0.0, 0.5)
 	t.tween_callback(canvas.queue_free)
+
+
+func _restore_line_visibility() -> void:
+	for line in lines.get_children():
+		var room_a = line.get_meta("room_a", null)
+		var room_b = line.get_meta("room_b", null)
+		if room_a and room_b and room_a.selected and room_b.selected:
+			line.modulate.a = 0.9

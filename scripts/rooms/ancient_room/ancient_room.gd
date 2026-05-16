@@ -6,15 +6,13 @@ extends Control
 
 const RELIC_PILES = {
 	1: preload("res://entities/ancient/neow_relics.tres"),
-	2: preload("res://entities/ancient/orobas_relics.tres")  
+	2: preload("res://entities/ancient/orobas_relics.tres")
 }
-
 
 const ANCIENT_ICONS = {
 	1: preload("res://images/ui/run_history/neow.png"),
-	2: preload("res://images/ui/run_history/orobas.png")      
+	2: preload("res://images/ui/run_history/orobas.png")
 }
-
 
 const OPENING_LINES = {
 	1: [
@@ -45,7 +43,6 @@ const AFTER_CHOICE_LINES = {
 const RELIC_UI_SCENE = preload("res://scenes/relichandler/relic_ui.tscn")
 
 @export var relic_spacing: int = 100
-
 @onready var spine_sprite: SpineSprite = get_node_or_null("SpineSprite") as SpineSprite
 @onready var relic_container: Control = $Control
 @onready var return_button: Button = $Button
@@ -55,23 +52,63 @@ var dialogue_container: HBoxContainer
 var ancient_icon: TextureRect
 var dialogue_label: RichTextLabel
 
+# 存档数据
+var relic_options: Array[Relic] = []
+var has_chosen: bool = false
+
 
 func _ready() -> void:
 	# 播放 Spine 的 idle 动画
 	if spine_sprite:
 		spine_sprite.get_animation_state().set_animation("idle_loop", true, 0)
 
-	# 隐藏返回按钮，等待遗物选择后显示
+	# 返回按钮基础设置
 	return_button.visible = false
 	return_button.pressed.connect(_on_return_pressed)
 	return_button.mouse_entered.connect(_on_button_entered)
 	return_button.mouse_exited.connect(_on_button_exited)
 
+	# 只创建空的对话 UI，不填充内容
 	_create_dialogue_ui()
+	
+
+
+func initialize_new() -> void:
 	_show_random_opening()
 	_create_relic_options()
 
 
+
+func restore_state(state: Dictionary) -> void:
+	if state.has("has_chosen"):
+		has_chosen = state["has_chosen"]
+
+	if state.has("dialogue_text"):
+		dialogue_label.text = state["dialogue_text"]
+		dialogue_label.scroll_active = false   
+	if has_chosen:
+		# 已经选择过遗物：显示返回按钮，台词已恢复
+		return_button.visible = true
+	else:
+		# 未选择：恢复遗物选项（如果存档中有）
+		if state.has("relic_options"):
+			var paths: Array = state["relic_options"]
+			relic_options.clear()
+			for path in paths:
+				var relic: Relic = load(path) as Relic
+				if relic:
+					relic_options.append(relic)
+				else:
+					print("[Load] Failed to load relic at: ", path)
+
+		# 如果遗物选项非空则创建 UI，否则随机生成（安全回退）
+		if relic_options.is_empty():
+			_create_relic_options()
+		else:
+			_create_relic_ui(relic_options)
+
+
+#
 func _create_dialogue_ui() -> void:
 	dialogue_container = HBoxContainer.new()
 	dialogue_container.position = Vector2(700, 650)
@@ -98,12 +135,12 @@ func _create_dialogue_ui() -> void:
 	dialogue_label.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	dialogue_container.add_child(dialogue_label)
 
-	
 	var shake_effect = load("res://entities/ancient/neow_rich_text_effect.tres")
 	if shake_effect:
 		dialogue_label.custom_effects.append(shake_effect)
 
 
+# 
 func _show_random_opening() -> void:
 	var pool = OPENING_LINES.get(current_stage, OPENING_LINES[1])
 	dialogue_label.text = pool[randi() % pool.size()]
@@ -117,61 +154,18 @@ func _show_random_after_choice() -> void:
 func _on_return_pressed() -> void:
 	Events.ancient_exited.emit()
 
+
+#
 func _create_relic_options() -> void:
 	var choices := _pick_random_relics(3)
 	if choices.is_empty():
 		return
-
-	# 清空旧的选项
-	for child in relic_container.get_children():
-		child.queue_free()
-	relic_buttons.clear()
-
-
-	var hbox = HBoxContainer.new()
-	hbox.name = "RelicOptions"
-	hbox.alignment = BoxContainer.ALIGNMENT_CENTER
-	hbox.custom_minimum_size = relic_container.size
-	hbox.mouse_filter = Control.MOUSE_FILTER_IGNORE
-	hbox.add_theme_constant_override("separation", relic_spacing)
-	hbox.add_theme_stylebox_override("panel", StyleBoxEmpty.new())
-	relic_container.add_child(hbox)
-
-	for relic in choices:
-		# 复用 RelicUI 组件
-		var relic_ui = RELIC_UI_SCENE.instantiate() as RelicUI
-		relic_ui.custom_minimum_size = Vector2(140, 140)
-		relic_ui.mouse_filter = Control.MOUSE_FILTER_STOP
-		relic_ui.set_relic(relic)
-
-		# 断开可能存在的旧连接（取决于你的 RelicUI 实现）
-		if relic_ui.has_signal("mouse_entered") and relic_ui.mouse_entered.is_connected(relic_ui._on_mouse_entered):
-			relic_ui.mouse_entered.disconnect(relic_ui._on_mouse_entered)
-		if relic_ui.has_signal("mouse_exited") and relic_ui.mouse_exited.is_connected(relic_ui._on_mouse_exited):
-			relic_ui.mouse_exited.disconnect(relic_ui._on_mouse_exited)
-
-		# 悬浮缩放特效
-		relic_ui.mouse_entered.connect(
-			func(): create_tween().tween_property(relic_ui, "scale", Vector2(1.1, 1.1), 0.1)
-		)
-		relic_ui.mouse_exited.connect(
-			func(): create_tween().tween_property(relic_ui, "scale", Vector2(1.0, 1.0), 0.1)
-		)
-
-		# 悬浮显示关键词提示
-		relic_ui.mouse_entered.connect(_on_relic_mouse_entered.bind(relic_ui, relic))
-		relic_ui.mouse_exited.connect(_on_relic_mouse_exited)
-
-		# 点击选择
-		relic_ui.gui_input.connect(_on_relic_ui_input.bind(relic_ui, relic))
-
-		hbox.add_child(relic_ui)
-		relic_buttons.append(relic_ui)
+	relic_options = choices
+	_create_relic_ui(choices)
 
 
 func _pick_random_relics(amount: int) -> Array[Relic]:
-	var pile_path = RELIC_PILES.get(current_stage, RELIC_PILES[1])
-	var pile: RelicPile = pile_path
+	var pile: RelicPile = RELIC_PILES.get(current_stage, RELIC_PILES[1])
 	if not pile or not pile.relics:
 		printerr("无法加载阶段 %d 的遗物堆" % current_stage)
 		return []
@@ -200,17 +194,61 @@ func _pick_random_relics(amount: int) -> Array[Relic]:
 	return result
 
 
+## 
+func _create_relic_ui(relics: Array[Relic]) -> void:
+	# 清空旧的选项
+	for child in relic_container.get_children():
+		child.queue_free()
+	relic_buttons.clear()
+
+	var hbox = HBoxContainer.new()
+	hbox.name = "RelicOptions"
+	hbox.alignment = BoxContainer.ALIGNMENT_CENTER
+	hbox.custom_minimum_size = relic_container.size
+	hbox.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	hbox.add_theme_constant_override("separation", relic_spacing)
+	hbox.add_theme_stylebox_override("panel", StyleBoxEmpty.new())
+	relic_container.add_child(hbox)
+
+	for relic in relics:
+		var relic_ui = RELIC_UI_SCENE.instantiate() as RelicUI
+		relic_ui.custom_minimum_size = Vector2(140, 140)
+		relic_ui.mouse_filter = Control.MOUSE_FILTER_STOP
+		relic_ui.set_relic(relic)
+
+		# 悬浮缩放特效
+		relic_ui.mouse_entered.connect(
+			func(): create_tween().tween_property(relic_ui, "scale", Vector2(1.1, 1.1), 0.1)
+		)
+		relic_ui.mouse_exited.connect(
+			func(): create_tween().tween_property(relic_ui, "scale", Vector2(1.0, 1.0), 0.1)
+		)
+
+		# 悬浮显示关键词提示
+		relic_ui.mouse_entered.connect(_on_relic_mouse_entered.bind(relic_ui, relic))
+		relic_ui.mouse_exited.connect(_on_relic_mouse_exited)
+
+		# 点击选择
+		relic_ui.gui_input.connect(_on_relic_ui_input.bind(relic_ui, relic))
+
+		hbox.add_child(relic_ui)
+		relic_buttons.append(relic_ui)
+
+
+#
 func _on_relic_ui_input(event: InputEvent, relic_ui: Control, relic: Relic) -> void:
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
 		_select_relic(relic_ui, relic)
 
 
 func _select_relic(relic_ui: Control, relic: Relic) -> void:
+	has_chosen = true
+	relic_options.clear()   
 
 	for btn in relic_buttons:
 		btn.mouse_filter = Control.MOUSE_FILTER_IGNORE
 
-	# 发出全局信号，Run 会调用 stats.add_relic(relic)
+
 	Events.ancient_relic_selected.emit(relic)
 
 	# 清理选项并显示离开按钮
@@ -248,3 +286,26 @@ func _get_run_node():
 			return current
 		current = current.get_parent()
 	return null
+
+
+# 
+func get_save_state() -> Dictionary:
+	var paths := []
+	for relic in relic_options:
+		paths.append(relic.resource_path)   # 保存遗物资源路径
+	return {
+		"relic_options": paths,
+		"dialogue_text": dialogue_label.text,
+		"has_chosen": has_chosen
+	}
+
+
+func set_save_state(state: Dictionary) -> void:
+	restore_state(state)
+
+
+func _input(event: InputEvent) -> void:
+	if event is InputEventMouseButton:
+		var mb := event as InputEventMouseButton
+		if mb.button_index == MOUSE_BUTTON_WHEEL_UP or mb.button_index == MOUSE_BUTTON_WHEEL_DOWN:
+			accept_event() 

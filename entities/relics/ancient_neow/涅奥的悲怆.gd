@@ -1,6 +1,11 @@
 extends Relic
 
+@export var initialized: bool = false
+
 func initialize_relic(owner: RelicUI) -> void:
+	if initialized:
+		return
+	initialized = true
 	count = 3
 	owner.update_count()
 	

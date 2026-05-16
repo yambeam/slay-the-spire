@@ -161,3 +161,34 @@ func _get_random_weighted_relic(stats: RunStats) -> Relic:
 		candidates = available
 
 	return candidates.pick_random().duplicate()
+
+
+func get_save_state() -> Dictionary:
+	return {"is_opened": is_opened}
+
+func set_save_state(state: Dictionary) -> void:
+	if state.is_empty():
+		return
+	is_opened = state.get("is_opened", false)
+	if is_opened:
+		# 恢复宝箱已开启的界面
+		if sparkles:
+			sparkles.emitting = false
+		hands_container.visible = true
+		label.modulate.a = 1.0
+		color_rect.color.a = 1.0
+		light.energy = 0.0
+		proceed_button.visible = true
+		line_2d.modulate.a = 0.0
+
+		# 直接从已保存的遗物列表中取最后一个（就是宝箱给的）
+		var run_node = _get_run_node()
+		if run_node and run_node.stats and run_node.stats.relics.size() > 0:
+			var last_relic = run_node.stats.relics[-1]
+			_show_relic_visual(last_relic)
+
+func _input(event: InputEvent) -> void:
+	if event is InputEventMouseButton:
+		var mb := event as InputEventMouseButton
+		if mb.button_index == MOUSE_BUTTON_WHEEL_UP or mb.button_index == MOUSE_BUTTON_WHEEL_DOWN:
+			accept_event() 

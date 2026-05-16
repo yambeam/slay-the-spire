@@ -94,41 +94,45 @@ func _on_return_button_entered():
 func _on_return_button_exited():
 	return_button.scale = Vector2(1, 1)
 	
-func add_gold_reward(amount:int)->void:
-	var gold_reward:=REWARD_BUTTON.instantiate()as RewardButton
-	gold_reward.reward_icon=GOLD_ICON
-	gold_reward.reward_text =GOLD_TEXT % amount
-	gold_reward.pressed.connect(_on_gold_reward_taken.bind(gold_reward,amount))
+func add_gold_reward(amount: int) -> void:
+	var gold_reward := REWARD_BUTTON.instantiate() as RewardButton
+	gold_reward.reward_icon = GOLD_ICON
+	gold_reward.reward_text = GOLD_TEXT % amount
+	gold_reward.pressed.connect(_on_gold_reward_taken.bind(gold_reward, amount))
+	# 保存数据
+	gold_reward.set_meta("reward_type", "gold")
+	gold_reward.set_meta("amount", amount)
 	rewards.add_child.call_deferred(gold_reward)
 
 
 func add_potion_reward(potion: Potion) -> void:
 	var potion_reward := REWARD_BUTTON.instantiate() as RewardButton
-	if potion_reward:
-		potion_reward.reward_icon = potion.icon
-		potion_reward.reward_text = potion.potion_name
-		potion_reward.pressed.connect(
-			func():
-				if _is_potion_slot_full():
-					_play_shake_feedback(potion_reward)
-				else:
-					if run_stats:
-						run_stats.add_potion(potion)
-					potion_reward.queue_free()
-		)
-		rewards.call_deferred("add_child", potion_reward)
+	potion_reward.reward_icon = potion.icon
+	potion_reward.reward_text = potion.potion_name
+	potion_reward.pressed.connect(
+		func():
+			if _is_potion_slot_full():
+				_play_shake_feedback(potion_reward)
+			else:
+				if run_stats: run_stats.add_potion(potion)
+				potion_reward.queue_free()
+	)
+	# add_potion_reward
+	potion_reward.set_meta("reward_type", "potion")
+	potion_reward.set_meta("potion_name", potion.potion_name) 
+	rewards.call_deferred("add_child", potion_reward)
 
 func add_relic_reward(relic: Relic) -> void:
 	var relic_reward := REWARD_BUTTON.instantiate() as RewardButton
-	if relic_reward:
-		relic_reward.reward_icon = relic.icon
-		relic_reward.reward_text = relic.relic_name
-		relic_reward.pressed.connect(
-			func():
-				if run_stats:
-					run_stats.add_relic(relic)
-					relic_reward.queue_free()
-		)
+	relic_reward.reward_icon = relic.icon
+	relic_reward.reward_text = relic.relic_name
+	relic_reward.pressed.connect(
+		func():
+			if run_stats: run_stats.add_relic(relic)
+			relic_reward.queue_free()
+	)
+	relic_reward.set_meta("reward_type", "relic")
+	relic_reward.set_meta("relic_id", relic.id)
 	rewards.call_deferred("add_child", relic_reward)
 	
 func _on_gold_reward_taken(gold_reward:RewardButton,amount: int) -> void:
@@ -141,11 +145,23 @@ func _on_gold_reward_taken(gold_reward:RewardButton,amount: int) -> void:
 func _on_button_pressed() -> void:
 	Events.combat_reward_exited.emit()
 
-func add_card_reward(context: RewardContext)->void:
+func add_card_reward(context: RewardContext) -> void:
 	var card_reward := REWARD_BUTTON.instantiate() as RewardButton
-	card_reward.reward_icon=CARD_ICON
-	card_reward.reward_text =CARD_TEXT
-	card_reward.pressed.connect(_show_card_rewards.bind(card_reward,context))
+	card_reward.reward_icon = CARD_ICON
+	card_reward.reward_text = CARD_TEXT
+	card_reward.pressed.connect(_show_card_rewards.bind(card_reward, context))
+	# 保存 context 的关键信息
+	card_reward.set_meta("reward_type", "card")
+	card_reward.set_meta("context", {
+		"all_rare": context.all_rare,
+		"all_uncommon": context.all_uncommon,
+		"all_common": context.all_common,
+		"upgrade_all": context.upgrade_all,
+		"upgrade_attack": context.upgrade_attack,
+		"upgrade_skill": context.upgrade_skill,
+		"upgrade_power": context.upgrade_power,
+		# 如果有其他字段也一并保存
+	})
 	rewards.add_child.call_deferred(card_reward)
 	
 func _show_card_rewards(card_reward:RewardButton,context: RewardContext)->void:
@@ -356,3 +372,74 @@ func _play_shake_feedback(btn: Control) -> void:
 
 func _is_potion_slot_full() -> bool:
 	return run_stats.potions.back() != null;
+
+
+func get_save_state() -> Dictionary:
+	var state := {"rewards": []}
+	for btn in rewards.get_children():
+		if btn is RewardButton:
+			var r_type = btn.get_meta("reward_type", "")
+			var r_data = {}
+			match r_type:
+				"gold":
+					r_data["amount"] = btn.get_meta("amount", 0)
+				"potion":
+					r_data["potion_name"] = btn.get_meta("potion_name", "")
+				"relic":
+					r_data["relic_id"] = btn.get_meta("relic_id", "")
+				"card":
+					r_data["context"] = btn.get_meta("context", {})
+			state["rewards"].append({"type": r_type, "data": r_data})
+	return state
+
+func set_save_state(state: Dictionary) -> void:
+	# 清除现有奖励（_ready 已经清过，但以防万一）
+	for node in rewards.get_children():
+		node.queue_free()
+	# 等待一帧让节点释放
+	await get_tree().process_frame
+	
+	for r in state.get("rewards", []):
+		var r_type = r["type"]
+		var data = r["data"]
+		match r_type:
+			"gold":
+				add_gold_reward(data["amount"])
+			"potion":
+				var potion = _get_potion_by_name(data.get("potion_name", ""))
+				if potion: add_potion_reward(potion)
+			"relic":
+				var relic = _get_relic_by_id(data.get("relic_id", ""))
+				if relic: add_relic_reward(relic)
+			"card":
+				# 从字典重建 RewardContext
+				var ctx = RewardContext.new()
+				ctx.all_rare = data["context"].get("all_rare", false)
+				ctx.all_uncommon = data["context"].get("all_uncommon", false)
+				ctx.all_common = data["context"].get("all_common", false)
+				ctx.upgrade_all = data["context"].get("upgrade_all", false)
+				ctx.upgrade_attack = data["context"].get("upgrade_attack", false)
+				ctx.upgrade_skill = data["context"].get("upgrade_skill", false)
+				ctx.upgrade_power = data["context"].get("upgrade_power", false)
+				# 其他字段如有需要同样赋值
+				add_card_reward(ctx)
+
+
+func _get_relic_by_id(relic_id: String) -> Relic:
+	for r in ItemPool.current_relic_pool:
+		if r.id == relic_id:
+			return r
+	return null
+
+func _get_potion_by_name(potion_name: String) -> Potion:
+	for p in ItemPool.current_potion_pool:
+		if p.potion_name == potion_name:
+			return p
+	return null
+
+
+func _input(event: InputEvent) -> void:
+	if event is InputEventMouseButton:
+		var mb := event as InputEventMouseButton
+		if mb.button_index == MOUSE_BUTTON_WHEEL_UP or mb.button_index == MOUSE_BUTTON_WHEEL_DOWN:
+			accept_event() 

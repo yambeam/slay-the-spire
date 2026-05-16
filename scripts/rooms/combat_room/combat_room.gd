@@ -84,3 +84,91 @@ func _on_relics_activated(type: Relic.TriggerType) -> void:
 				await combat_resolver.resolve_finished
 			#await get_tree().create_timer(0.5).timeout
 			Events.combat_won.emit(RewardContext.new())
+
+
+
+# 保存战斗房间状态
+func get_save_state() -> Dictionary:
+	var state := {}
+	
+	# 血量、能量、格挡
+	state["health"] = char_stats.health
+	state["max_health"] = char_stats.max_health
+	state["energy"] = char_stats.energy
+	state["block"] = player.stats.block if player and player.stats else 0
+	
+	# 手牌（序列化每张牌的关键数据）
+	var hand_cards := []
+	for card in hand_manager.get_all_cards_in_hand():
+		hand_cards.append(card.serialize())
+	state["hand_cards"] = hand_cards
+	
+	# 抽牌堆、弃牌堆、消耗堆（如果需要）
+	# state["draw_pile"] = ...
+	# state["discard_pile"] = ...
+	
+	# 主技能冷却（假设 main_skill_ui 有 current_cooldown 属性）
+	if main_skill_ui.has_method("get_cooldown"):
+		state["main_skill_cooldown"] = main_skill_ui.get_cooldown()
+	
+	# 玩家身上的 Buff/状态效果
+	var player_buffs := []
+	for effect in player.status_effects:
+		player_buffs.append(effect.serialize())
+	state["player_buffs"] = player_buffs
+	
+	# 敌人状态（血量、格挡、Buff）
+	var enemies_data := []
+	for enemy in enemy_handler.get_children():
+		var ed := {
+			"health": enemy.health,
+			"block": enemy.block,
+			"buffs": []
+		}
+		for effect in enemy.status_effects:
+			ed["buffs"].append(effect.serialize())
+		enemies_data.append(ed)
+	state["enemies"] = enemies_data
+	
+	return state
+
+# 恢复战斗房间状态
+func set_save_state(state: Dictionary) -> void:
+	if state.is_empty():
+		return
+	
+	# 恢复血量
+	char_stats.health = state.get("health", char_stats.health)
+	char_stats.max_health = state.get("max_health", char_stats.max_health)
+	char_stats.energy = state.get("energy", char_stats.energy)
+	if player and player.stats:
+		player.stats.block = state.get("block", 0)
+	
+	# 恢复手牌（先清空，再添加）
+	hand_manager.clear_hand()
+	for card_data in state.get("hand_cards", []):
+		var card = Card.deserialize(card_data)
+		hand_manager.add_card_to_hand(card)
+	
+	# 恢复主技能冷却
+	if main_skill_ui.has_method("set_cooldown"):
+		main_skill_ui.set_cooldown(state.get("main_skill_cooldown", 0))
+	
+	# 恢复玩家 Buff
+	player.clear_buffs()
+	for buff_data in state.get("player_buffs", []):
+		var buff = StatusEffect.deserialize(buff_data)
+		player.apply_status_effect(buff)
+	
+	# 恢复敌人状态
+	var enemies_data: Array = state.get("enemies", [])
+	var enemy_children = enemy_handler.get_children()
+	for i in range(min(enemy_children.size(), enemies_data.size())):
+		var enemy = enemy_children[i]
+		var data = enemies_data[i]
+		enemy.health = data["health"]
+		enemy.block = data["block"]
+		enemy.clear_buffs()
+		for bd in data["buffs"]:
+			var buff = StatusEffect.deserialize(bd)
+			enemy.apply_status_effect(buff)

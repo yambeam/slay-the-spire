@@ -10,4 +10,5 @@ relic_name = "欧洛巴斯之触"
 id = "touch_of_orobas"
 icon = ExtResource("2_amxbq")
 description = "拾起时，将你的初始遗物替换为先古版本"
+rarity = 32
 metadata/_custom_type_script = "uid://bvf88v88tbaks"

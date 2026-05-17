@@ -5,6 +5,7 @@
 [ext_resource type="Script" uid="uid://cgmi6f3o7leik" path="res://scripts/costum_resources/effect.gd" id="2_jetpy"]
 [ext_resource type="Script" uid="uid://br1hibx18tv13" path="res://scripts/costum_resources/card.gd" id="3_6is1m"]
 [ext_resource type="Script" uid="uid://vkklgv0ma0yf" path="res://scripts/costum_resources/effects/attack_effect.gd" id="4_3at44"]
+[ext_resource type="AudioStream" uid="uid://b3reffdbqylun" path="res://audio/SFX/slash_attack.mp3" id="5_3at44"]
 [ext_resource type="Script" uid="uid://cibjrcipdqbs7" path="res://scripts/costum_resources/condition.gd" id="5_g0y01"]
 [ext_resource type="Script" uid="uid://66oyp04ol1ud" path="res://scripts/costum_resources/effects/condition_effect.gd" id="6_xlhat"]
 [ext_resource type="Texture2D" uid="uid://bmceoki" path="res://images/atlases/card_atlas.sprites/ironclad/beta/spite.tres" id="7_02tsx"]
@@ -44,6 +45,7 @@ script = ExtResource("4_3at44")
 damage_provider = SubResource("Resource_8g5yx")
 target_type = 2
 animation_name = "attack"
+sound = ExtResource("5_3at44")
 metadata/_custom_type_script = "uid://vkklgv0ma0yf"
 
 [sub_resource type="Resource" id="Resource_picgy"]
@@ -61,6 +63,7 @@ script = ExtResource("4_3at44")
 damage_provider = SubResource("Resource_jxqr3")
 target_type = 2
 animation_name = "attack"
+sound = ExtResource("5_3at44")
 metadata/_custom_type_script = "uid://vkklgv0ma0yf"
 
 [sub_resource type="Resource" id="Resource_u2tdt"]
@@ -81,6 +84,7 @@ script = ExtResource("4_3at44")
 damage_provider = SubResource("Resource_lqv5l")
 target_type = 2
 animation_name = "attack"
+sound = ExtResource("5_3at44")
 metadata/_custom_type_script = "uid://vkklgv0ma0yf"
 
 [sub_resource type="Resource" id="Resource_ay6ap"]
@@ -98,6 +102,7 @@ script = ExtResource("4_3at44")
 damage_provider = SubResource("Resource_dxw03")
 target_type = 2
 animation_name = "attack"
+sound = ExtResource("5_3at44")
 metadata/_custom_type_script = "uid://vkklgv0ma0yf"
 
 [sub_resource type="Resource" id="Resource_g5u41"]
@@ -110,6 +115,7 @@ script = ExtResource("4_3at44")
 damage_provider = SubResource("Resource_g5u41")
 target_type = 2
 animation_name = "attack"
+sound = ExtResource("5_3at44")
 metadata/_custom_type_script = "uid://vkklgv0ma0yf"
 
 [sub_resource type="Resource" id="Resource_3u4fi"]

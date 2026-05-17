@@ -9,8 +9,10 @@
 [ext_resource type="Script" uid="uid://vkklgv0ma0yf" path="res://scripts/costum_resources/effects/attack_effect.gd" id="7_ubrk0"]
 [ext_resource type="Script" uid="uid://c8ly86kb5vc65" path="res://scripts/costum_resources/effects/iteration_effect.gd" id="8_lmbd7"]
 [ext_resource type="Script" uid="uid://bgdkwbdihbpk5" path="res://scripts/costum_resources/effects/foreach_effect.gd" id="9_a2408"]
+[ext_resource type="AudioStream" uid="uid://b3reffdbqylun" path="res://audio/SFX/slash_attack.mp3" id="9_brn5b"]
 [ext_resource type="Script" uid="uid://bces7ijyodhmv" path="res://scripts/costum_resources/intents/attack_sub_intent.gd" id="10_6u7a5"]
 [ext_resource type="Script" uid="uid://ds2iormsabb0w" path="res://entities/enemies/spiny_toad/spiny_toad_ai.gd" id="11_mdnab"]
+[ext_resource type="AudioStream" uid="uid://bcwmh6adledx" path="res://audio/SFX/blunt_attack.mp3" id="12_uyli7"]
 
 [sub_resource type="Resource" id="Resource_8gl21"]
 script = ExtResource("3_ckowx")
@@ -63,6 +65,7 @@ script = ExtResource("8_lmbd7")
 count_provider = SubResource("Resource_qwe3x")
 effects = Array[ExtResource("6_51ja2")]([SubResource("Resource_4om1o")])
 target_type = 2
+sound = ExtResource("9_brn5b")
 metadata/_custom_type_script = "uid://c8ly86kb5vc65"
 
 [sub_resource type="Resource" id="Resource_xxsfp"]
@@ -115,6 +118,7 @@ metadata/_custom_type_script = "uid://dtok21t0ujjui"
 script = ExtResource("7_ubrk0")
 damage_provider = SubResource("Resource_q1jux")
 target_type = 2
+sound = ExtResource("12_uyli7")
 metadata/_custom_type_script = "uid://vkklgv0ma0yf"
 
 [sub_resource type="Resource" id="Resource_iyann"]

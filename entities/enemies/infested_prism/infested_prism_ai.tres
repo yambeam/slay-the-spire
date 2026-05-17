@@ -4,10 +4,13 @@
 [ext_resource type="Script" uid="uid://iqqyr44teapg" path="res://scripts/costum_resources/intents/sub_intent.gd" id="2_tht8v"]
 [ext_resource type="Script" uid="uid://dtok21t0ujjui" path="res://scripts/costum_resources/numeric_provider.gd" id="3_bdrqo"]
 [ext_resource type="Script" uid="uid://vkklgv0ma0yf" path="res://scripts/costum_resources/effects/attack_effect.gd" id="4_sgeir"]
+[ext_resource type="AudioStream" uid="uid://b3reffdbqylun" path="res://audio/SFX/slash_attack.mp3" id="5_iqdvw"]
 [ext_resource type="Script" uid="uid://bces7ijyodhmv" path="res://scripts/costum_resources/intents/attack_sub_intent.gd" id="5_mth25"]
 [ext_resource type="Script" uid="uid://dnv7chuoeoi6y" path="res://scripts/costum_resources/effects/block_effect.gd" id="6_iqdvw"]
 [ext_resource type="Script" uid="uid://810rx6aonjya" path="res://scripts/costum_resources/intents/block_sub_intent.gd" id="7_8vkox"]
+[ext_resource type="AudioStream" uid="uid://bcwmh6adledx" path="res://audio/SFX/blunt_attack.mp3" id="7_bhvh5"]
 [ext_resource type="Script" uid="uid://cgmi6f3o7leik" path="res://scripts/costum_resources/effect.gd" id="8_bhvh5"]
+[ext_resource type="AudioStream" uid="uid://cnxfhtrl0n8nm" path="res://audio/SFX/frost_orb_passive.mp3" id="9_bciq4"]
 [ext_resource type="Script" uid="uid://c8ly86kb5vc65" path="res://scripts/costum_resources/effects/iteration_effect.gd" id="9_xh27e"]
 [ext_resource type="Script" uid="uid://b8qfrs61nmcix" path="res://scripts/costum_resources/effects/apply_buff_effect.gd" id="10_bciq4"]
 [ext_resource type="Script" uid="uid://dpbv4m5rd0bbq" path="res://scripts/costum_resources/intents/apply_buff_sub_intent.gd" id="11_t6a78"]
@@ -27,6 +30,7 @@ metadata/_custom_type_script = "uid://dtok21t0ujjui"
 script = ExtResource("4_sgeir")
 damage_provider = SubResource("Resource_wb2ds")
 target_type = 2
+sound = ExtResource("5_iqdvw")
 metadata/_custom_type_script = "uid://vkklgv0ma0yf"
 
 [sub_resource type="Resource" id="Resource_3whwp"]
@@ -56,6 +60,7 @@ metadata/_custom_type_script = "uid://dtok21t0ujjui"
 script = ExtResource("4_sgeir")
 damage_provider = SubResource("Resource_xbfox")
 target_type = 2
+sound = ExtResource("7_bhvh5")
 metadata/_custom_type_script = "uid://vkklgv0ma0yf"
 
 [sub_resource type="Resource" id="Resource_v6h64"]
@@ -73,6 +78,7 @@ metadata/_custom_type_script = "uid://dtok21t0ujjui"
 script = ExtResource("6_iqdvw")
 block_provider = SubResource("Resource_4txpi")
 target_type = 1
+sound = ExtResource("9_bciq4")
 metadata/_custom_type_script = "uid://dnv7chuoeoi6y"
 
 [sub_resource type="Resource" id="Resource_p0p7c"]
@@ -114,6 +120,7 @@ script = ExtResource("9_xh27e")
 count_provider = SubResource("Resource_pj01t")
 effects = Array[ExtResource("8_bhvh5")]([SubResource("Resource_07aln")])
 target_type = 2
+sound = ExtResource("7_bhvh5")
 metadata/_custom_type_script = "uid://c8ly86kb5vc65"
 
 [sub_resource type="Resource" id="Resource_o3ee0"]

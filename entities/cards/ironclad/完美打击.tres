@@ -5,6 +5,7 @@
 [ext_resource type="Script" uid="uid://cgmi6f3o7leik" path="res://scripts/costum_resources/effect.gd" id="2_r6kv6"]
 [ext_resource type="Script" uid="uid://br1hibx18tv13" path="res://scripts/costum_resources/card.gd" id="3_du5hx"]
 [ext_resource type="Script" uid="uid://vkklgv0ma0yf" path="res://scripts/costum_resources/effects/attack_effect.gd" id="4_1qpmt"]
+[ext_resource type="AudioStream" uid="uid://bimi28moluhfn" path="res://audio/SFX/heavy_attack.mp3" id="5_1qpmt"]
 [ext_resource type="Texture2D" uid="uid://8l7act" path="res://images/atlases/card_atlas.sprites/ironclad/perfected_strike.tres" id="5_timvm"]
 
 [sub_resource type="Resource" id="Resource_8qsj6"]
@@ -52,6 +53,7 @@ script = ExtResource("4_1qpmt")
 damage_provider = SubResource("Resource_d0f57")
 target_type = 2
 animation_name = "attack"
+sound = ExtResource("5_1qpmt")
 metadata/_custom_type_script = "uid://vkklgv0ma0yf"
 
 [sub_resource type="Resource" id="Resource_s8cgi"]
@@ -69,6 +71,7 @@ script = ExtResource("4_1qpmt")
 damage_provider = SubResource("Resource_s8cgi")
 target_type = 2
 animation_name = "attack"
+sound = ExtResource("5_1qpmt")
 metadata/_custom_type_script = "uid://vkklgv0ma0yf"
 
 [sub_resource type="Resource" id="Resource_k5lvk"]

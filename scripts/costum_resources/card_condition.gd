@@ -40,5 +40,9 @@ func is_met(card: Card) -> bool:
 			return card.type == Card.Type.POWER
 		Type.NO_FIRST_PLAY_FREE_AND_NOT_ZERO_COST:
 			return !card.first_play_free and !(card.get_cost() == 0)
+		Type.NON_ATTACK:
+			return card.type != Card.Type.ATTACK
+		Type.NON_SKILL:
+			return card.type != Card.Type.SKILL
 		_:
 			return false			

@@ -3,8 +3,11 @@
 [ext_resource type="Script" uid="uid://ce34juwu5b0yr" path="res://scripts/costum_resources/intents/intent.gd" id="1_6ug65"]
 [ext_resource type="Script" uid="uid://iqqyr44teapg" path="res://scripts/costum_resources/intents/sub_intent.gd" id="2_s0bsw"]
 [ext_resource type="Script" uid="uid://dtok21t0ujjui" path="res://scripts/costum_resources/numeric_provider.gd" id="3_1sjmy"]
+[ext_resource type="Script" uid="uid://cgmi6f3o7leik" path="res://scripts/costum_resources/effect.gd" id="4_1sjmy"]
 [ext_resource type="Script" uid="uid://vkklgv0ma0yf" path="res://scripts/costum_resources/effects/attack_effect.gd" id="4_wihbp"]
 [ext_resource type="Script" uid="uid://bces7ijyodhmv" path="res://scripts/costum_resources/intents/attack_sub_intent.gd" id="6_4dukl"]
+[ext_resource type="AudioStream" uid="uid://b3reffdbqylun" path="res://audio/SFX/slash_attack.mp3" id="6_wihbp"]
+[ext_resource type="Script" uid="uid://c8ly86kb5vc65" path="res://scripts/costum_resources/effects/iteration_effect.gd" id="7_4dukl"]
 [ext_resource type="Script" uid="uid://b8qfrs61nmcix" path="res://scripts/costum_resources/effects/apply_buff_effect.gd" id="7_blu71"]
 [ext_resource type="Script" uid="uid://b22e8tmlhbsr2" path="res://entities/enemies/mawler/mawler_ai.gd" id="7_s0bsw"]
 [ext_resource type="Script" uid="uid://c2p6buhbk6em8" path="res://scripts/costum_resources/intents/apply_debuff_sub_intent.gd" id="9_ynl85"]
@@ -14,16 +17,29 @@ script = ExtResource("3_1sjmy")
 fixed_value = 4
 metadata/_custom_type_script = "uid://dtok21t0ujjui"
 
-[sub_resource type="Resource" id="Resource_0bc73"]
+[sub_resource type="Resource" id="Resource_blu71"]
 script = ExtResource("3_1sjmy")
-fixed_value = 4
+fixed_value = 2
 metadata/_custom_type_script = "uid://dtok21t0ujjui"
 
-[sub_resource type="Resource" id="Resource_3optf"]
+[sub_resource type="Resource" id="Resource_ynl85"]
+script = ExtResource("3_1sjmy")
+fixed_value = 5
+metadata/_custom_type_script = "uid://dtok21t0ujjui"
+
+[sub_resource type="Resource" id="Resource_0bc73"]
 script = ExtResource("4_wihbp")
-damage_provider = SubResource("Resource_0bc73")
+damage_provider = SubResource("Resource_ynl85")
 target_type = 2
+sound = ExtResource("6_wihbp")
 metadata/_custom_type_script = "uid://vkklgv0ma0yf"
+
+[sub_resource type="Resource" id="Resource_co6nh"]
+script = ExtResource("7_4dukl")
+count_provider = SubResource("Resource_blu71")
+effects = Array[ExtResource("4_1sjmy")]([SubResource("Resource_0bc73")])
+target_type = 2
+metadata/_custom_type_script = "uid://c8ly86kb5vc65"
 
 [sub_resource type="Resource" id="Resource_na3w8"]
 script = ExtResource("3_1sjmy")
@@ -34,7 +50,7 @@ metadata/_custom_type_script = "uid://dtok21t0ujjui"
 script = ExtResource("6_4dukl")
 damage_provider = SubResource("Resource_3e22h")
 repeat_provider = SubResource("Resource_na3w8")
-effect = SubResource("Resource_3optf")
+effect = SubResource("Resource_co6nh")
 metadata/_custom_type_script = "uid://bces7ijyodhmv"
 
 [sub_resource type="Resource" id="Resource_4dukl"]
@@ -83,6 +99,7 @@ metadata/_custom_type_script = "uid://dtok21t0ujjui"
 script = ExtResource("4_wihbp")
 damage_provider = SubResource("Resource_6w21t")
 target_type = 2
+sound = ExtResource("6_wihbp")
 metadata/_custom_type_script = "uid://vkklgv0ma0yf"
 
 [sub_resource type="Resource" id="Resource_hxn6n"]

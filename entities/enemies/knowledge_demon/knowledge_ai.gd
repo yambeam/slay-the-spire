@@ -10,12 +10,15 @@ func execute_intent(source: Creature, target: Creature, current_intent: Intent) 
 		"KnowledgeCurse1":
 			stage = 1
 			await super.execute_intent(source, target, current_intent)
+			source.speech("此事已成")
 		"KnowledgeCurse2":
 			stage = 2
 			await super.execute_intent(source, target, current_intent)
+			source.speech("此事已成")
 		"KnowledgeCurse3":
 			stage = 3
 			await super.execute_intent(source, target, current_intent)
+			source.speech("此事已成")
 		"KnowledgeOverload":
 			burnt = true
 			super.execute_intent(source, target, current_intent)

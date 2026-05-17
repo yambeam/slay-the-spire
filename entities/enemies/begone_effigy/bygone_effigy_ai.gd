@@ -5,9 +5,9 @@ var last_action := ""
 func execute_intent(source: Creature, target: Creature, current_intent: Intent) -> void:
 	match current_intent.intent_name:
 		"Sleep":
-			source.speech("你的旅程，到处结束。")
+			source.speech("[color=red]你的旅程，到处结束......[/color]")
 		"Wake":
-			source.speech("[color=red]那么，我们开始吧。[/color]。")
+			source.speech("那么，我们开始吧？")
 	last_action = current_intent.intent_name
 	super.execute_intent(source, target, current_intent)
 

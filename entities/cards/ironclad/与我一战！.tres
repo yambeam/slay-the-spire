@@ -7,6 +7,7 @@
 [ext_resource type="Script" uid="uid://vkklgv0ma0yf" path="res://scripts/costum_resources/effects/attack_effect.gd" id="4_bq1k6"]
 [ext_resource type="Script" uid="uid://c8ly86kb5vc65" path="res://scripts/costum_resources/effects/iteration_effect.gd" id="5_bq1k6"]
 [ext_resource type="Script" uid="uid://b8qfrs61nmcix" path="res://scripts/costum_resources/effects/apply_buff_effect.gd" id="5_qprqp"]
+[ext_resource type="AudioStream" uid="uid://b3reffdbqylun" path="res://audio/SFX/slash_attack.mp3" id="5_x0n34"]
 [ext_resource type="Texture2D" uid="uid://cj7e5ff" path="res://images/atlases/card_atlas.sprites/ironclad/fight_me.tres" id="6_x0n34"]
 
 [sub_resource type="Resource" id="Resource_e8igu"]
@@ -62,6 +63,7 @@ script = ExtResource("4_bq1k6")
 damage_provider = SubResource("Resource_x0n34")
 target_type = 2
 animation_name = "attack"
+sound = ExtResource("5_x0n34")
 metadata/_custom_type_script = "uid://vkklgv0ma0yf"
 
 [sub_resource type="Resource" id="Resource_256kd"]
@@ -115,6 +117,7 @@ metadata/_custom_type_script = "uid://vkklgv0ma0yf"
 script = ExtResource("5_bq1k6")
 count_provider = SubResource("Resource_ohjwm")
 effects = Array[ExtResource("2_k4rjm")]([SubResource("Resource_o4hov")])
+sound = ExtResource("5_x0n34")
 metadata/_custom_type_script = "uid://c8ly86kb5vc65"
 
 [sub_resource type="Resource" id="Resource_lbqyh"]

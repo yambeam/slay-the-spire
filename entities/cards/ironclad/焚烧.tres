@@ -5,6 +5,7 @@
 [ext_resource type="Script" uid="uid://cgmi6f3o7leik" path="res://scripts/costum_resources/effect.gd" id="2_np6rn"]
 [ext_resource type="Script" uid="uid://br1hibx18tv13" path="res://scripts/costum_resources/card.gd" id="3_k0v68"]
 [ext_resource type="Script" uid="uid://vkklgv0ma0yf" path="res://scripts/costum_resources/effects/attack_effect.gd" id="4_56vj0"]
+[ext_resource type="AudioStream" uid="uid://bcwmh6adledx" path="res://audio/SFX/blunt_attack.mp3" id="5_56vj0"]
 [ext_resource type="Texture2D" uid="uid://hqhg1h" path="res://images/atlases/card_atlas.sprites/ironclad/conflagration.tres" id="5_argec"]
 
 [sub_resource type="Resource" id="Resource_37key"]
@@ -46,6 +47,7 @@ script = ExtResource("4_56vj0")
 damage_provider = SubResource("Resource_mwooa")
 target_type = 3
 animation_name = "attack"
+sound = ExtResource("5_56vj0")
 metadata/_custom_type_script = "uid://vkklgv0ma0yf"
 
 [sub_resource type="Resource" id="Resource_e6nlh"]
@@ -60,6 +62,7 @@ script = ExtResource("4_56vj0")
 damage_provider = SubResource("Resource_e6nlh")
 target_type = 3
 animation_name = "attack"
+sound = ExtResource("5_56vj0")
 metadata/_custom_type_script = "uid://vkklgv0ma0yf"
 
 [sub_resource type="Resource" id="Resource_brxh5"]

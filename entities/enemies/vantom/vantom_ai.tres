@@ -4,7 +4,10 @@
 [ext_resource type="Script" uid="uid://iqqyr44teapg" path="res://scripts/costum_resources/intents/sub_intent.gd" id="2_n1pwd"]
 [ext_resource type="Script" uid="uid://dtok21t0ujjui" path="res://scripts/costum_resources/numeric_provider.gd" id="3_aa4qt"]
 [ext_resource type="Script" uid="uid://vkklgv0ma0yf" path="res://scripts/costum_resources/effects/attack_effect.gd" id="4_3aukq"]
+[ext_resource type="AudioStream" uid="uid://bcwmh6adledx" path="res://audio/SFX/blunt_attack.mp3" id="5_mdti4"]
 [ext_resource type="Script" uid="uid://bces7ijyodhmv" path="res://scripts/costum_resources/intents/attack_sub_intent.gd" id="6_bmosx"]
+[ext_resource type="AudioStream" uid="uid://b3reffdbqylun" path="res://audio/SFX/slash_attack.mp3" id="7_1ydai"]
+[ext_resource type="AudioStream" uid="uid://bimi28moluhfn" path="res://audio/SFX/heavy_attack.mp3" id="8_aa4qt"]
 [ext_resource type="Resource" uid="uid://djvmk3f4ikvji" path="res://entities/cards/status_cards/伤口.tres" id="9_2g6j5"]
 [ext_resource type="Script" uid="uid://cwa7i0gle4vi5" path="res://entities/enemies/vantom/vantom_ai.gd" id="10_27bsf"]
 [ext_resource type="Script" uid="uid://bfd4cqklwdhs3" path="res://scripts/costum_resources/effects/put_card_effect.gd" id="10_cxmbc"]
@@ -26,6 +29,7 @@ metadata/_custom_type_script = "uid://dtok21t0ujjui"
 script = ExtResource("4_3aukq")
 damage_provider = SubResource("Resource_pwm8t")
 target_type = 2
+sound = ExtResource("5_mdti4")
 metadata/_custom_type_script = "uid://vkklgv0ma0yf"
 
 [sub_resource type="Resource" id="Resource_ytjuq"]
@@ -55,6 +59,7 @@ metadata/_custom_type_script = "uid://dtok21t0ujjui"
 script = ExtResource("4_3aukq")
 damage_provider = SubResource("Resource_kxb34")
 target_type = 2
+sound = ExtResource("7_1ydai")
 metadata/_custom_type_script = "uid://vkklgv0ma0yf"
 
 [sub_resource type="Resource" id="Resource_buf08"]
@@ -90,6 +95,7 @@ metadata/_custom_type_script = "uid://dtok21t0ujjui"
 script = ExtResource("4_3aukq")
 damage_provider = SubResource("Resource_0cs6f")
 target_type = 2
+sound = ExtResource("8_aa4qt")
 metadata/_custom_type_script = "uid://vkklgv0ma0yf"
 
 [sub_resource type="Resource" id="Resource_hdfee"]

@@ -6,6 +6,7 @@
 [ext_resource type="Script" uid="uid://br1hibx18tv13" path="res://scripts/costum_resources/card.gd" id="3_0tnis"]
 [ext_resource type="Script" uid="uid://cibjrcipdqbs7" path="res://scripts/costum_resources/condition.gd" id="4_7imsb"]
 [ext_resource type="Script" uid="uid://vkklgv0ma0yf" path="res://scripts/costum_resources/effects/attack_effect.gd" id="5_2ujut"]
+[ext_resource type="AudioStream" uid="uid://bimi28moluhfn" path="res://audio/SFX/heavy_attack.mp3" id="6_7imsb"]
 [ext_resource type="Script" uid="uid://66oyp04ol1ud" path="res://scripts/costum_resources/effects/condition_effect.gd" id="6_ne3jx"]
 [ext_resource type="Texture2D" uid="uid://4pacwr" path="res://images/atlases/card_atlas.sprites/ironclad/pacts_end.tres" id="7_vb1sg"]
 
@@ -39,6 +40,7 @@ script = ExtResource("5_2ujut")
 damage_provider = SubResource("Resource_pmr4p")
 target_type = 3
 animation_name = "attack"
+sound = ExtResource("6_7imsb")
 metadata/_custom_type_script = "uid://vkklgv0ma0yf"
 
 [sub_resource type="Resource" id="Resource_x5csj"]
@@ -66,6 +68,7 @@ script = ExtResource("5_2ujut")
 damage_provider = SubResource("Resource_r11aa")
 target_type = 3
 animation_name = "attack"
+sound = ExtResource("6_7imsb")
 metadata/_custom_type_script = "uid://vkklgv0ma0yf"
 
 [sub_resource type="Resource" id="Resource_sa8ix"]

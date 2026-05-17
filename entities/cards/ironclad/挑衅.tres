@@ -5,6 +5,7 @@
 [ext_resource type="Script" uid="uid://dtok21t0ujjui" path="res://scripts/costum_resources/numeric_provider.gd" id="2_t41t5"]
 [ext_resource type="Script" uid="uid://br1hibx18tv13" path="res://scripts/costum_resources/card.gd" id="3_vf2ll"]
 [ext_resource type="Script" uid="uid://dnv7chuoeoi6y" path="res://scripts/costum_resources/effects/block_effect.gd" id="4_on65w"]
+[ext_resource type="AudioStream" uid="uid://cnxfhtrl0n8nm" path="res://audio/SFX/frost_orb_passive.mp3" id="5_on65w"]
 [ext_resource type="Script" uid="uid://b8qfrs61nmcix" path="res://scripts/costum_resources/effects/apply_buff_effect.gd" id="5_pp6f1"]
 [ext_resource type="Texture2D" uid="uid://bag6bwi" path="res://images/atlases/card_atlas.sprites/ironclad/taunt.tres" id="6_2q4ei"]
 
@@ -44,6 +45,7 @@ script = ExtResource("4_on65w")
 block_provider = SubResource("Resource_spthf")
 target_type = 1
 animation_name = "cast"
+sound = ExtResource("5_on65w")
 metadata/_custom_type_script = "uid://dnv7chuoeoi6y"
 
 [sub_resource type="Resource" id="Resource_vjpur"]
@@ -68,6 +70,7 @@ script = ExtResource("4_on65w")
 block_provider = SubResource("Resource_krwsd")
 target_type = 1
 animation_name = "cast"
+sound = ExtResource("5_on65w")
 metadata/_custom_type_script = "uid://dnv7chuoeoi6y"
 
 [sub_resource type="Resource" id="Resource_3lxbh"]

@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://uy68v6" path="res://images/atlases/card_atlas.sprites/ironclad/dismantle.tres" id="3_mvbeu"]
 [ext_resource type="Script" uid="uid://66oyp04ol1ud" path="res://scripts/costum_resources/effects/condition_effect.gd" id="4_afxh3"]
 [ext_resource type="Script" uid="uid://cibjrcipdqbs7" path="res://scripts/costum_resources/condition.gd" id="5_hbpmp"]
+[ext_resource type="AudioStream" uid="uid://bcwmh6adledx" path="res://audio/SFX/blunt_attack.mp3" id="5_io3js"]
 
 [sub_resource type="Resource" id="Resource_g887i"]
 script = ExtResource("3_afxh3")
@@ -31,6 +32,7 @@ script = ExtResource("3_hbcmf")
 damage_provider = SubResource("Resource_hbpmp")
 target_type = 2
 animation_name = "attack"
+sound = ExtResource("5_io3js")
 metadata/_custom_type_script = "uid://vkklgv0ma0yf"
 
 [sub_resource type="Resource" id="Resource_xk3hf"]
@@ -51,6 +53,7 @@ script = ExtResource("3_hbcmf")
 damage_provider = SubResource("Resource_bstai")
 target_type = 2
 animation_name = "attack"
+sound = ExtResource("5_io3js")
 metadata/_custom_type_script = "uid://vkklgv0ma0yf"
 
 [sub_resource type="Resource" id="Resource_am2aa"]
@@ -70,6 +73,7 @@ script = ExtResource("3_hbcmf")
 damage_provider = SubResource("Resource_ppgmb")
 target_type = 2
 animation_name = "attack"
+sound = ExtResource("5_io3js")
 metadata/_custom_type_script = "uid://vkklgv0ma0yf"
 
 [sub_resource type="Resource" id="Resource_tj6l5"]
@@ -90,6 +94,7 @@ script = ExtResource("3_hbcmf")
 damage_provider = SubResource("Resource_db3hs")
 target_type = 2
 animation_name = "attack"
+sound = ExtResource("5_io3js")
 metadata/_custom_type_script = "uid://vkklgv0ma0yf"
 
 [sub_resource type="Resource" id="Resource_ryi04"]

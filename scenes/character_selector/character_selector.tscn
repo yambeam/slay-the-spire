@@ -82,6 +82,7 @@ icon_alignment = 1
 layout_mode = 2
 theme_override_styles/pressed = SubResource("StyleBoxFlat_ysgu0")
 theme_override_styles/hover = SubResource("StyleBoxFlat_x26dg")
+disabled = true
 toggle_mode = true
 button_group = SubResource("ButtonGroup_x26dg")
 text = "

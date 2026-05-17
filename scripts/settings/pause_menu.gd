@@ -41,8 +41,7 @@ func _on_continue_button_pressed() -> void:
 
 func _on_setting_button_pressed() -> void:
 	settings.show()
-	pass # Replace with function body.
-
+	
 
 func _on_save_button_pressed() -> void:
 	get_tree().paused=false

@@ -390,8 +390,8 @@ func _on_combat_room_entered(room: Room = null) -> void:
 					room.enemy_encounter = encounter_pool.get_random_encounter_by_type(EnemyEncounter.Type.WEAK)
 				else:
 					room.enemy_encounter = encounter_pool.get_random_encounter_by_type(EnemyEncounter.Type.STRONG)
-	print(room.enemy_encounter)
 	var battle_scene: CombatRoom = await _change_view(COMBAT_SCENE)
+	battle_scene.update_background(stats.current_stage)
 	battle_scene.char_stats = character
 	if room:
 		battle_scene.enemy_encounter = room.enemy_encounter

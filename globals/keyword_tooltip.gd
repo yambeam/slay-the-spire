@@ -4,17 +4,21 @@ extends CanvasLayer
 @onready var tooltip_container_2: VBoxContainer = %VBoxContainer2
 @onready var tooltip_timer: Timer = %TooltipTimer
 @onready var keyword_tooltip: HBoxContainer = %KeywordTooltip
+@onready var throttle_timer: Timer = %ThrottleTimer
 
 const TOOLTIP_ENTRY = preload("res://globals/tooltip_entry.tscn")
 
 var current_node: Node
 var callback: Callable
 
+var viewport_size: Vector2
+
 func _ready() -> void:
 	Events.tooltip_show_request.connect(_on_tooltip_show_requested)
 	Events.tooltip_hide_request.connect(_on_tooltip_hide_requested)
 	Events.combat_won.connect(func(_context: RewardContext): hide())
 	tooltip_timer.timeout.connect(_on_timer_timeout)
+	throttle_timer.timeout.connect(_on_throttle_timer_timeout)
 
 func clear():
 	for child in tooltip_container_1.get_children():
@@ -53,6 +57,7 @@ func _on_tooltip_show_requested(node: Node, callback_: Callable) -> void:
 func _on_tooltip_hide_requested() -> void:
 	tooltip_timer.stop()
 	hide()
+	throttle_timer.stop()
 
 func _on_timer_timeout() -> void:
 	# TODO:找时间重构
@@ -60,3 +65,8 @@ func _on_timer_timeout() -> void:
 		callback.call()
 		await get_tree().process_frame
 		show()
+		throttle_timer.start()
+
+func _on_throttle_timer_timeout():
+	if !is_instance_valid(current_node):
+		_on_tooltip_hide_requested()

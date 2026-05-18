@@ -19,6 +19,7 @@ enum Type{
 @export var enemy_entries: Array[EnemyEntry]
 ## 便于调试和选取特定组合
 @export var encounter_name: String
+@export var custom_music: AudioStream
 var accumulated_weight : float = 0.0
 
 func roll_gold_reward() -> int:

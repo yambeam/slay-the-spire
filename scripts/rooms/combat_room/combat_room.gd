@@ -13,7 +13,6 @@ extends Control
 
 # 子节点的所有char_stats由该节点分发
 @export var char_stats: CharacterStats: set = _set_char_stats
-@export var music: AudioStream
 @export var relics: RelicHandler
 
 
@@ -31,7 +30,6 @@ func _ready() -> void:
 	
 
 func start_combat() -> void:
-	MusicPlayer.play(music, true)
 	enemy_handler.setup_enemies(enemy_encounter)
 	enemy_handler.reset_enemy_intents()
 	# 调试用

@@ -42,6 +42,8 @@ func reset_energy() -> void:
 func can_play_card(card: Card) -> bool:
 	if card.first_play_free:
 		return true
+	if !card.playable:
+		return false 
 	return energy >= card.get_cost()
 
 func get_draw_pile() -> Array[Card]:

@@ -43,9 +43,11 @@ metadata/_edit_lock_ = true
 
 [node name="SFXLayer" type="CanvasLayer" parent="." unique_id=1811299611]
 unique_name_in_owner = true
+follow_viewport_enabled = true
 
 [node name="CombatUI" type="CanvasLayer" parent="." unique_id=661618034 groups=["ui_layer"]]
 unique_name_in_owner = true
+follow_viewport_enabled = true
 script = ExtResource("4_4hrnf")
 
 [node name="MainSkill" parent="CombatUI" unique_id=1104304468 node_paths=PackedStringArray("player") instance=ExtResource("17_w1so4")]
@@ -87,13 +89,6 @@ text = "结束回合"
 label_settings = SubResource("LabelSettings_82is4")
 horizontal_alignment = 1
 vertical_alignment = 1
-
-[node name="EnergyUI" parent="CombatUI" unique_id=1056468165 instance=ExtResource("7_htae7")]
-offset_left = 77.0
-offset_top = 798.0
-offset_right = -1587.0
-offset_bottom = -26.0
-scale = Vector2(0.6, 0.6)
 
 [node name="HandManager" parent="CombatUI" unique_id=828060318 instance=ExtResource("8_mj7tc")]
 offset_left = 193.0
@@ -193,8 +188,16 @@ visible = false
 unique_name_in_owner = true
 visible = false
 
+[node name="EnergyUI" parent="CombatUI" unique_id=1056468165 instance=ExtResource("7_htae7")]
+anchors_preset = 0
+offset_left = 81.0
+offset_top = 785.0
+offset_right = 265.0
+offset_bottom = 963.0
+
 [node name="RedFlash" type="CanvasLayer" parent="." unique_id=919668335]
 layer = 2
+follow_viewport_enabled = true
 
 [node name="CardTargetSelector" parent="RedFlash" unique_id=20047492 instance=ExtResource("12_83j5g")]
 
@@ -214,6 +217,7 @@ one_shot = true
 
 [node name="CardPileView" type="CanvasLayer" parent="." unique_id=653295741]
 layer = 3
+follow_viewport_enabled = true
 
 [node name="InspectPileView" parent="CardPileView" unique_id=1662556681 instance=ExtResource("15_hylje")]
 unique_name_in_owner = true

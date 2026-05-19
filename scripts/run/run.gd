@@ -18,7 +18,7 @@ const ANCIENT_SCENE_OROBAS := preload("res://scenes/rooms/ancient_room/orobas_an
 
 const BATTLE_REWARD_SCENE = preload("res://scenes/rooms/reward/reward_room.tscn")
 
-@onready var current_room: Node = $CurrentRoom
+@onready var current_room: Control = $CurrentRoom
 
 @onready var map_node: Map = $Map
 @onready var top_bar: TopBar = %TopBar

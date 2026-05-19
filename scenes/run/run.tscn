@@ -23,7 +23,7 @@
 [ext_resource type="AudioStream" uid="uid://c8kdj40s6ra1f" path="res://audio/music/creation_beyond - 巢穴_a1_2（商店）.mp3" id="20_xgkqp"]
 [ext_resource type="AudioStream" uid="uid://d0b5tdfqv8fyc" path="res://audio/music/creation_beyond - 巢穴_a1_7( 事件).mp3" id="22_ymu0v"]
 
-[node name="Run" type="Node" unique_id=185755344 node_paths=PackedStringArray("bgm_proxy")]
+[node name="Run" type="Node" unique_id=252708330 node_paths=PackedStringArray("bgm_proxy")]
 script = ExtResource("1_l7o68")
 run_startup = ExtResource("2_wdonh")
 act1_encounter_pool = ExtResource("3_ux63y")
@@ -33,7 +33,14 @@ bgm_proxy = NodePath("BGMProxy")
 [node name="Map" parent="." unique_id=2080320068 instance=ExtResource("1_8rlou")]
 visible = false
 
-[node name="CurrentRoom" type="Node" parent="." unique_id=1013259375]
+[node name="CurrentRoom" type="Control" parent="." unique_id=871699467]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
 
 [node name="TopBar" type="CanvasLayer" parent="." unique_id=849789068]
 layer = 2

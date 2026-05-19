@@ -25,7 +25,6 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 texture = ExtResource("1_jjycv")
-expand_mode = 1
 
 [node name="1" type="TextureRect" parent="." unique_id=285753560]
 layout_mode = 1
@@ -36,7 +35,6 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 texture = ExtResource("2_rnybd")
-expand_mode = 1
 
 [node name="2" type="TextureRect" parent="." unique_id=65844156]
 layout_mode = 1
@@ -47,7 +45,6 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 texture = ExtResource("3_lxvrw")
-expand_mode = 1
 
 [node name="3" type="TextureRect" parent="." unique_id=248194080]
 layout_mode = 1
@@ -58,7 +55,6 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 texture = ExtResource("4_4li5w")
-expand_mode = 1
 
 [node name="4" type="TextureRect" parent="." unique_id=551334691]
 layout_mode = 1
@@ -69,4 +65,3 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 texture = ExtResource("4_4li5w")
-expand_mode = 1

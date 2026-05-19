@@ -8,6 +8,11 @@
 [ext_resource type="Script" uid="uid://dnv7chuoeoi6y" path="res://scripts/costum_resources/effects/block_effect.gd" id="5_6vij4"]
 [ext_resource type="AudioStream" uid="uid://cnxfhtrl0n8nm" path="res://audio/SFX/frost_orb_passive.mp3" id="6_gvngp"]
 [ext_resource type="Texture2D" uid="uid://fuv3p8" path="res://images/atlases/card_atlas.sprites/ironclad/impervious.tres" id="7_xe1fr"]
+[ext_resource type="Resource" uid="uid://bv1beg15cym6a" path="res://entities/cards/colorless/万向斩.tres" id="8_xe1fr"]
+[ext_resource type="Resource" uid="uid://1ufmsm24iq4a" path="res://entities/cards/colorless/乱射.tres" id="9_1lg0p"]
+[ext_resource type="Resource" uid="uid://cjgge2akgjan1" path="res://entities/cards/colorless/亮剑.tres" id="10_sdqn1"]
+[ext_resource type="Resource" uid="uid://c3umcad3bhv4i" path="res://entities/cards/colorless/探寻打击.tres" id="11_4bseq"]
+[ext_resource type="Resource" uid="uid://b5t5uga0510l8" path="res://entities/cards/colorless/究极打击.tres" id="12_8xmro"]
 
 [sub_resource type="Resource" id="Resource_jptu8"]
 script = ExtResource("3_ktihu")
@@ -223,5 +228,5 @@ metadata/_custom_type_script = "uid://br1hibx18tv13"
 
 [resource]
 script = ExtResource("2_pcwuu")
-cards = Array[ExtResource("1_6dnus")]([SubResource("Resource_1lg0p"), SubResource("Resource_sdqn1"), SubResource("Resource_4bseq"), SubResource("Resource_8xmro"), SubResource("Resource_7hj0v"), SubResource("Resource_jj41u"), SubResource("Resource_ewnxv"), SubResource("Resource_y7rga"), SubResource("Resource_t8brg")])
+cards = Array[ExtResource("1_6dnus")]([SubResource("Resource_1lg0p"), SubResource("Resource_sdqn1"), SubResource("Resource_4bseq"), SubResource("Resource_8xmro"), SubResource("Resource_7hj0v"), SubResource("Resource_jj41u"), SubResource("Resource_ewnxv"), SubResource("Resource_y7rga"), SubResource("Resource_t8brg"), ExtResource("8_xe1fr"), ExtResource("9_1lg0p"), ExtResource("10_sdqn1"), ExtResource("11_4bseq"), ExtResource("12_8xmro")])
 metadata/_custom_type_script = "uid://jvpf65gf7yuq"

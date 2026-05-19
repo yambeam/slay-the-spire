@@ -1,0 +1,99 @@
+[gd_resource type="Resource" script_class="Card" format=3 uid="uid://1ufmsm24iq4a"]
+
+[ext_resource type="Script" uid="uid://cxgxfbwykbp84" path="res://scripts/costum_resources/numeric_entry.gd" id="1_0nhlh"]
+[ext_resource type="Script" uid="uid://dtok21t0ujjui" path="res://scripts/costum_resources/numeric_provider.gd" id="2_6epnr"]
+[ext_resource type="Script" uid="uid://cgmi6f3o7leik" path="res://scripts/costum_resources/effect.gd" id="2_cw205"]
+[ext_resource type="Script" uid="uid://br1hibx18tv13" path="res://scripts/costum_resources/card.gd" id="3_j6qmd"]
+[ext_resource type="Script" uid="uid://vkklgv0ma0yf" path="res://scripts/costum_resources/effects/attack_effect.gd" id="4_hq6yc"]
+[ext_resource type="AudioStream" uid="uid://bcwmh6adledx" path="res://audio/SFX/blunt_attack.mp3" id="5_ticnp"]
+[ext_resource type="Script" uid="uid://c8ly86kb5vc65" path="res://scripts/costum_resources/effects/iteration_effect.gd" id="6_3f5oj"]
+[ext_resource type="Texture2D" uid="uid://cu4k7um" path="res://images/atlases/card_atlas.sprites/colorless/beta/volley.tres" id="7_15fbu"]
+
+[sub_resource type="Resource" id="Resource_ci2po"]
+script = ExtResource("2_6epnr")
+fixed_value = 10
+metadata/_custom_type_script = "uid://dtok21t0ujjui"
+
+[sub_resource type="Resource" id="Resource_yd2yy"]
+script = ExtResource("1_0nhlh")
+numeric_provider = SubResource("Resource_ci2po")
+placeholder = "damage"
+affected_by = 2
+metadata/_custom_type_script = "uid://cxgxfbwykbp84"
+
+[sub_resource type="Resource" id="Resource_auoyn"]
+script = ExtResource("2_6epnr")
+type = 9
+metadata/_custom_type_script = "uid://dtok21t0ujjui"
+
+[sub_resource type="Resource" id="Resource_xlhy8"]
+script = ExtResource("2_6epnr")
+fixed_value = 10
+metadata/_custom_type_script = "uid://dtok21t0ujjui"
+
+[sub_resource type="Resource" id="Resource_ltwfi"]
+script = ExtResource("4_hq6yc")
+damage_provider = SubResource("Resource_xlhy8")
+target_type = 4
+animation_name = "attack"
+sound = ExtResource("5_ticnp")
+metadata/_custom_type_script = "uid://vkklgv0ma0yf"
+
+[sub_resource type="Resource" id="Resource_7g73n"]
+script = ExtResource("6_3f5oj")
+count_provider = SubResource("Resource_auoyn")
+effects = Array[ExtResource("2_cw205")]([SubResource("Resource_ltwfi")])
+metadata/_custom_type_script = "uid://c8ly86kb5vc65"
+
+[sub_resource type="Resource" id="Resource_ak7y1"]
+script = ExtResource("2_6epnr")
+type = 9
+metadata/_custom_type_script = "uid://dtok21t0ujjui"
+
+[sub_resource type="Resource" id="Resource_wdamr"]
+script = ExtResource("2_6epnr")
+fixed_value = 14
+metadata/_custom_type_script = "uid://dtok21t0ujjui"
+
+[sub_resource type="Resource" id="Resource_sc3ms"]
+script = ExtResource("4_hq6yc")
+damage_provider = SubResource("Resource_wdamr")
+target_type = 4
+animation_name = "attack"
+sound = ExtResource("5_ticnp")
+metadata/_custom_type_script = "uid://vkklgv0ma0yf"
+
+[sub_resource type="Resource" id="Resource_a7xfr"]
+script = ExtResource("6_3f5oj")
+count_provider = SubResource("Resource_ak7y1")
+effects = Array[ExtResource("2_cw205")]([SubResource("Resource_sc3ms")])
+metadata/_custom_type_script = "uid://c8ly86kb5vc65"
+
+[sub_resource type="Resource" id="Resource_txexa"]
+script = ExtResource("2_6epnr")
+fixed_value = 14
+metadata/_custom_type_script = "uid://dtok21t0ujjui"
+
+[sub_resource type="Resource" id="Resource_elxgj"]
+script = ExtResource("1_0nhlh")
+numeric_provider = SubResource("Resource_txexa")
+placeholder = "damage"
+affected_by = 2
+metadata/_custom_type_script = "uid://cxgxfbwykbp84"
+
+[resource]
+script = ExtResource("3_j6qmd")
+id = "乱射"
+base_target = 2
+card_color = 64
+is_x_cost = true
+rarity = 2
+effects = Array[ExtResource("2_cw205")]([SubResource("Resource_7g73n")])
+portrait = ExtResource("7_15fbu")
+base_description = "[center]随机对敌人造成{damage}点伤害X次。[/center]"
+base_numeric_entries = Array[ExtResource("1_0nhlh")]([SubResource("Resource_yd2yy")])
+upgraded_target = 2
+upgraded_description = "[center]随机对敌人造成{damage}点伤害X次。[/center]"
+upgraded_numeric_entries = Array[ExtResource("1_0nhlh")]([SubResource("Resource_elxgj")])
+upgraded_effects = Array[ExtResource("2_cw205")]([SubResource("Resource_a7xfr")])
+metadata/_custom_type_script = "uid://br1hibx18tv13"

@@ -1,0 +1,46 @@
+[gd_resource type="Resource" script_class="Card" format=3 uid="uid://beldwcsjrhccv"]
+
+[ext_resource type="Script" uid="uid://cxgxfbwykbp84" path="res://scripts/costum_resources/numeric_entry.gd" id="1_1fjbw"]
+[ext_resource type="Script" uid="uid://cgmi6f3o7leik" path="res://scripts/costum_resources/effect.gd" id="2_yrenq"]
+[ext_resource type="Script" uid="uid://br1hibx18tv13" path="res://scripts/costum_resources/card.gd" id="3_j6lh0"]
+[ext_resource type="Script" uid="uid://dtok21t0ujjui" path="res://scripts/costum_resources/numeric_provider.gd" id="3_ywp4x"]
+[ext_resource type="Script" uid="uid://b8qfrs61nmcix" path="res://scripts/costum_resources/effects/apply_buff_effect.gd" id="4_piurw"]
+[ext_resource type="Texture2D" uid="uid://bnwcyb4" path="res://images/atlases/card_atlas.sprites/colorless/prolong.tres" id="5_g1jjl"]
+
+[sub_resource type="Resource" id="Resource_3f644"]
+script = ExtResource("3_ywp4x")
+type = 2
+metadata/_custom_type_script = "uid://dtok21t0ujjui"
+
+[sub_resource type="Resource" id="Resource_0jdcj"]
+script = ExtResource("4_piurw")
+buff_name = "下回合格挡"
+buff_stack_provider = SubResource("Resource_3f644")
+target_type = 1
+metadata/_custom_type_script = "uid://b8qfrs61nmcix"
+
+[sub_resource type="Resource" id="Resource_384fg"]
+script = ExtResource("3_ywp4x")
+type = 2
+metadata/_custom_type_script = "uid://dtok21t0ujjui"
+
+[sub_resource type="Resource" id="Resource_p20d0"]
+script = ExtResource("4_piurw")
+buff_name = "下回合格挡"
+buff_stack_provider = SubResource("Resource_384fg")
+target_type = 1
+metadata/_custom_type_script = "uid://b8qfrs61nmcix"
+
+[resource]
+script = ExtResource("3_j6lh0")
+id = "延伸"
+type = 2
+card_color = 64
+base_cost = 1
+rarity = 2
+effects = Array[ExtResource("2_yrenq")]([SubResource("Resource_0jdcj")])
+portrait = ExtResource("5_g1jjl")
+base_description = "[center]在下个回合获得等量于你当前[color=gold]格挡[/color]值的[color=gold]格挡[/color]。[/center]"
+upgraded_description = "[center]在下个回合获得等量于你当前[color=gold]格挡[/color]值的[color=gold]格挡[/color]。[/center]"
+upgraded_effects = Array[ExtResource("2_yrenq")]([SubResource("Resource_p20d0")])
+metadata/_custom_type_script = "uid://br1hibx18tv13"

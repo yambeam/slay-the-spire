@@ -6,7 +6,7 @@
 [ext_resource type="Script" uid="uid://cgmi6f3o7leik" path="res://scripts/costum_resources/effect.gd" id="4_le81y"]
 [ext_resource type="Script" uid="uid://vkklgv0ma0yf" path="res://scripts/costum_resources/effects/attack_effect.gd" id="5_5ofhw"]
 [ext_resource type="Script" uid="uid://c8ly86kb5vc65" path="res://scripts/costum_resources/effects/iteration_effect.gd" id="6_qi1qe"]
-[ext_resource type="AudioStream" uid="uid://bwkj3ged1cm0x" path="res://audio/SFX/blunt_attack.mp3" id="7_big2l"]
+[ext_resource type="AudioStream" uid="uid://bcwmh6adledx" path="res://audio/SFX/blunt_attack.mp3" id="7_big2l"]
 [ext_resource type="Script" uid="uid://bces7ijyodhmv" path="res://scripts/costum_resources/intents/attack_sub_intent.gd" id="7_n3t1j"]
 [ext_resource type="Script" uid="uid://b8qfrs61nmcix" path="res://scripts/costum_resources/effects/apply_buff_effect.gd" id="8_qcbfb"]
 [ext_resource type="Script" uid="uid://bgdkwbdihbpk5" path="res://scripts/costum_resources/effects/foreach_effect.gd" id="9_2flab"]

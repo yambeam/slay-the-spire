@@ -9,7 +9,7 @@ extends Stats
 
 func create_instance() -> Stats:
 	var instance: Stats = self.duplicate()
-	instance.max_health = randi_range(lowest_max_health, hightest_max_health)
+	instance.max_health = RandomSetting.instance.randi_range(lowest_max_health, hightest_max_health)
 	instance.health = instance.max_health
 	instance.block = 0
 	return instance

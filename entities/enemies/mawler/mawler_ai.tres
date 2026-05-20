@@ -6,7 +6,7 @@
 [ext_resource type="Script" uid="uid://cgmi6f3o7leik" path="res://scripts/costum_resources/effect.gd" id="4_1sjmy"]
 [ext_resource type="Script" uid="uid://vkklgv0ma0yf" path="res://scripts/costum_resources/effects/attack_effect.gd" id="4_wihbp"]
 [ext_resource type="Script" uid="uid://bces7ijyodhmv" path="res://scripts/costum_resources/intents/attack_sub_intent.gd" id="6_4dukl"]
-[ext_resource type="AudioStream" uid="uid://dh8gr15k3h6dl" path="res://audio/SFX/slash_attack.mp3" id="6_wihbp"]
+[ext_resource type="AudioStream" uid="uid://b3reffdbqylun" path="res://audio/SFX/slash_attack.mp3" id="6_wihbp"]
 [ext_resource type="Script" uid="uid://c8ly86kb5vc65" path="res://scripts/costum_resources/effects/iteration_effect.gd" id="7_4dukl"]
 [ext_resource type="Script" uid="uid://b8qfrs61nmcix" path="res://scripts/costum_resources/effects/apply_buff_effect.gd" id="7_blu71"]
 [ext_resource type="Script" uid="uid://b22e8tmlhbsr2" path="res://entities/enemies/mawler/mawler_ai.gd" id="7_s0bsw"]

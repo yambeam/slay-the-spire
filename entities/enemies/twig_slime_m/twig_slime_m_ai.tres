@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://iqqyr44teapg" path="res://scripts/costum_resources/intents/sub_intent.gd" id="2_iq7g1"]
 [ext_resource type="Script" uid="uid://dtok21t0ujjui" path="res://scripts/costum_resources/numeric_provider.gd" id="3_bja22"]
 [ext_resource type="Script" uid="uid://vkklgv0ma0yf" path="res://scripts/costum_resources/effects/attack_effect.gd" id="4_72cov"]
-[ext_resource type="AudioStream" uid="uid://bwkj3ged1cm0x" path="res://audio/SFX/blunt_attack.mp3" id="5_no4kl"]
+[ext_resource type="AudioStream" uid="uid://bcwmh6adledx" path="res://audio/SFX/blunt_attack.mp3" id="5_no4kl"]
 [ext_resource type="Script" uid="uid://bces7ijyodhmv" path="res://scripts/costum_resources/intents/attack_sub_intent.gd" id="6_n3jbk"]
 [ext_resource type="Script" uid="uid://dvy1chg4qtsxv" path="res://entities/enemies/twig_slime_m/twig_slime_m_ai.gd" id="7_iq7g1"]
 [ext_resource type="Resource" uid="uid://by2gga1uh715e" path="res://entities/cards/status_cards/粘液.tres" id="7_omsx0"]

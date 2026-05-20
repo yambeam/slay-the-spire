@@ -5,7 +5,7 @@
 [ext_resource type="Script" uid="uid://cgmi6f3o7leik" path="res://scripts/costum_resources/effect.gd" id="2_vbmjm"]
 [ext_resource type="Script" uid="uid://br1hibx18tv13" path="res://scripts/costum_resources/card.gd" id="3_n6dsh"]
 [ext_resource type="Script" uid="uid://dnv7chuoeoi6y" path="res://scripts/costum_resources/effects/block_effect.gd" id="4_lyumq"]
-[ext_resource type="AudioStream" uid="uid://debelv08fuh1w" path="res://audio/SFX/frost_orb_passive.mp3" id="5_u4h0q"]
+[ext_resource type="AudioStream" uid="uid://cnxfhtrl0n8nm" path="res://audio/SFX/frost_orb_passive.mp3" id="5_u4h0q"]
 [ext_resource type="Script" uid="uid://b8qfrs61nmcix" path="res://scripts/costum_resources/effects/apply_buff_effect.gd" id="6_vwil2"]
 [ext_resource type="Texture2D" uid="uid://caadf5" path="res://images/atlases/card_atlas.sprites/colorless/panic_button.tres" id="7_yr1rs"]
 

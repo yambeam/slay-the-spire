@@ -1,0 +1,71 @@
+[gd_resource type="Resource" format=3 uid="uid://ca8qbmrqsfgp8"]
+
+[ext_resource type="Script" uid="uid://cxgxfbwykbp84" path="res://scripts/costum_resources/numeric_entry.gd" id="1_t84w4"]
+[ext_resource type="Script" uid="uid://cgmi6f3o7leik" path="res://scripts/costum_resources/effect.gd" id="2_kwcf2"]
+[ext_resource type="Script" uid="uid://dyn5a42fs7gxs" path="res://scripts/costum_resources/card_condition.gd" id="3_lpsmh"]
+[ext_resource type="Script" uid="uid://cqcf6adphkjfy" path="res://scripts/costum_resources/effects/select_card_effect.gd" id="4_qmoek"]
+[ext_resource type="Script" uid="uid://csyjq6ujulplm" path="res://scripts/costum_resources/effects/card_effects/card_effect.gd" id="5_h2rx3"]
+[ext_resource type="Script" uid="uid://dl6g3g7ag1dpg" path="res://scripts/costum_resources/effects/card_effects/put_card_to_pile_effect.gd" id="6_xc5uq"]
+[ext_resource type="Script" uid="uid://c2drp2mlr0vhm" path="res://scripts/costum_resources/effects/foreach_card_effect.gd" id="7_gt70n"]
+[ext_resource type="Texture2D" uid="uid://7xrjht" path="res://images/atlases/card_atlas.sprites/colorless/secret_weapon.tres" id="8_pm0yf"]
+[ext_resource type="Script" uid="uid://dh2ase8ugyqxu" path="res://entities/cards/colorless/秘密技法.gd" id="9_lpsmh"]
+
+[sub_resource type="Resource" id="Resource_l7u8d"]
+script = ExtResource("3_lpsmh")
+type = 5
+metadata/_custom_type_script = "uid://dyn5a42fs7gxs"
+
+[sub_resource type="Resource" id="Resource_0rpci"]
+script = ExtResource("4_qmoek")
+where = 1
+min_select = 1
+max_select = 1
+filter_condition = SubResource("Resource_l7u8d")
+metadata/_custom_type_script = "uid://cqcf6adphkjfy"
+
+[sub_resource type="Resource" id="Resource_ratr6"]
+script = ExtResource("6_xc5uq")
+target_pile = 2
+metadata/_custom_type_script = "uid://dl6g3g7ag1dpg"
+
+[sub_resource type="Resource" id="Resource_8csgg"]
+script = ExtResource("7_gt70n")
+effects = Array[ExtResource("5_h2rx3")]([SubResource("Resource_ratr6")])
+metadata/_custom_type_script = "uid://c2drp2mlr0vhm"
+
+[sub_resource type="Resource" id="Resource_8s2mx"]
+script = ExtResource("3_lpsmh")
+type = 5
+metadata/_custom_type_script = "uid://dyn5a42fs7gxs"
+
+[sub_resource type="Resource" id="Resource_xljjf"]
+script = ExtResource("4_qmoek")
+where = 1
+min_select = 1
+max_select = 1
+filter_condition = SubResource("Resource_8s2mx")
+metadata/_custom_type_script = "uid://cqcf6adphkjfy"
+
+[sub_resource type="Resource" id="Resource_qd7al"]
+script = ExtResource("6_xc5uq")
+target_pile = 2
+metadata/_custom_type_script = "uid://dl6g3g7ag1dpg"
+
+[sub_resource type="Resource" id="Resource_2a8f4"]
+script = ExtResource("7_gt70n")
+effects = Array[ExtResource("5_h2rx3")]([SubResource("Resource_qd7al")])
+metadata/_custom_type_script = "uid://c2drp2mlr0vhm"
+
+[resource]
+script = ExtResource("9_lpsmh")
+id = "秘密武器"
+type = 2
+card_color = 64
+rarity = 4
+effects = Array[ExtResource("2_kwcf2")]([SubResource("Resource_0rpci"), SubResource("Resource_8csgg")])
+portrait = ExtResource("8_pm0yf")
+base_description = "[center]从[color=gold]抽牌[/color]堆中选择一张攻击牌放入你的[color=gold]手牌[/color]。[/center]"
+exhaust = true
+upgraded_description = "[center]从[color=gold]抽牌[/color]堆中选择一张攻击牌放入你的[color=gold]手牌[/color]。[/center]"
+upgraded_effects = Array[ExtResource("2_kwcf2")]([SubResource("Resource_xljjf"), SubResource("Resource_2a8f4")])
+metadata/_custom_type_script = "uid://br1hibx18tv13"

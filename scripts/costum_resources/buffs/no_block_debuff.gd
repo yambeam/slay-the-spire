@@ -10,7 +10,7 @@ func get_modifier() -> Array[Modifier]:
 	return [modifier]
 	
 func _on_before_gain_block(context: Context) -> void:
-	context.modifiers.append(Modifier.new(Enums.NumericType.BLOCK, stacks, 1.0, null))
+	context.modifiers.append(Modifier.new(Enums.NumericType.BLOCK, 0, 1.0, func(_block: int): return 0))
 
 func _on_turn_ended(_creature: Creature) -> void:
 	remove_stack(1)

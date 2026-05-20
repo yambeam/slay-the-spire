@@ -120,6 +120,7 @@ func add_relic_reward(relic: Relic) -> void:
 			func():
 				if run_stats:
 					run_stats.add_relic(relic)
+					ItemPool.remove_relic(relic)
 		)
 	rewards.call_deferred("add_child", relic_reward)
 	
@@ -267,8 +268,8 @@ func _on_card_reward_taken(card:Card)->void:
 	#print("DeckAfter:\n%s" % character_stats.deck)
 
 func _get_random_weighted_relic() -> Relic:
-	if not ItemPool.current_relic_pool or ItemPool.current_relic_pool.is_empty():
-		return null
+	#if not ItemPool.current_relic_pool or ItemPool.current_relic_pool.is_empty():
+		#return null
 
 	# 计算总权重
 	var total_weight = relic_common_weight + relic_uncommon_weight + relic_rare_weight
@@ -288,7 +289,7 @@ func _get_random_weighted_relic() -> Relic:
 	)
 	if candidates.is_empty():
 		# 降级：如果没有该稀有度的遗物，从整个池随机
-		candidates = ItemPool.current_relic_pool
+		candidates = ItemPool.get_current_relic_pool()
 	return candidates.pick_random().duplicate()
 
 func _get_random_weighted_potion() -> Potion:

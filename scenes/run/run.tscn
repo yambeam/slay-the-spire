@@ -28,17 +28,11 @@ script = ExtResource("1_l7o68")
 run_startup = ExtResource("2_wdonh")
 act1_encounter_pool = ExtResource("3_ux63y")
 act2_encounter_pool = ExtResource("4_yeia0")
-<<<<<<< HEAD
-=======
 bgm_proxy = NodePath("BGMProxy")
->>>>>>> 24026f8c449fd97993d2e2c5ecbecb385c635e0f
 
 [node name="Map" parent="." unique_id=2080320068 instance=ExtResource("1_8rlou")]
 visible = false
 
-<<<<<<< HEAD
-[node name="CurrentRoom" type="Node" parent="." unique_id=1013259375]
-=======
 [node name="CurrentRoom" type="Control" parent="." unique_id=871699467]
 layout_mode = 3
 anchors_preset = 15
@@ -47,7 +41,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
->>>>>>> 24026f8c449fd97993d2e2c5ecbecb385c635e0f
 
 [node name="TopBar" type="CanvasLayer" parent="." unique_id=849789068]
 layer = 2

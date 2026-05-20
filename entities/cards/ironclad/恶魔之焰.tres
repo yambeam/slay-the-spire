@@ -100,19 +100,30 @@ metadata/_custom_type_script = "uid://cxgxfbwykbp84"
 [resource]
 script = ExtResource("3_w1dqs")
 id = "恶魔之焰"
+type = null
 base_target = 1
+card_color = null
+is_x_cost = null
 base_cost = 2
 rarity = 4
+discoverable = null
+draftable = null
 effects = Array[ExtResource("2_vk0v0")]([SubResource("Resource_2flxl"), SubResource("Resource_ogr6k"), SubResource("Resource_ut5md")])
 portrait = ExtResource("7_g0ffs")
 base_description = "[center][color=gold]消耗[/color]所有[color=gold]手牌[/color]。
 每张被[color=gold]消耗[/color]的牌造成{damage}点伤害。[/center]"
 base_numeric_entries = Array[ExtResource("1_6uv2o")]([SubResource("Resource_8x34p")])
 exhaust = true
+ethereal = null
+sly = null
+eternal = null
+playable = null
 upgraded_target = 1
 upgraded_cost = 2
 upgraded_description = "[center][color=gold]消耗[/color]所有[color=gold]手牌[/color]。
 每张被[color=gold]消耗[/color]的牌造成{damage}点伤害。[/center]"
 upgraded_numeric_entries = Array[ExtResource("1_6uv2o")]([SubResource("Resource_p1h0e")])
 upgraded_effects = Array[ExtResource("2_vk0v0")]([SubResource("Resource_mn6im"), SubResource("Resource_ghsr6"), SubResource("Resource_7qg5n")])
+upgraded = null
+upgradable = null
 metadata/_custom_type_script = "uid://br1hibx18tv13"

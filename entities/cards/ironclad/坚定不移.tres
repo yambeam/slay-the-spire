@@ -1,6 +1,5 @@
 [gd_resource type="Resource" script_class="Card" format=3 uid="uid://bhfco4qj3dntc"]
 
-[ext_resource type="Script" uid="uid://cxgxfbwykbp84" path="res://scripts/costum_resources/numeric_entry.gd" id="1_pskqh"]
 [ext_resource type="Script" uid="uid://cgmi6f3o7leik" path="res://scripts/costum_resources/effect.gd" id="2_nqs4x"]
 [ext_resource type="Script" uid="uid://br1hibx18tv13" path="res://scripts/costum_resources/card.gd" id="3_vlwl6"]
 [ext_resource type="Script" uid="uid://dtok21t0ujjui" path="res://scripts/costum_resources/numeric_provider.gd" id="3_woyol"]
@@ -35,12 +34,27 @@ metadata/_custom_type_script = "uid://b8qfrs61nmcix"
 script = ExtResource("3_vlwl6")
 id = "坚定不移"
 type = 4
+base_target = null
+card_color = null
+is_x_cost = null
 base_cost = 2
 rarity = 4
+discoverable = null
+draftable = null
 effects = Array[ExtResource("2_nqs4x")]([SubResource("Resource_26fl6")])
 portrait = ExtResource("5_bpek8")
 base_description = "[center]每个回合你第一次从卡牌中获得[color=gold]格挡[/color]时，将数值翻倍。[/center]"
+base_numeric_entries = null
+exhaust = null
+ethereal = null
+sly = null
+eternal = null
+playable = null
+upgraded_target = null
 upgraded_cost = 1
 upgraded_description = "[center]每个回合你第一次从卡牌中获得[color=gold]格挡[/color]时，将数值翻倍。[/center]"
+upgraded_numeric_entries = null
 upgraded_effects = Array[ExtResource("2_nqs4x")]([SubResource("Resource_g7cit")])
+upgraded = null
+upgradable = null
 metadata/_custom_type_script = "uid://br1hibx18tv13"

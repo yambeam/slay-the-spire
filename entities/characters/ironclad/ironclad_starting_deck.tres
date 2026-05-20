@@ -108,17 +108,30 @@ metadata/_custom_type_script = "uid://cxgxfbwykbp84"
 [sub_resource type="Resource" id="Resource_7anbg"]
 script = ExtResource("1_6dnus")
 id = "头槌"
+type = null
 base_target = 1
+card_color = null
+is_x_cost = null
 base_cost = 1
+rarity = null
+discoverable = null
+draftable = null
 effects = Array[ExtResource("4_q88nh")]([SubResource("Resource_yofp3"), SubResource("Resource_i23f4"), SubResource("Resource_yiydk")])
 portrait = ExtResource("23_l52n2")
 base_description = "[center]造成{damage}点伤害。[/center][center]将一张牌从[color=gold]弃牌堆[/color]移至[color=gold]抽牌堆[/color]顶部。[/center]"
 base_numeric_entries = Array[ExtResource("2_lm2nt")]([SubResource("Resource_rcmhm")])
+exhaust = null
+ethereal = null
+sly = null
+eternal = null
+playable = null
 upgraded_target = 1
 upgraded_cost = 1
 upgraded_description = "[center]造成{damage}点伤害。[/center][center]将一张牌从[color=gold]弃牌堆[/color]移至[color=gold]抽牌堆[/color]顶部。[/center]"
 upgraded_numeric_entries = Array[ExtResource("2_lm2nt")]([SubResource("Resource_3kjcc")])
 upgraded_effects = Array[ExtResource("4_q88nh")]([SubResource("Resource_xj5hh"), SubResource("Resource_godxd"), SubResource("Resource_rhk01")])
+upgraded = null
+upgradable = null
 metadata/_custom_type_script = "uid://br1hibx18tv13"
 
 [sub_resource type="Resource" id="Resource_thu2h"]
@@ -183,32 +196,59 @@ metadata/_custom_type_script = "uid://cxgxfbwykbp84"
 script = ExtResource("1_6dnus")
 id = "武装"
 type = 2
+base_target = null
+card_color = null
+is_x_cost = null
 base_cost = 1
+rarity = null
+discoverable = null
+draftable = null
 effects = Array[ExtResource("4_q88nh")]([SubResource("Resource_hi5sw"), SubResource("Resource_gevhg")])
 portrait = ExtResource("7_o2bww")
 base_description = "[center]获得{block}点[color=gold]格挡[/color]。[/center]
 [center][color=gold]升级[/color]手牌中的一张卡牌。[/center]"
 base_numeric_entries = Array[ExtResource("2_lm2nt")]([SubResource("Resource_xctxy")])
+exhaust = null
+ethereal = null
+sly = null
+eternal = null
+playable = null
+upgraded_target = null
 upgraded_cost = 1
 upgraded_description = "[center]获得{block}点[color=gold]格挡[/color]。[/center]
 [center][color=gold]升级[/color]手牌中所有卡牌。[/center]"
 upgraded_numeric_entries = Array[ExtResource("2_lm2nt")]([SubResource("Resource_6o2r8")])
 upgraded_effects = Array[ExtResource("4_q88nh")]([SubResource("Resource_37300"), SubResource("Resource_gqx7i")])
+upgraded = null
+upgradable = null
 
 [sub_resource type="Resource" id="Resource_7tgq7"]
 script = ExtResource("1_6dnus")
 id = "头槌"
+type = null
 base_target = 1
+card_color = null
+is_x_cost = null
 base_cost = 1
+rarity = null
+discoverable = null
+draftable = null
 effects = Array[ExtResource("4_q88nh")]([SubResource("Resource_yofp3"), SubResource("Resource_i23f4"), SubResource("Resource_yiydk")])
 portrait = ExtResource("23_l52n2")
 base_description = "[center]造成{damage}点伤害。[/center][center]将一张牌从[color=gold]弃牌堆[/color]移至[color=gold]抽牌堆[/color]顶部。[/center]"
 base_numeric_entries = Array[ExtResource("2_lm2nt")]([SubResource("Resource_rcmhm")])
+exhaust = null
+ethereal = null
+sly = null
+eternal = null
+playable = null
 upgraded_target = 1
 upgraded_cost = 1
 upgraded_description = "[center]造成{damage}点伤害。[/center][center]将一张牌从[color=gold]弃牌堆[/color]移至[color=gold]抽牌堆[/color]顶部。[/center]"
 upgraded_numeric_entries = Array[ExtResource("2_lm2nt")]([SubResource("Resource_3kjcc")])
 upgraded_effects = Array[ExtResource("4_q88nh")]([SubResource("Resource_xj5hh"), SubResource("Resource_godxd"), SubResource("Resource_rhk01")])
+upgraded = null
+upgradable = null
 metadata/_custom_type_script = "uid://br1hibx18tv13"
 
 [resource]

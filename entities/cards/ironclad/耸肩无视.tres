@@ -94,12 +94,26 @@ metadata/_custom_type_script = "uid://cxgxfbwykbp84"
 script = ExtResource("7_bccfr")
 id = "耸肩无视"
 type = 2
+base_target = null
+card_color = null
+is_x_cost = null
 base_cost = 1
+rarity = null
+discoverable = null
+draftable = null
 effects = Array[ExtResource("3_5wk7v")]([SubResource("Resource_lg5y1"), SubResource("Resource_duevm")])
 portrait = ExtResource("2_11jwt")
 base_description = "[center]获得{block}点[color=gold]格挡[/color]。[/center][p][center]抽{cards}张牌[/center]"
 base_numeric_entries = Array[ExtResource("1_khewp")]([SubResource("Resource_4m843"), SubResource("Resource_cemlr")])
+exhaust = null
+ethereal = null
+sly = null
+eternal = null
+playable = null
+upgraded_target = null
 upgraded_cost = 1
 upgraded_description = "[center]获得{block}点[color=gold]格挡[/color]。[/center][p][center]抽{cards}张牌[/center]"
 upgraded_numeric_entries = Array[ExtResource("1_khewp")]([SubResource("Resource_qyxni"), SubResource("Resource_k8l5r")])
 upgraded_effects = Array[ExtResource("3_5wk7v")]([SubResource("Resource_ujg5k"), SubResource("Resource_rdjfc")])
+upgraded = null
+upgradable = null

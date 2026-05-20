@@ -168,5 +168,5 @@ func load_all_buff_resource(dir_path: String):
 			buff_resources[resource.buff_name] = resource
 
 func get_buff_resource_by_name(buff_name: String) -> BuffResource:
-	return buff_resources[buff_name]	
+	return buff_resources.get(buff_name, null)
 	

@@ -145,15 +145,30 @@ metadata/_custom_type_script = "uid://cxgxfbwykbp84"
 script = ExtResource("8_t428w")
 id = "烙印"
 type = 2
+base_target = null
+card_color = null
+is_x_cost = null
+base_cost = null
 rarity = 4
+discoverable = null
+draftable = null
 effects = Array[ExtResource("3_v6l75")]([SubResource("Resource_hfn42"), SubResource("Resource_ee2j6"), SubResource("Resource_1h3nx"), SubResource("Resource_40g3n")])
 portrait = ExtResource("2_vdpk4")
 base_description = "[center]失去{lose_health}点生命。
 消耗1张牌。
 获得{stacks}点力量。[/center]"
 base_numeric_entries = Array[ExtResource("1_7g7x0")]([SubResource("Resource_nfdik"), SubResource("Resource_posev")])
+exhaust = null
+ethereal = null
+sly = null
+eternal = null
+playable = null
+upgraded_target = null
+upgraded_cost = null
 upgraded_description = "[center]失去{lose_health}点生命。
 消耗1张牌。
 获得{stacks}点力量。[/center]"
 upgraded_numeric_entries = Array[ExtResource("1_7g7x0")]([SubResource("Resource_5k5ep"), SubResource("Resource_oo28o")])
 upgraded_effects = Array[ExtResource("3_v6l75")]([SubResource("Resource_fpwf7"), SubResource("Resource_wreny"), SubResource("Resource_7t1yr"), SubResource("Resource_007lt")])
+upgraded = null
+upgradable = null

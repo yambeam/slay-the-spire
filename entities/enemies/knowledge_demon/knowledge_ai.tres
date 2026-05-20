@@ -14,7 +14,6 @@
 [ext_resource type="Script" uid="uid://bgdkwbdihbpk5" path="res://scripts/costum_resources/effects/foreach_effect.gd" id="10_6gmkf"]
 [ext_resource type="Script" uid="uid://c2p6buhbk6em8" path="res://scripts/costum_resources/intents/apply_debuff_sub_intent.gd" id="11_5oho1"]
 [ext_resource type="Resource" uid="uid://b1aubck7fqd6b" path="res://entities/cards/status_cards/懒惰.tres" id="13_4nkf3"]
-[ext_resource type="Script" uid="uid://cxgxfbwykbp84" path="res://scripts/costum_resources/numeric_entry.gd" id="14_rh2c3"]
 [ext_resource type="Script" uid="uid://dtok21t0ujjui" path="res://scripts/costum_resources/numeric_provider.gd" id="15_y2vqp"]
 [ext_resource type="Script" uid="uid://b8qfrs61nmcix" path="res://scripts/costum_resources/effects/apply_buff_effect.gd" id="16_8gjcc"]
 [ext_resource type="Resource" uid="uid://ciuvsfuh1u8bc" path="res://entities/cards/status_cards/衰朽.tres" id="17_lm3nh"]
@@ -80,14 +79,28 @@ region = Rect2(2017, 1537, 250, 190)
 script = ExtResource("4_5si25")
 id = "瓦解"
 type = 8
+base_target = null
 card_color = 64
+is_x_cost = null
+base_cost = null
 rarity = 16
 discoverable = false
 draftable = false
 effects = Array[ExtResource("3_fqljw")]([SubResource("Resource_fov25")])
 portrait = SubResource("AtlasTexture_wf7x1")
 base_description = "[center]回合结束时受到7点伤害。[/center]"
+base_numeric_entries = null
+exhaust = null
+ethereal = null
+sly = null
+eternal = null
 playable = false
+upgraded_target = null
+upgraded_cost = null
+upgraded_description = null
+upgraded_numeric_entries = null
+upgraded_effects = null
+upgraded = null
 upgradable = false
 metadata/_custom_type_script = "uid://br1hibx18tv13"
 
@@ -147,14 +160,28 @@ region = Rect2(2017, 1537, 250, 190)
 script = ExtResource("4_5si25")
 id = "瓦解"
 type = 8
+base_target = null
 card_color = 64
+is_x_cost = null
+base_cost = null
 rarity = 16
 discoverable = false
 draftable = false
 effects = Array[ExtResource("3_fqljw")]([SubResource("Resource_m78tb")])
 portrait = SubResource("AtlasTexture_s4gnw")
 base_description = "[center]回合结束时受到7点伤害。[/center]"
+base_numeric_entries = null
+exhaust = null
+ethereal = null
+sly = null
+eternal = null
 playable = false
+upgraded_target = null
+upgraded_cost = null
+upgraded_description = null
+upgraded_numeric_entries = null
+upgraded_effects = null
+upgraded = null
 upgradable = false
 metadata/_custom_type_script = "uid://br1hibx18tv13"
 

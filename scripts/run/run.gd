@@ -357,28 +357,59 @@ func _on_room_exited() -> void:
 	#print(">>> _on_room_exited END")
 
 # ========== 房间入口 ==========
-func _on_combat_room_entered(room: Room = null) -> void:
-	var encounter_pool: EnemyEncounterPool = act1_encounter_pool if stats.current_stage == 1 else act2_encounter_pool 
-	match room.type:
-		Room.Type.BOSS:
-			mob_killed_this_act = 0
-		Room.Type.ELITE:
-			room.enemy_encounter = encounter_pool.get_random_encounter_by_type(EnemyEncounter.Type.ELITE)
-		Room.Type.MONSTER, Room.Type.UNKNOWN:
-			# 第一章前三个遭遇战从弱怪池中选取
-			# 第二章前两个遭遇战从弱怪池中选取
-			mob_killed_this_act += 1
-			if stats.current_stage == 1:
-				if mob_killed_this_act <= 3:
-					room.enemy_encounter = encounter_pool.get_random_encounter_by_type(EnemyEncounter.Type.WEAK)
+#func _on_combat_room_entered(room: Room = null) -> void:
+	#var encounter_pool: EnemyEncounterPool = act1_encounter_pool if stats.current_stage == 1 else act2_encounter_pool 
+	#match room.type:
+		#Room.Type.BOSS:
+			#mob_killed_this_act = 0
+		#Room.Type.ELITE:
+			#room.enemy_encounter = encounter_pool.get_random_encounter_by_type(EnemyEncounter.Type.ELITE)
+		#Room.Type.MONSTER, Room.Type.UNKNOWN:
+			## 第一章前三个遭遇战从弱怪池中选取
+			## 第二章前两个遭遇战从弱怪池中选取
+			#mob_killed_this_act += 1
+			#if stats.current_stage == 1:
+				#if mob_killed_this_act <= 3:
+					#room.enemy_encounter = encounter_pool.get_random_encounter_by_type(EnemyEncounter.Type.WEAK)
+				#else:
+					#room.enemy_encounter = encounter_pool.get_random_encounter_by_type(EnemyEncounter.Type.STRONG)
+			#else:
+				## act2
+				#if mob_killed_this_act <= 2:
+					#room.enemy_encounter = encounter_pool.get_random_encounter_by_type(EnemyEncounter.Type.WEAK)
+				#else:
+					#room.enemy_encounter = encounter_pool.get_random_encounter_by_type(EnemyEncounter.Type.STRONG)
+	#print(room.enemy_encounter)
+	#var battle_scene: CombatRoom = await _change_view(COMBAT_SCENE)
+	#battle_scene.char_stats = character
+	#if room:
+		#battle_scene.enemy_encounter = room.enemy_encounter
+	#battle_scene.relics = top_bar.relic_handler
+	#battle_scene.start_combat()
+	
+func _on_combat_room_entered(room: Room = null, restore_state: Dictionary = {}) -> void:
+	var encounter_pool: EnemyEncounterPool = act1_encounter_pool if stats.current_stage == 1 else act2_encounter_pool
+
+	# 只有新战斗（非恢复）才随机遭遇战
+	if restore_state.is_empty():
+		match room.type:
+			Room.Type.BOSS:
+				mob_killed_this_act = 0
+			Room.Type.ELITE:
+				room.enemy_encounter = encounter_pool.get_random_encounter_by_type(EnemyEncounter.Type.ELITE)
+			Room.Type.MONSTER, Room.Type.UNKNOWN:
+				mob_killed_this_act += 1
+				if stats.current_stage == 1:
+					if mob_killed_this_act <= 3:
+						room.enemy_encounter = encounter_pool.get_random_encounter_by_type(EnemyEncounter.Type.WEAK)
+					else:
+						room.enemy_encounter = encounter_pool.get_random_encounter_by_type(EnemyEncounter.Type.STRONG)
 				else:
-					room.enemy_encounter = encounter_pool.get_random_encounter_by_type(EnemyEncounter.Type.STRONG)
-			else:
-				# act2
-				if mob_killed_this_act <= 2:
-					room.enemy_encounter = encounter_pool.get_random_encounter_by_type(EnemyEncounter.Type.WEAK)
-				else:
-					room.enemy_encounter = encounter_pool.get_random_encounter_by_type(EnemyEncounter.Type.STRONG)
+					if mob_killed_this_act <= 2:
+						room.enemy_encounter = encounter_pool.get_random_encounter_by_type(EnemyEncounter.Type.WEAK)
+					else:
+						room.enemy_encounter = encounter_pool.get_random_encounter_by_type(EnemyEncounter.Type.STRONG)
+
 	print(room.enemy_encounter)
 	var battle_scene: CombatRoom = await _change_view(COMBAT_SCENE)
 	battle_scene.char_stats = character
@@ -386,6 +417,10 @@ func _on_combat_room_entered(room: Room = null) -> void:
 		battle_scene.enemy_encounter = room.enemy_encounter
 	battle_scene.relics = top_bar.relic_handler
 	battle_scene.start_combat()
+
+	# 如果提供了存档状态，则恢复战场进度
+	if not restore_state.is_empty():
+		battle_scene.set_save_state(restore_state)
 
 func _on_shop_room_entered(room: Room) -> void:
 	await _change_view(SHOP_SCENE)
@@ -559,21 +594,20 @@ func _apply_room_state(scene: Node, state: Dictionary) -> void:
 		
 func _restore_room(type: Room.Type, room: Room) -> void:
 	is_on_map = false
-	var state_to_apply := save_data.room_state.duplicate()  # 取出存档中的状态
+	var state_to_apply := save_data.room_state.duplicate()  
 	
 	if save_data.is_battle_reward:
 		var reward_scene = BATTLE_REWARD_SCENE.instantiate()
 		current_room.add_child(reward_scene)
 		reward_scene.run_stats = stats
-		reward_scene.character_stats = character          # ← 新增这两行
+		reward_scene.character_stats = character          
 		if reward_scene.has_method("set_save_state"):
 			reward_scene.set_save_state(state_to_apply)
 		return
 	
 	match type:
 		Room.Type.MONSTER, Room.Type.ELITE, Room.Type.BOSS:
-			# ... 战斗房间无需特殊状态，可忽略
-			_on_combat_room_entered(room)
+			_on_combat_room_entered(room, state_to_apply)
 		Room.Type.TREASURE:
 			var treasure_scene = TREASURE_SCENE.instantiate()
 			current_room.add_child(treasure_scene)
@@ -584,19 +618,17 @@ func _restore_room(type: Room.Type, room: Room) -> void:
 			current_room.add_child(shop_scene)
 			if shop_scene.has_method("set_save_state"):
 				shop_scene.set_save_state(state_to_apply)
-			# 如果商店也有状态，应用之
 		Room.Type.CAMPFIRE:
 			_on_campfire_room_entered(room)
 		Room.Type.UNKNOWN:
 			_handle_unknown_room(room)
 		Room.Type.ANCIENT:
-			# 先古房间：在进入时会加载对应场景，然后应用状态
 			var ancient_scene = _get_ancient_scene()
 			var ancient = ancient_scene.instantiate()
 			ancient.current_stage = stats.current_stage
 			current_room.add_child(ancient)
 			ancient.restore_state(state_to_apply)
-			return  # 避免重复调用 _on_ancient_room_entered
+			return 
 		_:
 			_show_map()
 			return

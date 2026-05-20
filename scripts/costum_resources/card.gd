@@ -319,3 +319,34 @@ func _has_block_effect(card_effects: Array[Effect]) -> bool:
 		# 不管while_effect
 		# foreach是卡牌相关的，也不需要管
 	return false
+
+
+#卡牌数据序列化
+func serialize() -> Dictionary:
+	return {
+		"resource_path": resource_path,  
+		"id": id,
+		"upgraded": upgraded,
+		"upgradable": upgradable,
+		"card_color": card_color,
+		"first_play_free": first_play_free,
+		"card_played_this_combat": card_played_this_combat,
+	}
+
+static func deserialize(data: Dictionary) -> Card:
+	var path: String = data.get("resource_path", "")
+	if path.is_empty():
+		push_error("Card.deserialize: resource_path missing")
+		return null
+	var base: Card = load(path)
+	if not base:
+		push_error("Card.deserialize: failed to load " + path)
+		return null
+	var card: Card = base.duplicate()
+	card.id = data.get("id", card.id)
+	card.upgraded = data.get("upgraded", false)
+	card.upgradable = data.get("upgradable", true)
+	card.card_color = data.get("card_color", Card.COLOR.RED)
+	card.first_play_free = data.get("first_play_free", false)
+	card.card_played_this_combat = data.get("card_played_this_combat", 0)
+	return card

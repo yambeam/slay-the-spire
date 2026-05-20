@@ -4,6 +4,7 @@ extends Node2D
 @onready var visuals: SpineManager = $Visuals
 @onready var bounds: Control = $Bounds
 @onready var intent_point: Marker2D = $IntentPoint
+@onready var speech_point: Marker2D = $SpeechPoint
 
 func get_size() -> Vector2:
 	return bounds.size

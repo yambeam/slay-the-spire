@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="EnemyStats" format=3 uid="uid://4gala4gf3eu8"]
+
+[ext_resource type="Resource" uid="uid://b2o8m782xjk7o" path="res://entities/enemies/infested_prism/infested_prism_ai.tres" id="1_3y71b"]
+[ext_resource type="Script" uid="uid://bjrlwk5w4gqtk" path="res://scripts/costum_resources/enemy_stats.gd" id="1_15ms4"]
+[ext_resource type="PackedScene" uid="uid://bpws8qvklvq5a" path="res://scenes/creature_visuals/infested_prism.tscn" id="3_htugf"]
+
+[resource]
+script = ExtResource("1_15ms4")
+ai = ExtResource("1_3y71b")
+enemy_name = "感染棱柱"
+hightest_max_health = 200
+lowest_max_health = 200
+visuals_scene = ExtResource("3_htugf")
+metadata/_custom_type_script = "uid://bjrlwk5w4gqtk"

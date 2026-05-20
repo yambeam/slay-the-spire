@@ -1,0 +1,61 @@
+[gd_resource type="Resource" format=3 uid="uid://d24tet6gsquyq"]
+
+[ext_resource type="Script" uid="uid://ce34juwu5b0yr" path="res://scripts/costum_resources/intents/intent.gd" id="1_1s7js"]
+[ext_resource type="Script" uid="uid://iqqyr44teapg" path="res://scripts/costum_resources/intents/sub_intent.gd" id="2_dangb"]
+[ext_resource type="Script" uid="uid://dtok21t0ujjui" path="res://scripts/costum_resources/numeric_provider.gd" id="3_l1e1t"]
+[ext_resource type="Script" uid="uid://vkklgv0ma0yf" path="res://scripts/costum_resources/effects/attack_effect.gd" id="4_rqnfn"]
+[ext_resource type="Script" uid="uid://bces7ijyodhmv" path="res://scripts/costum_resources/intents/attack_sub_intent.gd" id="5_abf32"]
+[ext_resource type="Script" uid="uid://dnv7chuoeoi6y" path="res://scripts/costum_resources/effects/block_effect.gd" id="6_uniw6"]
+[ext_resource type="Script" uid="uid://810rx6aonjya" path="res://scripts/costum_resources/intents/block_sub_intent.gd" id="7_qjnqp"]
+[ext_resource type="Script" uid="uid://bqhxwcgw2c2h2" path="res://entities/enemies/bowlbugs/bowlbug_rock/bowlbug_rock_ai.gd" id="8_dangb"]
+
+[sub_resource type="Resource" id="Resource_vbw44"]
+script = ExtResource("3_l1e1t")
+fixed_value = 7
+metadata/_custom_type_script = "uid://dtok21t0ujjui"
+
+[sub_resource type="Resource" id="Resource_uwcy5"]
+script = ExtResource("3_l1e1t")
+fixed_value = 7
+metadata/_custom_type_script = "uid://dtok21t0ujjui"
+
+[sub_resource type="Resource" id="Resource_uymry"]
+script = ExtResource("4_rqnfn")
+damage_provider = SubResource("Resource_uwcy5")
+target_type = 2
+metadata/_custom_type_script = "uid://vkklgv0ma0yf"
+
+[sub_resource type="Resource" id="Resource_tt56v"]
+script = ExtResource("5_abf32")
+damage_provider = SubResource("Resource_vbw44")
+effect = SubResource("Resource_uymry")
+metadata/_custom_type_script = "uid://bces7ijyodhmv"
+
+[sub_resource type="Resource" id="Resource_eqlko"]
+script = ExtResource("3_l1e1t")
+fixed_value = 7
+metadata/_custom_type_script = "uid://dtok21t0ujjui"
+
+[sub_resource type="Resource" id="Resource_s8lfk"]
+script = ExtResource("6_uniw6")
+block_provider = SubResource("Resource_eqlko")
+target_type = 1
+metadata/_custom_type_script = "uid://dnv7chuoeoi6y"
+
+[sub_resource type="Resource" id="Resource_h8hks"]
+script = ExtResource("7_qjnqp")
+type = 3
+effect = SubResource("Resource_s8lfk")
+metadata/_custom_type_script = "uid://810rx6aonjya"
+
+[sub_resource type="Resource" id="Resource_d22o6"]
+script = ExtResource("1_1s7js")
+sub_intents = Array[ExtResource("2_dangb")]([SubResource("Resource_tt56v"), SubResource("Resource_h8hks")])
+intent_name = "Bite"
+anim_name = "attack"
+metadata/_custom_type_script = "uid://ce34juwu5b0yr"
+
+[resource]
+script = ExtResource("8_dangb")
+intents = Array[ExtResource("1_1s7js")]([SubResource("Resource_d22o6")])
+metadata/_custom_type_script = "uid://dpkht0suo8prh"

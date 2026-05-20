@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="EnemyStats" format=3 uid="uid://daejrtshhhl3g"]
+
+[ext_resource type="Script" uid="uid://bjrlwk5w4gqtk" path="res://scripts/costum_resources/enemy_stats.gd" id="1_bsis6"]
+[ext_resource type="Resource" uid="uid://bpcpcq4c6w8j2" path="res://entities/enemies/entomancer/entomancer_ai.tres" id="1_emebo"]
+[ext_resource type="PackedScene" uid="uid://coi7mflu2v06u" path="res://scenes/creature_visuals/entomancer.tscn" id="3_73fpn"]
+
+[resource]
+script = ExtResource("1_bsis6")
+ai = ExtResource("1_emebo")
+enemy_name = "蜂群术士"
+hightest_max_health = 145
+lowest_max_health = 145
+visuals_scene = ExtResource("3_73fpn")
+metadata/_custom_type_script = "uid://bjrlwk5w4gqtk"

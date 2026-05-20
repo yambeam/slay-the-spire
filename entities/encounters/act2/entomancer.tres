@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="EnemyEncounter" format=3 uid="uid://dtfixw8x4rcre"]
+
+[ext_resource type="Script" uid="uid://dw53gdpom3gn6" path="res://scripts/costum_resources/enemy_entry.gd" id="1_hfl5y"]
+[ext_resource type="Script" uid="uid://dgu4qpyr0pnnb" path="res://scripts/costum_resources/enemy_encounter.gd" id="2_4mw1e"]
+[ext_resource type="Resource" uid="uid://daejrtshhhl3g" path="res://entities/enemies/entomancer/entomancer_stats.tres" id="2_62a2j"]
+
+[sub_resource type="Resource" id="Resource_buo2b"]
+script = ExtResource("1_hfl5y")
+enemy_stats = ExtResource("2_62a2j")
+position = Vector2(1385, 600)
+initial_buff = {
+"人体蜂房": 1
+}
+metadata/_custom_type_script = "uid://dw53gdpom3gn6"
+
+[resource]
+script = ExtResource("2_4mw1e")
+weight = 10.0
+enemy_entries = Array[ExtResource("1_hfl5y")]([SubResource("Resource_buo2b")])
+encounter_name = "entomancer"
+metadata/_custom_type_script = "uid://dgu4qpyr0pnnb"

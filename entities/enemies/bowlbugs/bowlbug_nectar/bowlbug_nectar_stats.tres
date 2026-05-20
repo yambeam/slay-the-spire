@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="EnemyStats" format=3 uid="uid://ccia2pqsso7t6"]
+
+[ext_resource type="Resource" uid="uid://lk8w60b44om8" path="res://entities/enemies/bowlbugs/bowlbug_nectar/bowlbug_nectar_ai.tres" id="1_780qy"]
+[ext_resource type="Script" uid="uid://bjrlwk5w4gqtk" path="res://scripts/costum_resources/enemy_stats.gd" id="2_icx2i"]
+[ext_resource type="PackedScene" uid="uid://c8ikgfi7umxq5" path="res://scenes/creature_visuals/bowl_bug_nectar.tscn" id="3_iog2u"]
+
+[resource]
+script = ExtResource("2_icx2i")
+ai = ExtResource("1_780qy")
+enemy_name = "盛碗虫（蜜）"
+hightest_max_health = 38
+lowest_max_health = 35
+visuals_scene = ExtResource("3_iog2u")
+metadata/_custom_type_script = "uid://bjrlwk5w4gqtk"

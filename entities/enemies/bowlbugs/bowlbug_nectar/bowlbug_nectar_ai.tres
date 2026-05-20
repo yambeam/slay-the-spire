@@ -1,0 +1,69 @@
+[gd_resource type="Resource" format=3 uid="uid://lk8w60b44om8"]
+
+[ext_resource type="Script" uid="uid://ce34juwu5b0yr" path="res://scripts/costum_resources/intents/intent.gd" id="1_gvjf3"]
+[ext_resource type="Script" uid="uid://iqqyr44teapg" path="res://scripts/costum_resources/intents/sub_intent.gd" id="2_j4ago"]
+[ext_resource type="Script" uid="uid://dtok21t0ujjui" path="res://scripts/costum_resources/numeric_provider.gd" id="3_r2jq5"]
+[ext_resource type="Script" uid="uid://vkklgv0ma0yf" path="res://scripts/costum_resources/effects/attack_effect.gd" id="4_gwdq4"]
+[ext_resource type="Script" uid="uid://bces7ijyodhmv" path="res://scripts/costum_resources/intents/attack_sub_intent.gd" id="5_g0g8p"]
+[ext_resource type="Script" uid="uid://b8qfrs61nmcix" path="res://scripts/costum_resources/effects/apply_buff_effect.gd" id="6_1ij4f"]
+[ext_resource type="Script" uid="uid://dpbv4m5rd0bbq" path="res://scripts/costum_resources/intents/apply_buff_sub_intent.gd" id="7_8608y"]
+[ext_resource type="Script" uid="uid://d2lo68dkdpiok" path="res://entities/enemies/bowlbugs/bowlbug_nectar/bowlbug_nectar_ai.gd" id="8_j4ago"]
+
+[sub_resource type="Resource" id="Resource_p1wja"]
+script = ExtResource("3_r2jq5")
+fixed_value = 3
+metadata/_custom_type_script = "uid://dtok21t0ujjui"
+
+[sub_resource type="Resource" id="Resource_qbqbj"]
+script = ExtResource("3_r2jq5")
+fixed_value = 3
+metadata/_custom_type_script = "uid://dtok21t0ujjui"
+
+[sub_resource type="Resource" id="Resource_mq5su"]
+script = ExtResource("4_gwdq4")
+damage_provider = SubResource("Resource_qbqbj")
+target_type = 2
+metadata/_custom_type_script = "uid://vkklgv0ma0yf"
+
+[sub_resource type="Resource" id="Resource_71ttc"]
+script = ExtResource("5_g0g8p")
+damage_provider = SubResource("Resource_p1wja")
+effect = SubResource("Resource_mq5su")
+metadata/_custom_type_script = "uid://bces7ijyodhmv"
+
+[sub_resource type="Resource" id="Resource_jaiyd"]
+script = ExtResource("1_gvjf3")
+sub_intents = Array[ExtResource("2_j4ago")]([SubResource("Resource_71ttc")])
+intent_name = "Thrash"
+anim_name = "attack"
+metadata/_custom_type_script = "uid://ce34juwu5b0yr"
+
+[sub_resource type="Resource" id="Resource_gwwce"]
+script = ExtResource("3_r2jq5")
+fixed_value = 15
+metadata/_custom_type_script = "uid://dtok21t0ujjui"
+
+[sub_resource type="Resource" id="Resource_gviuf"]
+script = ExtResource("6_1ij4f")
+buff_name = "力量"
+buff_stack_provider = SubResource("Resource_gwwce")
+target_type = 1
+metadata/_custom_type_script = "uid://b8qfrs61nmcix"
+
+[sub_resource type="Resource" id="Resource_204oc"]
+script = ExtResource("7_8608y")
+type = 1
+effect = SubResource("Resource_gviuf")
+metadata/_custom_type_script = "uid://dpbv4m5rd0bbq"
+
+[sub_resource type="Resource" id="Resource_dwgk6"]
+script = ExtResource("1_gvjf3")
+sub_intents = Array[ExtResource("2_j4ago")]([SubResource("Resource_204oc")])
+intent_name = "Buff"
+anim_name = "buff"
+metadata/_custom_type_script = "uid://ce34juwu5b0yr"
+
+[resource]
+script = ExtResource("8_j4ago")
+intents = Array[ExtResource("1_gvjf3")]([SubResource("Resource_jaiyd"), SubResource("Resource_dwgk6")])
+metadata/_custom_type_script = "uid://dpkht0suo8prh"

@@ -15,6 +15,7 @@ offset_right = -1715.0
 offset_bottom = -1213.0
 grow_horizontal = 2
 grow_vertical = 2
+scale = Vector2(0.6, 0.6)
 script = ExtResource("1_ppych")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=500550913]
@@ -29,6 +30,7 @@ offset_right = 155.0
 offset_bottom = 47.0
 theme_override_fonts/normal_font = ExtResource("2_rtw6t")
 theme_override_font_sizes/normal_font_size = 25
+bbcode_enabled = true
 text = "这是一段文字"
 horizontal_alignment = 1
 vertical_alignment = 1

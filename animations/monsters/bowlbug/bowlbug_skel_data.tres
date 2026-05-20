@@ -1,4 +1,4 @@
-[gd_resource type="SpineSkeletonDataResource" load_steps=12 format=3 uid="uid://bpy4hwdrk82nf"]
+[gd_resource type="SpineSkeletonDataResource" format=3 uid="uid://bpy4hwdrk82nf"]
 
 [ext_resource type="SpineAtlasResource" uid="uid://co1w62mwuyjgc" path="res://animations/monsters/bowlbug/bowlbug.atlas" id="1_0dtyj"]
 [ext_resource type="SpineSkeletonFileResource" uid="uid://bvbi45poh5hvb" path="res://animations/monsters/bowlbug/bowlbug.skel" id="2_rfgrg"]

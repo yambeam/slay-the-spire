@@ -17,9 +17,11 @@ const CAMPFIRE_ROOM_WEIGHT :=5.0
 const ELITE_ROOM_WEIGHT := 6.0      # 精英房间权重（可根据需要调整）
 const UNKNOWN_ROOM_WEIGHT := 6.0    # 未知房间权重
 
-@export var act1_pool: EnemyEncounterPool
-@export var act2_pool: EnemyEncounterPool
-@export var act3_pool: EnemyEncounterPool
+# 这里直接通过生成boss房次数判断层级
+var act = 1
+
+@export var act1_bosses: Array[EnemyEncounter] = []
+@export var act2_bosses: Array[EnemyEncounter] = []
 
 var random_room_type_weights ={
 	Room.Type.MONSTER:0.0,
@@ -56,10 +58,6 @@ func generate_map() -> Array[Array]:
 		for i in range(1, FLOORS - 1):
 			current_j = _setup_connection(i, current_j)
 	
-	# 初始化怪物池: 张颢骞
-	act1_pool.setup()
-	#
-			
 	_setup_boss_room()
 	_setup_random_room_weights()
 	_setup_room_types()
@@ -165,11 +163,12 @@ func _setup_boss_room() -> void:
 			current_room.next_rooms = [] as Array[Room]
 			current_room.next_rooms.append(boss_room)
 	boss_room.type =Room.Type.BOSS
+	if act == 1:
+		act += 1
+		boss_room.enemy_encounter = act1_bosses.pick_random()
+	else:
+		boss_room.enemy_encounter = act2_bosses.pick_random()
 	
-	
-	# 张颢骞
-	boss_room.enemy_encounter = act1_pool.get_random_encounter_by_type(EnemyEncounter.Type.BOSS)
-	# 
 
 func _setup_random_room_weights() -> void:
 	
@@ -186,7 +185,6 @@ func _setup_room_types() -> void:
 	for room:Room in map_data[1]:
 		if room.next_rooms.size() >0:
 			room.type = Room.Type.MONSTER
-			room.enemy_encounter = act1_pool.get_random_encounter_by_type(EnemyEncounter.Type.WEAK)
 	# 9th floor is always a treasure
 	for room: Room in map_data[9]:
 		if room.next_rooms.size() >0:
@@ -235,16 +233,6 @@ func _set_room_randomly(room_to_set:Room)-> void:
 		consecutive_unknown = is_unknown and has_unknown_parent
 
 	room_to_set.type = type_candidate
-	# 张颢骞
-	if type_candidate == Room.Type.MONSTER:
-		# 这里是根据房间高度决定强怪池弱怪池，原游戏是前n场战斗是弱怪池
-		var encounter_type := EnemyEncounter.Type.WEAK
-		if room_to_set.row > 3:
-			encounter_type = EnemyEncounter.Type.STRONG
-		room_to_set.enemy_encounter = act1_pool.get_random_encounter_by_type(encounter_type)
-	elif type_candidate == Room.Type.ELITE:
-		room_to_set.enemy_encounter = act1_pool.get_random_encounter_by_type(EnemyEncounter.Type.ELITE)
-	
 	
 func _room_has_parent_of_type(room: Room, type: Room.Type) -> bool:
 	

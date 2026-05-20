@@ -3,11 +3,14 @@
 [ext_resource type="Script" uid="uid://bcd358hkhxqp" path="res://scripts/map/map.gd" id="1_sxf4j"]
 [ext_resource type="PackedScene" uid="uid://c30ke3xdmcd3m" path="res://scenes/map/Legend.tscn" id="2_sqgf4"]
 [ext_resource type="Script" uid="uid://brcwbale2dt2h" path="res://scripts/map/map_generator.gd" id="2_tqkkf"]
-[ext_resource type="Texture2D" uid="uid://hfa83ki5cy3u" path="res://images/packed/map/map_bgs/overgrowth/map_top_overgrowth.png" id="3_jcaow"]
-[ext_resource type="Resource" uid="uid://bb0c1ht5oirct" path="res://entities/encounters/encounter_pools/act1_encounter_pool.tres" id="3_vvrx0"]
-[ext_resource type="Texture2D" uid="uid://drvxdbsfmfnuo" path="res://images/packed/map/map_bgs/overgrowth/map_middle_overgrowth.png" id="4_04w0f"]
-[ext_resource type="Texture2D" uid="uid://63f74w51tm5d" path="res://images/packed/map/map_bgs/overgrowth/map_bottom_overgrowth.png" id="5_sqgf4"]
-[ext_resource type="Texture2D" uid="uid://dtmhjw5lrxj3t" path="res://images/rooms/false_queen/false_queen_bg.png" id="6_vvrx0"]
+[ext_resource type="Texture2D" uid="uid://dili70jsn5a45" path="res://images/packed/map/map_bgs/overgrowth/map_top_overgrowth.png" id="3_jcaow"]
+[ext_resource type="Script" uid="uid://dgu4qpyr0pnnb" path="res://scripts/costum_resources/enemy_encounter.gd" id="3_x2kg6"]
+[ext_resource type="Texture2D" uid="uid://b3bfcl5u84wyf" path="res://images/packed/map/map_bgs/overgrowth/map_middle_overgrowth.png" id="4_04w0f"]
+[ext_resource type="Resource" uid="uid://d2ev4fm055apj" path="res://entities/encounters/act1/vantom.tres" id="4_cumk7"]
+[ext_resource type="Resource" uid="uid://d0qb73gwmfteb" path="res://entities/encounters/act1/lagavulin_matriarch.tres" id="5_mgs8m"]
+[ext_resource type="Texture2D" uid="uid://kl3rs6nmylaq" path="res://images/packed/map/map_bgs/overgrowth/map_bottom_overgrowth.png" id="5_sqgf4"]
+[ext_resource type="Resource" uid="uid://b4vq5focbvrnj" path="res://entities/encounters/act2/knowledge_demon.tres" id="6_mrjnl"]
+[ext_resource type="Texture2D" uid="uid://bmopjsvoktfrn" path="res://images/rooms/false_queen/false_queen_bg.png" id="6_vvrx0"]
 [ext_resource type="Texture2D" uid="uid://b8ra3w" path="res://images/atlases/ui_atlas.sprites/map/map_legend.tres" id="7_04w0f"]
 
 [node name="Map" type="Node2D" unique_id=2080320068]
@@ -33,9 +36,8 @@ limit_enabled = false
 
 [node name="MapGenerator" type="Node" parent="." unique_id=1547311155]
 script = ExtResource("2_tqkkf")
-act1_pool = ExtResource("3_vvrx0")
-act2_pool = ExtResource("3_vvrx0")
-act3_pool = ExtResource("3_vvrx0")
+act1_bosses = Array[ExtResource("3_x2kg6")]([ExtResource("4_cumk7"), ExtResource("5_mgs8m")])
+act2_bosses = Array[ExtResource("3_x2kg6")]([ExtResource("6_mrjnl")])
 
 [node name="Background" type="Node2D" parent="." unique_id=1208578723]
 z_index = -2

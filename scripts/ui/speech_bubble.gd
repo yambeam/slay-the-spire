@@ -1,6 +1,8 @@
 class_name SpeechBubble
 extends Control
 
+
+@onready var speech_sprite: Sprite2D = $Sprite2D
 @onready var speech_label: RichTextLabel = $SpeechLabel
 @onready var timer: Timer = $Timer
 

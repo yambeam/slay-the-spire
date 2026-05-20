@@ -48,17 +48,23 @@ var save_data: SaveGame
 # 标记 Boss 战后是否需要进入阶段切换
 var _pending_stage_transition: bool = false
 
+func back_to_main()->void:
+	
+	get_tree().change_scene_to_file(MAIN_MENU_PATH)
+	
+
 func _ready() -> void:
 	if not run_startup:
 		return
 	pause_menu.save_and_quit.connect(
 		func():
-			get_tree().change_scene_to_file(MAIN_MENU_PATH)
+			back_to_main()
+			
 	)
 	death_settlement.DeathSettlementBackToMainMenu.connect(
 		func():
 			save_data.delete_data()
-			get_tree().change_scene_to_file(MAIN_MENU_PATH)
+			back_to_main()
 	)
 	
 	Events.map_room_selected.connect(_on_map_room_selected)

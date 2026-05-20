@@ -325,6 +325,7 @@ func get_relics_by_color(mask: int) -> Array[Relic]:
 			ret.append_array(relics_by_color[key])
 	return ret
 
+
 func get_relics_by_rarity(mask: int) -> Array[Relic]:
 	var ret: Array[Relic] = []
 	for key in relics_by_rarity:

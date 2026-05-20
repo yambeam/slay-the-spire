@@ -1,7 +1,7 @@
 [gd_resource type="SpineSkeletonDataResource" format=3 uid="uid://nsykb6vjitkj"]
 
-[ext_resource type="SpineAtlasResource" uid="uid://beoc5ksn1so8q" path="res://animations/monsters/nibbit/nibbit.atlas" id="1_j1t7w"]
-[ext_resource type="SpineSkeletonFileResource" uid="uid://coi4r5bv4daor" path="res://animations/monsters/nibbit/nibbit.skel" id="2_4uvv5"]
+[ext_resource type="SpineAtlasResource" uid="uid://c25oktrpa5t1t" path="res://animations/monsters/nibbit/nibbit.atlas" id="1_j1t7w"]
+[ext_resource type="SpineSkeletonFileResource" uid="uid://duu3xbh2tqscp" path="res://animations/monsters/nibbit/nibbit.skel" id="2_4uvv5"]
 
 [sub_resource type="SpineAnimationMix" id="SpineAnimationMix_fbivn"]
 from = "attack"

@@ -6,6 +6,7 @@
 [ext_resource type="Script" uid="uid://br1hibx18tv13" path="res://scripts/costum_resources/card.gd" id="3_i2gtb"]
 [ext_resource type="Script" uid="uid://vkklgv0ma0yf" path="res://scripts/costum_resources/effects/attack_effect.gd" id="4_r42sn"]
 [ext_resource type="Script" uid="uid://dd8cefu454sp5" path="res://scripts/costum_resources/effects/draw_card_effect.gd" id="5_o4h2p"]
+[ext_resource type="AudioStream" uid="uid://b3reffdbqylun" path="res://audio/SFX/slash_attack.mp3" id="5_r42sn"]
 [ext_resource type="Script" uid="uid://cibjrcipdqbs7" path="res://scripts/costum_resources/condition.gd" id="6_ueh7r"]
 [ext_resource type="Script" uid="uid://dxsp70djqf1m" path="res://scripts/costum_resources/effects/while_effect.gd" id="7_gysl5"]
 [ext_resource type="Texture2D" uid="uid://cku1pvm" path="res://images/atlases/card_atlas.sprites/ironclad/pillage.tres" id="8_a1r6p"]
@@ -32,6 +33,7 @@ script = ExtResource("4_r42sn")
 damage_provider = SubResource("Resource_yq08i")
 target_type = 2
 animation_name = "attack"
+sound = ExtResource("5_r42sn")
 metadata/_custom_type_script = "uid://vkklgv0ma0yf"
 
 [sub_resource type="Resource" id="Resource_asdsb"]
@@ -63,6 +65,7 @@ script = ExtResource("4_r42sn")
 damage_provider = SubResource("Resource_2p6q6")
 target_type = 2
 animation_name = "attack"
+sound = ExtResource("5_r42sn")
 metadata/_custom_type_script = "uid://vkklgv0ma0yf"
 
 [sub_resource type="Resource" id="Resource_yxu60"]

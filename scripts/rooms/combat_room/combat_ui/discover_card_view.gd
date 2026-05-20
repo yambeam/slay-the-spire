@@ -17,13 +17,13 @@ func _ready() -> void:
 	skip_button.pressed.connect(_on_skip)
 	peak_button.pressed.connect(_on_peak)
 	
-func select(cards: Array[Card], can_skip : bool = true, upgraded: bool = false, first_play_free: bool = false) -> Card:
+func select(cards: Array[Card], can_skip : bool = true, upgraded: bool = false, first_play_free: bool = false, duplicate_card: bool = true) -> Card:
 	for child in discovered_cards_container.get_children():
 		child.queue_free()
 	await get_tree().process_frame
 	for card: Card in cards:
 		var card_ui: CardMenuUI = CARD_MENU_UI.instantiate()
-		var new_card = card.duplicate()
+		var new_card = card.duplicate() if duplicate_card else card
 		if upgraded:
 			new_card.upgrade()
 		card_ui.card = new_card

@@ -5,6 +5,7 @@
 [ext_resource type="Script" uid="uid://cgmi6f3o7leik" path="res://scripts/costum_resources/effect.gd" id="2_hft8w"]
 [ext_resource type="Script" uid="uid://br1hibx18tv13" path="res://scripts/costum_resources/card.gd" id="3_up5a8"]
 [ext_resource type="Script" uid="uid://dnv7chuoeoi6y" path="res://scripts/costum_resources/effects/block_effect.gd" id="4_0vfk0"]
+[ext_resource type="AudioStream" uid="uid://cnxfhtrl0n8nm" path="res://audio/SFX/frost_orb_passive.mp3" id="5_h7cqw"]
 [ext_resource type="Script" uid="uid://cibjrcipdqbs7" path="res://scripts/costum_resources/condition.gd" id="5_hogt8"]
 [ext_resource type="Script" uid="uid://66oyp04ol1ud" path="res://scripts/costum_resources/effects/condition_effect.gd" id="6_h7cqw"]
 [ext_resource type="Texture2D" uid="uid://b60dq5s" path="res://images/atlases/card_atlas.sprites/ironclad/evil_eye.tres" id="7_0vfk0"]
@@ -32,6 +33,7 @@ script = ExtResource("4_0vfk0")
 block_provider = SubResource("Resource_xpya5")
 target_type = 1
 animation_name = "cast"
+sound = ExtResource("5_h7cqw")
 metadata/_custom_type_script = "uid://dnv7chuoeoi6y"
 
 [sub_resource type="Resource" id="Resource_uarlj"]
@@ -48,6 +50,7 @@ metadata/_custom_type_script = "uid://dtok21t0ujjui"
 script = ExtResource("4_0vfk0")
 block_provider = SubResource("Resource_lj27a")
 target_type = 1
+sound = ExtResource("5_h7cqw")
 metadata/_custom_type_script = "uid://dnv7chuoeoi6y"
 
 [sub_resource type="Resource" id="Resource_acwck"]
@@ -67,6 +70,7 @@ script = ExtResource("4_0vfk0")
 block_provider = SubResource("Resource_e5cpc")
 target_type = 1
 animation_name = "cast"
+sound = ExtResource("5_h7cqw")
 metadata/_custom_type_script = "uid://dnv7chuoeoi6y"
 
 [sub_resource type="Resource" id="Resource_knu3c"]
@@ -83,6 +87,7 @@ metadata/_custom_type_script = "uid://dtok21t0ujjui"
 script = ExtResource("4_0vfk0")
 block_provider = SubResource("Resource_2yu5b")
 target_type = 1
+sound = ExtResource("5_h7cqw")
 metadata/_custom_type_script = "uid://dnv7chuoeoi6y"
 
 [sub_resource type="Resource" id="Resource_xpqxw"]

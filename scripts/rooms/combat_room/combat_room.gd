@@ -10,12 +10,11 @@ extends Control
 @onready var hand_selelctor: HandSelector = %HandSelelctor
 @onready var combat_resolver: CombatResolver = $CombatUI/CombatResolver
 @onready var main_skill_ui: MainSkillUI = $CombatUI/MainSkill
+@onready var back_ground_container: BackGroundContainter = $BackGroundContainer
 
 # 子节点的所有char_stats由该节点分发
 @export var char_stats: CharacterStats: set = _set_char_stats
-@export var music: AudioStream
 @export var relics: RelicHandler
-
 
 func _ready() -> void:
 	# 这步应该在开始一局时进行
@@ -25,13 +24,13 @@ func _ready() -> void:
 	Events.enemy_turn_ended.connect(_on_enemy_turn_ended)
 	Events.player_turn_ended.connect(player_handler.end_turn)
 	Events.player_hand_discarded.connect(enemy_handler.start_turn)
-	
 	# 调试用
 	#start_combat()
-	
+
+func update_background(act: int) -> void:
+	back_ground_container.update_background(act)
 
 func start_combat() -> void:
-	MusicPlayer.play(music, true)
 	enemy_handler.setup_enemies(enemy_encounter)
 	enemy_handler.reset_enemy_intents()
 	# 调试用

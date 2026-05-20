@@ -48,8 +48,8 @@ func speech(text: String, time: float = 2.5) -> void:
 	#buff_ui.buff = buff_context.buff_node
 	#buff_container.add_child(buff_ui)
 
-func choice_for_cards(cards_to_choose: Array[Card]) -> Card:
-	var card: Card = await discover_view.select(cards_to_choose, false, false, false)
+func choice_for_cards(cards_to_choose: Array[Card], duplicate_card: bool = true) -> Card:
+	var card: Card = await discover_view.select(cards_to_choose, false, false, false, duplicate_card)
 	return card
 	
 func discover_card(context: DiscoverContext) -> void:

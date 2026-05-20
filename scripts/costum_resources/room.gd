@@ -17,6 +17,5 @@ enum Type {NOT_ASSIGNED,MONSTER,TREASURE,CAMPFIRE,BOSS,SHOP,ELITE,UNKNOWN,ANCIEN
 # 只在战斗房间使用
 @export var enemy_encounter: EnemyEncounter
 
-
 func _to_string() -> String:
 	return "%s (%s)" % [column , Type.keys()[type][0]]

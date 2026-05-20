@@ -173,6 +173,38 @@ var intent_dict := {
 	"unknown": preload("res://images/packed/intents/intent_unknown.png")
 }
 
+var act1_background_dict := {
+	"common": preload("res://images/rooms/overgrowth/overgrowth_00.png"),
+	"a": [
+		preload("res://images/rooms/overgrowth/overgrowth_01_a.png"),
+		preload("res://images/rooms/overgrowth/overgrowth_02_a.png"),
+		preload("res://images/rooms/overgrowth/overgrowth_03_a.png"),
+		preload("res://images/rooms/overgrowth/overgrowth_04_a.png")
+	],
+	"b":[
+		preload("res://images/rooms/overgrowth/overgrowth_01_b.png"),
+		preload("res://images/rooms/overgrowth/overgrowth_02_b.png"),
+		preload("res://images/rooms/overgrowth/overgrowth_03_b.png"),
+		preload("res://images/rooms/overgrowth/overgrowth_04_b.png")
+	]
+}
+
+var act2_background_dict := {
+	"common": preload("res://images/rooms/hive/hive_00.png"),
+	"a": [
+		preload("res://images/rooms/hive/hive_01_a.png"),
+		preload("res://images/rooms/hive/hive_02_a.png"),
+		preload("res://images/rooms/hive/hive_03_a.png"),
+		preload("res://images/rooms/hive/hive_04_a.png")
+	],
+	"b":[
+		preload("res://images/rooms/hive/hive_01_b.png"),
+		preload("res://images/rooms/hive/hive_02_b.png"),
+		preload("res://images/rooms/hive/hive_03_b.png"),
+		preload("res://images/rooms/hive/hive_04_b.png")
+	]
+}
+
 var card_color_mask: int = 0b1111111
 var card_type_mask: int = 0b11111
 var card_rarity_mask: int = 0b11111

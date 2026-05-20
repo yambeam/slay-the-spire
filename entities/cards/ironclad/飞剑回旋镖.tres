@@ -7,6 +7,7 @@
 [ext_resource type="Script" uid="uid://vkklgv0ma0yf" path="res://scripts/costum_resources/effects/attack_effect.gd" id="4_iyqjs"]
 [ext_resource type="Texture2D" uid="uid://cue7ig7" path="res://images/atlases/card_atlas.sprites/ironclad/sword_boomerang.tres" id="5_5mayh"]
 [ext_resource type="Script" uid="uid://c8ly86kb5vc65" path="res://scripts/costum_resources/effects/iteration_effect.gd" id="5_iyqjs"]
+[ext_resource type="AudioStream" uid="uid://b3reffdbqylun" path="res://audio/SFX/slash_attack.mp3" id="5_j0gt8"]
 
 [sub_resource type="Resource" id="Resource_j0gt8"]
 script = ExtResource("2_ux3rq")
@@ -48,6 +49,7 @@ script = ExtResource("4_iyqjs")
 damage_provider = SubResource("Resource_ba0l6")
 target_type = 4
 animation_name = "attack"
+sound = ExtResource("5_j0gt8")
 metadata/_custom_type_script = "uid://vkklgv0ma0yf"
 
 [sub_resource type="Resource" id="Resource_itxlr"]
@@ -71,6 +73,7 @@ script = ExtResource("4_iyqjs")
 damage_provider = SubResource("Resource_f2pj3")
 target_type = 4
 animation_name = "attack"
+sound = ExtResource("5_j0gt8")
 metadata/_custom_type_script = "uid://vkklgv0ma0yf"
 
 [sub_resource type="Resource" id="Resource_n4no8"]

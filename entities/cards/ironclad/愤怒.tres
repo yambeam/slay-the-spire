@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://6ony3r" path="res://images/atlases/card_atlas.sprites/ironclad/anger.tres" id="2_o32pn"]
 [ext_resource type="Script" uid="uid://cgmi6f3o7leik" path="res://scripts/costum_resources/effect.gd" id="3_oj80b"]
 [ext_resource type="Script" uid="uid://vkklgv0ma0yf" path="res://scripts/costum_resources/effects/attack_effect.gd" id="4_6ni0n"]
-[ext_resource type="AudioStream" uid="uid://b4eqc65cqogm6" path="res://audio/SFX/blunt_attack.mp3" id="4_u3nrw"]
+[ext_resource type="AudioStream" uid="uid://bcwmh6adledx" path="res://audio/SFX/blunt_attack.mp3" id="4_u3nrw"]
 [ext_resource type="Script" uid="uid://bfd4cqklwdhs3" path="res://scripts/costum_resources/effects/put_card_effect.gd" id="5_oj80b"]
 [ext_resource type="Script" uid="uid://br1hibx18tv13" path="res://scripts/costum_resources/card.gd" id="8_6ni0n"]
 
@@ -32,6 +32,7 @@ script = ExtResource("4_6ni0n")
 damage_provider = SubResource("Resource_2a7o5")
 target_type = 2
 animation_name = "attack"
+sound = ExtResource("4_u3nrw")
 metadata/_custom_type_script = "uid://vkklgv0ma0yf"
 
 [sub_resource type="Resource" id="Resource_e6lug"]
@@ -56,6 +57,7 @@ script = ExtResource("4_6ni0n")
 damage_provider = SubResource("Resource_jmvdx")
 target_type = 2
 animation_name = "attack"
+sound = ExtResource("4_u3nrw")
 metadata/_custom_type_script = "uid://vkklgv0ma0yf"
 
 [sub_resource type="Resource" id="Resource_2e8cq"]
@@ -90,7 +92,6 @@ enchantment = ExtResource("2_cdnap")
 effects = Array[ExtResource("3_oj80b")]([SubResource("Resource_20lup"), SubResource("Resource_dbej6")])
 portrait = ExtResource("2_o32pn")
 base_description = "[center]造成{damage}点伤害。[/center][p][center]将该牌的一张复制放入[color=gold]弃牌堆[/color]。[/center]"
-sound = ExtResource("4_u3nrw")
 base_numeric_entries = Array[ExtResource("1_o32pn")]([SubResource("Resource_o32pn")])
 upgraded_target = 1
 upgraded_description = "[center]造成{damage}点伤害。[/center][p][center]将该牌的一张复制放入[color=gold]弃牌堆[/color]。[/center]"

@@ -9,17 +9,45 @@
 [ext_resource type="PackedScene" uid="uid://bijk3yg4btssm" path="res://scenes/ui/deck_view.tscn" id="5_gqbdr"]
 [ext_resource type="PackedScene" uid="uid://c00rm6aktjcg8" path="res://scenes/settings/pause_menu.tscn" id="6_5o40y"]
 [ext_resource type="PackedScene" uid="uid://d3g5crq5m21wy" path="res://scenes/settings/death_settlement.tscn" id="7_0tt4g"]
+[ext_resource type="Script" uid="uid://dyvkdm7mnmxw3" path="res://scripts/run/bgm_proxy.gd" id="10_txvia"]
+[ext_resource type="AudioStream" uid="uid://bm304u2ponpu8" path="res://audio/music/creation_beyond - 密林_a1_1(墨影幻灵).mp3" id="11_u2bn2"]
+[ext_resource type="AudioStream" uid="uid://kcwjrfidykn7" path="res://audio/music/creation_beyond - 密林_a1_5(普通战斗).mp3" id="12_psst2"]
+[ext_resource type="AudioStream" uid="uid://bs5rnqr2p6f1b" path="res://audio/music/creation_beyond - 密林_a1_22.mp3" id="13_ymu0v"]
+[ext_resource type="AudioStream" uid="uid://c0qpkurq6ay0l" path="res://audio/music/creation_beyond - 密林_a1_3(精英).mp3" id="14_vqexm"]
+[ext_resource type="AudioStream" uid="uid://bjqhqq0kxyxih" path="res://audio/music/creation_beyond - 密林_a1_2（商店）.mp3" id="15_wy2jw"]
+[ext_resource type="AudioStream" uid="uid://dc8knjxdn4ro" path="res://audio/music/creation_beyond - 巢穴_a1_8（知识恶魔）.mp3" id="16_0bq42"]
+[ext_resource type="AudioStream" uid="uid://cu3wff3v5tmwc" path="res://audio/music/creation_beyond - 密林_a1_7( 事件).mp3" id="16_psst2"]
+[ext_resource type="AudioStream" uid="uid://dthdef7oghy5l" path="res://audio/music/creation_beyond - 巢穴_a1_11（普通战斗）.mp3" id="17_wgm62"]
+[ext_resource type="AudioStream" uid="uid://dmrl6o2f467t7" path="res://audio/music/creation_beyond - 巢穴_a1_15.mp3" id="18_aoa3b"]
+[ext_resource type="AudioStream" uid="uid://cpipjg0w3m05i" path="res://audio/music/creation_beyond - 巢穴_a1_5(精英帝王蟹).mp3" id="19_hu4rv"]
+[ext_resource type="AudioStream" uid="uid://c8kdj40s6ra1f" path="res://audio/music/creation_beyond - 巢穴_a1_2（商店）.mp3" id="20_xgkqp"]
+[ext_resource type="AudioStream" uid="uid://d0b5tdfqv8fyc" path="res://audio/music/creation_beyond - 巢穴_a1_7( 事件).mp3" id="22_ymu0v"]
 
-[node name="Run" type="Node" unique_id=185755344]
+[node name="Run" type="Node" unique_id=252708330 node_paths=PackedStringArray("bgm_proxy")]
 script = ExtResource("1_l7o68")
 run_startup = ExtResource("2_wdonh")
 act1_encounter_pool = ExtResource("3_ux63y")
 act2_encounter_pool = ExtResource("4_yeia0")
+<<<<<<< HEAD
+=======
+bgm_proxy = NodePath("BGMProxy")
+>>>>>>> 24026f8c449fd97993d2e2c5ecbecb385c635e0f
 
 [node name="Map" parent="." unique_id=2080320068 instance=ExtResource("1_8rlou")]
 visible = false
 
+<<<<<<< HEAD
 [node name="CurrentRoom" type="Node" parent="." unique_id=1013259375]
+=======
+[node name="CurrentRoom" type="Control" parent="." unique_id=871699467]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+>>>>>>> 24026f8c449fd97993d2e2c5ecbecb385c635e0f
 
 [node name="TopBar" type="CanvasLayer" parent="." unique_id=849789068]
 layer = 2
@@ -46,3 +74,25 @@ visible = false
 [node name="death_settlement" parent="." unique_id=847506507 instance=ExtResource("7_0tt4g")]
 process_mode = 3
 visible = false
+
+[node name="BGMProxy" type="Node" parent="." unique_id=1485642711]
+script = ExtResource("10_txvia")
+act1_bgm = Dictionary[String, AudioStream]({
+"BACKGROUND": null,
+"BOSS": ExtResource("11_u2bn2"),
+"ELITE": ExtResource("14_vqexm"),
+"SHOP": ExtResource("15_wy2jw"),
+"STRONG_ENEMY": ExtResource("13_ymu0v"),
+"TREASURE_ROOM": ExtResource("16_psst2"),
+"WEAK_ENEMY": ExtResource("12_psst2")
+})
+act2_bgm = Dictionary[String, AudioStream]({
+"BACKGROUND": ExtResource("18_aoa3b"),
+"BOSS": ExtResource("16_0bq42"),
+"ELITE": ExtResource("19_hu4rv"),
+"SHOP": ExtResource("20_xgkqp"),
+"STRONG_ENEMY": ExtResource("18_aoa3b"),
+"TREASURE_ROOM": ExtResource("22_ymu0v"),
+"WEAK_ENEMY": ExtResource("17_wgm62")
+})
+metadata/_custom_type_script = "uid://dyvkdm7mnmxw3"

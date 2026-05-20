@@ -1,0 +1,67 @@
+[gd_scene format=3 uid="uid://bviecg6eqpo4e"]
+
+[ext_resource type="Texture2D" uid="uid://cvxy8ydgwomqh" path="res://images/rooms/underdocks/underdocks_01_a.png" id="1_jjycv"]
+[ext_resource type="Script" uid="uid://ebpvwmijjnwx" path="res://scripts/rooms/combat_room/back_ground_container.gd" id="1_rnybd"]
+[ext_resource type="Texture2D" uid="uid://bnlf5ynahsy8u" path="res://images/rooms/underdocks/underdocks_02_a.png" id="2_rnybd"]
+[ext_resource type="Texture2D" uid="uid://del54pxobtgf8" path="res://images/rooms/underdocks/underdocks_04_a.png" id="3_lxvrw"]
+[ext_resource type="Texture2D" uid="uid://c6r8xp7wi3hkh" path="res://images/rooms/underdocks/underdocks_05_a.png" id="4_4li5w"]
+
+[node name="BackGroundContainer" type="Control" unique_id=230468796]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_rnybd")
+
+[node name="0" type="TextureRect" parent="." unique_id=1446948395]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("1_jjycv")
+
+[node name="1" type="TextureRect" parent="." unique_id=285753560]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("2_rnybd")
+
+[node name="2" type="TextureRect" parent="." unique_id=65844156]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("3_lxvrw")
+
+[node name="3" type="TextureRect" parent="." unique_id=248194080]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("4_4li5w")
+
+[node name="4" type="TextureRect" parent="." unique_id=551334691]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("4_4li5w")

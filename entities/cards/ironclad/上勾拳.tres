@@ -6,6 +6,7 @@
 [ext_resource type="Script" uid="uid://br1hibx18tv13" path="res://scripts/costum_resources/card.gd" id="3_xc7rc"]
 [ext_resource type="Script" uid="uid://vkklgv0ma0yf" path="res://scripts/costum_resources/effects/attack_effect.gd" id="4_bvkim"]
 [ext_resource type="Script" uid="uid://b8qfrs61nmcix" path="res://scripts/costum_resources/effects/apply_buff_effect.gd" id="5_56qmo"]
+[ext_resource type="AudioStream" uid="uid://bcwmh6adledx" path="res://audio/SFX/blunt_attack.mp3" id="5_bvkim"]
 [ext_resource type="Texture2D" uid="uid://cfukqh5" path="res://images/atlases/card_atlas.sprites/ironclad/uppercut.tres" id="6_y87yk"]
 
 [sub_resource type="Resource" id="Resource_cqy8q"]
@@ -51,11 +52,12 @@ script = ExtResource("2_3fbv6")
 fixed_value = 13
 metadata/_custom_type_script = "uid://dtok21t0ujjui"
 
-[sub_resource type="Resource" id="Resource_xooay"]
+[sub_resource type="Resource" id="Resource_56qmo"]
 script = ExtResource("4_bvkim")
 damage_provider = SubResource("Resource_pxuka")
 target_type = 2
 animation_name = "attack"
+sound = ExtResource("5_bvkim")
 metadata/_custom_type_script = "uid://vkklgv0ma0yf"
 
 [sub_resource type="Resource" id="Resource_5phtf"]
@@ -92,6 +94,7 @@ script = ExtResource("4_bvkim")
 damage_provider = SubResource("Resource_2r33q")
 target_type = 2
 animation_name = "attack"
+sound = ExtResource("5_bvkim")
 metadata/_custom_type_script = "uid://vkklgv0ma0yf"
 
 [sub_resource type="Resource" id="Resource_ie31h"]
@@ -162,7 +165,7 @@ id = "上勾拳"
 base_target = 1
 base_cost = 2
 rarity = 2
-effects = Array[ExtResource("2_37c6j")]([SubResource("Resource_xooay"), SubResource("Resource_bd4qy"), SubResource("Resource_vmyvn")])
+effects = Array[ExtResource("2_37c6j")]([SubResource("Resource_56qmo"), SubResource("Resource_bd4qy"), SubResource("Resource_vmyvn")])
 portrait = ExtResource("6_y87yk")
 base_description = "[center]造成{damage}点伤害。
 给予{stacks_1}层[color=gold]虚弱[/color]。

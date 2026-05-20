@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://v5fhk" path="res://images/atlases/card_atlas.sprites/ironclad/armaments.tres" id="2_qyk1p"]
 [ext_resource type="Script" uid="uid://cgmi6f3o7leik" path="res://scripts/costum_resources/effect.gd" id="3_x6sth"]
 [ext_resource type="Script" uid="uid://dnv7chuoeoi6y" path="res://scripts/costum_resources/effects/block_effect.gd" id="4_42s83"]
-[ext_resource type="AudioStream" uid="uid://cnxfhtrl0n8nm" path="res://audio/SFX/frost_orb_passive.mp3" id="4_auaqv"]
+[ext_resource type="AudioStream" uid="uid://cnxfhtrl0n8nm" path="res://audio/SFX/frost_orb_passive.mp3" id="5_04gy0"]
 [ext_resource type="Script" uid="uid://dyn5a42fs7gxs" path="res://scripts/costum_resources/card_condition.gd" id="5_thu2h"]
 [ext_resource type="Script" uid="uid://cqcf6adphkjfy" path="res://scripts/costum_resources/effects/select_card_effect.gd" id="6_04gy0"]
 [ext_resource type="Script" uid="uid://br1hibx18tv13" path="res://scripts/costum_resources/card.gd" id="7_hb7p8"]
@@ -34,6 +34,7 @@ metadata/_custom_type_script = "uid://dtok21t0ujjui"
 script = ExtResource("4_42s83")
 block_provider = SubResource("Resource_04gy0")
 target_type = 1
+sound = ExtResource("5_04gy0")
 metadata/_custom_type_script = "uid://dnv7chuoeoi6y"
 
 [sub_resource type="Resource" id="Resource_gqx7i"]
@@ -69,6 +70,7 @@ metadata/_custom_type_script = "uid://dtok21t0ujjui"
 script = ExtResource("4_42s83")
 block_provider = SubResource("Resource_jhr7b")
 target_type = 1
+sound = ExtResource("5_04gy0")
 metadata/_custom_type_script = "uid://dnv7chuoeoi6y"
 
 [sub_resource type="Resource" id="Resource_kv0b5"]
@@ -108,7 +110,6 @@ effects = Array[ExtResource("3_x6sth")]([SubResource("Resource_hi5sw"), SubResou
 portrait = ExtResource("2_qyk1p")
 base_description = "[center]获得{block}点[color=gold]格挡[/color]。[/center]
 [center][color=gold]升级[/color]手牌中的一张卡牌。[/center]"
-sound = ExtResource("4_auaqv")
 base_numeric_entries = Array[ExtResource("1_hsmi0")]([SubResource("Resource_xctxy")])
 upgraded_cost = 1
 upgraded_description = "[center]获得{block}点[color=gold]格挡[/color]。[/center]

@@ -6,6 +6,7 @@
 [ext_resource type="Script" uid="uid://vkklgv0ma0yf" path="res://scripts/costum_resources/effects/attack_effect.gd" id="4_00xma"]
 [ext_resource type="Texture2D" uid="uid://clc0qa0" path="res://images/atlases/card_atlas.sprites/ironclad/tear_asunder.tres" id="5_0wln0"]
 [ext_resource type="Script" uid="uid://c8ly86kb5vc65" path="res://scripts/costum_resources/effects/iteration_effect.gd" id="5_00xma"]
+[ext_resource type="AudioStream" uid="uid://bcwmh6adledx" path="res://audio/SFX/blunt_attack.mp3" id="5_rct3s"]
 [ext_resource type="Script" uid="uid://byixeomxnqpsl" path="res://entities/cards/ironclad/扯碎.gd" id="6_t33nu"]
 
 [sub_resource type="Resource" id="Resource_00xma"]
@@ -50,6 +51,7 @@ script = ExtResource("4_00xma")
 damage_provider = SubResource("Resource_8667c")
 target_type = 2
 animation_name = "attack"
+sound = ExtResource("5_rct3s")
 metadata/_custom_type_script = "uid://vkklgv0ma0yf"
 
 [sub_resource type="Resource" id="Resource_pony6"]
@@ -74,6 +76,7 @@ script = ExtResource("4_00xma")
 damage_provider = SubResource("Resource_8pee4")
 target_type = 2
 animation_name = "attack"
+sound = ExtResource("5_rct3s")
 metadata/_custom_type_script = "uid://vkklgv0ma0yf"
 
 [sub_resource type="Resource" id="Resource_hgoge"]

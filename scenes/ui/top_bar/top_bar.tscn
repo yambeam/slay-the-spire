@@ -35,10 +35,11 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = -63.0
 offset_right = 63.0
-offset_bottom = -980.0
+offset_bottom = -996.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("1_x5rd1")
+stretch_mode = 4
 
 [node name="Left" type="HBoxContainer" parent="." unique_id=1368003169]
 layout_mode = 0

@@ -1,0 +1,102 @@
+[gd_resource type="Resource" script_class="Card" format=3 uid="uid://bt2fs4ultf32g"]
+
+[ext_resource type="Script" uid="uid://cxgxfbwykbp84" path="res://scripts/costum_resources/numeric_entry.gd" id="1_ix2rm"]
+[ext_resource type="Script" uid="uid://dtok21t0ujjui" path="res://scripts/costum_resources/numeric_provider.gd" id="2_e3ov5"]
+[ext_resource type="Script" uid="uid://cgmi6f3o7leik" path="res://scripts/costum_resources/effect.gd" id="2_xodug"]
+[ext_resource type="Script" uid="uid://br1hibx18tv13" path="res://scripts/costum_resources/card.gd" id="3_kb5ip"]
+[ext_resource type="Script" uid="uid://b8qfrs61nmcix" path="res://scripts/costum_resources/effects/apply_buff_effect.gd" id="4_bboe3"]
+[ext_resource type="Texture2D" uid="uid://cfuxn6t" path="res://images/atlases/card_atlas.sprites/colorless/dark_shackles.tres" id="5_5eq47"]
+
+[sub_resource type="Resource" id="Resource_btyph"]
+script = ExtResource("2_e3ov5")
+fixed_value = 9
+metadata/_custom_type_script = "uid://dtok21t0ujjui"
+
+[sub_resource type="Resource" id="Resource_ayvxj"]
+script = ExtResource("1_ix2rm")
+numeric_type = 4
+numeric_provider = SubResource("Resource_btyph")
+placeholder = "stacks"
+affected_by = 3
+metadata/_custom_type_script = "uid://cxgxfbwykbp84"
+
+[sub_resource type="Resource" id="Resource_tv1a7"]
+script = ExtResource("2_e3ov5")
+fixed_value = -9
+metadata/_custom_type_script = "uid://dtok21t0ujjui"
+
+[sub_resource type="Resource" id="Resource_rp52x"]
+script = ExtResource("4_bboe3")
+buff_name = "力量"
+buff_stack_provider = SubResource("Resource_tv1a7")
+target_type = 2
+animation_name = "cast"
+metadata/_custom_type_script = "uid://b8qfrs61nmcix"
+
+[sub_resource type="Resource" id="Resource_wv4db"]
+script = ExtResource("2_e3ov5")
+fixed_value = 9
+metadata/_custom_type_script = "uid://dtok21t0ujjui"
+
+[sub_resource type="Resource" id="Resource_ycr3s"]
+script = ExtResource("4_bboe3")
+buff_name = "镣铐"
+buff_stack_provider = SubResource("Resource_wv4db")
+target_type = 2
+metadata/_custom_type_script = "uid://b8qfrs61nmcix"
+
+[sub_resource type="Resource" id="Resource_88cpv"]
+script = ExtResource("2_e3ov5")
+fixed_value = -15
+metadata/_custom_type_script = "uid://dtok21t0ujjui"
+
+[sub_resource type="Resource" id="Resource_gyjdq"]
+script = ExtResource("4_bboe3")
+buff_name = "力量"
+buff_stack_provider = SubResource("Resource_88cpv")
+target_type = 2
+animation_name = "cast"
+metadata/_custom_type_script = "uid://b8qfrs61nmcix"
+
+[sub_resource type="Resource" id="Resource_05ksw"]
+script = ExtResource("2_e3ov5")
+fixed_value = 15
+metadata/_custom_type_script = "uid://dtok21t0ujjui"
+
+[sub_resource type="Resource" id="Resource_tc0n1"]
+script = ExtResource("4_bboe3")
+buff_name = "镣铐"
+buff_stack_provider = SubResource("Resource_05ksw")
+target_type = 2
+metadata/_custom_type_script = "uid://b8qfrs61nmcix"
+
+[sub_resource type="Resource" id="Resource_v17sv"]
+script = ExtResource("2_e3ov5")
+fixed_value = 15
+metadata/_custom_type_script = "uid://dtok21t0ujjui"
+
+[sub_resource type="Resource" id="Resource_nrcwe"]
+script = ExtResource("1_ix2rm")
+numeric_type = 4
+numeric_provider = SubResource("Resource_v17sv")
+placeholder = "stacks"
+affected_by = 3
+metadata/_custom_type_script = "uid://cxgxfbwykbp84"
+
+[resource]
+script = ExtResource("3_kb5ip")
+id = "黑暗镣铐"
+type = 2
+base_target = 1
+card_color = 64
+rarity = 2
+effects = Array[ExtResource("2_xodug")]([SubResource("Resource_rp52x"), SubResource("Resource_ycr3s")])
+portrait = ExtResource("5_5eq47")
+base_description = "[center]使一名敌人在本回合失去{stacks}点[color=gold]力量[/color]。[/center]"
+base_numeric_entries = Array[ExtResource("1_ix2rm")]([SubResource("Resource_ayvxj")])
+exhaust = true
+upgraded_target = 1
+upgraded_description = "[center]使一名敌人在本回合失去{stacks}点[color=gold]力量[/color]。[/center]"
+upgraded_numeric_entries = Array[ExtResource("1_ix2rm")]([SubResource("Resource_nrcwe")])
+upgraded_effects = Array[ExtResource("2_xodug")]([SubResource("Resource_gyjdq"), SubResource("Resource_tc0n1")])
+metadata/_custom_type_script = "uid://br1hibx18tv13"

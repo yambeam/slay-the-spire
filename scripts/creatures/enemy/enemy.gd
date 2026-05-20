@@ -148,11 +148,13 @@ func die() -> void:
 	health_bar.hide()
 	reticles.hide()
 	buff_container.hide()
-	spine_anim_state.set_animation(enemy_ai.get_die_animation_name(), true, 0)
+	spine_anim_state.set_animation(enemy_ai.get_die_animation_name(), false, 0)
+	await spine_manager.animation_completed
 	Events.enemy_died.emit()
-	spine_manager.animation_completed.connect(
-		func (_x, _y, _z): queue_free()
-	)
+	queue_free()
+	#spine_manager.animation_completed.connect(
+		#func (_x, _y, _z): queue_free()
+	#)
 
 func heal(context: HealContext) -> int:
 	return context.target.gain_health(context)

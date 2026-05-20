@@ -6,6 +6,6 @@ func on_picked_up(run_stats: RunStats, char_stats: CharacterStats, _select_deck_
 	relics.shuffle()
 	for relic: Relic in relics.slice(0, 2):
 		run_stats.add_relic(relic.duplicate())
-	print(strike_and_defend_cards)
+		ItemPool.remove_relic(relic)
 	for card: Card in strike_and_defend_cards:
 		char_stats.add_card_to_deck(card.duplicate())

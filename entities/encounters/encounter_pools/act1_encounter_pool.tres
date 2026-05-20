@@ -2,176 +2,22 @@
 
 [ext_resource type="Script" uid="uid://dgu4qpyr0pnnb" path="res://scripts/costum_resources/enemy_encounter.gd" id="1_8b4wf"]
 [ext_resource type="Script" uid="uid://ctyh7cm7a03s2" path="res://scripts/costum_resources/enemy_encounter_pool.gd" id="2_r6wps"]
-[ext_resource type="Resource" uid="uid://qd6x4mb1j81y" path="res://entities/enemies/toadpole/toadpole_stats.tres" id="3_lh6jw"]
-[ext_resource type="Resource" uid="uid://6t0lxm3urof3" path="res://entities/enemies/leaf_slime_s/leaf_slime_s.tres" id="4_oisqt"]
-[ext_resource type="Resource" uid="uid://b8gnh6fck14ic" path="res://entities/enemies/mawler/mawler_stats.tres" id="5_15xrl"]
-[ext_resource type="Resource" uid="uid://bdt85ngfibtet" path="res://entities/enemies/leaf_slime_m/leaf_slime_m.tres" id="6_5fgax"]
-[ext_resource type="Resource" uid="uid://cgwt53u65hq2h" path="res://entities/enemies/twig_slime_m/twig_slime_m.tres" id="7_nvtwo"]
-[ext_resource type="Resource" uid="uid://cm4lesyla0lcc" path="res://entities/enemies/twig_slime_s/twig_slime_s.tres" id="8_q6si1"]
-[ext_resource type="Script" uid="uid://dw53gdpom3gn6" path="res://scripts/costum_resources/enemy_entry.gd" id="9_4vgo2"]
-[ext_resource type="Resource" uid="uid://co5o388rhc6fe" path="res://entities/enemies/vantom/vantom.tres" id="10_8bura"]
-[ext_resource type="Resource" uid="uid://bv0m86mshv3gj" path="res://entities/enemies/nibbit/nibbit.tres" id="12_j2cuc"]
+[ext_resource type="Resource" uid="uid://u24smvt3yqw3" path="res://entities/encounters/act1/four_slimes.tres" id="8_15xrl"]
+[ext_resource type="Resource" uid="uid://beqm8vohjiyut" path="res://entities/encounters/act1/one_mawler.tres" id="9_5fgax"]
+[ext_resource type="Resource" uid="uid://drieekrynb06r" path="res://entities/encounters/act1/one_nibbit.tres" id="10_nvtwo"]
+[ext_resource type="Resource" uid="uid://baf6ktkxmdu8i" path="res://entities/encounters/act1/one_slime_one_toadpole.tres" id="11_q6si1"]
+[ext_resource type="Resource" uid="uid://jgh12yjtqvvh" path="res://entities/encounters/act1/two_leaf_slimes.tres" id="12_j2cuc"]
+[ext_resource type="Resource" uid="uid://dbjvka6mgirbd" path="res://entities/encounters/act1/two_nibbits.tres" id="13_sljyl"]
+[ext_resource type="Resource" uid="uid://d2ev4fm055apj" path="res://entities/encounters/act1/vantom.tres" id="14_cu8jw"]
 [ext_resource type="Resource" uid="uid://da4v3myp4p1av" path="res://entities/encounters/act1/three_inklets.tres" id="14_oisqt"]
+[ext_resource type="Resource" uid="uid://dk34vc6o3tigt" path="res://entities/encounters/act1/two_toadpoles.tres" id="15_5uous"]
 [ext_resource type="Resource" uid="uid://cswtrh1b5sfc6" path="res://entities/encounters/act1/红果果绿泡泡.tres" id="15_15xrl"]
 [ext_resource type="Resource" uid="uid://b7sd8dpvqdjb5" path="res://entities/encounters/act1/trump.tres" id="16_5fgax"]
 [ext_resource type="Resource" uid="uid://kgpjjxthep23" path="res://entities/encounters/act1/one_byrdonis.tres" id="17_nvtwo"]
 [ext_resource type="Resource" uid="uid://bx4gxk6i1joc2" path="res://entities/encounters/act1/one_bygone_effigy.tres" id="18_q6si1"]
 [ext_resource type="Resource" uid="uid://d0qb73gwmfteb" path="res://entities/encounters/act1/lagavulin_matriarch.tres" id="19_j2cuc"]
 
-[sub_resource type="Resource" id="Resource_e7ryn"]
-script = ExtResource("9_4vgo2")
-enemy_stats = ExtResource("3_lh6jw")
-position = Vector2(1200, 520)
-metadata/_custom_type_script = "uid://dw53gdpom3gn6"
-
-[sub_resource type="Resource" id="Resource_6ah37"]
-script = ExtResource("9_4vgo2")
-enemy_stats = ExtResource("3_lh6jw")
-position = Vector2(1700, 520)
-metadata/_custom_type_script = "uid://dw53gdpom3gn6"
-
-[sub_resource type="Resource" id="Resource_x8afg"]
-script = ExtResource("1_8b4wf")
-weight = 1.0
-enemy_entries = Array[ExtResource("9_4vgo2")]([SubResource("Resource_e7ryn"), SubResource("Resource_6ah37")])
-encounter_name = "two_toadpoles"
-metadata/_custom_type_script = "uid://dgu4qpyr0pnnb"
-
-[sub_resource type="Resource" id="Resource_duskx"]
-script = ExtResource("9_4vgo2")
-enemy_stats = ExtResource("6_5fgax")
-position = Vector2(1200, 520)
-metadata/_custom_type_script = "uid://dw53gdpom3gn6"
-
-[sub_resource type="Resource" id="Resource_8fsih"]
-script = ExtResource("9_4vgo2")
-enemy_stats = ExtResource("3_lh6jw")
-position = Vector2(1700, 520)
-metadata/_custom_type_script = "uid://dw53gdpom3gn6"
-
-[sub_resource type="Resource" id="Resource_cu8jw"]
-script = ExtResource("1_8b4wf")
-weight = 1.0
-enemy_entries = Array[ExtResource("9_4vgo2")]([SubResource("Resource_duskx"), SubResource("Resource_8fsih")])
-encounter_name = "one_slime_one_toadpole"
-metadata/_custom_type_script = "uid://dgu4qpyr0pnnb"
-
-[sub_resource type="Resource" id="Resource_yfb15"]
-script = ExtResource("9_4vgo2")
-enemy_stats = ExtResource("5_15xrl")
-position = Vector2(1385, 520)
-metadata/_custom_type_script = "uid://dw53gdpom3gn6"
-
-[sub_resource type="Resource" id="Resource_5uous"]
-script = ExtResource("1_8b4wf")
-type = 1
-weight = 1.0
-enemy_entries = Array[ExtResource("9_4vgo2")]([SubResource("Resource_yfb15")])
-encounter_name = "one_mawler"
-metadata/_custom_type_script = "uid://dgu4qpyr0pnnb"
-
-[sub_resource type="Resource" id="Resource_gnetj"]
-script = ExtResource("9_4vgo2")
-enemy_stats = ExtResource("6_5fgax")
-position = Vector2(1200, 520)
-metadata/_custom_type_script = "uid://dw53gdpom3gn6"
-
-[sub_resource type="Resource" id="Resource_0prii"]
-script = ExtResource("9_4vgo2")
-enemy_stats = ExtResource("4_oisqt")
-position = Vector2(1700, 520)
-metadata/_custom_type_script = "uid://dw53gdpom3gn6"
-
-[sub_resource type="Resource" id="Resource_bgxud"]
-script = ExtResource("1_8b4wf")
-weight = 1.0
-enemy_entries = Array[ExtResource("9_4vgo2")]([SubResource("Resource_gnetj"), SubResource("Resource_0prii")])
-encounter_name = "two_slimes"
-metadata/_custom_type_script = "uid://dgu4qpyr0pnnb"
-
-[sub_resource type="Resource" id="Resource_4u3c1"]
-script = ExtResource("9_4vgo2")
-enemy_stats = ExtResource("7_nvtwo")
-position = Vector2(1100, 520)
-metadata/_custom_type_script = "uid://dw53gdpom3gn6"
-
-[sub_resource type="Resource" id="Resource_lh80j"]
-script = ExtResource("9_4vgo2")
-enemy_stats = ExtResource("6_5fgax")
-position = Vector2(1350, 520)
-metadata/_custom_type_script = "uid://dw53gdpom3gn6"
-
-[sub_resource type="Resource" id="Resource_lpmjb"]
-script = ExtResource("9_4vgo2")
-enemy_stats = ExtResource("8_q6si1")
-position = Vector2(1550, 520)
-metadata/_custom_type_script = "uid://dw53gdpom3gn6"
-
-[sub_resource type="Resource" id="Resource_e1dnm"]
-script = ExtResource("9_4vgo2")
-enemy_stats = ExtResource("4_oisqt")
-position = Vector2(1750, 520)
-metadata/_custom_type_script = "uid://dw53gdpom3gn6"
-
-[sub_resource type="Resource" id="Resource_f7qwd"]
-script = ExtResource("1_8b4wf")
-type = 1
-weight = 1.0
-enemy_entries = Array[ExtResource("9_4vgo2")]([SubResource("Resource_4u3c1"), SubResource("Resource_lh80j"), SubResource("Resource_lpmjb"), SubResource("Resource_e1dnm")])
-encounter_name = "four_slimes"
-metadata/_custom_type_script = "uid://dgu4qpyr0pnnb"
-
-[sub_resource type="Resource" id="Resource_urjtc"]
-script = ExtResource("9_4vgo2")
-enemy_stats = ExtResource("12_j2cuc")
-position = Vector2(1200, 520)
-metadata/_custom_type_script = "uid://dw53gdpom3gn6"
-
-[sub_resource type="Resource" id="Resource_b8gyn"]
-script = ExtResource("9_4vgo2")
-enemy_stats = ExtResource("12_j2cuc")
-position = Vector2(1700, 520)
-metadata/_custom_type_script = "uid://dw53gdpom3gn6"
-
-[sub_resource type="Resource" id="Resource_36jb8"]
-script = ExtResource("1_8b4wf")
-type = 1
-weight = 1.0
-enemy_entries = Array[ExtResource("9_4vgo2")]([SubResource("Resource_urjtc"), SubResource("Resource_b8gyn")])
-encounter_name = "two_nibbits"
-metadata/_custom_type_script = "uid://dgu4qpyr0pnnb"
-
-[sub_resource type="Resource" id="Resource_4t2tm"]
-script = ExtResource("9_4vgo2")
-enemy_stats = ExtResource("12_j2cuc")
-position = Vector2(1385, 520)
-metadata/_custom_type_script = "uid://dw53gdpom3gn6"
-
-[sub_resource type="Resource" id="Resource_gxx7m"]
-script = ExtResource("1_8b4wf")
-weight = 1.0
-enemy_entries = Array[ExtResource("9_4vgo2")]([SubResource("Resource_4t2tm")])
-encounter_name = "one_nibbit"
-metadata/_custom_type_script = "uid://dgu4qpyr0pnnb"
-
-[sub_resource type="Resource" id="Resource_rj0wk"]
-script = ExtResource("9_4vgo2")
-enemy_stats = ExtResource("10_8bura")
-position = Vector2(1385, 520)
-initial_buff = {
-"滑溜": 9
-}
-metadata/_custom_type_script = "uid://dw53gdpom3gn6"
-
-[sub_resource type="Resource" id="Resource_o2qns"]
-script = ExtResource("1_8b4wf")
-type = 3
-weight = 1.0
-enemy_entries = Array[ExtResource("9_4vgo2")]([SubResource("Resource_rj0wk")])
-encounter_name = "vantom"
-metadata/_custom_type_script = "uid://dgu4qpyr0pnnb"
-
 [resource]
 script = ExtResource("2_r6wps")
-pool = Array[ExtResource("1_8b4wf")]([SubResource("Resource_x8afg"), SubResource("Resource_cu8jw"), SubResource("Resource_5uous"), SubResource("Resource_bgxud"), SubResource("Resource_f7qwd"), SubResource("Resource_36jb8"), SubResource("Resource_gxx7m"), SubResource("Resource_o2qns"), ExtResource("14_oisqt"), ExtResource("15_15xrl"), ExtResource("16_5fgax"), ExtResource("17_nvtwo"), ExtResource("18_q6si1"), ExtResource("19_j2cuc")])
+pool = Array[ExtResource("1_8b4wf")]([ExtResource("14_oisqt"), ExtResource("15_15xrl"), ExtResource("16_5fgax"), ExtResource("17_nvtwo"), ExtResource("18_q6si1"), ExtResource("19_j2cuc"), ExtResource("8_15xrl"), ExtResource("9_5fgax"), ExtResource("10_nvtwo"), ExtResource("11_q6si1"), ExtResource("12_j2cuc"), ExtResource("13_sljyl"), ExtResource("14_cu8jw"), ExtResource("15_5uous")])
 metadata/_custom_type_script = "uid://ctyh7cm7a03s2"

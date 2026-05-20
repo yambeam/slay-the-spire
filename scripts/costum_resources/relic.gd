@@ -38,7 +38,7 @@ enum Rarity{
 @export var effects: Array[Effect]
 
 # 计数器
-var count: int = 0
+@export var count: int = 0
 
 func initialize_relic(_owner: RelicUI) -> void:
 	pass

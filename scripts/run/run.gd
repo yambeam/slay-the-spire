@@ -261,7 +261,7 @@ func _load_up_top_bar() -> void:
 	top_bar.relic_handler.add_relics(stats.relics)
 	
 	top_bar.settings_requested.connect(handleSettingsRequest)
-	
+	top_bar.top_bar_potion.update_potion_slot()
 
 func _setup_top_bar() -> void:
 	top_bar.run_stats = stats

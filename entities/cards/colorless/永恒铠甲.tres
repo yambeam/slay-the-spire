@@ -1,0 +1,75 @@
+[gd_resource type="Resource" script_class="Card" format=3 uid="uid://qdod6kb0wg3q"]
+
+[ext_resource type="Script" uid="uid://cxgxfbwykbp84" path="res://scripts/costum_resources/numeric_entry.gd" id="1_1crlb"]
+[ext_resource type="Script" uid="uid://cgmi6f3o7leik" path="res://scripts/costum_resources/effect.gd" id="2_3pe0a"]
+[ext_resource type="Script" uid="uid://dtok21t0ujjui" path="res://scripts/costum_resources/numeric_provider.gd" id="2_3t6c0"]
+[ext_resource type="Script" uid="uid://br1hibx18tv13" path="res://scripts/costum_resources/card.gd" id="3_p6s5b"]
+[ext_resource type="Script" uid="uid://b8qfrs61nmcix" path="res://scripts/costum_resources/effects/apply_buff_effect.gd" id="4_4b1xv"]
+[ext_resource type="Texture2D" uid="uid://nkno54" path="res://images/atlases/card_atlas.sprites/colorless/eternal_armor.tres" id="5_srbdj"]
+
+[sub_resource type="Resource" id="Resource_1b86f"]
+script = ExtResource("2_3t6c0")
+fixed_value = 12
+metadata/_custom_type_script = "uid://dtok21t0ujjui"
+
+[sub_resource type="Resource" id="Resource_8ausx"]
+script = ExtResource("1_1crlb")
+numeric_type = 4
+numeric_provider = SubResource("Resource_1b86f")
+placeholder = "stacks"
+affected_by = 3
+metadata/_custom_type_script = "uid://cxgxfbwykbp84"
+
+[sub_resource type="Resource" id="Resource_c6jco"]
+script = ExtResource("2_3t6c0")
+fixed_value = 12
+metadata/_custom_type_script = "uid://dtok21t0ujjui"
+
+[sub_resource type="Resource" id="Resource_r2l86"]
+script = ExtResource("4_4b1xv")
+buff_name = "覆甲"
+buff_stack_provider = SubResource("Resource_c6jco")
+target_type = 1
+metadata/_custom_type_script = "uid://b8qfrs61nmcix"
+
+[sub_resource type="Resource" id="Resource_kj21t"]
+script = ExtResource("2_3t6c0")
+fixed_value = 15
+metadata/_custom_type_script = "uid://dtok21t0ujjui"
+
+[sub_resource type="Resource" id="Resource_q8c40"]
+script = ExtResource("4_4b1xv")
+buff_name = "覆甲"
+buff_stack_provider = SubResource("Resource_kj21t")
+target_type = 1
+metadata/_custom_type_script = "uid://b8qfrs61nmcix"
+
+[sub_resource type="Resource" id="Resource_jqend"]
+script = ExtResource("2_3t6c0")
+fixed_value = 15
+metadata/_custom_type_script = "uid://dtok21t0ujjui"
+
+[sub_resource type="Resource" id="Resource_xpu51"]
+script = ExtResource("1_1crlb")
+numeric_type = 4
+numeric_provider = SubResource("Resource_jqend")
+placeholder = "stacks"
+affected_by = 3
+metadata/_custom_type_script = "uid://cxgxfbwykbp84"
+
+[resource]
+script = ExtResource("3_p6s5b")
+id = "永恒铠甲"
+type = 4
+card_color = 64
+base_cost = 3
+rarity = 4
+effects = Array[ExtResource("2_3pe0a")]([SubResource("Resource_r2l86")])
+portrait = ExtResource("5_srbdj")
+base_description = "[center]获得{stacks}层[color=gold]覆甲[/color]。[/center]"
+base_numeric_entries = Array[ExtResource("1_1crlb")]([SubResource("Resource_8ausx")])
+upgraded_cost = 3
+upgraded_description = "[center]获得{stacks}层[color=gold]覆甲[/color]。[/center]"
+upgraded_numeric_entries = Array[ExtResource("1_1crlb")]([SubResource("Resource_xpu51")])
+upgraded_effects = Array[ExtResource("2_3pe0a")]([SubResource("Resource_q8c40")])
+metadata/_custom_type_script = "uid://br1hibx18tv13"

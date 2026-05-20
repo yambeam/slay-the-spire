@@ -16,3 +16,5 @@ var upgrade_all := false
 var all_rare := false
 var all_uncommon := false
 var all_common := false
+
+var all_colorless := false

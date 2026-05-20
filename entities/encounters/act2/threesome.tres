@@ -9,19 +9,19 @@
 [sub_resource type="Resource" id="Resource_wqyf5"]
 script = ExtResource("1_v08ly")
 enemy_stats = ExtResource("2_73cwf")
-position = Vector2(1100, 600)
+position = Vector2(1100, 720)
 metadata/_custom_type_script = "uid://dw53gdpom3gn6"
 
 [sub_resource type="Resource" id="Resource_lxysx"]
 script = ExtResource("1_v08ly")
 enemy_stats = ExtResource("3_2sy2a")
-position = Vector2(1400, 600)
+position = Vector2(1400, 720)
 metadata/_custom_type_script = "uid://dw53gdpom3gn6"
 
 [sub_resource type="Resource" id="Resource_18pqv"]
 script = ExtResource("1_v08ly")
 enemy_stats = ExtResource("4_rkp1q")
-position = Vector2(1700, 600)
+position = Vector2(1700, 720)
 metadata/_custom_type_script = "uid://dw53gdpom3gn6"
 
 [resource]

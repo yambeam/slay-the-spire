@@ -18,7 +18,7 @@ metadata/_custom_type_script = "uid://bjrlwk5w4gqtk"
 [sub_resource type="Resource" id="Resource_urjtc"]
 script = ExtResource("1_co8ql")
 enemy_stats = SubResource("Resource_xndn5")
-position = Vector2(1200, 600)
+position = Vector2(1200, 720)
 metadata/_custom_type_script = "uid://dw53gdpom3gn6"
 
 [sub_resource type="Resource" id="Resource_5vn42"]
@@ -33,12 +33,12 @@ metadata/_custom_type_script = "uid://bjrlwk5w4gqtk"
 [sub_resource type="Resource" id="Resource_b8gyn"]
 script = ExtResource("1_co8ql")
 enemy_stats = SubResource("Resource_5vn42")
-position = Vector2(1700, 600)
+position = Vector2(1700, 720)
 metadata/_custom_type_script = "uid://dw53gdpom3gn6"
 
 [resource]
 script = ExtResource("2_fnujm")
-weight = 10.0
+weight = 1.0
 enemy_entries = Array[ExtResource("1_co8ql")]([SubResource("Resource_urjtc"), SubResource("Resource_b8gyn")])
 encounter_name = "two_nibbits"
 metadata/_custom_type_script = "uid://dgu4qpyr0pnnb"

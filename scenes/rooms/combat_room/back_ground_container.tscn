@@ -1,10 +1,11 @@
 [gd_scene format=3 uid="uid://bviecg6eqpo4e"]
 
-[ext_resource type="Texture2D" uid="uid://cvxy8ydgwomqh" path="res://images/rooms/underdocks/underdocks_01_a.png" id="1_jjycv"]
 [ext_resource type="Script" uid="uid://ebpvwmijjnwx" path="res://scripts/rooms/combat_room/back_ground_container.gd" id="1_rnybd"]
-[ext_resource type="Texture2D" uid="uid://bnlf5ynahsy8u" path="res://images/rooms/underdocks/underdocks_02_a.png" id="2_rnybd"]
-[ext_resource type="Texture2D" uid="uid://del54pxobtgf8" path="res://images/rooms/underdocks/underdocks_04_a.png" id="3_lxvrw"]
-[ext_resource type="Texture2D" uid="uid://c6r8xp7wi3hkh" path="res://images/rooms/underdocks/underdocks_05_a.png" id="4_4li5w"]
+[ext_resource type="Texture2D" uid="uid://dgtoey1q52kw8" path="res://images/rooms/hive/hive_00.png" id="2_lxvrw"]
+[ext_resource type="Texture2D" uid="uid://cuta8qwulfuvf" path="res://images/rooms/hive/hive_01_a.png" id="3_4li5w"]
+[ext_resource type="Texture2D" uid="uid://qsigroya0krm" path="res://images/rooms/hive/hive_02_a.png" id="4_3x3uy"]
+[ext_resource type="Texture2D" uid="uid://dp7d0vcxhq63s" path="res://images/rooms/hive/hive_03_a.png" id="5_ftaba"]
+[ext_resource type="Texture2D" uid="uid://kqsnxw3p8hkl" path="res://images/rooms/hive/hive_04_a.png" id="6_qdfd7"]
 
 [node name="BackGroundContainer" type="Control" unique_id=230468796]
 layout_mode = 3
@@ -24,7 +25,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-texture = ExtResource("1_jjycv")
+texture = ExtResource("2_lxvrw")
 
 [node name="1" type="TextureRect" parent="." unique_id=285753560]
 layout_mode = 1
@@ -34,7 +35,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-texture = ExtResource("2_rnybd")
+texture = ExtResource("3_4li5w")
 
 [node name="2" type="TextureRect" parent="." unique_id=65844156]
 layout_mode = 1
@@ -44,7 +45,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-texture = ExtResource("3_lxvrw")
+texture = ExtResource("4_3x3uy")
 
 [node name="3" type="TextureRect" parent="." unique_id=248194080]
 layout_mode = 1
@@ -54,7 +55,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-texture = ExtResource("4_4li5w")
+texture = ExtResource("5_ftaba")
 
 [node name="4" type="TextureRect" parent="." unique_id=551334691]
 layout_mode = 1
@@ -64,4 +65,4 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-texture = ExtResource("4_4li5w")
+texture = ExtResource("6_qdfd7")

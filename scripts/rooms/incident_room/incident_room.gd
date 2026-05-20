@@ -110,7 +110,6 @@ func init()->void:
 	#random_number=0
 	room_number=random_number
 	#所有的 遗物和药水资源
-	relics=ItemPool.get_relics_by_rarity(0b0000111)
 	potions=ItemPool.get_potions(char_stats.color,0b011)
 	
 	set_init_incident_data(incidentsDataArray[room_number])
@@ -248,7 +247,9 @@ func handle_brain_leech_op1()->void:
 		
 		reward_scene.run_stats = run_stats
 		reward_scene.character_stats =char_stats
-		reward_scene.add_card_reward(RewardContext.new())
+		var reward_context = RewardContext.new()
+		reward_context.all_colorless = true
+		reward_scene.add_card_reward(reward_context)
 		
 		Events.combat_reward_exited.connect(_on_room_exited)
 		

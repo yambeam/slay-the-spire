@@ -45,7 +45,7 @@ func add_relic(relic: Relic) -> void:
 		return
 	var new_relic_ui: RelicUI = RELIC_UI.instantiate()
 	add_child(new_relic_ui)
-	new_relic_ui.set_relic(relic.duplicate())
+	new_relic_ui.set_relic(relic)
 	new_relic_ui.relic.initialize_relic(new_relic_ui)
 
 func remove_relic(relic: Relic) -> void:

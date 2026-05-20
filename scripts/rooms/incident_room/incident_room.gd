@@ -107,10 +107,9 @@ func init()->void:
 	countop=0
 	randomize()  # 初始化随机种子
 	random_number = randi_range(0, incidentsDataArray.size()-1)  # 生成0到房间数组大小-1的随机整数
-	random_number=7
+	#random_number=3
 	room_number=random_number
 	#所有的 遗物和药水资源
-	relics=ItemPool.get_relics_by_rarity(0b0000111)
 	potions=ItemPool.get_potions(char_stats.color,0b011)
 	
 	set_init_incident_data(incidentsDataArray[room_number])
@@ -184,8 +183,10 @@ func handle_this_or_that_op1()->void:
 		#添加随机遗物
 		print("原来遗物的数量")
 		print(run_stats.relics.size())
-		random_number = randi_range(0, relics.size()-1)  # 生成0到遗物数组大小-1的随机整数
-		run_stats.add_relic(relics[random_number])
+		#random_number = randi_range(0, relics.size()-1)  # 生成0到遗物数组大小-1的随机整数
+		var relic = ItemPool.get_current_relic_pool().pick_random()
+		run_stats.add_relic(relic)
+		ItemPool.remove_relic(relic)
 		print("现在遗物数量")
 		print(run_stats.relics.size())
 		#添加随机遗物
@@ -248,7 +249,9 @@ func handle_brain_leech_op1()->void:
 		
 		reward_scene.run_stats = run_stats
 		reward_scene.character_stats =char_stats
-		reward_scene.add_card_reward(RewardContext.new())
+		var reward_context = RewardContext.new()
+		reward_context.all_colorless = true
+		reward_scene.add_card_reward(reward_context)
 		
 		Events.combat_reward_exited.connect(_on_room_exited)
 		
@@ -260,8 +263,10 @@ func handle_the_legends_were_true_op1()->void:
 	if countop<incident_data.press_op1_title.size():
 		print("原来遗物的数量")
 		print(run_stats.relics.size())
-		random_number = randi_range(0, relics.size()-1)  # 生成0到遗物数组大小-1的随机整数
-		run_stats.add_relic(relics[random_number])
+		var relic = ItemPool.get_current_relic_pool().pick_random()
+		#random_number = randi_range(0, relics.size()-1)  # 生成0到遗物数组大小-1的随机整数
+		run_stats.add_relic(relic)
+		ItemPool.remove_relic(relic)
 		print("现在遗物数量")
 		print(run_stats.relics.size())
 		option_2.hide()
@@ -297,8 +302,10 @@ func handle_unrest_site_op1()->void:
 		#添加随机遗物
 		print("原来遗物的数量")
 		print(run_stats.relics.size())
-		random_number = randi_range(0, relics.size()-1)  # 生成0到遗物数组大小-1的随机整数
-		run_stats.add_relic(relics[random_number])
+		var relic = ItemPool.get_current_relic_pool().pick_random()
+		#random_number = randi_range(0, relics.size()-1)  # 生成0到遗物数组大小-1的随机整数
+		run_stats.add_relic(relic)
+		ItemPool.remove_relic(relic)
 		print("现在遗物数量")
 		print(run_stats.relics.size())
 		
@@ -320,8 +327,10 @@ func handle_luminous_choir_op1()->void:
 		
 		print("原来遗物的数量")
 		print(run_stats.relics.size())
-		random_number=randi_range(0,relics.size()-1)
-		run_stats.add_relic(relics[random_number])
+		var relic = ItemPool.get_current_relic_pool().pick_random()
+		#random_number=randi_range(0,relics.size()-1)
+		run_stats.add_relic(relic)
+		ItemPool.remove_relic(relic)
 		print("现在遗物数量")
 		print(run_stats.relics.size())
 		option_2.hide()

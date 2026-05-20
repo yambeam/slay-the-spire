@@ -132,8 +132,7 @@ var relics_by_color := {
 	0b0001000: [],
 	0b0010000: [],
 	0b0100000: [],
-#	debug
-	0b1000000: [],   # COLORLESS  ← 添加这一行
+	0b1000000: [], 
 }
 
 var relics_by_rarity := {
@@ -153,6 +152,8 @@ var event_relic_dict := {
 var enchantment_dict := {
 	
 }
+
+var placeholder_relic: Relic = ResourceLoader.load("res://entities/relics/colorless/头环.tres")
 
 var intent_dict := {
 	"attack1": preload("res://images/packed/intents/attack/intent_attack_1.png"),
@@ -212,10 +213,7 @@ var card_rarity_mask: int = 0b11111
 var potion_color_mask: int = 0b111111
 var potion_rarity_mask: int = 0b111
 
-#debug
-#relic_color_mask多加一位覆盖colorless,同时relic rarity多加两位覆盖所有稀有度
-var relic_color_mask: int = 0b1111111
-var relic_type_mask: int = 0b1111
+var relic_color_mask: int = 0b111111
 var relic_rarity_mask: int = 0b1111111
 
 var current_card_pool: Array[Card]
@@ -323,6 +321,8 @@ func get_relics_by_color(mask: int) -> Array[Relic]:
 	for key in relics_by_color:
 		if key & mask != 0:
 			ret.append_array(relics_by_color[key])
+	if ret.is_empty():
+		return [placeholder_relic]
 	return ret
 
 
@@ -331,8 +331,19 @@ func get_relics_by_rarity(mask: int) -> Array[Relic]:
 	for key in relics_by_rarity:
 		if key & mask != 0:
 			ret.append_array(relics_by_rarity[key])
+	if ret.is_empty():
+		return [placeholder_relic]
 	return ret
 
+func remove_relic(relic: Relic) -> void:
+	relics_by_color[relic.relic_color].erase(relic)
+	current_relic_pool.erase(relic)
+
+func get_current_relic_pool() -> Array[Relic]:
+	if current_relic_pool.is_empty():
+		return [placeholder_relic]
+	return current_relic_pool
+	
 func filter_relic_by_color(relics: Array[Relic], mask: int) -> Array[Relic]:
 	return relics.filter(func(relic: Relic): return relic.relic_color & mask != 0)
 
@@ -340,7 +351,10 @@ func filter_relic_by_rarity(relics: Array[Relic], mask: int) -> Array[Relic]:
 	return relics.filter(func(relic: Relic): return relic.rarity & mask != 0)
 
 func get_relics(color: int, rarity: int) -> Array[Relic]:
-	return filter_relic_by_rarity(get_relics_by_color(color), rarity)
+	var ret: Array[Relic] = filter_relic_by_rarity(get_relics_by_color(color), rarity)
+	if ret.is_empty():
+		return [placeholder_relic]
+	return ret
 	
 func get_enchantment_by_name(enchantment_name: String) -> Enchantment:
 	var enchantment: Enchantment = enchantment_dict.get(enchantment_name, null)

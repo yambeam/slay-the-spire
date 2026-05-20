@@ -7,7 +7,7 @@
 [sub_resource type="Resource" id="Resource_jyxvi"]
 script = ExtResource("1_c3kmv")
 enemy_stats = ExtResource("2_ypk1k")
-position = Vector2(1385, 600)
+position = Vector2(1385, 720)
 initial_buff = {
 "领地意识": 1
 }

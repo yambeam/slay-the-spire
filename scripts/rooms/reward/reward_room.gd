@@ -148,7 +148,11 @@ func _show_card_rewards(context: RewardContext)->void:
 	
 	var card_reward_array:Array[Card]=[]
 	#var available_cards:Array[Card]=character_stats.draftable_cards.cards.duplicate(true)
-	var available_cards: Array[Card] = ItemPool.current_card_pool
+	var available_cards: Array[Card]
+	if context.all_colorless:
+		available_cards = ItemPool.get_draftable_cards_by_color(Card.COLOR.COLORLESS)
+	else:
+		available_cards = ItemPool.current_card_pool
 	if context.all_rare:
 		for i in run_stats.card_rewards:
 			var picked_card:=_get_random_available_card(available_cards, Card.Rarity.RARE)

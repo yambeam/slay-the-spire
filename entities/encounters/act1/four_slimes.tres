@@ -10,25 +10,25 @@
 [sub_resource type="Resource" id="Resource_4u3c1"]
 script = ExtResource("1_qi36r")
 enemy_stats = ExtResource("2_8khvq")
-position = Vector2(1100, 600)
+position = Vector2(1100, 720)
 metadata/_custom_type_script = "uid://dw53gdpom3gn6"
 
 [sub_resource type="Resource" id="Resource_lh80j"]
 script = ExtResource("1_qi36r")
 enemy_stats = ExtResource("3_b67x5")
-position = Vector2(1350, 600)
+position = Vector2(1350, 720)
 metadata/_custom_type_script = "uid://dw53gdpom3gn6"
 
 [sub_resource type="Resource" id="Resource_lpmjb"]
 script = ExtResource("1_qi36r")
 enemy_stats = ExtResource("4_t381u")
-position = Vector2(1550, 600)
+position = Vector2(1550, 720)
 metadata/_custom_type_script = "uid://dw53gdpom3gn6"
 
 [sub_resource type="Resource" id="Resource_e1dnm"]
 script = ExtResource("1_qi36r")
 enemy_stats = ExtResource("5_djbiu")
-position = Vector2(1750, 600)
+position = Vector2(1750, 720)
 metadata/_custom_type_script = "uid://dw53gdpom3gn6"
 
 [resource]

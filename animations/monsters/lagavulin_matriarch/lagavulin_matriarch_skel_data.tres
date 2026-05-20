@@ -1,7 +1,7 @@
 [gd_resource type="SpineSkeletonDataResource" format=3 uid="uid://dg7jhd0gwqfgm"]
 
-[ext_resource type="SpineAtlasResource" uid="uid://bmgb53le1hu2u" path="res://animations/monsters/lagavulin_matriarch/lagavulin_matriarch.atlas" id="1_oeidg"]
-[ext_resource type="SpineSkeletonFileResource" uid="uid://b2axmci680yx2" path="res://animations/monsters/lagavulin_matriarch/lagavulin_matriarch.skel" id="2_pqkow"]
+[ext_resource type="SpineAtlasResource" uid="uid://ytflhxss7jjb" path="res://animations/monsters/lagavulin_matriarch/lagavulin_matriarch.atlas" id="1_oeidg"]
+[ext_resource type="SpineSkeletonFileResource" uid="uid://dxjx88aec77ei" path="res://animations/monsters/lagavulin_matriarch/lagavulin_matriarch.skel" id="2_pqkow"]
 
 [sub_resource type="SpineAnimationMix" id="SpineAnimationMix_a54w3"]
 from = "sleep_loop"

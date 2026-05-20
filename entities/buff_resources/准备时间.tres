@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="BuffResource" format=3 uid="uid://b4m6fdx6i4ac1"]
+
+[ext_resource type="Script" uid="uid://c1n4sywvfnffx" path="res://scripts/costum_resources/buff_resource.gd" id="1_ah54v"]
+[ext_resource type="Script" uid="uid://cfbktlgx33vii" path="res://scripts/costum_resources/buffs/prepare_time_buff.gd" id="1_d7eb6"]
+[ext_resource type="Texture2D" uid="uid://twafdpxl266e" path="res://images/powers/prep_time_power.png" id="2_iukfy"]
+
+[resource]
+script = ExtResource("1_ah54v")
+buff_id = "prepare_time"
+buff_name = "准备时间"
+description = "回合开始时，获得{stacks}点活力"
+icon = ExtResource("2_iukfy")
+buff_script = ExtResource("1_d7eb6")
+metadata/_custom_type_script = "uid://c1n4sywvfnffx"

@@ -50,22 +50,34 @@ var is_on_map: bool = true
 # 标记 Boss 战后是否需要进入阶段切换
 var _pending_stage_transition: bool = false
 
+<<<<<<< HEAD
 #当前时否在保存
 var _restoring: bool = false
+=======
+func back_to_main()->void:
+	
+	get_tree().change_scene_to_file(MAIN_MENU_PATH)
+	
+>>>>>>> 9dbc6f02a674acf290d685b42b10341cf8e5675b
 
 func _ready() -> void:
 	if not run_startup:
 		return
 	pause_menu.save_and_quit.connect(
 		func():
+<<<<<<< HEAD
 			var on_map := is_on_map  # 假设 Map 节点有 visible 属性；若无，需手动维护 is_on_map 变量
 			_save_run(on_map)
 			get_tree().change_scene_to_file(MAIN_MENU_PATH)
+=======
+			back_to_main()
+			
+>>>>>>> 9dbc6f02a674acf290d685b42b10341cf8e5675b
 	)
 	death_settlement.DeathSettlementBackToMainMenu.connect(
 		func():
 			save_data.delete_data()
-			get_tree().change_scene_to_file(MAIN_MENU_PATH)
+			back_to_main()
 	)
 	
 	Events.map_room_selected.connect(_on_map_room_selected)

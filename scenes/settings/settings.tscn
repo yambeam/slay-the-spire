@@ -94,12 +94,12 @@ text = "全局音量"
 vertical_alignment = 1
 
 [node name="ColorRect" type="ColorRect" parent="VBoxContainer/audiosettings/VBoxContainer/VBoxContainer/HBoxContainer" unique_id=1181606452]
-custom_minimum_size = Vector2(200, 0)
+custom_minimum_size = Vector2(170, 0)
 layout_mode = 2
 color = Color(1, 1, 1, 0)
 
-[node name="Label4" type="Label" parent="VBoxContainer/audiosettings/VBoxContainer/VBoxContainer/HBoxContainer" unique_id=95064726]
-custom_minimum_size = Vector2(0, 100)
+[node name="Global volume" type="Label" parent="VBoxContainer/audiosettings/VBoxContainer/VBoxContainer/HBoxContainer" unique_id=95064726]
+custom_minimum_size = Vector2(120, 0)
 layout_mode = 2
 theme_override_colors/font_color = Color(0.9529412, 0.91764706, 0.84313726, 1)
 theme_override_fonts/font = ExtResource("4_p7ghj")
@@ -107,7 +107,7 @@ theme_override_font_sizes/font_size = 50
 text = "100%"
 vertical_alignment = 1
 
-[node name="slider" parent="VBoxContainer/audiosettings/VBoxContainer/VBoxContainer/HBoxContainer" unique_id=938607398 instance=ExtResource("1_26ncd")]
+[node name="Globalslider" parent="VBoxContainer/audiosettings/VBoxContainer/VBoxContainer/HBoxContainer" unique_id=938607398 instance=ExtResource("1_26ncd")]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 4
@@ -134,12 +134,12 @@ text = "音乐音量"
 vertical_alignment = 1
 
 [node name="ColorRect" type="ColorRect" parent="VBoxContainer/audiosettings/VBoxContainer/VBoxContainer2/HBoxContainer2" unique_id=1192657266]
-custom_minimum_size = Vector2(200, 0)
+custom_minimum_size = Vector2(170, 0)
 layout_mode = 2
 color = Color(1, 1, 1, 0)
 
-[node name="Label4" type="Label" parent="VBoxContainer/audiosettings/VBoxContainer/VBoxContainer2/HBoxContainer2" unique_id=1250877376]
-custom_minimum_size = Vector2(0, 100)
+[node name="music volume" type="Label" parent="VBoxContainer/audiosettings/VBoxContainer/VBoxContainer2/HBoxContainer2" unique_id=1250877376]
+custom_minimum_size = Vector2(120, 0)
 layout_mode = 2
 theme_override_colors/font_color = Color(0.9529412, 0.91764706, 0.84313726, 1)
 theme_override_fonts/font = ExtResource("4_p7ghj")
@@ -147,7 +147,7 @@ theme_override_font_sizes/font_size = 50
 text = "100%"
 vertical_alignment = 1
 
-[node name="HSlider2" parent="VBoxContainer/audiosettings/VBoxContainer/VBoxContainer2/HBoxContainer2" unique_id=784750013 instance=ExtResource("1_26ncd")]
+[node name="MusicSlider" parent="VBoxContainer/audiosettings/VBoxContainer/VBoxContainer2/HBoxContainer2" unique_id=784750013 instance=ExtResource("1_26ncd")]
 custom_minimum_size = Vector2(0, 100)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -176,12 +176,12 @@ text = "音效音量"
 vertical_alignment = 1
 
 [node name="ColorRect" type="ColorRect" parent="VBoxContainer/audiosettings/VBoxContainer/VBoxContainer3/HBoxContainer3" unique_id=942935802]
-custom_minimum_size = Vector2(200, 0)
+custom_minimum_size = Vector2(170, 0)
 layout_mode = 2
 color = Color(1, 1, 1, 0)
 
-[node name="Label4" type="Label" parent="VBoxContainer/audiosettings/VBoxContainer/VBoxContainer3/HBoxContainer3" unique_id=889416449]
-custom_minimum_size = Vector2(0, 100)
+[node name="SFX volume" type="Label" parent="VBoxContainer/audiosettings/VBoxContainer/VBoxContainer3/HBoxContainer3" unique_id=889416449]
+custom_minimum_size = Vector2(120, 0)
 layout_mode = 2
 theme_override_colors/font_color = Color(0.9529412, 0.91764706, 0.84313726, 1)
 theme_override_fonts/font = ExtResource("4_p7ghj")
@@ -189,7 +189,7 @@ theme_override_font_sizes/font_size = 50
 text = "100%"
 vertical_alignment = 1
 
-[node name="HSlider3" parent="VBoxContainer/audiosettings/VBoxContainer/VBoxContainer3/HBoxContainer3" unique_id=1140906753 instance=ExtResource("1_26ncd")]
+[node name="SFXSlider" parent="VBoxContainer/audiosettings/VBoxContainer/VBoxContainer3/HBoxContainer3" unique_id=1140906753 instance=ExtResource("1_26ncd")]
 custom_minimum_size = Vector2(500, 100)
 layout_mode = 2
 size_flags_horizontal = 3

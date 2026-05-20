@@ -1,0 +1,44 @@
+[gd_resource type="Resource" script_class="Card" format=3 uid="uid://chatajw760pvg"]
+
+[ext_resource type="Script" uid="uid://cxgxfbwykbp84" path="res://scripts/costum_resources/numeric_entry.gd" id="1_h31y1"]
+[ext_resource type="Script" uid="uid://cgmi6f3o7leik" path="res://scripts/costum_resources/effect.gd" id="2_8ssu2"]
+[ext_resource type="Script" uid="uid://br1hibx18tv13" path="res://scripts/costum_resources/card.gd" id="3_ipej7"]
+[ext_resource type="Script" uid="uid://dyn5a42fs7gxs" path="res://scripts/costum_resources/card_condition.gd" id="3_kj6ys"]
+[ext_resource type="Script" uid="uid://cqcf6adphkjfy" path="res://scripts/costum_resources/effects/select_card_effect.gd" id="4_ksfqe"]
+[ext_resource type="Script" uid="uid://csyjq6ujulplm" path="res://scripts/costum_resources/effects/card_effects/card_effect.gd" id="5_7roc8"]
+[ext_resource type="Script" uid="uid://badu40ig27ve5" path="res://scripts/costum_resources/effects/card_effects/random_play_card_effect.gd" id="6_s2qyt"]
+[ext_resource type="Script" uid="uid://c2drp2mlr0vhm" path="res://scripts/costum_resources/effects/foreach_card_effect.gd" id="7_t05d0"]
+[ext_resource type="Texture2D" uid="uid://bx1ft2x" path="res://images/atlases/card_atlas.sprites/colorless/beat_down.tres" id="8_v1780"]
+
+[sub_resource type="Resource" id="Resource_b4lry"]
+script = ExtResource("3_kj6ys")
+type = 5
+metadata/_custom_type_script = "uid://dyn5a42fs7gxs"
+
+[sub_resource type="Resource" id="Resource_wmbqu"]
+script = ExtResource("4_ksfqe")
+where = 2
+selectionMode = 1
+filter_condition = SubResource("Resource_b4lry")
+metadata/_custom_type_script = "uid://cqcf6adphkjfy"
+
+[sub_resource type="Resource" id="Resource_basv4"]
+script = ExtResource("6_s2qyt")
+metadata/_custom_type_script = "uid://badu40ig27ve5"
+
+[sub_resource type="Resource" id="Resource_gqubo"]
+script = ExtResource("7_t05d0")
+effects = Array[ExtResource("5_7roc8")]([SubResource("Resource_basv4")])
+metadata/_custom_type_script = "uid://c2drp2mlr0vhm"
+
+[resource]
+script = ExtResource("3_ipej7")
+id = "狠揍"
+type = 2
+card_color = 64
+base_cost = 4
+rarity = 4
+effects = Array[ExtResource("2_8ssu2")]([SubResource("Resource_wmbqu"), SubResource("Resource_gqubo")])
+portrait = ExtResource("8_v1780")
+base_description = "[center]随机打出[color=gold]弃牌堆[/color]中所有攻击牌。[/center]"
+metadata/_custom_type_script = "uid://br1hibx18tv13"

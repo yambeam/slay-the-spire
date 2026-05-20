@@ -18,3 +18,4 @@ func _on_before_turn_started(creature: Creature) -> void:
 	 
 func _on_after_turn_started(creature: Creature) -> void:
 	creature.stats.block = block
+"res://entities/cards/colorless/准备时间.tres"

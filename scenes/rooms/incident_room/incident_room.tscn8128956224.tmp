@@ -37,7 +37,7 @@ texture = ExtResource("2_qt3pm")
 layout_mode = 0
 offset_left = 804.0
 offset_top = 114.0
-offset_right = 1830.0
+offset_right = 1756.0
 offset_bottom = 544.0
 theme_override_constants/separation = 30
 
@@ -55,7 +55,7 @@ custom_minimum_size = Vector2(0, 300)
 layout_mode = 2
 theme_override_colors/font_color = Color(0.9411765, 0.9607843, 0.9372549, 1)
 theme_override_fonts/font = ExtResource("3_ko2o4")
-theme_override_font_sizes/font_size = 25
+theme_override_font_sizes/font_size = 30
 theme_override_styles/normal = SubResource("StyleBoxFlat_qt3pm")
 text = "当你穿过一座摇摇欲坠的木桥时，
 忽然间暴雨倾盆。
@@ -68,7 +68,7 @@ custom_minimum_size = Vector2(0, 500)
 layout_mode = 0
 offset_left = 790.0
 offset_top = 510.0
-offset_right = 1817.0
+offset_right = 1746.0
 offset_bottom = 1094.0
 theme_override_constants/separation = 50
 alignment = 1

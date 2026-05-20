@@ -208,7 +208,7 @@ func _show_card_rewards(context: RewardContext)->void:
 	else:	
 		for i in run_stats.card_rewards:
 			_setup_card_chances()
-			var roll:=randf_range(0.0,card_reward_total_weight)
+			var roll:=RandomSetting.instance.randf_range(0.0,card_reward_total_weight)
 			for rarity:Card.Rarity in card_rarity_weights:
 				if card_rarity_weights[rarity]>roll:
 					_modify_weights(rarity)

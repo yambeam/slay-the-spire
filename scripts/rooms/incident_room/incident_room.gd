@@ -105,9 +105,9 @@ func loadEnchantment(dir_path: String)->void:
 
 func init()->void:		
 	countop=0
-	randomize()  # 初始化随机种子
-	random_number = randi_range(0, incidentsDataArray.size()-1)  # 生成0到房间数组大小-1的随机整数
-	#random_number=3
+	
+	random_number = RandomSetting.instance.randi_range(0, incidentsDataArray.size()-1)  # 生成0到房间数组大小-1的随机整数
+	#random_number=0
 	room_number=random_number
 	#所有的 遗物和药水资源
 	potions=ItemPool.get_potions(char_stats.color,0b011)
@@ -124,7 +124,7 @@ func set_init_incident_data(data:IncidentData)->void:
 
 	if data.incidentName=="slippery_bridge":
 		print("处理滑脚独桥的信息")
-		random_card_number = randi_range(0, char_stats.deck.cards.size()-1) 
+		random_card_number =  RandomSetting.instance.randi_range(0, char_stats.deck.cards.size()-1) 
 		var card:Card=char_stats.deck.cards[random_card_number]
 		text_1.text="跨越\n\""
 		text_1.text+=card.id
@@ -183,10 +183,8 @@ func handle_this_or_that_op1()->void:
 		#添加随机遗物
 		print("原来遗物的数量")
 		print(run_stats.relics.size())
-		#random_number = randi_range(0, relics.size()-1)  # 生成0到遗物数组大小-1的随机整数
-		var relic = ItemPool.get_current_relic_pool().pick_random()
-		run_stats.add_relic(relic)
-		ItemPool.remove_relic(relic)
+		random_number =  RandomSetting.instance.randi_range(0, relics.size()-1)  # 生成0到遗物数组大小-1的随机整数
+		run_stats.add_relic(relics[random_number])
 		print("现在遗物数量")
 		print(run_stats.relics.size())
 		#添加随机遗物
@@ -263,10 +261,8 @@ func handle_the_legends_were_true_op1()->void:
 	if countop<incident_data.press_op1_title.size():
 		print("原来遗物的数量")
 		print(run_stats.relics.size())
-		var relic = ItemPool.get_current_relic_pool().pick_random()
-		#random_number = randi_range(0, relics.size()-1)  # 生成0到遗物数组大小-1的随机整数
-		run_stats.add_relic(relic)
-		ItemPool.remove_relic(relic)
+		random_number =  RandomSetting.instance.randi_range(0, relics.size()-1)  # 生成0到遗物数组大小-1的随机整数
+		run_stats.add_relic(relics[random_number])
 		print("现在遗物数量")
 		print(run_stats.relics.size())
 		option_2.hide()
@@ -278,7 +274,7 @@ func handle_jungle_maze_adventure_op1()->void:
 		print("原金币值")
 		print(run_stats.gold)
 		#增加35-65个金币
-		random_number=randi_range(0,65-35)
+		random_number= RandomSetting.instance.randi_range(0,65-35)
 		run_stats.gold=run_stats.gold+35+random_number
 		
 		
@@ -302,10 +298,8 @@ func handle_unrest_site_op1()->void:
 		#添加随机遗物
 		print("原来遗物的数量")
 		print(run_stats.relics.size())
-		var relic = ItemPool.get_current_relic_pool().pick_random()
-		#random_number = randi_range(0, relics.size()-1)  # 生成0到遗物数组大小-1的随机整数
-		run_stats.add_relic(relic)
-		ItemPool.remove_relic(relic)
+		random_number =  RandomSetting.instance.randi_range(0, relics.size()-1)  # 生成0到遗物数组大小-1的随机整数
+		run_stats.add_relic(relics[random_number])
 		print("现在遗物数量")
 		print(run_stats.relics.size())
 		
@@ -318,7 +312,7 @@ func handle_luminous_choir_op1()->void:
 		print("原金币值")
 		print(run_stats.gold)
 		#减少100-149个金币
-		random_number=randi_range(100,149)
+		random_number= RandomSetting.instance.randi_range(100,149)
 		run_stats.gold=run_stats.gold-random_number
 		if run_stats.gold<0:
 			run_stats.gold=0
@@ -327,10 +321,8 @@ func handle_luminous_choir_op1()->void:
 		
 		print("原来遗物的数量")
 		print(run_stats.relics.size())
-		var relic = ItemPool.get_current_relic_pool().pick_random()
-		#random_number=randi_range(0,relics.size()-1)
-		run_stats.add_relic(relic)
-		ItemPool.remove_relic(relic)
+		random_number= RandomSetting.instance.randi_range(0,relics.size()-1)
+		run_stats.add_relic(relics[random_number])
 		print("现在遗物数量")
 		print(run_stats.relics.size())
 		option_2.hide()
@@ -378,7 +370,7 @@ func _on_option_1_pressed() -> void:
 
 func handle_slippery_bridge_op2()->void:	
 	if countop<incident_data.press_op2_title.size():
-		random_card_number = randi_range(0, char_stats.deck.cards.size()-1) 
+		random_card_number =  RandomSetting.instance.randi_range(0, char_stats.deck.cards.size()-1) 
 		var card:Card=char_stats.deck.cards[random_card_number]
 		text_1.text="跨越\n\""
 		text_1.text+=card.id
@@ -406,7 +398,7 @@ func handle_this_or_that_op2()->void:
 		#损失6点生命值
 		char_stats.take_damage(6)
 		#增加41-69个金币
-		random_number=randi_range(0,69-41)
+		random_number= RandomSetting.instance.randi_range(0,69-41)
 		run_stats.gold=run_stats.gold+41+random_number
 		print("现在生命值")
 		print(char_stats.health)
@@ -475,7 +467,7 @@ func handle_the_legends_were_true_op2()->void:
 		print("现在生命值")
 		print(char_stats.health)
 		
-		random_number=randi_range(0,potions.size()-1)
+		random_number= RandomSetting.instance.randi_range(0,potions.size()-1)
 		var suc=run_stats.add_potion(potions[random_number])
 		print(suc)
 		option_1.hide()
@@ -490,7 +482,7 @@ func handle_jungle_maze_adventure_op2()->void:
 		print("原生命值")
 		print(char_stats.health)
 		#增加135-165个金币
-		random_number=randi_range(0,165-135)
+		random_number= RandomSetting.instance.randi_range(0,165-135)
 		run_stats.gold=run_stats.gold+135+random_number
 		#损失18点生命值
 		char_stats.take_damage(18)

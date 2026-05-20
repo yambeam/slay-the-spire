@@ -6,7 +6,7 @@
 [ext_resource type="Script" uid="uid://dtok21t0ujjui" path="res://scripts/costum_resources/numeric_provider.gd" id="3_ktihu"]
 [ext_resource type="Script" uid="uid://cgmi6f3o7leik" path="res://scripts/costum_resources/effect.gd" id="4_2rb5s"]
 [ext_resource type="Script" uid="uid://dnv7chuoeoi6y" path="res://scripts/costum_resources/effects/block_effect.gd" id="5_6vij4"]
-[ext_resource type="AudioStream" uid="uid://cnxfhtrl0n8nm" path="res://audio/SFX/frost_orb_passive.mp3" id="6_gvngp"]
+[ext_resource type="AudioStream" uid="uid://debelv08fuh1w" path="res://audio/SFX/frost_orb_passive.mp3" id="6_gvngp"]
 [ext_resource type="Texture2D" uid="uid://fuv3p8" path="res://images/atlases/card_atlas.sprites/ironclad/impervious.tres" id="7_xe1fr"]
 [ext_resource type="Resource" uid="uid://bv1beg15cym6a" path="res://entities/cards/colorless/万向斩.tres" id="8_xe1fr"]
 [ext_resource type="Resource" uid="uid://1ufmsm24iq4a" path="res://entities/cards/colorless/乱射.tres" id="9_1lg0p"]

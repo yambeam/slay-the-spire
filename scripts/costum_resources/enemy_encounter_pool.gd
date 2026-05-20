@@ -24,7 +24,7 @@ func get_random_encounter_by_type(type: EnemyEncounter.Type) -> EnemyEncounter:
 		return null
 	
 	var idx := (type as int)
-	var roll := randf_range(0.0, total_weights_by_type[idx])
+	var roll := RandomSetting.instance.randf_range(0.0, total_weights_by_type[idx])
 	var encounters := _get_all_encounters_by_type(type)
 	for encounter: EnemyEncounter in encounters:
 		if encounter.accumulated_weight > roll:

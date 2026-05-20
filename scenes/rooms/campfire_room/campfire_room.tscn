@@ -4,6 +4,15 @@
 [ext_resource type="Resource" uid="uid://bqq44kff15k4w" path="res://entities/characters/ironclad/ironclad_stats.tres" id="2_a8h3l"]
 [ext_resource type="SpineSkeletonDataResource" uid="uid://b8nbwey4uwrqk" path="res://animations/rest_site/ironclad/rest_site_ironclad_skel_data.tres" id="2_cow6u"]
 [ext_resource type="Script" uid="uid://bayy3j6ssj0g" path="res://scripts/utils/spine_manager.gd" id="3_a8h3l"]
+[ext_resource type="FontFile" uid="uid://vcj7kdt70rkq" path="res://fonts/zhs/NotoSansMonoCJKsc-Regular.otf" id="3_u3ltw"]
+[ext_resource type="Texture2D" uid="uid://78apvicc6ad1" path="res://images/rooms/rest_sites/overgrowth/overgrowth_rest_site_bg.png" id="3_v3hjy"]
+[ext_resource type="Texture2D" uid="uid://cokfvepsrjpov" path="res://images/ui/rest_site/option_heal.png" id="4_oqmnd"]
+[ext_resource type="Texture2D" uid="uid://bbiemjo1omins" path="res://images/ui/rest_site/option_smith.png" id="5_x0cyu"]
+[ext_resource type="Texture2D" uid="uid://c7vupy75qo2" path="res://images/rooms/rest_sites/overgrowth/overgrowth_rest_site_fire.png" id="7_vpw6l"]
+[ext_resource type="Texture2D" uid="uid://cfy2xmkthu5so" path="res://images/ui/rest_site/option_outline.png" id="7_x4cqh"]
+[ext_resource type="Texture2D" uid="uid://c8ih1nw6txtsb" path="res://images/rooms/rest_sites/overgrowth/overgrowth_rest_site_l_log.png" id="8_0bx45"]
+[ext_resource type="Texture2D" uid="uid://bmc4irsx318f1" path="res://images/rooms/rest_sites/overgrowth/overgrowth_rest_site_cutter_1.png" id="11_vpw6l"]
+[ext_resource type="Texture2D" uid="uid://stvxe1kudwur" path="res://images/rooms/rest_sites/overgrowth/overgrowth_rest_site_cutter_2.png" id="12_0bx45"]
 
 [sub_resource type="Animation" id="Animation_cow6u"]
 length = 0.001
@@ -89,35 +98,75 @@ grow_vertical = 2
 script = ExtResource("1_lv82u")
 char_stats = ExtResource("2_a8h3l")
 
+[node name="background" type="Sprite2D" parent="." unique_id=803943141]
+position = Vector2(964, 463)
+texture = ExtResource("3_v3hjy")
+
+[node name="OvergrowthRestSiteLLog" type="Sprite2D" parent="." unique_id=19714881]
+position = Vector2(274, 679)
+texture = ExtResource("8_0bx45")
+
 [node name="UI" type="VBoxContainer" parent="." unique_id=405187044]
 layout_mode = 0
-offset_left = 531.0
-offset_top = 245.0
-offset_right = 1162.0
-offset_bottom = 620.0
+offset_left = 529.0
+offset_top = 162.0
+offset_right = 1582.0
+offset_bottom = 854.0
 theme_override_constants/separation = 100
 
 [node name="Label" type="Label" parent="UI" unique_id=488723113]
 layout_mode = 2
-theme_override_font_sizes/font_size = 100
+theme_override_colors/font_color = Color(1, 0.9647059, 0.8862745, 1)
+theme_override_fonts/font = ExtResource("3_u3ltw")
+theme_override_font_sizes/font_size = 60
 text = "我该做什么呢？"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="HBoxContainer2" type="HBoxContainer" parent="UI" unique_id=2022587874]
+layout_mode = 2
+theme_override_constants/separation = 200
+alignment = 1
+
+[node name="rest" type="TextureButton" parent="UI/HBoxContainer2" unique_id=1284136487]
+layout_mode = 2
+texture_normal = ExtResource("4_oqmnd")
+
+[node name="outline" type="TextureRect" parent="UI/HBoxContainer2/rest" unique_id=6798105]
+visible = false
+z_index = -1
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("7_x4cqh")
+
+[node name="forging" type="TextureButton" parent="UI/HBoxContainer2" unique_id=716674936]
+layout_mode = 2
+texture_normal = ExtResource("5_x0cyu")
+
 [node name="HBoxContainer" type="HBoxContainer" parent="UI" unique_id=835339280]
 layout_mode = 2
-theme_override_constants/separation = 100
+theme_override_constants/separation = 350
+alignment = 1
 
-[node name="rest" type="Button" parent="UI/HBoxContainer" unique_id=1417964940]
+[node name="Label" type="Label" parent="UI/HBoxContainer" unique_id=1996760958]
 layout_mode = 2
-theme_override_font_sizes/font_size = 100
+theme_override_colors/font_color = Color(1, 0.9647059, 0.8862745, 1)
+theme_override_font_sizes/font_size = 50
 text = "+30%HP"
 
-[node name="forging" type="Button" parent="UI/HBoxContainer" unique_id=1750802776]
+[node name="Label2" type="Label" parent="UI/HBoxContainer" unique_id=862959774]
 layout_mode = 2
-theme_override_font_sizes/font_size = 100
+theme_override_colors/font_color = Color(1, 0.9647059, 0.8862745, 1)
+theme_override_font_sizes/font_size = 50
 text = "锻造"
-metadata/_edit_use_anchors_ = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1994697545]
+libraries/ = SubResource("AnimationLibrary_331fj")
+
+[node name="OvergrowthRestSiteFire" type="Sprite2D" parent="." unique_id=2080475988]
+position = Vector2(600, 825)
+texture = ExtResource("7_vpw6l")
 
 [node name="SpineManager" type="SpineSprite" parent="." unique_id=2077643634]
 skeleton_data_res = ExtResource("2_cow6u")
@@ -125,13 +174,22 @@ preview_skin = "Default"
 preview_animation = "-- Empty --"
 preview_frame = false
 preview_time = 0.0
-position = Vector2(312, 557)
+position = Vector2(385, 536)
 scale = Vector2(0.5, 0.5)
 script = ExtResource("3_a8h3l")
 metadata/_custom_type_script = "uid://bayy3j6ssj0g"
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1994697545]
-libraries/ = SubResource("AnimationLibrary_331fj")
+[node name="OvergrowthRestSiteCutter1" type="Sprite2D" parent="." unique_id=1776158119]
+position = Vector2(165, 456)
+texture = ExtResource("11_vpw6l")
 
-[connection signal="pressed" from="UI/HBoxContainer/rest" to="." method="_on_rest_pressed"]
-[connection signal="pressed" from="UI/HBoxContainer/forging" to="." method="_on_forging_pressed"]
+[node name="OvergrowthRestSiteCutter2" type="Sprite2D" parent="." unique_id=1691184277]
+position = Vector2(1713, 456)
+texture = ExtResource("12_0bx45")
+
+[connection signal="mouse_entered" from="UI/HBoxContainer2/rest" to="." method="_on_rest_mouse_entered"]
+[connection signal="mouse_exited" from="UI/HBoxContainer2/rest" to="." method="_on_rest_mouse_exited"]
+[connection signal="pressed" from="UI/HBoxContainer2/rest" to="." method="_on_rest_pressed"]
+[connection signal="mouse_entered" from="UI/HBoxContainer2/forging" to="." method="_on_forging_mouse_entered"]
+[connection signal="mouse_exited" from="UI/HBoxContainer2/forging" to="." method="_on_forging_mouse_exited"]
+[connection signal="pressed" from="UI/HBoxContainer2/forging" to="." method="_on_forging_pressed"]

@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://iqqyr44teapg" path="res://scripts/costum_resources/intents/sub_intent.gd" id="2_oleog"]
 [ext_resource type="Script" uid="uid://dtok21t0ujjui" path="res://scripts/costum_resources/numeric_provider.gd" id="3_uym0m"]
 [ext_resource type="Script" uid="uid://vkklgv0ma0yf" path="res://scripts/costum_resources/effects/attack_effect.gd" id="4_skbh5"]
-[ext_resource type="AudioStream" uid="uid://bcwmh6adledx" path="res://audio/SFX/blunt_attack.mp3" id="5_1ys8l"]
+[ext_resource type="AudioStream" uid="uid://bwkj3ged1cm0x" path="res://audio/SFX/blunt_attack.mp3" id="5_1ys8l"]
 [ext_resource type="Script" uid="uid://bces7ijyodhmv" path="res://scripts/costum_resources/intents/attack_sub_intent.gd" id="6_ne2ja"]
 [ext_resource type="Script" uid="uid://b8qfrs61nmcix" path="res://scripts/costum_resources/effects/apply_buff_effect.gd" id="7_myb4r"]
 [ext_resource type="Script" uid="uid://c2p6buhbk6em8" path="res://scripts/costum_resources/intents/apply_debuff_sub_intent.gd" id="9_5hryg"]

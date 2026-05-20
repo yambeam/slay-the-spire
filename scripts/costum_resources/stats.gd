@@ -7,7 +7,7 @@ signal stats_changed
 @export var visuals_scene: PackedScene
 
 
-var health: int : set = _set_health
+@export var health: int : set = _set_health
 var block: int : set = _set_block
 
 func _set_max_health(value:int)->void:

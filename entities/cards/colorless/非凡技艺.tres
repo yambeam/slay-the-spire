@@ -1,0 +1,99 @@
+[gd_resource type="Resource" script_class="Card" format=3 uid="uid://bimutppu2gx5r"]
+
+[ext_resource type="Script" uid="uid://cxgxfbwykbp84" path="res://scripts/costum_resources/numeric_entry.gd" id="1_x2tfj"]
+[ext_resource type="Script" uid="uid://dtok21t0ujjui" path="res://scripts/costum_resources/numeric_provider.gd" id="2_larht"]
+[ext_resource type="Script" uid="uid://cgmi6f3o7leik" path="res://scripts/costum_resources/effect.gd" id="2_r4xar"]
+[ext_resource type="Script" uid="uid://br1hibx18tv13" path="res://scripts/costum_resources/card.gd" id="3_43km4"]
+[ext_resource type="Script" uid="uid://b8qfrs61nmcix" path="res://scripts/costum_resources/effects/apply_buff_effect.gd" id="4_2utij"]
+[ext_resource type="Texture2D" uid="uid://cqpherh" path="res://images/atlases/card_atlas.sprites/colorless/prowess.tres" id="5_yahlh"]
+
+[sub_resource type="Resource" id="Resource_vwu7e"]
+script = ExtResource("2_larht")
+fixed_value = 1
+metadata/_custom_type_script = "uid://dtok21t0ujjui"
+
+[sub_resource type="Resource" id="Resource_fwjmj"]
+script = ExtResource("1_x2tfj")
+numeric_type = 4
+numeric_provider = SubResource("Resource_vwu7e")
+placeholder = "stacks"
+affected_by = 3
+metadata/_custom_type_script = "uid://cxgxfbwykbp84"
+
+[sub_resource type="Resource" id="Resource_fgy3u"]
+script = ExtResource("2_larht")
+fixed_value = 1
+metadata/_custom_type_script = "uid://dtok21t0ujjui"
+
+[sub_resource type="Resource" id="Resource_5nqpn"]
+script = ExtResource("4_2utij")
+buff_name = "力量"
+buff_stack_provider = SubResource("Resource_fgy3u")
+target_type = 1
+metadata/_custom_type_script = "uid://b8qfrs61nmcix"
+
+[sub_resource type="Resource" id="Resource_unh8d"]
+script = ExtResource("2_larht")
+fixed_value = 1
+metadata/_custom_type_script = "uid://dtok21t0ujjui"
+
+[sub_resource type="Resource" id="Resource_4c4i0"]
+script = ExtResource("4_2utij")
+buff_name = "敏捷"
+buff_stack_provider = SubResource("Resource_unh8d")
+target_type = 1
+metadata/_custom_type_script = "uid://b8qfrs61nmcix"
+
+[sub_resource type="Resource" id="Resource_6orhr"]
+script = ExtResource("2_larht")
+fixed_value = 2
+metadata/_custom_type_script = "uid://dtok21t0ujjui"
+
+[sub_resource type="Resource" id="Resource_p5ir5"]
+script = ExtResource("4_2utij")
+buff_name = "力量"
+buff_stack_provider = SubResource("Resource_6orhr")
+target_type = 1
+metadata/_custom_type_script = "uid://b8qfrs61nmcix"
+
+[sub_resource type="Resource" id="Resource_g87cm"]
+script = ExtResource("2_larht")
+fixed_value = 2
+metadata/_custom_type_script = "uid://dtok21t0ujjui"
+
+[sub_resource type="Resource" id="Resource_sdeal"]
+script = ExtResource("4_2utij")
+buff_name = "敏捷"
+buff_stack_provider = SubResource("Resource_g87cm")
+target_type = 1
+metadata/_custom_type_script = "uid://b8qfrs61nmcix"
+
+[sub_resource type="Resource" id="Resource_576w3"]
+script = ExtResource("2_larht")
+fixed_value = 2
+metadata/_custom_type_script = "uid://dtok21t0ujjui"
+
+[sub_resource type="Resource" id="Resource_qi7gl"]
+script = ExtResource("1_x2tfj")
+numeric_type = 4
+numeric_provider = SubResource("Resource_576w3")
+placeholder = "stacks"
+affected_by = 3
+metadata/_custom_type_script = "uid://cxgxfbwykbp84"
+
+[resource]
+script = ExtResource("3_43km4")
+id = "非凡技艺"
+type = 4
+card_color = 64
+base_cost = 1
+rarity = 2
+effects = Array[ExtResource("2_r4xar")]([SubResource("Resource_5nqpn"), SubResource("Resource_4c4i0")])
+portrait = ExtResource("5_yahlh")
+base_description = "[center]获得{stacks}点[color=gold]力量[/color]和[color=gold]敏捷[/color]。[/center]"
+base_numeric_entries = Array[ExtResource("1_x2tfj")]([SubResource("Resource_fwjmj")])
+upgraded_cost = 1
+upgraded_description = "[center]获得{stacks}点[color=gold]力量[/color]和[color=gold]敏捷[/color]。[/center]"
+upgraded_numeric_entries = Array[ExtResource("1_x2tfj")]([SubResource("Resource_qi7gl")])
+upgraded_effects = Array[ExtResource("2_r4xar")]([SubResource("Resource_p5ir5"), SubResource("Resource_sdeal")])
+metadata/_custom_type_script = "uid://br1hibx18tv13"

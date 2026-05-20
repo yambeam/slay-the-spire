@@ -1,0 +1,88 @@
+[gd_resource type="Resource" script_class="Card" format=3 uid="uid://cjgge2akgjan1"]
+
+[ext_resource type="Script" uid="uid://cxgxfbwykbp84" path="res://scripts/costum_resources/numeric_entry.gd" id="1_qqp1u"]
+[ext_resource type="Script" uid="uid://dtok21t0ujjui" path="res://scripts/costum_resources/numeric_provider.gd" id="2_6uc2u"]
+[ext_resource type="Script" uid="uid://cgmi6f3o7leik" path="res://scripts/costum_resources/effect.gd" id="2_l2tev"]
+[ext_resource type="Script" uid="uid://br1hibx18tv13" path="res://scripts/costum_resources/card.gd" id="3_herel"]
+[ext_resource type="Script" uid="uid://vkklgv0ma0yf" path="res://scripts/costum_resources/effects/attack_effect.gd" id="4_wgbwk"]
+[ext_resource type="AudioStream" uid="uid://b3reffdbqylun" path="res://audio/SFX/slash_attack.mp3" id="5_ltibh"]
+[ext_resource type="Script" uid="uid://dd8cefu454sp5" path="res://scripts/costum_resources/effects/draw_card_effect.gd" id="6_2ldrt"]
+[ext_resource type="Texture2D" uid="uid://snjuc7" path="res://images/atlases/card_atlas.sprites/colorless/flash_of_steel.tres" id="7_kno1g"]
+
+[sub_resource type="Resource" id="Resource_dbqbq"]
+script = ExtResource("2_6uc2u")
+fixed_value = 5
+metadata/_custom_type_script = "uid://dtok21t0ujjui"
+
+[sub_resource type="Resource" id="Resource_pq0ti"]
+script = ExtResource("1_qqp1u")
+numeric_provider = SubResource("Resource_dbqbq")
+placeholder = "damage"
+affected_by = 2
+metadata/_custom_type_script = "uid://cxgxfbwykbp84"
+
+[sub_resource type="Resource" id="Resource_1grgu"]
+script = ExtResource("2_6uc2u")
+fixed_value = 5
+metadata/_custom_type_script = "uid://dtok21t0ujjui"
+
+[sub_resource type="Resource" id="Resource_u751r"]
+script = ExtResource("4_wgbwk")
+damage_provider = SubResource("Resource_1grgu")
+target_type = 2
+animation_name = "attack"
+sound = ExtResource("5_ltibh")
+metadata/_custom_type_script = "uid://vkklgv0ma0yf"
+
+[sub_resource type="Resource" id="Resource_4wltb"]
+script = ExtResource("6_2ldrt")
+target_type = 1
+metadata/_custom_type_script = "uid://dd8cefu454sp5"
+
+[sub_resource type="Resource" id="Resource_g2qv4"]
+script = ExtResource("2_6uc2u")
+fixed_value = 8
+metadata/_custom_type_script = "uid://dtok21t0ujjui"
+
+[sub_resource type="Resource" id="Resource_lsxqg"]
+script = ExtResource("4_wgbwk")
+damage_provider = SubResource("Resource_g2qv4")
+target_type = 2
+animation_name = "attack"
+sound = ExtResource("5_ltibh")
+metadata/_custom_type_script = "uid://vkklgv0ma0yf"
+
+[sub_resource type="Resource" id="Resource_t4iby"]
+script = ExtResource("6_2ldrt")
+target_type = 1
+metadata/_custom_type_script = "uid://dd8cefu454sp5"
+
+[sub_resource type="Resource" id="Resource_6p8rh"]
+script = ExtResource("2_6uc2u")
+fixed_value = 8
+metadata/_custom_type_script = "uid://dtok21t0ujjui"
+
+[sub_resource type="Resource" id="Resource_6nivo"]
+script = ExtResource("1_qqp1u")
+numeric_provider = SubResource("Resource_6p8rh")
+placeholder = "damage"
+affected_by = 2
+metadata/_custom_type_script = "uid://cxgxfbwykbp84"
+
+[resource]
+script = ExtResource("3_herel")
+id = "亮剑"
+base_target = 1
+card_color = 64
+rarity = 2
+effects = Array[ExtResource("2_l2tev")]([SubResource("Resource_u751r"), SubResource("Resource_4wltb")])
+portrait = ExtResource("7_kno1g")
+base_description = "[center]造成{damage}点伤害。
+抽1张牌。[/center]"
+base_numeric_entries = Array[ExtResource("1_qqp1u")]([SubResource("Resource_pq0ti")])
+upgraded_target = 1
+upgraded_description = "[center]造成{damage}点伤害。
+抽1张牌。[/center]"
+upgraded_numeric_entries = Array[ExtResource("1_qqp1u")]([SubResource("Resource_6nivo")])
+upgraded_effects = Array[ExtResource("2_l2tev")]([SubResource("Resource_lsxqg"), SubResource("Resource_t4iby")])
+metadata/_custom_type_script = "uid://br1hibx18tv13"

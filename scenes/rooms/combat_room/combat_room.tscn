@@ -3,7 +3,6 @@
 [ext_resource type="Script" uid="uid://blqos0ytgqhao" path="res://scripts/rooms/combat_room/combat_room.gd" id="1_fx62r"]
 [ext_resource type="Resource" uid="uid://bqq44kff15k4w" path="res://entities/characters/ironclad/ironclad_stats.tres" id="2_7btib"]
 [ext_resource type="Resource" uid="uid://d2ev4fm055apj" path="res://entities/encounters/act1/vantom.tres" id="2_hylje"]
-[ext_resource type="AudioStream" uid="uid://b4jkiwnd4o7vc" path="res://audio/music/Clark Aboud - The Beyond.mp3" id="3_hylje"]
 [ext_resource type="Script" uid="uid://cyuwwr8gs0v4v" path="res://scripts/rooms/combat_room/combat_ui/combat_ui.gd" id="4_4hrnf"]
 [ext_resource type="Texture2D" uid="uid://jwynhqw8ayou" path="res://images/packed/combat_ui/end_turn_button.png" id="5_w1so4"]
 [ext_resource type="Texture2D" uid="uid://bnnrjotxgq0sx" path="res://images/packed/combat_ui/end_turn_button_glow.png" id="6_m2yy5"]
@@ -16,17 +15,14 @@
 [ext_resource type="Texture2D" uid="uid://dyk2ylwv2fgxp" path="res://images/packed/combat_ui/exhaust_pile.png" id="12_hylje"]
 [ext_resource type="PackedScene" uid="uid://dwj3mdroe0dgp" path="res://scenes/rooms/combat_room/combat_ui/hand_selelctor.tscn" id="13_4hrnf"]
 [ext_resource type="Script" uid="uid://b7jbna8u8wfw1" path="res://scripts/rooms/combat_room/combat_ui/red_flash.gd" id="13_d1stk"]
-[ext_resource type="Texture2D" uid="uid://cvxy8ydgwomqh" path="res://images/rooms/underdocks/underdocks_01_a.png" id="14_fjeak"]
 [ext_resource type="PackedScene" uid="uid://bpxa77yfyyws0" path="res://scenes/rooms/combat_room/combat_ui/discover_card_view.tscn" id="15_4hrnf"]
 [ext_resource type="PackedScene" uid="uid://bijk3yg4btssm" path="res://scenes/ui/deck_view.tscn" id="15_hylje"]
-[ext_resource type="Texture2D" uid="uid://bnlf5ynahsy8u" path="res://images/rooms/underdocks/underdocks_02_a.png" id="15_s0f1l"]
 [ext_resource type="PackedScene" uid="uid://v5eu53rlyybk" path="res://scenes/rooms/combat_room/combat_resolver.tscn" id="16_4hrnf"]
-[ext_resource type="Texture2D" uid="uid://del54pxobtgf8" path="res://images/rooms/underdocks/underdocks_04_a.png" id="16_tey1o"]
-[ext_resource type="Texture2D" uid="uid://c6r8xp7wi3hkh" path="res://images/rooms/underdocks/underdocks_05_a.png" id="17_albe3"]
 [ext_resource type="PackedScene" uid="uid://cyeyq35luqvy2" path="res://scenes/rooms/combat_room/combat_ui/main_skill.tscn" id="17_w1so4"]
 [ext_resource type="Script" uid="uid://cqlaav8vqwmad" path="res://scripts/creatures/player/player_handler.gd" id="18_7rams"]
 [ext_resource type="PackedScene" uid="uid://c535efduugkl5" path="res://scenes/creatures/player/player.tscn" id="19_ry3up"]
 [ext_resource type="Script" uid="uid://bgjydn1xm3hu4" path="res://scripts/creatures/enemy/enemy_handler.gd" id="20_646qw"]
+[ext_resource type="PackedScene" uid="uid://bviecg6eqpo4e" path="res://scenes/rooms/combat_room/back_ground_container.tscn" id="20_fx62r"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_82is4"]
 font_size = 30
@@ -43,14 +39,15 @@ mouse_filter = 1
 script = ExtResource("1_fx62r")
 enemy_encounter = ExtResource("2_hylje")
 char_stats = ExtResource("2_7btib")
-music = ExtResource("3_hylje")
 metadata/_edit_lock_ = true
 
 [node name="SFXLayer" type="CanvasLayer" parent="." unique_id=1811299611]
 unique_name_in_owner = true
+follow_viewport_enabled = true
 
 [node name="CombatUI" type="CanvasLayer" parent="." unique_id=661618034 groups=["ui_layer"]]
 unique_name_in_owner = true
+follow_viewport_enabled = true
 script = ExtResource("4_4hrnf")
 
 [node name="MainSkill" parent="CombatUI" unique_id=1104304468 node_paths=PackedStringArray("player") instance=ExtResource("17_w1so4")]
@@ -92,13 +89,6 @@ text = "结束回合"
 label_settings = SubResource("LabelSettings_82is4")
 horizontal_alignment = 1
 vertical_alignment = 1
-
-[node name="EnergyUI" parent="CombatUI" unique_id=1056468165 instance=ExtResource("7_htae7")]
-offset_left = 77.0
-offset_top = 798.0
-offset_right = -1587.0
-offset_bottom = -26.0
-scale = Vector2(0.6, 0.6)
 
 [node name="HandManager" parent="CombatUI" unique_id=828060318 instance=ExtResource("8_mj7tc")]
 offset_left = 193.0
@@ -198,8 +188,16 @@ visible = false
 unique_name_in_owner = true
 visible = false
 
+[node name="EnergyUI" parent="CombatUI" unique_id=1056468165 instance=ExtResource("7_htae7")]
+anchors_preset = 0
+offset_left = 81.0
+offset_top = 785.0
+offset_right = 265.0
+offset_bottom = 963.0
+
 [node name="RedFlash" type="CanvasLayer" parent="." unique_id=919668335]
 layer = 2
+follow_viewport_enabled = true
 
 [node name="CardTargetSelector" parent="RedFlash" unique_id=20047492 instance=ExtResource("12_83j5g")]
 
@@ -219,63 +217,14 @@ one_shot = true
 
 [node name="CardPileView" type="CanvasLayer" parent="." unique_id=653295741]
 layer = 3
+follow_viewport_enabled = true
 
 [node name="InspectPileView" parent="CardPileView" unique_id=1662556681 instance=ExtResource("15_hylje")]
 unique_name_in_owner = true
 visible = false
 
-[node name="BackGroundContainer" type="Control" parent="." unique_id=1215282505]
+[node name="BackGroundContainer" parent="." unique_id=230468796 instance=ExtResource("20_fx62r")]
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-
-[node name="background1" type="TextureRect" parent="BackGroundContainer" unique_id=1629789452]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-texture = ExtResource("14_fjeak")
-expand_mode = 1
-
-[node name="2" type="TextureRect" parent="BackGroundContainer" unique_id=1502299885]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-texture = ExtResource("15_s0f1l")
-expand_mode = 1
-
-[node name="3" type="TextureRect" parent="BackGroundContainer" unique_id=1385248162]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-texture = ExtResource("16_tey1o")
-expand_mode = 1
-
-[node name="4" type="TextureRect" parent="BackGroundContainer" unique_id=83263002]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-texture = ExtResource("17_albe3")
-expand_mode = 1
 
 [node name="AddCard" type="Button" parent="." unique_id=952102186]
 layout_mode = 0

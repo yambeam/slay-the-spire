@@ -1,0 +1,75 @@
+[gd_resource type="Resource" script_class="Card" format=3 uid="uid://p7o133xa8vwd"]
+
+[ext_resource type="Script" uid="uid://cxgxfbwykbp84" path="res://scripts/costum_resources/numeric_entry.gd" id="1_26723"]
+[ext_resource type="Script" uid="uid://cgmi6f3o7leik" path="res://scripts/costum_resources/effect.gd" id="2_2ytxh"]
+[ext_resource type="Script" uid="uid://dtok21t0ujjui" path="res://scripts/costum_resources/numeric_provider.gd" id="2_4l2xs"]
+[ext_resource type="Script" uid="uid://br1hibx18tv13" path="res://scripts/costum_resources/card.gd" id="3_4jbfm"]
+[ext_resource type="Script" uid="uid://b8qfrs61nmcix" path="res://scripts/costum_resources/effects/apply_buff_effect.gd" id="4_np3r5"]
+[ext_resource type="Texture2D" uid="uid://usesj0" path="res://images/atlases/card_atlas.sprites/colorless/prep_time.tres" id="5_dxq35"]
+
+[sub_resource type="Resource" id="Resource_em45o"]
+script = ExtResource("2_4l2xs")
+fixed_value = 4
+metadata/_custom_type_script = "uid://dtok21t0ujjui"
+
+[sub_resource type="Resource" id="Resource_408xc"]
+script = ExtResource("1_26723")
+numeric_type = 4
+numeric_provider = SubResource("Resource_em45o")
+placeholder = "stacks"
+affected_by = 3
+metadata/_custom_type_script = "uid://cxgxfbwykbp84"
+
+[sub_resource type="Resource" id="Resource_dcbat"]
+script = ExtResource("2_4l2xs")
+fixed_value = 4
+metadata/_custom_type_script = "uid://dtok21t0ujjui"
+
+[sub_resource type="Resource" id="Resource_2icw6"]
+script = ExtResource("4_np3r5")
+buff_name = "准备时间"
+buff_stack_provider = SubResource("Resource_dcbat")
+target_type = 1
+metadata/_custom_type_script = "uid://b8qfrs61nmcix"
+
+[sub_resource type="Resource" id="Resource_8kct4"]
+script = ExtResource("2_4l2xs")
+fixed_value = 6
+metadata/_custom_type_script = "uid://dtok21t0ujjui"
+
+[sub_resource type="Resource" id="Resource_u23w8"]
+script = ExtResource("4_np3r5")
+buff_name = "准备时间"
+buff_stack_provider = SubResource("Resource_8kct4")
+target_type = 1
+metadata/_custom_type_script = "uid://b8qfrs61nmcix"
+
+[sub_resource type="Resource" id="Resource_wtvuh"]
+script = ExtResource("2_4l2xs")
+fixed_value = 6
+metadata/_custom_type_script = "uid://dtok21t0ujjui"
+
+[sub_resource type="Resource" id="Resource_n8c4j"]
+script = ExtResource("1_26723")
+numeric_type = 4
+numeric_provider = SubResource("Resource_wtvuh")
+placeholder = "stacks"
+affected_by = 3
+metadata/_custom_type_script = "uid://cxgxfbwykbp84"
+
+[resource]
+script = ExtResource("3_4jbfm")
+id = "准备时间"
+type = 4
+card_color = 64
+base_cost = 1
+rarity = 2
+effects = Array[ExtResource("2_2ytxh")]([SubResource("Resource_2icw6")])
+portrait = ExtResource("5_dxq35")
+base_description = "[center]在你的回合开始时，获得{stacks}点[color=gold]活力[/color]。[/center]"
+base_numeric_entries = Array[ExtResource("1_26723")]([SubResource("Resource_408xc")])
+upgraded_cost = 1
+upgraded_description = "[center]在你的回合开始时，获得{stacks}点[color=gold]活力[/color]。[/center]"
+upgraded_numeric_entries = Array[ExtResource("1_26723")]([SubResource("Resource_n8c4j")])
+upgraded_effects = Array[ExtResource("2_2ytxh")]([SubResource("Resource_u23w8")])
+metadata/_custom_type_script = "uid://br1hibx18tv13"

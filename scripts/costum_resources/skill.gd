@@ -103,7 +103,7 @@ func play(source: Player, targets: Array[Node], no_callback: bool = false) -> vo
 			)
 		)
 
-func on_played(source: Player, targets: Array[Node]) -> void:
+func on_played(_source: Player, _targets: Array[Node]) -> void:
 	pass
 	# e.g.暴走:每打出一次伤害提高5
 

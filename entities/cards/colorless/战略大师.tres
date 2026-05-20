@@ -1,0 +1,83 @@
+[gd_resource type="Resource" script_class="Card" format=3 uid="uid://blp6glpksu1mu"]
+
+[ext_resource type="Script" uid="uid://cxgxfbwykbp84" path="res://scripts/costum_resources/numeric_entry.gd" id="1_d0l3b"]
+[ext_resource type="Script" uid="uid://dtok21t0ujjui" path="res://scripts/costum_resources/numeric_provider.gd" id="2_6apt0"]
+[ext_resource type="Script" uid="uid://cgmi6f3o7leik" path="res://scripts/costum_resources/effect.gd" id="2_6j536"]
+[ext_resource type="Script" uid="uid://br1hibx18tv13" path="res://scripts/costum_resources/card.gd" id="3_3y5hb"]
+[ext_resource type="Script" uid="uid://dd8cefu454sp5" path="res://scripts/costum_resources/effects/draw_card_effect.gd" id="4_aj0mn"]
+[ext_resource type="Script" uid="uid://c8ly86kb5vc65" path="res://scripts/costum_resources/effects/iteration_effect.gd" id="5_oikhl"]
+[ext_resource type="Texture2D" uid="uid://cyho2rs" path="res://images/atlases/card_atlas.sprites/colorless/master_of_strategy.tres" id="6_ykmn5"]
+
+[sub_resource type="Resource" id="Resource_gsjuq"]
+script = ExtResource("2_6apt0")
+fixed_value = 3
+metadata/_custom_type_script = "uid://dtok21t0ujjui"
+
+[sub_resource type="Resource" id="Resource_ltppn"]
+script = ExtResource("1_d0l3b")
+numeric_type = 5
+numeric_provider = SubResource("Resource_gsjuq")
+placeholder = "cards"
+affected_by = 3
+metadata/_custom_type_script = "uid://cxgxfbwykbp84"
+
+[sub_resource type="Resource" id="Resource_xc1ji"]
+script = ExtResource("2_6apt0")
+fixed_value = 3
+metadata/_custom_type_script = "uid://dtok21t0ujjui"
+
+[sub_resource type="Resource" id="Resource_6jd14"]
+script = ExtResource("4_aj0mn")
+metadata/_custom_type_script = "uid://dd8cefu454sp5"
+
+[sub_resource type="Resource" id="Resource_8t6t2"]
+script = ExtResource("5_oikhl")
+count_provider = SubResource("Resource_xc1ji")
+effects = Array[ExtResource("2_6j536")]([SubResource("Resource_6jd14")])
+animation_name = "cast"
+metadata/_custom_type_script = "uid://c8ly86kb5vc65"
+
+[sub_resource type="Resource" id="Resource_rfgkn"]
+script = ExtResource("2_6apt0")
+fixed_value = 4
+metadata/_custom_type_script = "uid://dtok21t0ujjui"
+
+[sub_resource type="Resource" id="Resource_o3jr2"]
+script = ExtResource("4_aj0mn")
+metadata/_custom_type_script = "uid://dd8cefu454sp5"
+
+[sub_resource type="Resource" id="Resource_5tu8h"]
+script = ExtResource("5_oikhl")
+count_provider = SubResource("Resource_rfgkn")
+effects = Array[ExtResource("2_6j536")]([SubResource("Resource_o3jr2")])
+animation_name = "cast"
+metadata/_custom_type_script = "uid://c8ly86kb5vc65"
+
+[sub_resource type="Resource" id="Resource_u12g5"]
+script = ExtResource("2_6apt0")
+fixed_value = 4
+metadata/_custom_type_script = "uid://dtok21t0ujjui"
+
+[sub_resource type="Resource" id="Resource_4cuyo"]
+script = ExtResource("1_d0l3b")
+numeric_type = 5
+numeric_provider = SubResource("Resource_u12g5")
+placeholder = "cards"
+affected_by = 3
+metadata/_custom_type_script = "uid://cxgxfbwykbp84"
+
+[resource]
+script = ExtResource("3_3y5hb")
+id = "战略大师"
+type = 2
+card_color = 64
+rarity = 4
+effects = Array[ExtResource("2_6j536")]([SubResource("Resource_8t6t2")])
+portrait = ExtResource("6_ykmn5")
+base_description = "[center]抽{cards}张牌。[/center]"
+base_numeric_entries = Array[ExtResource("1_d0l3b")]([SubResource("Resource_ltppn")])
+exhaust = true
+upgraded_description = "[center]抽{cards}张牌。[/center]"
+upgraded_numeric_entries = Array[ExtResource("1_d0l3b")]([SubResource("Resource_4cuyo")])
+upgraded_effects = Array[ExtResource("2_6j536")]([SubResource("Resource_5tu8h")])
+metadata/_custom_type_script = "uid://br1hibx18tv13"

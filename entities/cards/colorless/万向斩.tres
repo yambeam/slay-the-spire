@@ -1,0 +1,105 @@
+[gd_resource type="Resource" script_class="Card" format=3 uid="uid://bv1beg15cym6a"]
+
+[ext_resource type="Script" uid="uid://cxgxfbwykbp84" path="res://scripts/costum_resources/numeric_entry.gd" id="1_lk7yi"]
+[ext_resource type="Script" uid="uid://dtok21t0ujjui" path="res://scripts/costum_resources/numeric_provider.gd" id="2_twrnw"]
+[ext_resource type="Script" uid="uid://cgmi6f3o7leik" path="res://scripts/costum_resources/effect.gd" id="2_uty38"]
+[ext_resource type="Script" uid="uid://br1hibx18tv13" path="res://scripts/costum_resources/card.gd" id="3_t1772"]
+[ext_resource type="Script" uid="uid://vkklgv0ma0yf" path="res://scripts/costum_resources/effects/attack_effect.gd" id="4_ydre4"]
+[ext_resource type="AudioStream" uid="uid://b3reffdbqylun" path="res://audio/SFX/slash_attack.mp3" id="5_ahsc0"]
+[ext_resource type="Texture2D" uid="uid://q4shvl" path="res://images/atlases/card_atlas.sprites/colorless/omnislice.tres" id="6_dhc4f"]
+
+[sub_resource type="Resource" id="Resource_nbdmd"]
+script = ExtResource("2_twrnw")
+fixed_value = 7
+metadata/_custom_type_script = "uid://dtok21t0ujjui"
+
+[sub_resource type="Resource" id="Resource_b5k6r"]
+script = ExtResource("1_lk7yi")
+numeric_provider = SubResource("Resource_nbdmd")
+placeholder = "damage"
+affected_by = 2
+metadata/_custom_type_script = "uid://cxgxfbwykbp84"
+
+[sub_resource type="Resource" id="Resource_dutrx"]
+script = ExtResource("2_twrnw")
+fixed_value = 7
+metadata/_custom_type_script = "uid://dtok21t0ujjui"
+
+[sub_resource type="Resource" id="Resource_1s41o"]
+script = ExtResource("4_ydre4")
+damage_provider = SubResource("Resource_dutrx")
+target_type = 2
+sound = ExtResource("5_ahsc0")
+metadata/_custom_type_script = "uid://vkklgv0ma0yf"
+
+[sub_resource type="Resource" id="Resource_42nou"]
+script = ExtResource("2_twrnw")
+type = 1
+metadata/_custom_type_script = "uid://dtok21t0ujjui"
+
+[sub_resource type="Resource" id="Resource_xefke"]
+script = ExtResource("4_ydre4")
+damage_provider = SubResource("Resource_42nou")
+target_type = 3
+animation_name = "attack"
+sound = ExtResource("5_ahsc0")
+metadata/_custom_type_script = "uid://vkklgv0ma0yf"
+
+[sub_resource type="Resource" id="Resource_xqlak"]
+script = ExtResource("2_twrnw")
+fixed_value = 10
+metadata/_custom_type_script = "uid://dtok21t0ujjui"
+
+[sub_resource type="Resource" id="Resource_0c51n"]
+script = ExtResource("4_ydre4")
+damage_provider = SubResource("Resource_xqlak")
+target_type = 2
+sound = ExtResource("5_ahsc0")
+metadata/_custom_type_script = "uid://vkklgv0ma0yf"
+
+[sub_resource type="Resource" id="Resource_8j8lu"]
+script = ExtResource("2_twrnw")
+type = 1
+metadata/_custom_type_script = "uid://dtok21t0ujjui"
+
+[sub_resource type="Resource" id="Resource_kr4wl"]
+script = ExtResource("4_ydre4")
+damage_provider = SubResource("Resource_8j8lu")
+target_type = 3
+animation_name = "attack"
+sound = ExtResource("5_ahsc0")
+metadata/_custom_type_script = "uid://vkklgv0ma0yf"
+
+[sub_resource type="Resource" id="Resource_5l6rc"]
+script = ExtResource("2_twrnw")
+fixed_value = 8
+metadata/_custom_type_script = "uid://dtok21t0ujjui"
+
+[sub_resource type="Resource" id="Resource_6irl6"]
+script = ExtResource("1_lk7yi")
+numeric_provider = SubResource("Resource_5l6rc")
+placeholder = "damage"
+affected_by = 2
+metadata/_custom_type_script = "uid://cxgxfbwykbp84"
+
+[resource]
+script = ExtResource("3_t1772")
+id = "万向斩"
+base_target = 1
+card_color = 64
+base_cost = 1
+rarity = 2
+effects = Array[ExtResource("2_uty38")]([SubResource("Resource_1s41o"), SubResource("Resource_xefke")])
+portrait = ExtResource("6_dhc4f")
+base_description = "[center]	造成{damage}点伤害。
+对所有敌人造成等量的伤害。
+[/center]"
+base_numeric_entries = Array[ExtResource("1_lk7yi")]([SubResource("Resource_b5k6r")])
+upgraded_target = 1
+upgraded_cost = 1
+upgraded_description = "[center]	造成{damage}点伤害。
+对所有敌人造成等量的伤害。
+[/center]"
+upgraded_numeric_entries = Array[ExtResource("1_lk7yi")]([SubResource("Resource_6irl6")])
+upgraded_effects = Array[ExtResource("2_uty38")]([SubResource("Resource_0c51n"), SubResource("Resource_kr4wl")])
+metadata/_custom_type_script = "uid://br1hibx18tv13"

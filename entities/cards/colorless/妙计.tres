@@ -1,0 +1,85 @@
+[gd_resource type="Resource" script_class="Card" format=3 uid="uid://s2krufkwjumr"]
+
+[ext_resource type="Script" uid="uid://cxgxfbwykbp84" path="res://scripts/costum_resources/numeric_entry.gd" id="1_r3r45"]
+[ext_resource type="Script" uid="uid://cgmi6f3o7leik" path="res://scripts/costum_resources/effect.gd" id="2_4sns2"]
+[ext_resource type="Script" uid="uid://dtok21t0ujjui" path="res://scripts/costum_resources/numeric_provider.gd" id="2_57egv"]
+[ext_resource type="Script" uid="uid://br1hibx18tv13" path="res://scripts/costum_resources/card.gd" id="3_qx4yt"]
+[ext_resource type="Script" uid="uid://dnv7chuoeoi6y" path="res://scripts/costum_resources/effects/block_effect.gd" id="4_4p8xt"]
+[ext_resource type="AudioStream" uid="uid://cnxfhtrl0n8nm" path="res://audio/SFX/frost_orb_passive.mp3" id="5_5ck6b"]
+[ext_resource type="Script" uid="uid://dd8cefu454sp5" path="res://scripts/costum_resources/effects/draw_card_effect.gd" id="6_ijhyn"]
+[ext_resource type="Texture2D" uid="uid://cpd3t84" path="res://images/atlases/card_atlas.sprites/colorless/finesse.tres" id="7_b1po5"]
+
+[sub_resource type="Resource" id="Resource_fg5ac"]
+script = ExtResource("2_57egv")
+fixed_value = 4
+metadata/_custom_type_script = "uid://dtok21t0ujjui"
+
+[sub_resource type="Resource" id="Resource_gitn6"]
+script = ExtResource("1_r3r45")
+numeric_type = 2
+numeric_provider = SubResource("Resource_fg5ac")
+placeholder = "block"
+affected_by = 2
+metadata/_custom_type_script = "uid://cxgxfbwykbp84"
+
+[sub_resource type="Resource" id="Resource_pnapg"]
+script = ExtResource("2_57egv")
+fixed_value = 4
+metadata/_custom_type_script = "uid://dtok21t0ujjui"
+
+[sub_resource type="Resource" id="Resource_n2qyv"]
+script = ExtResource("4_4p8xt")
+block_provider = SubResource("Resource_pnapg")
+target_type = 1
+sound = ExtResource("5_5ck6b")
+metadata/_custom_type_script = "uid://dnv7chuoeoi6y"
+
+[sub_resource type="Resource" id="Resource_4h2vj"]
+script = ExtResource("6_ijhyn")
+metadata/_custom_type_script = "uid://dd8cefu454sp5"
+
+[sub_resource type="Resource" id="Resource_mpjef"]
+script = ExtResource("2_57egv")
+fixed_value = 7
+metadata/_custom_type_script = "uid://dtok21t0ujjui"
+
+[sub_resource type="Resource" id="Resource_7a2va"]
+script = ExtResource("4_4p8xt")
+block_provider = SubResource("Resource_mpjef")
+target_type = 1
+sound = ExtResource("5_5ck6b")
+metadata/_custom_type_script = "uid://dnv7chuoeoi6y"
+
+[sub_resource type="Resource" id="Resource_v33mg"]
+script = ExtResource("6_ijhyn")
+metadata/_custom_type_script = "uid://dd8cefu454sp5"
+
+[sub_resource type="Resource" id="Resource_ooead"]
+script = ExtResource("2_57egv")
+fixed_value = 7
+metadata/_custom_type_script = "uid://dtok21t0ujjui"
+
+[sub_resource type="Resource" id="Resource_tqwus"]
+script = ExtResource("1_r3r45")
+numeric_type = 2
+numeric_provider = SubResource("Resource_ooead")
+placeholder = "block"
+affected_by = 2
+metadata/_custom_type_script = "uid://cxgxfbwykbp84"
+
+[resource]
+script = ExtResource("3_qx4yt")
+id = "妙计"
+type = 2
+card_color = 64
+rarity = 2
+effects = Array[ExtResource("2_4sns2")]([SubResource("Resource_n2qyv"), SubResource("Resource_4h2vj")])
+portrait = ExtResource("7_b1po5")
+base_description = "[center]获得{blocks}点[color=gold]格挡[/color]。
+抽1张牌。[/center]"
+base_numeric_entries = Array[ExtResource("1_r3r45")]([SubResource("Resource_gitn6")])
+upgraded_description = "[center]获得{block}点[color=gold]格挡[/color]。
+抽1张牌。[/center]"
+upgraded_numeric_entries = Array[ExtResource("1_r3r45")]([SubResource("Resource_tqwus")])
+upgraded_effects = Array[ExtResource("2_4sns2")]([SubResource("Resource_7a2va"), SubResource("Resource_v33mg")])
+metadata/_custom_type_script = "uid://br1hibx18tv13"

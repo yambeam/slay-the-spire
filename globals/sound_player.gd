@@ -1,4 +1,6 @@
 extends Node
+class_name SoundPlayer
+
 enum Bus{MASTER,SFX,MUSIC}
 
 func play(audio: AudioStream, single :bool = false) -> void:

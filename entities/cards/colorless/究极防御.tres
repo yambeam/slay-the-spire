@@ -1,0 +1,78 @@
+[gd_resource type="Resource" script_class="Card" format=3 uid="uid://bip0iabj12lyf"]
+
+[ext_resource type="Script" uid="uid://cxgxfbwykbp84" path="res://scripts/costum_resources/numeric_entry.gd" id="1_d7h82"]
+[ext_resource type="Script" uid="uid://dtok21t0ujjui" path="res://scripts/costum_resources/numeric_provider.gd" id="2_h0qdh"]
+[ext_resource type="Script" uid="uid://cgmi6f3o7leik" path="res://scripts/costum_resources/effect.gd" id="2_x5ow8"]
+[ext_resource type="Script" uid="uid://br1hibx18tv13" path="res://scripts/costum_resources/card.gd" id="3_r242g"]
+[ext_resource type="Script" uid="uid://dnv7chuoeoi6y" path="res://scripts/costum_resources/effects/block_effect.gd" id="4_uj1xj"]
+[ext_resource type="AudioStream" uid="uid://cnxfhtrl0n8nm" path="res://audio/SFX/frost_orb_passive.mp3" id="5_vx0ol"]
+[ext_resource type="Texture2D" uid="uid://oyv5o3" path="res://images/atlases/card_atlas.sprites/colorless/ultimate_defend.tres" id="6_ctxaw"]
+
+[sub_resource type="Resource" id="Resource_541ai"]
+script = ExtResource("2_h0qdh")
+fixed_value = 11
+metadata/_custom_type_script = "uid://dtok21t0ujjui"
+
+[sub_resource type="Resource" id="Resource_uh5yi"]
+script = ExtResource("1_d7h82")
+numeric_type = 2
+numeric_provider = SubResource("Resource_541ai")
+placeholder = "block"
+affected_by = 2
+metadata/_custom_type_script = "uid://cxgxfbwykbp84"
+
+[sub_resource type="Resource" id="Resource_mlu3r"]
+script = ExtResource("2_h0qdh")
+fixed_value = 11
+metadata/_custom_type_script = "uid://dtok21t0ujjui"
+
+[sub_resource type="Resource" id="Resource_6v7dy"]
+script = ExtResource("4_uj1xj")
+block_provider = SubResource("Resource_mlu3r")
+target_type = 1
+animation_name = "cast"
+sound = ExtResource("5_vx0ol")
+metadata/_custom_type_script = "uid://dnv7chuoeoi6y"
+
+[sub_resource type="Resource" id="Resource_2je7r"]
+script = ExtResource("2_h0qdh")
+fixed_value = 15
+metadata/_custom_type_script = "uid://dtok21t0ujjui"
+
+[sub_resource type="Resource" id="Resource_xhlqv"]
+script = ExtResource("4_uj1xj")
+block_provider = SubResource("Resource_2je7r")
+target_type = 1
+animation_name = "cast"
+sound = ExtResource("5_vx0ol")
+metadata/_custom_type_script = "uid://dnv7chuoeoi6y"
+
+[sub_resource type="Resource" id="Resource_xy1xp"]
+script = ExtResource("2_h0qdh")
+fixed_value = 15
+metadata/_custom_type_script = "uid://dtok21t0ujjui"
+
+[sub_resource type="Resource" id="Resource_j20rq"]
+script = ExtResource("1_d7h82")
+numeric_type = 2
+numeric_provider = SubResource("Resource_xy1xp")
+placeholder = "block"
+affected_by = 2
+metadata/_custom_type_script = "uid://cxgxfbwykbp84"
+
+[resource]
+script = ExtResource("3_r242g")
+id = "究极防御"
+type = 2
+card_color = 64
+base_cost = 1
+rarity = 2
+effects = Array[ExtResource("2_x5ow8")]([SubResource("Resource_6v7dy")])
+portrait = ExtResource("6_ctxaw")
+base_description = "[center]获得{block}点[color=gold]格挡[/color]。[/center]"
+base_numeric_entries = Array[ExtResource("1_d7h82")]([SubResource("Resource_uh5yi")])
+upgraded_cost = 1
+upgraded_description = "[center]获得{block}点[color=gold]格挡[/color]。[/center]"
+upgraded_numeric_entries = Array[ExtResource("1_d7h82")]([SubResource("Resource_j20rq")])
+upgraded_effects = Array[ExtResource("2_x5ow8")]([SubResource("Resource_xhlqv")])
+metadata/_custom_type_script = "uid://br1hibx18tv13"

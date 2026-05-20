@@ -88,7 +88,7 @@ func animate_preview(new_position_x, new_scale, new_rotation, to_preview, tween_
 	tween = create_tween().set_trans(Tween.TRANS_SINE).set_parallel(true)
 	movement_tween = create_tween().set_trans(Tween.TRANS_SINE)
 	if to_preview:
-		movement_tween.tween_property(self, "position", Vector2(new_position_x, original_position.y - 175), tween_time)
+		movement_tween.tween_property(self, "position", Vector2(new_position_x, -self.size.y / 2 * 1.3), tween_time)
 		tween.tween_property(self, "scale", Vector2(new_scale, new_scale), tween_time)
 		tween.tween_property(self, "rotation_degrees", new_rotation, tween_time)
 	else:
@@ -171,7 +171,8 @@ func _on_mouse_entered() -> void:
 			set_description(get_tree().get_first_node_in_group("ui_player"), get_tree().get_first_node_in_group("ui_enemies"))
 	else:
 		Events.card_previewed.emit(self, true)
-		animate_start_preview()
+		#animate_start_preview()
+		
 	Events.tooltip_show_request.emit(self, show_keyword_tooltip)
 	
 func show_keyword_tooltip() -> void:
@@ -195,7 +196,7 @@ func _on_mouse_exited() -> void:
 		card_state_machine.on_mouse_exited()
 	else:
 		Events.card_previewed.emit(self, false)
-		animate_end_preview()
+		#animate_end_preview()
 	Events.tooltip_hide_request.emit()
 	
 func _on_card_click_or_drag_or_aiming_started(card_ui: CardUI) -> void:

@@ -24,7 +24,7 @@ resources_spreadsheet_view/freeze_first_column=true
 [application]
 
 config/name="Slay the Spire"
-run/main_scene="uid://c3altrf8yy8d2"
+run/main_scene="uid://ciowx51kmgt0q"
 config/features=PackedStringArray("4.6", "Forward Plus")
 
 [autoload]
@@ -44,7 +44,7 @@ MouseCursor="*uid://qo7dfe4uhn80"
 window/size/viewport_width=1920
 window/size/viewport_height=1080
 window/stretch/mode="canvas_items"
-window/stretch/aspect="expand"
+window/stretch/aspect="ignore"
 mouse_cursor/custom_image="uid://c81ujylxglbau"
 
 [editor]

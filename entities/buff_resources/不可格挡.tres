@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="BuffResource" format=3 uid="uid://v18v740vl03h"]
+
+[ext_resource type="Script" uid="uid://b4s5qkn7fuqqt" path="res://scripts/costum_resources/buffs/no_block_debuff.gd" id="1_c3s8d"]
+[ext_resource type="Script" uid="uid://c1n4sywvfnffx" path="res://scripts/costum_resources/buff_resource.gd" id="1_lnlg1"]
+[ext_resource type="Texture2D" uid="uid://gp6mr6k00c7x" path="res://images/powers/no_block_power.png" id="2_syr2r"]
+
+[resource]
+script = ExtResource("1_lnlg1")
+buff_id = "on_block"
+buff_name = "不可格挡"
+description = "无法从卡牌获得格挡。"
+icon = ExtResource("2_syr2r")
+buff_type = 1
+buff_script = ExtResource("1_c3s8d")
+metadata/_custom_type_script = "uid://c1n4sywvfnffx"

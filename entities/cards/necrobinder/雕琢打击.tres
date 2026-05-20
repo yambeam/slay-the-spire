@@ -4,7 +4,6 @@
 [ext_resource type="Texture2D" uid="uid://bcgn03j" path="res://images/atlases/card_atlas.sprites/necrobinder/sculpting_strike.tres" id="2_35aj8"]
 [ext_resource type="Script" uid="uid://dtok21t0ujjui" path="res://scripts/costum_resources/numeric_provider.gd" id="2_suesf"]
 [ext_resource type="Script" uid="uid://cgmi6f3o7leik" path="res://scripts/costum_resources/effect.gd" id="3_8qd6d"]
-[ext_resource type="AudioStream" uid="uid://bcwmh6adledx" path="res://audio/SFX/blunt_attack.mp3" id="4_1xsq3"]
 [ext_resource type="Script" uid="uid://vkklgv0ma0yf" path="res://scripts/costum_resources/effects/attack_effect.gd" id="4_finch"]
 [ext_resource type="Script" uid="uid://mj4ouyjcdv4v" path="res://scripts/costum_resources/effects/choose_card_effect.gd" id="5_nx85q"]
 [ext_resource type="Script" uid="uid://br1hibx18tv13" path="res://scripts/costum_resources/card.gd" id="7_suesf"]
@@ -80,7 +79,6 @@ base_cost = 1
 effects = Array[ExtResource("3_8qd6d")]([SubResource("Resource_r33ay"), SubResource("Resource_t1njb")])
 portrait = ExtResource("2_35aj8")
 base_description = "[center]造成{damage}点伤害。[/center][p][center]选择一张手牌施加[color=gold]虚无[/color]。[/center]"
-sound = ExtResource("4_1xsq3")
 base_numeric_entries = Array[ExtResource("1_2klbc")]([SubResource("Resource_ppitb")])
 upgraded_target = 1
 upgraded_cost = 1

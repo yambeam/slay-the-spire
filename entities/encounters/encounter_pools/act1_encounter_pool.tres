@@ -7,12 +7,9 @@
 [ext_resource type="Resource" uid="uid://b8gnh6fck14ic" path="res://entities/enemies/mawler/mawler_stats.tres" id="5_15xrl"]
 [ext_resource type="Resource" uid="uid://bdt85ngfibtet" path="res://entities/enemies/leaf_slime_m/leaf_slime_m.tres" id="6_5fgax"]
 [ext_resource type="Resource" uid="uid://cgwt53u65hq2h" path="res://entities/enemies/twig_slime_m/twig_slime_m.tres" id="7_nvtwo"]
-[ext_resource type="Resource" uid="uid://b7d2m4ftsvv71" path="res://entities/enemies/nibbit/nibbit_ai.tres" id="8_8bura"]
 [ext_resource type="Resource" uid="uid://cm4lesyla0lcc" path="res://entities/enemies/twig_slime_s/twig_slime_s.tres" id="8_q6si1"]
 [ext_resource type="Script" uid="uid://dw53gdpom3gn6" path="res://scripts/costum_resources/enemy_entry.gd" id="9_4vgo2"]
-[ext_resource type="Script" uid="uid://bjrlwk5w4gqtk" path="res://scripts/costum_resources/enemy_stats.gd" id="9_lh6jw"]
 [ext_resource type="Resource" uid="uid://co5o388rhc6fe" path="res://entities/enemies/vantom/vantom.tres" id="10_8bura"]
-[ext_resource type="PackedScene" uid="uid://ehev41bc2om8" path="res://scenes/creature_visuals/nibbit.tscn" id="10_oisqt"]
 [ext_resource type="Resource" uid="uid://bv0m86mshv3gj" path="res://entities/enemies/nibbit/nibbit.tres" id="12_j2cuc"]
 [ext_resource type="Resource" uid="uid://da4v3myp4p1av" path="res://entities/encounters/act1/three_inklets.tres" id="14_oisqt"]
 [ext_resource type="Resource" uid="uid://cswtrh1b5sfc6" path="res://entities/encounters/act1/红果果绿泡泡.tres" id="15_15xrl"]
@@ -42,7 +39,7 @@ metadata/_custom_type_script = "uid://dgu4qpyr0pnnb"
 
 [sub_resource type="Resource" id="Resource_duskx"]
 script = ExtResource("9_4vgo2")
-enemy_stats = ExtResource("4_oisqt")
+enemy_stats = ExtResource("6_5fgax")
 position = Vector2(1200, 520)
 metadata/_custom_type_script = "uid://dw53gdpom3gn6"
 
@@ -124,33 +121,15 @@ enemy_entries = Array[ExtResource("9_4vgo2")]([SubResource("Resource_4u3c1"), Su
 encounter_name = "four_slimes"
 metadata/_custom_type_script = "uid://dgu4qpyr0pnnb"
 
-[sub_resource type="Resource" id="Resource_xndn5"]
-script = ExtResource("9_lh6jw")
-ai = ExtResource("8_8bura")
-enemy_name = "小啃兽"
-hightest_max_health = 46
-lowest_max_health = 42
-visuals_scene = ExtResource("10_oisqt")
-metadata/_custom_type_script = "uid://bjrlwk5w4gqtk"
-
 [sub_resource type="Resource" id="Resource_urjtc"]
 script = ExtResource("9_4vgo2")
-enemy_stats = SubResource("Resource_xndn5")
+enemy_stats = ExtResource("12_j2cuc")
 position = Vector2(1200, 520)
 metadata/_custom_type_script = "uid://dw53gdpom3gn6"
 
-[sub_resource type="Resource" id="Resource_5vn42"]
-script = ExtResource("9_lh6jw")
-ai = ExtResource("8_8bura")
-enemy_name = "小啃兽"
-hightest_max_health = 46
-lowest_max_health = 42
-visuals_scene = ExtResource("10_oisqt")
-metadata/_custom_type_script = "uid://bjrlwk5w4gqtk"
-
 [sub_resource type="Resource" id="Resource_b8gyn"]
 script = ExtResource("9_4vgo2")
-enemy_stats = SubResource("Resource_5vn42")
+enemy_stats = ExtResource("12_j2cuc")
 position = Vector2(1700, 520)
 metadata/_custom_type_script = "uid://dw53gdpom3gn6"
 

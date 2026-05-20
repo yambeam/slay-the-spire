@@ -11,6 +11,8 @@
 [ext_resource type="Script" uid="uid://csyjq6ujulplm" path="res://scripts/costum_resources/effects/card_effects/card_effect.gd" id="6_tjnhc"]
 [ext_resource type="Script" uid="uid://brihgwpyu7v5v" path="res://scripts/costum_resources/effects/card_effects/exhaust_card_effect.gd" id="7_vds6c"]
 [ext_resource type="Script" uid="uid://c2drp2mlr0vhm" path="res://scripts/costum_resources/effects/foreach_card_effect.gd" id="8_hxkor"]
+[ext_resource type="AudioStream" uid="uid://cnxfhtrl0n8nm" path="res://audio/SFX/frost_orb_passive.mp3" id="10_hxkor"]
+[ext_resource type="Script" uid="uid://c8ly86kb5vc65" path="res://scripts/costum_resources/effects/iteration_effect.gd" id="11_jhvr7"]
 
 [sub_resource type="Resource" id="Resource_tjnhc"]
 script = ExtResource("2_ush4u")
@@ -45,17 +47,28 @@ script = ExtResource("8_hxkor")
 effects = Array[ExtResource("6_tjnhc")]([SubResource("Resource_n7kal")])
 metadata/_custom_type_script = "uid://c2drp2mlr0vhm"
 
-[sub_resource type="Resource" id="Resource_jhvr7"]
+[sub_resource type="Resource" id="Resource_j8to3"]
 script = ExtResource("2_ush4u")
 type = 1
-multipiler = 5.0
 metadata/_custom_type_script = "uid://dtok21t0ujjui"
 
-[sub_resource type="Resource" id="Resource_j8to3"]
+[sub_resource type="Resource" id="Resource_bgm1e"]
+script = ExtResource("2_ush4u")
+fixed_value = 5
+metadata/_custom_type_script = "uid://dtok21t0ujjui"
+
+[sub_resource type="Resource" id="Resource_6kp15"]
 script = ExtResource("5_3i5me")
-block_provider = SubResource("Resource_jhvr7")
+block_provider = SubResource("Resource_bgm1e")
 target_type = 1
+sound = ExtResource("10_hxkor")
 metadata/_custom_type_script = "uid://dnv7chuoeoi6y"
+
+[sub_resource type="Resource" id="Resource_5kwsp"]
+script = ExtResource("11_jhvr7")
+count_provider = SubResource("Resource_j8to3")
+effects = Array[ExtResource("2_wycki")]([SubResource("Resource_6kp15")])
+metadata/_custom_type_script = "uid://c8ly86kb5vc65"
 
 [sub_resource type="Resource" id="Resource_tsppl"]
 script = ExtResource("4_3i5me")
@@ -77,17 +90,28 @@ script = ExtResource("8_hxkor")
 effects = Array[ExtResource("6_tjnhc")]([SubResource("Resource_cp5kc")])
 metadata/_custom_type_script = "uid://c2drp2mlr0vhm"
 
-[sub_resource type="Resource" id="Resource_bgm1e"]
+[sub_resource type="Resource" id="Resource_8wryp"]
 script = ExtResource("2_ush4u")
 type = 1
-multipiler = 7.0
 metadata/_custom_type_script = "uid://dtok21t0ujjui"
 
-[sub_resource type="Resource" id="Resource_6kp15"]
+[sub_resource type="Resource" id="Resource_y3d1i"]
+script = ExtResource("2_ush4u")
+fixed_value = 7
+metadata/_custom_type_script = "uid://dtok21t0ujjui"
+
+[sub_resource type="Resource" id="Resource_guul2"]
 script = ExtResource("5_3i5me")
-block_provider = SubResource("Resource_bgm1e")
+block_provider = SubResource("Resource_y3d1i")
 target_type = 1
+sound = ExtResource("10_hxkor")
 metadata/_custom_type_script = "uid://dnv7chuoeoi6y"
+
+[sub_resource type="Resource" id="Resource_evwu6"]
+script = ExtResource("11_jhvr7")
+count_provider = SubResource("Resource_8wryp")
+effects = Array[ExtResource("2_wycki")]([SubResource("Resource_guul2")])
+metadata/_custom_type_script = "uid://c8ly86kb5vc65"
 
 [sub_resource type="Resource" id="Resource_770ys"]
 script = ExtResource("2_ush4u")
@@ -108,11 +132,11 @@ id = "重振精神"
 type = 2
 base_cost = 1
 rarity = 2
-effects = Array[ExtResource("2_wycki")]([SubResource("Resource_itbqh"), SubResource("Resource_tal76"), SubResource("Resource_j8to3")])
+effects = Array[ExtResource("2_wycki")]([SubResource("Resource_itbqh"), SubResource("Resource_tal76"), SubResource("Resource_5kwsp")])
 portrait = ExtResource("6_s6fdg")
 base_description = "[center]消耗手牌中所有非攻击牌，每张获得{blocks}点[color=gold]格挡[/color]。[/center]"
 base_numeric_entries = Array[ExtResource("1_e5cvj")]([SubResource("Resource_vds6c")])
 upgraded_description = "[center]消耗手牌中所有非攻击牌，每张获得{blocks}点[color=gold]格挡[/color]。[/center]"
 upgraded_numeric_entries = Array[ExtResource("1_e5cvj")]([SubResource("Resource_5r4ja")])
-upgraded_effects = Array[ExtResource("2_wycki")]([SubResource("Resource_6uu8m"), SubResource("Resource_hcd5j"), SubResource("Resource_6kp15")])
+upgraded_effects = Array[ExtResource("2_wycki")]([SubResource("Resource_6uu8m"), SubResource("Resource_hcd5j"), SubResource("Resource_evwu6")])
 metadata/_custom_type_script = "uid://br1hibx18tv13"

@@ -6,6 +6,7 @@
 [ext_resource type="Script" uid="uid://br1hibx18tv13" path="res://scripts/costum_resources/card.gd" id="3_jle25"]
 [ext_resource type="Script" uid="uid://bgxakc1nj11hm" path="res://scripts/costum_resources/effects/loss_health_effect.gd" id="4_1maa6"]
 [ext_resource type="Script" uid="uid://dnv7chuoeoi6y" path="res://scripts/costum_resources/effects/block_effect.gd" id="5_plvlq"]
+[ext_resource type="AudioStream" uid="uid://cnxfhtrl0n8nm" path="res://audio/SFX/frost_orb_passive.mp3" id="6_1maa6"]
 [ext_resource type="Texture2D" uid="uid://c0qsgfr" path="res://images/atlases/card_atlas.sprites/ironclad/blood_wall.tres" id="6_12rjy"]
 
 [sub_resource type="Resource" id="Resource_dg8iv"]
@@ -55,6 +56,7 @@ script = ExtResource("5_plvlq")
 block_provider = SubResource("Resource_s373a")
 target_type = 1
 animation_name = "cast"
+sound = ExtResource("6_1maa6")
 metadata/_custom_type_script = "uid://dnv7chuoeoi6y"
 
 [sub_resource type="Resource" id="Resource_iin6s"]
@@ -78,6 +80,7 @@ script = ExtResource("5_plvlq")
 block_provider = SubResource("Resource_7wnj2")
 target_type = 1
 animation_name = "cast"
+sound = ExtResource("6_1maa6")
 metadata/_custom_type_script = "uid://dnv7chuoeoi6y"
 
 [sub_resource type="Resource" id="Resource_popan"]

@@ -1,0 +1,127 @@
+[gd_resource type="Resource" script_class="Card" format=3 uid="uid://qt6ix4bqyqm5"]
+
+[ext_resource type="Script" uid="uid://cxgxfbwykbp84" path="res://scripts/costum_resources/numeric_entry.gd" id="1_isywe"]
+[ext_resource type="Script" uid="uid://dtok21t0ujjui" path="res://scripts/costum_resources/numeric_provider.gd" id="2_ulwpy"]
+[ext_resource type="Script" uid="uid://cgmi6f3o7leik" path="res://scripts/costum_resources/effect.gd" id="2_vbmjm"]
+[ext_resource type="Script" uid="uid://br1hibx18tv13" path="res://scripts/costum_resources/card.gd" id="3_n6dsh"]
+[ext_resource type="Script" uid="uid://dnv7chuoeoi6y" path="res://scripts/costum_resources/effects/block_effect.gd" id="4_lyumq"]
+[ext_resource type="AudioStream" uid="uid://cnxfhtrl0n8nm" path="res://audio/SFX/frost_orb_passive.mp3" id="5_u4h0q"]
+[ext_resource type="Script" uid="uid://b8qfrs61nmcix" path="res://scripts/costum_resources/effects/apply_buff_effect.gd" id="6_vwil2"]
+[ext_resource type="Texture2D" uid="uid://caadf5" path="res://images/atlases/card_atlas.sprites/colorless/panic_button.tres" id="7_yr1rs"]
+
+[sub_resource type="Resource" id="Resource_kfdny"]
+script = ExtResource("2_ulwpy")
+fixed_value = 30
+metadata/_custom_type_script = "uid://dtok21t0ujjui"
+
+[sub_resource type="Resource" id="Resource_8xfx8"]
+script = ExtResource("1_isywe")
+numeric_type = 2
+numeric_provider = SubResource("Resource_kfdny")
+placeholder = "block"
+affected_by = 2
+metadata/_custom_type_script = "uid://cxgxfbwykbp84"
+
+[sub_resource type="Resource" id="Resource_l0l57"]
+script = ExtResource("2_ulwpy")
+fixed_value = 2
+metadata/_custom_type_script = "uid://dtok21t0ujjui"
+
+[sub_resource type="Resource" id="Resource_ic8sf"]
+script = ExtResource("1_isywe")
+numeric_type = 4
+numeric_provider = SubResource("Resource_l0l57")
+placeholder = "stacks"
+affected_by = 3
+metadata/_custom_type_script = "uid://cxgxfbwykbp84"
+
+[sub_resource type="Resource" id="Resource_tnpto"]
+script = ExtResource("2_ulwpy")
+fixed_value = 30
+metadata/_custom_type_script = "uid://dtok21t0ujjui"
+
+[sub_resource type="Resource" id="Resource_bya4c"]
+script = ExtResource("4_lyumq")
+block_provider = SubResource("Resource_tnpto")
+target_type = 1
+animation_name = "cast"
+sound = ExtResource("5_u4h0q")
+metadata/_custom_type_script = "uid://dnv7chuoeoi6y"
+
+[sub_resource type="Resource" id="Resource_ifqrd"]
+script = ExtResource("2_ulwpy")
+fixed_value = 3
+metadata/_custom_type_script = "uid://dtok21t0ujjui"
+
+[sub_resource type="Resource" id="Resource_657uo"]
+script = ExtResource("6_vwil2")
+buff_name = "不可格挡"
+buff_stack_provider = SubResource("Resource_ifqrd")
+target_type = 1
+metadata/_custom_type_script = "uid://b8qfrs61nmcix"
+
+[sub_resource type="Resource" id="Resource_okrpp"]
+script = ExtResource("2_ulwpy")
+fixed_value = 30
+metadata/_custom_type_script = "uid://dtok21t0ujjui"
+
+[sub_resource type="Resource" id="Resource_tak55"]
+script = ExtResource("4_lyumq")
+block_provider = SubResource("Resource_okrpp")
+target_type = 1
+sound = ExtResource("5_u4h0q")
+metadata/_custom_type_script = "uid://dnv7chuoeoi6y"
+
+[sub_resource type="Resource" id="Resource_3l62y"]
+script = ExtResource("2_ulwpy")
+fixed_value = 2
+metadata/_custom_type_script = "uid://dtok21t0ujjui"
+
+[sub_resource type="Resource" id="Resource_leaxe"]
+script = ExtResource("6_vwil2")
+buff_name = "不可格挡"
+buff_stack_provider = SubResource("Resource_3l62y")
+target_type = 1
+metadata/_custom_type_script = "uid://b8qfrs61nmcix"
+
+[sub_resource type="Resource" id="Resource_yilfu"]
+script = ExtResource("2_ulwpy")
+fixed_value = 30
+metadata/_custom_type_script = "uid://dtok21t0ujjui"
+
+[sub_resource type="Resource" id="Resource_r8jxa"]
+script = ExtResource("1_isywe")
+numeric_type = 2
+numeric_provider = SubResource("Resource_yilfu")
+placeholder = "block"
+affected_by = 2
+metadata/_custom_type_script = "uid://cxgxfbwykbp84"
+
+[sub_resource type="Resource" id="Resource_fq6ls"]
+script = ExtResource("2_ulwpy")
+fixed_value = 1
+metadata/_custom_type_script = "uid://dtok21t0ujjui"
+
+[sub_resource type="Resource" id="Resource_4qtqi"]
+script = ExtResource("1_isywe")
+numeric_type = 4
+numeric_provider = SubResource("Resource_fq6ls")
+placeholder = "stacks"
+metadata/_custom_type_script = "uid://cxgxfbwykbp84"
+
+[resource]
+script = ExtResource("3_n6dsh")
+id = "紧急按钮"
+type = 2
+card_color = 64
+rarity = 2
+effects = Array[ExtResource("2_vbmjm")]([SubResource("Resource_bya4c"), SubResource("Resource_657uo")])
+portrait = ExtResource("7_yr1rs")
+base_description = "[center]获得{block}点[color=gold]格挡[/color]。
+你在接下来的{stacks}回合内无法从卡牌再获得[color=gold]格挡[/color]。[/center]"
+base_numeric_entries = Array[ExtResource("1_isywe")]([SubResource("Resource_8xfx8"), SubResource("Resource_ic8sf")])
+upgraded_description = "[center]获得{block}点[color=gold]格挡[/color]。
+你在接下来的{stacks}回合内无法从卡牌再获得[color=gold]格挡[/color]。[/center]"
+upgraded_numeric_entries = Array[ExtResource("1_isywe")]([SubResource("Resource_r8jxa"), SubResource("Resource_4qtqi")])
+upgraded_effects = Array[ExtResource("2_vbmjm")]([SubResource("Resource_tak55"), SubResource("Resource_leaxe")])
+metadata/_custom_type_script = "uid://br1hibx18tv13"

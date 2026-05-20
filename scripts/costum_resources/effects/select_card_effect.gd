@@ -54,6 +54,7 @@ func execute(source: Node, _card_context: Dictionary = {}, _previous_result: Var
 						selected_cards = cards.duplicate()
 						selected_cards.shuffle()
 						selected_cards = selected_cards.slice(0, max_select)
+
 				SelectionMode.FIRST:
 					selected_cards = [cards[0]]
 				SelectionMode.ALL_NOT_UPGRADED:

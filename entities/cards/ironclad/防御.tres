@@ -5,6 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://cxnepi0" path="res://images/atlases/card_atlas.sprites/ironclad/defend_ironclad.tres" id="2_svckb"]
 [ext_resource type="Script" uid="uid://cgmi6f3o7leik" path="res://scripts/costum_resources/effect.gd" id="3_qrnip"]
 [ext_resource type="Script" uid="uid://dnv7chuoeoi6y" path="res://scripts/costum_resources/effects/block_effect.gd" id="4_60726"]
+[ext_resource type="AudioStream" uid="uid://cnxfhtrl0n8nm" path="res://audio/SFX/frost_orb_passive.mp3" id="5_8q7md"]
 [ext_resource type="Script" uid="uid://br1hibx18tv13" path="res://scripts/costum_resources/card.gd" id="6_8q7md"]
 
 [sub_resource type="Resource" id="Resource_2jflv"]
@@ -28,6 +29,7 @@ metadata/_custom_type_script = "uid://dtok21t0ujjui"
 script = ExtResource("4_60726")
 block_provider = SubResource("Resource_qaq66")
 target_type = 1
+sound = ExtResource("5_8q7md")
 metadata/_custom_type_script = "uid://dnv7chuoeoi6y"
 
 [sub_resource type="Resource" id="Resource_mq7rs"]
@@ -39,6 +41,7 @@ metadata/_custom_type_script = "uid://dtok21t0ujjui"
 script = ExtResource("4_60726")
 block_provider = SubResource("Resource_mq7rs")
 target_type = 1
+sound = ExtResource("5_8q7md")
 metadata/_custom_type_script = "uid://dnv7chuoeoi6y"
 
 [sub_resource type="Resource" id="Resource_qt2a7"]

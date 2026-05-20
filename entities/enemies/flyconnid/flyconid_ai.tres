@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://iqqyr44teapg" path="res://scripts/costum_resources/intents/sub_intent.gd" id="2_oleog"]
 [ext_resource type="Script" uid="uid://dtok21t0ujjui" path="res://scripts/costum_resources/numeric_provider.gd" id="3_uym0m"]
 [ext_resource type="Script" uid="uid://vkklgv0ma0yf" path="res://scripts/costum_resources/effects/attack_effect.gd" id="4_skbh5"]
+[ext_resource type="AudioStream" uid="uid://bcwmh6adledx" path="res://audio/SFX/blunt_attack.mp3" id="5_1ys8l"]
 [ext_resource type="Script" uid="uid://bces7ijyodhmv" path="res://scripts/costum_resources/intents/attack_sub_intent.gd" id="6_ne2ja"]
 [ext_resource type="Script" uid="uid://b8qfrs61nmcix" path="res://scripts/costum_resources/effects/apply_buff_effect.gd" id="7_myb4r"]
 [ext_resource type="Script" uid="uid://c2p6buhbk6em8" path="res://scripts/costum_resources/intents/apply_debuff_sub_intent.gd" id="9_5hryg"]
@@ -24,6 +25,7 @@ metadata/_custom_type_script = "uid://dtok21t0ujjui"
 script = ExtResource("4_skbh5")
 damage_provider = SubResource("Resource_tthnq")
 target_type = 2
+sound = ExtResource("5_1ys8l")
 metadata/_custom_type_script = "uid://vkklgv0ma0yf"
 
 [sub_resource type="Resource" id="Resource_81sut"]
@@ -46,7 +48,7 @@ metadata/_custom_type_script = "uid://b8qfrs61nmcix"
 
 [sub_resource type="Resource" id="Resource_wkncv"]
 script = ExtResource("9_5hryg")
-type = 3
+type = 4
 effect = SubResource("Resource_shxy0")
 metadata/_custom_type_script = "uid://c2p6buhbk6em8"
 
@@ -71,6 +73,7 @@ metadata/_custom_type_script = "uid://dtok21t0ujjui"
 script = ExtResource("4_skbh5")
 damage_provider = SubResource("Resource_oleog")
 target_type = 2
+sound = ExtResource("5_1ys8l")
 metadata/_custom_type_script = "uid://vkklgv0ma0yf"
 
 [sub_resource type="Resource" id="Resource_3dl2m"]

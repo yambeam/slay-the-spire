@@ -1,0 +1,71 @@
+[gd_resource type="Resource" script_class="Card" format=3 uid="uid://i24dy2tw0aqy"]
+
+[ext_resource type="Script" uid="uid://cxgxfbwykbp84" path="res://scripts/costum_resources/numeric_entry.gd" id="1_8cryk"]
+[ext_resource type="Script" uid="uid://cgmi6f3o7leik" path="res://scripts/costum_resources/effect.gd" id="2_cp1p6"]
+[ext_resource type="Script" uid="uid://dtok21t0ujjui" path="res://scripts/costum_resources/numeric_provider.gd" id="2_w78nf"]
+[ext_resource type="Script" uid="uid://br1hibx18tv13" path="res://scripts/costum_resources/card.gd" id="3_v1ien"]
+[ext_resource type="Script" uid="uid://c6kvghrfcdtp7" path="res://scripts/costum_resources/effects/gain_energy_effect.gd" id="4_oi1ik"]
+[ext_resource type="Texture2D" uid="uid://e28ksr" path="res://images/atlases/card_atlas.sprites/colorless/production.tres" id="5_2d0d8"]
+
+[sub_resource type="Resource" id="Resource_0rapi"]
+script = ExtResource("2_w78nf")
+fixed_value = 2
+metadata/_custom_type_script = "uid://dtok21t0ujjui"
+
+[sub_resource type="Resource" id="Resource_7xeyj"]
+script = ExtResource("1_8cryk")
+numeric_type = 6
+numeric_provider = SubResource("Resource_0rapi")
+placeholder = "energy"
+affected_by = 3
+metadata/_custom_type_script = "uid://cxgxfbwykbp84"
+
+[sub_resource type="Resource" id="Resource_qdf0q"]
+script = ExtResource("2_w78nf")
+fixed_value = 2
+metadata/_custom_type_script = "uid://dtok21t0ujjui"
+
+[sub_resource type="Resource" id="Resource_x1lvb"]
+script = ExtResource("4_oi1ik")
+energy_provider = SubResource("Resource_qdf0q")
+target_type = 1
+metadata/_custom_type_script = "uid://c6kvghrfcdtp7"
+
+[sub_resource type="Resource" id="Resource_1txwe"]
+script = ExtResource("2_w78nf")
+fixed_value = 3
+metadata/_custom_type_script = "uid://dtok21t0ujjui"
+
+[sub_resource type="Resource" id="Resource_mutw3"]
+script = ExtResource("4_oi1ik")
+energy_provider = SubResource("Resource_1txwe")
+target_type = 1
+metadata/_custom_type_script = "uid://c6kvghrfcdtp7"
+
+[sub_resource type="Resource" id="Resource_vn5f4"]
+script = ExtResource("2_w78nf")
+fixed_value = 3
+metadata/_custom_type_script = "uid://dtok21t0ujjui"
+
+[sub_resource type="Resource" id="Resource_6dqwe"]
+script = ExtResource("1_8cryk")
+numeric_type = 6
+numeric_provider = SubResource("Resource_vn5f4")
+placeholder = "energy"
+affected_by = 3
+metadata/_custom_type_script = "uid://cxgxfbwykbp84"
+
+[resource]
+script = ExtResource("3_v1ien")
+id = "生产制造"
+type = 2
+card_color = 64
+rarity = 2
+effects = Array[ExtResource("2_cp1p6")]([SubResource("Resource_x1lvb")])
+portrait = ExtResource("5_2d0d8")
+base_description = "[center]获得{energy}点[color=gold]能量[/color]。[/center]"
+base_numeric_entries = Array[ExtResource("1_8cryk")]([SubResource("Resource_7xeyj")])
+upgraded_description = "[center]获得{energy}点[color=gold]能量[/color]。[/center]"
+upgraded_numeric_entries = Array[ExtResource("1_8cryk")]([SubResource("Resource_6dqwe")])
+upgraded_effects = Array[ExtResource("2_cp1p6")]([SubResource("Resource_mutw3")])
+metadata/_custom_type_script = "uid://br1hibx18tv13"

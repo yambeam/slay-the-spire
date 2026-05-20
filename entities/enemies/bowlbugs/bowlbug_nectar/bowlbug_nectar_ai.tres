@@ -5,6 +5,7 @@
 [ext_resource type="Script" uid="uid://dtok21t0ujjui" path="res://scripts/costum_resources/numeric_provider.gd" id="3_r2jq5"]
 [ext_resource type="Script" uid="uid://vkklgv0ma0yf" path="res://scripts/costum_resources/effects/attack_effect.gd" id="4_gwdq4"]
 [ext_resource type="Script" uid="uid://bces7ijyodhmv" path="res://scripts/costum_resources/intents/attack_sub_intent.gd" id="5_g0g8p"]
+[ext_resource type="AudioStream" uid="uid://bcwmh6adledx" path="res://audio/SFX/blunt_attack.mp3" id="5_r2jq5"]
 [ext_resource type="Script" uid="uid://b8qfrs61nmcix" path="res://scripts/costum_resources/effects/apply_buff_effect.gd" id="6_1ij4f"]
 [ext_resource type="Script" uid="uid://dpbv4m5rd0bbq" path="res://scripts/costum_resources/intents/apply_buff_sub_intent.gd" id="7_8608y"]
 [ext_resource type="Script" uid="uid://d2lo68dkdpiok" path="res://entities/enemies/bowlbugs/bowlbug_nectar/bowlbug_nectar_ai.gd" id="8_j4ago"]
@@ -23,6 +24,7 @@ metadata/_custom_type_script = "uid://dtok21t0ujjui"
 script = ExtResource("4_gwdq4")
 damage_provider = SubResource("Resource_qbqbj")
 target_type = 2
+sound = ExtResource("5_r2jq5")
 metadata/_custom_type_script = "uid://vkklgv0ma0yf"
 
 [sub_resource type="Resource" id="Resource_71ttc"]

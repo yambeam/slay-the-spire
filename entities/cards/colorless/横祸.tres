@@ -1,0 +1,88 @@
+[gd_resource type="Resource" script_class="Card" format=3 uid="uid://i6m42jftmot6"]
+
+[ext_resource type="Script" uid="uid://cxgxfbwykbp84" path="res://scripts/costum_resources/numeric_entry.gd" id="1_4hu11"]
+[ext_resource type="Script" uid="uid://cgmi6f3o7leik" path="res://scripts/costum_resources/effect.gd" id="2_3sdct"]
+[ext_resource type="Script" uid="uid://dtok21t0ujjui" path="res://scripts/costum_resources/numeric_provider.gd" id="2_whdok"]
+[ext_resource type="Script" uid="uid://br1hibx18tv13" path="res://scripts/costum_resources/card.gd" id="3_e7xsh"]
+[ext_resource type="Script" uid="uid://cqcf6adphkjfy" path="res://scripts/costum_resources/effects/select_card_effect.gd" id="4_7v2cf"]
+[ext_resource type="Script" uid="uid://csyjq6ujulplm" path="res://scripts/costum_resources/effects/card_effects/card_effect.gd" id="5_0fwqo"]
+[ext_resource type="Script" uid="uid://badu40ig27ve5" path="res://scripts/costum_resources/effects/card_effects/random_play_card_effect.gd" id="6_e0yb0"]
+[ext_resource type="Script" uid="uid://c2drp2mlr0vhm" path="res://scripts/costum_resources/effects/foreach_card_effect.gd" id="7_p2gbv"]
+[ext_resource type="Texture2D" uid="uid://u5a76o" path="res://images/atlases/card_atlas.sprites/colorless/catastrophe.tres" id="8_wcsrw"]
+
+[sub_resource type="Resource" id="Resource_yvvby"]
+script = ExtResource("2_whdok")
+fixed_value = 3
+metadata/_custom_type_script = "uid://dtok21t0ujjui"
+
+[sub_resource type="Resource" id="Resource_b4ndm"]
+script = ExtResource("1_4hu11")
+numeric_type = 7
+numeric_provider = SubResource("Resource_yvvby")
+placeholder = "cards"
+affected_by = 3
+metadata/_custom_type_script = "uid://cxgxfbwykbp84"
+
+[sub_resource type="Resource" id="Resource_c637p"]
+script = ExtResource("4_7v2cf")
+where = 1
+selectionMode = 2
+min_select = 3
+max_select = 3
+metadata/_custom_type_script = "uid://cqcf6adphkjfy"
+
+[sub_resource type="Resource" id="Resource_bd3pa"]
+script = ExtResource("6_e0yb0")
+metadata/_custom_type_script = "uid://badu40ig27ve5"
+
+[sub_resource type="Resource" id="Resource_c0ace"]
+script = ExtResource("7_p2gbv")
+effects = Array[ExtResource("5_0fwqo")]([SubResource("Resource_bd3pa")])
+metadata/_custom_type_script = "uid://c2drp2mlr0vhm"
+
+[sub_resource type="Resource" id="Resource_ujy6g"]
+script = ExtResource("4_7v2cf")
+where = 1
+selectionMode = 2
+min_select = 4
+max_select = 4
+metadata/_custom_type_script = "uid://cqcf6adphkjfy"
+
+[sub_resource type="Resource" id="Resource_h23hk"]
+script = ExtResource("6_e0yb0")
+metadata/_custom_type_script = "uid://badu40ig27ve5"
+
+[sub_resource type="Resource" id="Resource_odakm"]
+script = ExtResource("7_p2gbv")
+effects = Array[ExtResource("5_0fwqo")]([SubResource("Resource_h23hk")])
+metadata/_custom_type_script = "uid://c2drp2mlr0vhm"
+
+[sub_resource type="Resource" id="Resource_086wj"]
+script = ExtResource("2_whdok")
+fixed_value = 4
+metadata/_custom_type_script = "uid://dtok21t0ujjui"
+
+[sub_resource type="Resource" id="Resource_mwp5s"]
+script = ExtResource("1_4hu11")
+numeric_type = 7
+numeric_provider = SubResource("Resource_086wj")
+placeholder = "cards"
+affected_by = 3
+metadata/_custom_type_script = "uid://cxgxfbwykbp84"
+
+[resource]
+script = ExtResource("3_e7xsh")
+id = "横祸"
+type = 2
+card_color = 64
+base_cost = 2
+rarity = 2
+effects = Array[ExtResource("2_3sdct")]([SubResource("Resource_c637p"), SubResource("Resource_c0ace")])
+portrait = ExtResource("8_wcsrw")
+base_description = "[center]从你的[color=gold]抽牌堆[/color]中随机打出{cards}张牌。[/center]"
+base_numeric_entries = Array[ExtResource("1_4hu11")]([SubResource("Resource_b4ndm")])
+upgraded_cost = 2
+upgraded_description = "[center]从你的[color=gold]抽牌堆[/color]中随机打出{cards}张牌。[/center]"
+upgraded_numeric_entries = Array[ExtResource("1_4hu11")]([SubResource("Resource_mwp5s")])
+upgraded_effects = Array[ExtResource("2_3sdct")]([SubResource("Resource_ujy6g"), SubResource("Resource_odakm")])
+metadata/_custom_type_script = "uid://br1hibx18tv13"

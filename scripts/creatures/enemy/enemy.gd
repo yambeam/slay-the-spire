@@ -6,11 +6,11 @@ extends Creature
 @onready var intents: Intents = $Intents
 @onready var hitbox: CollisionShape2D = $Hitbox
 
-var enemy_ai: EnemyAI
+@export var enemy_ai: EnemyAI
 #var current_action: EnemyAction : set = _set_current_action
-var current_intent: Intent: set = _set_current_intent
+@export var current_intent: Intent: set = _set_current_intent
 # 遭遇战中怪物的index,主要是为了确定意图
-var encounter_index := 0
+@export var encounter_index := 0
 
 var visuals: CreatureVisuals
 var spine_manager: SpineManager
@@ -280,3 +280,26 @@ func speech(text: String, time: float = 2.5) -> void:
 	speech_bubble.global_position = visuals.speech_point.global_position - Vector2(64, 61) * spine_manager.scale * 2
 	
 	#speech_bubble.global_position = hitbox.global_position + Vector2(hitbox.shape.size.x, -hitbox.shape.size.y / 2)
+
+
+#相关数据序列化与反序列化
+
+func get_intent_data() -> Dictionary:
+	if not current_intent:
+		return {}
+	# 保存意图的唯一标识符（intent_name）
+	return {"intent_name": current_intent.intent_name}
+
+func set_intent_from_data(data: Dictionary) -> void:
+	if data.is_empty() or not enemy_ai:
+		return
+	var template = enemy_ai.get_intent_by_name(data["intent_name"])
+	if not template:
+		print("恢复意图失败：未找到名称 ", data["intent_name"])
+		return
+	#避免修改原始资源
+	current_intent = template.duplicate(true)
+	current_intent.set_source(self)
+	current_intent.set_target(get_tree().get_first_node_in_group("ui_player"))
+	# 立即刷新意图 UI
+	intents.update_intent(current_intent)

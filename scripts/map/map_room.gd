@@ -122,7 +122,7 @@ func set_room(new_data: Room) -> void:
 	# 如果房间已经被选中，停止可能残余的动画
 	if room.selected and animation_player and animation_player.is_playing():
 		animation_player.stop()
-	print("Room type: ", Room.Type.keys()[room.type], " texture: ", entry[0]) 
+	#print("Room type: ", Room.Type.keys()[room.type], " texture: ", entry[0]) 
 		
 		
 func _on_input_event(_viewport: Node, event: InputEvent, _shape_idx: int) -> void:

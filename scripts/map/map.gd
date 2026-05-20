@@ -143,7 +143,8 @@ func create_map() -> void:
 	
 	visuals.position.x = (get_viewport_rect().size.x - map_width_pixels) / 2
 	visuals.position.y = get_viewport_rect().size.y / 2
-	
+	print("创建地图,当前stage:",run_stats.current_stage)
+	_apply_stage_background(run_stats.current_stage)
 	
 			
 func unlock_floor(which_floor:int = run_stats.floors_climbed) -> void:

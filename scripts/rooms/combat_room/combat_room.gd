@@ -30,7 +30,8 @@ func _ready() -> void:
 func update_background(act: int) -> void:
 	back_ground_container.update_background(act)
 
-func start_combat() -> void:
+#不要每次都重新激活遗物  ——————修改1
+func start_combat(skip_relics: bool = false) -> void:
 	enemy_handler.setup_enemies(enemy_encounter)
 	enemy_handler.reset_enemy_intents()
 	# 调试用
@@ -41,9 +42,11 @@ func start_combat() -> void:
 	hand_selelctor.char_stats = char_stats
 	player.stats = char_stats
 	
-	relics.relics_activated.connect(_on_relics_activated)
-	relics.activate_relics_by_trigger_type(Relic.TriggerType.START_OF_COMBAT)
-	
+	#适时跳过
+	if not skip_relics:
+		relics.relics_activated.connect(_on_relics_activated)
+		relics.activate_relics_by_trigger_type(Relic.TriggerType.START_OF_COMBAT)	
+		
 	main_skill_ui.set_skill(char_stats.main_skill)
 
 func _on_add_card_pressed() -> void:
@@ -86,6 +89,8 @@ func _on_relics_activated(type: Relic.TriggerType) -> void:
 
 
 
+#修改2 ——————增加
+
 # 保存战斗房间状态
 func get_save_state() -> Dictionary:
 	var state := {}
@@ -99,6 +104,7 @@ func get_save_state() -> Dictionary:
 	for child in hand_manager.get_children():
 		if child is CardUI and child.card:
 			hand_cards.append(child.card.serialize())
+	print("保存手牌:",hand_cards)
 	state["hand_cards"] = hand_cards
 
 	# 主技能充能
@@ -118,7 +124,8 @@ func get_save_state() -> Dictionary:
 			var ed := {
 				"health": enemy.stats.health,
 				"block": enemy.stats.block,
-				"buffs": []
+				"buffs": [],
+				"intent": enemy.get_intent_data()
 			}
 			for buff in enemy.buff_manager.get_children():
 				if buff is Buff:
@@ -140,11 +147,13 @@ func set_save_state(state: Dictionary) -> void:
 
 	# 手牌恢复
 	hand_manager.clear_hand()
+	print("恢复手牌:",state.get("hand_cards", []))
 	for card_data in state.get("hand_cards", []):
 		var card: Card = Card.deserialize(card_data)
+		print("deserialize ", card_data.id, " -> ", card)
 		if card:
 			hand_manager.add_card_to_hand(card)
-	hand_manager.set_cards()          # ← 关键：重新排列手牌显示
+	hand_manager.set_cards()         
 
 	# 主技能充能
 	if main_skill_ui.skill:
@@ -173,7 +182,7 @@ func set_save_state(state: Dictionary) -> void:
 		var data = enemies_data[i]
 		enemy.stats.health = data["health"]
 		enemy.stats.block = data["block"]
-		# 敌人 Buff 清理与重建
+		# 敌人 Buff 清理
 		for buff in enemy.buff_manager.get_children():
 			if buff is Buff:
 				buff.queue_free()
@@ -182,7 +191,15 @@ func set_save_state(state: Dictionary) -> void:
 			if buff:
 				enemy.buff_manager.add_child(buff)
 				buff.stacks = bd["stacks"]
-		# 强制刷新血条、格挡、意图等 UI
+		# 恢复意图
+		if data.has("intent") and not data["intent"].is_empty():
+			enemy.set_intent_from_data(data["intent"])
 		enemy._update_stats()
 		if enemy.has_method("update_intent"):
 			enemy.update_intent()
+
+func _input(event: InputEvent) -> void:
+	if event is InputEventMouseButton:
+		var mb := event as InputEventMouseButton
+		if mb.button_index == MOUSE_BUTTON_WHEEL_UP or mb.button_index == MOUSE_BUTTON_WHEEL_DOWN:
+			accept_event() 

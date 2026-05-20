@@ -50,6 +50,9 @@ var is_on_map: bool = true
 # 标记 Boss 战后是否需要进入阶段切换
 var _pending_stage_transition: bool = false
 
+#当前时否在保存
+var _restoring: bool = false
+
 func _ready() -> void:
 	if not run_startup:
 		return
@@ -73,7 +76,7 @@ func _ready() -> void:
 			_start_run()
 		RunStartup.Type.CONTINUE_RUN:
 			_load_run()
-			print("加载游戏")
+			print("_load_run:加载游戏数据")
 
 func _on_map_room_selected(room: Room) -> void:
 	
@@ -408,18 +411,30 @@ func _on_combat_room_entered(room: Room = null, restore_state: Dictionary = {}) 
 					else:
 						room.enemy_encounter = encounter_pool.get_random_encounter_by_type(EnemyEncounter.Type.STRONG)
 
-	print(room.enemy_encounter)
 	var battle_scene: CombatRoom = await _change_view(COMBAT_SCENE)
 	battle_scene.update_background(stats.current_stage)
 	battle_scene.char_stats = character
 	if room:
 		battle_scene.enemy_encounter = room.enemy_encounter
 	battle_scene.relics = top_bar.relic_handler
-	battle_scene.start_combat()
+	
+	if restore_state.is_empty():
+		battle_scene.start_combat()
+	else:
+		battle_scene.start_combat(true)
+		battle_scene.set_save_state(restore_state)
+		battle_scene.relics.relics_activated.connect(battle_scene._on_relics_activated)
+		battle_scene.relics.activate_relics_by_trigger_type(Relic.TriggerType.START_OF_COMBAT)
+		_restoring = false
 
 	# 如果提供了存档状态，则恢复战场进度
 	if not restore_state.is_empty():
-		battle_scene.set_save_state(restore_state)
+		print("开始恢复战斗状态...")
+		await Events.combat_start
+		if is_instance_valid(battle_scene):
+			battle_scene.set_save_state(restore_state)
+		_restoring = false
+		
 
 func _on_shop_room_entered(room: Room) -> void:
 	await _change_view(SHOP_SCENE)
@@ -478,6 +493,8 @@ func _victory() -> void:
 
 #=========存档相关==
 func _save_run(on_map: bool) -> void:
+	if _restoring:
+		return
 	#人物数据
 	save_data.run_stats = stats
 	save_data.char_stats = character
@@ -500,10 +517,11 @@ func _save_run(on_map: bool) -> void:
 			save_data.is_battle_reward = true
 		else:
 			save_data.is_battle_reward = false
+		#保存房间状态
 		save_data.room_state = _collect_room_state()
 		save_data.state = SaveGame.State.IN_ROOM
 		save_data.room_type = map_node.last_room.type if map_node.last_room else Room.Type.NOT_ASSIGNED
-		save_data.room_state = _collect_room_state()   #保存当前房间状态
+		
 		
 	
 	# 收集每个房间的类型
@@ -592,6 +610,8 @@ func _apply_room_state(scene: Node, state: Dictionary) -> void:
 		scene.set_save_state(state)
 		
 func _restore_room(type: Room.Type, room: Room) -> void:
+	print("Restoring room type: ", type, " room: ", room, " room.type: ", room.type if room else "null")
+	_restoring = true
 	is_on_map = false
 	var state_to_apply := save_data.room_state.duplicate()  
 	
@@ -602,35 +622,48 @@ func _restore_room(type: Room.Type, room: Room) -> void:
 		reward_scene.character_stats = character          
 		if reward_scene.has_method("set_save_state"):
 			reward_scene.set_save_state(state_to_apply)
+		_restoring = false
 		return
 	
 	match type:
 		Room.Type.MONSTER, Room.Type.ELITE, Room.Type.BOSS:
 			_on_combat_room_entered(room, state_to_apply)
+			return
 		Room.Type.TREASURE:
 			var treasure_scene = TREASURE_SCENE.instantiate()
 			current_room.add_child(treasure_scene)
 			if treasure_scene.has_method("set_save_state"):
 				treasure_scene.set_save_state(state_to_apply)
+			_restoring = false
+			return 
 		Room.Type.SHOP:
 			var shop_scene = SHOP_SCENE.instantiate()
 			current_room.add_child(shop_scene)
 			if shop_scene.has_method("set_save_state"):
 				shop_scene.set_save_state(state_to_apply)
+			_restoring = false
+			return 
 		Room.Type.CAMPFIRE:
 			_on_campfire_room_entered(room)
+			_restoring = false
+			return 
 		Room.Type.UNKNOWN:
 			_handle_unknown_room(room)
+			_restoring = false
+			return 
 		Room.Type.ANCIENT:
 			var ancient_scene = _get_ancient_scene()
 			var ancient = ancient_scene.instantiate()
 			ancient.current_stage = stats.current_stage
 			current_room.add_child(ancient)
 			ancient.restore_state(state_to_apply)
+			_restoring = false
 			return 
 		_:
 			_show_map()
+			_restoring = false
 			return
+
 
 
 

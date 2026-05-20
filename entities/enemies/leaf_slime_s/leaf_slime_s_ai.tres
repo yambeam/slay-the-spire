@@ -7,7 +7,7 @@
 [ext_resource type="Script" uid="uid://bces7ijyodhmv" path="res://scripts/costum_resources/intents/attack_sub_intent.gd" id="6_ihmm0"]
 [ext_resource type="Resource" uid="uid://by2gga1uh715e" path="res://entities/cards/status_cards/粘液.tres" id="7_qgql5"]
 [ext_resource type="Script" uid="uid://bfd4cqklwdhs3" path="res://scripts/costum_resources/effects/put_card_effect.gd" id="8_o8ulp"]
-[ext_resource type="Script" uid="uid://divi4to70g75b" path="res://entities/enemies/leaf_slime_s/leaf_slime_s.gd" id="9_bh4vf"]
+[ext_resource type="Script" path="res://entities/enemies/leaf_slime_s/leaf_slime_s.gd" id="9_bh4vf"]
 [ext_resource type="Script" uid="uid://b3b84q5sqt5kj" path="res://scripts/costum_resources/intents/put_card_sub_intent.gd" id="10_opybm"]
 
 [sub_resource type="Resource" id="Resource_f7a7q"]

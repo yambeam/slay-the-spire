@@ -321,6 +321,7 @@ func _has_block_effect(card_effects: Array[Effect]) -> bool:
 	return false
 
 
+
 #卡牌数据序列化
 func serialize() -> Dictionary:
 	return {

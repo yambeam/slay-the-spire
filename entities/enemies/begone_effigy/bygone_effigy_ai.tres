@@ -7,7 +7,7 @@
 [ext_resource type="Script" uid="uid://b8qfrs61nmcix" path="res://scripts/costum_resources/effects/apply_buff_effect.gd" id="5_kxjiu"]
 [ext_resource type="Script" uid="uid://dpbv4m5rd0bbq" path="res://scripts/costum_resources/intents/apply_buff_sub_intent.gd" id="6_ltm7x"]
 [ext_resource type="Script" uid="uid://vkklgv0ma0yf" path="res://scripts/costum_resources/effects/attack_effect.gd" id="7_rdxke"]
-[ext_resource type="AudioStream" uid="uid://b3reffdbqylun" path="res://audio/SFX/slash_attack.mp3" id="8_kxjiu"]
+[ext_resource type="AudioStream" uid="uid://c3pwninr1cylv" path="res://audio/SFX/slash_attack.mp3" id="8_kxjiu"]
 [ext_resource type="Script" uid="uid://bces7ijyodhmv" path="res://scripts/costum_resources/intents/attack_sub_intent.gd" id="8_vfxcm"]
 [ext_resource type="Script" uid="uid://cwhu2ap4h4jog" path="res://entities/enemies/begone_effigy/bygone_effigy_ai.gd" id="9_l8mj0"]
 

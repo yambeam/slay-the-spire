@@ -16,5 +16,5 @@ func get_modifier() -> Array[Modifier]:
 	return [modifier_1, modifier_2]
 
 func _on_before_take_damage(context: Context) -> void:
-	context.amount = 1
+	context.modifiers.append_array(get_modifier())
 	remove_stack(1)

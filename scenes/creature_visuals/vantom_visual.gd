@@ -11,13 +11,13 @@ func show_mega_tail(self_global_position: Vector2, player_global_position: Vecto
 	if tail_tween:
 		tail_tween.kill()
 	tail_tween = create_tween()
-	tail_tween.tween_property(mega_tail, "position", Vector2(-self_global_position.x + player_global_position.x - mega_tail_point.position.x + 50, 600), 2.0)
+	tail_tween.tween_property(mega_tail, "position", Vector2(-self_global_position.x + player_global_position.x - mega_tail_point.position.x - 200, 600), 2.0)
 
 func hide_mega_tail() -> void:
 	if tail_tween:
 		tail_tween.kill()
 	tail_tween = create_tween()
-	tail_tween.tween_property(mega_tail, "position:y", -1300, 2.0)
+	tail_tween.tween_property(mega_tail, "position:y", -1600, 2.0)
 	await tail_tween.finished
 
 func heavy_attack_down() -> void:
@@ -25,7 +25,7 @@ func heavy_attack_down() -> void:
 		tail_tween.kill()
 	tail_tween = create_tween()
 	tail_tween.tween_property(mega_tail, "position:y", 1500, 0.1)
-	tail_tween.tween_property(mega_tail, "position:y", -1300, 0.3)
+	tail_tween.tween_property(mega_tail, "position:y", -1600, 0.3)
 	await tail_tween.finished
 
 func scale_up() -> void:

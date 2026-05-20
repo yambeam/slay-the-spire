@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://dp7wdlyhund3e" path="res://scenes/ui/top_bar/potion_handler.tscn" id="8_y0s8s"]
 [ext_resource type="Texture2D" uid="uid://c14vmk38al8" path="res://images/ui/run_history/unknown_treasure_outline.png" id="10_34ry2"]
 [ext_resource type="Texture2D" uid="uid://cfj73l724ab5r" path="res://images/ui/run_history/unknown_treasure.png" id="11_aw7m0"]
+[ext_resource type="Script" uid="uid://uudo6n2geouv" path="res://scenes/ui/top_bar/boss_icon.gd" id="12_dhe2k"]
 [ext_resource type="Texture2D" uid="uid://bxj1tlj" path="res://images/atlases/ui_atlas.sprites/top_bar/top_bar_floor.tres" id="12_y0s8s"]
 [ext_resource type="Texture2D" uid="uid://bqliha840b7m5" path="res://images/ui/run_history/ceremonial_beast_boss_outline.png" id="13_dhe2k"]
 [ext_resource type="Texture2D" uid="uid://c2xn8o6xsv3f" path="res://images/ui/run_history/ceremonial_beast_boss.png" id="14_p4p88"]
@@ -172,6 +173,7 @@ vertical_alignment = 1
 
 [node name="BossIcon" type="MarginContainer" parent="Left/RoomIcons" unique_id=1367207882]
 layout_mode = 2
+script = ExtResource("12_dhe2k")
 
 [node name="TextureRect" type="TextureRect" parent="Left/RoomIcons/BossIcon" unique_id=861713810]
 modulate = Color(1, 1, 1, 0.73333335)

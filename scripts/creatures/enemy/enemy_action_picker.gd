@@ -38,7 +38,7 @@ func get_first_conditional_over_turn_action() -> EnemyAction:
 	return null
 
 func get_chance_based_action() -> EnemyAction:
-	var roll := randf_range(0.0, total_weight)
+	var roll := RandomSetting.instance.randf_range(0.0, total_weight)
 	
 	for action: EnemyAction in get_children():
 		if not action or action.type != EnemyAction.Type.CHANCE_BASED:

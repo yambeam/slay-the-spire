@@ -26,17 +26,17 @@ const BASE_RARE_WEIGHT := 0.3
 @export var gold := STARTING_GOLD : set = set_gold
 
 ## 药水
-var potions: Array[Potion] = []
+@export var potions: Array[Potion] = []
 @export var max_potion_slots: int = 3 : set =  _set_max_potion_slots
 ## 遗物
-var relics: Array[Relic] = []
+@export var relics: Array[Relic] = []
 
 ###当前房间
 #var current_room: Room
 
 ##当前阶段
-var current_stage : int = 1
-var max_stage : int = 2  
+@export var current_stage : int = 1
+@export var max_stage : int = 2  
 
 
 @export var card_rewards := BASE_CARD_REWARDS
@@ -47,6 +47,7 @@ var max_stage : int = 2
 #地图数据
 @export var map_data: Array[Array] = []   # 保存整个地图数据（Room 资源数组）
 @export var floors_climbed: int = 0       # 已攀爬的层数（已解锁的最高楼层索引，0-based）
+
 
 @export var current_room:Room
 

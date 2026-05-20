@@ -5,7 +5,7 @@
 [ext_resource type="Script" uid="uid://cgmi6f3o7leik" path="res://scripts/costum_resources/effect.gd" id="2_cw205"]
 [ext_resource type="Script" uid="uid://br1hibx18tv13" path="res://scripts/costum_resources/card.gd" id="3_j6qmd"]
 [ext_resource type="Script" uid="uid://vkklgv0ma0yf" path="res://scripts/costum_resources/effects/attack_effect.gd" id="4_hq6yc"]
-[ext_resource type="AudioStream" uid="uid://bcwmh6adledx" path="res://audio/SFX/blunt_attack.mp3" id="5_ticnp"]
+[ext_resource type="AudioStream" uid="uid://bwkj3ged1cm0x" path="res://audio/SFX/blunt_attack.mp3" id="5_ticnp"]
 [ext_resource type="Script" uid="uid://c8ly86kb5vc65" path="res://scripts/costum_resources/effects/iteration_effect.gd" id="6_3f5oj"]
 [ext_resource type="Texture2D" uid="uid://cu4k7um" path="res://images/atlases/card_atlas.sprites/colorless/beta/volley.tres" id="7_15fbu"]
 

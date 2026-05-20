@@ -6,16 +6,19 @@ const SAVE_PATH:="user://savegame.tres"
 @export var run_stats:RunStats
 @export var char_stats:CharacterStats
 
-@export var current_deck:CardPile
-@export var current_health:int
+@export var randomSeed:int
+@export var randomState:int
+
+#@export var current_deck:CardPile
+#@export var current_health:int
 
 @export var last_room:Room
 @export var was_on_map:bool
 
 ## 药水
-@export var potions: Array[Potion] = []
+#@export var potions: Array[Potion] = []
 ## 遗物
-@export var relics: Array[Relic] = []
+#@export var relics: Array[Relic] = []
 
 func save_data()->void:
 	var err:=ResourceSaver.save(self,SAVE_PATH)

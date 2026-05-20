@@ -19,7 +19,6 @@ const ANCIENT_SCENE_OROBAS := preload("res://scenes/rooms/ancient_room/orobas_an
 const BATTLE_REWARD_SCENE = preload("res://scenes/rooms/reward/reward_room.tscn")
 
 @onready var current_room: Control = $CurrentRoom
-
 @onready var map_node: Map = $Map
 @onready var top_bar: TopBar = %TopBar
 @onready var deck_view: DeckView = %DeckView
@@ -32,7 +31,6 @@ const BATTLE_REWARD_SCENE = preload("res://scenes/rooms/reward/reward_room.tscn"
 var character: CharacterStats
 var stats: RunStats
 var save_data: SaveGame
-
 
 #杀掉的精英怪数量
 @export var elite_mob_killed:int = 0
@@ -54,12 +52,12 @@ func back_to_main()->void:
 	
 
 func _ready() -> void:
+	
 	if not run_startup:
 		return
 	pause_menu.save_and_quit.connect(
 		func():
 			back_to_main()
-			
 	)
 	death_settlement.DeathSettlementBackToMainMenu.connect(
 		func():
@@ -68,6 +66,7 @@ func _ready() -> void:
 	)
 	
 	Events.map_room_selected.connect(_on_map_room_selected)
+	
 	match run_startup.type:
 		RunStartup.Type.NEW_RUN:
 			SaveGame.delete_data()
@@ -79,6 +78,7 @@ func _ready() -> void:
 
 func _on_map_room_selected(room: Room) -> void:
 	print("进入房间，保存游戏")
+	#保存上一个room
 	map_node.last_room = room
 	_save_run(false)
 	match room.type:
@@ -113,9 +113,25 @@ var last_unknown_room_type: String = ""
 var compensation_chance: float = 0.0
 
 func _handle_unknown_room(room: Room) -> void:
+	
+	if map_node.last_room.unknownType:
+		match map_node.last_room.unknownType:
+			"combat":
+				_on_combat_room_entered(room)
+			"shop":
+				_change_view(SHOP_SCENE)
+			"treasure":
+				_change_view(TREASURE_SCENE)
+			"incident":
+				_on_incident_room_entered(room)
+			_:
+				_on_incident_room_entered(room)
+		return
+	
 	var current_probs = calculate_compensated_probabilities()
 	var room_type = get_random_room_type(current_probs)
-	
+	map_node.last_room.unknownType=room_type
+	_save_run(false)
 	match room_type:
 		"combat":
 			_on_combat_room_entered(room)
@@ -185,28 +201,43 @@ func _start_run() -> void:
 	act2_encounter_pool.setup()
 
 func _save_run(was_on_map: bool) -> void:
+	
+	save_data.randomSeed=RandomSetting.instance.seed
+	save_data.randomState=RandomSetting.instance.state
+	
 	save_data.run_stats = stats
 	save_data.char_stats = character
-	save_data.current_deck = character.deck
-	save_data.current_health = character.health
+	#save_data.current_deck = character.deck
+	#save_data.current_health = character.health
 	save_data.last_room = map_node.last_room
 	save_data.was_on_map = was_on_map
-	save_data.potions = stats.potions
-	save_data.relics = stats.relics
+	
+	#save_data.potions = stats.potions
+	#save_data.relics = stats.relics
 	save_data.save_data()
 
 func _load_run() -> void:
+	
 	save_data = SaveGame.load_data()
 	assert(save_data, "could not load last save")
+	#把保存的变量赋值
+	RandomSetting.set_from_save_data(save_data.randomSeed,save_data.randomState)
 	character = save_data.char_stats
 	stats = save_data.run_stats
-	character.deck = save_data.current_deck
-	character.health = save_data.current_health
+	
+	
+	#character.deck = save_data.current_deck
+	#character.health = save_data.current_health
+	
 	ItemPool.init_item_pool(character.color)
-	for potion in save_data.potions:
-		print("加载药水")
-		stats.add_potion(potion)
-	stats.relics = save_data.relics
+	
+	#for potion in save_data.potions:
+		#print("加载药水")
+		#stats.add_potion(potion)
+	#stats.relics = save_data.relics
+	
+	act1_encounter_pool.setup()
+	act2_encounter_pool.setup()
 	_load_up_top_bar()
 	_setup_event_connections()
 	map_node.load_map(stats, save_data.last_room)
@@ -215,15 +246,22 @@ func _load_run() -> void:
 		_on_map_room_selected(save_data.last_room)
 	else:
 		_show_map()
+		
 
 func _load_up_top_bar() -> void:
+	
 	top_bar.run_stats = stats
 	top_bar.character_stats = character
+	
 	top_bar.initialize(character)
+	
 	top_bar.deck_view_requested.connect(deck_view.show_card_pile.bind("你在战斗中将会使用这里的所有卡牌。", false))
 	top_bar.select_deck_view = select_deck_view
+	
 	top_bar.relic_handler.add_relics(stats.relics)
+	
 	top_bar.settings_requested.connect(handleSettingsRequest)
+	
 
 func _setup_top_bar() -> void:
 	top_bar.run_stats = stats
@@ -248,6 +286,7 @@ func _change_view(scene: PackedScene) -> Node:
 
 # ========== 战斗奖励与阶段切换 ==========
 func _on_combat_won(context: RewardContext) -> void:
+	
 	var reward_scene := await _change_view(BATTLE_REWARD_SCENE) as BattleReward
 	reward_scene.run_stats = stats
 	reward_scene.character_stats = character
@@ -375,6 +414,19 @@ func _on_room_exited() -> void:
 
 # ========== 房间入口 ==========
 func _on_combat_room_entered(room: Room = null) -> void:
+	
+	if map_node.last_room.enemy_encounter:
+		print("使用已经有的enemycounter")
+		var battle_scene: CombatRoom = await _change_view(COMBAT_SCENE)
+		battle_scene.update_background(stats.current_stage)
+		battle_scene.char_stats = character
+		battle_scene.enemy_encounter = map_node.last_room.enemy_encounter
+		battle_scene.relics = top_bar.relic_handler
+		battle_scene.start_combat()
+		return
+	
+	
+	
 	var encounter_pool: EnemyEncounterPool = act1_encounter_pool if stats.current_stage == 1 else act2_encounter_pool 
 	match room.type:
 		Room.Type.BOSS:
@@ -401,6 +453,10 @@ func _on_combat_room_entered(room: Room = null) -> void:
 	battle_scene.char_stats = character
 	if room:
 		battle_scene.enemy_encounter = room.enemy_encounter
+		print("保存当前战斗房间")
+		map_node.last_room.enemy_encounter=room.enemy_encounter.duplicate()
+		_save_run(false)
+		
 	battle_scene.relics = top_bar.relic_handler
 	battle_scene.start_combat()
 

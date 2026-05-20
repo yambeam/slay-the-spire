@@ -38,6 +38,7 @@ BuffLibrary="*res://globals/buff_library.gd"
 GameManager="*uid://ckhqrqwi4d4ji"
 ItemPool="*uid://d2kmliv2m0fqo"
 MouseCursor="*uid://qo7dfe4uhn80"
+RandomSetting="*uid://dyyvici5044yn"
 
 [display]
 

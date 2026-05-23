@@ -248,7 +248,7 @@ shape = SubResource("RectangleShape2D_vujjl")
 metadata/_edit_lock_ = true
 
 [node name="Player" parent="." unique_id=1710440414 node_paths=PackedStringArray("hand_selector", "deck_view", "discover_view", "agent", "combat_resolver") instance=ExtResource("19_ry3up")]
-position = Vector2(541, 596)
+position = Vector2(475, 720)
 stats = ExtResource("2_7btib")
 hand_selector = NodePath("../CombatUI/HandSelelctor")
 deck_view = NodePath("../CardPileView/InspectPileView")

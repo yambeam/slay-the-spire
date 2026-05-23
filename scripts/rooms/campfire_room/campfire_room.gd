@@ -3,8 +3,12 @@ extends Control
 
 @export var char_stats: CharacterStats
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
+
 @onready var spine_manager: SpineManager = $SpineManager
-@onready var forging: Button = $UI/HBoxContainer/forging
+
+@onready var rest: TextureButton = $UI/HBoxContainer2/rest
+
+@onready var forging: TextureButton = $UI/HBoxContainer2/forging
 
 var deck_view: DeckView
 var forgeable_cards: Array[Card]
@@ -57,3 +61,25 @@ func _on_forging_pressed() -> void:
 	if !cards.is_empty():
 		cards[0].upgrade()
 		animation_player.play("fade_out")
+
+
+func _on_rest_mouse_entered() -> void:
+	var tween := create_tween()
+	tween.tween_property(rest, "scale", Vector2(1.1, 1.1), 0.15)
+	
+
+
+func _on_rest_mouse_exited() -> void:
+	var tween := create_tween()
+	tween.tween_property(rest, "scale", Vector2(1.0, 1.0), 0.15)
+
+
+func _on_forging_mouse_entered() -> void:
+	var tween := create_tween()
+	tween.tween_property(forging, "scale", Vector2(1.1, 1.1), 0.15)
+	pass # Replace with function body.
+
+
+func _on_forging_mouse_exited() -> void:
+	var tween := create_tween()
+	tween.tween_property(forging, "scale", Vector2(1.0, 1.0), 0.15)

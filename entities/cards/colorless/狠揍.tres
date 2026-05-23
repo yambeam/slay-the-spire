@@ -31,6 +31,27 @@ script = ExtResource("7_t05d0")
 effects = Array[ExtResource("5_7roc8")]([SubResource("Resource_basv4")])
 metadata/_custom_type_script = "uid://c2drp2mlr0vhm"
 
+[sub_resource type="Resource" id="Resource_kj6ys"]
+script = ExtResource("3_kj6ys")
+type = 5
+metadata/_custom_type_script = "uid://dyn5a42fs7gxs"
+
+[sub_resource type="Resource" id="Resource_ksfqe"]
+script = ExtResource("4_ksfqe")
+where = 2
+selectionMode = 1
+filter_condition = SubResource("Resource_kj6ys")
+metadata/_custom_type_script = "uid://cqcf6adphkjfy"
+
+[sub_resource type="Resource" id="Resource_7roc8"]
+script = ExtResource("6_s2qyt")
+metadata/_custom_type_script = "uid://badu40ig27ve5"
+
+[sub_resource type="Resource" id="Resource_s2qyt"]
+script = ExtResource("7_t05d0")
+effects = Array[ExtResource("5_7roc8")]([SubResource("Resource_7roc8")])
+metadata/_custom_type_script = "uid://c2drp2mlr0vhm"
+
 [resource]
 script = ExtResource("3_ipej7")
 id = "狠揍"
@@ -41,4 +62,7 @@ rarity = 4
 effects = Array[ExtResource("2_8ssu2")]([SubResource("Resource_wmbqu"), SubResource("Resource_gqubo")])
 portrait = ExtResource("8_v1780")
 base_description = "[center]随机打出[color=gold]弃牌堆[/color]中所有攻击牌。[/center]"
+upgraded_cost = 3
+upgraded_description = "[center]随机打出[color=gold]弃牌堆[/color]中所有攻击牌。[/center]"
+upgraded_effects = Array[ExtResource("2_8ssu2")]([SubResource("Resource_ksfqe"), SubResource("Resource_s2qyt")])
 metadata/_custom_type_script = "uid://br1hibx18tv13"

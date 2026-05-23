@@ -84,7 +84,7 @@ func _give_reward():
 	if not run_node or not run_node.stats:
 		return
 
-	var gold_amount = randi_range(gold_min, gold_max)
+	var gold_amount =  RandomSetting.instance.randi_range(gold_min, gold_max)
 	run_node.stats.gold += gold_amount
 	print("获得金币：", gold_amount)
 

@@ -89,6 +89,7 @@ func _on_relics_activated(type: Relic.TriggerType) -> void:
 			if combat_resolver.is_resolving:
 				await combat_resolver.resolve_finished
 			#await get_tree().create_timer(0.5).timeout
+			char_stats.block = 0
 			Events.combat_won.emit(RewardContext.new())
 
 
@@ -142,6 +143,12 @@ func get_save_state() -> Dictionary:
 	state["enemies"] = enemies_data
 
 
+	# 保存抽牌堆
+	state["draw_pile"] = []
+	if char_stats.draw_pile and not char_stats.draw_pile.is_empty():
+		for card in char_stats.draw_pile.cards:
+			state["draw_pile"].append(card.serialize())
+	
 	# --- 调试打印开始 ---
 	print("========== COMBAT ROOM SAVED STATE ==========")
 	print("Player Health: %d / %d" % [char_stats.health, char_stats.max_health])
@@ -192,7 +199,7 @@ func get_save_state() -> Dictionary:
 func set_save_state(state: Dictionary) -> void:
 	if state.is_empty():
 		return
-
+	hand_manager.char_stats = char_stats
 	# --- 0. 修复敌人数量：先删除多余的敌人 ---
 	var enemies_data: Array = state.get("enemies", [])
 	var current_enemies: Array = []
@@ -295,9 +302,17 @@ func set_save_state(state: Dictionary) -> void:
 		if enemy.intents and enemy.current_intent:
 			enemy.intents.update_intent(enemy.current_intent)
 
-	# --- 6. 保险：再次设置玩家格挡，防止被遗物或初始化覆盖 ---
+	
 	if player and player.stats:
 		player.stats.block = state.get("block", 0)
+		
+	# 恢复抽牌堆
+	if state.has("draw_pile") and state["draw_pile"].size() > 0:
+		char_stats.draw_pile = CardPile.new()
+		for card_data in state["draw_pile"]:
+			var card = Card.deserialize(card_data)
+			if card:
+				char_stats.draw_pile.add_card(card)
 
 	# --- 调试打印（保持原样）---
 	print("========== COMBAT ROOM RESTORED STATE ==========")

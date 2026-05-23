@@ -78,7 +78,7 @@ func set_room(new_data: Room) -> void:
 				type_data = ICONS[room.type]["vantom"]
 			"lagavulin_matriarch":
 				type_data = ICONS[room.type]["lagavulin_matriarch"]
-			"knowledge_demon":
+			"芝士恶魔":
 				type_data = ICONS[room.type]["knowledge_demon"]
 			_:
 				type_data = ICONS[room.type]["vantom"]

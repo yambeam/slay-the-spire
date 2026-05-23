@@ -47,6 +47,7 @@ const BASE_RARE_WEIGHT := 0.3
 @export var floors_climbed: int = 0       # 已攀爬的层数（已解锁的最高楼层索引，0-based）
 @export var visited_rooms: Array[int] = [] # 已访问过的房间序列
 
+
 @export var current_room:Room
 
 func _init() -> void:

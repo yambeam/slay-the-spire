@@ -9,8 +9,8 @@
 [ext_resource type="Script" uid="uid://b8qfrs61nmcix" path="res://scripts/costum_resources/effects/apply_buff_effect.gd" id="7_h84lw"]
 [ext_resource type="Script" uid="uid://cgmi6f3o7leik" path="res://scripts/costum_resources/effect.gd" id="7_jw7gk"]
 [ext_resource type="Script" uid="uid://gjypfal5fy2c" path="res://entities/enemies/toadpole/toadpole_ai.gd" id="7_uidce"]
-[ext_resource type="Script" uid="uid://c8ly86kb5vc65" path="res://scripts/costum_resources/effects/iteration_effect.gd" id="8_h84lw"]
-[ext_resource type="Script" uid="uid://bgdkwbdihbpk5" path="res://scripts/costum_resources/effects/foreach_effect.gd" id="9_55nap"]
+[ext_resource type="Script" path="res://scripts/costum_resources/effects/iteration_effect.gd" id="8_h84lw"]
+[ext_resource type="Script" path="res://scripts/costum_resources/effects/foreach_effect.gd" id="9_55nap"]
 [ext_resource type="AudioStream" uid="uid://c3pwninr1cylv" path="res://audio/SFX/slash_attack.mp3" id="9_gbs82"]
 [ext_resource type="Script" uid="uid://dpbv4m5rd0bbq" path="res://scripts/costum_resources/intents/apply_buff_sub_intent.gd" id="9_w40we"]
 

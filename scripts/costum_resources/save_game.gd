@@ -23,6 +23,8 @@ enum State { ON_MAP, IN_ROOM }
 @export var map_types: Array = []        
 @export var selected_rooms: Array = []   
 
+@export var last_room_unknown_type: String = ""
+
 #进出房间相机位置保存
 @export var map_camera_y: float = 0.0           # 当前地图相机 Y
 @export var map_old_camera_y: float = 0.0       # 进入房间前的相机 Y

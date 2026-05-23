@@ -174,7 +174,11 @@ func _show_card_rewards(card_reward:RewardButton,context: RewardContext)->void:
 	
 	var card_reward_array:Array[Card]=[]
 	#var available_cards:Array[Card]=character_stats.draftable_cards.cards.duplicate(true)
-	var available_cards: Array[Card] = ItemPool.current_card_pool
+	var available_cards: Array[Card]
+	if context.all_colorless:
+		available_cards = ItemPool.get_draftable_cards_by_color(Card.COLOR.COLORLESS)
+	else:
+		available_cards = ItemPool.current_card_pool
 	if context.all_rare:
 		for i in run_stats.card_rewards:
 			var picked_card:=_get_random_available_card(available_cards, Card.Rarity.RARE)
@@ -230,7 +234,7 @@ func _show_card_rewards(card_reward:RewardButton,context: RewardContext)->void:
 	else:	
 		for i in run_stats.card_rewards:
 			_setup_card_chances()
-			var roll:=randf_range(0.0,card_reward_total_weight)
+			var roll:=RandomSetting.instance.randf_range(0.0,card_reward_total_weight)
 			for rarity:Card.Rarity in card_rarity_weights:
 				if card_rarity_weights[rarity]>roll:
 					_modify_weights(rarity)
@@ -289,8 +293,8 @@ func _on_card_reward_taken(card:Card)->void:
 	#print("DeckAfter:\n%s" % character_stats.deck)
 
 func _get_random_weighted_relic() -> Relic:
-	if not ItemPool.current_relic_pool or ItemPool.current_relic_pool.is_empty():
-		return null
+	#if not ItemPool.current_relic_pool or ItemPool.current_relic_pool.is_empty():
+		#return null
 
 	# 计算总权重
 	var total_weight = relic_common_weight + relic_uncommon_weight + relic_rare_weight
@@ -310,7 +314,7 @@ func _get_random_weighted_relic() -> Relic:
 	)
 	if candidates.is_empty():
 		# 降级：如果没有该稀有度的遗物，从整个池随机
-		candidates = ItemPool.current_relic_pool
+		candidates = ItemPool.get_current_relic_pool()
 	return candidates.pick_random().duplicate()
 
 func _get_random_weighted_potion() -> Potion:

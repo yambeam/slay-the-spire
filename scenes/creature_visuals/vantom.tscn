@@ -15,7 +15,7 @@ preview_animation = "-- Empty --"
 preview_frame = false
 preview_time = 0.0
 position = Vector2(0, -30)
-scale = Vector2(0.2, 0.2)
+scale = Vector2(0.25, 0.25)
 script = ExtResource("3_rin4u")
 metadata/_custom_type_script = "uid://bayy3j6ssj0g"
 
@@ -29,13 +29,13 @@ position = Vector2(0, -1300)
 layout_mode = 3
 anchors_preset = 0
 offset_left = -229.0
-offset_top = -423.0
-offset_right = 204.0
+offset_top = -430.0
+offset_right = 222.0
 offset_bottom = -1.0
 mouse_filter = 2
 
 [node name="IntentPoint" type="Marker2D" parent="." unique_id=727782131]
-position = Vector2(1, -348)
+position = Vector2(1, -454)
 
 [node name="MegaTailPoint" type="Marker2D" parent="." unique_id=461687081]
 position = Vector2(-517, -387)

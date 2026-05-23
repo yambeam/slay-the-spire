@@ -7,7 +7,7 @@
 [sub_resource type="Resource" id="Resource_rj0wk"]
 script = ExtResource("1_chrha")
 enemy_stats = ExtResource("2_3qayt")
-position = Vector2(1385, 600)
+position = Vector2(1385, 720)
 initial_buff = {
 "滑溜": 9
 }
@@ -15,7 +15,8 @@ metadata/_custom_type_script = "uid://dw53gdpom3gn6"
 
 [resource]
 script = ExtResource("2_rj0wk")
-weight = 10.0
+type = 3
+weight = 1.0
 enemy_entries = Array[ExtResource("1_chrha")]([SubResource("Resource_rj0wk")])
 encounter_name = "vantom"
 metadata/_custom_type_script = "uid://dgu4qpyr0pnnb"

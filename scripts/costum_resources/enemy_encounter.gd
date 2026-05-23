@@ -23,7 +23,7 @@ enum Type{
 var accumulated_weight : float = 0.0
 
 func roll_gold_reward() -> int:
-	return randi_range(get_min_gold_reward(), get_max_gold_reward())
+	return RandomSetting.instance.randi_range(get_min_gold_reward(), get_max_gold_reward())
 
 func get_min_gold_reward() -> int:
 	match type:

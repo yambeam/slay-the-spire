@@ -5,11 +5,11 @@
 [ext_resource type="Texture2D" uid="uid://t28flj" path="res://images/atlases/card_atlas.sprites/ironclad/brand.tres" id="2_vdpk4"]
 [ext_resource type="Script" uid="uid://cgmi6f3o7leik" path="res://scripts/costum_resources/effect.gd" id="3_v6l75"]
 [ext_resource type="Script" uid="uid://bgxakc1nj11hm" path="res://scripts/costum_resources/effects/loss_health_effect.gd" id="4_1mirt"]
-[ext_resource type="Script" uid="uid://cqcf6adphkjfy" path="res://scripts/costum_resources/effects/select_card_effect.gd" id="5_0w4ou"]
+[ext_resource type="Script" path="res://scripts/costum_resources/effects/select_card_effect.gd" id="5_0w4ou"]
 [ext_resource type="Script" uid="uid://b8qfrs61nmcix" path="res://scripts/costum_resources/effects/apply_buff_effect.gd" id="6_bvhf2"]
 [ext_resource type="Script" uid="uid://csyjq6ujulplm" path="res://scripts/costum_resources/effects/card_effects/card_effect.gd" id="6_t428w"]
 [ext_resource type="Script" uid="uid://brihgwpyu7v5v" path="res://scripts/costum_resources/effects/card_effects/exhaust_card_effect.gd" id="7_yghm2"]
-[ext_resource type="Script" uid="uid://c2drp2mlr0vhm" path="res://scripts/costum_resources/effects/foreach_card_effect.gd" id="8_ov1pj"]
+[ext_resource type="Script" path="res://scripts/costum_resources/effects/foreach_card_effect.gd" id="8_ov1pj"]
 [ext_resource type="Script" uid="uid://br1hibx18tv13" path="res://scripts/costum_resources/card.gd" id="8_t428w"]
 
 [sub_resource type="Resource" id="Resource_yghm2"]

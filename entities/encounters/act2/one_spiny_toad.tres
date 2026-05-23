@@ -7,7 +7,7 @@
 [sub_resource type="Resource" id="Resource_1ervp"]
 script = ExtResource("1_72xtm")
 enemy_stats = ExtResource("2_a5xqa")
-position = Vector2(1385, 600)
+position = Vector2(1385, 720)
 metadata/_custom_type_script = "uid://dw53gdpom3gn6"
 
 [resource]

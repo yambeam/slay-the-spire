@@ -105,14 +105,14 @@ func loadEnchantment(dir_path: String)->void:
 
 func init()->void:		
 	countop=0
-	randomize()  # 初始化随机种子
-	random_number = randi_range(0, incidentsDataArray.size()-1)  # 生成0到房间数组大小-1的随机整数
-	random_number=7
+	
+	random_number = RandomSetting.instance.randi_range(0, incidentsDataArray.size()-1)  # 生成0到房间数组大小-1的随机整数
+	#random_number=0
 	room_number=random_number
 	#所有的 遗物和药水资源
-	relics=ItemPool.get_relics_by_rarity(0b0000111)
 	potions=ItemPool.get_potions(char_stats.color,0b011)
-	
+	var arr = ItemPool.event_relic_dict.values()
+	relics.assign(arr)
 	set_init_incident_data(incidentsDataArray[room_number])
 
 func set_init_incident_data(data:IncidentData)->void:
@@ -125,7 +125,7 @@ func set_init_incident_data(data:IncidentData)->void:
 
 	if data.incidentName=="slippery_bridge":
 		print("处理滑脚独桥的信息")
-		random_card_number = randi_range(0, char_stats.deck.cards.size()-1) 
+		random_card_number =  RandomSetting.instance.randi_range(0, char_stats.deck.cards.size()-1) 
 		var card:Card=char_stats.deck.cards[random_card_number]
 		text_1.text="跨越\n\""
 		text_1.text+=card.id
@@ -184,7 +184,7 @@ func handle_this_or_that_op1()->void:
 		#添加随机遗物
 		print("原来遗物的数量")
 		print(run_stats.relics.size())
-		random_number = randi_range(0, relics.size()-1)  # 生成0到遗物数组大小-1的随机整数
+		random_number =  RandomSetting.instance.randi_range(0, relics.size()-1)  # 生成0到遗物数组大小-1的随机整数
 		run_stats.add_relic(relics[random_number])
 		print("现在遗物数量")
 		print(run_stats.relics.size())
@@ -248,7 +248,9 @@ func handle_brain_leech_op1()->void:
 		
 		reward_scene.run_stats = run_stats
 		reward_scene.character_stats =char_stats
-		reward_scene.add_card_reward(RewardContext.new())
+		var reward_context = RewardContext.new()
+		reward_context.all_colorless = true
+		reward_scene.add_card_reward(reward_context)
 		
 		Events.combat_reward_exited.connect(_on_room_exited)
 		
@@ -260,7 +262,7 @@ func handle_the_legends_were_true_op1()->void:
 	if countop<incident_data.press_op1_title.size():
 		print("原来遗物的数量")
 		print(run_stats.relics.size())
-		random_number = randi_range(0, relics.size()-1)  # 生成0到遗物数组大小-1的随机整数
+		random_number =  RandomSetting.instance.randi_range(0, relics.size()-1)  # 生成0到遗物数组大小-1的随机整数
 		run_stats.add_relic(relics[random_number])
 		print("现在遗物数量")
 		print(run_stats.relics.size())
@@ -273,7 +275,7 @@ func handle_jungle_maze_adventure_op1()->void:
 		print("原金币值")
 		print(run_stats.gold)
 		#增加35-65个金币
-		random_number=randi_range(0,65-35)
+		random_number= RandomSetting.instance.randi_range(0,65-35)
 		run_stats.gold=run_stats.gold+35+random_number
 		
 		
@@ -297,7 +299,7 @@ func handle_unrest_site_op1()->void:
 		#添加随机遗物
 		print("原来遗物的数量")
 		print(run_stats.relics.size())
-		random_number = randi_range(0, relics.size()-1)  # 生成0到遗物数组大小-1的随机整数
+		random_number =  RandomSetting.instance.randi_range(0, relics.size()-1)  # 生成0到遗物数组大小-1的随机整数
 		run_stats.add_relic(relics[random_number])
 		print("现在遗物数量")
 		print(run_stats.relics.size())
@@ -311,7 +313,7 @@ func handle_luminous_choir_op1()->void:
 		print("原金币值")
 		print(run_stats.gold)
 		#减少100-149个金币
-		random_number=randi_range(100,149)
+		random_number= RandomSetting.instance.randi_range(100,149)
 		run_stats.gold=run_stats.gold-random_number
 		if run_stats.gold<0:
 			run_stats.gold=0
@@ -320,7 +322,7 @@ func handle_luminous_choir_op1()->void:
 		
 		print("原来遗物的数量")
 		print(run_stats.relics.size())
-		random_number=randi_range(0,relics.size()-1)
+		random_number= RandomSetting.instance.randi_range(0,relics.size()-1)
 		run_stats.add_relic(relics[random_number])
 		print("现在遗物数量")
 		print(run_stats.relics.size())
@@ -369,7 +371,7 @@ func _on_option_1_pressed() -> void:
 
 func handle_slippery_bridge_op2()->void:	
 	if countop<incident_data.press_op2_title.size():
-		random_card_number = randi_range(0, char_stats.deck.cards.size()-1) 
+		random_card_number =  RandomSetting.instance.randi_range(0, char_stats.deck.cards.size()-1) 
 		var card:Card=char_stats.deck.cards[random_card_number]
 		text_1.text="跨越\n\""
 		text_1.text+=card.id
@@ -397,7 +399,7 @@ func handle_this_or_that_op2()->void:
 		#损失6点生命值
 		char_stats.take_damage(6)
 		#增加41-69个金币
-		random_number=randi_range(0,69-41)
+		random_number= RandomSetting.instance.randi_range(0,69-41)
 		run_stats.gold=run_stats.gold+41+random_number
 		print("现在生命值")
 		print(char_stats.health)
@@ -466,7 +468,7 @@ func handle_the_legends_were_true_op2()->void:
 		print("现在生命值")
 		print(char_stats.health)
 		
-		random_number=randi_range(0,potions.size()-1)
+		random_number= RandomSetting.instance.randi_range(0,potions.size()-1)
 		var suc=run_stats.add_potion(potions[random_number])
 		print(suc)
 		option_1.hide()
@@ -481,7 +483,7 @@ func handle_jungle_maze_adventure_op2()->void:
 		print("原生命值")
 		print(char_stats.health)
 		#增加135-165个金币
-		random_number=randi_range(0,165-135)
+		random_number= RandomSetting.instance.randi_range(0,165-135)
 		run_stats.gold=run_stats.gold+135+random_number
 		#损失18点生命值
 		char_stats.take_damage(18)
@@ -592,3 +594,37 @@ func _on_option_2_mouse_entered() -> void:
 
 func _on_option_2_mouse_exited() -> void:
 	$optionsContainer/option2/outline2.hide()
+
+
+func get_save_state() -> Dictionary:
+	return {
+		"countop": countop,
+		"room_number": room_number,
+		"random_card_number": random_card_number,
+		"incident_data_path": incident_data.resource_path,
+		"option1_visible": option_1.visible,
+		"option2_visible": option_2.visible,
+		"title_text": event_title.text,
+		"desc_text": event_description.text,
+		"text1": text_1.text,
+		"text2": text_2.text,
+		"random_cards": Randomcards.map(func(c): return c.serialize()),
+	}
+
+func set_save_state(state: Dictionary) -> void:
+	countop = state.get("countop", 0)
+	room_number = state.get("room_number", 0)
+	random_card_number = state.get("random_card_number", 0)
+	incident_data = load(state["incident_data_path"]) as IncidentData
+	set_incident_data(incident_data)
+
+	Randomcards.clear()
+	for card_data in state.get("random_cards", []):
+		Randomcards.append(Card.deserialize(card_data))
+
+	event_title.text = state["title_text"]
+	event_description.text = state["desc_text"]
+	text_1.text = state["text1"]
+	text_2.text = state["text2"]
+	option_1.visible = state["option1_visible"]
+	option_2.visible = state["option2_visible"]

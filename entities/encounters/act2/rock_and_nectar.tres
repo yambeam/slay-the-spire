@@ -8,13 +8,13 @@
 [sub_resource type="Resource" id="Resource_m3pgs"]
 script = ExtResource("1_a57vm")
 enemy_stats = ExtResource("2_17b4h")
-position = Vector2(1200, 600)
+position = Vector2(1200, 720)
 metadata/_custom_type_script = "uid://dw53gdpom3gn6"
 
 [sub_resource type="Resource" id="Resource_xartq"]
 script = ExtResource("1_a57vm")
 enemy_stats = ExtResource("3_am8i5")
-position = Vector2(1700, 600)
+position = Vector2(1700, 720)
 index = 1
 metadata/_custom_type_script = "uid://dw53gdpom3gn6"
 

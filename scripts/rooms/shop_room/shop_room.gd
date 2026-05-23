@@ -398,21 +398,21 @@ func _connect_card_signals(card_node: MerchantCard) -> void:
 # ============================================
 func _apply_random_price_and_discount(card: Card) -> void:
 	var range_vec = _get_price_range_by_rarity(card.rarity)
-	var base_price = randi_range(int(range_vec.x), int(range_vec.y))
-	if randf() < DISCOUNT_CHANCE:
+	var base_price =  RandomSetting.instance.randi_range(int(range_vec.x), int(range_vec.y))
+	if RandomSetting.instance.randf() < DISCOUNT_CHANCE:
 		card.on_sale = true
 		card.original_price = base_price
-		card.shop_price = int(base_price * randf_range(DISCOUNT_FACTOR_MIN, DISCOUNT_FACTOR_MAX))
+		card.shop_price = int(base_price * RandomSetting.instance.randf_range(DISCOUNT_FACTOR_MIN, DISCOUNT_FACTOR_MAX))
 	else:
 		card.on_sale = false
 		card.shop_price = base_price
 
 func _apply_random_price_to_relic(relic: Relic) -> void:
-	relic.shop_price = randi_range(RELIC_PRICE_MIN, RELIC_PRICE_MAX)
+	relic.shop_price =  RandomSetting.instance.randi_range(RELIC_PRICE_MIN, RELIC_PRICE_MAX)
 	relic.on_sale = false
 
 func _apply_random_price_to_potion(potion: Potion) -> void:
-	potion.shop_price = randi_range(POTION_PRICE_MIN, POTION_PRICE_MAX)
+	potion.shop_price =  RandomSetting.instance.randi_range(POTION_PRICE_MIN, POTION_PRICE_MAX)
 	potion.on_sale = false
 
 func _get_price_range_by_rarity(rarity: Card.Rarity) -> Vector2:
@@ -655,9 +655,9 @@ func _reset_inventory_position() -> void:
 # ============================================
 func _create_card_shop_item(card: Card) -> ShopItem:
 	var range_vec = _get_price_range_by_rarity(card.rarity)
-	var base_price = randi_range(int(range_vec.x), int(range_vec.y))
-	if randf() < DISCOUNT_CHANCE:
-		var discount_price = int(base_price * randf_range(DISCOUNT_FACTOR_MIN, DISCOUNT_FACTOR_MAX))
+	var base_price =  RandomSetting.instance.randi_range(int(range_vec.x), int(range_vec.y))
+	if RandomSetting.instance.randf() < DISCOUNT_CHANCE:
+		var discount_price = int(base_price * RandomSetting.instance.randf_range(DISCOUNT_FACTOR_MIN, DISCOUNT_FACTOR_MAX))
 		return ShopItem.new(card, discount_price, true, base_price)
 	else:
 		return ShopItem.new(card, base_price, false, 0)

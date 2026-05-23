@@ -11,7 +11,7 @@
 [ext_resource type="AudioStream" uid="uid://b4eqc65cqogm6" path="res://audio/SFX/blunt_attack.mp3" id="7_bhvh5"]
 [ext_resource type="Script" uid="uid://cgmi6f3o7leik" path="res://scripts/costum_resources/effect.gd" id="8_bhvh5"]
 [ext_resource type="AudioStream" uid="uid://dg3m3v6ldrym8" path="res://audio/SFX/frost_orb_passive.mp3" id="9_bciq4"]
-[ext_resource type="Script" uid="uid://c8ly86kb5vc65" path="res://scripts/costum_resources/effects/iteration_effect.gd" id="9_xh27e"]
+[ext_resource type="Script" path="res://scripts/costum_resources/effects/iteration_effect.gd" id="9_xh27e"]
 [ext_resource type="Script" uid="uid://b8qfrs61nmcix" path="res://scripts/costum_resources/effects/apply_buff_effect.gd" id="10_bciq4"]
 [ext_resource type="Script" uid="uid://dpbv4m5rd0bbq" path="res://scripts/costum_resources/intents/apply_buff_sub_intent.gd" id="11_t6a78"]
 [ext_resource type="Script" uid="uid://bidy6pi1tvviv" path="res://entities/enemies/infested_prism/infested_prism_ai.gd" id="12_tht8v"]

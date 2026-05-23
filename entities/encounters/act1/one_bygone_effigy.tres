@@ -7,7 +7,7 @@
 [sub_resource type="Resource" id="Resource_ao255"]
 script = ExtResource("1_pw1e6")
 enemy_stats = ExtResource("2_7gqky")
-position = Vector2(1385, 600)
+position = Vector2(1385, 720)
 initial_buff = {
 "缓慢": 1
 }

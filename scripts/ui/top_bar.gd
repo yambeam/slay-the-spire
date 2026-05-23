@@ -35,8 +35,9 @@ func initialize(stats: CharacterStats) -> void:
 	card_pile_button.pressed.connect(deck_view_requested.emit.bind(stats.deck.cards))
 	top_bar_potion.initialize(run_stats)
 	relic_handler.initialize(run_stats)
-	# 测试用
-	var tween = create_tween()
+	## 测试用
+	#var tween = create_tween()
+	#tween.tween_interval(1.0)
 	#tween.tween_callback(func(): run_stats.add_potion(preload("res://entities/potions/灾厄药水.tres")))
 	#tween.tween_interval(1.0)
 	#tween.tween_callback(func(): run_stats.add_potion(preload("res://entities/potions/癫狂之触.tres")))
@@ -55,7 +56,7 @@ func initialize(stats: CharacterStats) -> void:
 	#tween.tween_interval(1.0)
 	#tween.tween_callback(func(): run_stats.remove_relic(preload("uid://b5niu17o73g0m")))
 	#tween.tween_interval(1.0)
-	#
+	
 	
 #金币更改
 func set_run_stats(new_value:RunStats)->void:

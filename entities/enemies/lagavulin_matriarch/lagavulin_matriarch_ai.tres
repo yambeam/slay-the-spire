@@ -49,6 +49,7 @@ metadata/_custom_type_script = "uid://vkklgv0ma0yf"
 [sub_resource type="Resource" id="Resource_74klk"]
 script = ExtResource("6_bq05n")
 damage_provider = SubResource("Resource_1vu78")
+type = null
 effect = SubResource("Resource_gow4n")
 metadata/_custom_type_script = "uid://bces7ijyodhmv"
 
@@ -97,6 +98,7 @@ metadata/_custom_type_script = "uid://dtok21t0ujjui"
 script = ExtResource("6_bq05n")
 damage_provider = SubResource("Resource_odavm")
 repeat_provider = SubResource("Resource_j0tvv")
+type = null
 effect = SubResource("Resource_0ohc8")
 metadata/_custom_type_script = "uid://bces7ijyodhmv"
 
@@ -127,6 +129,7 @@ metadata/_custom_type_script = "uid://vkklgv0ma0yf"
 [sub_resource type="Resource" id="Resource_icoml"]
 script = ExtResource("6_bq05n")
 damage_provider = SubResource("Resource_fqf70")
+type = null
 effect = SubResource("Resource_aq4lt")
 metadata/_custom_type_script = "uid://bces7ijyodhmv"
 

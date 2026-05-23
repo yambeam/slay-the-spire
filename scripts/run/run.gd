@@ -65,7 +65,7 @@ func _ready() -> void:
 		func():
 			var on_map := is_on_map  # 假设 Map 节点有 visible 属性；若无，需手动维护 is_on_map 变量
 			_save_run(on_map)
-			get_tree().change_scene_to_file(MAIN_MENU_PATH)
+			#get_tree().change_scene_to_file(MAIN_MENU_PATH)
 			
 			back_to_main()
 			
@@ -430,18 +430,25 @@ func _on_combat_room_entered(room: Room = null, restore_state: Dictionary = {}) 
 		battle_scene.start_combat()
 	else:
 		battle_scene.start_combat(true)
-		battle_scene.set_save_state(restore_state)
-		battle_scene.relics.relics_activated.connect(battle_scene._on_relics_activated)
+		# 设置恢复标志，防止 start_turn 抽牌
+		if battle_scene.player_handler:
+			battle_scene.player_handler.is_restoring = true
+
+		# 连接并激活遗物（此时 start_turn 被跳过，不会抽牌）
+		if not battle_scene.relics.relics_activated.is_connected(battle_scene._on_relics_activated):
+			battle_scene.relics.relics_activated.connect(battle_scene._on_relics_activated)
 		battle_scene.relics.activate_relics_by_trigger_type(Relic.TriggerType.START_OF_COMBAT)
+
+		await get_tree().process_frame
+		# 现在可以安全恢复手牌
+		battle_scene.set_save_state(restore_state)
+
+		# 恢复完成，清除标志
+		if battle_scene.player_handler:
+			battle_scene.player_handler.is_restoring = false
 		_restoring = false
 
-	# 如果提供了存档状态，则恢复战场进度
-	if not restore_state.is_empty():
-		print("开始恢复战斗状态...")
-		await Events.combat_start
-		if is_instance_valid(battle_scene):
-			battle_scene.set_save_state(restore_state)
-		_restoring = false
+	
 		
 
 func _on_shop_room_entered(room: Room) -> void:

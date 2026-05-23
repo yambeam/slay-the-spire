@@ -322,32 +322,34 @@ func _has_block_effect(card_effects: Array[Effect]) -> bool:
 
 
 
-#卡牌数据序列化
-func serialize() -> Dictionary:
-	return {
-		"resource_path": resource_path,  
-		"id": id,
-		"upgraded": upgraded,
-		"upgradable": upgradable,
-		"card_color": card_color,
-		"first_play_free": first_play_free,
-		"card_played_this_combat": card_played_this_combat,
-	}
-
-static func deserialize(data: Dictionary) -> Card:
-	var path: String = data.get("resource_path", "")
-	if path.is_empty():
-		push_error("Card.deserialize: resource_path missing")
-		return null
-	var base: Card = load(path)
-	if not base:
-		push_error("Card.deserialize: failed to load " + path)
-		return null
-	var card: Card = base.duplicate()
-	card.id = data.get("id", card.id)
-	card.upgraded = data.get("upgraded", false)
-	card.upgradable = data.get("upgradable", true)
-	card.card_color = data.get("card_color", Card.COLOR.RED)
-	card.first_play_free = data.get("first_play_free", false)
-	card.card_played_this_combat = data.get("card_played_this_combat", 0)
-	return card
+##卡牌数据序列化
+#func serialize() -> Dictionary:
+	#return {
+		#"resource_path": resource_path,  
+		#"id": id,
+		#"upgraded": upgraded,
+		#"upgradable": upgradable,
+		#"card_color": card_color,
+		#"first_play_free": first_play_free,
+		#"card_played_this_combat": card_played_this_combat,
+	#}
+#
+#static func deserialize(data: Dictionary) -> Card:
+	#var card_id: String = data.get("id", "")
+	#if card_id.is_empty():
+		#push_error("Card.deserialize: id missing")
+		#return null
+#
+	## 从 ItemPool（全局单例）获取原型
+	#var base: Card = ItemPool.cards_by_id.get(card_id, null)
+	#if not base:
+		#push_error("Card.deserialize: card not found for id " + card_id)
+		#return null
+#
+	#var card: Card = base.duplicate()
+	#card.upgraded = data.get("upgraded", false)
+	#card.upgradable = data.get("upgradable", true)
+	#card.card_color = data.get("card_color", Card.COLOR.RED)
+	#card.first_play_free = data.get("first_play_free", false)
+	#card.card_played_this_combat = data.get("card_played_this_combat", 0)
+	#return card

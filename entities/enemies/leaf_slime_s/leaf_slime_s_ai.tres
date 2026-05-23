@@ -29,6 +29,7 @@ metadata/_custom_type_script = "uid://vkklgv0ma0yf"
 [sub_resource type="Resource" id="Resource_l60sl"]
 script = ExtResource("6_ihmm0")
 damage_provider = SubResource("Resource_f7a7q")
+type = null
 effect = SubResource("Resource_o8ulp")
 metadata/_custom_type_script = "uid://bces7ijyodhmv"
 

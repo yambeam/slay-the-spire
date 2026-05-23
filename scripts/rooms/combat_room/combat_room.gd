@@ -16,6 +16,10 @@ extends Control
 @export var char_stats: CharacterStats: set = _set_char_stats
 @export var relics: RelicHandler
 
+#当前是否处于保存状态
+#var is_restoring: bool = false
+#const BUFF_UI = preload("res://scenes/rooms/combat_room/combat_ui/buff_ui.tscn")
+
 func _ready() -> void:
 	# 这步应该在开始一局时进行
 	#var new_stats: CharacterStats = char_stats.create_instance()
@@ -89,117 +93,257 @@ func _on_relics_activated(type: Relic.TriggerType) -> void:
 
 
 
-#修改2 ——————增加
-
-# 保存战斗房间状态
-func get_save_state() -> Dictionary:
-	var state := {}
-
-	state["health"] = char_stats.health
-	state["energy"] = char_stats.energy
-	state["block"] = player.stats.block if player and player.stats else 0
-
-	# 手牌
-	var hand_cards := []
-	for child in hand_manager.get_children():
-		if child is CardUI and child.card:
-			hand_cards.append(child.card.serialize())
-	print("保存手牌:",hand_cards)
-	state["hand_cards"] = hand_cards
-
-	# 主技能充能
-	state["main_skill_charge"] = main_skill_ui.skill.current_charge if main_skill_ui.skill else 0
-
-	# 玩家 Buff
-	var player_buffs := []
-	for buff in player.buff_manager.get_children():
-		if buff is Buff:
-			player_buffs.append(buff.serialize())
-	state["player_buffs"] = player_buffs
-
-	# 敌人状态
-	var enemies_data := []
-	for enemy in enemy_handler.get_children():
-		if enemy is Enemy:
-			var ed := {
-				"health": enemy.stats.health,
-				"block": enemy.stats.block,
-				"buffs": [],
-				"intent": enemy.get_intent_data()
-			}
-			for buff in enemy.buff_manager.get_children():
-				if buff is Buff:
-					ed["buffs"].append(buff.serialize())
-			enemies_data.append(ed)
-	state["enemies"] = enemies_data
-
-	return state
-
-func set_save_state(state: Dictionary) -> void:
-	if state.is_empty():
-		return
-
-	# 基础属性
-	char_stats.health = state.get("health", char_stats.health)
-	char_stats.energy = state.get("energy", char_stats.energy)
-	if player and player.stats:
-		player.stats.block = state.get("block", 0)
-
-	# 手牌恢复
-	hand_manager.clear_hand()
-	print("恢复手牌:",state.get("hand_cards", []))
-	for card_data in state.get("hand_cards", []):
-		var card: Card = Card.deserialize(card_data)
-		print("deserialize ", card_data.id, " -> ", card)
-		if card:
-			hand_manager.add_card_to_hand(card)
-	hand_manager.set_cards()         
-
-	# 主技能充能
-	if main_skill_ui.skill:
-		main_skill_ui.skill.current_charge = state.get("main_skill_charge", 0)
-
-	# 玩家 Buff：先清空，再重建
-	for buff in player.buff_manager.get_children():
-		if buff is Buff:
-			buff.queue_free()
-	await get_tree().process_frame     # 确保旧 Buff 已移除
-	for bd in state.get("player_buffs", []):
-		var buff: Buff = Buff.deserialize(bd)
-		if buff:
-			player.buff_manager.add_child(buff)
-			buff.stacks = bd["stacks"]
-
-	# 敌人状态
-	var enemies_data: Array = state.get("enemies", [])
-	var enemy_list: Array = []
-	for child in enemy_handler.get_children():
-		if child is Enemy:
-			enemy_list.append(child)
-
-	for i in range(min(enemy_list.size(), enemies_data.size())):
-		var enemy: Enemy = enemy_list[i]
-		var data = enemies_data[i]
-		enemy.stats.health = data["health"]
-		enemy.stats.block = data["block"]
-		# 敌人 Buff 清理
-		for buff in enemy.buff_manager.get_children():
-			if buff is Buff:
-				buff.queue_free()
-		for bd in data["buffs"]:
-			var buff: Buff = Buff.deserialize(bd)
-			if buff:
-				enemy.buff_manager.add_child(buff)
-				buff.stacks = bd["stacks"]
-		# 恢复意图
-		if data.has("intent") and not data["intent"].is_empty():
-			enemy.set_intent_from_data(data["intent"])
-		enemy._update_stats()
-		if enemy.has_method("update_intent"):
-			enemy.update_intent()
-
-func _input(event: InputEvent) -> void:
-	if event is InputEventMouseButton:
-		var mb := event as InputEventMouseButton
-		if mb.button_index == MOUSE_BUTTON_WHEEL_UP or mb.button_index == MOUSE_BUTTON_WHEEL_DOWN:
-			accept_event() 
+##修改2 ——————增加
+#
+## 保存战斗房间状态
+## ============================================
+## 保存战斗房间状态
+## ============================================
+#func get_save_state() -> Dictionary:
+	#var state := {}
+#
+	#state["health"] = char_stats.health
+	#state["energy"] = char_stats.energy
+	#state["block"] = player.stats.block if player and player.stats else 0
+#
+	## 手牌
+	#var hand_cards := []
+	#for child in hand_manager.get_children():
+		#if child is CardUI and child.card:
+			#hand_cards.append(child.card.serialize())
+	#print("保存手牌:", hand_cards)
+	#state["hand_cards"] = hand_cards
+#
+	## 主技能充能
+	#state["main_skill_charge"] = main_skill_ui.skill.current_charge if main_skill_ui.skill else 0
+#
+	## 玩家 Buff
+	#var player_buffs := []
+	#for buff in player.buff_manager.get_children():
+		#if buff is Buff:
+			#player_buffs.append(buff.serialize())
+	#state["player_buffs"] = player_buffs
+#
+	## 敌人状态
+	#var enemies_data := []
+	#for enemy in enemy_handler.get_children():
+		#if enemy is Enemy:
+			#var ed := {
+				#"health": enemy.stats.health,
+				#"max_health": enemy.stats.max_health,
+				#"block": enemy.stats.block,
+				#"buffs": [],
+				#"intent": enemy.get_intent_data()
+			#}
+			#for buff in enemy.buff_manager.get_children():
+				#if buff is Buff:
+					#ed["buffs"].append(buff.serialize())
+			#enemies_data.append(ed)
+	#state["enemies"] = enemies_data
+#
+#
+	## --- 调试打印开始 ---
+	#print("========== COMBAT ROOM SAVED STATE ==========")
+	#print("Player Health: %d / %d" % [char_stats.health, char_stats.max_health])
+	#print("Player Energy: %d / %d" % [char_stats.energy, char_stats.max_energy])
+	#print("Player Block: %d" % state.get("block", 0))
+#
+	## 手牌打印
+	#var hand_cards_print := []
+	#for child in hand_manager.get_children():
+		#if child is CardUI:
+			#var card = child.card
+			#if card:
+				#var name_display = card.id
+				#if card.upgraded:
+					#name_display += "+"
+				#hand_cards_print.append("%s (cost:%d)" % [name_display, card.get_cost()])
+			#else:
+				#hand_cards_print.append("(empty card)")
+	#print("Hand Cards (%d): [%s]" % [hand_cards_print.size(), ", ".join(hand_cards_print)])
+#
+	## 主技能
+	#print("Main Skill Charge: %d" % state.get("main_skill_charge", -1))
+#
+	## 玩家 Buff 打印
+	#print("Player Buffs (%d):" % state["player_buffs"].size())
+	#for bd in state["player_buffs"]:
+		#print("  - %s | stacks: %d" % [bd.get("buff_id", "??"), bd.get("stacks", 0)])
+#
+	## 敌人状态打印
+	#print("Enemies (%d):" % enemies_data.size())
+	#for i in range(enemies_data.size()):
+		#var ed = enemies_data[i]
+		#print("  Enemy %d:" % i)
+		#print("    Health: %d / %d" % [ed["health"], ed["max_health"]])
+		#print("    Block: %d" % ed["block"])
+		#print("    Intent: %s" % ed.get("intent", {}).get("intent_name", "none"))
+		#print("    Buffs (%d):" % ed["buffs"].size())
+		#for bd in ed["buffs"]:
+			#print("      - %s | stacks: %d" % [bd.get("buff_id", "??"), bd.get("stacks", 0)])
+#
+	#print("==============================================\n")
+	#return state
+#
+#
+## ============================================
+## 恢复战斗房间状态
+## ============================================
+#func set_save_state(state: Dictionary) -> void:
+	#if state.is_empty():
+		#return
+#
+	## --- 0. 修复敌人数量：先删除多余的敌人 ---
+	#var enemies_data: Array = state.get("enemies", [])
+	#var current_enemies: Array = []
+	#for child in enemy_handler.get_children():
+		#if child is Enemy:
+			#current_enemies.append(child)
+#
+	#for i in range(enemies_data.size(), current_enemies.size()):
+		#current_enemies[i].queue_free()
+	#if current_enemies.size() > enemies_data.size():
+		#await get_tree().process_frame
+#
+	#current_enemies.clear()
+	#for child in enemy_handler.get_children():
+		#if child is Enemy:
+			#current_enemies.append(child)
+#
+	## --- 1. 玩家基础属性 ---
+	#char_stats.health = state.get("health", char_stats.health)
+	#char_stats.energy = state.get("energy", char_stats.energy)
+	#if player and player.stats:
+		#player.stats.block = state.get("block", 0)
+#
+	## --- 2. 手牌恢复 ---
+	#print("恢复前手牌数: ", hand_manager.get_children().size())
+	#hand_manager.clear_hand()
+	#print("恢复手牌:", state.get("hand_cards", []))
+	#for card_data in state.get("hand_cards", []):
+		#var card: Card = Card.deserialize(card_data)
+		#if card:
+			#hand_manager.add_card_to_hand(card)
+	#hand_manager.set_cards()
+	#print("恢复后手牌数: ", hand_manager.get_children().size())
+#
+	## --- 3. 主技能充能 ---
+	#if main_skill_ui.skill:
+		#main_skill_ui.skill.current_charge = state.get("main_skill_charge", 0)
+#
+	## --- 4. 玩家 Buff 恢复 + UI 重建（注意顺序：agent → stacks → add_child）---
+	#for buff in player.buff_manager.get_children():
+		#if buff is Buff:
+			#buff.queue_free()
+	#if player.buff_manager.get_child_count() > 0:
+		#await get_tree().process_frame
+#
+	#for bd in state.get("player_buffs", []):
+		#var buff: Buff = Buff.deserialize(bd)
+		#if buff:
+			#buff.agent = player
+			#buff.stacks = bd["stacks"]          # 先设层数
+			#player.buff_manager.add_child(buff)   # 再入树（_ready 会用正确 stacks）
+#
+	## 重建玩家 BuffUI
+	#for child in player.buff_container.get_children():
+		#child.queue_free()
+	#for buff in player.buff_manager.get_children():
+		#if buff is Buff:
+			#var buff_ui := BUFF_UI.instantiate()
+			#buff_ui.buff = buff
+			#buff_ui.agent = player
+			#player.buff_container.add_child(buff_ui)
+#
+	## --- 5. 敌人状态恢复 + Buff UI 重建 ---
+	#for i in range(min(current_enemies.size(), enemies_data.size())):
+		#var enemy: Enemy = current_enemies[i]
+		#var data = enemies_data[i]
+#
+		#enemy.stats.max_health = data["max_health"]
+		#enemy.stats.health    = data["health"]
+		#enemy.stats.block     = data["block"]
+#
+		## 清空旧 Buff
+		#for buff in enemy.buff_manager.get_children():
+			#if buff is Buff:
+				#buff.queue_free()
+#
+		## 恢复 Buff 数据（agent → stacks → add_child）
+		#for bd in data["buffs"]:
+			#var buff: Buff = Buff.deserialize(bd)
+			#if buff:
+				#buff.agent = enemy
+				#buff.stacks = bd["stacks"]          # 先设正确层数
+				#enemy.buff_manager.add_child(buff)  # 再入树
+#
+		## 重建敌人 BuffUI
+		#for child in enemy.buff_container.get_children():
+			#child.queue_free()
+		#for buff in enemy.buff_manager.get_children():
+			#if buff is Buff:
+				#var buff_ui := BUFF_UI.instantiate()
+				#buff_ui.buff = buff
+				#buff_ui.agent = enemy
+				#enemy.buff_container.add_child(buff_ui)
+#
+		## 恢复意图（此时 Buff 修饰器已正确注册）
+		#if data.has("intent") and not data["intent"].is_empty():
+			#enemy.set_intent_from_data(data["intent"])
+		#enemy._update_stats()
+		## 强制刷新意图显示，以重新计算伤害数值
+		#if enemy.intents and enemy.current_intent:
+			#enemy.intents.update_intent(enemy.current_intent)
+#
+	## --- 6. 保险：再次设置玩家格挡，防止被遗物或初始化覆盖 ---
+	#if player and player.stats:
+		#player.stats.block = state.get("block", 0)
+#
+	## --- 调试打印（保持原样）---
+	#print("========== COMBAT ROOM RESTORED STATE ==========")
+	#print("Player Health: %d / %d" % [char_stats.health, char_stats.max_health])
+	#print("Player Energy: %d / %d" % [char_stats.energy, char_stats.max_energy])
+	#print("Player Block: %d" % (player.stats.block if player and player.stats else -1))
+#
+	#var hand_cards_print := []
+	#for child in hand_manager.get_children():
+		#if child is CardUI:
+			#var card = child.card
+			#if card:
+				#var name_display = card.id
+				#if card.upgraded:
+					#name_display += "+"
+				#hand_cards_print.append("%s (cost:%d)" % [name_display, card.get_cost()])
+			#else:
+				#hand_cards_print.append("(empty card)")
+	#print("Hand Cards (%d): [%s]" % [hand_cards_print.size(), ", ".join(hand_cards_print)])
+#
+	#print("Main Skill Charge: %d" % (main_skill_ui.skill.current_charge if main_skill_ui.skill else -1))
+#
+	#print("Player Buffs (%d):" % player.buff_manager.get_child_count())
+	#for buff in player.buff_manager.get_children():
+		#if buff is Buff:
+			#print("  - %s | stacks: %d" % [buff.buff_name, buff.stacks])
+#
+	#var final_enemy_list: Array = []
+	#for child in enemy_handler.get_children():
+		#if child is Enemy:
+			#final_enemy_list.append(child)
+	#print("Enemies (%d):" % final_enemy_list.size())
+	#for i in range(final_enemy_list.size()):
+		#var enemy: Enemy = final_enemy_list[i]
+		#print("  Enemy %d:" % i)
+		#print("    Health: %d / %d" % [enemy.stats.health, enemy.stats.max_health])
+		#print("    Block: %d" % enemy.stats.block)
+		#print("    Intent: %s" % (enemy.current_intent.intent_name if enemy.current_intent else "none"))
+		#print("    Buffs (%d):" % enemy.buff_manager.get_child_count())
+		#for buff in enemy.buff_manager.get_children():
+			#if buff is Buff:
+				#print("      - %s | stacks: %d" % [buff.buff_name, buff.stacks])
+	#print("================================================\n")
+	#
+#func _input(event: InputEvent) -> void:
+	#if event is InputEventMouseButton:
+		#var mb := event as InputEventMouseButton
+		#if mb.button_index == MOUSE_BUTTON_WHEEL_UP or mb.button_index == MOUSE_BUTTON_WHEEL_DOWN:
+			#accept_event() 

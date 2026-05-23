@@ -5,6 +5,8 @@ extends SubIntent
 @export var repeat_provider: NumericProvider
 
 func get_text() -> String:
+	if not damage_provider:
+		return "???"
 	var repeat = 1
 	if repeat_provider:
 		repeat = repeat_provider.get_value()
@@ -22,6 +24,8 @@ func get_intent_description() -> String:
 	return "该敌人将要[color=gold]攻击[/color]造成{0}点伤害".format([damage_provider.get_value(null, {})])
 
 func _get_final_value(base_value: int) -> int:
+		if not source:
+			return base_value   #防御性检查
 		var modifiers : Array = []
 		if target:
 			modifiers = NumericHelper.combine_modifiers(source.get_modifiers_by_type(Enums.NumericType.DAMAGE, BuffResource.AFFECT.SELF), target.get_modifiers_by_type(Enums.NumericType.DAMAGE, BuffResource.AFFECT.TARGET))

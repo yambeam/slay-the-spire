@@ -92,6 +92,7 @@ metadata/_custom_type_script = "uid://dtok21t0ujjui"
 script = ExtResource("10_oj2pc")
 damage_provider = SubResource("Resource_umy6j")
 repeat_provider = SubResource("Resource_p76vp")
+type = null
 effect = SubResource("Resource_77sp7")
 metadata/_custom_type_script = "uid://bces7ijyodhmv"
 

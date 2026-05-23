@@ -75,6 +75,7 @@ metadata/_custom_type_script = "uid://dtok21t0ujjui"
 script = ExtResource("9_oc4r7")
 damage_provider = SubResource("Resource_mbujp")
 repeat_provider = SubResource("Resource_edsoq")
+type = null
 effect = SubResource("Resource_6jnqn")
 metadata/_custom_type_script = "uid://bces7ijyodhmv"
 
@@ -105,6 +106,7 @@ metadata/_custom_type_script = "uid://vkklgv0ma0yf"
 [sub_resource type="Resource" id="Resource_pdgek"]
 script = ExtResource("9_oc4r7")
 damage_provider = SubResource("Resource_l4xcp")
+type = null
 effect = SubResource("Resource_u5gr5")
 metadata/_custom_type_script = "uid://bces7ijyodhmv"
 

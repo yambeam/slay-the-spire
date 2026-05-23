@@ -39,6 +39,13 @@ enum Rarity{
 
 # 计数器
 @export var count: int = 0
+var temp_count: int = 0
+
+func save_count():
+	count = temp_count
+
+func load_count():
+	temp_count = count
 
 func initialize_relic(_owner: RelicUI) -> void:
 	pass

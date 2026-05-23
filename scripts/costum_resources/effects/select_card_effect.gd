@@ -52,7 +52,7 @@ func execute(source: Node, _card_context: Dictionary = {}, _previous_result: Var
 						selected_cards = [cards[randi() % len(cards)]]
 					else:
 						selected_cards = cards.duplicate()
-						selected_cards.shuffle()
+						RandomSetting.array_pick_random(selected_cards)
 						selected_cards = selected_cards.slice(0, max_select)
 
 				SelectionMode.FIRST:

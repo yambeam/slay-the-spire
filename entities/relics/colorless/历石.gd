@@ -5,7 +5,7 @@ var used := false
 func initialize_relic(owner: RelicUI) -> void:
 	Events.combat_won.connect(
 		func(_context: RewardContext):
-			count = 0
+			temp_count = 0
 			used = false
 			owner.update_count()
 	)
@@ -13,11 +13,11 @@ func initialize_relic(owner: RelicUI) -> void:
 func activate_relic(owner: RelicUI) -> void:
 	if used:
 		return
-	if count < 7:
-		count += 1
+	if temp_count < 7:
+		temp_count += 1
 	else:
 		super.activate_relic(owner)
 		used = true
-		count = 0
+		temp_count = 0
 	owner.update_count()
 	

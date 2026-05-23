@@ -239,7 +239,7 @@ func get_discoverable_cards(color: int, type: int, rarity: int) -> Array[Card]:
 
 func get_random_discoverable_cards(color: int, type: int, rarity: int, count: int) -> Array[Card]:
 	var candidates := get_discoverable_cards(color, type, rarity)
-	candidates.shuffle()
+	RandomSetting.array_shuffle(candidates)
 	return candidates.slice(0, count)
 
 #可以被奖励的卡牌

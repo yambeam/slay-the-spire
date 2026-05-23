@@ -207,6 +207,9 @@ func _save_run(was_on_map: bool) -> void:
 	
 	save_data.run_stats = stats
 	save_data.char_stats = character
+	
+	for relic: Relic in stats.relics:
+		relic.save_count()
 	#save_data.current_deck = character.deck
 	#save_data.current_health = character.health
 	save_data.last_room = map_node.last_room
@@ -225,6 +228,8 @@ func _load_run() -> void:
 	character = save_data.char_stats
 	stats = save_data.run_stats
 	
+	for relic: Relic in stats.relics:
+		relic.load_count()
 	
 	#character.deck = save_data.current_deck
 	#character.health = save_data.current_health

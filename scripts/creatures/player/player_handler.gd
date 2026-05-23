@@ -145,8 +145,7 @@ func put_card_in_draw_pile(card: Card, top: bool = false) -> void:
 	if top:
 		char_stats.draw_pile.add_card_to_top(card)
 	else:
-		char_stats.draw_pile.add_card(card)
-		char_stats.draw_pile.shuffle()
+		char_stats.draw_pile.random_insert_card(card)
 
 func put_card_in_hand(card: Card) -> void:
 	if hand_manager.add_card(card):

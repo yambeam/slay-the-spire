@@ -11,7 +11,7 @@ func show_mega_tail(self_global_position: Vector2, player_global_position: Vecto
 	if tail_tween:
 		tail_tween.kill()
 	tail_tween = create_tween()
-	tail_tween.tween_property(mega_tail, "position", Vector2(-self_global_position.x + player_global_position.x - mega_tail_point.position.x - 200, 600), 2.0)
+	tail_tween.tween_property(mega_tail, "position", Vector2(-self_global_position.x + player_global_position.x - mega_tail_point.position.x + 500, 600), 2.0)
 
 func hide_mega_tail() -> void:
 	if tail_tween:

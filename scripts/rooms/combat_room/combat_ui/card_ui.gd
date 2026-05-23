@@ -143,6 +143,8 @@ func _set_playable(value: bool) -> void:
 	if card.playable:
 		playable = value
 		visuals.set_hightlight(playable, card.has_highlight_condition(player, null))
+	else:
+		playable = false
 
 func _set_disabled(value: bool) -> void:
 	disabled = value

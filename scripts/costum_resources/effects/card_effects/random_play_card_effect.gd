@@ -13,7 +13,7 @@ func _random_play(player: Node, card: Card) -> void:
 		card.Target.SELF:
 			card.play(player, [player], true)
 		card.Target.SINGLE_ENEMY:
-			card.play(player, [enemies[randi() % len(enemies)]], true)
+			card.play(player, [enemies[RandomSetting.instance.randi() % len(enemies)]], true)
 		card.Target.ALL_ENEMIES:
 			card.play(player, enemies, true)
 		card.Target.EVERYONE:

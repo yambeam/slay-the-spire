@@ -32,6 +32,10 @@ func add_card(card: Card) -> void:
 	cards.append(card)
 	card_pile_size_changed.emit(cards.size())
 
+func random_insert_card(card: Card) -> void:
+	cards.insert(RandomSetting.instance.randi_range(0, cards.size() - 1), card)
+	card_pile_size_changed.emit(cards.size())
+
 func add_card_to_top(card: Card) -> void:
 	cards.insert(0, card)
 	card_pile_size_changed.emit(cards.size())
@@ -41,7 +45,7 @@ func remove_card(card: Card) -> void:
 	card_pile_size_changed.emit(cards.size())
 
 func shuffle() -> void:
-	cards.shuffle()
+	RandomSetting.array_shuffle(cards)
 	
 func clear() -> void:
 	cards.clear()

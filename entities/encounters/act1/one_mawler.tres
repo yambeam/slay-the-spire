@@ -12,7 +12,7 @@ metadata/_custom_type_script = "uid://dw53gdpom3gn6"
 
 [resource]
 script = ExtResource("2_2asky")
-type = 2
+type = 1
 weight = 1.0
 enemy_entries = Array[ExtResource("1_uq8wi")]([SubResource("Resource_yfb15")])
 metadata/_custom_type_script = "uid://dgu4qpyr0pnnb"

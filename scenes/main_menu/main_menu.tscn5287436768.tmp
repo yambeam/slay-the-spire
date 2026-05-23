@@ -1,0 +1,100 @@
+[gd_scene format=3 uid="uid://ciowx51kmgt0q"]
+
+[ext_resource type="Script" uid="uid://b5ens4sx8rjph" path="res://scripts/main_menu/main_menu.gd" id="1_uqeha"]
+[ext_resource type="Resource" uid="uid://kfd10rulosb7" path="res://scenes/run/run_start_up.tres" id="2_3ovsr"]
+[ext_resource type="SpineSkeletonDataResource" uid="uid://c1gewd6mejiug" path="res://animations/backgrounds/mainmenu/bottom/main_menu_bottom_skel_data.tres" id="2_wem23"]
+[ext_resource type="SpineSkeletonDataResource" uid="uid://byxuoj7vn2530" path="res://animations/backgrounds/mainmenu/logo/main_menu_logo_skel_data.tres" id="3_wem23"]
+[ext_resource type="Script" uid="uid://bayy3j6ssj0g" path="res://scripts/utils/spine_manager.gd" id="4_3ovsr"]
+[ext_resource type="SpineSkeletonDataResource" uid="uid://bbgijkibj2fr2" path="res://animations/backgrounds/mainmenu/top/main_menu_top_skel_data.tres" id="4_uqeha"]
+[ext_resource type="PackedScene" uid="uid://blvum03eav360" path="res://scenes/settings/settings.tscn" id="7_5seab"]
+[ext_resource type="PackedScene" uid="uid://daa628w54ouws" path="res://scenes/main_menu/main_menu_button.tscn" id="7_x2yjq"]
+[ext_resource type="PackedScene" uid="uid://bv0rrfhkiiomf" path="res://scenes/character_selector/character_selector.tscn" id="8_thkx5"]
+
+[node name="main_menu" type="Control" unique_id=1550050227]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 3.0
+offset_right = 3.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_uqeha")
+run_startup = ExtResource("2_3ovsr")
+
+[node name="bottom" type="SpineSprite" parent="." unique_id=1500051669]
+skeleton_data_res = ExtResource("2_wem23")
+preview_skin = "Default"
+preview_animation = "-- Empty --"
+preview_frame = false
+preview_time = 0.0
+position = Vector2(241, 204)
+scale = Vector2(0.38, 0.44)
+script = ExtResource("4_3ovsr")
+metadata/_custom_type_script = "uid://bayy3j6ssj0g"
+
+[node name="top" type="SpineSprite" parent="." unique_id=1659518443]
+skeleton_data_res = ExtResource("4_uqeha")
+preview_skin = "Default"
+preview_animation = "animation"
+preview_frame = false
+preview_time = 0.0
+position = Vector2(230, 98)
+scale = Vector2(0.38, 0.43)
+script = ExtResource("4_3ovsr")
+metadata/_custom_type_script = "uid://bayy3j6ssj0g"
+
+[node name="logo" type="SpineSprite" parent="." unique_id=1240521515]
+skeleton_data_res = ExtResource("3_wem23")
+preview_skin = "Default"
+preview_animation = "animation"
+preview_frame = false
+preview_time = 0.0
+unique_name_in_owner = true
+position = Vector2(7, -1)
+scale = Vector2(0.5, 0.5)
+script = ExtResource("4_3ovsr")
+metadata/_custom_type_script = "uid://bayy3j6ssj0g"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1110028358]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -471.0
+offset_top = 92.0
+offset_right = 2.0
+offset_bottom = 513.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 35
+
+[node name="ContinueButton" parent="VBoxContainer" unique_id=2006624427 instance=ExtResource("7_x2yjq")]
+layout_mode = 2
+
+[node name="New Run" parent="VBoxContainer" unique_id=1417456297 instance=ExtResource("7_x2yjq")]
+layout_mode = 2
+text = "New run"
+
+[node name="Settings" parent="VBoxContainer" unique_id=1949838677 instance=ExtResource("7_x2yjq")]
+layout_mode = 2
+text = "Settings"
+
+[node name="Quit" parent="VBoxContainer" unique_id=23848942 instance=ExtResource("7_x2yjq")]
+layout_mode = 2
+text = "Quit"
+
+[node name="character_selector" parent="." unique_id=765309063 instance=ExtResource("8_thkx5")]
+visible = false
+layout_mode = 0
+offset_left = 11.0
+offset_top = -7.0
+offset_right = 11.0
+offset_bottom = -7.0
+
+[node name="settingscene" parent="." unique_id=663435682 instance=ExtResource("7_5seab")]
+process_mode = 3
+visible = false
+layout_mode = 1

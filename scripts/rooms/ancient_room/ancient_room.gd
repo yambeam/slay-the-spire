@@ -183,8 +183,8 @@ func _pick_random_relics(amount: int) -> Array[Relic]:
 	if available.is_empty():
 		print("阶段 %d 所有先古遗物均已拥有" % current_stage)
 		return []
-
-	available.shuffle()
+	
+	RandomSetting.array_shuffle(available)
 
 	var result: Array[Relic] = []
 	for relic in available:

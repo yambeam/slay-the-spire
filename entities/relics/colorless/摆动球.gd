@@ -1,9 +1,9 @@
 extends Relic
 
 func activate_relic(owner: RelicUI) -> void:
-	if count < 2:
-		count += 1
+	if temp_count < 2:
+		temp_count += 1
 	else:
 		super.activate_relic(owner)
-		count = 0
+		temp_count = 0
 	owner.update_count()

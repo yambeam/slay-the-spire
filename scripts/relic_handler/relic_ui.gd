@@ -20,7 +20,7 @@ func set_relic(new_relic: Relic) -> void:
 	update_count()
 
 func update_count() -> void:
-	count.text = str(relic.count) if relic.count > 0 else ""
+	count.text = str(relic.temp_count) if relic.temp_count > 0 else ""
 
 func flash() -> void:
 	animation_player.play("flash")

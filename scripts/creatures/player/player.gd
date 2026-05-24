@@ -54,7 +54,7 @@ func choice_for_cards(cards_to_choose: Array[Card], duplicate_card: bool = true)
 	
 func discover_card(context: DiscoverContext) -> void:
 	var availabel_cards := ItemPool.get_discoverable_cards(context.color, context.type, context.rarity)
-	availabel_cards.shuffle()
+	RandomSetting.array_shuffle(availabel_cards)
 	# 随机三张
 	var discovered_cards := availabel_cards.slice(0, 3)
 	var card: Card = await discover_view.select(discovered_cards, context.can_skip, context.upgraded, context.first_play_free)

@@ -100,7 +100,8 @@ func loadEnchantment(dir_path: String)->void:
 			continue
 		else:
 			enchantments.append(resource)
-	enchantments.shuffle()
+	
+	RandomSetting.array_shuffle(enchantments)
 
 
 func init()->void:		
@@ -184,8 +185,7 @@ func handle_this_or_that_op1()->void:
 		#添加随机遗物
 		print("原来遗物的数量")
 		print(run_stats.relics.size())
-		random_number =  RandomSetting.instance.randi_range(0, relics.size()-1)  # 生成0到遗物数组大小-1的随机整数
-		run_stats.add_relic(relics[random_number])
+		add_random_relic()
 		print("现在遗物数量")
 		print(run_stats.relics.size())
 		#添加随机遗物
@@ -262,8 +262,7 @@ func handle_the_legends_were_true_op1()->void:
 	if countop<incident_data.press_op1_title.size():
 		print("原来遗物的数量")
 		print(run_stats.relics.size())
-		random_number =  RandomSetting.instance.randi_range(0, relics.size()-1)  # 生成0到遗物数组大小-1的随机整数
-		run_stats.add_relic(relics[random_number])
+		add_random_relic()
 		print("现在遗物数量")
 		print(run_stats.relics.size())
 		option_2.hide()
@@ -299,8 +298,7 @@ func handle_unrest_site_op1()->void:
 		#添加随机遗物
 		print("原来遗物的数量")
 		print(run_stats.relics.size())
-		random_number =  RandomSetting.instance.randi_range(0, relics.size()-1)  # 生成0到遗物数组大小-1的随机整数
-		run_stats.add_relic(relics[random_number])
+		add_random_relic()
 		print("现在遗物数量")
 		print(run_stats.relics.size())
 		
@@ -322,8 +320,7 @@ func handle_luminous_choir_op1()->void:
 		
 		print("原来遗物的数量")
 		print(run_stats.relics.size())
-		random_number= RandomSetting.instance.randi_range(0,relics.size()-1)
-		run_stats.add_relic(relics[random_number])
+		add_random_relic()
 		print("现在遗物数量")
 		print(run_stats.relics.size())
 		option_2.hide()
@@ -563,8 +560,11 @@ func handle_aroma_of_chaos_op2()->void:
 		Events.incident_exited.emit()
 	
 
-
-
+func add_random_relic():
+	var available_relics = ItemPool.get_current_relic_pool()
+	var relic = available_relics[RandomSetting.instance.randi_range(0, len(available_relics) - 1)]
+	run_stats.add_relic(relic)
+	ItemPool.remove_relic(relic)
 
 func handleop2()->void:
 	op2_handlers[room_number].call()

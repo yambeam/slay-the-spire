@@ -42,11 +42,11 @@ func apply(source_: Node, _targets: Array[Node], card_context: Dictionary, previ
 			CardSource.TOP_OF_DECK:
 				cards_to_play = candidates.slice(0, value)
 			CardSource.RANDOM:
-				candidates.shuffle()
+				RandomSetting.array_shuffle(candidates)
 				cards_to_play = candidates.slice(0, value)
 			CardSource.RANDOM_ATTACK:
 				candidates = candidates.filter(func(card: Card): return card.type == Card.Type.ATTACK)
-				candidates.shuffle()
+				RandomSetting.array_shuffle(candidates)
 				cards_to_play = candidates.slice(0, value)
 		
 		if where == Where.HAND:

@@ -79,6 +79,9 @@ func _ready() -> void:
 					#save_data.room_state = _collect_room_state()
 			#print(save_data.potions)
 			#save_data.save_data()
+			if not is_on_map:
+				save_data.map_camera_y = 0.0
+				save_data.save_data()
 			
 			back_to_main()
 	)

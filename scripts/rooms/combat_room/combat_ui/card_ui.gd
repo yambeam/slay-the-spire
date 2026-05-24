@@ -224,7 +224,8 @@ func _on_drop_point_area_area_exited(area: Area2D) -> void:
 	targets.erase(area)
 
 func _on_char_stats_changed() -> void:
-	playable = char_stats.can_play_card(card)
+	if player:
+		playable = char_stats.can_play_card(card)
 	#visuals.set_hightlight(self.playable, card.has_highlight_condition(player, null))
 
 func _on_target_selected(target: Creature, card_: Card) -> void:

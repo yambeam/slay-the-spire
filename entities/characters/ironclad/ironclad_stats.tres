@@ -1,12 +1,12 @@
 [gd_resource type="Resource" script_class="CharacterStats" format=3 uid="uid://bqq44kff15k4w"]
 
 [ext_resource type="Script" uid="uid://dpde6spa48hlj" path="res://scripts/costum_resources/character_stats.gd" id="1_orbop"]
-[ext_resource type="Texture2D" uid="uid://cuet3j3nkm7qr" path="res://images/ui/top_panel/character_icon_ironclad.png" id="1_wbn8u"]
+[ext_resource type="Texture2D" uid="uid://x2neryjvbtwy" path="res://images/ui/top_panel/character_icon_ironclad.png" id="1_wbn8u"]
 [ext_resource type="Resource" uid="uid://dj2uogmuhqx44" path="res://scenes/rooms/reward/Draftable_cards.tres" id="3_e3340"]
 [ext_resource type="Resource" uid="uid://hp2dus3ms3gm" path="res://entities/characters/ironclad/ironclad_starting_deck.tres" id="3_spq8r"]
 [ext_resource type="Resource" uid="uid://bvy7xgl6b3rg6" path="res://entities/skills/main_skills/破击.tres" id="3_wbn8u"]
-[ext_resource type="Resource" uid="uid://b5niu17o73g0m" path="res://entities/relics/colorless/锚.tres" id="5_5f1yv"]
 [ext_resource type="PackedScene" uid="uid://dgktfp0e1myrn" path="res://scenes/creature_visuals/ironclad.tscn" id="5_e3340"]
+[ext_resource type="Resource" uid="uid://bcxf25bju8u48" path="res://entities/relics/ironclad/燃烧之血.tres" id="6_wbn8u"]
 
 [resource]
 script = ExtResource("1_orbop")
@@ -14,7 +14,7 @@ starting_deck = ExtResource("3_spq8r")
 draftable_cards = ExtResource("3_e3340")
 cards_per_turn = 5
 max_energy = 3
-starting_relic = ExtResource("5_5f1yv")
+starting_relic = ExtResource("6_wbn8u")
 character_name = "铁甲战士"
 character_icon = ExtResource("1_wbn8u")
 character_description = "这是战士的描述"

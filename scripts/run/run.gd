@@ -588,7 +588,8 @@ func _save_run(on_map: bool) -> void:
 	save_data.current_deck = character.deck
 	save_data.current_health = character.health
 	save_data.potions = stats.potions.duplicate()
-	save_data.relics = stats.relics
+	save_data.relics = stats.relics.duplicate()
+	save_data.gold = stats.gold
 	for relic: Relic in save_data.relics:
 		relic.save_count()
 	
@@ -651,6 +652,8 @@ func _load_run() -> void:
 	character = save_data.char_stats
 	stats = save_data.run_stats
 	stats.potions = save_data.potions
+	stats.relics = save_data.relics
+	stats.gold = save_data.gold
 	character.deck = save_data.current_deck
 	character.health = save_data.current_health
 	ItemPool.init_item_pool(character.color)

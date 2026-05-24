@@ -92,6 +92,7 @@ func _give_reward():
 	if relic:
 		run_node.stats.add_relic(relic)
 		_show_relic_visual(relic)
+		ItemPool.remove_relic(relic)
 
 
 func _show_relic_visual(relic: Relic):
@@ -134,7 +135,7 @@ func _get_run_node() -> Node:
 
 
 func _get_random_weighted_relic(stats: RunStats) -> Relic:
-	var pool = ItemPool.current_relic_pool
+	var pool = ItemPool.get_current_relic_pool()
 	if not pool or pool.is_empty():
 		return null
 

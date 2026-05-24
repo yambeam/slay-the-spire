@@ -12,6 +12,7 @@ enum State { ON_MAP, IN_ROOM }
 @export var current_health: int
 @export var potions: Array[Potion] = []
 @export var relics: Array[Relic] = []
+@export var gold: int
 
 
 #房间数据/地图

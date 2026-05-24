@@ -2,13 +2,13 @@
 
 [ext_resource type="Script" uid="uid://cxgxfbwykbp84" path="res://scripts/costum_resources/numeric_entry.gd" id="1_nybgt"]
 [ext_resource type="Script" uid="uid://cgmi6f3o7leik" path="res://scripts/costum_resources/effect.gd" id="2_gmhfq"]
-[ext_resource type="Script" uid="uid://dyn5a42fs7gxs" path="res://scripts/costum_resources/card_condition.gd" id="3_5phni"]
+[ext_resource type="Script" path="res://scripts/costum_resources/card_condition.gd" id="3_5phni"]
 [ext_resource type="Script" uid="uid://cqcf6adphkjfy" path="res://scripts/costum_resources/effects/select_card_effect.gd" id="4_aqvhq"]
 [ext_resource type="Script" uid="uid://csyjq6ujulplm" path="res://scripts/costum_resources/effects/card_effects/card_effect.gd" id="5_og2ag"]
 [ext_resource type="Texture2D" uid="uid://bl7wwl2" path="res://images/atlases/card_atlas.sprites/colorless/secret_technique.tres" id="5_wvatc"]
 [ext_resource type="Script" uid="uid://dl6g3g7ag1dpg" path="res://scripts/costum_resources/effects/card_effects/put_card_to_pile_effect.gd" id="6_jhvq0"]
-[ext_resource type="Script" uid="uid://c2drp2mlr0vhm" path="res://scripts/costum_resources/effects/foreach_card_effect.gd" id="7_m13nt"]
-[ext_resource type="Script" uid="uid://dh2ase8ugyqxu" path="res://entities/cards/colorless/秘密技法.gd" id="9_hd5bh"]
+[ext_resource type="Script" path="res://scripts/costum_resources/effects/foreach_card_effect.gd" id="7_m13nt"]
+[ext_resource type="Script" path="res://entities/cards/colorless/秘密技法.gd" id="9_hd5bh"]
 
 [sub_resource type="Resource" id="Resource_og2ag"]
 script = ExtResource("3_5phni")

@@ -1,7 +1,7 @@
 [gd_resource type="SpineSkeletonDataResource" format=3 uid="uid://dny2x2y3vlkp6"]
 
-[ext_resource type="SpineAtlasResource" uid="uid://t8nldw7u1gpy" path="res://animations/monsters/vantom/vantom.atlas" id="1_31ven"]
-[ext_resource type="SpineSkeletonFileResource" uid="uid://d4nvau82v6q20" path="res://animations/monsters/vantom/vantom.skel" id="2_q57f8"]
+[ext_resource type="SpineAtlasResource" uid="uid://1qelc8262vj6" path="res://animations/monsters/vantom/vantom.atlas" id="1_31ven"]
+[ext_resource type="SpineSkeletonFileResource" uid="uid://bqkhbifut1uwl" path="res://animations/monsters/vantom/vantom.skel" id="2_q57f8"]
 
 [sub_resource type="SpineAnimationMix" id="SpineAnimationMix_d1miq"]
 from = "attack_heavy"

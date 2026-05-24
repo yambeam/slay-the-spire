@@ -49,9 +49,6 @@ var is_on_map: bool = true
 # 标记 Boss 战后是否需要进入阶段切换
 var _pending_stage_transition: bool = false
 
-#战斗房间初始快照
-# 在 Room 脚本中添加
-#@export var combat_initial_state: Dictionary = {}
 
 #当前时否在保存
 var _restoring: bool = false

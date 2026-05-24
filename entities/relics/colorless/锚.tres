@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://cla4vkc3mk1wm" path="res://entities/relics/colorless/锚.gd" id="2_8ija3"]
 [ext_resource type="Script" uid="uid://dtok21t0ujjui" path="res://scripts/costum_resources/numeric_provider.gd" id="2_y4480"]
 [ext_resource type="Script" uid="uid://dnv7chuoeoi6y" path="res://scripts/costum_resources/effects/block_effect.gd" id="3_k5yij"]
-[ext_resource type="Texture2D" uid="uid://bl77twtr7h83t" path="res://images/relics/anchor.png" id="4_0bgrq"]
+[ext_resource type="Texture2D" uid="uid://cwj4qgccr36qa" path="res://images/relics/anchor.png" id="4_0bgrq"]
 
 [sub_resource type="Resource" id="Resource_mcooo"]
 script = ExtResource("2_y4480")

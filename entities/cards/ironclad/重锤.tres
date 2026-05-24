@@ -5,7 +5,7 @@
 [ext_resource type="Script" uid="uid://dtok21t0ujjui" path="res://scripts/costum_resources/numeric_provider.gd" id="2_x6lwy"]
 [ext_resource type="Script" uid="uid://cgmi6f3o7leik" path="res://scripts/costum_resources/effect.gd" id="3_2v4ty"]
 [ext_resource type="Script" uid="uid://bhhtjppe5dfcx" path="res://scripts/costum_resources/effects/damage_effect.gd" id="4_o1fyu"]
-[ext_resource type="AudioStream" uid="uid://dm1wre7isrnjq" path="res://audio/SFX/heavy_attack.mp3" id="5_x6lwy"]
+[ext_resource type="AudioStream" uid="uid://bimi28moluhfn" path="res://audio/SFX/heavy_attack.mp3" id="5_x6lwy"]
 [ext_resource type="Script" uid="uid://br1hibx18tv13" path="res://scripts/costum_resources/card.gd" id="6_x6lwy"]
 [ext_resource type="Script" uid="uid://vkklgv0ma0yf" path="res://scripts/costum_resources/effects/attack_effect.gd" id="8_5mk5h"]
 

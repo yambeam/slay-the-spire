@@ -199,7 +199,7 @@ func _show_card_rewards(card_reward:RewardButton,context: RewardContext)->void:
 			card_reward_array.append(picked_card)
 	elif context.all_uncommon:
 		for i in run_stats.card_rewards:
-			var picked_card:=_get_random_available_card(available_cards, Card.Rarity.UNCOMMON).duplicate()
+			var picked_card:=_get_random_available_card(available_cards, Card.Rarity.UNCOMMON)
 			available_cards.erase(picked_card)
 			picked_card = picked_card.duplicate()	
 			match picked_card.type:
@@ -217,7 +217,7 @@ func _show_card_rewards(card_reward:RewardButton,context: RewardContext)->void:
 	elif context.all_common:
 		_modify_weights(Card.Rarity.RARE)
 		for i in run_stats.card_rewards:
-			var picked_card:=_get_random_available_card(available_cards, Card.Rarity.COMMON).duplicate()
+			var picked_card:=_get_random_available_card(available_cards, Card.Rarity.COMMON)
 			available_cards.erase(picked_card)
 			picked_card = picked_card.duplicate()
 			match picked_card.type:
@@ -239,7 +239,7 @@ func _show_card_rewards(card_reward:RewardButton,context: RewardContext)->void:
 			for rarity:Card.Rarity in card_rarity_weights:
 				if card_rarity_weights[rarity]>roll:
 					_modify_weights(rarity)
-					var picked_card:=_get_random_available_card(available_cards,rarity).duplicate()
+					var picked_card:=_get_random_available_card(available_cards,rarity)
 					available_cards.erase(picked_card)
 					picked_card = picked_card.duplicate()
 					match picked_card.type:
@@ -282,9 +282,9 @@ func _get_random_available_card(available_cards:Array[Card],with_rarity:Card.Rar
 		printerr("No card of rarity %s available" % Card.Rarity.keys()[with_rarity])
 		# 降级：如果可用卡牌非空，返回任意一张卡牌（可选）
 		if not available_cards.is_empty():
-			return available_cards.pick_random()
+			return RandomSetting.array_pick_random(available_cards)
 		return null
-	return all_possible_cards.pick_random()
+	return RandomSetting.array_pick_random(all_possible_cards)
 	
 func _on_card_reward_taken(card:Card)->void:
 	if not character_stats or not card:

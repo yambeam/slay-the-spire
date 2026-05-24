@@ -18,6 +18,8 @@ func _ready() -> void:
 	peak_button.pressed.connect(_on_peak)
 	
 func select(cards: Array[Card], can_skip : bool = true, upgraded: bool = false, first_play_free: bool = false, duplicate_card: bool = true) -> Card:
+	if cards.is_empty():
+		return null
 	for child in discovered_cards_container.get_children():
 		child.queue_free()
 	await get_tree().process_frame

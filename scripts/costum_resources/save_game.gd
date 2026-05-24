@@ -8,7 +8,7 @@ enum State { ON_MAP, IN_ROOM }
 #人物数据
 @export var run_stats: RunStats
 @export var char_stats: CharacterStats
-@export var current_deck: CardPile
+@export var current_deck_cards: Array[Card]
 @export var current_health: int
 @export var potions: Array[Potion] = []
 @export var relics: Array[Relic] = []

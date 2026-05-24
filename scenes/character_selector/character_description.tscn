@@ -2,9 +2,9 @@
 
 [ext_resource type="Script" uid="uid://7kqh38ny51bx" path="res://scripts/character_selector/character_description.gd" id="1_6egbj"]
 [ext_resource type="Texture2D" uid="uid://bi1dpaj" path="res://images/atlases/ui_atlas.sprites/top_bar/top_bar_heart.tres" id="2_7nqjp"]
-[ext_resource type="FontFile" uid="uid://vcj7kdt70rkq" path="res://fonts/zhs/NotoSansMonoCJKsc-Regular.otf" id="2_o2w45"]
+[ext_resource type="FontFile" uid="uid://bgo5h1rnqi6op" path="res://fonts/zhs/NotoSansMonoCJKsc-Regular.otf" id="2_o2w45"]
 [ext_resource type="Texture2D" uid="uid://jqn0hv" path="res://images/atlases/ui_atlas.sprites/top_bar/top_bar_gold.tres" id="3_o2w45"]
-[ext_resource type="Texture2D" uid="uid://be7j1tasahf4r" path="res://images/relics/burning_blood.png" id="4_oi0cu"]
+[ext_resource type="Texture2D" uid="uid://de2uhv5yqsxgu" path="res://images/relics/burning_blood.png" id="4_oi0cu"]
 
 [node name="CharacterDescription" type="Control" unique_id=1439505153]
 layout_mode = 3

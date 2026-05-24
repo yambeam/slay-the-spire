@@ -83,6 +83,9 @@ func _ready() -> void:
 				#save_data.room_state = _collect_room_state()
 				save_data.map_camera_y = 0.0
 				save_data.save_data()
+			# 特殊处理战斗房间: 先暂停combat_resolver在退出
+			if current_room.get_child(0) is CombatRoom:
+				await current_room.get_child(0).stop_combat_resolver()
 			
 			back_to_main()
 	)
@@ -593,7 +596,7 @@ func _save_run(on_map: bool) -> void:
 	#人物数据
 	save_data.run_stats = stats
 	save_data.char_stats = character
-	save_data.current_deck = character.deck.duplicate()
+	save_data.current_deck_cards = character.deck.cards.duplicate()
 	save_data.current_health = character.health
 	save_data.potions = stats.potions.duplicate()
 	save_data.relics = stats.relics.duplicate()
@@ -606,8 +609,6 @@ func _save_run(on_map: bool) -> void:
 
 	#地图相关
 	save_data.last_room = map_node.last_room
-	if (map_node.last_room != null):
-		print(map_node.last_room.type)
 	if on_map:
 		save_data.state = SaveGame.State.ON_MAP
 		save_data.room_type = Room.Type.NOT_ASSIGNED
@@ -660,13 +661,12 @@ func _load_run() -> void:
 	#人物数据加载	
 	character = save_data.char_stats
 	stats = save_data.run_stats
-	stats.potions = save_data.potions
-	stats.relics = save_data.relics
+	stats.potions = save_data.potions.duplicate()
+	stats.relics = save_data.relics.duplicate()
 	stats.gold = save_data.gold
-	character.deck = save_data.current_deck
+	character.deck.cards = save_data.current_deck_cards.duplicate()
 	character.health = save_data.current_health
 	ItemPool.init_item_pool(character.color)
-	stats.relics = save_data.relics
 	for relic: Relic in save_data.relics:
 		relic.load_count()
 

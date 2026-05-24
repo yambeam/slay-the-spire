@@ -359,3 +359,10 @@ func _input(event: InputEvent) -> void:
 		var mb := event as InputEventMouseButton
 		if mb.button_index == MOUSE_BUTTON_WHEEL_UP or mb.button_index == MOUSE_BUTTON_WHEEL_DOWN:
 			accept_event() 
+
+func stop_combat_resolver() -> void:
+	if combat_resolver:
+		combat_resolver.process_mode = Node.PROCESS_MODE_DISABLED
+		combat_resolver.should_stop = true
+		if combat_resolver.is_resolving:
+			await combat_resolver.resolve_finished

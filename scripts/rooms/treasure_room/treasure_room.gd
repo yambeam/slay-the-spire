@@ -134,20 +134,20 @@ func _get_run_node() -> Node:
 	return null
 
 
-func _get_random_weighted_relic(stats: RunStats) -> Relic:
+func _get_random_weighted_relic(_stats: RunStats) -> Relic:
 	var pool = ItemPool.get_current_relic_pool()
 	if not pool or pool.is_empty():
 		return null
 
-	var available := pool.duplicate()
-	if stats:
-		available = available.filter(func(r: Relic): return not stats.has_relic(r.id))
-
-	if available.is_empty():
+	#var available := pool.duplicate()
+	#if stats:
+		#available = available.filter(func(r: Relic): return not stats.has_relic(r.id))
+	
+	if pool.is_empty():
 		return null
 
 	var total_weight = relic_common_weight + relic_uncommon_weight + relic_rare_weight
-	var roll = randf() * total_weight
+	var roll = RandomSetting.instance.randf() * total_weight
 
 	var target_rarity: int
 	if roll < relic_common_weight:
@@ -157,9 +157,9 @@ func _get_random_weighted_relic(stats: RunStats) -> Relic:
 	else:
 		target_rarity = Relic.Rarity.RARE
 
-	var candidates := available.filter(func(r: Relic): return r.rarity == target_rarity)
+	var candidates := pool.filter(func(r: Relic): return r.rarity == target_rarity)
 	if candidates.is_empty():
-		candidates = available
+		candidates = pool
 
 	return RandomSetting.array_pick_random(candidates).duplicate()
 

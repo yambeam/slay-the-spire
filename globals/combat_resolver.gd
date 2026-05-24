@@ -11,6 +11,7 @@ signal resolve_finished()
 var _stack: Array[ResolutionEntry] = []
 var is_resolving: bool = false : set = _set_resolving
 
+var should_stop: bool = false
 var current_entry: ResolutionEntry : set = _set_current_entry
 
 func _ready() -> void:
@@ -116,7 +117,7 @@ func _clear_stack() -> void:
 func _should_stop() -> bool:
 	var all_enemies_dead = get_tree().get_nodes_in_group("ui_enemies").all(func(e: Enemy): return e.dead)
 	var player_dead = (get_tree().get_first_node_in_group("ui_player") as Player).dead
-	return all_enemies_dead or player_dead
+	return all_enemies_dead or player_dead or should_stop
 
 func _execute_effect(effect: Effect, context: Dictionary, previous_result: Variant) -> Variant:
 	# 如果execute是同步函数会直接忽略await

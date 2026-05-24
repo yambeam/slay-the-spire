@@ -596,7 +596,7 @@ func _save_run(on_map: bool) -> void:
 	#人物数据
 	save_data.run_stats = stats
 	save_data.char_stats = character
-	save_data.current_deck = character.deck
+	save_data.current_deck = character.deck.duplicate()
 	save_data.current_health = character.health
 	save_data.potions = stats.potions.duplicate()
 	save_data.relics = stats.relics.duplicate()
@@ -659,6 +659,7 @@ func _load_run() -> void:
 	save_data = SaveGame.load_data()
 	assert(save_data, "Could not load last save")
 	RandomSetting.set_from_save_data(save_data.generator_seed, save_data.generator_state)
+	#print(save_data.generator_state)
 	#人物数据加载	
 	character = save_data.char_stats
 	stats = save_data.run_stats

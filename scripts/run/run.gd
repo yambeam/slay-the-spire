@@ -818,8 +818,10 @@ func _get_ancient_scene() -> PackedScene:
 		return ANCIENT_SCENE_OROBAS
 
 
-func _input(event: InputEvent) -> void:
-	if is_scroll_blocked and event is InputEventMouseButton:
-		var mb := event as InputEventMouseButton
-		if mb.button_index == MOUSE_BUTTON_WHEEL_UP or mb.button_index == MOUSE_BUTTON_WHEEL_DOWN:
-			get_viewport().set_input_as_handled()
+# 没有意义
+#func _input(event: InputEvent) -> void:
+	#if is_scroll_blocked and event is InputEventMouseButton:
+		#var mb := event as InputEventMouseButton
+		#if mb.button_index == MOUSE_BUTTON_WHEEL_UP or mb.button_index == MOUSE_BUTTON_WHEEL_DOWN:
+			#get_viewport().set_input_as_handled()
+	#pass

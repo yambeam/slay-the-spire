@@ -293,7 +293,7 @@ func filter_card_by_type(cards: Array[Card], mask: int) -> Array[Card]:
 	return cards.filter(func(card: Card): return card.type & mask != 0)
 
 func filter_card_by_rarity(cards: Array[Card], mask: int) -> Array[Card]:
-	return cards.filter(func(card: Card): return card.type & mask != 0)
+	return cards.filter(func(card: Card): return card.rarity & mask != 0)
 	
 func get_potions_by_color(mask: int) -> Array[Potion]:
 	var ret : Array[Potion] = []

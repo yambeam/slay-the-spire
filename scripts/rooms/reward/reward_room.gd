@@ -442,9 +442,8 @@ func _get_potion_by_name(potion_name: String) -> Potion:
 			return p
 	return null
 
-
-func _input(event: InputEvent) -> void:
-	if event is InputEventMouseButton:
-		var mb := event as InputEventMouseButton
-		if mb.button_index == MOUSE_BUTTON_WHEEL_UP or mb.button_index == MOUSE_BUTTON_WHEEL_DOWN:
-			accept_event() 
+#func _input(event: InputEvent) -> void:
+	#if event is InputEventMouseButton:
+		#var mb := event as InputEventMouseButton
+		#if mb.button_index == MOUSE_BUTTON_WHEEL_UP or mb.button_index == MOUSE_BUTTON_WHEEL_DOWN:
+			#accept_event() 

@@ -110,6 +110,7 @@ func init()->void:
 	random_number = RandomSetting.instance.randi_range(0, incidentsDataArray.size()-1)  # 生成0到房间数组大小-1的随机整数
 	#random_number=0
 	room_number=random_number
+	room_number = 2
 	#所有的 遗物和药水资源
 	potions=ItemPool.get_potions(char_stats.color,0b011)
 	var arr = ItemPool.event_relic_dict.values()
@@ -200,7 +201,7 @@ func handle_room_full_of_cheese_op1()->void:
 		var newcards: Array[Card]
 		if Randomcards.size()==0:
 			Randomcards=ItemPool.get_draftable_cards(char_stats.color,ItemPool.card_type_mask, Card.Rarity.COMMON)
-			Randomcards.shuffle()
+			RandomSetting.array_shuffle(Randomcards)
 			var max_cards = 8
 			Randomcards = Randomcards.slice(0, min(Randomcards.size(), max_cards))
 		

@@ -354,11 +354,12 @@ func set_save_state(state: Dictionary) -> void:
 				print("      - %s | stacks: %d" % [buff.buff_name, buff.stacks])
 	print("================================================\n")
 	
-func _input(event: InputEvent) -> void:
-	if event is InputEventMouseButton:
-		var mb := event as InputEventMouseButton
-		if mb.button_index == MOUSE_BUTTON_WHEEL_UP or mb.button_index == MOUSE_BUTTON_WHEEL_DOWN:
-			accept_event() 
+# 没有意义
+#func _input(event: InputEvent) -> void:
+	#if event is InputEventMouseButton:
+		#var mb := event as InputEventMouseButton
+		#if mb.button_index == MOUSE_BUTTON_WHEEL_UP or mb.button_index == MOUSE_BUTTON_WHEEL_DOWN:
+			#accept_event() 
 
 func stop_combat_resolver() -> void:
 	if combat_resolver:

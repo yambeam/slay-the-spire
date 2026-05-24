@@ -80,6 +80,10 @@ func _ready() -> void:
 			#print(save_data.potions)
 			#save_data.save_data()
 			if not is_on_map:
+				if stats.current_room.type == Room.Type.SHOP:
+					# 这么改不和规矩但是有用
+					current_room.get_child(0)._close_inventory_immediate()
+				#save_data.room_state = _collect_room_state()
 				save_data.map_camera_y = 0.0
 				save_data.save_data()
 			
@@ -119,6 +123,7 @@ func _on_map_room_selected(room: Room) -> void:
 			_on_treasure_room_entered(room)
 		Room.Type.SHOP:
 			_on_shop_room_entered(room)
+			await get_tree().process_frame
 		Room.Type.CAMPFIRE:
 			_on_campfire_room_entered(room)
 		Room.Type.UNKNOWN:
@@ -220,6 +225,7 @@ func update_compensation(current_room_type: String) -> void:
 func _start_run() -> void:
 	stats = RunStats.new()
 	stats.add_potion(preload("res://entities/potions/灾厄药水.tres").duplicate())
+	
 	_setup_event_connections()
 	_setup_top_bar()
 	map_node.init(stats)
@@ -281,7 +287,7 @@ func _on_combat_won(context: RewardContext) -> void:
 	reward_scene.run_stats = stats
 	reward_scene.character_stats = character
 	reward_scene.add_rewards(map_node.last_room, context)
-	# 等待add_rewards? 这又不是异步函数，但是如果不等待无法正常保存数据
+	# 等待奖励条目进入场景树
 	await get_tree().process_frame
 	_save_run(false)
 

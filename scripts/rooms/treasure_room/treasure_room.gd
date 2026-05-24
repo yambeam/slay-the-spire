@@ -161,7 +161,7 @@ func _get_random_weighted_relic(stats: RunStats) -> Relic:
 	if candidates.is_empty():
 		candidates = available
 
-	return candidates.pick_random().duplicate()
+	return RandomSetting.array_pick_random(candidates).duplicate()
 
 
 func get_save_state() -> Dictionary:

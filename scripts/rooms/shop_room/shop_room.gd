@@ -93,6 +93,12 @@ func _ready() -> void:
 	_initialize_card_removal()
 	_initialize_dialogue()
 	
+	_populate_cards()
+	_populate_relics()
+	_populate_potions()
+	_update_all_affordability()
+	cards_populated = true
+	
 	# 连接商人按钮信号
 	if merchant_button.has_signal("shop_requested"):
 		merchant_button.shop_requested.connect(_show_inventory)
@@ -625,6 +631,7 @@ func _show_inventory() -> void:
 		create_tween().tween_property(backstop, "modulate:a", 0.7, 0.3)
 
 	if not cards_populated:
+		print("test")
 		_populate_cards()
 		_populate_relics()
 		_populate_potions()
@@ -900,7 +907,6 @@ func get_save_state() -> Dictionary:
 					slot_info["empty"] = true
 			slot_states.append(slot_info)
 		state["slots"][container_name] = slot_states
-
 	return state
 
 

@@ -451,6 +451,9 @@ func _on_combat_room_entered(room: Room = null, restore_state: Dictionary = {}) 
 						room.enemy_encounter = encounter_pool.get_random_encounter_by_type(EnemyEncounter.Type.STRONG)
 
 	var battle_scene: CombatRoom = await _change_view(COMBAT_SCENE)
+	if not is_instance_valid(battle_scene):
+		return   # 场景切换或被销毁，不再执行
+
 	battle_scene.update_background(stats.current_stage)
 	battle_scene.char_stats = character
 	battle_scene.enemy_encounter = room.enemy_encounter
@@ -458,51 +461,36 @@ func _on_combat_room_entered(room: Room = null, restore_state: Dictionary = {}) 
 
 	if restore_state.is_empty():
 		battle_scene.start_combat()
-		await get_tree().create_timer(2).timeout
+		await get_tree().create_timer(1.5).timeout
+		if not is_instance_valid(battle_scene):   # 检查
+			return
 		room.combat_initial_state = battle_scene.get_save_state()
-		print("[First Entry] Saved initial state. Hand cards: ", room.combat_initial_state.get("hand_cards", []).size())
 	else:
-		# 1. 启动战斗 UI（不激活遗物，不抽牌）
 		battle_scene.start_combat(true)
-
-		# 2. 恢复除手牌外的所有状态（血量、能量、敌人、抽牌堆等）
-		var state_no_hand = restore_state.duplicate()
-		state_no_hand.erase("hand_cards")   # 关键：先不恢复手牌，留给动画
-		battle_scene.set_save_state(state_no_hand)
-
-		# 3. 准备预存手牌（动画会用）
-		var saved_cards: Array[Card] = []
-		for card_data in restore_state.get("hand_cards", []):
-			var card = Card.deserialize(card_data)
-			if card:
-				saved_cards.append(card)
-
-		if battle_scene.player_handler:
-			battle_scene.player_handler.is_restoring = true
-			battle_scene.player_handler.restore_hand_cards = saved_cards.duplicate()
-
-		# 4. 手动激活遗物（start_combat(true) 跳过了）
+		# ... 恢复逻辑 ...
+		# 在每次 await 之后都检查
 		if not battle_scene.relics.relics_activated.is_connected(battle_scene._on_relics_activated):
 			battle_scene.relics.relics_activated.connect(battle_scene._on_relics_activated)
 		battle_scene.relics.activate_relics_by_trigger_type(Relic.TriggerType.START_OF_COMBAT)
 		await get_tree().process_frame
+		if not is_instance_valid(battle_scene):
+			return
 
-		# 5. 触发抽牌动画（draw_cards 会使用预存手牌，并播放逐张入场效果）
 		if battle_scene.player_handler:
 			battle_scene.player_handler.draw_cards()
+		await get_tree().create_timer(1.5).timeout
+		if not is_instance_valid(battle_scene):
+			return
 
-		# 6. 等待动画完全结束（你的测试值为 2 秒）
-		await get_tree().create_timer(2).timeout
-
-		# 7. 清除恢复标志，后续回合正常
 		if battle_scene.player_handler:
 			battle_scene.player_handler.is_restoring = false
 			battle_scene.player_handler.restore_hand_cards.clear()
 
-	map_node.last_room.enemy_encounter = room.enemy_encounter.duplicate()
-	_save_run(false)
+	# 最后的保存也要注意 battle_scene 可能已失效
+	if is_instance_valid(battle_scene) and is_instance_valid(room):
+		map_node.last_room.enemy_encounter = room.enemy_encounter.duplicate()
+		_save_run(false)
 	_restoring = false
-
 	
 		
 

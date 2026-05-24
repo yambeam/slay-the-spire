@@ -1,7 +1,7 @@
 [gd_resource type="SpineSkeletonDataResource" format=3 uid="uid://d10ar6jwbkovb"]
 
-[ext_resource type="SpineAtlasResource" uid="uid://dgwrmxykcu8vg" path="res://animations/monsters/myte/myte.atlas" id="1_y8xt0"]
-[ext_resource type="SpineSkeletonFileResource" uid="uid://boaq7hvkk530m" path="res://animations/monsters/myte/myte.skel" id="2_vg6kl"]
+[ext_resource type="SpineAtlasResource" uid="uid://beu2yqcdtc18l" path="res://animations/monsters/myte/myte.atlas" id="1_y8xt0"]
+[ext_resource type="SpineSkeletonFileResource" uid="uid://ganlqlpvtgnk" path="res://animations/monsters/myte/myte.skel" id="2_vg6kl"]
 
 [sub_resource type="SpineAnimationMix" id="SpineAnimationMix_hceea"]
 from = "idle_loop"

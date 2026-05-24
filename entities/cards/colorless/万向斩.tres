@@ -5,7 +5,7 @@
 [ext_resource type="Script" uid="uid://cgmi6f3o7leik" path="res://scripts/costum_resources/effect.gd" id="2_uty38"]
 [ext_resource type="Script" uid="uid://br1hibx18tv13" path="res://scripts/costum_resources/card.gd" id="3_t1772"]
 [ext_resource type="Script" uid="uid://vkklgv0ma0yf" path="res://scripts/costum_resources/effects/attack_effect.gd" id="4_ydre4"]
-[ext_resource type="AudioStream" uid="uid://c3pwninr1cylv" path="res://audio/SFX/slash_attack.mp3" id="5_ahsc0"]
+[ext_resource type="AudioStream" uid="uid://b3reffdbqylun" path="res://audio/SFX/slash_attack.mp3" id="5_ahsc0"]
 [ext_resource type="Texture2D" uid="uid://q4shvl" path="res://images/atlases/card_atlas.sprites/colorless/omnislice.tres" id="6_dhc4f"]
 
 [sub_resource type="Resource" id="Resource_nbdmd"]

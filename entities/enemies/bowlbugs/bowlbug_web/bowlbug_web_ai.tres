@@ -5,10 +5,10 @@
 [ext_resource type="Script" uid="uid://cgmi6f3o7leik" path="res://scripts/costum_resources/effect.gd" id="3_4qwst"]
 [ext_resource type="Script" uid="uid://dtok21t0ujjui" path="res://scripts/costum_resources/numeric_provider.gd" id="4_x8m44"]
 [ext_resource type="Script" uid="uid://b8qfrs61nmcix" path="res://scripts/costum_resources/effects/apply_buff_effect.gd" id="5_ei3dr"]
-[ext_resource type="Script" path="res://scripts/costum_resources/effects/foreach_effect.gd" id="6_aa4xi"]
+[ext_resource type="Script" uid="uid://bgdkwbdihbpk5" path="res://scripts/costum_resources/effects/foreach_effect.gd" id="6_aa4xi"]
 [ext_resource type="Script" uid="uid://c2p6buhbk6em8" path="res://scripts/costum_resources/intents/apply_debuff_sub_intent.gd" id="7_1ho5j"]
 [ext_resource type="Script" uid="uid://vkklgv0ma0yf" path="res://scripts/costum_resources/effects/attack_effect.gd" id="8_y4ysw"]
-[ext_resource type="Script" path="res://scripts/costum_resources/effects/iteration_effect.gd" id="9_wdaa1"]
+[ext_resource type="Script" uid="uid://c8ly86kb5vc65" path="res://scripts/costum_resources/effects/iteration_effect.gd" id="9_wdaa1"]
 [ext_resource type="Script" uid="uid://bces7ijyodhmv" path="res://scripts/costum_resources/intents/attack_sub_intent.gd" id="10_oj2pc"]
 [ext_resource type="Script" uid="uid://dsmt23lyx6wt8" path="res://entities/enemies/bowlbugs/bowlbug_web/bowlbug_web_ai.gd" id="11_qytyk"]
 

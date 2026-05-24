@@ -1,7 +1,7 @@
 [gd_resource type="SpineSkeletonDataResource" format=3 uid="uid://td55t4kpjmma"]
 
-[ext_resource type="SpineAtlasResource" uid="uid://5g6k0iwwdjrb" path="res://animations/monsters/entomancer/entomancer.atlas" id="1_sjupi"]
-[ext_resource type="SpineSkeletonFileResource" uid="uid://cp71pm5btbln1" path="res://animations/monsters/entomancer/entomancer.skel" id="2_h6ixv"]
+[ext_resource type="SpineAtlasResource" uid="uid://dv6r6gwlrmq2k" path="res://animations/monsters/entomancer/entomancer.atlas" id="1_sjupi"]
+[ext_resource type="SpineSkeletonFileResource" uid="uid://dwr5toh7erusf" path="res://animations/monsters/entomancer/entomancer.skel" id="2_h6ixv"]
 
 [sub_resource type="SpineAnimationMix" id="SpineAnimationMix_y3u7p"]
 from = "idle_loop"

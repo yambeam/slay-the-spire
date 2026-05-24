@@ -75,7 +75,7 @@ func _ready() -> void:
 			#_save_run(on_map)
 			#get_tree().change_scene_to_file(MAIN_MENU_PATH)
 			
-			_save_run(is_on_map)
+			#_save_run(is_on_map)
 			#if is_on_map:
 				#save_data.state = save_data.State.ON_MAP
 			#else:

@@ -1,7 +1,7 @@
 [gd_resource type="SpineSkeletonDataResource" format=3 uid="uid://celwh77tfpmka"]
 
-[ext_resource type="SpineAtlasResource" uid="uid://bbdns4jh18cdo" path="res://animations/monsters/flying_mushrooms/flying_mushrooms.atlas" id="1_eu7uo"]
-[ext_resource type="SpineSkeletonFileResource" uid="uid://g6vqrujvvu1f" path="res://animations/monsters/flying_mushrooms/flying_mushrooms.skel" id="2_vihli"]
+[ext_resource type="SpineAtlasResource" uid="uid://clhu5vpcdbnn" path="res://animations/monsters/flying_mushrooms/flying_mushrooms.atlas" id="1_eu7uo"]
+[ext_resource type="SpineSkeletonFileResource" uid="uid://dm3dw211brl1t" path="res://animations/monsters/flying_mushrooms/flying_mushrooms.skel" id="2_vihli"]
 
 [sub_resource type="SpineAnimationMix" id="SpineAnimationMix_rb1j4"]
 from = "idle_loop"

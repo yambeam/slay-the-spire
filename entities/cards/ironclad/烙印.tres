@@ -9,7 +9,7 @@
 [ext_resource type="Script" uid="uid://b8qfrs61nmcix" path="res://scripts/costum_resources/effects/apply_buff_effect.gd" id="6_bvhf2"]
 [ext_resource type="Script" uid="uid://csyjq6ujulplm" path="res://scripts/costum_resources/effects/card_effects/card_effect.gd" id="6_t428w"]
 [ext_resource type="Script" uid="uid://brihgwpyu7v5v" path="res://scripts/costum_resources/effects/card_effects/exhaust_card_effect.gd" id="7_yghm2"]
-[ext_resource type="Script" path="res://scripts/costum_resources/effects/foreach_card_effect.gd" id="8_ov1pj"]
+[ext_resource type="Script" uid="uid://c2drp2mlr0vhm" path="res://scripts/costum_resources/effects/foreach_card_effect.gd" id="8_ov1pj"]
 [ext_resource type="Script" uid="uid://br1hibx18tv13" path="res://scripts/costum_resources/card.gd" id="8_t428w"]
 
 [sub_resource type="Resource" id="Resource_yghm2"]

@@ -67,10 +67,11 @@ func _ready() -> void:
 		return
 	pause_menu.save_and_quit.connect(
 		func():
-			var on_map := is_on_map  # 假设 Map 节点有 visible 属性；若无，需手动维护 is_on_map 变量
-			_save_run(on_map)
+			#var on_map := is_on_map  # 假设 Map 节点有 visible 属性；若无，需手动维护 is_on_map 变量
+			# 不需要在这里保存
+			#_save_run(on_map)
 			#get_tree().change_scene_to_file(MAIN_MENU_PATH)
-			
+			_save_run(is_on_map)
 			back_to_main()
 	)
 	death_settlement.DeathSettlementBackToMainMenu.connect(
@@ -422,16 +423,10 @@ func _on_room_exited() -> void:
 	#battle_scene.start_combat()
 	
 func _on_combat_room_entered(room: Room = null, restore_state: Dictionary = {}) -> void:
-	print("========== COMBAT ENTERED ==========")
-	print("is restoring: ", not restore_state.is_empty())
-	if room:
-		print("room.type: ", room.type)
-	else:
-		print("room is null!")
-
 	var encounter_pool: EnemyEncounterPool = act1_encounter_pool if stats.current_stage == 1 else act2_encounter_pool
 
-	if restore_state.is_empty() and room.enemy_encounter == null:
+	# 确保房间已分配遭遇战（恢复时不重新生成，因为读档时 room 已携带 enemy_encounter）
+	if room.enemy_encounter == null:
 		match room.type:
 			Room.Type.BOSS:
 				mob_killed_this_act = 0
@@ -450,46 +445,19 @@ func _on_combat_room_entered(room: Room = null, restore_state: Dictionary = {}) 
 					else:
 						room.enemy_encounter = encounter_pool.get_random_encounter_by_type(EnemyEncounter.Type.STRONG)
 
+	_save_run(false)
 	var battle_scene: CombatRoom = await _change_view(COMBAT_SCENE)
 	if not is_instance_valid(battle_scene):
-		return   # 场景切换或被销毁，不再执行
+		return
 
 	battle_scene.update_background(stats.current_stage)
 	battle_scene.char_stats = character
 	battle_scene.enemy_encounter = room.enemy_encounter
 	battle_scene.relics = top_bar.relic_handler
+	battle_scene.start_combat()   # 总是全新开始
 
-	if restore_state.is_empty():
-		battle_scene.start_combat()
-		await get_tree().create_timer(1.5).timeout
-		if not is_instance_valid(battle_scene):   # 检查
-			return
-		room.combat_initial_state = battle_scene.get_save_state()
-	else:
-		battle_scene.start_combat(true)
-		# ... 恢复逻辑 ...
-		# 在每次 await 之后都检查
-		if not battle_scene.relics.relics_activated.is_connected(battle_scene._on_relics_activated):
-			battle_scene.relics.relics_activated.connect(battle_scene._on_relics_activated)
-		battle_scene.relics.activate_relics_by_trigger_type(Relic.TriggerType.START_OF_COMBAT)
-		await get_tree().process_frame
-		if not is_instance_valid(battle_scene):
-			return
-
-		if battle_scene.player_handler:
-			battle_scene.player_handler.draw_cards()
-		await get_tree().create_timer(1.5).timeout
-		if not is_instance_valid(battle_scene):
-			return
-
-		if battle_scene.player_handler:
-			battle_scene.player_handler.is_restoring = false
-			battle_scene.player_handler.restore_hand_cards.clear()
-
-	# 最后的保存也要注意 battle_scene 可能已失效
-	if is_instance_valid(battle_scene) and is_instance_valid(room):
-		map_node.last_room.enemy_encounter = room.enemy_encounter.duplicate()
-		_save_run(false)
+	# 这一句就保证了存档里能记录正确的敌人组合
+	map_node.last_room.enemy_encounter = room.enemy_encounter.duplicate()
 	_restoring = false
 	
 		
@@ -553,12 +521,20 @@ func _victory() -> void:
 func _save_run(on_map: bool) -> void:
 	if _restoring:
 		return
+	# 随机数生产器相关
+	
+	save_data.generator_seed = RandomSetting.instance.seed
+	save_data.generator_state = RandomSetting.instance.state
+	print("save")
+	print(save_data.generator_seed)
+	print(save_data.generator_state)
 	#人物数据
 	save_data.run_stats = stats
 	save_data.char_stats = character
 	save_data.current_deck = character.deck
 	save_data.current_health = character.health
 	save_data.potions = stats.potions
+	#stats.potions.clear()
 	save_data.relics = stats.relics
 	
 	save_data.map_camera_y = map_node.camera_2d.position.y
@@ -580,7 +556,7 @@ func _save_run(on_map: bool) -> void:
 		save_data.state = SaveGame.State.IN_ROOM
 		save_data.room_type = map_node.last_room.type if map_node.last_room else Room.Type.NOT_ASSIGNED
 		print("[Save] room_type = ", save_data.room_type, " last_room: ", map_node.last_room)
-		
+
 	
 	# 收集每个房间的类型
 	var types := []
@@ -613,15 +589,24 @@ func _save_run(on_map: bool) -> void:
 func _load_run() -> void:
 	save_data = SaveGame.load_data()
 	assert(save_data, "Could not load last save")
-	
+	# 随机数生成器加载
+	print("load")
+	print(save_data.generator_seed)
+	print(save_data.generator_state)
+	RandomSetting.set_from_save_data(save_data.generator_seed, save_data.generator_state)
 	#人物数据加载	
 	character = save_data.char_stats
 	stats = save_data.run_stats
 	character.deck = save_data.current_deck
 	character.health = save_data.current_health
 	ItemPool.init_item_pool(character.color)
-	for potion in save_data.potions:
-		stats.add_potion(potion)
+	
+	
+	
+	#for potion in save_data.potions:
+		#stats.add_potion(potion)
+	stats.potions = save_data.potions	
+		
 	stats.relics = save_data.relics
 
 	_load_up_top_bar()
@@ -664,20 +649,19 @@ func _collect_room_state() -> Dictionary:
 	if current_room.get_child_count() == 0:
 		return {}
 
-	# ★ 优先处理奖励房间（避免被 last_room.type 误导）
+	# 奖励房间的保存逻辑保留
 	if current_room.get_child(0) is BattleReward:
 		var scene = current_room.get_child(0)
 		if scene.has_method("get_save_state"):
 			return scene.get_save_state()
 		return {}
 
-	# 原有逻辑不变
+	# 战斗房间不需要保存内部状态，因为会重新开始战斗
 	var room_type = map_node.last_room.type if map_node.last_room else Room.Type.NOT_ASSIGNED
 	if room_type in [Room.Type.MONSTER, Room.Type.ELITE, Room.Type.BOSS]:
-		if map_node.last_room:
-			return map_node.last_room.combat_initial_state.duplicate()
-		return {}
+		return {}   # 空状态，读档时直接进入新战斗
 
+	# 其他房间按需保存
 	var scene = current_room.get_child(0)
 	if scene.has_method("get_save_state"):
 		return scene.get_save_state()

@@ -13,29 +13,11 @@
 [ext_resource type="Resource" uid="uid://dk34vc6o3tigt" path="res://entities/encounters/act1/two_toadpoles.tres" id="15_5uous"]
 [ext_resource type="Resource" uid="uid://cswtrh1b5sfc6" path="res://entities/encounters/act1/红果果绿泡泡.tres" id="15_15xrl"]
 [ext_resource type="Resource" uid="uid://b7sd8dpvqdjb5" path="res://entities/encounters/act1/trump.tres" id="16_5fgax"]
-[ext_resource type="Script" uid="uid://dw53gdpom3gn6" path="res://scripts/costum_resources/enemy_entry.gd" id="16_nvtwo"]
 [ext_resource type="Resource" uid="uid://kgpjjxthep23" path="res://entities/encounters/act1/one_byrdonis.tres" id="17_nvtwo"]
-[ext_resource type="Resource" uid="uid://co5o388rhc6fe" path="res://entities/enemies/vantom/vantom.tres" id="17_q6si1"]
 [ext_resource type="Resource" uid="uid://bx4gxk6i1joc2" path="res://entities/encounters/act1/one_bygone_effigy.tres" id="18_q6si1"]
 [ext_resource type="Resource" uid="uid://d0qb73gwmfteb" path="res://entities/encounters/act1/lagavulin_matriarch.tres" id="19_j2cuc"]
 
-[sub_resource type="Resource" id="Resource_rj0wk"]
-script = ExtResource("16_nvtwo")
-enemy_stats = ExtResource("17_q6si1")
-position = Vector2(1385, 670)
-initial_buff = {
-"滑溜": 9
-}
-metadata/_custom_type_script = "uid://dw53gdpom3gn6"
-
-[sub_resource type="Resource" id="Resource_j2cuc"]
-script = ExtResource("1_8b4wf")
-weight = 10.0
-enemy_entries = Array[ExtResource("16_nvtwo")]([SubResource("Resource_rj0wk")])
-encounter_name = "vantom"
-metadata/_custom_type_script = "uid://dgu4qpyr0pnnb"
-
 [resource]
 script = ExtResource("2_r6wps")
-pool = Array[ExtResource("1_8b4wf")]([ExtResource("14_oisqt"), ExtResource("15_15xrl"), ExtResource("16_5fgax"), ExtResource("17_nvtwo"), ExtResource("18_q6si1"), ExtResource("19_j2cuc"), ExtResource("8_15xrl"), ExtResource("9_5fgax"), ExtResource("10_nvtwo"), ExtResource("11_q6si1"), ExtResource("12_j2cuc"), ExtResource("13_sljyl"), ExtResource("14_cu8jw"), ExtResource("15_5uous"), SubResource("Resource_j2cuc")])
+pool = Array[ExtResource("1_8b4wf")]([ExtResource("14_oisqt"), ExtResource("15_15xrl"), ExtResource("16_5fgax"), ExtResource("17_nvtwo"), ExtResource("18_q6si1"), ExtResource("19_j2cuc"), ExtResource("8_15xrl"), ExtResource("9_5fgax"), ExtResource("10_nvtwo"), ExtResource("11_q6si1"), ExtResource("12_j2cuc"), ExtResource("13_sljyl"), ExtResource("14_cu8jw"), ExtResource("15_5uous")])
 metadata/_custom_type_script = "uid://ctyh7cm7a03s2"

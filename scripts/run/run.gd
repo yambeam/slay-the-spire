@@ -68,9 +68,17 @@ func _ready() -> void:
 	pause_menu.save_and_quit.connect(
 		func():
 			#var on_map := is_on_map  # 假设 Map 节点有 visible 属性；若无，需手动维护 is_on_map 变量
-			# 不需要在这里保存
-			#_save_run(on_map)
-			#get_tree().change_scene_to_file(MAIN_MENU_PATH)
+			if is_on_map:
+				save_data.state = save_data.State.ON_MAP
+			else:
+				save_data.state = save_data.State.IN_ROOM
+				save_data.map_camera_y = 0.0
+				save_data.map_old_camera_y = 0.0
+				if current_room.get_child_count() > 0 and current_room.get_child(0) is BattleReward:
+					save_data.is_battle_reward = true
+					save_data.room_state = _collect_room_state()
+			print(save_data.potions)
+			save_data.save_data()
 			
 			back_to_main()
 	)
@@ -97,7 +105,7 @@ func _on_map_room_selected(room: Room) -> void:
 	is_on_map = false
 	#print("进入房间，保存游戏")
 	map_node.last_room = room
-	_save_run(false)
+	
 	match room.type:
 		Room.Type.MONSTER, Room.Type.ELITE, Room.Type.BOSS:
 			if room.type==Room.Type.ELITE:
@@ -117,6 +125,7 @@ func _on_map_room_selected(room: Room) -> void:
 			_on_ancient_room_entered(room)
 		_:
 			pass
+	_save_run(false)
 	bgm_proxy.update_music(room, stats.current_stage)
 ################实现问号房逻辑####################
 var unknown_room_probs = {
@@ -148,7 +157,7 @@ func _handle_unknown_room(room: Room) -> void:
 	var current_probs = calculate_compensated_probabilities()
 	var room_type = get_random_room_type(current_probs)
 	map_node.last_room.unknownType=room_type
-	_save_run(false)
+	#_save_run(false)
 	match room_type:
 		"combat":
 			_on_combat_room_entered(room)
@@ -207,6 +216,7 @@ func update_compensation(current_room_type: String) -> void:
 # ========== 游戏流程 ==========
 func _start_run() -> void:
 	stats = RunStats.new()
+	stats.add_potion(preload("res://entities/potions/灾厄药水.tres").duplicate())
 	_setup_event_connections()
 	_setup_top_bar()
 	map_node.init(stats)
@@ -268,6 +278,7 @@ func _on_combat_won(context: RewardContext) -> void:
 	reward_scene.run_stats = stats
 	reward_scene.character_stats = character
 	reward_scene.add_rewards(map_node.last_room, context)
+	_save_run(false)
 
 	
 	
@@ -451,7 +462,6 @@ func _on_combat_room_entered(room: Room = null, restore_state: Dictionary = {}) 
 					else:
 						room.enemy_encounter = encounter_pool.get_random_encounter_by_type(EnemyEncounter.Type.STRONG)
 	
-	_save_run(false)
 	var battle_scene: CombatRoom = await _change_view(COMBAT_SCENE)
 	battle_scene.update_background(stats.current_stage)
 	battle_scene.char_stats = character
@@ -570,25 +580,25 @@ func _save_run(on_map: bool) -> void:
 	if _restoring:
 		return
 	# 随机数生产器相关
-	
 	save_data.generator_seed = RandomSetting.instance.seed
 	save_data.generator_state = RandomSetting.instance.state
-	print("save")
-	print(save_data.generator_seed)
-	print(save_data.generator_state)
 	#人物数据
 	save_data.run_stats = stats
 	save_data.char_stats = character
 	save_data.current_deck = character.deck
 	save_data.current_health = character.health
-	save_data.potions = stats.potions
+	save_data.potions = stats.potions.duplicate()
 	save_data.relics = stats.relics
+	for relic: Relic in save_data.relics:
+		relic.save_count()
 	
 	save_data.map_camera_y = map_node.camera_2d.position.y
 	save_data.map_old_camera_y = map_node.old_camera_2d_position_y
 
 	#地图相关
 	save_data.last_room = map_node.last_room
+	if (map_node.last_room != null):
+		print(map_node.last_room.type)
 	if on_map:
 		save_data.state = SaveGame.State.ON_MAP
 		save_data.room_type = Room.Type.NOT_ASSIGNED
@@ -602,7 +612,7 @@ func _save_run(on_map: bool) -> void:
 		save_data.room_state = _collect_room_state()
 		save_data.state = SaveGame.State.IN_ROOM
 		save_data.room_type = map_node.last_room.type if map_node.last_room else Room.Type.NOT_ASSIGNED
-		print("[Save] room_type = ", save_data.room_type, " last_room: ", map_node.last_room)
+		#print("[Save] room_type = ", save_data.room_type, " last_room: ", map_node.last_room)
 
 	
 	# 收集每个房间的类型
@@ -611,8 +621,8 @@ func _save_run(on_map: bool) -> void:
 		var row_types := []
 		for room: Room in floor:
 			row_types.append(room.type)          # 存枚举值（int）
-			if room.type == Room.Type.BOSS:
-				print("[Save] BOSS room at row=", room.row, " col=", room.column)
+			#if room.type == Room.Type.BOSS:
+				#print("[Save] BOSS room at row=", room.row, " col=", room.column)
 		types.append(row_types)
 	save_data.map_types = types
 
@@ -626,30 +636,27 @@ func _save_run(on_map: bool) -> void:
 	
 	save_data.save_data()
 	
-	var test_save := SaveGame.load_data()
-	if test_save:
-		print("[DEBUG] 存档中的 room_state: ", test_save.room_state)
-	else:
-		print("[DEBUG] 存档写入失败！")
+	#var test_save := SaveGame.load_data()
+	#if test_save:
+		#print("[DEBUG] 存档中的 room_state: ", test_save.room_state)
+	#else:
+		#print("[DEBUG] 存档写入失败！")
 	save_data.last_room_unknown_type = map_node.last_room.unknownType if map_node.last_room else ""
 
 func _load_run() -> void:
 	save_data = SaveGame.load_data()
 	assert(save_data, "Could not load last save")
-	# 随机数生成器加载
-	print("load")
-	print(save_data.generator_seed)
-	print(save_data.generator_state)
 	RandomSetting.set_from_save_data(save_data.generator_seed, save_data.generator_state)
 	#人物数据加载	
 	character = save_data.char_stats
 	stats = save_data.run_stats
+	stats.potions = save_data.potions
 	character.deck = save_data.current_deck
 	character.health = save_data.current_health
 	ItemPool.init_item_pool(character.color)
-	for potion in save_data.potions:
-		stats.add_potion(potion)
 	stats.relics = save_data.relics
+	for relic: Relic in save_data.relics:
+		relic.load_count()
 
 	_load_up_top_bar()
 	_setup_event_connections()

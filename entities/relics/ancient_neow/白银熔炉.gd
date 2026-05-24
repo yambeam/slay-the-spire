@@ -16,6 +16,5 @@ func _on_combat_won(context: RewardContext, owner: RelicUI) -> void:
 	if temp_count > 0:
 		context.upgrade_all = true
 		temp_count -= 1
-		if owner != null:
-			owner.update_count()
+		owner.update_count()
 	

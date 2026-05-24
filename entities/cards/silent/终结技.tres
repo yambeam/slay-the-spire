@@ -6,8 +6,8 @@
 [ext_resource type="Script" uid="uid://cgmi6f3o7leik" path="res://scripts/costum_resources/effect.gd" id="3_aoakq"]
 [ext_resource type="Script" uid="uid://diearpqpfot8s" path="res://entities/cards/silent/终结技.gd" id="3_hc47b"]
 [ext_resource type="Script" uid="uid://vkklgv0ma0yf" path="res://scripts/costum_resources/effects/attack_effect.gd" id="4_0dwbi"]
-[ext_resource type="AudioStream" uid="uid://c3pwninr1cylv" path="res://audio/SFX/slash_attack.mp3" id="5_0dwbi"]
-[ext_resource type="Script" path="res://scripts/costum_resources/effects/iteration_effect.gd" id="5_aoakq"]
+[ext_resource type="AudioStream" uid="uid://b3reffdbqylun" path="res://audio/SFX/slash_attack.mp3" id="5_0dwbi"]
+[ext_resource type="Script" uid="uid://c8ly86kb5vc65" path="res://scripts/costum_resources/effects/iteration_effect.gd" id="5_aoakq"]
 
 [sub_resource type="Resource" id="Resource_6ao5r"]
 script = ExtResource("2_r762g")

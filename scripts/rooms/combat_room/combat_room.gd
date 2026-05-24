@@ -38,9 +38,6 @@ func update_background(act: int) -> void:
 func start_combat(skip_relics: bool = false) -> void:
 	enemy_handler.setup_enemies(enemy_encounter)
 	enemy_handler.reset_enemy_intents()
-	# 调试用
-	#char_stats = char_stats.create_instance()
-	#
 	combat_ui.char_stats = char_stats
 	hand_manager.char_stats = char_stats
 	hand_selelctor.char_stats = char_stats

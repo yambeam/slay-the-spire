@@ -32,6 +32,10 @@ enum State { ON_MAP, IN_ROOM }
 #判断是否是奖励房间
 @export var is_battle_reward: bool = false
 
+# 随机数生成器相关参数
+@export var generator_seed: int
+@export var generator_state: int
+
 func save_data() -> void:
 	var err := ResourceSaver.save(self, SAVE_PATH)
 	assert(err == OK, "Could not save the game!")

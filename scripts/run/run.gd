@@ -67,8 +67,9 @@ func _ready() -> void:
 		return
 	pause_menu.save_and_quit.connect(
 		func():
-			var on_map := is_on_map  # 假设 Map 节点有 visible 属性；若无，需手动维护 is_on_map 变量
-			_save_run(on_map)
+			#var on_map := is_on_map  # 假设 Map 节点有 visible 属性；若无，需手动维护 is_on_map 变量
+			# 不需要在这里保存
+			#_save_run(on_map)
 			#get_tree().change_scene_to_file(MAIN_MENU_PATH)
 			
 			back_to_main()
@@ -422,12 +423,12 @@ func _on_room_exited() -> void:
 	#battle_scene.start_combat()
 	
 func _on_combat_room_entered(room: Room = null, restore_state: Dictionary = {}) -> void:
-	print("========== COMBAT ENTERED ==========")
-	print("is restoring: ", not restore_state.is_empty())
-	if room:
-		print("room.type: ", room.type)
-	else:
-		print("room is null!")
+	#print("========== COMBAT ENTERED ==========")
+	#print("is restoring: ", not restore_state.is_empty())
+	#if room:
+		#print("room.type: ", room.type)
+	#else:
+		#print("room is null!")
 
 	var encounter_pool: EnemyEncounterPool = act1_encounter_pool if stats.current_stage == 1 else act2_encounter_pool
 
@@ -449,58 +450,61 @@ func _on_combat_room_entered(room: Room = null, restore_state: Dictionary = {}) 
 						room.enemy_encounter = encounter_pool.get_random_encounter_by_type(EnemyEncounter.Type.WEAK)
 					else:
 						room.enemy_encounter = encounter_pool.get_random_encounter_by_type(EnemyEncounter.Type.STRONG)
-
+	
+	_save_run(false)
 	var battle_scene: CombatRoom = await _change_view(COMBAT_SCENE)
 	battle_scene.update_background(stats.current_stage)
 	battle_scene.char_stats = character
 	battle_scene.enemy_encounter = room.enemy_encounter
 	battle_scene.relics = top_bar.relic_handler
+	
+	battle_scene.start_combat()
 
-	if restore_state.is_empty():
-		battle_scene.start_combat()
-		await get_tree().create_timer(2).timeout
-		room.combat_initial_state = battle_scene.get_save_state()
-		print("[First Entry] Saved initial state. Hand cards: ", room.combat_initial_state.get("hand_cards", []).size())
-	else:
-		# 1. 启动战斗 UI（不激活遗物，不抽牌）
-		battle_scene.start_combat(true)
-
-		# 2. 恢复除手牌外的所有状态（血量、能量、敌人、抽牌堆等）
-		var state_no_hand = restore_state.duplicate()
-		state_no_hand.erase("hand_cards")   # 关键：先不恢复手牌，留给动画
-		battle_scene.set_save_state(state_no_hand)
-
-		# 3. 准备预存手牌（动画会用）
-		var saved_cards: Array[Card] = []
-		for card_data in restore_state.get("hand_cards", []):
-			var card = Card.deserialize(card_data)
-			if card:
-				saved_cards.append(card)
-
-		if battle_scene.player_handler:
-			battle_scene.player_handler.is_restoring = true
-			battle_scene.player_handler.restore_hand_cards = saved_cards.duplicate()
-
-		# 4. 手动激活遗物（start_combat(true) 跳过了）
-		if not battle_scene.relics.relics_activated.is_connected(battle_scene._on_relics_activated):
-			battle_scene.relics.relics_activated.connect(battle_scene._on_relics_activated)
-		battle_scene.relics.activate_relics_by_trigger_type(Relic.TriggerType.START_OF_COMBAT)
-		await get_tree().process_frame
-
-		# 5. 触发抽牌动画（draw_cards 会使用预存手牌，并播放逐张入场效果）
-		if battle_scene.player_handler:
-			battle_scene.player_handler.draw_cards()
-
-		# 6. 等待动画完全结束（你的测试值为 2 秒）
-		await get_tree().create_timer(2).timeout
-
-		# 7. 清除恢复标志，后续回合正常
-		if battle_scene.player_handler:
-			battle_scene.player_handler.is_restoring = false
-			battle_scene.player_handler.restore_hand_cards.clear()
+	#if restore_state.is_empty():
+		#battle_scene.start_combat()
+		##await get_tree().create_timer(2).timeout
+		#room.combat_initial_state = battle_scene.get_save_state()
+		##print("[First Entry] Saved initial state. Hand cards: ", room.combat_initial_state.get("hand_cards", []).size())
+	#else:
+		## 1. 启动战斗 UI（不激活遗物，不抽牌）
+		#battle_scene.start_combat(true)
+#
+		## 2. 恢复除手牌外的所有状态（血量、能量、敌人、抽牌堆等）
+		#var state_no_hand = restore_state.duplicate()
+		#state_no_hand.erase("hand_cards")   # 关键：先不恢复手牌，留给动画
+		#battle_scene.set_save_state(state_no_hand)
+#
+		## 3. 准备预存手牌（动画会用）
+		#var saved_cards: Array[Card] = []
+		#for card_data in restore_state.get("hand_cards", []):
+			#var card = Card.deserialize(card_data)
+			#if card:
+				#saved_cards.append(card)
+#
+		#if battle_scene.player_handler:
+			#battle_scene.player_handler.is_restoring = true
+			#battle_scene.player_handler.restore_hand_cards = saved_cards.duplicate()
+#
+		## 4. 手动激活遗物（start_combat(true) 跳过了）
+		#if not battle_scene.relics.relics_activated.is_connected(battle_scene._on_relics_activated):
+			#battle_scene.relics.relics_activated.connect(battle_scene._on_relics_activated)
+		#battle_scene.relics.activate_relics_by_trigger_type(Relic.TriggerType.START_OF_COMBAT)
+		#await get_tree().process_frame
+#
+		## 5. 触发抽牌动画（draw_cards 会使用预存手牌，并播放逐张入场效果）
+		#if battle_scene.player_handler:
+			#battle_scene.player_handler.draw_cards()
+#
+		## 6. 等待动画完全结束（你的测试值为 2 秒）
+		#await get_tree().create_timer(2).timeout
+#
+		## 7. 清除恢复标志，后续回合正常
+		#if battle_scene.player_handler:
+			#battle_scene.player_handler.is_restoring = false
+			#battle_scene.player_handler.restore_hand_cards.clear()
 
 	map_node.last_room.enemy_encounter = room.enemy_encounter.duplicate()
-	_save_run(false)
+	
 	_restoring = false
 
 	
@@ -565,6 +569,13 @@ func _victory() -> void:
 func _save_run(on_map: bool) -> void:
 	if _restoring:
 		return
+	# 随机数生产器相关
+	
+	save_data.generator_seed = RandomSetting.instance.seed
+	save_data.generator_state = RandomSetting.instance.state
+	print("save")
+	print(save_data.generator_seed)
+	print(save_data.generator_state)
 	#人物数据
 	save_data.run_stats = stats
 	save_data.char_stats = character
@@ -592,7 +603,7 @@ func _save_run(on_map: bool) -> void:
 		save_data.state = SaveGame.State.IN_ROOM
 		save_data.room_type = map_node.last_room.type if map_node.last_room else Room.Type.NOT_ASSIGNED
 		print("[Save] room_type = ", save_data.room_type, " last_room: ", map_node.last_room)
-		
+
 	
 	# 收集每个房间的类型
 	var types := []
@@ -625,7 +636,11 @@ func _save_run(on_map: bool) -> void:
 func _load_run() -> void:
 	save_data = SaveGame.load_data()
 	assert(save_data, "Could not load last save")
-	
+	# 随机数生成器加载
+	print("load")
+	print(save_data.generator_seed)
+	print(save_data.generator_state)
+	RandomSetting.set_from_save_data(save_data.generator_seed, save_data.generator_state)
 	#人物数据加载	
 	character = save_data.char_stats
 	stats = save_data.run_stats

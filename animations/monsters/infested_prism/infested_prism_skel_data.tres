@@ -1,7 +1,7 @@
 [gd_resource type="SpineSkeletonDataResource" format=3 uid="uid://ro5obn8ugoej"]
 
-[ext_resource type="SpineAtlasResource" uid="uid://bqpfb8ds3geqf" path="res://animations/monsters/infested_prism/infested_prism.atlas" id="1_h5xyi"]
-[ext_resource type="SpineSkeletonFileResource" uid="uid://buw7ts57em8gw" path="res://animations/monsters/infested_prism/infested_prism.skel" id="2_yaag6"]
+[ext_resource type="SpineAtlasResource" uid="uid://dxm6ksuo300e5" path="res://animations/monsters/infested_prism/infested_prism.atlas" id="1_h5xyi"]
+[ext_resource type="SpineSkeletonFileResource" uid="uid://bgjv6yw44hoc5" path="res://animations/monsters/infested_prism/infested_prism.skel" id="2_yaag6"]
 
 [sub_resource type="SpineAnimationMix" id="SpineAnimationMix_yaag6"]
 from = "hurt"

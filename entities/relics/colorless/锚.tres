@@ -1,10 +1,10 @@
 [gd_resource type="Resource" format=3 uid="uid://b5niu17o73g0m"]
 
 [ext_resource type="Script" uid="uid://cgmi6f3o7leik" path="res://scripts/costum_resources/effect.gd" id="1_0bgrq"]
-[ext_resource type="Texture2D" uid="uid://bymv8uf" path="res://images/atlases/relic_atlas.sprites/anchor.tres" id="1_8ija3"]
 [ext_resource type="Script" uid="uid://cla4vkc3mk1wm" path="res://entities/relics/colorless/锚.gd" id="2_8ija3"]
 [ext_resource type="Script" uid="uid://dtok21t0ujjui" path="res://scripts/costum_resources/numeric_provider.gd" id="2_y4480"]
 [ext_resource type="Script" uid="uid://dnv7chuoeoi6y" path="res://scripts/costum_resources/effects/block_effect.gd" id="3_k5yij"]
+[ext_resource type="Texture2D" uid="uid://cwj4qgccr36qa" path="res://images/relics/anchor.png" id="4_0bgrq"]
 
 [sub_resource type="Resource" id="Resource_mcooo"]
 script = ExtResource("2_y4480")
@@ -22,7 +22,7 @@ metadata/_custom_type_script = "uid://dnv7chuoeoi6y"
 script = ExtResource("2_8ija3")
 relic_name = "锚"
 id = "anchor"
-icon = ExtResource("1_8ija3")
+icon = ExtResource("4_0bgrq")
 description = "第一回合开始后，获得10点[color=gold]格挡[/color]"
 trigger_type = 1
 effects = Array[ExtResource("1_0bgrq")]([SubResource("Resource_vgr1h")])

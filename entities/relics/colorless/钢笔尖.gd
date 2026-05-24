@@ -7,6 +7,10 @@ func activate_relic(owner: RelicUI) -> void:
 	if temp_count == 0:
 		super.activate_relic(owner)
 
+func deactivate_relic(_owner: RelicUI) -> void:
+	if Events.card_played.is_connected(_on_card_played):
+		Events.card_played.disconnect(_on_card_played)
+
 func _on_card_played(card: Card, _card_context: Dictionary, owner: RelicUI) -> void:
 	if card.type == Card.Type.ATTACK:
 		if temp_count == 9:

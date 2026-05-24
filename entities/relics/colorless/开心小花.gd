@@ -8,5 +8,3 @@ func activate_relic(owner: RelicUI) -> void:
 		super.activate_relic(owner)
 	owner.update_count()
 	
-func deactivate_relic(_owner: RelicUI) -> void:
-	pass

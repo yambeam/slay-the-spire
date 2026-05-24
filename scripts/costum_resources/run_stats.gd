@@ -23,13 +23,13 @@ const BASE_COMMON_WEIGHT := 6.0
 const BASE_UNCOMMON_WEIGHT := 3.7
 const BASE_RARE_WEIGHT := 0.3
 
-@export var gold := STARTING_GOLD : set = set_gold
+var gold := STARTING_GOLD : set = set_gold
 
 ## 药水
-@export var potions: Array[Potion] = []
+var potions: Array[Potion] = []
 @export var max_potion_slots: int = 3 : set =  _set_max_potion_slots
 ## 遗物
-@export var relics: Array[Relic] = []
+var relics: Array[Relic] = []
 
 
 ##当前阶段

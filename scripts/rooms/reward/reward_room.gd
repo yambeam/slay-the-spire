@@ -85,6 +85,7 @@ func add_rewards(room: Room, context: RewardContext) -> void:
 	# 额外金币
 	for extra_gold in context.extra_gold:
 		add_gold_reward(extra_gold)
+		
 
 	
 

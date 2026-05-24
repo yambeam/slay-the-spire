@@ -125,7 +125,7 @@ func discard_card(card: CardUI) -> void:
 	card.card.first_play_free = false
 	Events.card_discarded.emit(card)
 	set_cards()
-
+	
 func exhaust_card(card: CardUI) -> void:
 	Events.card_exhausted.emit(card.card)
 	card.queue_free()

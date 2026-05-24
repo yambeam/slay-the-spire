@@ -33,7 +33,7 @@ func apply(source_: Node, _targets: Array[Node], card_context: Dictionary, previ
 			Where.DISCARD_PILE:
 				candidates = source_.get_discard_pile().duplicate()
 			Where.HAND:
-				candidates = source_.get_hand_cards()
+				candidates = source_.get_hand_cards().duplicate()
 		
 		match source:
 			CardSource.SPECIFIED:
@@ -68,11 +68,13 @@ func apply(source_: Node, _targets: Array[Node], card_context: Dictionary, previ
 func _random_play(player: Node, card: Card) -> void:
 	var enemies: Array[Node] = player.get_tree().get_nodes_in_group("ui_enemies")
 	card.first_play_free = true
+
 	match card.get_target():
 		card.Target.SELF:
 			card.play(player, [player])
 		card.Target.SINGLE_ENEMY:
-			card.play(player, [enemies[randi() % len(enemies)]])
+			card.play(player, [RandomSetting.array_pick_random(enemies)])
+			#card.play(player, [enemies[randi() % len(enemies)]])
 		card.Target.ALL_ENEMIES:
 			card.play(player, enemies)
 		card.Target.EVERYONE:

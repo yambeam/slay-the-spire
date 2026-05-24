@@ -4,10 +4,10 @@
 [ext_resource type="Script" uid="uid://iqqyr44teapg" path="res://scripts/costum_resources/intents/sub_intent.gd" id="2_2vdt6"]
 [ext_resource type="Script" uid="uid://dtok21t0ujjui" path="res://scripts/costum_resources/numeric_provider.gd" id="3_p503j"]
 [ext_resource type="Script" uid="uid://vkklgv0ma0yf" path="res://scripts/costum_resources/effects/attack_effect.gd" id="4_nodtv"]
-[ext_resource type="AudioStream" uid="uid://bcwmh6adledx" path="res://audio/SFX/blunt_attack.mp3" id="5_nodtv"]
+[ext_resource type="AudioStream" uid="uid://b4eqc65cqogm6" path="res://audio/SFX/blunt_attack.mp3" id="5_nodtv"]
 [ext_resource type="Script" uid="uid://bces7ijyodhmv" path="res://scripts/costum_resources/intents/attack_sub_intent.gd" id="6_heres"]
 [ext_resource type="Script" uid="uid://cgmi6f3o7leik" path="res://scripts/costum_resources/effect.gd" id="7_nodtv"]
-[ext_resource type="Script" uid="uid://c8ly86kb5vc65" path="res://scripts/costum_resources/effects/iteration_effect.gd" id="8_83l2c"]
+[ext_resource type="Script" path="res://scripts/costum_resources/effects/iteration_effect.gd" id="8_83l2c"]
 [ext_resource type="Script" uid="uid://b4ci70yyt8xkl" path="res://entities/enemies/byrdnois/byrdonis_ai.gd" id="9_nodtv"]
 
 [sub_resource type="Resource" id="Resource_ntn5m"]
@@ -30,6 +30,7 @@ metadata/_custom_type_script = "uid://vkklgv0ma0yf"
 [sub_resource type="Resource" id="Resource_t80r6"]
 script = ExtResource("6_heres")
 damage_provider = SubResource("Resource_ntn5m")
+type = null
 effect = SubResource("Resource_vjcvc")
 metadata/_custom_type_script = "uid://bces7ijyodhmv"
 
@@ -78,6 +79,7 @@ metadata/_custom_type_script = "uid://dtok21t0ujjui"
 script = ExtResource("6_heres")
 damage_provider = SubResource("Resource_heres")
 repeat_provider = SubResource("Resource_a5cu1")
+type = null
 effect = SubResource("Resource_08adn")
 metadata/_custom_type_script = "uid://bces7ijyodhmv"
 

@@ -9,6 +9,11 @@ const HAND_DISCARD_INTERVAL := 0.25
 @onready var player: Player = $"../Player"
 @onready var combat_ui: CombatUI = %CombatUI
 
+var restore_hand_cards: Array[Card] = []
+
+#状态:正在保存恢复
+var is_restoring: bool = false
+
 var char_stats: CharacterStats
 # 抽一张牌的效果，这是为了将回合开始时的抽牌也压入结算栈中
 var draw_card_effect_with_iteration: IterationEffect = IterationEffect.new()
@@ -23,6 +28,10 @@ func _ready() -> void:
 	draw_card_context["player"] = player
 
 func start_battle(char_stats_: CharacterStats) -> void:
+	if is_restoring:
+		char_stats = char_stats_
+		relics.relics_activated.connect(_on_relics_activated)
+		return
 	char_stats = char_stats_
 	char_stats.draw_pile = char_stats_.deck.duplicate(true)
 	char_stats.draw_pile.shuffle()
@@ -35,7 +44,9 @@ func start_turn() -> void:
 	player.start_turn()
 	Events.player_turn_started.emit()
 	relics.activate_relics_by_trigger_type(Relic.TriggerType.START_OF_TURN)
-
+	#if not skip_initial_draw:
+		#draw_cards()   # 新游戏才抽，恢复时跳过
+	
 func end_turn() -> void:
 	# 等待其他效果压入调用栈，比如“惊逃”buff
 	# 很丑陋，但是我没办法了
@@ -46,6 +57,10 @@ func end_turn() -> void:
 	relics.activate_relics_by_trigger_type(Relic.TriggerType.END_OF_TURN)
 
 func draw_card() -> Card:
+	# 恢复模式：直接返回预存的初始手牌
+	if is_restoring and restore_hand_cards.size() > 0:
+		return restore_hand_cards.pop_front()
+
 	reshuffle_deck_from_discard_pile()
 	if char_stats.draw_pile.is_empty():
 		# 抽牌堆与弃牌堆都没牌了

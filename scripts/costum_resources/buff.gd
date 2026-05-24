@@ -74,3 +74,26 @@ func _set_stacks(value: int) -> void:
 		#stacks = clampi(value, 0, 1)
 	stacks = value
 	stack_changed.emit()
+
+
+##buff数据序列化
+func serialize() -> Dictionary:
+	return {
+		"buff_name": buff_resource.buff_name,   # 改用 buff_name
+		"stacks": stacks,
+	}
+
+static func deserialize(data: Dictionary) -> Buff:
+	var buff_name: String = data.get("buff_name", "")
+	if buff_name.is_empty():
+		push_error("Buff.deserialize: buff_name missing")
+		return null
+
+	var resource: BuffResource = BuffLibrary.get_buff_resource_by_name(buff_name)
+	if not resource:
+		push_error("Buff.deserialize: no BuffResource found for " + buff_name)
+		return null
+
+	var buff := Buff.new()
+	buff.buff_resource = resource
+	return buff

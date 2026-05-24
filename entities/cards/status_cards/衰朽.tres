@@ -1,6 +1,5 @@
 [gd_resource type="Resource" script_class="Card" format=3 uid="uid://ciuvsfuh1u8bc"]
 
-[ext_resource type="Script" uid="uid://cxgxfbwykbp84" path="res://scripts/costum_resources/numeric_entry.gd" id="1_fus2o"]
 [ext_resource type="Script" uid="uid://cgmi6f3o7leik" path="res://scripts/costum_resources/effect.gd" id="2_fws1s"]
 [ext_resource type="Script" uid="uid://dtok21t0ujjui" path="res://scripts/costum_resources/numeric_provider.gd" id="3_c4ghf"]
 [ext_resource type="Script" uid="uid://br1hibx18tv13" path="res://scripts/costum_resources/card.gd" id="3_yef14"]
@@ -23,13 +22,27 @@ metadata/_custom_type_script = "uid://b8qfrs61nmcix"
 script = ExtResource("3_yef14")
 id = "腐朽"
 type = 8
+base_target = null
 card_color = 64
+is_x_cost = null
+base_cost = null
 rarity = 16
 discoverable = false
 draftable = false
 effects = Array[ExtResource("2_fws1s")]([SubResource("Resource_nmi37")])
 portrait = ExtResource("5_53lsk")
 base_description = "[center]回合开始时失去1点能量。[/center]"
+base_numeric_entries = null
+exhaust = null
+ethereal = null
+sly = null
+eternal = null
 playable = false
+upgraded_target = null
+upgraded_cost = null
+upgraded_description = null
+upgraded_numeric_entries = null
+upgraded_effects = null
+upgraded = null
 upgradable = false
 metadata/_custom_type_script = "uid://br1hibx18tv13"

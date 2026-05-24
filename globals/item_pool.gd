@@ -213,7 +213,12 @@ var card_rarity_mask: int = 0b11111
 var potion_color_mask: int = 0b111111
 var potion_rarity_mask: int = 0b111
 
-var relic_color_mask: int = 0b111111
+#卡牌保存需要
+var cards_by_id := {}
+#debug
+#relic_color_mask多加一位覆盖colorless,同时relic rarity多加两位覆盖所有稀有度
+var relic_color_mask: int = 0b1111111
+var relic_type_mask: int = 0b1111
 var relic_rarity_mask: int = 0b1111111
 
 var current_card_pool: Array[Card]
@@ -380,7 +385,9 @@ func load_all_cards(dir_path: String):
 				draftable_cards_by_color[resource.card_color & card_color_mask].append(resource)
 			if resource.type == Card.Type.STATUS or resource.type == Card.Type.CURSE:
 				curse_and_status_card_dict[resource.id] = resource
-
+				
+#		利用id获取资源
+		cards_by_id[resource.id] = resource
 func load_all_potions(dir_path: String):
 	var paths = FileHelper.get_all_resources_in_directory(dir_path)
 	for path in paths:

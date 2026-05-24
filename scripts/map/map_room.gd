@@ -57,7 +57,9 @@ func set_available(new_value: bool) -> void:
 		sprite_2d.modulate.a = target_alpha
 
 func set_room(new_data: Room) -> void:
+	
 	room = new_data
+	
 	position = room.position
 	Select_Circle.rotation_degrees = randi_range(0, 360)
 
@@ -95,13 +97,34 @@ func set_room(new_data: Room) -> void:
 	original_scale = scale
 
 	# 古代房始终保持完全不透明
-	if room.type == Room.Type.ANCIENT:
+	if room.selected or room.type == Room.Type.ANCIENT:
 		target_alpha = 1.0
-		sprite_2d.modulate.a = 1.0
 	else:
 		target_alpha = 0.6
-		sprite_2d.modulate.a = target_alpha
+	sprite_2d.modulate.a = target_alpha
 
+	# 控制选中圆圈的显示（古代房和Boss房永远不显示圆圈）
+	if room.type == Room.Type.ANCIENT or room.type == Room.Type.BOSS:
+		Select_Circle.modulate.a = 0.0
+		for child in Select_Circle.get_children():
+			child.modulate.a = 0.0
+	else:
+		# 普通房间的圆圈透明度由 selected 状态决定
+		if room.selected:
+			Select_Circle.modulate.a = 1.0
+			for child in Select_Circle.get_children():
+				child.modulate.a = 1.0
+		else:
+			Select_Circle.modulate.a = 0.0
+			for child in Select_Circle.get_children():
+				child.modulate.a = 0.0
+
+	# 如果房间已经被选中，停止可能残余的动画
+	if room.selected and animation_player and animation_player.is_playing():
+		animation_player.stop()
+	#print("Room type: ", Room.Type.keys()[room.type], " texture: ", entry[0]) 
+		
+		
 func _on_input_event(_viewport: Node, event: InputEvent, _shape_idx: int) -> void:
 	if not available or not event.is_action_pressed("left_mouse"):
 		return
@@ -114,6 +137,7 @@ func _on_input_event(_viewport: Node, event: InputEvent, _shape_idx: int) -> voi
 	if room.type == Room.Type.ANCIENT or room.type == Room.Type.BOSS:
 		selected.emit(room)
 	else:
+		Select_Circle.modulate.a = 1.0 
 		animation_player.speed_scale = 2.0
 		animation_player.play("select")
 

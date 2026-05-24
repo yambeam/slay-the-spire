@@ -130,13 +130,26 @@ metadata/_custom_type_script = "uid://cxgxfbwykbp84"
 script = ExtResource("7_iy4gf")
 id = "燃烧契约"
 type = 2
+base_target = null
+card_color = null
+is_x_cost = null
 base_cost = 1
 rarity = 2
+discoverable = null
+draftable = null
 effects = Array[ExtResource("3_1shly")]([SubResource("Resource_jckgm"), SubResource("Resource_fe7p1"), SubResource("Resource_vfl63")])
 portrait = ExtResource("2_goriw")
 base_description = "[center][color=gold]消耗[/color]{exhaust}张牌。[/center][p][center]抽{cards}张牌。[/center]"
 base_numeric_entries = Array[ExtResource("1_yvywq")]([SubResource("Resource_1shly"), SubResource("Resource_1q8wk")])
+exhaust = null
+ethereal = null
+sly = null
+eternal = null
+playable = null
+upgraded_target = null
 upgraded_cost = 1
 upgraded_description = "[center][color=gold]消耗[/color]{exhaust}张牌。[/center][p][center]抽{cards}张牌。[/center]"
 upgraded_numeric_entries = Array[ExtResource("1_yvywq")]([SubResource("Resource_vg260"), SubResource("Resource_m4u1n")])
 upgraded_effects = Array[ExtResource("3_1shly")]([SubResource("Resource_3c3dw"), SubResource("Resource_rv65e"), SubResource("Resource_t2d86")])
+upgraded = null
+upgradable = null

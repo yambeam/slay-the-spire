@@ -160,3 +160,18 @@ func update_hand() -> void:
 	for child: CardUI in get_children():
 		child.set_card(child.card)
 		
+		
+#
+## 清空手牌（直接移除所有 CardUI，不触发弃牌效果）
+func clear_hand() -> void:
+	for child in get_children():
+		child.queue_free()
+
+## 直接添加一张卡牌到手牌（绕过手牌上限，用于恢复存档）
+func add_card_to_hand(card: Card) -> void:
+	var new_card_ui := CARD_UI.instantiate()
+	add_child(new_card_ui)
+	new_card_ui.card = card
+	new_card_ui.parent = self
+	new_card_ui.reparent_requested.connect(_on_card_ui_reparent_requested)
+	new_card_ui.char_stats = char_stats

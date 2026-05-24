@@ -5,7 +5,7 @@
 [ext_resource type="Script" uid="uid://dtok21t0ujjui" path="res://scripts/costum_resources/numeric_provider.gd" id="3_bxjpw"]
 [ext_resource type="Script" uid="uid://vkklgv0ma0yf" path="res://scripts/costum_resources/effects/attack_effect.gd" id="4_g1unf"]
 [ext_resource type="Script" uid="uid://bces7ijyodhmv" path="res://scripts/costum_resources/intents/attack_sub_intent.gd" id="5_18fio"]
-[ext_resource type="AudioStream" uid="uid://bcwmh6adledx" path="res://audio/SFX/blunt_attack.mp3" id="5_bxjpw"]
+[ext_resource type="AudioStream" uid="uid://b4eqc65cqogm6" path="res://audio/SFX/blunt_attack.mp3" id="5_bxjpw"]
 [ext_resource type="Script" uid="uid://b8qfrs61nmcix" path="res://scripts/costum_resources/effects/apply_buff_effect.gd" id="6_1vjw1"]
 [ext_resource type="Script" uid="uid://dpbv4m5rd0bbq" path="res://scripts/costum_resources/intents/apply_buff_sub_intent.gd" id="7_p0mmu"]
 [ext_resource type="Script" uid="uid://cwlmx37sp1g5l" path="res://entities/enemies/myte/myte_ai.gd" id="8_ebx64"]
@@ -30,6 +30,7 @@ metadata/_custom_type_script = "uid://vkklgv0ma0yf"
 [sub_resource type="Resource" id="Resource_3ec5p"]
 script = ExtResource("5_18fio")
 damage_provider = SubResource("Resource_x5hfu")
+type = null
 effect = SubResource("Resource_3113p")
 metadata/_custom_type_script = "uid://bces7ijyodhmv"
 
@@ -60,6 +61,7 @@ metadata/_custom_type_script = "uid://vkklgv0ma0yf"
 [sub_resource type="Resource" id="Resource_swhye"]
 script = ExtResource("5_18fio")
 damage_provider = SubResource("Resource_k7ljm")
+type = null
 effect = SubResource("Resource_nw730")
 metadata/_custom_type_script = "uid://bces7ijyodhmv"
 

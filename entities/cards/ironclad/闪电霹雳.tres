@@ -6,7 +6,7 @@
 [ext_resource type="Script" uid="uid://cgmi6f3o7leik" path="res://scripts/costum_resources/effect.gd" id="3_t8ehc"]
 [ext_resource type="Script" uid="uid://vkklgv0ma0yf" path="res://scripts/costum_resources/effects/attack_effect.gd" id="4_i2oj1"]
 [ext_resource type="Script" uid="uid://b8qfrs61nmcix" path="res://scripts/costum_resources/effects/apply_buff_effect.gd" id="5_bbw44"]
-[ext_resource type="AudioStream" uid="uid://drykcgvbqlvhf" path="res://audio/SFX/lightning_orb_passive.mp3" id="5_gi2mb"]
+[ext_resource type="AudioStream" uid="uid://bs0iwdjmd2w0n" path="res://audio/SFX/lightning_orb_passive.mp3" id="5_gi2mb"]
 [ext_resource type="Script" uid="uid://br1hibx18tv13" path="res://scripts/costum_resources/card.gd" id="7_gi2mb"]
 
 [sub_resource type="Resource" id="Resource_dobrv"]
@@ -110,14 +110,27 @@ metadata/_custom_type_script = "uid://cxgxfbwykbp84"
 [resource]
 script = ExtResource("7_gi2mb")
 id = "闪电霹雳"
+type = null
 base_target = 2
+card_color = null
+is_x_cost = null
 base_cost = 1
+rarity = null
+discoverable = null
+draftable = null
 effects = Array[ExtResource("3_t8ehc")]([SubResource("Resource_ckxse"), SubResource("Resource_1bnbt")])
 portrait = ExtResource("2_s5fly")
 base_description = "[center]对所有敌人造成{damage}点伤害。[/center][p][center]施加{stacks}层[color=gold]易伤[/color]。[/center]"
 base_numeric_entries = Array[ExtResource("1_bvjlo")]([SubResource("Resource_kfv0u"), SubResource("Resource_11s2g")])
+exhaust = null
+ethereal = null
+sly = null
+eternal = null
+playable = null
 upgraded_target = 2
 upgraded_cost = 1
 upgraded_description = "[center]对所有敌人造成{damage}点伤害。[/center][p][center]施加{stacks}层[color=gold]易伤[/color]。[/center]"
 upgraded_numeric_entries = Array[ExtResource("1_bvjlo")]([SubResource("Resource_tjdi3"), SubResource("Resource_pejkc")])
 upgraded_effects = Array[ExtResource("3_t8ehc")]([SubResource("Resource_b26lf"), SubResource("Resource_f5myh")])
+upgraded = null
+upgradable = null

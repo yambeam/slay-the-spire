@@ -20,5 +20,11 @@ enum Type {NOT_ASSIGNED,MONSTER,TREASURE,CAMPFIRE,BOSS,SHOP,ELITE,UNKNOWN,ANCIEN
 #只在问号房间中使用,用来记录此次问号房间的类型
 @export var unknownType:String
 
+@export var combat_initial_state: Dictionary = {}
+
+#战斗房的种子
+#@export var rng_seed: int = 0
+#@export var rng_state: int = 0
+
 func _to_string() -> String:
 	return "%s (%s)" % [column , Type.keys()[type][0]]

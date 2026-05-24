@@ -31,12 +31,10 @@ const BASE_RARE_WEIGHT := 0.3
 ## 遗物
 @export var relics: Array[Relic] = []
 
-###当前房间
-#var current_room: Room
 
 ##当前阶段
 @export var current_stage : int = 1
-@export var max_stage : int = 2  
+@export var max_stage : int = 2
 
 
 @export var card_rewards := BASE_CARD_REWARDS
@@ -47,6 +45,7 @@ const BASE_RARE_WEIGHT := 0.3
 #地图数据
 @export var map_data: Array[Array] = []   # 保存整个地图数据（Room 资源数组）
 @export var floors_climbed: int = 0       # 已攀爬的层数（已解锁的最高楼层索引，0-based）
+@export var visited_rooms: Array[int] = [] # 已访问过的房间序列
 
 
 @export var current_room:Room
@@ -142,19 +141,6 @@ func relic_count()->int:
 		if relics[i] != null:
 			count+=1
 	return count
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 	
 ## 推进到下一个阶段
 func advance_stage() -> void:

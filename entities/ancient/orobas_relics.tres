@@ -2,13 +2,16 @@
 
 [ext_resource type="Script" uid="uid://bvf88v88tbaks" path="res://scripts/costum_resources/relic.gd" id="1_mwmt0"]
 [ext_resource type="Script" uid="uid://cgkirnvrwbk4i" path="res://scripts/costum_resources/relic_pile.gd" id="2_538rq"]
-[ext_resource type="Resource" uid="uid://cb1u8x714pj53" path="res://entities/relics/colorless/不休陀螺.tres" id="2_t4myo"]
-[ext_resource type="Resource" uid="uid://ceg16mnw32ws6" path="res://entities/relics/colorless/五轮书.tres" id="3_il6y7"]
-[ext_resource type="Resource" uid="uid://dcl6ivh27c3xx" path="res://entities/relics/colorless/冰淇淋.tres" id="4_cb201"]
-[ext_resource type="Resource" uid="uid://b0qfah41jc6tq" path="res://entities/relics/colorless/冻结之蛋.tres" id="5_m3j3a"]
-[ext_resource type="Resource" uid="uid://cnyy847ljcitu" path="res://entities/relics/colorless/准备背包.tres" id="6_bwdr0"]
+[ext_resource type="Resource" uid="uid://cxdtdodsvqa8a" path="res://entities/relics/ancient_orobas/发光珍珠.tres" id="2_m3j3a"]
+[ext_resource type="Resource" uid="uid://d2dx7k0chqy1a" path="res://entities/relics/ancient_orobas/放电异虾.tres" id="3_bwdr0"]
+[ext_resource type="Resource" uid="uid://gnijej17yk8n" path="res://entities/relics/ancient_orobas/欧洛巴斯之触.tres" id="4_8chav"]
+[ext_resource type="Resource" uid="uid://c5nwsvoul10lp" path="res://entities/relics/ancient_orobas/沙堡.tres" id="5_3x7hn"]
+[ext_resource type="Resource" uid="uid://b6lo0t63drngi" path="res://entities/relics/ancient_orobas/浮木.tres" id="6_te7dx"]
+[ext_resource type="Resource" uid="uid://blf7pr4jyue5b" path="res://entities/relics/ancient_orobas/炼金箱.tres" id="7_6iu7p"]
+[ext_resource type="Resource" uid="uid://xyk2hampa25j" path="res://entities/relics/ancient_orobas/玻璃眼珠.tres" id="8_4p78e"]
+[ext_resource type="Resource" uid="uid://doo2i31wuej74" path="res://entities/relics/ancient_orobas/贤者之石.tres" id="9_masfq"]
 
 [resource]
 script = ExtResource("2_538rq")
-relics = Array[ExtResource("1_mwmt0")]([ExtResource("2_t4myo"), ExtResource("3_il6y7"), ExtResource("4_cb201"), ExtResource("5_m3j3a"), ExtResource("6_bwdr0")])
+relics = Array[ExtResource("1_mwmt0")]([ExtResource("2_m3j3a"), ExtResource("3_bwdr0"), ExtResource("4_8chav"), ExtResource("5_3x7hn"), ExtResource("6_te7dx"), ExtResource("7_6iu7p"), ExtResource("8_4p78e"), ExtResource("9_masfq")])
 metadata/_custom_type_script = "uid://cgkirnvrwbk4i"

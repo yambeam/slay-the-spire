@@ -112,7 +112,8 @@ func init()->void:
 	room_number=random_number
 	#所有的 遗物和药水资源
 	potions=ItemPool.get_potions(char_stats.color,0b011)
-	
+	var arr = ItemPool.event_relic_dict.values()
+	relics.assign(arr)
 	set_init_incident_data(incidentsDataArray[room_number])
 
 func set_init_incident_data(data:IncidentData)->void:
@@ -593,3 +594,37 @@ func _on_option_2_mouse_entered() -> void:
 
 func _on_option_2_mouse_exited() -> void:
 	$optionsContainer/option2/outline2.hide()
+
+
+func get_save_state() -> Dictionary:
+	return {
+		"countop": countop,
+		"room_number": room_number,
+		"random_card_number": random_card_number,
+		"incident_data_path": incident_data.resource_path,
+		"option1_visible": option_1.visible,
+		"option2_visible": option_2.visible,
+		"title_text": event_title.text,
+		"desc_text": event_description.text,
+		"text1": text_1.text,
+		"text2": text_2.text,
+		"random_cards": Randomcards.map(func(c): return c.serialize()),
+	}
+
+func set_save_state(state: Dictionary) -> void:
+	countop = state.get("countop", 0)
+	room_number = state.get("room_number", 0)
+	random_card_number = state.get("random_card_number", 0)
+	incident_data = load(state["incident_data_path"]) as IncidentData
+	set_incident_data(incident_data)
+
+	Randomcards.clear()
+	for card_data in state.get("random_cards", []):
+		Randomcards.append(Card.deserialize(card_data))
+
+	event_title.text = state["title_text"]
+	event_description.text = state["desc_text"]
+	text_1.text = state["text1"]
+	text_2.text = state["text2"]
+	option_1.visible = state["option1_visible"]
+	option_2.visible = state["option2_visible"]

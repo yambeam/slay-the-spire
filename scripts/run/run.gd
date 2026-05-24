@@ -56,9 +56,6 @@ var _pending_stage_transition: bool = false
 #当前时否在保存
 var _restoring: bool = false
 
-# 战斗前快照（记录进入战斗房间前一刻的状态）
-var pre_combat_snapshot: Dictionary = {}
-
 func back_to_main()->void:
 	
 	get_tree().change_scene_to_file(MAIN_MENU_PATH)
@@ -71,11 +68,6 @@ func _ready() -> void:
 	pause_menu.save_and_quit.connect(
 		func():
 			#var on_map := is_on_map  # 假设 Map 节点有 visible 属性；若无，需手动维护 is_on_map 变量
-			# 不需要在这里保存
-			#_save_run(on_map)
-			#get_tree().change_scene_to_file(MAIN_MENU_PATH)
-			
-			_save_run(is_on_map)
 			#if is_on_map:
 				#save_data.state = save_data.State.ON_MAP
 			#else:
@@ -269,7 +261,7 @@ func handleSettingsRequest() -> void:
 func _change_view(scene: PackedScene) -> Node:
 	if current_room.get_child_count() > 0:
 		current_room.get_child(0).queue_free()
-	
+	await get_tree().process_frame
 	var new_view := scene.instantiate()
 	current_room.add_child(new_view)
 	return new_view
@@ -286,6 +278,8 @@ func _on_combat_won(context: RewardContext) -> void:
 	reward_scene.run_stats = stats
 	reward_scene.character_stats = character
 	reward_scene.add_rewards(map_node.last_room, context)
+	# 等待add_rewards? 这又不是异步函数，但是如果不等待无法正常保存数据
+	await get_tree().process_frame
 	_save_run(false)
 
 	
@@ -442,10 +436,16 @@ func _on_room_exited() -> void:
 	#battle_scene.start_combat()
 	
 func _on_combat_room_entered(room: Room = null, restore_state: Dictionary = {}) -> void:
+	#print("========== COMBAT ENTERED ==========")
+	#print("is restoring: ", not restore_state.is_empty())
+	#if room:
+		#print("room.type: ", room.type)
+	#else:
+		#print("room is null!")
+
 	var encounter_pool: EnemyEncounterPool = act1_encounter_pool if stats.current_stage == 1 else act2_encounter_pool
 
-	# 分配遭遇战（恢复时房间已有 enemy_encounter，跳过随机生成）
-	if room.enemy_encounter == null:
+	if restore_state.is_empty() and room.enemy_encounter == null:
 		match room.type:
 			Room.Type.BOSS:
 				mob_killed_this_act = 0
@@ -463,30 +463,62 @@ func _on_combat_room_entered(room: Room = null, restore_state: Dictionary = {}) 
 						room.enemy_encounter = encounter_pool.get_random_encounter_by_type(EnemyEncounter.Type.WEAK)
 					else:
 						room.enemy_encounter = encounter_pool.get_random_encounter_by_type(EnemyEncounter.Type.STRONG)
-
-	# ★ 无条件创建快照（全新进入与读档恢复都需记录战斗前状态，以保证中途存档可正确回滚）
-	pre_combat_snapshot = {
-		potions = stats.potions.duplicate(true),
-		health = character.health,
-		max_health = character.max_health,
-		random_seed = RandomSetting.instance.seed,
-		random_state = RandomSetting.instance.state,
-		# 如需保存遗物计数器，可在此添加：relic_counters = ...
-	}
-
+	
 	var battle_scene: CombatRoom = await _change_view(COMBAT_SCENE)
-	if not is_instance_valid(battle_scene):
-		return
-
 	battle_scene.update_background(stats.current_stage)
 	battle_scene.char_stats = character
 	battle_scene.enemy_encounter = room.enemy_encounter
 	battle_scene.relics = top_bar.relic_handler
-	battle_scene.start_combat()   # 总是重新开始战斗
+	
+	battle_scene.start_combat()
 
-	# 记录遭遇战信息到地图房间（供存档用）
+	#if restore_state.is_empty():
+		#battle_scene.start_combat()
+		##await get_tree().create_timer(2).timeout
+		#room.combat_initial_state = battle_scene.get_save_state()
+		##print("[First Entry] Saved initial state. Hand cards: ", room.combat_initial_state.get("hand_cards", []).size())
+	#else:
+		## 1. 启动战斗 UI（不激活遗物，不抽牌）
+		#battle_scene.start_combat(true)
+#
+		## 2. 恢复除手牌外的所有状态（血量、能量、敌人、抽牌堆等）
+		#var state_no_hand = restore_state.duplicate()
+		#state_no_hand.erase("hand_cards")   # 关键：先不恢复手牌，留给动画
+		#battle_scene.set_save_state(state_no_hand)
+#
+		## 3. 准备预存手牌（动画会用）
+		#var saved_cards: Array[Card] = []
+		#for card_data in restore_state.get("hand_cards", []):
+			#var card = Card.deserialize(card_data)
+			#if card:
+				#saved_cards.append(card)
+#
+		#if battle_scene.player_handler:
+			#battle_scene.player_handler.is_restoring = true
+			#battle_scene.player_handler.restore_hand_cards = saved_cards.duplicate()
+#
+		## 4. 手动激活遗物（start_combat(true) 跳过了）
+		#if not battle_scene.relics.relics_activated.is_connected(battle_scene._on_relics_activated):
+			#battle_scene.relics.relics_activated.connect(battle_scene._on_relics_activated)
+		#battle_scene.relics.activate_relics_by_trigger_type(Relic.TriggerType.START_OF_COMBAT)
+		#await get_tree().process_frame
+#
+		## 5. 触发抽牌动画（draw_cards 会使用预存手牌，并播放逐张入场效果）
+		#if battle_scene.player_handler:
+			#battle_scene.player_handler.draw_cards()
+#
+		## 6. 等待动画完全结束（你的测试值为 2 秒）
+		#await get_tree().create_timer(2).timeout
+#
+		## 7. 清除恢复标志，后续回合正常
+		#if battle_scene.player_handler:
+			#battle_scene.player_handler.is_restoring = false
+			#battle_scene.player_handler.restore_hand_cards.clear()
+
 	map_node.last_room.enemy_encounter = room.enemy_encounter.duplicate()
+	
 	_restoring = false
+
 	
 		
 
@@ -510,14 +542,14 @@ func _on_ancient_relic_selected(relic: Relic) -> void:
 		stats.add_relic(relic)
 
 func _on_campfire_room_entered(room: Room)-> void:
-	var capfire_scene :CampfireRoom = _change_view(CAMPFIRE_SCENE) as CampfireRoom
+	var capfire_scene :CampfireRoom = await _change_view(CAMPFIRE_SCENE) as CampfireRoom
 	capfire_scene.char_stats=character
 	capfire_scene.deck_view = select_deck_view
 	capfire_scene.initialize()
 	Events.campfire_entered.emit(room, stats, character)
 
 func _on_incident_room_entered(room: Room)->void:
-	var incident_scene :IncidentRoom = _change_view(INCIDENT_SCENE) as IncidentRoom
+	var incident_scene :IncidentRoom = await _change_view(INCIDENT_SCENE) as IncidentRoom
 	incident_scene.char_stats = character
 	incident_scene.run_stats=stats
 	incident_scene.deck_view= select_deck_view
@@ -549,89 +581,71 @@ func _victory() -> void:
 func _save_run(on_map: bool) -> void:
 	if _restoring:
 		return
-
-	# 判断当前是否在“进行中的战斗”（非奖励界面的战斗房间）
-	var in_active_combat := false
-	if not on_map:
-		var room_type = map_node.last_room.type if map_node.last_room else Room.Type.NOT_ASSIGNED
-		if room_type in [Room.Type.MONSTER, Room.Type.ELITE, Room.Type.BOSS]:
-			if not (current_room.get_child_count() > 0 and current_room.get_child(0) is BattleReward):
-				in_active_combat = true
-
-	# ========== 随机数种子与状态 ==========
-	# 战斗中存档 → 使用快照中的种子（回到战斗前随机状态）
-	if in_active_combat and not pre_combat_snapshot.is_empty():
-		save_data.generator_seed = pre_combat_snapshot["random_seed"]
-		save_data.generator_state = pre_combat_snapshot["random_state"]
-	else:
-		save_data.generator_seed = RandomSetting.instance.seed
-		save_data.generator_state = RandomSetting.instance.state
-
-	# ========== 人物与进度数据 ==========
+	# 随机数生产器相关
+	save_data.generator_seed = RandomSetting.instance.seed
+	save_data.generator_state = RandomSetting.instance.state
+	#人物数据
 	save_data.run_stats = stats
 	save_data.char_stats = character
 	save_data.current_deck = character.deck
-
-	# 药水、血量：战斗中存档用快照回滚，否则保存当前值
-	if in_active_combat and not pre_combat_snapshot.is_empty():
-		save_data.potions = pre_combat_snapshot["potions"]
-		save_data.current_health = pre_combat_snapshot["health"]
-		# 如果存在最大血量变化，同样回滚：save_data.current_max_health = pre_combat_snapshot["max_health"]
-	else:
-		save_data.potions = stats.potions.duplicate()
-		save_data.current_health = character.health
-
+	save_data.current_health = character.health
+	save_data.potions = stats.potions.duplicate()
 	save_data.relics = stats.relics.duplicate()
 	save_data.gold = stats.gold
 	for relic: Relic in save_data.relics:
 		relic.save_count()
-
-	# 相机位置
+	
 	save_data.map_camera_y = map_node.camera_2d.position.y
 	save_data.map_old_camera_y = map_node.old_camera_2d_position_y
 
-	# 地图数据
+	#地图相关
 	save_data.last_room = map_node.last_room
-	if map_node.last_room != null:
+	if (map_node.last_room != null):
 		print(map_node.last_room.type)
-
 	if on_map:
 		save_data.state = SaveGame.State.ON_MAP
 		save_data.room_type = Room.Type.NOT_ASSIGNED
 		save_data.room_state = {}
 	else:
-		# 判断当前界面是否是战斗奖励
 		if current_room.get_child_count() > 0 and current_room.get_child(0) is BattleReward:
 			save_data.is_battle_reward = true
 		else:
 			save_data.is_battle_reward = false
-		# 收集房间状态（触发商店等 get_save_state，关闭 UI）
+		#保存房间状态
 		save_data.room_state = _collect_room_state()
 		save_data.state = SaveGame.State.IN_ROOM
 		save_data.room_type = map_node.last_room.type if map_node.last_room else Room.Type.NOT_ASSIGNED
+		#print("[Save] room_type = ", save_data.room_type, " last_room: ", map_node.last_room)
 
-	# 收集所有房间类型与已选状态
+	
+	# 收集每个房间的类型
 	var types := []
 	for floor in stats.map_data:
 		var row_types := []
 		for room: Room in floor:
-			row_types.append(room.type)
+			row_types.append(room.type)          # 存枚举值（int）
+			#if room.type == Room.Type.BOSS:
+				#print("[Save] BOSS room at row=", room.row, " col=", room.column)
 		types.append(row_types)
 	save_data.map_types = types
 
+	# 收集已选房间坐标
 	var sel := []
 	for floor in stats.map_data:
 		for room: Room in floor:
 			if room.selected:
 				sel.append([room.row, room.column])
 	save_data.selected_rooms = sel
-
-	# 写入存档
-	save_data.save_data()
-
-	# 记录问号房类型（如果需要）
-	save_data.last_room_unknown_type = map_node.last_room.unknownType if map_node.last_room else ""	
 	
+	save_data.save_data()
+	
+	#var test_save := SaveGame.load_data()
+	#if test_save:
+		#print("[DEBUG] 存档中的 room_state: ", test_save.room_state)
+	#else:
+		#print("[DEBUG] 存档写入失败！")
+	save_data.last_room_unknown_type = map_node.last_room.unknownType if map_node.last_room else ""
+
 func _load_run() -> void:
 	save_data = SaveGame.load_data()
 	assert(save_data, "Could not load last save")
@@ -689,19 +703,20 @@ func _collect_room_state() -> Dictionary:
 	if current_room.get_child_count() == 0:
 		return {}
 
-	# 奖励房间的保存逻辑保留
+	# ★ 优先处理奖励房间（避免被 last_room.type 误导）
 	if current_room.get_child(0) is BattleReward:
 		var scene = current_room.get_child(0)
 		if scene.has_method("get_save_state"):
 			return scene.get_save_state()
 		return {}
 
-	# 战斗房间不需要保存内部状态，因为会重新开始战斗
+	# 原有逻辑不变
 	var room_type = map_node.last_room.type if map_node.last_room else Room.Type.NOT_ASSIGNED
 	if room_type in [Room.Type.MONSTER, Room.Type.ELITE, Room.Type.BOSS]:
-		return {}   # 空状态，读档时直接进入新战斗
+		if map_node.last_room:
+			return map_node.last_room.combat_initial_state.duplicate()
+		return {}
 
-	# 其他房间按需保存
 	var scene = current_room.get_child(0)
 	if scene.has_method("get_save_state"):
 		return scene.get_save_state()

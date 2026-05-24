@@ -105,7 +105,7 @@ base_description = "[center]对所有敌人造成{damage}点伤害。
 base_numeric_entries = Array[ExtResource("1_xi4tp")]([SubResource("Resource_ybedn"), SubResource("Resource_omd62")])
 upgraded_target = 2
 upgraded_cost = 1
-upgraded_description = "center]对所有敌人造成{damage}点伤害。
+upgraded_description = "[center]对所有敌人造成{damage}点伤害。
 你在本回合中每打出过一张其他攻击牌，这张牌的伤害就提升{increment}点。[/center]"
 upgraded_numeric_entries = Array[ExtResource("1_xi4tp")]([SubResource("Resource_4qjy6"), SubResource("Resource_i6ckw")])
 upgraded_effects = Array[ExtResource("2_np6rn")]([SubResource("Resource_xd7cs")])

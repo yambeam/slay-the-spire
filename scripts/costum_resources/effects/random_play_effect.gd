@@ -79,6 +79,3 @@ func _random_play(player: Node, card: Card) -> void:
 			card.play(player, enemies)
 		card.Target.EVERYONE:
 			card.play(player, enemies)
-	if where == Where.HAND:
-		print("remove_hand")
-		(player as Player).agent.hand_manager.remove_card(card)

@@ -68,17 +68,17 @@ func _ready() -> void:
 	pause_menu.save_and_quit.connect(
 		func():
 			#var on_map := is_on_map  # 假设 Map 节点有 visible 属性；若无，需手动维护 is_on_map 变量
-			if is_on_map:
-				save_data.state = save_data.State.ON_MAP
-			else:
-				save_data.state = save_data.State.IN_ROOM
-				save_data.map_camera_y = 0.0
-				save_data.map_old_camera_y = 0.0
-				if current_room.get_child_count() > 0 and current_room.get_child(0) is BattleReward:
-					save_data.is_battle_reward = true
-					save_data.room_state = _collect_room_state()
-			print(save_data.potions)
-			save_data.save_data()
+			#if is_on_map:
+				#save_data.state = save_data.State.ON_MAP
+			#else:
+				#save_data.state = save_data.State.IN_ROOM
+				#save_data.map_camera_y = 0.0
+				#save_data.map_old_camera_y = 0.0
+				#if current_room.get_child_count() > 0 and current_room.get_child(0) is BattleReward:
+					#save_data.is_battle_reward = true
+					#save_data.room_state = _collect_room_state()
+			#print(save_data.potions)
+			#save_data.save_data()
 			
 			back_to_main()
 	)
@@ -261,7 +261,7 @@ func handleSettingsRequest() -> void:
 func _change_view(scene: PackedScene) -> Node:
 	if current_room.get_child_count() > 0:
 		current_room.get_child(0).queue_free()
-	
+	await get_tree().process_frame
 	var new_view := scene.instantiate()
 	current_room.add_child(new_view)
 	return new_view
@@ -278,6 +278,8 @@ func _on_combat_won(context: RewardContext) -> void:
 	reward_scene.run_stats = stats
 	reward_scene.character_stats = character
 	reward_scene.add_rewards(map_node.last_room, context)
+	# 等待add_rewards? 这又不是异步函数，但是如果不等待无法正常保存数据
+	await get_tree().process_frame
 	_save_run(false)
 
 	
@@ -540,14 +542,14 @@ func _on_ancient_relic_selected(relic: Relic) -> void:
 		stats.add_relic(relic)
 
 func _on_campfire_room_entered(room: Room)-> void:
-	var capfire_scene :CampfireRoom = _change_view(CAMPFIRE_SCENE) as CampfireRoom
+	var capfire_scene :CampfireRoom = await _change_view(CAMPFIRE_SCENE) as CampfireRoom
 	capfire_scene.char_stats=character
 	capfire_scene.deck_view = select_deck_view
 	capfire_scene.initialize()
 	Events.campfire_entered.emit(room, stats, character)
 
 func _on_incident_room_entered(room: Room)->void:
-	var incident_scene :IncidentRoom = _change_view(INCIDENT_SCENE) as IncidentRoom
+	var incident_scene :IncidentRoom = await _change_view(INCIDENT_SCENE) as IncidentRoom
 	incident_scene.char_stats = character
 	incident_scene.run_stats=stats
 	incident_scene.deck_view= select_deck_view

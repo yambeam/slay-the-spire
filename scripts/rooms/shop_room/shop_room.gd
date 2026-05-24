@@ -134,25 +134,31 @@ func _initialize_highlight() -> void:
 func _initialize_inventory_nodes() -> void:
 	if not inventory:
 		return
-		
+	
 	backstop = inventory.get_node("Backstop") as ColorRect
-#slots_container内部包含三种商品
 	slots_container = inventory.get_node("SlotsContainer") as Control
 	back_button = inventory.get_node("BackButton") as Control
 	merchant_hand = inventory.get_node_or_null("MerchantHandContainer") as SpineSprite
 	card_removal_node = slots_container.get_node_or_null("MerchantCardRemoval") as MerchantCardRemoval
 
+	# 设置为顶层控件，脱离父节点裁剪但仍在树下
+	if slots_container:
+		slots_container.top_level = true
+		slots_container.clip_contents = false
+	if backstop:
+		backstop.top_level = true
 	if back_button:
+		back_button.top_level = true
 		back_button.visible = false
 		back_button.mouse_filter = Control.MOUSE_FILTER_STOP
-		# 双重保障：gui_input 信号直接处理点击
 		if not back_button.gui_input.is_connected(_on_back_button_gui_input):
 			back_button.gui_input.connect(_on_back_button_gui_input)
-			
+	
 	if slots_container:
 		_set_slots_initial_position(slots_container)
 	else:
 		print("错误：未找到 SlotsContainer 节点！")
+		
 
 #获取runstats
 func _initialize_run_stats() -> void:
@@ -599,7 +605,7 @@ func _reset_hand_immediately() -> void:
 # ============================================
 func _set_slots_initial_position(slots: Control) -> void:
 	var viewport_size = get_viewport().get_visible_rect().size
-	var target_x = (viewport_size.x - slots.size.x) / 2
+	var target_x = (viewport_size.x - slots.size.x) / 2.0
 	slots.set_meta("target_position", Vector2(target_x, 0))
 	slots.position = Vector2(target_x, -slots.size.y)
 
@@ -608,9 +614,6 @@ func _show_inventory() -> void:
 	if not slots_container:
 		return
 	slots_container.visible = true
-	var root = get_tree().root
-	if slots_container.get_parent() != root:
-		slots_container.reparent(root)
 	slots_container.z_index = 3
 
 	var target_pos: Vector2 = slots_container.get_meta("target_position", Vector2.ZERO)
@@ -620,8 +623,12 @@ func _show_inventory() -> void:
 
 	back_button.visible = true
 	back_button.z_index = 10
+	# back_button 也需要定位到合适位置（例如屏幕中央下方）
+	if back_button:
+		back_button.position = Vector2(back_button.size.x/2, 720 - 80)
 	if backstop:
 		backstop.visible = true
+		backstop.z_index = 2
 		create_tween().tween_property(backstop, "modulate:a", 0.7, 0.3)
 
 	if not cards_populated:
@@ -635,7 +642,6 @@ func _show_inventory() -> void:
 func _on_back_button_pressed() -> void:
 	_reset_hand_immediately()
 	var tween = create_tween().set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_QUINT)
-#	快速返回,实际上还会有bug
 	tween.tween_property(slots_container, "position:y", -slots_container.size.y, 0.1)
 	tween.parallel().tween_property(slots_container, "modulate:a", 0.0, 0.3)
 	if backstop:
@@ -643,10 +649,8 @@ func _on_back_button_pressed() -> void:
 		mask_tween.tween_property(backstop, "modulate:a", 0.0, 0.3)
 		mask_tween.tween_callback(func(): backstop.visible = false)
 	tween.tween_callback(_reset_inventory_position)
-
+	
 func _reset_inventory_position() -> void:
-	if slots_container.get_parent() != inventory:
-		slots_container.reparent(inventory)
 	slots_container.visible = false
 	back_button.visible = false
 
@@ -847,11 +851,7 @@ func _get_character_color_mask(char_name: String) -> int:
 func _close_inventory_immediate() -> void:
 	if not slots_container:
 		return
-	# 如果容器被移到了根节点，放回 inventory 下
-	if slots_container.get_parent() != inventory:
-		slots_container.reparent(inventory)
 	slots_container.visible = false
-	# 重置位置到屏幕上方（与初始化位置一致）
 	var target_x = slots_container.get_meta("target_position", Vector2.ZERO).x
 	slots_container.position = Vector2(target_x, -slots_container.size.y)
 	slots_container.modulate.a = 1.0
@@ -993,12 +993,10 @@ func _show_inventory_instant() -> void:
 	if not slots_container:
 		return
 	slots_container.visible = true
-	var root = get_tree().root
-	if slots_container.get_parent() != root:
-		slots_container.reparent(root)
 	slots_container.z_index = 3
 	slots_container.position = slots_container.get_meta("target_position", Vector2.ZERO)
 	slots_container.modulate.a = 1.0
+
 	back_button.visible = true
 	back_button.z_index = 10
 	if backstop:

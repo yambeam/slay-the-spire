@@ -15,6 +15,7 @@ func initialize(run_stats_: RunStats) -> void:
 	Events.player_turn_ended.connect(_on_player_turn_ended)
 	Events.player_turn_started.connect(_on_player_turn_started)
 	Events.before_potion_used.connect(_on_before_potion_used)
+	Events.potion_discarded.connect(_on_potion_discarded)
 	Events.after_potion_used.connect(_on_after_potion_used)
 	run_stats.potion_added.connect(add_potion)
 	run_stats.potion_removed.connect(remove_potion)
@@ -63,6 +64,12 @@ func remove_potion(_index: int):
 func _on_before_potion_used(_potion_ui: PotionUI) -> void:
 	for child: PotionUI in potion_place_holder.get_children():
 		child.can_use = false
+
+func _on_potion_discarded(potion_ui: PotionUI) -> void:
+	for child: PotionUI in potion_place_holder.get_children():
+		if potion_ui == child:
+			run_stats.remove_potion(child.get_index())
+		child.can_use = true
 
 func _on_after_potion_used(potion_ui: PotionUI) -> void:
 	for child: PotionUI in potion_place_holder.get_children():

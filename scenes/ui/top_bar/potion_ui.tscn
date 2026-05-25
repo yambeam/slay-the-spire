@@ -3,13 +3,25 @@
 [ext_resource type="Script" uid="uid://b0q6gjtkjs25u" path="res://scripts/ui/potion_ui.gd" id="1_l0m77"]
 [ext_resource type="Texture2D" uid="uid://1uxi4t" path="res://images/atlases/potion_outline_atlas.sprites/fire_potion.tres" id="2_l0m77"]
 [ext_resource type="Texture2D" uid="uid://dc6bmjs4rlhtv" path="res://images/packed/potions/potion_placeholder.png" id="3_l0m77"]
+[ext_resource type="Texture2D" uid="uid://dqcv0rkkoktj5" path="res://images/potions/potion_pop_up/potion_popup.png" id="4_xo187"]
+[ext_resource type="Texture2D" uid="uid://bvhjtfse0o6mv" path="res://images/potions/potion_pop_up/potion_popup_top.png" id="5_xh0r2"]
+[ext_resource type="Texture2D" uid="uid://b5ah8gyravgjw" path="res://images/potions/potion_pop_up/potion_popup_bottom.png" id="6_2pax7"]
+[ext_resource type="FontFile" uid="uid://wcoiw83db02h" path="res://fonts/zhs/SourceHanSerifSC-Bold.otf" id="6_xh0r2"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_2pax7"]
+font = ExtResource("6_xh0r2")
+font_size = 24
+
+[sub_resource type="LabelSettings" id="LabelSettings_xck11"]
+font = ExtResource("6_xh0r2")
+font_size = 24
+font_color = Color(1, 0.35000002, 0.35000002, 1)
 
 [node name="Potion2" type="MarginContainer" unique_id=40549828]
-mouse_filter = 0
+offset_right = 50.0
 script = ExtResource("1_l0m77")
 
 [node name="OutLine" type="TextureRect" parent="." unique_id=128797854]
-visible = false
 self_modulate = Color(1, 1, 1, 0.4392157)
 custom_minimum_size = Vector2(50, 0)
 layout_mode = 2
@@ -17,9 +29,74 @@ texture = ExtResource("2_l0m77")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="TextureRect" type="TextureRect" parent="." unique_id=150360801]
+[node name="PotionButton" type="TextureButton" parent="." unique_id=1735674312]
 custom_minimum_size = Vector2(50, 0)
 layout_mode = 2
-texture = ExtResource("3_l0m77")
+texture_normal = ExtResource("3_l0m77")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="PotionPopup" type="Control" parent="." unique_id=1350498533]
+visible = false
+layout_mode = 2
+mouse_filter = 2
+
+[node name="PotionPopupBackground" type="TextureRect" parent="PotionPopup" unique_id=1641813003]
+custom_minimum_size = Vector2(200, 200)
+layout_mode = 0
+offset_left = -92.0
+offset_top = 55.0
+offset_right = 108.0
+offset_bottom = 255.0
+mouse_filter = 2
+texture = ExtResource("4_xo187")
 expand_mode = 1
-stretch_mode = 5
+
+[node name="UseButton" type="TextureButton" parent="PotionPopup/PotionPopupBackground" unique_id=176750643]
+self_modulate = Color(1, 1, 1, 0.4862745)
+layout_mode = 0
+offset_left = 7.0
+offset_top = 11.0
+offset_right = 192.0
+offset_bottom = 112.0
+mouse_filter = 1
+texture_normal = ExtResource("5_xh0r2")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="UseLabel" type="Label" parent="PotionPopup/PotionPopupBackground/UseButton" unique_id=1075589360]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 28.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "使用"
+label_settings = SubResource("LabelSettings_2pax7")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="DiscardButton" type="TextureButton" parent="PotionPopup/PotionPopupBackground" unique_id=541689937]
+self_modulate = Color(1, 1, 1, 0.5254902)
+layout_mode = 0
+offset_left = 7.0
+offset_top = 120.0
+offset_right = 192.0
+offset_bottom = 191.0
+mouse_filter = 1
+texture_normal = ExtResource("6_2pax7")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="DiscardLabel" type="Label" parent="PotionPopup/PotionPopupBackground/DiscardButton" unique_id=2115954554]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "丢弃"
+label_settings = SubResource("LabelSettings_xck11")
+horizontal_alignment = 1
+vertical_alignment = 1

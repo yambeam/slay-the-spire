@@ -26,6 +26,7 @@ signal potion_aim_started(potion_ui: PotionUI)
 signal potion_aim_ended(potion_ui: PotionUI)
 signal before_potion_used(potion_ui: PotionUI)
 signal after_potion_used(potion_ui: PotionUI)
+signal potion_discarded(potion_ui: PotionUI)
 ## 技能相关
 signal before_skill_played(skill: Skill)
 signal skill_played(skill: Skill)

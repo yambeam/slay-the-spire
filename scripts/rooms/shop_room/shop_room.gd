@@ -358,10 +358,9 @@ func _populate_potions() -> void:
 		return
 
 #	获取相应药剂
-	var mask = character_color | Card.COLOR.COLORLESS
+	var mask = character_color | Potion.COLOR.COLORLESS
 	var available_potions = ItemPool.get_potions_by_color(mask)
-	available_potions.shuffle()
-
+	RandomSetting.array_shuffle(available_potions)
 	var slots: Array[Control] = _find_slots(potions_container, "merchant_potion.gd", "set_potion_data", "MerchantPotion")
 	_clear_slots(slots, "potion_data")
 	var count = min(slots.size(), available_potions.size())

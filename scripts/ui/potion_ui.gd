@@ -2,7 +2,12 @@ class_name PotionUI
 extends MarginContainer
 
 @onready var out_line: TextureRect = $OutLine
-@onready var texture_rect: TextureRect = $TextureRect
+@onready var potion_popup: Control = $PotionPopup
+@onready var use_button: TextureButton = $PotionPopup/PotionPopupBackground/UseButton
+@onready var discard_button: TextureButton = $PotionPopup/PotionPopupBackground/DiscardButton
+@onready var potion_button: TextureButton = $PotionButton
+
+
 
 const POTION_PLACEHOLDER = preload("res://images/packed/potions/potion_placeholder.png")
 
@@ -17,9 +22,14 @@ var tween: Tween
 var original_position
 
 func _ready() -> void:
-	mouse_entered.connect(_on_mouse_entered)
-	mouse_exited.connect(_on_mouse_exited)
-	gui_input.connect(_on_gui_input)
+	#mouse_entered.connect(_on_mouse_entered)
+	#mouse_exited.connect(_on_mouse_exited)
+	#gui_input.connect(_on_gui_input)
+	use_button.pressed.connect(_on_use_button_pressed)
+	discard_button.pressed.connect(_on_discard_button_pressed)
+	potion_button.pressed.connect(_on_potion_button_pressed)
+	potion_button.mouse_entered.connect(_on_mouse_entered)
+	potion_button.mouse_exited.connect(_on_mouse_exited)
 	
 
 func set_potion(value: Potion):
@@ -28,11 +38,11 @@ func set_potion(value: Potion):
 	if value == null:
 		potion = null
 		out_line.texture = null
-		texture_rect.texture = POTION_PLACEHOLDER
+		potion_button.texture_normal = POTION_PLACEHOLDER
 	else:
 		potion = value
 		out_line.texture = value.outline_icon
-		texture_rect.texture = value.icon
+		potion_button.texture_normal = value.icon
 
 func play() -> void:
 	if used:
@@ -42,6 +52,19 @@ func play() -> void:
 	potion.play(get_tree().get_first_node_in_group("ui_player"), targets, self)
 	_on_mouse_exited()
 
+func discard() -> void:
+	if used:
+		return 
+	Events.potion_discarded.emit(self)
+	_on_mouse_exited()
+
+func set_potion_visible(popup_visible: bool) -> void:
+	if popup_visible:
+		potion_popup.visible = true
+		use_button.disabled = !can_use
+	else:
+		potion_popup.visible = false
+		
 func _on_mouse_entered() -> void:
 	if can_use:
 		if tween:
@@ -65,25 +88,54 @@ func _on_mouse_exited() -> void:
 	Events.tooltip_hide_request.emit()
 	out_line.hide()
 	
-func _on_gui_input(event: InputEvent) -> void:
-	if not can_use:
+func _on_potion_button_pressed() -> void:
+	if potion == null:
 		return
-	if event.is_action_pressed("left_mouse"):
-		if potion == null:
-			return
-		if potion.target_type == Potion.TargetType.SELF:
-			targets = get_tree().get_nodes_in_group("ui_player")
-			play()
-		elif potion.target_type == Potion.TargetType.ALL_ENEMY:
-			targets = get_tree().get_nodes_in_group("ui_enemies")
-			play()
-		else:
-			if targeting:
-				_end_aiming()
-			else:
-				_start_aiming()
+	print("test")
+	set_potion_visible(!potion_popup.visible)
+	#potion_popup.visible = !potion_popup.visible
+	
+#func _on_gui_input(event: InputEvent) -> void:
+	#if not can_use or potion == null:
+		#return
+	#if event.is_action_pressed("left_mouse"):
+		#potion_popup.visible = !potion_popup.visible
+	#if event.is_action_pressed("left_mouse"):
+		#if potion == null:
+			#return
+		#if potion.target_type == Potion.TargetType.SELF:
+			#targets = get_tree().get_nodes_in_group("ui_player")
+			#play()
+		#elif potion.target_type == Potion.TargetType.ALL_ENEMY:
+			#targets = get_tree().get_nodes_in_group("ui_enemies")
+			#play()
+		#else:
+			#if targeting:
+				#_end_aiming()
+			#else:
+				#_start_aiming()
 
-func _input(event: InputEvent) -> void:
+func _on_use_button_pressed() -> void:
+	if not can_use:
+		return 
+	if potion == null:
+		return
+	if potion.target_type == Potion.TargetType.SELF:
+		targets = get_tree().get_nodes_in_group("ui_player")
+		play()
+	elif potion.target_type == Potion.TargetType.ALL_ENEMY:
+		targets = get_tree().get_nodes_in_group("ui_enemies")
+		play()
+	else:
+		_start_aiming()
+	potion_popup.visible = false
+
+func _on_discard_button_pressed() -> void:
+	discard()
+	potion_popup.visible = false
+
+
+func _unhandled_input(event: InputEvent) -> void:
 	if not targeting:
 		return	
 	if event.is_action_pressed("right_mouse"):
@@ -94,6 +146,7 @@ func _input(event: InputEvent) -> void:
 		if targets.is_empty():
 			return
 		play()
+	
 
 func _start_aiming() -> void:
 	targets.clear()

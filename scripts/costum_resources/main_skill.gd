@@ -8,7 +8,7 @@ extends Skill
 ## 杀怪回复
 @export var charge_over_kill: int = 5
 
-var current_charge: int = 100 : set = _set_current_charge
+var current_charge: int = 0 : set = _set_current_charge
 
 func available() -> bool:
 	return current_charge >= charge_cost

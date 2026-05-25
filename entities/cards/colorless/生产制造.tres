@@ -65,6 +65,7 @@ effects = Array[ExtResource("2_cp1p6")]([SubResource("Resource_x1lvb")])
 portrait = ExtResource("5_2d0d8")
 base_description = "[center]获得{energy}点[color=gold]能量[/color]。[/center]"
 base_numeric_entries = Array[ExtResource("1_8cryk")]([SubResource("Resource_7xeyj")])
+exhaust = true
 upgraded_description = "[center]获得{energy}点[color=gold]能量[/color]。[/center]"
 upgraded_numeric_entries = Array[ExtResource("1_8cryk")]([SubResource("Resource_6dqwe")])
 upgraded_effects = Array[ExtResource("2_cp1p6")]([SubResource("Resource_mutw3")])

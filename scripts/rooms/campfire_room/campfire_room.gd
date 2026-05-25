@@ -6,41 +6,43 @@ extends Control
 
 @onready var spine_manager: SpineManager = $SpineManager
 
-@onready var rest: TextureButton = $UI/HBoxContainer2/rest
+@onready var rest: Button = $UI/HBoxContainer/rest
 
-@onready var forging: TextureButton = $UI/HBoxContainer2/forging
+
+@onready var forging: Button = $UI/HBoxContainer/forging
+
 
 var deck_view: DeckView
 var forgeable_cards: Array[Card]
 
 func _ready() -> void:
 	mouse_filter = Control.MOUSE_FILTER_PASS
-	$Control.mouse_filter = Control.MOUSE_FILTER_IGNORE
-	$UI.mouse_filter = Control.MOUSE_FILTER_IGNORE
-	$UI/HBoxContainer/rest.mouse_filter = Control.MOUSE_FILTER_IGNORE
-	$UI/HBoxContainer/forging.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	#$Control.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	#$UI.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	#$UI/HBoxContainer/rest.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	#$UI/HBoxContainer/forging.mouse_filter = Control.MOUSE_FILTER_IGNORE
 
-func _input(event: InputEvent) -> void:
-	if event is InputEventMouseButton:
-		var mb := event as InputEventMouseButton
-		if mb.button_index == MOUSE_BUTTON_WHEEL_UP or mb.button_index == MOUSE_BUTTON_WHEEL_DOWN:
-			accept_event() 
-	if not (event is InputEventMouseButton):
-		return
-	var mb := event as InputEventMouseButton
-	if mb.button_index != MOUSE_BUTTON_LEFT or not mb.pressed:
-		return
-
-	var rest_btn := $UI/HBoxContainer/rest
-	var forge_btn := $UI/HBoxContainer/forging
-	var global_pos: Vector2 = mb.global_position
-
-	if rest_btn.get_global_rect().has_point(global_pos):
-		_on_rest_pressed()
-		accept_event()
-	elif forge_btn.get_global_rect().has_point(global_pos):
-		_on_forging_pressed()
-		accept_event()
+# 不因该在_input中处理
+#func _input(event: InputEvent) -> void:
+	#if event is InputEventMouseButton:
+		#var mb := event as InputEventMouseButton
+		#if mb.button_index == MOUSE_BUTTON_WHEEL_UP or mb.button_index == MOUSE_BUTTON_WHEEL_DOWN:
+			#accept_event() 
+	#if not (event is InputEventMouseButton):
+		#return
+	#var mb := event as InputEventMouseButton
+	#if mb.button_index != MOUSE_BUTTON_LEFT or not mb.pressed:
+		#return
+	#var rest_btn := $UI/HBoxContainer/rest
+	#var forge_btn := $UI/HBoxContainer/forging
+	#var global_pos: Vector2 = event.global_position
+#
+	#if rest_btn.get_global_rect().has_point(global_pos):
+		#_on_rest_pressed()
+		#accept_event()
+	#elif forge_btn.get_global_rect().has_point(global_pos):
+		#_on_forging_pressed()
+		#accept_event()
 
 func initialize() -> void:
 	forgeable_cards = char_stats.deck.cards.filter(func(card: Card): return card.can_be_upgraded())
@@ -51,6 +53,8 @@ func _on_rest_pressed() -> void:
 	print("休息")
 	char_stats.heal(ceil(char_stats.max_health * 0.3))
 	animation_player.play("fade_out")
+	rest.disabled = true
+	forging.disabled = true
 
 func _on_fade_out_finished() -> void:
 	Events.campfire_exited.emit()
@@ -61,6 +65,9 @@ func _on_forging_pressed() -> void:
 	if !cards.is_empty():
 		cards[0].upgrade()
 		animation_player.play("fade_out")
+	rest.disabled = true
+	forging.disabled = true
+	
 
 
 func _on_rest_mouse_entered() -> void:

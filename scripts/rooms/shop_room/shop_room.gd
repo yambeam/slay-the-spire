@@ -7,16 +7,32 @@ const CARD_MENU_UI_SCENE = preload("res://scenes/ui/card_menu_ui.tscn")
 # 商品价格随机区间
 const RELIC_PRICE_MIN := 200
 const RELIC_PRICE_MAX := 400
+const COMMON_RELIC_PRICE := 175.0
+const UNCOMMON_RELIC_PRICE := 225.0
+const RARE_RELIC_PRICE := 275.0
+const SHOP_RELIC_PRICE := 200.0
+const RELIC_FLOAT_RATE := 0.15
+
+const COMMON_CARD_PRICE := 50
+const UNCOMMON_CARD_PRICE := 75
+const RARE_CARD_PRICE := 150
+const CARD_FLOAT_RATE := 0.05
+
+const COMMON_POTION_PRICE := 50
+const UNCOMMON_POTION_PRICE := 75
+const RARE_POTION_PRICE := 100
+const POTION_FLOAT_RATE := 0.05
 
 const POTION_PRICE_MIN := 40
 const POTION_PRICE_MAX := 80
 #删除卡牌固定费用为75（基础金币设置为75）
-const CARD_REMOVAL_PRICE := 75
+# 由于可以无限删且不会增长价格，改为125
+const CARD_REMOVAL_PRICE := 125
 
 # 折扣概率
 const DISCOUNT_CHANCE := 0.3
-const DISCOUNT_FACTOR_MIN := 0.3
-const DISCOUNT_FACTOR_MAX := 0.9
+const DISCOUNT_FACTOR_MIN := 0.5
+const DISCOUNT_FACTOR_MAX := 0.5
 
 @onready var inventory := %MerchantInventory
 @onready var return_button := %Reback
@@ -284,8 +300,8 @@ func _populate_relics() -> void:
 	
 	
 	var all_relics = ItemPool.get_relics(maskColor,maskRarity)
-	for i in all_relics:
-		print("预备遗物:",i.relic_name,",color:",i.relic_color,",rarity:",i.rarity)
+	#for i in all_relics:
+		#print("预备遗物:",i.relic_name,",color:",i.relic_color,",rarity:",i.rarity)
 	#var character_relic_pile: Array = ItemPool.get_relics_by_color(character_color)
 	#var colorless_relic_pile: Array = ItemPool.get_relics_by_color(Card.COLOR.COLORLESS)
 
@@ -298,21 +314,22 @@ func _populate_relics() -> void:
 	if not character_stats:
 		return
 
-	var available_relics: Array[Relic] = []
-	for relic in all_relics:
+	#var available_relics: Array[Relic] = []
+	# 以拾取的遗物会从遗物池中移出
+	#for relic in all_relics:
 		#if not relic.can_appear_as_reward(character_stats, Relic.Rarity.SHOP_RELIC):
+			##continue
+		# 过滤已拥有的遗物
+		#if run_stats.has_relic(relic.id):
 			#continue
-		## 过滤已拥有的遗物
-		if run_stats.has_relic(relic.id):
-			continue
-		available_relics.append(relic)
-	available_relics.shuffle()
+		#available_relics.append(relic)
+	RandomSetting.array_shuffle(all_relics)
 
 	var slots: Array[Control] = _find_slots(relics_container, "merchant_relic.gd", "set_relic_data", "MerchantRelic")
 	_clear_slots(slots, "relic_data")
-	var count = min(slots.size(), available_relics.size())
+	var count = min(slots.size(), all_relics.size())
 	for i in range(count):
-		var relic = available_relics[i]
+		var relic = all_relics[i]
 		var shop_item = _create_relic_shop_item(relic)    # 创建 ShopItem
 		var slot = slots[i]
 		slot.visible = true
@@ -429,10 +446,10 @@ func _apply_random_price_to_potion(potion: Potion) -> void:
 
 func _get_price_range_by_rarity(rarity: Card.Rarity) -> Vector2:
 	match rarity:
-		Card.Rarity.COMMON:   return Vector2(30, 50)
-		Card.Rarity.UNCOMMON: return Vector2(60, 80)
-		Card.Rarity.RARE:     return Vector2(100, 120)
-		_:                   return Vector2(30, 50)
+		Card.Rarity.COMMON:   return Vector2(COMMON_CARD_PRICE * ( 1 - CARD_FLOAT_RATE), COMMON_CARD_PRICE * (1 + CARD_FLOAT_RATE))
+		Card.Rarity.UNCOMMON: return Vector2(UNCOMMON_CARD_PRICE * ( 1 - CARD_FLOAT_RATE), UNCOMMON_CARD_PRICE * (1 + CARD_FLOAT_RATE))
+		Card.Rarity.RARE:     return Vector2(RARE_CARD_PRICE * ( 1 - CARD_FLOAT_RATE), RARE_CARD_PRICE * (1 + CARD_FLOAT_RATE))
+		_:                   return Vector2(999, 999)
 
 # ============================================
 # 购买回调
@@ -457,6 +474,7 @@ func _on_relic_purchased(shop_item: ShopItem, relic_node: MerchantRelic) -> void
 		return
 	run_stats.gold -= shop_item.shop_price
 	run_stats.add_relic(shop_item.item_data)
+	ItemPool.remove_relic(shop_item.item_data)
 	relic_node.visible = false
 	relic_node.set_meta("purchased", true)
 	_say_random("purchase_success", 2.0)
@@ -676,21 +694,26 @@ func _create_card_shop_item(card: Card) -> ShopItem:
 func _create_relic_shop_item(relic: Relic) -> ShopItem:
 	var price = 0
 	if relic.rarity == Relic.Rarity.COMMON:
-		price = randi_range(RELIC_PRICE_MIN*0.2, RELIC_PRICE_MIN*0.4)
-	elif relic.rarity == Relic.Rarity.UNCOMMON||relic.rarity == Relic.Rarity.SHOP_RELIC||relic.rarity == Relic.Rarity.EVENT:
-		price = randi_range(RELIC_PRICE_MIN*0.4, RELIC_PRICE_MAX*0.4)
+		price = floor(COMMON_RELIC_PRICE * (1.0 + RandomSetting.instance.randf_range(-RELIC_FLOAT_RATE, RELIC_FLOAT_RATE)))
+		#price = randi_range(RELIC_PRICE_MIN*0.2, RELIC_PRICE_MIN*0.4)
+	elif relic.rarity == Relic.Rarity.UNCOMMON:
+		price = floor(UNCOMMON_RELIC_PRICE * (1.0 + RandomSetting.instance.randf_range(-RELIC_FLOAT_RATE, RELIC_FLOAT_RATE)))
+	elif relic.rarity == Relic.Rarity.RARE:
+		price = floor(RARE_RELIC_PRICE * (1.0 + RandomSetting.instance.randf_range(-RELIC_FLOAT_RATE, RELIC_FLOAT_RATE)))
+	elif relic.rarity == Relic.Rarity.SHOP_RELIC:
+		price = floor(SHOP_RELIC_PRICE * (1.0 + RandomSetting.instance.randf_range(-RELIC_FLOAT_RATE, RELIC_FLOAT_RATE)))
 	else:
-		price = randi_range(RELIC_PRICE_MAX*0.4, RELIC_PRICE_MAX*0.6)
+		price = 999
 	return ShopItem.new(relic, price, false, 0)
 
 func _create_potion_shop_item(potion: Potion) -> ShopItem:
 	var price = 0
 	if potion.rarity == Potion.Rarity.COMMON:
-		price = randi_range(POTION_PRICE_MIN, POTION_PRICE_MAX)
-	elif potion.rarity == Potion.Rarity.COMMON:
-		price = randi_range(POTION_PRICE_MAX, POTION_PRICE_MAX*1.4)
+		price = floor(COMMON_POTION_PRICE + (1.0 + RandomSetting.instance.randf_range(-POTION_FLOAT_RATE, POTION_FLOAT_RATE)))
+	elif potion.rarity == Potion.Rarity.UNCOMMON:
+		price = floor(UNCOMMON_POTION_PRICE + (1.0 + RandomSetting.instance.randf_range(-POTION_FLOAT_RATE, POTION_FLOAT_RATE)))
 	else:
-		price = randi_range(POTION_PRICE_MAX*1.5, POTION_PRICE_MAX*1.9)
+		price = floor(RARE_POTION_PRICE + (1.0 + RandomSetting.instance.randf_range(-POTION_FLOAT_RATE, POTION_FLOAT_RATE)))
 	return ShopItem.new(potion, price, false, 0)
 
 func _get_run_node() -> Run:

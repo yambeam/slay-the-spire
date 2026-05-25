@@ -114,7 +114,7 @@ base_target = 1
 base_cost = 1
 effects = Array[ExtResource("2_igcjx")]([SubResource("Resource_wxhrj"), SubResource("Resource_pnl5r")])
 portrait = ExtResource("6_6mui0")
-base_description = "[center]造成{damage}点伤害。[/center][p][center]获得{block}点格挡。[/center]"
+base_description = "[center]造成{damage}点伤害。[/center][p][center]获得{block}点[color=gold]格挡[/color]。[/center]"
 base_numeric_entries = Array[ExtResource("1_mnfbt")]([SubResource("Resource_otnnw"), SubResource("Resource_vs7yu")])
 upgraded_target = 1
 upgraded_cost = 1

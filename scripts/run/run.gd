@@ -600,7 +600,9 @@ func _save_run(on_map: bool) -> void:
 	save_data.current_health = character.health
 	save_data.potions = stats.potions.duplicate()
 	save_data.relics = stats.relics.duplicate()
+	save_data.max_potion_slot = stats.max_potion_slots
 	save_data.gold = stats.gold
+	save_data.skill_charge = character.main_skill.current_charge
 	for relic: Relic in save_data.relics:
 		relic.save_count()
 	
@@ -664,11 +666,14 @@ func _load_run() -> void:
 	stats.potions = save_data.potions.duplicate()
 	stats.relics = save_data.relics.duplicate()
 	stats.gold = save_data.gold
+	stats.max_potion_slots = save_data.max_potion_slot
 	character.deck.cards = save_data.current_deck_cards.duplicate()
+	character.main_skill.current_charge = save_data.skill_charge
 	character.health = save_data.current_health
 	ItemPool.init_item_pool(character.color)
 	for relic: Relic in save_data.relics:
 		relic.load_count()
+		ItemPool.remove_relic(relic)
 
 	_load_up_top_bar()
 	_setup_event_connections()

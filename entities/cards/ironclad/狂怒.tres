@@ -66,9 +66,9 @@ type = 2
 rarity = 2
 effects = Array[ExtResource("2_5ean3")]([SubResource("Resource_o38sf")])
 portrait = ExtResource("5_m4vkd")
-base_description = "[center]打出此牌后，你在这个回合内每打出一张攻击牌，获得{stacks}点格挡。[/center]"
+base_description = "[center]打出此牌后，你在这个回合内每打出一张攻击牌，获得{stacks}点[color=gold]格挡[/color]。[/center]"
 base_numeric_entries = Array[ExtResource("1_1n3xw")]([SubResource("Resource_nbo8x")])
-upgraded_description = "[center]打出此牌后，你在这个回合内每打出一张攻击牌，获得{stacks}点格挡。[/center]"
+upgraded_description = "[center]打出此牌后，你在这个回合内每打出一张攻击牌，获得{stacks}点[color=gold]格挡[/color]。[/center]"
 upgraded_numeric_entries = Array[ExtResource("1_1n3xw")]([SubResource("Resource_p4jms")])
 upgraded_effects = Array[ExtResource("2_5ean3")]([SubResource("Resource_78h6p")])
 metadata/_custom_type_script = "uid://br1hibx18tv13"

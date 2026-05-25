@@ -130,6 +130,7 @@ func add_relic_reward(relic: Relic) -> void:
 	relic_reward.pressed.connect(
 		func():
 			if run_stats: run_stats.add_relic(relic)
+			ItemPool.remove_relic(relic)
 			relic_reward.queue_free()
 	)
 	relic_reward.set_meta("reward_type", "relic")
@@ -299,7 +300,7 @@ func _get_random_weighted_relic() -> Relic:
 
 	# 计算总权重
 	var total_weight = relic_common_weight + relic_uncommon_weight + relic_rare_weight
-	var roll = randf() * total_weight
+	var roll = RandomSetting.instance.randf() * total_weight
 
 	var target_rarity: int
 	if roll < relic_common_weight:
@@ -310,7 +311,7 @@ func _get_random_weighted_relic() -> Relic:
 		target_rarity = Relic.Rarity.RARE
 
 	# 从当前池中筛选出该稀有度的遗物
-	var candidates := ItemPool.current_relic_pool.filter(
+	var candidates := ItemPool.get_current_relic_pool().filter(
 		func(r: Relic): return r.rarity == target_rarity
 	)
 	if candidates.is_empty():

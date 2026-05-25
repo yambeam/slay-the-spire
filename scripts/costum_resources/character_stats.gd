@@ -62,6 +62,9 @@ func add_card_to_deck(card: Card) -> void:
 	deck.add_card(card)
 	Events.card_added_to_deck.emit(card, self)
 
+func gain_energy(charge: int) -> void:
+	main_skill.current_charge += charge
+
 func create_instance() -> CharacterStats:
 	var instance := self.duplicate()
 	instance.health = max_health

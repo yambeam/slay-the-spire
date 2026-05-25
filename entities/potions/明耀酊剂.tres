@@ -34,7 +34,7 @@ metadata/_custom_type_script = "uid://b8qfrs61nmcix"
 script = ExtResource("2_fx3al")
 id = "radiant_tincture"
 potion_name = "明耀酊剂"
-description = "获得1点能量。在你的下3个回合开始时，额外获得1点能量"
+description = "获得1点能量。在你的下3个回合开始时，额外获得1点[color=gold]能量[/color]"
 icon = ExtResource("2_u4f0y")
 outline_icon = ExtResource("3_drgvd")
 rarity = 2

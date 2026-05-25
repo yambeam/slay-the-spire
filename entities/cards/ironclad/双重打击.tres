@@ -78,7 +78,7 @@ metadata/_custom_type_script = "uid://dtok21t0ujjui"
 [sub_resource type="Resource" id="Resource_qitht"]
 script = ExtResource("1_7heg4")
 numeric_provider = SubResource("Resource_r6a83")
-placeholder = "damge"
+placeholder = "damage"
 metadata/_custom_type_script = "uid://cxgxfbwykbp84"
 
 [resource]

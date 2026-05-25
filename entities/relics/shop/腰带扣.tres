@@ -1,0 +1,27 @@
+[gd_resource type="Resource" format=3 uid="uid://26gydkvkgb86"]
+
+[ext_resource type="Script" uid="uid://cgmi6f3o7leik" path="res://scripts/costum_resources/effect.gd" id="1_1wy03"]
+[ext_resource type="Script" uid="uid://dtok21t0ujjui" path="res://scripts/costum_resources/numeric_provider.gd" id="2_spxs8"]
+[ext_resource type="Script" uid="uid://buyc8rtroacx3" path="res://scripts/costum_resources/effects/gain_charge_effect.gd" id="3_rla7v"]
+[ext_resource type="Texture2D" uid="uid://djk4ok" path="res://images/atlases/relic_atlas.sprites/belt_buckle.tres" id="4_383pa"]
+[ext_resource type="Script" uid="uid://dxbaeq4nfbhl7" path="res://entities/relics/shop/腰带扣.gd" id="5_spxs8"]
+
+[sub_resource type="Resource" id="Resource_tgpf6"]
+script = ExtResource("2_spxs8")
+fixed_value = 1
+metadata/_custom_type_script = "uid://dtok21t0ujjui"
+
+[sub_resource type="Resource" id="Resource_nj0cm"]
+script = ExtResource("3_rla7v")
+charge_provider = SubResource("Resource_tgpf6")
+metadata/_custom_type_script = "uid://buyc8rtroacx3"
+
+[resource]
+script = ExtResource("5_spxs8")
+relic_name = "腰带扣"
+id = "belt_buckle"
+icon = ExtResource("4_383pa")
+description = "你每打出一张技能牌，获得1点充能"
+rarity = 16
+effects = Array[ExtResource("1_1wy03")]([SubResource("Resource_nj0cm")])
+metadata/_custom_type_script = "uid://bvf88v88tbaks"

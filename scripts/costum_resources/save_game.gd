@@ -12,6 +12,7 @@ enum State { ON_MAP, IN_ROOM }
 @export var current_health: int
 @export var potions: Array[Potion] = []
 @export var relics: Array[Relic] = []
+@export var max_potion_slot: int
 @export var gold: int
 
 
@@ -36,6 +37,9 @@ enum State { ON_MAP, IN_ROOM }
 # 随机数生成器相关参数
 @export var generator_seed: int
 @export var generator_state: int
+
+# 技能充能
+@export var skill_charge: int 
 
 func save_data() -> void:
 	var err := ResourceSaver.save(self, SAVE_PATH)

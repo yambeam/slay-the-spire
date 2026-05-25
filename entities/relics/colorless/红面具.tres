@@ -23,7 +23,7 @@ script = ExtResource("2_1fxle")
 relic_name = "红面具"
 id = "red_mask"
 icon = ExtResource("4_4c4mh")
-description = "在每场战斗开始时，给于所有敌人1层虚弱"
+description = "在每场战斗开始时，给于所有敌人1层[color=gold]虚弱[/color]"
 trigger_type = 2
 rarity = 2
 effects = Array[ExtResource("1_kus0j")]([SubResource("Resource_odjnw")])

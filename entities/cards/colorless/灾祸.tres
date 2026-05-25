@@ -1,0 +1,73 @@
+[gd_resource type="Resource" script_class="Card" format=3 uid="uid://bxp3d7hkg6mae"]
+
+[ext_resource type="Script" uid="uid://cxgxfbwykbp84" path="res://scripts/costum_resources/numeric_entry.gd" id="1_ggdhi"]
+[ext_resource type="Script" uid="uid://cgmi6f3o7leik" path="res://scripts/costum_resources/effect.gd" id="2_8k6mr"]
+[ext_resource type="Script" uid="uid://dtok21t0ujjui" path="res://scripts/costum_resources/numeric_provider.gd" id="2_ve877"]
+[ext_resource type="Texture2D" uid="uid://b35me15" path="res://images/atlases/card_atlas.sprites/colorless/calamity.tres" id="3_8k6mr"]
+[ext_resource type="Script" uid="uid://br1hibx18tv13" path="res://scripts/costum_resources/card.gd" id="3_wqru2"]
+[ext_resource type="Script" uid="uid://b8qfrs61nmcix" path="res://scripts/costum_resources/effects/apply_buff_effect.gd" id="4_fof0n"]
+
+[sub_resource type="Resource" id="Resource_p8hbf"]
+script = ExtResource("2_ve877")
+fixed_value = 5
+metadata/_custom_type_script = "uid://dtok21t0ujjui"
+
+[sub_resource type="Resource" id="Resource_xwda1"]
+script = ExtResource("1_ggdhi")
+numeric_type = 7
+numeric_provider = SubResource("Resource_p8hbf")
+placeholder = "charge"
+metadata/_custom_type_script = "uid://cxgxfbwykbp84"
+
+[sub_resource type="Resource" id="Resource_25a0q"]
+script = ExtResource("2_ve877")
+fixed_value = 5
+metadata/_custom_type_script = "uid://dtok21t0ujjui"
+
+[sub_resource type="Resource" id="Resource_47v3t"]
+script = ExtResource("4_fof0n")
+buff_name = "灾祸"
+buff_stack_provider = SubResource("Resource_25a0q")
+target_type = 1
+metadata/_custom_type_script = "uid://b8qfrs61nmcix"
+
+[sub_resource type="Resource" id="Resource_pblid"]
+script = ExtResource("2_ve877")
+fixed_value = 8
+metadata/_custom_type_script = "uid://dtok21t0ujjui"
+
+[sub_resource type="Resource" id="Resource_spxl2"]
+script = ExtResource("4_fof0n")
+buff_name = "灾祸"
+buff_stack_provider = SubResource("Resource_pblid")
+target_type = 1
+metadata/_custom_type_script = "uid://b8qfrs61nmcix"
+
+[sub_resource type="Resource" id="Resource_tjfnd"]
+script = ExtResource("2_ve877")
+fixed_value = 8
+metadata/_custom_type_script = "uid://dtok21t0ujjui"
+
+[sub_resource type="Resource" id="Resource_h84rb"]
+script = ExtResource("1_ggdhi")
+numeric_type = 7
+numeric_provider = SubResource("Resource_tjfnd")
+placeholder = "charge"
+metadata/_custom_type_script = "uid://cxgxfbwykbp84"
+
+[resource]
+script = ExtResource("3_wqru2")
+id = "灾祸"
+type = 2
+card_color = 64
+base_cost = 2
+rarity = 4
+effects = Array[ExtResource("2_8k6mr")]([SubResource("Resource_47v3t")])
+portrait = ExtResource("3_8k6mr")
+base_description = "[center]你每打出一张攻击牌，获得{charge}点充能。[/center]"
+base_numeric_entries = Array[ExtResource("1_ggdhi")]([SubResource("Resource_xwda1")])
+upgraded_cost = 2
+upgraded_description = "[center]你每打出一张攻击牌，获得{charge}点充能。[/center]"
+upgraded_numeric_entries = Array[ExtResource("1_ggdhi")]([SubResource("Resource_h84rb")])
+upgraded_effects = Array[ExtResource("2_8k6mr")]([SubResource("Resource_spxl2")])
+metadata/_custom_type_script = "uid://br1hibx18tv13"

@@ -121,5 +121,4 @@ upgraded_description = "[center]造成{damage}点伤害。[/center]
 [center]抽{cards}张牌。[/center]"
 upgraded_numeric_entries = Array[ExtResource("1_gk6t8")]([SubResource("Resource_qk8fx"), SubResource("Resource_3ma15")])
 upgraded_effects = Array[ExtResource("2_wygs1")]([SubResource("Resource_51t85"), SubResource("Resource_wcdfk")])
-upgraded = true
 metadata/_custom_type_script = "uid://br1hibx18tv13"

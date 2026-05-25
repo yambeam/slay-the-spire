@@ -21,7 +21,7 @@ script = ExtResource("5_qiqst")
 relic_name = "孙子兵法"
 id = "art_of_war"
 icon = ExtResource("4_uay8n")
-description = "如果你在本回合中没有打出过攻击牌，则在下一回合额外获得1点能量"
+description = "如果你在本回合中没有打出过攻击牌，则在下一回合额外获得1点[color=gold]能量[/color]"
 trigger_type = 1
 rarity = 4
 effects = Array[ExtResource("1_k1agn")]([SubResource("Resource_ue1ef")])

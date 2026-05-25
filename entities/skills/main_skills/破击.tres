@@ -62,6 +62,8 @@ metadata/_custom_type_script = "uid://cxgxfbwykbp84"
 [resource]
 script = ExtResource("7_tlwnw")
 charge_cost = 70
+charge_over_turn = 5
+charge_over_kill = 7
 id = "破击"
 target = 1
 effects = Array[ExtResource("1_b23pt")]([SubResource("Resource_crgo0"), SubResource("Resource_j8o4i")])

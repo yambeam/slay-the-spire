@@ -139,6 +139,10 @@ var keyword_info = {
 		"name": "荆棘",
 		"description": "受到攻击伤害时，反弹等同于荆棘层数点伤害",
 	},
+	"覆甲":{
+		"name": "覆甲",
+		"description": "回合结束时获得等同于层数的格挡，然后减少一层"
+	}
 }
 
 func _ready() -> void:

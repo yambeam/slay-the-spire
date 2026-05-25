@@ -23,7 +23,7 @@ script = ExtResource("5_q0jqs")
 relic_name = "贤者之石"
 id = "philosophers_stone"
 icon = ExtResource("4_cmi24")
-description = "在每回合开始时获得1点[color=gold]能量[/color]所有敌人初始获得1点[color=gold]力量[/color]"
+description = "在每回合开始时获得1点[color=gold]能量[/color]，所有敌人初始获得1点[color=gold]力量[/color]"
 trigger_type = 2
 rarity = 32
 effects = Array[ExtResource("1_ur8rt")]([SubResource("Resource_p6ben")])

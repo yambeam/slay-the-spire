@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://c615gre7wvvhj"]
 
 [ext_resource type="Script" uid="uid://bebj2njq8jsvw" path="res://scripts/rooms/campfire_room/campfire_room.gd" id="1_lv82u"]
-[ext_resource type="Texture2D" uid="uid://cuet3j3nkm7qr" path="res://images/ui/top_panel/character_icon_ironclad.png" id="2_51lhi"]
+[ext_resource type="Texture2D" uid="uid://x2neryjvbtwy" path="res://images/ui/top_panel/character_icon_ironclad.png" id="2_51lhi"]
 [ext_resource type="SpineSkeletonDataResource" uid="uid://b8nbwey4uwrqk" path="res://animations/rest_site/ironclad/rest_site_ironclad_skel_data.tres" id="2_cow6u"]
 [ext_resource type="Script" uid="uid://bayy3j6ssj0g" path="res://scripts/utils/spine_manager.gd" id="3_a8h3l"]
 [ext_resource type="Resource" uid="uid://dj2uogmuhqx44" path="res://scenes/rooms/reward/Draftable_cards.tres" id="3_lar41"]
@@ -10,11 +10,11 @@
 [ext_resource type="Resource" uid="uid://hp2dus3ms3gm" path="res://entities/characters/ironclad/ironclad_starting_deck.tres" id="6_q5k8o"]
 [ext_resource type="Resource" uid="uid://b5niu17o73g0m" path="res://entities/relics/colorless/锚.tres" id="7_fhifw"]
 [ext_resource type="PackedScene" uid="uid://dgktfp0e1myrn" path="res://scenes/creature_visuals/ironclad.tscn" id="8_68ira"]
-[ext_resource type="Texture2D" uid="uid://cokfvepsrjpov" path="res://images/ui/rest_site/option_heal.png" id="9_iewd0"]
-[ext_resource type="Texture2D" uid="uid://bbiemjo1omins" path="res://images/ui/rest_site/option_smith.png" id="10_ljn61"]
-[ext_resource type="Texture2D" uid="uid://vkgtkwrp526t" path="res://images/rooms/rest_sites/glory/glory_rest_site_l_log.png" id="13_0d47m"]
-[ext_resource type="Texture2D" uid="uid://bqlm3ewy2vp7q" path="res://images/rooms/rest_sites/hive/hive_rest_site_00.png" id="14_jwjhc"]
-[ext_resource type="Texture2D" uid="uid://dj3r3vqsmoyhu" path="res://images/rooms/rest_sites/hive/hive_rest_site_fire.png" id="15_2txax"]
+[ext_resource type="Texture2D" uid="uid://csnmk8134aw6" path="res://images/ui/rest_site/option_heal.png" id="9_iewd0"]
+[ext_resource type="Texture2D" uid="uid://j3a47w28vlud" path="res://images/ui/rest_site/option_smith.png" id="10_ljn61"]
+[ext_resource type="Texture2D" uid="uid://bghoec4nesron" path="res://images/rooms/rest_sites/glory/glory_rest_site_l_log.png" id="13_0d47m"]
+[ext_resource type="Texture2D" uid="uid://bhikogo5xo556" path="res://images/rooms/rest_sites/hive/hive_rest_site_00.png" id="14_jwjhc"]
+[ext_resource type="Texture2D" uid="uid://cm0tod5ikr2wt" path="res://images/rooms/rest_sites/hive/hive_rest_site_fire.png" id="15_2txax"]
 
 [sub_resource type="Resource" id="Resource_mvtha"]
 script = ExtResource("5_e54l1")
@@ -157,7 +157,6 @@ theme_override_font_sizes/font_size = 100
 theme_override_styles/normal = SubResource("StyleBoxEmpty_4ptdh")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_51lhi")
 toggle_mode = true
-button_pressed = true
 text = "+30%HP"
 icon = ExtResource("9_iewd0")
 
@@ -168,7 +167,6 @@ theme_override_styles/normal = SubResource("StyleBoxEmpty_ixi6m")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_lar41")
 theme_override_styles/hover = SubResource("StyleBoxEmpty_nkbfa")
 toggle_mode = true
-button_pressed = true
 text = "锻造"
 icon = ExtResource("10_ljn61")
 metadata/_edit_use_anchors_ = true
@@ -208,6 +206,7 @@ offset_right = -1341.0
 offset_bottom = -351.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 texture = ExtResource("13_0d47m")
 expand_mode = 1
 
@@ -223,6 +222,7 @@ offset_right = 457.0
 offset_bottom = 54.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 texture = ExtResource("14_jwjhc")
 expand_mode = 1
 
@@ -232,6 +232,7 @@ offset_left = 660.0
 offset_top = 580.0
 offset_right = 1082.0
 offset_bottom = 882.0
+mouse_filter = 2
 texture = ExtResource("15_2txax")
 expand_mode = 1
 

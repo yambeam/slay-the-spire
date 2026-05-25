@@ -96,7 +96,7 @@ discoverable = null
 draftable = null
 effects = Array[ExtResource("2_deaa7")]([SubResource("Resource_ajith")])
 portrait = ExtResource("7_3bcd6")
-base_description = "[center]如果你在本回合[color=gold]消耗过[/color]卡牌，则获得{energy}点能量。[/center]"
+base_description = "[center]如果你在本回合[color=gold]消耗过[/color]卡牌，则获得{energy}点[color=gold]能量[/color]。[/center]"
 base_numeric_entries = Array[ExtResource("1_lpntx")]([SubResource("Resource_q0php")])
 exhaust = true
 ethereal = null
@@ -105,7 +105,7 @@ eternal = null
 playable = null
 upgraded_target = null
 upgraded_cost = 1
-upgraded_description = "[center]如果你在本回合[color=gold]消耗过[/color]卡牌，则获得{energy}点能量。[/center]"
+upgraded_description = "[center]如果你在本回合[color=gold]消耗过[/color]卡牌，则获得{energy}点[color=gold]能量[/color]。[/center]"
 upgraded_numeric_entries = Array[ExtResource("1_lpntx")]([SubResource("Resource_blft0")])
 upgraded_effects = Array[ExtResource("2_deaa7")]([SubResource("Resource_4q2k8")])
 upgraded = null

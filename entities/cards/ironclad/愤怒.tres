@@ -2,7 +2,6 @@
 
 [ext_resource type="Script" uid="uid://cxgxfbwykbp84" path="res://scripts/costum_resources/numeric_entry.gd" id="1_o32pn"]
 [ext_resource type="Script" uid="uid://dtok21t0ujjui" path="res://scripts/costum_resources/numeric_provider.gd" id="2_6ni0n"]
-[ext_resource type="Resource" uid="uid://bxfmhxgwl7qn1" path="res://entities/enchantments/锋利.tres" id="2_cdnap"]
 [ext_resource type="Texture2D" uid="uid://6ony3r" path="res://images/atlases/card_atlas.sprites/ironclad/anger.tres" id="2_o32pn"]
 [ext_resource type="Script" uid="uid://cgmi6f3o7leik" path="res://scripts/costum_resources/effect.gd" id="3_oj80b"]
 [ext_resource type="Script" uid="uid://vkklgv0ma0yf" path="res://scripts/costum_resources/effects/attack_effect.gd" id="4_6ni0n"]
@@ -88,7 +87,6 @@ metadata/_custom_type_script = "uid://cxgxfbwykbp84"
 script = ExtResource("8_6ni0n")
 id = "愤怒"
 base_target = 1
-enchantment = ExtResource("2_cdnap")
 effects = Array[ExtResource("3_oj80b")]([SubResource("Resource_20lup"), SubResource("Resource_dbej6")])
 portrait = ExtResource("2_o32pn")
 base_description = "[center]造成{damage}点伤害。[/center][p][center]将该牌的一张复制放入[color=gold]弃牌堆[/color]。[/center]"

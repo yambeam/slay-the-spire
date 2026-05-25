@@ -39,7 +39,7 @@ script = ExtResource("2_i2mbh")
 relic_name = "红头骨"
 id = "red_skull"
 icon = ExtResource("4_7u0tb")
-description = "回合开始时，如果你的生命值低于或等于30%，获得1点力量"
+description = "回合开始时，如果你的生命值低于或等于30%，获得1点[color=gold]力量[/color]"
 trigger_type = 1
 relic_color = 1
 effects = Array[ExtResource("1_3a8d6")]([SubResource("Resource_ja0xj")])

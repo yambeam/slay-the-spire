@@ -30,7 +30,7 @@ script = ExtResource("6_der8l")
 relic_name = "轰鸣海螺"
 id = "booming_conch"
 icon = ExtResource("5_qkkog")
-description = "在精英战的战斗开始时，额外抽2张牌，获得1点能量"
+description = "在精英战的战斗开始时，额外抽2张牌，获得1点[color=gold]能量[/color]"
 trigger_type = 1
 rarity = 32
 effects = Array[ExtResource("1_w5rly")]([SubResource("Resource_ny6eh"), SubResource("Resource_ghuny"), SubResource("Resource_14v8r")])

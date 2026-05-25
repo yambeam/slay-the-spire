@@ -4,6 +4,7 @@ extends Creature
 # 玩家专属信号
 signal before_draw_card(context: DrawCardContext)
 signal after_draw_card(context: DrawCardContext)
+signal before_gain_charge(context: GainChargeContext)
 
 @export var stats: CharacterStats : set = _set_char_stats
 @export var hand_selector: HandSelector
@@ -150,7 +151,10 @@ func gain_max_health(context: GainMaxHealthContext) -> int:
 	
 func gain_energy(context: GainEnergyContext) -> void:
 	stats.energy += context.amount
-	
+
+func gain_charge(context: GainChargeContext) -> void:
+	before_gain_charge.emit(context)
+	stats.main_skill.current_charge += context.amount
 	
 func lose_health(context: Context) -> int:
 	if stats.health <= 0:

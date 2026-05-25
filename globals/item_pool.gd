@@ -234,7 +234,8 @@ func _ready():
 func init_item_pool(color: CharacterStats.COLOR) -> void:
 	current_card_pool = get_draftable_cards_by_color(color)
 	current_potion_pool = get_potions_by_color(color + Potion.COLOR.COLORLESS)
-	current_relic_pool = get_relics_by_color(color + Relic.COLOR.COLORLESS)
+	#current_relic_pool = get_relics_by_color(color + Relic.COLOR.COLORLESS)
+	current_relic_pool = get_relics_by_rarity(0b0100111)
 	
 func get_cards(color: int, type: int, rarity: int) -> Array[Card]:
 	return filter_card_by_rarity(filter_card_by_type(get_cards_by_color(color), type), rarity)

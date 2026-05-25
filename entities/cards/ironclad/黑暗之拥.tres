@@ -41,8 +41,8 @@ base_cost = 2
 rarity = 4
 effects = Array[ExtResource("2_xx5jk")]([SubResource("Resource_1m18h")])
 portrait = ExtResource("5_bfv24")
-base_description = "[center]每当有一张牌被消耗时，抽1张牌[/center]"
+base_description = "[center]每当有一张牌被[color=gold]消耗[/color]时，抽1张牌[/center]"
 upgraded_cost = 1
-upgraded_description = "[center]每当有一张牌被消耗时，抽1张牌[/center]"
+upgraded_description = "[center]每当有一张牌被[color=gold]消耗[/color]时，抽1张牌[/center]"
 upgraded_effects = Array[ExtResource("2_xx5jk")]([SubResource("Resource_7d5bh")])
 metadata/_custom_type_script = "uid://br1hibx18tv13"

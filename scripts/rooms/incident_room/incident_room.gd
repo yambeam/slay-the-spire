@@ -110,7 +110,6 @@ func init()->void:
 	random_number = RandomSetting.instance.randi_range(0, incidentsDataArray.size()-1)  # 生成0到房间数组大小-1的随机整数
 	#random_number=0
 	room_number=random_number
-	room_number = 2
 	#所有的 遗物和药水资源
 	potions=ItemPool.get_potions(char_stats.color,0b011)
 	var arr = ItemPool.event_relic_dict.values()
@@ -549,7 +548,7 @@ func handle_aroma_of_chaos_op2()->void:
 		
 		
 		var newcards: Array[Card]
-		newcards = await deck_view.select_card_pile(upgradableCards, 1, 1,"选择1张卡牌")
+		newcards = await deck_view.select_card_pile(upgradableCards, 1, 1,"选择1张卡牌", DeckView.SelectionMode.UPGRADE)
 		if newcards.size()==0:
 			set_incident_data(AROMA_OF_CHAOS)
 			countop=countop-1

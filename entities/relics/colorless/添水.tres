@@ -1,0 +1,14 @@
+[gd_resource type="Resource" format=3 uid="uid://cjlma8rrp5oyf"]
+
+[ext_resource type="Script" uid="uid://cgmi6f3o7leik" path="res://scripts/costum_resources/effect.gd" id="1_1ofuj"]
+[ext_resource type="Texture2D" uid="uid://b2yjye6" path="res://images/atlases/relic_atlas.sprites/sozu.tres" id="2_iyjia"]
+[ext_resource type="Script" uid="uid://d0f80phmjrklf" path="res://entities/relics/colorless/添水.gd" id="3_aj1g2"]
+
+[resource]
+script = ExtResource("3_aj1g2")
+relic_name = "添水"
+id = "SOZU"
+icon = ExtResource("2_iyjia")
+description = "拾取时，获得100点充能"
+rarity = 2
+metadata/_custom_type_script = "uid://bvf88v88tbaks"

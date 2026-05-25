@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="BuffResource" format=3 uid="uid://c326kv4xd3xj"]
+
+[ext_resource type="Script" uid="uid://cefboa3hqgxyh" path="res://scripts/costum_resources/buffs/calamity_buff.gd" id="1_2j0dd"]
+[ext_resource type="Script" uid="uid://c1n4sywvfnffx" path="res://scripts/costum_resources/buff_resource.gd" id="1_3ydru"]
+[ext_resource type="Texture2D" uid="uid://dw826fymh8q88" path="res://images/powers/calamity_power.png" id="2_ow7dv"]
+
+[resource]
+script = ExtResource("1_3ydru")
+buff_id = "calamity"
+buff_name = "灾祸"
+description = "你每打出一张攻击牌，获得{stacks}点充能"
+icon = ExtResource("2_ow7dv")
+buff_script = ExtResource("1_2j0dd")
+metadata/_custom_type_script = "uid://c1n4sywvfnffx"

@@ -30,7 +30,7 @@ metadata/_custom_type_script = "uid://dd8cefu454sp5"
 script = ExtResource("2_l636y")
 id = "cure_all"
 potion_name = "痊愈药水"
-description = "获得1点能量，抽2张牌"
+description = "获得1点[color=gold]能量[/color]，抽2张牌"
 icon = ExtResource("5_6xvkq")
 outline_icon = ExtResource("6_hfjey")
 rarity = 2

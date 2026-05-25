@@ -35,7 +35,7 @@ script = ExtResource("5_wwoiv")
 relic_name = "彩虹戒指"
 id = "raibow_ring"
 icon = ExtResource("4_wm56y")
-description = "每回合，你第一次打出攻击牌、技能牌和能力牌各一张时，获得1点[color=gold]力量[/color]和1点][color=gold]敏捷[/color]"
+description = "每回合，你第一次打出攻击牌、技能牌和能力牌各一张时，获得1点[color=gold]力量[/color]和1点[color=gold]敏捷[/color]"
 rarity = 4
 effects = Array[ExtResource("1_2npfy")]([SubResource("Resource_ob3ql"), SubResource("Resource_dxp7b")])
 metadata/_custom_type_script = "uid://bvf88v88tbaks"

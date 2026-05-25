@@ -67,10 +67,10 @@ base_cost = 1
 rarity = 2
 effects = Array[ExtResource("2_wxqfa")]([SubResource("Resource_bnpb2")])
 portrait = ExtResource("5_wqncm")
-base_description = "[center]每当你在你的回合内失去生命值时, 获得{stacks}点力量。[/center]"
+base_description = "[center]每当你在你的回合内失去生命值时, 获得{stacks}点[color=gold]力量[/color]。[/center]"
 base_numeric_entries = Array[ExtResource("1_mwbf3")]([SubResource("Resource_mhxjc")])
 upgraded_cost = 1
-upgraded_description = "[center]每当你在你的回合内失去生命值时, 获得{stacks}点力量。[/center]"
+upgraded_description = "[center]每当你在你的回合内失去生命值时, 获得{stacks}点[color=gold]力量[/color]。[/center]"
 upgraded_numeric_entries = Array[ExtResource("1_mwbf3")]([SubResource("Resource_8o54r")])
 upgraded_effects = Array[ExtResource("2_wxqfa")]([SubResource("Resource_whwow")])
 metadata/_custom_type_script = "uid://br1hibx18tv13"

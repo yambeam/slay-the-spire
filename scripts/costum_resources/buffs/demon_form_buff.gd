@@ -12,5 +12,5 @@ func initialize() -> void:
 func get_description() -> String:
 	return description.format({"stacks": stacks})
 
-func _on_before_turn_started(creature: Node2D) -> void:
+func _on_before_turn_started(_creature: Node2D) -> void:
 	agent.apply_buff(ApplyBuffContext.new(agent, agent, stacks, "力量"))

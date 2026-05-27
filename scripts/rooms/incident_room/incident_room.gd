@@ -85,23 +85,23 @@ var countop			#当前已经按过几次按钮了
 var random_card_number	#随机卡牌
 
 var relics:Array[Relic]
-var enchantments:Array  #附魔
+var enchantment:Enchantment  #附魔
 var Randomcards: Array[Card]
 var potions:Array[Potion]
 
 
 
-func loadEnchantment(dir_path: String)->void:
-	var paths = FileHelper.get_all_resources_in_directory(dir_path)
-	for path in paths:
-		var resource: Enchantment = ResourceLoader.load(path)
-		if resource == null:
-			printerr("无法加载{path}".format(path))
-			continue
-		else:
-			enchantments.append(resource)
-	
-	RandomSetting.array_shuffle(enchantments)
+#func loadEnchantment(dir_path: String)->void:
+	#var paths = FileHelper.get_all_resources_in_directory(dir_path)
+	#for path in paths:
+		#var resource: Enchantment = ResourceLoader.load(path)
+		#if resource == null:
+			#printerr("无法加载{path}".format(path))
+			#continue
+		#else:
+			#enchantments.append(resource)
+	#
+	#RandomSetting.array_shuffle(enchantments)
 
 
 func init()->void:		
@@ -142,6 +142,7 @@ func set_init_incident_data(data:IncidentData)->void:
 			
 	#处理混沌芳香	
 	if data.incidentName=="aroma_of_chaos":
+		enchantment = RandomSetting.array_pick_random(ItemPool.enchantment_dict.values())
 		match char_stats.color:
 			0b0000001:
 				incident_data.press_op2_description[0]+="\n疼痛算得了什么，我的敌人们必须死。\n"
@@ -154,13 +155,18 @@ func set_init_incident_data(data:IncidentData)->void:
 			0b0010000:
 				incident_data.press_op2_description[0]+="\n1100001111000011……\n"
 		incident_data.press_op2_description[0]+="香气逐渐消散。"
-	
+		text_1.text = incident_data.option1Description.format({"enchantment": enchantment.enchantment_name})
+
 func set_incident_data(data:IncidentData)->void:
 	incident_data=data
 	background.texture = load(incident_data.backgroundPath)
 	event_title.text=incident_data.eventTitile
 	event_description.text=incident_data.eventDescription
-	text_1.text=incident_data.option1Description
+	# 临时措施
+	if data.incidentName == "aroma_of_chaos":
+		text_1.text = incident_data.option1Description.format({"enchantment": enchantment.enchantment_name})
+	else:
+		text_1.text=incident_data.option1Description
 	text_2.text=incident_data.option2Description
 	
 func handle_slippery_bridge_op1()->void:	
@@ -331,17 +337,17 @@ func handle_aroma_of_chaos_op1()->void:
 	if countop<incident_data.press_op1_title.size():
 
 		var newcards: Array[Card]
-		newcards = await deck_view.select_card_pile(char_stats.deck.cards, 1, 1,"选择1张卡牌")
+		newcards = await deck_view.select_card_pile(char_stats.deck.cards.filter(func(card): return enchantment.can_enchant(card)), 1, 1,"选择1张卡牌")
 		if newcards.size()==0:
 			set_incident_data(AROMA_OF_CHAOS)
 			countop=countop-1
 			print(countop)
 			return	
-		loadEnchantment("res://entities/enchantments/")
+		#loadEnchantment("res://entities/enchantments/")
 		#var i =char_stats.deck.cards.find(newcards)
 		var i =char_stats.deck.cards.find(newcards[0])
 		
-		char_stats.deck.cards[i].set_echantment(enchantments[0])
+		char_stats.deck.cards[i].set_echantment(enchantment)
 		
 		option_2.hide()
 	else: 

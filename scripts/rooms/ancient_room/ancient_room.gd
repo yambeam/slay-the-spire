@@ -304,8 +304,8 @@ func set_save_state(state: Dictionary) -> void:
 	restore_state(state)
 
 
-func _input(event: InputEvent) -> void:
-	if event is InputEventMouseButton:
-		var mb := event as InputEventMouseButton
-		if mb.button_index == MOUSE_BUTTON_WHEEL_UP or mb.button_index == MOUSE_BUTTON_WHEEL_DOWN:
-			accept_event() 
+#func _input(event: InputEvent) -> void:
+	#if event is InputEventMouseButton:
+		#var mb := event as InputEventMouseButton
+		#if mb.button_index == MOUSE_BUTTON_WHEEL_UP or mb.button_index == MOUSE_BUTTON_WHEEL_DOWN:
+			#accept_event() 

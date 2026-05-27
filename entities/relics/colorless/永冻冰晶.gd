@@ -4,7 +4,7 @@ var used := false
 
 func initialize_relic(_owner: RelicUI) -> void:
 	Events.card_played.connect(_on_card_played)
-	Events.player_turn_ended.connect(_on_combat_won)
+	Events.combat_won.connect(_on_combat_won)
 	
 func deactivate_relic(_owner: RelicUI) -> void:
 	if Events.card_played.is_connected(_on_card_played):

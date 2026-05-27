@@ -84,7 +84,7 @@ func _ready() -> void:
 				save_data.map_camera_y = 0.0
 				save_data.save_data()
 			# 特殊处理战斗房间: 先暂停combat_resolver在退出
-			if current_room.get_child(0) is CombatRoom:
+			if current_room.get_child_count() > 1 and current_room.get_child(0) is CombatRoom:
 				await current_room.get_child(0).stop_combat_resolver()
 			
 			back_to_main()
@@ -224,13 +224,10 @@ func update_compensation(current_room_type: String) -> void:
 # ========== 游戏流程 ==========
 func _start_run() -> void:
 	stats = RunStats.new()
-	stats.add_potion(preload("res://entities/potions/灾厄药水.tres").duplicate())
-	
 	_setup_event_connections()
 	_setup_top_bar()
 	map_node.init(stats)
 	ItemPool.init_item_pool(character.color)
-	
 #	保存数据
 	save_data = SaveGame.new()
 	_show_map()
@@ -456,8 +453,8 @@ func _on_combat_room_entered(room: Room = null, restore_state: Dictionary = {}) 
 
 	if restore_state.is_empty() and room.enemy_encounter == null:
 		match room.type:
-			Room.Type.BOSS:
-				mob_killed_this_act = 0
+			#Room.Type.BOSS:
+				#mob_killed_this_act = 0
 			Room.Type.ELITE:
 				room.enemy_encounter = encounter_pool.get_random_encounter_by_type(EnemyEncounter.Type.ELITE)
 			Room.Type.MONSTER, Room.Type.UNKNOWN:
@@ -472,7 +469,9 @@ func _on_combat_room_entered(room: Room = null, restore_state: Dictionary = {}) 
 						room.enemy_encounter = encounter_pool.get_random_encounter_by_type(EnemyEncounter.Type.WEAK)
 					else:
 						room.enemy_encounter = encounter_pool.get_random_encounter_by_type(EnemyEncounter.Type.STRONG)
-	
+	else:
+		if room.type == Room.Type.BOSS:
+			mob_killed_this_act = 0
 	var battle_scene: CombatRoom = await _change_view(COMBAT_SCENE)
 	battle_scene.update_background(stats.current_stage)
 	battle_scene.char_stats = character
@@ -609,6 +608,8 @@ func _save_run(on_map: bool) -> void:
 	
 	save_data.map_camera_y = map_node.camera_2d.position.y
 	save_data.map_old_camera_y = map_node.old_camera_2d_position_y
+	
+	save_data.mob_killed_this_act = mob_killed_this_act
 
 	#地图相关
 	save_data.last_room = map_node.last_room
@@ -694,8 +695,16 @@ func _load_run() -> void:
 			stats.map_data[r][c].selected = true
 	
 	# 恢复相机位置
-	map_node.camera_2d.position.y = save_data.map_camera_y
+	if save_data.state == SaveGame.State.ON_MAP:
+		map_node.camera_2d.position.y = save_data.map_camera_y
+	else:
+		map_node.camera_2d.position.y = 0.0
 	map_node.old_camera_2d_position_y = save_data.map_old_camera_y
+	
+	mob_killed_this_act = save_data.mob_killed_this_act
+	
+	map_node.map_generator.act = stats.current_stage
+	print("当前层级: %d" %stats.current_stage)
 	
 	map_node.load_map(stats, save_data.last_room)
 	if save_data.last_room:
@@ -707,6 +716,7 @@ func _load_run() -> void:
 			_show_map()
 		SaveGame.State.IN_ROOM:
 			is_on_map = false
+			map_node.scroll_enabled = false
 			_restore_room(save_data.room_type, save_data.last_room)
 		_:
 			is_on_map = true

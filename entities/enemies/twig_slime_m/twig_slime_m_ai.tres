@@ -24,13 +24,13 @@ metadata/_custom_type_script = "uid://dtok21t0ujjui"
 [sub_resource type="Resource" id="Resource_4dbbd"]
 script = ExtResource("4_72cov")
 damage_provider = SubResource("Resource_xu8rp")
+target_type = 3
 sound = ExtResource("5_no4kl")
 metadata/_custom_type_script = "uid://vkklgv0ma0yf"
 
 [sub_resource type="Resource" id="Resource_hkbof"]
 script = ExtResource("6_n3jbk")
 damage_provider = SubResource("Resource_bcvpa")
-type = null
 effect = SubResource("Resource_4dbbd")
 metadata/_custom_type_script = "uid://bces7ijyodhmv"
 

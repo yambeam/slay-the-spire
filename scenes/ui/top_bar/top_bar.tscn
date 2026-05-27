@@ -42,6 +42,11 @@ grow_vertical = 2
 texture = ExtResource("1_x5rd1")
 stretch_mode = 4
 
+[node name="RelicHandler" parent="." unique_id=956126364 instance=ExtResource("20_p4p88")]
+layout_mode = 1
+offset_top = 96.0
+offset_bottom = 359.0
+
 [node name="Left" type="HBoxContainer" parent="." unique_id=1368003169]
 layout_mode = 0
 offset_right = 40.0
@@ -242,10 +247,5 @@ modulate = Color(1, 1, 1, 0)
 layout_mode = 0
 offset_right = 80.0
 offset_bottom = 80.0
-
-[node name="RelicHandler" parent="." unique_id=956126364 instance=ExtResource("20_p4p88")]
-layout_mode = 1
-offset_top = 96.0
-offset_bottom = 359.0
 
 [connection signal="pressed" from="Right/Settings/TextureRect/settingsButton" to="." method="_on_settings_button_pressed"]

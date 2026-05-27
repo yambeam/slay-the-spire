@@ -40,6 +40,8 @@ enum State { ON_MAP, IN_ROOM }
 
 # 技能充能
 @export var skill_charge: int 
+# 当前地图杀死的弱怪数量，用于确定弱怪/强怪
+@export var mob_killed_this_act: int
 
 func save_data() -> void:
 	var err := ResourceSaver.save(self, SAVE_PATH)

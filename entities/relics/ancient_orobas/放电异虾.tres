@@ -9,6 +9,6 @@ script = ExtResource("3_thio1")
 relic_name = "放电异虾"
 id = "electric_shrymp"
 icon = ExtResource("2_sbh7d")
-description = "拾起时，选择两张牌为它们[color=gold]]附魔[/color]：[color=purple]注能[/color]"
+description = "拾起时，选择两张牌为它们[color=gold]附魔[/color]：[color=purple]注能[/color]"
 rarity = 32
 metadata/_custom_type_script = "uid://bvf88v88tbaks"

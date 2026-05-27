@@ -60,6 +60,7 @@ metadata/_custom_type_script = "uid://vkklgv0ma0yf"
 script = ExtResource("6_iihrg")
 count_provider = SubResource("Resource_crua5")
 effects = Array[ExtResource("2_vk0v0")]([SubResource("Resource_jpio1")])
+sound = ExtResource("9_g0ffs")
 metadata/_custom_type_script = "uid://c8ly86kb5vc65"
 
 [sub_resource type="Resource" id="Resource_mn6im"]
@@ -76,6 +77,11 @@ script = ExtResource("7_8x34p")
 effects = Array[ExtResource("5_g0ffs")]([SubResource("Resource_8bcfx")])
 metadata/_custom_type_script = "uid://c2drp2mlr0vhm"
 
+[sub_resource type="Resource" id="Resource_g0ffs"]
+script = ExtResource("2_h72i8")
+type = 1
+metadata/_custom_type_script = "uid://dtok21t0ujjui"
+
 [sub_resource type="Resource" id="Resource_ft7vv"]
 script = ExtResource("2_h72i8")
 fixed_value = 10
@@ -85,7 +91,14 @@ metadata/_custom_type_script = "uid://dtok21t0ujjui"
 script = ExtResource("5_bnoqx")
 damage_provider = SubResource("Resource_ft7vv")
 target_type = 2
+sound = ExtResource("9_g0ffs")
 metadata/_custom_type_script = "uid://vkklgv0ma0yf"
+
+[sub_resource type="Resource" id="Resource_ccb4i"]
+script = ExtResource("6_iihrg")
+count_provider = SubResource("Resource_g0ffs")
+effects = Array[ExtResource("2_vk0v0")]([SubResource("Resource_7qg5n")])
+metadata/_custom_type_script = "uid://c8ly86kb5vc65"
 
 [sub_resource type="Resource" id="Resource_1pvws"]
 script = ExtResource("2_h72i8")
@@ -125,7 +138,7 @@ upgraded_cost = 2
 upgraded_description = "[center][color=gold]消耗[/color]所有[color=gold]手牌[/color]。
 每张被[color=gold]消耗[/color]的牌造成{damage}点伤害。[/center]"
 upgraded_numeric_entries = Array[ExtResource("1_6uv2o")]([SubResource("Resource_p1h0e")])
-upgraded_effects = Array[ExtResource("2_vk0v0")]([SubResource("Resource_mn6im"), SubResource("Resource_ghsr6"), SubResource("Resource_7qg5n")])
+upgraded_effects = Array[ExtResource("2_vk0v0")]([SubResource("Resource_mn6im"), SubResource("Resource_ghsr6"), SubResource("Resource_ccb4i")])
 upgraded = null
 upgradable = null
 metadata/_custom_type_script = "uid://br1hibx18tv13"

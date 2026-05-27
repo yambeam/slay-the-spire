@@ -69,6 +69,7 @@ func create_instance() -> CharacterStats:
 	var instance := self.duplicate()
 	instance.health = max_health
 	instance.block = 0
+	instance.main_skill.current_charge = 0
 	instance.reset_energy()
 	instance.deck = instance.starting_deck.duplicate()
 	instance.draw_pile = CardPile.new()

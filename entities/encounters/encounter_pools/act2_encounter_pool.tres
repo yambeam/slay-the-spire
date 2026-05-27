@@ -15,6 +15,8 @@
 [ext_resource type="Script" uid="uid://ctyh7cm7a03s2" path="res://scripts/costum_resources/enemy_encounter_pool.gd" id="13_jclt2"]
 [ext_resource type="Resource" uid="uid://dttelsmyktu0g" path="res://entities/encounters/act2/threesome.tres" id="13_xfepb"]
 [ext_resource type="Resource" uid="uid://b1njtqpaj5cil" path="res://entities/encounters/act2/two_mytes.tres" id="14_likiq"]
+[ext_resource type="Resource" uid="uid://qniwoktmx8ee" path="res://entities/encounters/act2/three_cook.tres" id="15_l7c64"]
+[ext_resource type="Resource" uid="uid://bugk8ycbsob35" path="res://entities/encounters/act2/four_cook.tres" id="16_82gwx"]
 
 [sub_resource type="Resource" id="Resource_buo2b"]
 script = ExtResource("3_likiq")
@@ -35,5 +37,5 @@ metadata/_custom_type_script = "uid://dgu4qpyr0pnnb"
 
 [resource]
 script = ExtResource("13_jclt2")
-pool = Array[ExtResource("1_06huf")]([ExtResource("2_xfepb"), SubResource("Resource_jk3ay"), ExtResource("5_l7c64"), ExtResource("6_82gwx"), ExtResource("7_5k2ib"), ExtResource("8_ag4wm"), ExtResource("9_b3gja"), ExtResource("10_1w2hq"), ExtResource("11_48d4i"), ExtResource("12_6msmv"), ExtResource("13_xfepb"), ExtResource("14_likiq")])
+pool = Array[ExtResource("1_06huf")]([ExtResource("2_xfepb"), SubResource("Resource_jk3ay"), ExtResource("5_l7c64"), ExtResource("6_82gwx"), ExtResource("7_5k2ib"), ExtResource("8_ag4wm"), ExtResource("9_b3gja"), ExtResource("10_1w2hq"), ExtResource("11_48d4i"), ExtResource("12_6msmv"), ExtResource("13_xfepb"), ExtResource("14_likiq"), ExtResource("15_l7c64"), ExtResource("16_82gwx")])
 metadata/_custom_type_script = "uid://ctyh7cm7a03s2"

@@ -8,7 +8,7 @@
 script = ExtResource("1_vs6xc")
 buff_id = "demon_form"
 buff_name = "恶魔形态"
-description = "在每回合开始时，获得{stacks}层力量"
+description = "在每回合开始时，获得{stacks}层[color=gold]力量[/color]"
 icon = ExtResource("2_1crtm")
 buff_script = ExtResource("1_1crtm")
 metadata/_custom_type_script = "uid://c1n4sywvfnffx"

@@ -6,6 +6,7 @@
 [ext_resource type="Script" uid="uid://dtok21t0ujjui" path="res://scripts/costum_resources/numeric_provider.gd" id="2_8ev1v"]
 [ext_resource type="Script" uid="uid://dcd3k6bjs0161" path="res://entities/potions/格挡药水.gd" id="3_3ktux"]
 [ext_resource type="Script" uid="uid://dnv7chuoeoi6y" path="res://scripts/costum_resources/effects/block_effect.gd" id="3_7catc"]
+[ext_resource type="AudioStream" uid="uid://cnxfhtrl0n8nm" path="res://audio/SFX/frost_orb_passive.mp3" id="4_8ev1v"]
 
 [sub_resource type="Resource" id="Resource_jb61f"]
 script = ExtResource("2_8ev1v")
@@ -17,13 +18,14 @@ script = ExtResource("3_7catc")
 block_provider = SubResource("Resource_jb61f")
 no_modifiers = true
 target_type = 1
+sound = ExtResource("4_8ev1v")
 metadata/_custom_type_script = "uid://dnv7chuoeoi6y"
 
 [resource]
 script = ExtResource("3_3ktux")
 id = "block_potion"
 potion_name = "格挡药水"
-description = "获得12点格挡"
+description = "获得12点[color=gold]格挡[/color]"
 icon = ExtResource("1_3ktux")
 outline_icon = ExtResource("2_4qa8h")
 effects = Array[ExtResource("1_b2fm5")]([SubResource("Resource_7fjhp")])

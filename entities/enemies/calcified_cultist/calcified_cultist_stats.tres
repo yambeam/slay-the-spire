@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="EnemyStats" format=3 uid="uid://dygetn42tb2iq"]
+
+[ext_resource type="Script" uid="uid://bjrlwk5w4gqtk" path="res://scripts/costum_resources/enemy_stats.gd" id="1_ot58c"]
+[ext_resource type="Resource" uid="uid://bao4624adasuk" path="res://entities/enemies/calcified_cultist/calcified_cultist_ai.tres" id="1_td0tw"]
+[ext_resource type="PackedScene" uid="uid://cvjehf3ddtcgx" path="res://scenes/creature_visuals/calcified_cultist.tscn" id="3_7sp5c"]
+
+[resource]
+script = ExtResource("1_ot58c")
+ai = ExtResource("1_td0tw")
+enemy_name = "钙化邪教徒"
+hightest_max_health = 39
+lowest_max_health = 42
+visuals_scene = ExtResource("3_7sp5c")
+metadata/_custom_type_script = "uid://bjrlwk5w4gqtk"

@@ -8,7 +8,7 @@
 script = ExtResource("1_fxmlt")
 buff_id = "rage"
 buff_name = "狂怒"
-description = "本回合，你每打出一张攻击牌就获得{stacks}点格挡。"
+description = "本回合，你每打出一张攻击牌就获得{stacks}点[color=gold]格挡[/color]。"
 icon = ExtResource("2_2qmhu")
 buff_script = ExtResource("1_qwror")
 metadata/_custom_type_script = "uid://c1n4sywvfnffx"

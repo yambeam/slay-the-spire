@@ -8,6 +8,9 @@ extends CanvasLayer
 
 const TOOLTIP_ENTRY = preload("res://globals/tooltip_entry.tscn")
 
+var entry_dict: Dictionary = {
+	
+}
 var current_node: Node
 var callback: Callable
 
@@ -25,17 +28,11 @@ func clear():
 		child.queue_free()
 	for child in tooltip_container_2.get_children():
 		child.queue_free()
-
+	entry_dict = {}
+	
 func add_keyword(title, desc) -> void:
 	title = "[color=gold]" + title + "[/color]"
-	var tooltip_entry: ToolTipEntry = TOOLTIP_ENTRY.instantiate()
-	# 如果状态装不下了之后再说
-	if tooltip_container_1.get_child_count() < 3:
-		tooltip_container_1.add_child(tooltip_entry)
-	else:
-		tooltip_container_2.add_child(tooltip_entry)
-	tooltip_entry.setup(title, desc)
-
+	entry_dict[title] = desc
 
 func extract_keyword(text: String) -> Array:
 	var found: Array[String] = []
@@ -63,6 +60,14 @@ func _on_timer_timeout() -> void:
 	# TODO:找时间重构
 	if current_node and callback:
 		callback.call()
+		var count = len(entry_dict)
+		for title in entry_dict:
+			var tooltip_entry: ToolTipEntry = TOOLTIP_ENTRY.instantiate()
+			if tooltip_container_1.get_child_count() < ceil(count / 2.0):
+				tooltip_container_1.add_child(tooltip_entry)
+			else:
+				tooltip_container_2.add_child(tooltip_entry)
+			tooltip_entry.setup(title, entry_dict[title])
 		await get_tree().process_frame
 		show()
 		throttle_timer.start()

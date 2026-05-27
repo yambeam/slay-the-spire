@@ -35,7 +35,7 @@ script = ExtResource("5_q13ib")
 relic_name = "爬行动物饰品"
 id = "reptile_trinket"
 icon = ExtResource("4_k52s1")
-description = "当你使用药水时，在本回合获得3点力量"
+description = "当你使用药水时，在本回合获得3点[color=gold]力量[/color]"
 rarity = 2
 effects = Array[ExtResource("1_uhhuq")]([SubResource("Resource_4l23d"), SubResource("Resource_57pdc")])
 metadata/_custom_type_script = "uid://bvf88v88tbaks"

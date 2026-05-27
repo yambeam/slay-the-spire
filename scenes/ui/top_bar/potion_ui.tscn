@@ -32,6 +32,7 @@ stretch_mode = 5
 [node name="PotionButton" type="TextureButton" parent="." unique_id=1735674312]
 custom_minimum_size = Vector2(50, 0)
 layout_mode = 2
+mouse_filter = 1
 texture_normal = ExtResource("3_l0m77")
 ignore_texture_size = true
 stretch_mode = 0

@@ -21,7 +21,7 @@ metadata/_custom_type_script = "uid://c6kvghrfcdtp7"
 script = ExtResource("2_0ufat")
 id = "energy_potion"
 potion_name = "能量药水"
-description = "获得2点能量"
+description = "获得2点[color=gold]能量[/color]"
 icon = ExtResource("4_wffod")
 outline_icon = ExtResource("5_ui52j")
 effects = Array[ExtResource("1_0kfmg")]([SubResource("Resource_tqeo3")])

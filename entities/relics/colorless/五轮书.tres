@@ -9,5 +9,5 @@ script = ExtResource("3_x1f5w")
 relic_name = "五轮书"
 id = "book_of_five_rings"
 icon = ExtResource("2_bvo7o")
-description = "你每将5张牌加入你的牌组时，回复20点生命"
+description = "你每将5张牌加入你的牌组时，回复[color=green]20[/color]点生命"
 metadata/_custom_type_script = "uid://bvf88v88tbaks"

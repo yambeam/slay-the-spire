@@ -30,7 +30,10 @@ signal selection_confirmed()
 var all_cards: Array[Card]
 var current_idx: int = -1
 
-
+func hide_deck_view() -> void:
+	hide()
+	for child in card_grid_container.get_children():
+		child.queue_free()
 
 func _ready() -> void:
 	back_button.pressed.connect(

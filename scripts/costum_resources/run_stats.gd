@@ -65,7 +65,7 @@ func init_potion_slots() -> void:
 			potions.append(null)
 
 func add_potion(potion: Potion) -> bool:
-	for i in range(potions.size()):
+	for i in range(len(potions)):
 		if potions[i] == null:
 			potions[i] = potion
 			potion_added.emit(potion)

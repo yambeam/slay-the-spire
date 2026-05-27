@@ -8,7 +8,7 @@
 script = ExtResource("1_oewph")
 buff_id = "barricade"
 buff_name = "壁垒"
-description = "回合开始时格挡不会自动消失"
+description = "回合开始时[color=gold]格挡[/color]不会自动消失"
 icon = ExtResource("2_3oykx")
 stackable = false
 buff_script = ExtResource("1_3oykx")

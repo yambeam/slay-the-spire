@@ -9,6 +9,6 @@ script = ExtResource("3_ulemb")
 relic_name = "李家华夫饼"
 id = "lees_waffle"
 icon = ExtResource("2_kbaky")
-description = "拾起时，将你的最大生命值提升7点，并回复所有生命"
+description = "拾起时，将你的最大生命值提升[color=green]7[/color]点，并回复所有生命"
 rarity = 16
 metadata/_custom_type_script = "uid://bvf88v88tbaks"

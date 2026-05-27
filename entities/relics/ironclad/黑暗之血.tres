@@ -22,7 +22,7 @@ script = ExtResource("2_cis0s")
 relic_name = "黑暗之血"
 id = "black_blood"
 icon = ExtResource("4_thwvx")
-description = "战斗结束时，回复12点生命"
+description = "战斗结束时，回复[color=green]12[/color]点生命"
 trigger_type = 4
 rarity = 8
 effects = Array[ExtResource("1_ivrjm")]([SubResource("Resource_tj5vw")])

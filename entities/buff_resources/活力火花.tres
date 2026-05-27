@@ -8,7 +8,7 @@
 script = ExtResource("1_mypqj")
 buff_id = "vital_spark"
 buff_name = "活力火花"
-description = "每回合第一次受到攻击时给予攻击者{stacks}点能量"
+description = "每回合第一次受到攻击时给予攻击者{stacks}点[color=gold]能量[/color]"
 icon = ExtResource("2_i8my3")
 buff_script = ExtResource("1_wvmev")
 metadata/_custom_type_script = "uid://c1n4sywvfnffx"

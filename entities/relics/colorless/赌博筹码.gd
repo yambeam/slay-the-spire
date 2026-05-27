@@ -11,6 +11,7 @@ func deactivate_relic(_owner: RelicUI) -> void:
 		Events.player_hand_drawn.disconnect(_on_player_hand_drawn)
 	if Events.combat_won.is_connected(_on_combat_won):
 		Events.combat_won.disconnect(_on_combat_won)
+	used = false
 	
 func _on_player_hand_drawn(owner: RelicUI) -> void:
 	if not used:

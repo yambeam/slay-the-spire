@@ -23,7 +23,7 @@ script = ExtResource("2_hhlf2")
 relic_name = "铜制鳞片"
 id = "bronze_scales"
 icon = ExtResource("4_e50ik")
-description = "在每场战斗开始时，获得3点荆棘"
+description = "在每场战斗开始时，获得3点[color=gold]荆棘[/color]"
 trigger_type = 2
 effects = Array[ExtResource("1_o8dr7")]([SubResource("Resource_1gl4e")])
 metadata/_custom_type_script = "uid://bvf88v88tbaks"

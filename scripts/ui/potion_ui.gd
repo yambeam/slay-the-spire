@@ -91,7 +91,6 @@ func _on_mouse_exited() -> void:
 func _on_potion_button_pressed() -> void:
 	if potion == null:
 		return
-	print("test")
 	set_potion_visible(!potion_popup.visible)
 	#potion_popup.visible = !potion_popup.visible
 	

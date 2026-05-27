@@ -14,6 +14,7 @@ metadata/_custom_type_script = "uid://dw53gdpom3gn6"
 script = ExtResource("1_e7vhl")
 enemy_stats = ExtResource("2_lgdov")
 position = Vector2(1700, 720)
+index = 1
 metadata/_custom_type_script = "uid://dw53gdpom3gn6"
 
 [resource]

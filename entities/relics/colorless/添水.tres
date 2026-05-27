@@ -9,6 +9,6 @@ script = ExtResource("3_aj1g2")
 relic_name = "添水"
 id = "SOZU"
 icon = ExtResource("2_iyjia")
-description = "拾取时，获得100点充能"
+description = "拾取时，获得100点[color=gold]充能[/color]"
 rarity = 2
 metadata/_custom_type_script = "uid://bvf88v88tbaks"

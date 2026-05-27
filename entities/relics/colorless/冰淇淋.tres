@@ -9,6 +9,6 @@ script = ExtResource("3_lo2a8")
 relic_name = "冰淇淋"
 id = "ice_cream"
 icon = ExtResource("2_pst3r")
-description = "多余的能量可以留到下一回合"
+description = "多余的[color=gold]能量[/color]可以留到下一回合"
 rarity = 4
 metadata/_custom_type_script = "uid://bvf88v88tbaks"

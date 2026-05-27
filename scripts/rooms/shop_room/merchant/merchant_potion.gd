@@ -38,7 +38,7 @@ func _set_shop_item(new_item: ShopItem) -> void:
 func _refresh_display() -> void:
 	if not shop_item or not potion_holder:
 		return
-
+	
 	if not potion_ui_instance:
 		potion_ui_instance = POTION_UI_SCENE.instantiate()
 		potion_holder.add_child(potion_ui_instance)
@@ -55,6 +55,8 @@ func _refresh_display() -> void:
 
 	if potion_ui_instance.has_method("set_potion"):
 		potion_ui_instance.set_potion(shop_item.item_data)   # 传递原始药水数据
+	# 防止点击出现potion_popup
+	potion_ui_instance.potion_button.disabled = true
 	_update_shop_price_display()
 	_update_cost_color()
 

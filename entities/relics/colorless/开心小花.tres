@@ -21,7 +21,7 @@ script = ExtResource("5_hp6pt")
 relic_name = "开心小花"
 id = "happy_flower"
 icon = ExtResource("4_itvnt")
-description = "每3个回合，获得1点能量"
+description = "每3个回合，获得1点[color=gold]能量[/color]"
 trigger_type = 1
 effects = Array[ExtResource("1_7uhxc")]([SubResource("Resource_ulhck")])
 metadata/_custom_type_script = "uid://bvf88v88tbaks"

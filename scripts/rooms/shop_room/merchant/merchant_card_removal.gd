@@ -5,7 +5,8 @@ signal removal_clicked(price: int)
 signal hand_hover_requested(card_node: Node)
 signal hand_hide_requested()
 
-@export var removal_price: int = 75
+# 由于可以无限删除且不涨价，改为125
+@export var removal_price: int = 125
 
 var cost_label: Label
 var run_stats: RunStats

@@ -21,7 +21,7 @@ script = ExtResource("5_spxs8")
 relic_name = "腰带扣"
 id = "belt_buckle"
 icon = ExtResource("4_383pa")
-description = "你每打出一张技能牌，获得1点充能"
+description = "你每打出一张技能牌，获得1点[color=gold]充能[/color]"
 rarity = 16
 effects = Array[ExtResource("1_1wy03")]([SubResource("Resource_nj0cm")])
 metadata/_custom_type_script = "uid://bvf88v88tbaks"

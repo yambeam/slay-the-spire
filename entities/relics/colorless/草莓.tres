@@ -9,6 +9,6 @@ script = ExtResource("3_v1288")
 relic_name = "草莓"
 id = "strawberry"
 icon = ExtResource("2_3yn1x")
-description = "拾起时，将你的最大生命值提升7"
+description = "拾起时，将你的最大生命值提升[color=green]7[/color]"
 trigger_type = 2
 metadata/_custom_type_script = "uid://bvf88v88tbaks"

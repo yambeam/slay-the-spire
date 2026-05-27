@@ -23,7 +23,7 @@ script = ExtResource("5_62d6w")
 relic_name = "自成形黏土"
 id = "self_forming_clay"
 icon = ExtResource("4_3n5ba")
-description = "每当你在战斗中失去生命，就在下回合获得3点格挡"
+description = "每当你在战斗中失去生命，就在下回合获得3点[color=gold]格挡[/color]"
 relic_color = 1
 rarity = 2
 effects = Array[ExtResource("1_0k67t")]([SubResource("Resource_hk826")])

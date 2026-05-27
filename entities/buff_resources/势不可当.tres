@@ -8,7 +8,7 @@
 script = ExtResource("1_g0pf0")
 buff_id = "juggernaut"
 buff_name = "势不可当"
-description = "每当你获得格挡时，对随机敌人造成{stacks}点伤害"
+description = "每当你获得[color=gold]格挡[/color]时，对随机敌人造成{stacks}点伤害"
 icon = ExtResource("2_umk65")
 buff_script = ExtResource("1_j4bwc")
 metadata/_custom_type_script = "uid://c1n4sywvfnffx"

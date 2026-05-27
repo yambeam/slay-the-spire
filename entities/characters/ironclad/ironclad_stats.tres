@@ -19,6 +19,6 @@ character_name = "铁甲战士"
 character_icon = ExtResource("1_wbn8u")
 character_description = "这是战士的描述"
 main_skill = ExtResource("3_wbn8u")
-max_health = 33
+max_health = 70
 visuals_scene = ExtResource("5_e3340")
 metadata/_custom_type_script = "uid://dpde6spa48hlj"

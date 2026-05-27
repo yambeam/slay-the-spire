@@ -36,7 +36,7 @@ script = ExtResource("2_yn8r0")
 relic_name = "波纹水盆"
 id = "ripple_basin"
 icon = ExtResource("4_qd6xm")
-description = "如果你在本回合中没有打出过攻击牌，则获得6点格挡"
+description = "如果你在本回合中没有打出过攻击牌，则获得6点[color=gold]格挡[/color]"
 trigger_type = 3
 rarity = 2
 effects = Array[ExtResource("1_oxj23")]([SubResource("Resource_gww4i")])

@@ -8,7 +8,7 @@
 script = ExtResource("1_bcd6n")
 buff_id = "waste_away"
 buff_name = "衰朽"
-description = "回合开始时失去{stacks}点能量"
+description = "回合开始时失去{stacks}点[color=gold]能量[/color]"
 icon = ExtResource("2_c0fw8")
 buff_type = 1
 buff_script = ExtResource("1_xn5t4")

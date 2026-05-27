@@ -23,7 +23,7 @@ script = ExtResource("5_4rd68")
 relic_name = "精致纸扇"
 id = "ornamental_fan"
 icon = ExtResource("4_fvsiw")
-description = "你每在同一回合内打出3张攻击牌，就获得4点格挡"
+description = "你每在同一回合内打出3张攻击牌，就获得4点[color=gold]格挡[/color]"
 rarity = 2
 effects = Array[ExtResource("1_4rd68")]([SubResource("Resource_d6p4d")])
 metadata/_custom_type_script = "uid://bvf88v88tbaks"

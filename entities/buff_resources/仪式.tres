@@ -8,7 +8,7 @@
 script = ExtResource("1_om86l")
 buff_id = "ritual"
 buff_name = "仪式"
-description = "回合结束时获得{stacks}层力量"
+description = "回合结束时获得{stacks}层[color=gold]力量[/color]"
 icon = ExtResource("2_8namv")
 buff_script = ExtResource("1_8if5v")
 metadata/_custom_type_script = "uid://c1n4sywvfnffx"

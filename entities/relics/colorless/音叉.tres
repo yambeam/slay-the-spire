@@ -23,7 +23,7 @@ script = ExtResource("2_0wd7c")
 relic_name = "音叉"
 id = "tuning_fork"
 icon = ExtResource("4_p6oel")
-description = "你每打出10张技能牌，获得7点格挡"
+description = "你每打出10张技能牌，获得7点[color=gold]格挡[/color]"
 rarity = 2
 effects = Array[ExtResource("1_fujht")]([SubResource("Resource_37npr")])
 metadata/_custom_type_script = "uid://bvf88v88tbaks"

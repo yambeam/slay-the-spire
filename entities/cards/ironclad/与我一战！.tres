@@ -111,13 +111,13 @@ script = ExtResource("4_bq1k6")
 damage_provider = SubResource("Resource_kyv22")
 target_type = 2
 animation_name = "attack"
+sound = ExtResource("5_x0n34")
 metadata/_custom_type_script = "uid://vkklgv0ma0yf"
 
 [sub_resource type="Resource" id="Resource_xs8hd"]
 script = ExtResource("5_bq1k6")
 count_provider = SubResource("Resource_ohjwm")
 effects = Array[ExtResource("2_k4rjm")]([SubResource("Resource_o4hov")])
-sound = ExtResource("5_x0n34")
 metadata/_custom_type_script = "uid://c8ly86kb5vc65"
 
 [sub_resource type="Resource" id="Resource_lbqyh"]

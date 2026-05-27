@@ -8,7 +8,7 @@
 script = ExtResource("1_7k8rw")
 buff_id = "frail"
 buff_name = "脆弱"
-description = "从卡牌中获得的格挡降低25%"
+description = "从卡牌中获得的[color=gold]格挡[/color]降低25%"
 icon = ExtResource("2_cfsps")
 buff_type = 1
 buff_script = ExtResource("1_cfsps")

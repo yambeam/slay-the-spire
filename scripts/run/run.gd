@@ -461,7 +461,7 @@ func _on_combat_room_entered(room: Room = null, restore_state: Dictionary = {}) 
 			Room.Type.ELITE:
 				room.enemy_encounter = encounter_pool.get_random_encounter_by_type(EnemyEncounter.Type.ELITE)
 			Room.Type.MONSTER, Room.Type.UNKNOWN:
-				mob_killed_this_act += 1
+				mob_killed_this_act += 1 
 				if stats.current_stage == 1:
 					if mob_killed_this_act <= 3:
 						room.enemy_encounter = encounter_pool.get_random_encounter_by_type(EnemyEncounter.Type.WEAK)
@@ -544,6 +544,7 @@ func _on_ancient_room_entered(room: Room) -> void:
 	ancient.current_stage = stats.current_stage
 	current_room.add_child(ancient)
 	ancient.initialize_new()   
+	character.health = character.max_health
 	_save_run(false)            
 		
 func _on_ancient_relic_selected(relic: Relic) -> void:

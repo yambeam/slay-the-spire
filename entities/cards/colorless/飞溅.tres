@@ -41,6 +41,8 @@ type = 2
 card_color = 64
 base_cost = 1
 rarity = 2
+discoverable = false
+draftable = false
 effects = Array[ExtResource("2_m25ax")]([SubResource("Resource_qk0du")])
 portrait = ExtResource("2_b8qtd")
 base_description = "[center]从3张其他角色的攻击牌中选择1张加入你的[color=gold]手牌[/color]。这张牌在本回合免费打出。[/center]"

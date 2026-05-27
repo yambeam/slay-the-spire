@@ -21,7 +21,7 @@ script = ExtResource("5_xsmrn")
 relic_name = "双截棍"
 id = "nunchaku"
 icon = ExtResource("4_ut1cr")
-description = "你每打出10张攻击牌，获得1点能量"
+description = "你每打出10张攻击牌，获得1点[color=gold]能量[/color]"
 rarity = 2
 effects = Array[ExtResource("1_aswro")]([SubResource("Resource_bvest")])
 metadata/_custom_type_script = "uid://bvf88v88tbaks"

@@ -8,7 +8,7 @@
 script = ExtResource("1_kro50")
 buff_id = "rupture"
 buff_name = "撕裂"
-description = "每当你在你的回合内失去生命时，获得{stacks}点力量。"
+description = "每当你在你的回合内失去生命时，获得{stacks}点[color=gold]力量[/color]。"
 icon = ExtResource("1_pde7t")
 buff_script = ExtResource("1_lr6ol")
 metadata/_custom_type_script = "uid://c1n4sywvfnffx"

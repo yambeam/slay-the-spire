@@ -9,7 +9,7 @@ script = ExtResource("3_bl046")
 relic_name = "缩放仪"
 id = "pantograph"
 icon = ExtResource("2_c312h")
-description = "进入[color=gold]Boss[/color]房时，回复25点生命值"
+description = "进入[color=gold]Boss[/color]房时，回复[color=green]25[/color]点生命值"
 rarity = 2
 effects = Array[ExtResource("1_ca6dp")]([null])
 metadata/_custom_type_script = "uid://bvf88v88tbaks"

@@ -61,15 +61,15 @@ func highlight() -> void:
 func unhightlight() -> void:
 	pass
 	
-var vector: Vector2
-func _update_angle(start_pos: Vector2, end_pos: Vector2):
-	for i in range(arrow_count):
-		if i == 0:
-			arrow_array[0].rotation_degrees = 0
-		else:
-			var current_segment = arrow_array[i]
-			var last_segment = arrow_array[i - 1]
-			var len_vec: Vector2 = current_segment.position - last_segment.position
-			current_segment.rotation = len_vec.angle()
+#var vector: Vector2
+#func _update_angle(start_pos: Vector2, end_pos: Vector2):
+	#for i in range(arrow_count):
+		#if i == 0:
+			#arrow_array[0].rotation_degrees = 0
+		#else:
+			#var current_segment = arrow_array[i]
+			#var last_segment = arrow_array[i - 1]
+			#var len_vec: Vector2 = current_segment.position - last_segment.position
+			#current_segment.rotation = len_vec.angle()
 			
 		

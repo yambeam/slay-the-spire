@@ -8,7 +8,7 @@
 script = ExtResource("1_d655m")
 buff_id = "setup_strike"
 buff_name = "预备打击"
-description = "回合结束时，失去{stacks}点力量"
+description = "回合结束时，失去{stacks}点[color=gold]力量[/color]"
 icon = ExtResource("2_wn7nq")
 buff_type = 1
 buff_script = ExtResource("1_v5mkb")

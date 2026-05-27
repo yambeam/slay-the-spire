@@ -9,6 +9,6 @@ script = ExtResource("3_tgmlj")
 relic_name = "燃烧木棍"
 id = "burning_sticks"
 icon = ExtResource("2_0mb2h")
-description = "每场战斗中你第一次消耗技能牌时，将那张牌的复制品加入你的[color=gold]手牌[/color]"
+description = "每场战斗中你第一次[color=gold]消耗[/color]技能牌时，将那张牌的复制品加入你的[color=gold]手牌[/color]"
 rarity = 16
 metadata/_custom_type_script = "uid://bvf88v88tbaks"

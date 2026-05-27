@@ -26,6 +26,6 @@ script = ExtResource("6_i0rlu")
 relic_name = "地精之角"
 id = "gremlin_horn"
 icon = ExtResource("5_vjdba")
-description = "每当有一名敌人死亡时，获得1点能量并抽1张牌"
+description = "每当有一名敌人死亡时，获得1点[color=gold]能量[/color]并抽1张牌"
 effects = Array[ExtResource("1_lojwy")]([SubResource("Resource_jp2bb"), SubResource("Resource_i0rlu")])
 metadata/_custom_type_script = "uid://bvf88v88tbaks"

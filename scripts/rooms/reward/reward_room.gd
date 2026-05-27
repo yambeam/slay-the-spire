@@ -112,11 +112,10 @@ func add_potion_reward(potion: Potion) -> void:
 	potion_reward.reward_text = potion.potion_name
 	potion_reward.pressed.connect(
 		func():
-			if _is_potion_slot_full():
-				_play_shake_feedback(potion_reward)
-			else:
-				if run_stats: run_stats.add_potion(potion)
+			if run_stats.add_potion(potion):
 				potion_reward.queue_free()
+			else:
+				_play_shake_feedback(potion_reward)
 	)
 	# add_potion_reward
 	potion_reward.set_meta("reward_type", "potion")

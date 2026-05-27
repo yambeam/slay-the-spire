@@ -8,7 +8,7 @@
 script = ExtResource("1_3ydru")
 buff_id = "calamity"
 buff_name = "灾祸"
-description = "你每打出一张攻击牌，获得{stacks}点充能"
+description = "你每打出一张攻击牌，获得{stacks}点[color=gold]充能[/color]"
 icon = ExtResource("2_ow7dv")
 buff_script = ExtResource("1_2j0dd")
 metadata/_custom_type_script = "uid://c1n4sywvfnffx"

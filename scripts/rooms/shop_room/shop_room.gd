@@ -25,9 +25,8 @@ const POTION_FLOAT_RATE := 0.05
 
 const POTION_PRICE_MIN := 40
 const POTION_PRICE_MAX := 80
-#删除卡牌固定费用为75（基础金币设置为75）
-# 由于可以无限删且不会增长价格，改为125
-const CARD_REMOVAL_PRICE := 125
+# 这个常数根本没有被使用
+#const CARD_REMOVAL_PRICE := 125
 
 # 折扣概率
 const DISCOUNT_CHANCE := 0.3
@@ -655,7 +654,6 @@ func _show_inventory() -> void:
 		create_tween().tween_property(backstop, "modulate:a", 0.7, 0.3)
 
 	if not cards_populated:
-		print("test")
 		_populate_cards()
 		_populate_relics()
 		_populate_potions()

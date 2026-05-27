@@ -8,7 +8,7 @@
 script = ExtResource("1_dlh0q")
 buff_id = "speed_potion"
 buff_name = "速度药水"
-description = "回合结束时，失去{stacks}点敏捷"
+description = "回合结束时，失去{stacks}点[color=gold]敏捷[/color]"
 icon = ExtResource("2_oh8sq")
 buff_type = 1
 buff_script = ExtResource("1_pm833")

@@ -8,7 +8,7 @@
 script = ExtResource("1_ah54v")
 buff_id = "prepare_time"
 buff_name = "准备时间"
-description = "回合开始时，获得{stacks}点活力"
+description = "回合开始时，获得{stacks}点[color=gold]活力[/color]"
 icon = ExtResource("2_iukfy")
 buff_script = ExtResource("1_d7eb6")
 metadata/_custom_type_script = "uid://c1n4sywvfnffx"

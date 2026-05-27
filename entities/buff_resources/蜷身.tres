@@ -8,7 +8,7 @@
 script = ExtResource("1_7gj12")
 buff_id = "curl_up"
 buff_name = "蜷身"
-description = "下一次受到伤害后获得{stacks}点格挡"
+description = "下一次受到伤害后获得{stacks}点[color=gold]格挡[/color]"
 icon = ExtResource("2_4y42s")
 buff_script = ExtResource("1_37qdh")
 metadata/_custom_type_script = "uid://c1n4sywvfnffx"

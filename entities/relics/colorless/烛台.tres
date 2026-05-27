@@ -21,7 +21,7 @@ script = ExtResource("2_0omlr")
 relic_name = "烛台"
 id = "candelabra"
 icon = ExtResource("4_2dfqi")
-description = "在你的第2回合开始时，获得2点能量"
+description = "在你的第2回合开始时，获得2点[color=gold]能量[/color]"
 trigger_type = 1
 rarity = 2
 effects = Array[ExtResource("1_8ts8u")]([SubResource("Resource_mxjg0")])

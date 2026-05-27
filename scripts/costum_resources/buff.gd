@@ -84,14 +84,14 @@ func serialize() -> Dictionary:
 	}
 
 static func deserialize(data: Dictionary) -> Buff:
-	var buff_name: String = data.get("buff_name", "")
-	if buff_name.is_empty():
+	var buff_name_: String = data.get("buff_name", "")
+	if buff_name_.is_empty():
 		push_error("Buff.deserialize: buff_name missing")
 		return null
 
-	var resource: BuffResource = BuffLibrary.get_buff_resource_by_name(buff_name)
+	var resource: BuffResource = BuffLibrary.get_buff_resource_by_name(buff_name_)
 	if not resource:
-		push_error("Buff.deserialize: no BuffResource found for " + buff_name)
+		push_error("Buff.deserialize: no BuffResource found for " + buff_name_)
 		return null
 
 	var buff := Buff.new()

@@ -18,10 +18,13 @@ func execute_intent(source: Creature, target: Creature, current_intent: Intent) 
 	last_action = current_intent.intent_name
 	super.execute_intent(source, target, current_intent)
 
-func choose_intent(_source: Creature, _target: Creature) -> Intent:
+func choose_intent(source: Creature, _target: Creature) -> Intent:
 	match last_action:
 		"":
-			return random_intent([get_intent_by_name("Spiken"), get_intent_by_name("Whirl")])
+			if source.encounter_index == 0:
+				return get_intent_by_name("Whirl")
+			else:
+				return get_intent_by_name("Spiken")
 		"Whirl":
 			return get_intent_by_name("Spiken")
 		"Spiken":

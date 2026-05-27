@@ -20,6 +20,6 @@ func deactivate_relic(_owner: RelicUI) -> void:
 func _on_player_hit(owner: RelicUI) -> void:
 	activate_relic(owner)
 
-func _on_combat_won() -> void:
+func _on_combat_won(_reward_context) -> void:
 	used = false
 	

@@ -8,7 +8,7 @@
 script = ExtResource("1_1ognv")
 buff_id = "reptile_trinket"
 buff_name = "爬行动物饰品"
-description = "回合结束时，失去{stacks}点力量"
+description = "回合结束时，失去{stacks}点[color=gold]力量[color]"
 icon = ExtResource("2_lfkr1")
 buff_script = ExtResource("1_shoai")
 metadata/_custom_type_script = "uid://c1n4sywvfnffx"

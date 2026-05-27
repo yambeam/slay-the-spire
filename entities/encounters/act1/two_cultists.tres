@@ -1,0 +1,27 @@
+[gd_resource type="Resource" script_class="EnemyEncounter" format=3 uid="uid://bxof50aawbanq"]
+
+[ext_resource type="Script" uid="uid://dw53gdpom3gn6" path="res://scripts/costum_resources/enemy_entry.gd" id="1_cuxiq"]
+[ext_resource type="Resource" uid="uid://dygetn42tb2iq" path="res://entities/enemies/calcified_cultist/calcified_cultist_stats.tres" id="2_jcdhp"]
+[ext_resource type="Script" uid="uid://dgu4qpyr0pnnb" path="res://scripts/costum_resources/enemy_encounter.gd" id="2_jm4i4"]
+[ext_resource type="Resource" uid="uid://cu4nsqmmyapmw" path="res://entities/enemies/damp_cultist/damp_cultist_stats.tres" id="3_ea1qx"]
+
+[sub_resource type="Resource" id="Resource_qre68"]
+script = ExtResource("1_cuxiq")
+enemy_stats = ExtResource("2_jcdhp")
+position = Vector2(1200, 720)
+metadata/_custom_type_script = "uid://dw53gdpom3gn6"
+
+[sub_resource type="Resource" id="Resource_5so2b"]
+script = ExtResource("1_cuxiq")
+enemy_stats = ExtResource("3_ea1qx")
+position = Vector2(1700, 720)
+index = 1
+metadata/_custom_type_script = "uid://dw53gdpom3gn6"
+
+[resource]
+script = ExtResource("2_jm4i4")
+type = 1
+weight = 1.0
+enemy_entries = Array[ExtResource("1_cuxiq")]([SubResource("Resource_qre68"), SubResource("Resource_5so2b")])
+encounter_name = "两只咔咔"
+metadata/_custom_type_script = "uid://dgu4qpyr0pnnb"

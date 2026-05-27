@@ -8,7 +8,7 @@
 script = ExtResource("1_740n3")
 buff_id = "feel_no_pain"
 buff_name = "无惧疼痛"
-description = "每当有一张牌被消耗时，获得{stacks}点格挡"
+description = "每当有一张牌被[color=gold]消耗[/color]时，获得{stacks}点[color=gold]格挡[/color]"
 icon = ExtResource("1_h5aiv")
 buff_script = ExtResource("1_flvvu")
 metadata/_custom_type_script = "uid://c1n4sywvfnffx"

@@ -9,6 +9,6 @@ script = ExtResource("3_tikyd")
 relic_name = "永恒羽毛"
 id = "eternal_feather"
 icon = ExtResource("2_p7q82")
-description = "你的[color=gold]牌组[/color]中每有5张牌，当你进入休息处时就会回复3点生命"
+description = "你的[color=gold]牌组[/color]中每有5张牌，当你进入休息处时就会回复[color=green]3[/color]点生命"
 rarity = 2
 metadata/_custom_type_script = "uid://bvf88v88tbaks"

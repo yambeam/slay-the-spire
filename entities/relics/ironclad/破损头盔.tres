@@ -21,7 +21,7 @@ script = ExtResource("2_ksa6k")
 relic_name = "破损头盔"
 id = "ruined_helmet"
 icon = ExtResource("4_ms1b2")
-description = "战斗开始时获得10点充能"
+description = "战斗开始时获得10点[color=gold]充能[/color]"
 trigger_type = 2
 rarity = 4
 effects = Array[ExtResource("1_gl330")]([SubResource("Resource_iolur")])

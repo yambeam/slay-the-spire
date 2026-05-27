@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="EnemyStats" format=3 uid="uid://cu4nsqmmyapmw"]
+
+[ext_resource type="Script" uid="uid://bjrlwk5w4gqtk" path="res://scripts/costum_resources/enemy_stats.gd" id="1_gok77"]
+[ext_resource type="Resource" uid="uid://cb1d8dt52l6vy" path="res://entities/enemies/damp_cultist/damp_cultist_ai.tres" id="1_pbodd"]
+[ext_resource type="PackedScene" uid="uid://0d0t1vl2g8b7" path="res://scenes/creature_visuals/damp_cultist.tscn" id="3_v6auo"]
+
+[resource]
+script = ExtResource("1_gok77")
+ai = ExtResource("1_pbodd")
+enemy_name = "潮湿邪教徒"
+hightest_max_health = 52
+lowest_max_health = 54
+visuals_scene = ExtResource("3_v6auo")
+metadata/_custom_type_script = "uid://bjrlwk5w4gqtk"

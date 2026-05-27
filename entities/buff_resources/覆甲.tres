@@ -8,7 +8,7 @@
 script = ExtResource("1_w73mv")
 buff_id = "plating"
 buff_name = "覆甲"
-description = "在你的回合结束时获得{stacks}点格挡。然后层数减少1层"
+description = "在你的回合结束时获得{stacks}点[color=gold]格挡[/color]。然后层数减少1层"
 icon = ExtResource("1_gcpcs")
 buff_script = ExtResource("1_yoxjc")
 metadata/_custom_type_script = "uid://c1n4sywvfnffx"

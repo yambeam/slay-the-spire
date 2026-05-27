@@ -19,7 +19,7 @@ func choose_intent(_source: Creature, _target: Creature) -> Intent:
 	return intent
 
 func random_intent(intents_: Array[Intent]) -> Intent:
-	return intents_[randi() % intents_.size()]
+	return RandomSetting.array_pick_random(intents_)
 
 #func get_intent_by_name(intents_: Array[Intent], intent_name: String) -> Intent:
 	#for intent: Intent in intents_:

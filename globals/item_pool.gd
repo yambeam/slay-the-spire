@@ -229,7 +229,7 @@ func _ready():
 	load_all_cards("res://entities/cards")
 	load_all_potions("res://entities/potions")
 	load_all_enchantments("res://entities/enchantments")
-	load_all_relics("res://entities/relics/")
+	load_all_relics("res://entities/relics")
 	
 func init_item_pool(color: CharacterStats.COLOR) -> void:
 	current_card_pool = get_draftable_cards_by_color(color)

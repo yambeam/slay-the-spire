@@ -1,0 +1,71 @@
+[gd_resource type="Resource" format=3 uid="uid://bao4624adasuk"]
+
+[ext_resource type="Script" uid="uid://ce34juwu5b0yr" path="res://scripts/costum_resources/intents/intent.gd" id="1_bvyvs"]
+[ext_resource type="Script" uid="uid://iqqyr44teapg" path="res://scripts/costum_resources/intents/sub_intent.gd" id="2_u5yij"]
+[ext_resource type="Script" uid="uid://dtok21t0ujjui" path="res://scripts/costum_resources/numeric_provider.gd" id="3_l7ubf"]
+[ext_resource type="Script" uid="uid://b8qfrs61nmcix" path="res://scripts/costum_resources/effects/apply_buff_effect.gd" id="4_pkvxh"]
+[ext_resource type="Script" uid="uid://dpbv4m5rd0bbq" path="res://scripts/costum_resources/intents/apply_buff_sub_intent.gd" id="5_7bxhw"]
+[ext_resource type="Script" uid="uid://vkklgv0ma0yf" path="res://scripts/costum_resources/effects/attack_effect.gd" id="6_thlp2"]
+[ext_resource type="AudioStream" uid="uid://b3reffdbqylun" path="res://audio/SFX/slash_attack.mp3" id="7_aeog7"]
+[ext_resource type="Script" uid="uid://bces7ijyodhmv" path="res://scripts/costum_resources/intents/attack_sub_intent.gd" id="8_5pvjp"]
+[ext_resource type="Script" uid="uid://ld3vvhu848yu" path="res://entities/enemies/calcified_cultist/calcified_cultist_ai.gd" id="9_0lh4r"]
+
+[sub_resource type="Resource" id="Resource_v5vhp"]
+script = ExtResource("3_l7ubf")
+fixed_value = 2
+metadata/_custom_type_script = "uid://dtok21t0ujjui"
+
+[sub_resource type="Resource" id="Resource_3wdec"]
+script = ExtResource("4_pkvxh")
+buff_name = "仪式"
+buff_stack_provider = SubResource("Resource_v5vhp")
+target_type = 1
+metadata/_custom_type_script = "uid://b8qfrs61nmcix"
+
+[sub_resource type="Resource" id="Resource_cfcxm"]
+script = ExtResource("5_7bxhw")
+type = 1
+effect = SubResource("Resource_3wdec")
+metadata/_custom_type_script = "uid://dpbv4m5rd0bbq"
+
+[sub_resource type="Resource" id="Resource_2ofev"]
+script = ExtResource("1_bvyvs")
+sub_intents = Array[ExtResource("2_u5yij")]([SubResource("Resource_cfcxm")])
+intent_name = "Incantation"
+anim_name = "buff"
+metadata/_custom_type_script = "uid://ce34juwu5b0yr"
+
+[sub_resource type="Resource" id="Resource_4uafc"]
+script = ExtResource("3_l7ubf")
+fixed_value = 7
+metadata/_custom_type_script = "uid://dtok21t0ujjui"
+
+[sub_resource type="Resource" id="Resource_y1gd7"]
+script = ExtResource("3_l7ubf")
+fixed_value = 7
+metadata/_custom_type_script = "uid://dtok21t0ujjui"
+
+[sub_resource type="Resource" id="Resource_47ivw"]
+script = ExtResource("6_thlp2")
+damage_provider = SubResource("Resource_y1gd7")
+target_type = 2
+sound = ExtResource("7_aeog7")
+metadata/_custom_type_script = "uid://vkklgv0ma0yf"
+
+[sub_resource type="Resource" id="Resource_o2oen"]
+script = ExtResource("8_5pvjp")
+damage_provider = SubResource("Resource_4uafc")
+effect = SubResource("Resource_47ivw")
+metadata/_custom_type_script = "uid://bces7ijyodhmv"
+
+[sub_resource type="Resource" id="Resource_evbhq"]
+script = ExtResource("1_bvyvs")
+sub_intents = Array[ExtResource("2_u5yij")]([SubResource("Resource_o2oen")])
+intent_name = "DarkStrike"
+anim_name = "attack"
+metadata/_custom_type_script = "uid://ce34juwu5b0yr"
+
+[resource]
+script = ExtResource("9_0lh4r")
+intents = Array[ExtResource("1_bvyvs")]([SubResource("Resource_2ofev"), SubResource("Resource_evbhq")])
+metadata/_custom_type_script = "uid://dpkht0suo8prh"

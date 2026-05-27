@@ -15,7 +15,8 @@ enum SourceType{
 	CARD_PLAYED_THIS_COMBAT, # 这张卡牌在本场战斗的打出次数
 	CARD_COUNT_IN_EXHAUST_PILE, # 消耗堆卡牌数量
 	HEALTH_LOSE_TIMES_THIS_COMBAT, # 本场战斗失去生命次数
-	PLAYER_HAND_COUNT, # 玩家手牌数
+	PLAYER_HAND_COUNT, # 玩家手牌数,
+	PLAYER_HIT_THIS_COMBAT, # 本场战斗受到的伤害次数
 	CUSTOM, # 自定义（应该不需要这么复杂的东西，暂时不实现
 }
 
@@ -88,6 +89,10 @@ func get_value(previous_result: Variant = null, context: Dictionary = {}) -> int
 			var player: Player = context.get("player")
 			if player:
 				return _get_value(len(player.get_hand_cards()))
+		SourceType.PLAYER_HIT_THIS_COMBAT:
+			var player: Player = context.get("player")
+			if player:
+				return _get_value(player.player_hit_this_combat)
 		SourceType.CUSTOM:
 			printerr("未实现")
 			return 0

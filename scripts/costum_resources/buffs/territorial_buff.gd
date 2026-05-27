@@ -9,5 +9,4 @@ func get_description() -> String:
 	return description.format({"stacks": stacks})
 
 func _on_turn_ended(creature: Node2D) -> void:
-	print("test")
 	(creature as Creature).apply_buff(ApplyBuffContext.new(creature, creature, stacks, "力量"))

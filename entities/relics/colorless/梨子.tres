@@ -9,6 +9,6 @@ script = ExtResource("3_6pn8v")
 relic_name = "梨子"
 id = "pear"
 icon = ExtResource("2_q3b66")
-description = "拾起时，将你的最大生命值提升10"
+description = "拾起时，将你的最大生命值提升[color=green]10[/color]"
 rarity = 2
 metadata/_custom_type_script = "uid://bvf88v88tbaks"

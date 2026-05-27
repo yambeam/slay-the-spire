@@ -22,7 +22,7 @@ script = ExtResource("2_6vlv7")
 relic_name = "小血瓶"
 id = "blood_vial"
 icon = ExtResource("4_iee7q")
-description = "在每场战斗开始时，回复2点生命"
+description = "在每场战斗开始时，回复[color=green]2[/color]点生命"
 trigger_type = 2
 effects = Array[ExtResource("1_b2irm")]([SubResource("Resource_3y7h0")])
 metadata/_custom_type_script = "uid://bvf88v88tbaks"

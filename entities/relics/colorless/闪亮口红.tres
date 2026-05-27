@@ -35,7 +35,7 @@ script = ExtResource("5_cksn5")
 relic_name = "闪亮口红"
 id = "sparkling_rough"
 icon = ExtResource("4_dipok")
-description = "在你的第3回合开始时，获得2点力量和1点敏捷"
+description = "在你的第3回合开始时，获得2点[color=gold]力量[/color]和1点[color=gold]敏捷[/color]"
 trigger_type = 1
 rarity = 2
 effects = Array[ExtResource("1_smj6v")]([SubResource("Resource_6ehyu"), SubResource("Resource_65fg0")])

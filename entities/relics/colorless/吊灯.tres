@@ -21,7 +21,7 @@ script = ExtResource("5_43g20")
 relic_name = "吊灯"
 id = "chandelier"
 icon = ExtResource("4_w5gef")
-description = "在你的第三回合开始时，获得3点能量"
+description = "在你的第三回合开始时，获得3点[color=gold]能量[/color]"
 trigger_type = 1
 rarity = 4
 effects = Array[ExtResource("1_jsccf")]([SubResource("Resource_3ljuh")])

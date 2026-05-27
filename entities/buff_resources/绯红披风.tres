@@ -8,7 +8,7 @@
 script = ExtResource("1_in7x2")
 buff_id = "crimson_mantle"
 buff_name = "绯红披风"
-description = "在你的回合开始时，失去1点生命并获得{stacks}点格挡"
+description = "在你的回合开始时，失去1点生命并获得{stacks}点[color=gold]格挡[/color]"
 icon = ExtResource("2_0iomg")
 buff_script = ExtResource("1_xjfqg")
 metadata/_custom_type_script = "uid://c1n4sywvfnffx"

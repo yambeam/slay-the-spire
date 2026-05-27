@@ -65,8 +65,8 @@ func _on_forging_pressed() -> void:
 	if !cards.is_empty():
 		cards[0].upgrade()
 		animation_player.play("fade_out")
-	rest.disabled = true
-	forging.disabled = true
+		rest.disabled = true
+		forging.disabled = true
 	
 
 

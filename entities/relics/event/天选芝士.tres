@@ -22,7 +22,7 @@ script = ExtResource("2_ymn8n")
 relic_name = "天选芝士"
 id = "choosen_cheese"
 icon = ExtResource("4_pnxrd")
-description = "在战斗结束时，获得1点最大生命值"
+description = "在战斗结束时，获得[color=green]1[/color]点最大生命值"
 trigger_type = 4
 rarity = 64
 effects = Array[ExtResource("1_n5q6r")]([SubResource("Resource_h2vp8")])

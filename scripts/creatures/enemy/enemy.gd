@@ -240,7 +240,7 @@ func show_keyword_tooltip() -> void:
 	for child: Buff in buff_manager.get_children():
 		KeywordTooltip.add_keyword(child.buff_name, child.get_description())
 	
-	KeywordTooltip.keyword_tooltip.global_position = global_position + Vector2(hitbox.shape.size.x / 2, -hitbox.shape.size.y / 2)
+	KeywordTooltip.keyword_tooltip.global_position = global_position + Vector2(-hitbox.shape.size.x / 2 - 200, -hitbox.shape.size.y / 2)
 	KeywordTooltip.show()
 
 func set_hitbox() -> void:
@@ -284,22 +284,22 @@ func speech(text: String, time: float = 2.5) -> void:
 
 #相关数据序列化与反序列化
 
-func get_intent_data() -> Dictionary:
-	if not current_intent:
-		return {}
-	# 保存意图的唯一标识符（intent_name）
-	return {"intent_name": current_intent.intent_name}
-
-func set_intent_from_data(data: Dictionary) -> void:
-	if data.is_empty() or not enemy_ai:
-		return
-	var template = enemy_ai.get_intent_by_name(data["intent_name"])
-	if not template:
-		print("恢复意图失败：未找到名称 ", data["intent_name"])
-		return
-	#避免修改原始资源
-	current_intent = template.duplicate(true)
-	current_intent.set_source(self)
-	current_intent.set_target(get_tree().get_first_node_in_group("ui_player"))
-	# 立即刷新意图 UI
-	intents.update_intent(current_intent)
+#func get_intent_data() -> Dictionary:
+	#if not current_intent:
+		#return {}
+	## 保存意图的唯一标识符（intent_name）
+	#return {"intent_name": current_intent.intent_name}
+#
+#func set_intent_from_data(data: Dictionary) -> void:
+	#if data.is_empty() or not enemy_ai:
+		#return
+	#var template = enemy_ai.get_intent_by_name(data["intent_name"])
+	#if not template:
+		#print("恢复意图失败：未找到名称 ", data["intent_name"])
+		#return
+	##避免修改原始资源
+	#current_intent = template.duplicate(true)
+	#current_intent.set_source(self)
+	#current_intent.set_target(get_tree().get_first_node_in_group("ui_player"))
+	## 立即刷新意图 UI
+	#intents.update_intent(current_intent)

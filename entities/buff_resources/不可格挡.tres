@@ -8,7 +8,7 @@
 script = ExtResource("1_lnlg1")
 buff_id = "on_block"
 buff_name = "不可格挡"
-description = "无法从卡牌获得格挡。"
+description = "无法从卡牌获得[color=gold]格挡[/color]。"
 icon = ExtResource("2_syr2r")
 buff_type = 1
 buff_script = ExtResource("1_c3s8d")

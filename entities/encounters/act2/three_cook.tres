@@ -1,0 +1,41 @@
+[gd_resource type="Resource" script_class="EnemyEncounter" format=3 uid="uid://qniwoktmx8ee"]
+
+[ext_resource type="Script" uid="uid://dw53gdpom3gn6" path="res://scripts/costum_resources/enemy_entry.gd" id="1_dw6ln"]
+[ext_resource type="Resource" uid="uid://dnb1q23i1x4vm" path="res://entities/enemies/exoskeleton/exoskeleton_stats.tres" id="2_gmwto"]
+[ext_resource type="Script" uid="uid://dgu4qpyr0pnnb" path="res://scripts/costum_resources/enemy_encounter.gd" id="2_yrhdr"]
+
+[sub_resource type="Resource" id="Resource_l7c76"]
+script = ExtResource("1_dw6ln")
+enemy_stats = ExtResource("2_gmwto")
+position = Vector2(1100, 720)
+initial_buff = {
+"难以杀灭": 9
+}
+metadata/_custom_type_script = "uid://dw53gdpom3gn6"
+
+[sub_resource type="Resource" id="Resource_hl0yq"]
+script = ExtResource("1_dw6ln")
+enemy_stats = ExtResource("2_gmwto")
+position = Vector2(1400, 720)
+index = 1
+initial_buff = {
+"难以杀灭": 9
+}
+metadata/_custom_type_script = "uid://dw53gdpom3gn6"
+
+[sub_resource type="Resource" id="Resource_h4hod"]
+script = ExtResource("1_dw6ln")
+enemy_stats = ExtResource("2_gmwto")
+position = Vector2(1700, 720)
+index = 2
+initial_buff = {
+"难以杀灭": 9
+}
+metadata/_custom_type_script = "uid://dw53gdpom3gn6"
+
+[resource]
+script = ExtResource("2_yrhdr")
+weight = 1.0
+enemy_entries = Array[ExtResource("1_dw6ln")]([SubResource("Resource_l7c76"), SubResource("Resource_hl0yq"), SubResource("Resource_h4hod")])
+encounter_name = "three_cook"
+metadata/_custom_type_script = "uid://dgu4qpyr0pnnb"

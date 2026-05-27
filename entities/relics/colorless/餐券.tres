@@ -9,5 +9,5 @@ script = ExtResource("3_hsqk7")
 relic_name = "餐券"
 id = "meal_ticket"
 icon = ExtResource("2_ewas2")
-description = "每当你进入商店房间时，回复15点生命"
+description = "每当你进入商店房间时，回复[color=green]15[/color]点生命"
 metadata/_custom_type_script = "uid://bvf88v88tbaks"

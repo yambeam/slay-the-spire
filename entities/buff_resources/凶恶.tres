@@ -8,7 +8,7 @@
 script = ExtResource("1_mk1vl")
 buff_id = "vicious"
 buff_name = "凶恶"
-description = "每当你给予易伤时，抽{stacks}张牌"
+description = "每当你给予[color=gold]易伤[/color]时，抽{stacks}张牌"
 icon = ExtResource("1_c3el6")
 buff_script = ExtResource("1_4mu47")
 metadata/_custom_type_script = "uid://c1n4sywvfnffx"

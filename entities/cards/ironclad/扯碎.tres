@@ -23,7 +23,7 @@ metadata/_custom_type_script = "uid://cxgxfbwykbp84"
 
 [sub_resource type="Resource" id="Resource_382wm"]
 script = ExtResource("3_t33nu")
-type = 12
+type = 14
 fixed_value = 1
 metadata/_custom_type_script = "uid://dtok21t0ujjui"
 
@@ -37,7 +37,7 @@ metadata/_custom_type_script = "uid://cxgxfbwykbp84"
 
 [sub_resource type="Resource" id="Resource_rct3s"]
 script = ExtResource("3_t33nu")
-type = 12
+type = 14
 fixed_value = 1
 metadata/_custom_type_script = "uid://dtok21t0ujjui"
 
@@ -62,7 +62,7 @@ metadata/_custom_type_script = "uid://c8ly86kb5vc65"
 
 [sub_resource type="Resource" id="Resource_shwgd"]
 script = ExtResource("3_t33nu")
-type = 12
+type = 14
 fixed_value = 1
 metadata/_custom_type_script = "uid://dtok21t0ujjui"
 
@@ -99,7 +99,7 @@ metadata/_custom_type_script = "uid://cxgxfbwykbp84"
 
 [sub_resource type="Resource" id="Resource_wvpkl"]
 script = ExtResource("3_t33nu")
-type = 12
+type = 14
 fixed_value = 1
 metadata/_custom_type_script = "uid://dtok21t0ujjui"
 

@@ -8,7 +8,7 @@
 script = ExtResource("1_kryk8")
 buff_id = "dexterity_down"
 buff_name = "敏捷下降"
-description = "回合结束时，失去{stacks}点敏捷"
+description = "回合结束时，失去{stacks}点[color=gold]敏捷[/color]"
 icon = ExtResource("1_fca21")
 buff_type = 1
 buff_script = ExtResource("1_d4euf")

@@ -6,8 +6,8 @@ const RELIC_UI_SCENE = preload("res://scenes/relichandler/relic_ui.tscn")
 @export var relic_uncommon_weight := 3.0
 @export var relic_rare_weight := 1.0
 
-@export var gold_min := 50
-@export var gold_max := 150
+@export var gold_min := 42
+@export var gold_max := 52
 
 @onready var chest: Control = $Chest
 @onready var line_2d: Line2D = $Chest/Line2D

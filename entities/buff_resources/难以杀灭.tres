@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="BuffResource" format=3 uid="uid://c4sr80cpx6gjk"]
+
+[ext_resource type="Script" uid="uid://c1n4sywvfnffx" path="res://scripts/costum_resources/buff_resource.gd" id="1_bioju"]
+[ext_resource type="Script" uid="uid://m457qidyo5kt" path="res://scripts/costum_resources/buffs/hard_to_kill_buff.gd" id="1_ntct6"]
+[ext_resource type="Texture2D" uid="uid://by8h81hw8ojwr" path="res://images/powers/hard_to_kill_power.png" id="2_bs17n"]
+
+[resource]
+script = ExtResource("1_bioju")
+buff_id = "hard_to_kill"
+buff_name = "难以杀灭"
+description = "每次最多受到{stacks}点伤害"
+icon = ExtResource("2_bs17n")
+affect = 1
+buff_script = ExtResource("1_ntct6")
+metadata/_custom_type_script = "uid://c1n4sywvfnffx"

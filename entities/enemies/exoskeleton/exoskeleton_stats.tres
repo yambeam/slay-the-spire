@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="EnemyStats" format=3 uid="uid://dnb1q23i1x4vm"]
+
+[ext_resource type="Resource" uid="uid://cb7216toqhb6i" path="res://entities/enemies/exoskeleton/exoskeleton_ai.tres" id="1_2yc74"]
+[ext_resource type="Script" uid="uid://bjrlwk5w4gqtk" path="res://scripts/costum_resources/enemy_stats.gd" id="2_jnx08"]
+[ext_resource type="PackedScene" uid="uid://uj6umkvhwssc" path="res://scenes/creature_visuals/exoskeleton.tscn" id="3_mmnw5"]
+
+[resource]
+script = ExtResource("2_jnx08")
+ai = ExtResource("1_2yc74")
+enemy_name = "外骨骼虫"
+hightest_max_health = 29
+lowest_max_health = 25
+visuals_scene = ExtResource("3_mmnw5")
+metadata/_custom_type_script = "uid://bjrlwk5w4gqtk"

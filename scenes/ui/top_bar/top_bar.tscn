@@ -130,6 +130,7 @@ theme_override_font_sizes/font_size = 25
 text = "999"
 
 [node name="TopBarPotion" parent="Left" unique_id=303628199 instance=ExtResource("8_y0s8s")]
+z_index = 1
 layout_mode = 2
 
 [node name="RoomIcons" type="HBoxContainer" parent="Left" unique_id=1544184524]

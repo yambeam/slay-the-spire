@@ -1,4 +1,4 @@
-[gd_resource type="SpineSkeletonDataResource" load_steps=5 format=3 uid="uid://bxgr4xva6bvb4"]
+[gd_resource type="SpineSkeletonDataResource" format=3 uid="uid://bxgr4xva6bvb4"]
 
 [ext_resource type="SpineAtlasResource" uid="uid://dajqnrqtfw7rc" path="res://animations/monsters/exoskeleton/exoskeleton.atlas" id="1_qw87j"]
 [ext_resource type="SpineSkeletonFileResource" uid="uid://dijv4cf3cs0ps" path="res://animations/monsters/exoskeleton/exoskeleton.skel" id="2_l6v06"]

@@ -8,7 +8,7 @@
 script = ExtResource("1_vhm5h")
 buff_id = "deterity"
 buff_name = "敏捷"
-description = "从卡牌获得的格挡提高{stacks}点"
+description = "从卡牌获得的[color=gold]格挡[/color]提高{stacks}点"
 icon = ExtResource("2_sk584")
 min_stack = -999
 buff_script = ExtResource("1_sk584")

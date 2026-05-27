@@ -18,7 +18,7 @@ const ELITE_ROOM_WEIGHT := 6.0      # 精英房间权重（可根据需要调整
 const UNKNOWN_ROOM_WEIGHT := 6.0    # 未知房间权重
 
 # 这里直接通过生成boss房次数判断层级
-var act = 1
+var act = 0
 
 @export var act1_bosses: Array[EnemyEncounter] = []
 @export var act2_bosses: Array[EnemyEncounter] = []
@@ -162,9 +162,9 @@ func _setup_boss_room() -> void:
 		if current_room.next_rooms:
 			current_room.next_rooms = [] as Array[Room]
 			current_room.next_rooms.append(boss_room)
-	boss_room.type =Room.Type.BOSS
+	boss_room.type = Room.Type.BOSS
+	act += 1
 	if act == 1:
-		act += 1
 		boss_room.enemy_encounter = act1_bosses.pick_random()
 	else:
 		boss_room.enemy_encounter = act2_bosses.pick_random()

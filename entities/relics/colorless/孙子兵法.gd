@@ -26,7 +26,7 @@ func _on_card_played(card: Card, _card_context: Dictionary, owner: RelicUI) -> v
 		count += 1
 		owner.update_count()
 
-func _on_combat_won(owner: RelicUI) -> void:
+func _on_combat_won(_context:RewardContext ,owner: RelicUI) -> void:
 	count = 0
 	owner.update_count()
 	available = false

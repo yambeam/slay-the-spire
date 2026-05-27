@@ -26,7 +26,6 @@ enum Where{
 func apply(source_: Node, targets: Array[Node], card_context: Dictionary, previous_result: Variant = null) -> Variant:
 	var value := put_card_count_provider.get_value(previous_result, card_context)
 	var cards_to_add :Array[Card] = []
-	
 	match source:
 		CardSource.SPECIFIED:
 			for i in range(value):

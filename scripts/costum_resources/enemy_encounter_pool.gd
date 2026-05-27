@@ -2,7 +2,7 @@ class_name EnemyEncounterPool
 extends Resource
 
 @export var pool: Array[EnemyEncounter]
-var last_encounters :Dictionary = {
+var last_encounter_names :Dictionary = {
 	EnemyEncounter.Type.WEAK: null,
 	EnemyEncounter.Type.STRONG: null,
 	EnemyEncounter.Type.ELITE: null,
@@ -11,7 +11,7 @@ var last_encounters :Dictionary = {
 var total_weights_by_type := [0.0, 0.0, 0.0, 0.0]
 
 func _get_all_encounters_by_type(type: EnemyEncounter.Type) -> Array[EnemyEncounter]:
-	return pool.filter(func(encounter: EnemyEncounter): return encounter.type == type and encounter != last_encounters[type])
+	return pool.filter(func(encounter: EnemyEncounter): return encounter.type == type and encounter.encounter_name != last_encounter_names[type])
 
 func _setup_weight_for_type(type: EnemyEncounter.Type) -> void:
 	if type == EnemyEncounter.Type.INCIDENT:
@@ -34,11 +34,11 @@ func get_random_encounter_by_type(type: EnemyEncounter.Type) -> EnemyEncounter:
 	var encounters := _get_all_encounters_by_type(type)
 	for encounter: EnemyEncounter in encounters:
 		if encounter.accumulated_weight > roll:
-			last_encounters[type] = encounter
+			last_encounter_names[type] = encounter.encounter_name
 			return encounter
 	# 由于添加了防止重复的机制导致可能出现没有命中的情况，这时就随机选一个
 	var encounter = encounters.pick_random()
-	last_encounters[type] = encounter
+	last_encounter_names[type] = encounter.encounter_name
 	return encounter
 
 func get_encounter_by_name(encounter_name: String, type: EnemyEncounter.Type = EnemyEncounter.Type.INCIDENT) -> EnemyEncounter:

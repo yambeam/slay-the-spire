@@ -6,8 +6,8 @@
 
 [resource]
 script = ExtResource("2_7qty4")
-relic_name = "circlet"
-id = "头环"
+relic_name = "头环"
+id = "circlet"
 icon = ExtResource("2_qmlso")
 description = "一件有趣的遗物，只有当高塔中出现问题，或没有更多遗物可被发现时才会出现。当然，它没有任何作用。"
 metadata/_custom_type_script = "uid://bvf88v88tbaks"

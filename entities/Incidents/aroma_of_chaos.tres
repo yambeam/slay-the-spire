@@ -15,7 +15,7 @@ eventDescription = "费力地穿过一片厚密的灌木丛并来到空地后，
 与此同时，你感受到周围的世界正开始扭曲，旋转。
 一股变幻莫测的混沌[/rainbow]将你淹没，你开始慢慢地丧失了对自我的感知。"
 option1Description = "放任自流
-附魔你牌组中的一张牌"
+选中牌组中的一张牌附魔:{enchantment}"
 option2Description = "维持理智
 升级你牌组中的一张牌"
 press_op1_title = Array[String](["放任自流"])

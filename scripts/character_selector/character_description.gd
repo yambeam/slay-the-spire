@@ -20,7 +20,7 @@ extends Control
 
 #default
 @export var nameofchar:String="铁甲战士"
-@export var health:int=33
+@export var health:int=70
 @export var initgold:int=75
 @export var describ:String="铁甲军团最后的士兵。
 并非出自自身的意愿，用刀剑与烈焰击溃敌人们。"

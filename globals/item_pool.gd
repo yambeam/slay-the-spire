@@ -415,6 +415,9 @@ func load_all_relics(dir_path: String):
 		if color_key == 0 or rarity_key == 0:
 			printerr("⚠️ 遗物 %s 的 color_key=%d, rarity_key=%d → 已跳过" % [path, color_key, rarity_key])
 			continue          # 直接跳过，不加入字典
+		# 特殊遗物头环不加入遗物池
+		if resource.id == "circlet":
+			continue
 		relics_by_color[color_key].append(resource)
 		relics_by_rarity[rarity_key].append(resource)
 		if resource.rarity == Relic.Rarity.EVENT:

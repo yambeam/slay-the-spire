@@ -13,6 +13,7 @@ func activate_relic(owner: RelicUI) -> void:
 func deactivate_relic(_owner: RelicUI) -> void:
 	if Events.combat_won.is_connected(_on_combat_won):
 		Events.combat_won.disconnect(_on_combat_won)
+	turn = 0
 
 func _on_combat_won(_context) -> void:
 	turn = 0

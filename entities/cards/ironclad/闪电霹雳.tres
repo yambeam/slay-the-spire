@@ -6,7 +6,7 @@
 [ext_resource type="Script" uid="uid://cgmi6f3o7leik" path="res://scripts/costum_resources/effect.gd" id="3_t8ehc"]
 [ext_resource type="Script" uid="uid://vkklgv0ma0yf" path="res://scripts/costum_resources/effects/attack_effect.gd" id="4_i2oj1"]
 [ext_resource type="Script" uid="uid://b8qfrs61nmcix" path="res://scripts/costum_resources/effects/apply_buff_effect.gd" id="5_bbw44"]
-[ext_resource type="AudioStream" uid="uid://drykcgvbqlvhf" path="res://audio/SFX/lightning_orb_passive.mp3" id="5_gi2mb"]
+[ext_resource type="AudioStream" uid="uid://bs0iwdjmd2w0n" path="res://audio/SFX/lightning_orb_passive.mp3" id="5_gi2mb"]
 [ext_resource type="Script" uid="uid://br1hibx18tv13" path="res://scripts/costum_resources/card.gd" id="7_gi2mb"]
 
 [sub_resource type="Resource" id="Resource_dobrv"]

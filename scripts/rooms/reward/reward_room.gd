@@ -346,10 +346,10 @@ func _randomize_extra_potion_rewards(room: Room, context: RewardContext) -> void
 
 	match room.enemy_encounter.type:
 		EnemyEncounter.Type.WEAK:
-			chance = 0.3       # 10% 概率
+			chance = 0.3      
 			bonus_amount = 1
 		EnemyEncounter.Type.STRONG:
-			chance = 0.5       # 30% 概率
+			chance = 0.5       
 			bonus_amount = 1
 		EnemyEncounter.Type.ELITE:
 			chance = 0.7

@@ -83,8 +83,8 @@ func _ready() -> void:
 				#save_data.room_state = _collect_room_state()
 				save_data.map_camera_y = 0.0
 				save_data.save_data()
-			else:
-				_save_run(true)
+			#else:
+				#_save_run(true)
 			# 特殊处理战斗房间: 先暂停combat_resolver在退出
 			if current_room.get_child_count() > 1 and current_room.get_child(0) is CombatRoom:
 				await current_room.get_child(0).stop_combat_resolver()
@@ -125,7 +125,7 @@ func _on_map_room_selected(room: Room) -> void:
 			_on_treasure_room_entered(room)
 		Room.Type.SHOP:
 			_on_shop_room_entered(room)
-			await get_tree().process_frame
+			#await get_tree().process_frame
 		Room.Type.CAMPFIRE:
 			_on_campfire_room_entered(room)
 		Room.Type.UNKNOWN:
@@ -269,7 +269,8 @@ func handleSettingsRequest() -> void:
 func _change_view(scene: PackedScene) -> Node:
 	if current_room.get_child_count() > 0:
 		current_room.get_child(0).queue_free()
-	await get_tree().process_frame
+		
+	#await get_tree().process_frame
 	var new_view := scene.instantiate()
 	current_room.add_child(new_view)
 	return new_view
@@ -295,7 +296,12 @@ func _on_combat_won(context: RewardContext) -> void:
 
 func _on_combat_reward_exited() -> void:
 	_on_room_exited()
+	
+	
 	if _pending_stage_transition:
+		#保存一下切换的地图	
+		stats.current_stage = 2
+		_save_run(true);
 		_pending_stage_transition = false
 		_transition_to_next_stage()
 
@@ -311,7 +317,10 @@ func _transition_to_next_stage() -> void:
 	# 2. 重置旧地图数据（清空地图数组和楼层计数）
 	stats.reset_map()
 	
-	map_node.play_stage_transition(stats.current_stage)
+	await map_node.play_stage_transition(stats.current_stage)
+	
+	#map_node.camera_2d.position.y = 0.0
+	_save_run(true)
 	#print("当前地图数据置空")
 	## 3. 重建第二阶段地图（起点自动为 Ancient 房间）
 	#print("======开始重建地图数据*")
@@ -386,6 +395,7 @@ func _show_map() -> void:
 	
 	#if stats.current_room!=null:
 		#stats.current_room.type=Room.Type.NOT_ASSIGNED
+	print("执行save_run ---,当前阶段:",stats.current_stage)
 	_save_run(true)
 
 func _on_map_exited() -> void:
@@ -605,6 +615,8 @@ func _save_run(on_map: bool) -> void:
 	save_data.max_potion_slot = stats.max_potion_slots
 	save_data.gold = stats.gold
 	save_data.skill_charge = character.main_skill.current_charge
+	save_data.is_need_to_change_stage = _pending_stage_transition
+	 
 	for relic: Relic in save_data.relics:
 		relic.save_count()
 	
@@ -674,6 +686,7 @@ func _load_run() -> void:
 	character.deck.cards = save_data.current_deck_cards.duplicate()
 	character.main_skill.current_charge = save_data.skill_charge
 	character.health = save_data.current_health
+	_pending_stage_transition = save_data.is_need_to_change_stage
 	ItemPool.init_item_pool(character.color)
 	for relic: Relic in save_data.relics:
 		relic.load_count()
@@ -715,13 +728,19 @@ func _load_run() -> void:
 	match save_data.state:
 		SaveGame.State.ON_MAP:
 			is_on_map = true
+			if _pending_stage_transition:
+				_pending_stage_transition = false
+				_transition_to_next_stage()
+			print("执行show_map---1")
 			_show_map()
 		SaveGame.State.IN_ROOM:
 			is_on_map = false
 			map_node.scroll_enabled = false
+			map_node.camera_2d.position.y = 0.0
 			_restore_room(save_data.room_type, save_data.last_room)
 		_:
 			is_on_map = true
+			print("执行show_map---2")
 			_show_map()  # 安全回退
 
 func _collect_room_state() -> Dictionary:

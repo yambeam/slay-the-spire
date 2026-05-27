@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://dtok21t0ujjui" path="res://scripts/costum_resources/numeric_provider.gd" id="2_4s1ah"]
 [ext_resource type="Script" uid="uid://bvf88v88tbaks" path="res://scripts/costum_resources/relic.gd" id="2_inw0s"]
 [ext_resource type="Script" uid="uid://dd8cefu454sp5" path="res://scripts/costum_resources/effects/draw_card_effect.gd" id="3_wejke"]
-[ext_resource type="Script" uid="uid://c8ly86kb5vc65" path="res://scripts/costum_resources/effects/iteration_effect.gd" id="4_38fk3"]
+[ext_resource type="Script" path="res://scripts/costum_resources/effects/iteration_effect.gd" id="4_38fk3"]
 [ext_resource type="Script" uid="uid://b8qfrs61nmcix" path="res://scripts/costum_resources/effects/apply_buff_effect.gd" id="5_81b0m"]
 [ext_resource type="Texture2D" uid="uid://cuuuaj5" path="res://images/atlases/relic_atlas.sprites/driftwood.tres" id="6_no8tr"]
 

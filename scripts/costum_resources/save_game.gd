@@ -5,8 +5,11 @@ const SAVE_PATH := "user://savegame.tres"
 
 enum State { ON_MAP, IN_ROOM }
 
-#人物数据
+#运行时数据
 @export var run_stats: RunStats
+@export var is_need_to_change_stage: bool = false
+
+#人物数据
 @export var char_stats: CharacterStats
 @export var current_deck_cards: Array[Card]
 @export var current_health: int

@@ -83,6 +83,8 @@ func _ready() -> void:
 				#save_data.room_state = _collect_room_state()
 				save_data.map_camera_y = 0.0
 				save_data.save_data()
+			else:
+				_save_run(true)
 			# 特殊处理战斗房间: 先暂停combat_resolver在退出
 			if current_room.get_child_count() > 1 and current_room.get_child(0) is CombatRoom:
 				await current_room.get_child(0).stop_combat_resolver()

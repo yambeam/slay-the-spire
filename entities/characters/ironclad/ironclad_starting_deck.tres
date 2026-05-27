@@ -15,8 +15,6 @@
 [ext_resource type="AudioStream" uid="uid://bcwmh6adledx" path="res://audio/SFX/blunt_attack.mp3" id="12_ewnxv"]
 [ext_resource type="Script" uid="uid://b8qfrs61nmcix" path="res://scripts/costum_resources/effects/apply_buff_effect.gd" id="13_y7rga"]
 [ext_resource type="Texture2D" uid="uid://c08n4uo" path="res://images/atlases/card_atlas.sprites/ironclad/bash.tres" id="14_t8brg"]
-[ext_resource type="Script" uid="uid://bfd4cqklwdhs3" path="res://scripts/costum_resources/effects/put_card_effect.gd" id="15_8xmro"]
-[ext_resource type="Texture2D" uid="uid://6ony3r" path="res://images/atlases/card_atlas.sprites/ironclad/anger.tres" id="16_7hj0v"]
 
 [sub_resource type="Resource" id="Resource_7gv3v"]
 script = ExtResource("3_ktihu")
@@ -389,110 +387,7 @@ upgraded_numeric_entries = Array[ExtResource("2_e5arj")]([SubResource("Resource_
 upgraded_effects = Array[ExtResource("4_2rb5s")]([SubResource("Resource_t3cas"), SubResource("Resource_suk4a")])
 metadata/_custom_type_script = "uid://br1hibx18tv13"
 
-[sub_resource type="Resource" id="Resource_05mso"]
-script = ExtResource("3_ktihu")
-fixed_value = 6
-metadata/_custom_type_script = "uid://dtok21t0ujjui"
-
-[sub_resource type="Resource" id="Resource_o32pn"]
-script = ExtResource("2_e5arj")
-numeric_provider = SubResource("Resource_05mso")
-placeholder = "damage"
-affected_by = 2
-metadata/_custom_type_script = "uid://cxgxfbwykbp84"
-
-[sub_resource type="Resource" id="Resource_2a7o5"]
-script = ExtResource("3_ktihu")
-fixed_value = 6
-metadata/_custom_type_script = "uid://dtok21t0ujjui"
-
-[sub_resource type="Resource" id="Resource_20lup"]
-script = ExtResource("5_sdqn1")
-damage_provider = SubResource("Resource_2a7o5")
-target_type = 2
-animation_name = "attack"
-sound = ExtResource("12_ewnxv")
-metadata/_custom_type_script = "uid://vkklgv0ma0yf"
-
-[sub_resource type="Resource" id="Resource_e6lug"]
-script = ExtResource("3_ktihu")
-fixed_value = 1
-metadata/_custom_type_script = "uid://dtok21t0ujjui"
-
-[sub_resource type="Resource" id="Resource_dbej6"]
-script = ExtResource("15_8xmro")
-source = 1
-where = 1
-put_card_count_provider = SubResource("Resource_e6lug")
-target_type = 1
-metadata/_custom_type_script = "uid://bfd4cqklwdhs3"
-
-[sub_resource type="Resource" id="Resource_jmvdx"]
-script = ExtResource("3_ktihu")
-fixed_value = 8
-metadata/_custom_type_script = "uid://dtok21t0ujjui"
-
-[sub_resource type="Resource" id="Resource_u7euy"]
-script = ExtResource("5_sdqn1")
-damage_provider = SubResource("Resource_jmvdx")
-target_type = 2
-animation_name = "attack"
-sound = ExtResource("12_ewnxv")
-metadata/_custom_type_script = "uid://vkklgv0ma0yf"
-
-[sub_resource type="Resource" id="Resource_2e8cq"]
-script = ExtResource("3_ktihu")
-fixed_value = 1
-metadata/_custom_type_script = "uid://dtok21t0ujjui"
-
-[sub_resource type="Resource" id="Resource_4fpp2"]
-script = ExtResource("15_8xmro")
-source = 1
-where = 1
-put_card_count_provider = SubResource("Resource_2e8cq")
-target_type = 1
-metadata/_custom_type_script = "uid://bfd4cqklwdhs3"
-
-[sub_resource type="Resource" id="Resource_hmecf"]
-script = ExtResource("3_ktihu")
-fixed_value = 8
-metadata/_custom_type_script = "uid://dtok21t0ujjui"
-
-[sub_resource type="Resource" id="Resource_n5u4h"]
-script = ExtResource("2_e5arj")
-numeric_provider = SubResource("Resource_hmecf")
-placeholder = "damage"
-affected_by = 2
-metadata/_custom_type_script = "uid://cxgxfbwykbp84"
-
-[sub_resource type="Resource" id="Resource_8xmro"]
-script = ExtResource("1_6dnus")
-id = "愤怒"
-base_target = 1
-effects = Array[ExtResource("4_2rb5s")]([SubResource("Resource_20lup"), SubResource("Resource_dbej6")])
-portrait = ExtResource("16_7hj0v")
-base_description = "[center]造成{damage}点伤害。[/center][p][center]将该牌的一张复制放入[color=gold]弃牌堆[/color]。[/center]"
-base_numeric_entries = Array[ExtResource("2_e5arj")]([SubResource("Resource_o32pn")])
-upgraded_target = 1
-upgraded_description = "[center]造成{damage}点伤害。[/center][p][center]将该牌的一张复制放入[color=gold]弃牌堆[/color]。[/center]"
-upgraded_numeric_entries = Array[ExtResource("2_e5arj")]([SubResource("Resource_n5u4h")])
-upgraded_effects = Array[ExtResource("4_2rb5s")]([SubResource("Resource_u7euy"), SubResource("Resource_4fpp2")])
-upgraded = true
-
-[sub_resource type="Resource" id="Resource_7hj0v"]
-script = ExtResource("1_6dnus")
-id = "愤怒"
-base_target = 1
-effects = Array[ExtResource("4_2rb5s")]([SubResource("Resource_20lup"), SubResource("Resource_dbej6")])
-portrait = ExtResource("16_7hj0v")
-base_description = "[center]造成{damage}点伤害。[/center][p][center]将该牌的一张复制放入[color=gold]弃牌堆[/color]。[/center]"
-base_numeric_entries = Array[ExtResource("2_e5arj")]([SubResource("Resource_o32pn")])
-upgraded_target = 1
-upgraded_description = "[center]造成{damage}点伤害。[/center][p][center]将该牌的一张复制放入[color=gold]弃牌堆[/color]。[/center]"
-upgraded_numeric_entries = Array[ExtResource("2_e5arj")]([SubResource("Resource_n5u4h")])
-upgraded_effects = Array[ExtResource("4_2rb5s")]([SubResource("Resource_u7euy"), SubResource("Resource_4fpp2")])
-
 [resource]
 script = ExtResource("2_pcwuu")
-cards = Array[ExtResource("1_6dnus")]([SubResource("Resource_au0bv"), SubResource("Resource_cyjvc"), SubResource("Resource_lmdw5"), SubResource("Resource_bsqa6"), SubResource("Resource_whuos"), SubResource("Resource_cilra"), SubResource("Resource_lm2nt"), SubResource("Resource_jqanm"), SubResource("Resource_q88nh"), SubResource("Resource_vp0wk"), SubResource("Resource_8xmro"), SubResource("Resource_7hj0v")])
+cards = Array[ExtResource("1_6dnus")]([SubResource("Resource_au0bv"), SubResource("Resource_cyjvc"), SubResource("Resource_lmdw5"), SubResource("Resource_bsqa6"), SubResource("Resource_whuos"), SubResource("Resource_cilra"), SubResource("Resource_lm2nt"), SubResource("Resource_jqanm"), SubResource("Resource_q88nh"), SubResource("Resource_vp0wk")])
 metadata/_custom_type_script = "uid://jvpf65gf7yuq"

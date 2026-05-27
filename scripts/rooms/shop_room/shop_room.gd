@@ -295,7 +295,7 @@ func _populate_relics() -> void:
 
 
 	var maskColor = character_color | Relic.COLOR.COLORLESS
-	var maskRarity = Relic.Rarity.COMMON | Relic.Rarity.UNCOMMON | Relic.Rarity.SHOP_RELIC | Relic.Rarity.RARE | Relic.Rarity.EVENT
+	var maskRarity = Relic.Rarity.COMMON | Relic.Rarity.UNCOMMON | Relic.Rarity.SHOP_RELIC | Relic.Rarity.RARE 
 	
 	
 	var all_relics = ItemPool.get_relics(maskColor,maskRarity)

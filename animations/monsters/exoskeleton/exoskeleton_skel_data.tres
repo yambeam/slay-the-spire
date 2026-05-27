@@ -1,7 +1,7 @@
 [gd_resource type="SpineSkeletonDataResource" format=3 uid="uid://bxgr4xva6bvb4"]
 
-[ext_resource type="SpineAtlasResource" uid="uid://dajqnrqtfw7rc" path="res://animations/monsters/exoskeleton/exoskeleton.atlas" id="1_qw87j"]
-[ext_resource type="SpineSkeletonFileResource" uid="uid://dijv4cf3cs0ps" path="res://animations/monsters/exoskeleton/exoskeleton.skel" id="2_l6v06"]
+[ext_resource type="SpineAtlasResource" uid="uid://m0up0k6vcooo" path="res://animations/monsters/exoskeleton/exoskeleton.atlas" id="1_qw87j"]
+[ext_resource type="SpineSkeletonFileResource" uid="uid://c3d6pwpphp0ws" path="res://animations/monsters/exoskeleton/exoskeleton.skel" id="2_l6v06"]
 
 [sub_resource type="SpineAnimationMix" id="SpineAnimationMix_o5l3u"]
 from = "hurt"

@@ -261,6 +261,7 @@ combat_resolver = NodePath("../CombatUI/CombatResolver")
 script = ExtResource("20_646qw")
 
 [node name="BackToMap" type="Button" parent="." unique_id=629163078]
+visible = false
 custom_minimum_size = Vector2(200, 100)
 layout_mode = 0
 offset_left = 872.0

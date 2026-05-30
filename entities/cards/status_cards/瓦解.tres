@@ -1,5 +1,6 @@
 [gd_resource type="Resource" script_class="Card" format=3 uid="uid://bry5swqjnv0eh"]
 
+[ext_resource type="Script" uid="uid://cxgxfbwykbp84" path="res://scripts/costum_resources/numeric_entry.gd" id="1_2p33u"]
 [ext_resource type="Script" uid="uid://cgmi6f3o7leik" path="res://scripts/costum_resources/effect.gd" id="2_x8ci8"]
 [ext_resource type="Script" uid="uid://dtok21t0ujjui" path="res://scripts/costum_resources/numeric_provider.gd" id="3_2p33u"]
 [ext_resource type="Script" uid="uid://br1hibx18tv13" path="res://scripts/costum_resources/card.gd" id="3_thsd1"]
@@ -22,27 +23,13 @@ metadata/_custom_type_script = "uid://b8qfrs61nmcix"
 script = ExtResource("3_thsd1")
 id = "瓦解"
 type = 8
-base_target = null
 card_color = 64
-is_x_cost = null
-base_cost = null
 rarity = 16
 discoverable = false
 draftable = false
 effects = Array[ExtResource("2_x8ci8")]([SubResource("Resource_sq8rs")])
 portrait = ExtResource("5_emj3t")
 base_description = "[center]回合结束时受到7点伤害。[/center]"
-base_numeric_entries = null
-exhaust = null
-ethereal = null
-sly = null
-eternal = null
 playable = false
-upgraded_target = null
-upgraded_cost = null
-upgraded_description = null
-upgraded_numeric_entries = null
-upgraded_effects = null
-upgraded = null
 upgradable = false
 metadata/_custom_type_script = "uid://br1hibx18tv13"

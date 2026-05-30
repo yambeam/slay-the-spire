@@ -1,6 +1,7 @@
 [gd_resource type="Resource" script_class="Card" format=3 uid="uid://djvmk3f4ikvji"]
 
 [ext_resource type="Script" uid="uid://cxgxfbwykbp84" path="res://scripts/costum_resources/numeric_entry.gd" id="1_etxtj"]
+[ext_resource type="Script" uid="uid://cgmi6f3o7leik" path="res://scripts/costum_resources/effect.gd" id="2_1ih50"]
 [ext_resource type="Texture2D" uid="uid://c1jb6px" path="res://images/atlases/card_atlas.sprites/status/wound.tres" id="2_vr240"]
 [ext_resource type="Script" uid="uid://br1hibx18tv13" path="res://scripts/costum_resources/card.gd" id="3_1ih50"]
 
@@ -10,6 +11,7 @@ id = "伤口"
 type = 8
 card_color = 64
 base_cost = 3
+rarity = 16
 discoverable = false
 draftable = false
 portrait = ExtResource("2_vr240")

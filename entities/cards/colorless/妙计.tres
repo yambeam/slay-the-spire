@@ -75,7 +75,7 @@ card_color = 64
 rarity = 2
 effects = Array[ExtResource("2_4sns2")]([SubResource("Resource_n2qyv"), SubResource("Resource_4h2vj")])
 portrait = ExtResource("7_b1po5")
-base_description = "[center]获得{blocks}点[color=gold]格挡[/color]。
+base_description = "[center]获得{block}点[color=gold]格挡[/color]。
 抽1张牌。[/center]"
 base_numeric_entries = Array[ExtResource("1_r3r45")]([SubResource("Resource_gitn6")])
 upgraded_description = "[center]获得{block}点[color=gold]格挡[/color]。

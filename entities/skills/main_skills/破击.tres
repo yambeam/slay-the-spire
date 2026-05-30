@@ -2,25 +2,25 @@
 
 [ext_resource type="Script" uid="uid://cgmi6f3o7leik" path="res://scripts/costum_resources/effect.gd" id="1_b23pt"]
 [ext_resource type="Script" uid="uid://dtok21t0ujjui" path="res://scripts/costum_resources/numeric_provider.gd" id="2_qyc4i"]
-[ext_resource type="Script" uid="uid://bhhtjppe5dfcx" path="res://scripts/costum_resources/effects/damage_effect.gd" id="3_wxalx"]
+[ext_resource type="Script" uid="uid://vkklgv0ma0yf" path="res://scripts/costum_resources/effects/attack_effect.gd" id="3_qyc4i"]
 [ext_resource type="Script" uid="uid://b8qfrs61nmcix" path="res://scripts/costum_resources/effects/apply_buff_effect.gd" id="4_cr2ep"]
-[ext_resource type="AudioStream" uid="uid://dm1wre7isrnjq" path="res://audio/SFX/heavy_attack.mp3" id="4_qyc4i"]
+[ext_resource type="AudioStream" uid="uid://bimi28moluhfn" path="res://audio/SFX/heavy_attack.mp3" id="4_qyc4i"]
 [ext_resource type="Script" uid="uid://cxgxfbwykbp84" path="res://scripts/costum_resources/numeric_entry.gd" id="5_ebba8"]
 [ext_resource type="Texture2D" uid="uid://fj7hwr" path="res://images/atlases/card_atlas.sprites/ironclad/break.tres" id="6_q8v16"]
 [ext_resource type="Script" uid="uid://cwtk3me5pyx8h" path="res://scripts/costum_resources/main_skill.gd" id="7_tlwnw"]
 
-[sub_resource type="Resource" id="Resource_g3e3e"]
+[sub_resource type="Resource" id="Resource_wxalx"]
 script = ExtResource("2_qyc4i")
 fixed_value = 30
 metadata/_custom_type_script = "uid://dtok21t0ujjui"
 
-[sub_resource type="Resource" id="Resource_crgo0"]
-script = ExtResource("3_wxalx")
-damage_provider = SubResource("Resource_g3e3e")
+[sub_resource type="Resource" id="Resource_cr2ep"]
+script = ExtResource("3_qyc4i")
+damage_provider = SubResource("Resource_wxalx")
 target_type = 2
 animation_name = "attack"
 sound = ExtResource("4_qyc4i")
-metadata/_custom_type_script = "uid://bhhtjppe5dfcx"
+metadata/_custom_type_script = "uid://vkklgv0ma0yf"
 
 [sub_resource type="Resource" id="Resource_w3aea"]
 script = ExtResource("2_qyc4i")
@@ -66,7 +66,7 @@ charge_over_turn = 5
 charge_over_kill = 7
 id = "破击"
 target = 1
-effects = Array[ExtResource("1_b23pt")]([SubResource("Resource_crgo0"), SubResource("Resource_j8o4i")])
+effects = Array[ExtResource("1_b23pt")]([SubResource("Resource_cr2ep"), SubResource("Resource_j8o4i")])
 portrait = ExtResource("6_q8v16")
 description = "造成{damage}点伤害，施加{stacks}层易伤"
 numeric_entries = Array[ExtResource("5_ebba8")]([SubResource("Resource_11o8e"), SubResource("Resource_yhh6k")])

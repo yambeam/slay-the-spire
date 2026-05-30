@@ -47,6 +47,7 @@ id = "粘液"
 type = 8
 card_color = 64
 base_cost = 1
+rarity = 16
 discoverable = false
 draftable = false
 effects = Array[ExtResource("3_qpq4r")]([SubResource("Resource_aj48f")])

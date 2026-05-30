@@ -7,22 +7,22 @@
 [ext_resource type="Script" uid="uid://br1hibx18tv13" path="res://scripts/costum_resources/card.gd" id="4_5si25"]
 [ext_resource type="Resource" uid="uid://d1ogtuh48o0sj" path="res://entities/cards/status_cards/心灵腐化.tres" id="5_46h7l"]
 [ext_resource type="Resource" uid="uid://bry5swqjnv0eh" path="res://entities/cards/status_cards/瓦解.tres" id="6_whj0u"]
-[ext_resource type="Script" path="res://scripts/costum_resources/effects/choise_effect.gd" id="7_b1qhn"]
+[ext_resource type="Script" uid="uid://chesixrxmxyeb" path="res://scripts/costum_resources/effects/choise_effect.gd" id="7_b1qhn"]
 [ext_resource type="Script" uid="uid://csyjq6ujulplm" path="res://scripts/costum_resources/effects/card_effects/card_effect.gd" id="8_03h1p"]
-[ext_resource type="Script" path="res://scripts/costum_resources/effects/foreach_card_effect.gd" id="9_dj5kb"]
+[ext_resource type="Script" uid="uid://c2drp2mlr0vhm" path="res://scripts/costum_resources/effects/foreach_card_effect.gd" id="9_dj5kb"]
 [ext_resource type="Script" uid="uid://badu40ig27ve5" path="res://scripts/costum_resources/effects/card_effects/random_play_card_effect.gd" id="9_vn2u2"]
-[ext_resource type="Script" path="res://scripts/costum_resources/effects/foreach_effect.gd" id="10_6gmkf"]
+[ext_resource type="Script" uid="uid://bgdkwbdihbpk5" path="res://scripts/costum_resources/effects/foreach_effect.gd" id="10_6gmkf"]
 [ext_resource type="Script" uid="uid://c2p6buhbk6em8" path="res://scripts/costum_resources/intents/apply_debuff_sub_intent.gd" id="11_5oho1"]
 [ext_resource type="Resource" uid="uid://b1aubck7fqd6b" path="res://entities/cards/status_cards/懒惰.tres" id="13_4nkf3"]
 [ext_resource type="Script" uid="uid://dtok21t0ujjui" path="res://scripts/costum_resources/numeric_provider.gd" id="15_y2vqp"]
 [ext_resource type="Script" uid="uid://b8qfrs61nmcix" path="res://scripts/costum_resources/effects/apply_buff_effect.gd" id="16_8gjcc"]
 [ext_resource type="Resource" uid="uid://ciuvsfuh1u8bc" path="res://entities/cards/status_cards/衰朽.tres" id="17_lm3nh"]
 [ext_resource type="Script" uid="uid://vkklgv0ma0yf" path="res://scripts/costum_resources/effects/attack_effect.gd" id="18_lxjsf"]
-[ext_resource type="AudioStream" uid="uid://b4eqc65cqogm6" path="res://audio/SFX/blunt_attack.mp3" id="19_8gjcc"]
+[ext_resource type="AudioStream" uid="uid://bcwmh6adledx" path="res://audio/SFX/blunt_attack.mp3" id="19_8gjcc"]
 [ext_resource type="Script" uid="uid://bces7ijyodhmv" path="res://scripts/costum_resources/intents/attack_sub_intent.gd" id="19_xfkie"]
-[ext_resource type="Script" path="res://scripts/costum_resources/effects/iteration_effect.gd" id="20_n68mp"]
-[ext_resource type="Script" path="res://scripts/costum_resources/effects/heal_effect.gd" id="21_y2vqp"]
-[ext_resource type="Script" path="res://scripts/costum_resources/intents/heal_sub_intent.gd" id="22_8gjcc"]
+[ext_resource type="Script" uid="uid://c8ly86kb5vc65" path="res://scripts/costum_resources/effects/iteration_effect.gd" id="20_n68mp"]
+[ext_resource type="Script" uid="uid://da1srbssi025l" path="res://scripts/costum_resources/effects/heal_effect.gd" id="21_y2vqp"]
+[ext_resource type="Script" uid="uid://c7hi1ahpoiiqo" path="res://scripts/costum_resources/intents/heal_sub_intent.gd" id="22_8gjcc"]
 [ext_resource type="Script" uid="uid://dpbv4m5rd0bbq" path="res://scripts/costum_resources/intents/apply_buff_sub_intent.gd" id="23_lm3nh"]
 
 [sub_resource type="Resource" id="Resource_vn2u2"]
@@ -58,56 +58,9 @@ intent_name = "KnowledgeCurse1"
 anim_name = "brain_rot"
 metadata/_custom_type_script = "uid://ce34juwu5b0yr"
 
-[sub_resource type="Resource" id="Resource_4xf7j"]
-script = ExtResource("15_y2vqp")
-fixed_value = 7
-metadata/_custom_type_script = "uid://dtok21t0ujjui"
-
-[sub_resource type="Resource" id="Resource_fov25"]
-script = ExtResource("16_8gjcc")
-buff_name = "瓦解"
-buff_stack_provider = SubResource("Resource_4xf7j")
-target_type = 1
-metadata/_custom_type_script = "uid://b8qfrs61nmcix"
-
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_pvgax"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_wf7x1"]
-atlas = SubResource("CompressedTexture2D_pvgax")
-region = Rect2(2017, 1537, 250, 190)
-
-[sub_resource type="Resource" id="Resource_thg1e"]
-script = ExtResource("4_5si25")
-id = "瓦解"
-type = 8
-base_target = null
-card_color = 64
-is_x_cost = null
-base_cost = null
-rarity = 16
-discoverable = false
-draftable = false
-effects = Array[ExtResource("3_fqljw")]([SubResource("Resource_fov25")])
-portrait = SubResource("AtlasTexture_wf7x1")
-base_description = "[center]回合结束时受到7点伤害。[/center]"
-base_numeric_entries = null
-exhaust = null
-ethereal = null
-sly = null
-eternal = null
-playable = false
-upgraded_target = null
-upgraded_cost = null
-upgraded_description = null
-upgraded_numeric_entries = null
-upgraded_effects = null
-upgraded = null
-upgradable = false
-metadata/_custom_type_script = "uid://br1hibx18tv13"
-
 [sub_resource type="Resource" id="Resource_imaqh"]
 script = ExtResource("7_b1qhn")
-cards_to_choose = Array[ExtResource("4_5si25")]([ExtResource("13_4nkf3"), SubResource("Resource_thg1e")])
+cards_to_choose = Array[ExtResource("4_5si25")]([ExtResource("13_4nkf3"), ExtResource("6_whj0u")])
 target_type = 2
 metadata/_custom_type_script = "uid://chesixrxmxyeb"
 

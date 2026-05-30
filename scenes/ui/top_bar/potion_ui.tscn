@@ -60,7 +60,7 @@ offset_left = 7.0
 offset_top = 11.0
 offset_right = 192.0
 offset_bottom = 112.0
-texture_normal = ExtResource("5_xh0r2")
+texture_hover = ExtResource("5_xh0r2")
 ignore_texture_size = true
 stretch_mode = 0
 
@@ -84,7 +84,7 @@ offset_left = 7.0
 offset_top = 120.0
 offset_right = 192.0
 offset_bottom = 191.0
-texture_normal = ExtResource("6_2pax7")
+texture_hover = ExtResource("6_2pax7")
 ignore_texture_size = true
 stretch_mode = 0
 

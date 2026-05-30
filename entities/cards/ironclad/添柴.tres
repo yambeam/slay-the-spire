@@ -1,5 +1,6 @@
 [gd_resource type="Resource" script_class="Card" format=3 uid="uid://dapmctnguc1os"]
 
+[ext_resource type="Script" uid="uid://cxgxfbwykbp84" path="res://scripts/costum_resources/numeric_entry.gd" id="1_1i2i2"]
 [ext_resource type="Script" uid="uid://cgmi6f3o7leik" path="res://scripts/costum_resources/effect.gd" id="2_mq18i"]
 [ext_resource type="Script" uid="uid://cqcf6adphkjfy" path="res://scripts/costum_resources/effects/select_card_effect.gd" id="3_1i2i2"]
 [ext_resource type="Script" uid="uid://br1hibx18tv13" path="res://scripts/costum_resources/card.gd" id="3_jkw20"]
@@ -75,29 +76,14 @@ metadata/_custom_type_script = "uid://c8ly86kb5vc65"
 script = ExtResource("3_jkw20")
 id = "添柴"
 type = 2
-base_target = null
-card_color = null
-is_x_cost = null
 base_cost = 1
 rarity = 4
-discoverable = null
-draftable = null
 effects = Array[ExtResource("2_mq18i")]([SubResource("Resource_oeiet"), SubResource("Resource_lyvx3"), SubResource("Resource_7i4hx")])
 portrait = ExtResource("10_7xm1b")
 base_description = "[center]消耗所有[color=gold]手牌[/color]。
 然后抽相同数量张牌。[/center]"
-base_numeric_entries = null
 exhaust = true
-ethereal = null
-sly = null
-eternal = null
-playable = null
-upgraded_target = null
-upgraded_cost = null
 upgraded_description = "[center]消耗所有[color=gold]手牌[/color]。
 然后抽相同数量张牌。[/center]"
-upgraded_numeric_entries = null
 upgraded_effects = Array[ExtResource("2_mq18i")]([SubResource("Resource_p658v"), SubResource("Resource_6tiql"), SubResource("Resource_ylx4x")])
-upgraded = null
-upgradable = null
 metadata/_custom_type_script = "uid://br1hibx18tv13"

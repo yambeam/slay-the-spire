@@ -37,7 +37,7 @@ enum COLOR {
 ## 卡牌类型
 @export var type: Type = Type.ATTACK
 ## 目标类型
-@export var base_target: Target
+@export var base_target: Target = Target.SELF
 ## 卡牌属于那个角色池，详情见COLOR枚举
 @export var card_color: COLOR = COLOR.RED
 @export var is_x_cost: bool = false

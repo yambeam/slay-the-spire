@@ -1,5 +1,6 @@
 [gd_resource type="Resource" script_class="Card" format=3 uid="uid://4l38k3ro47sj"]
 
+[ext_resource type="Script" uid="uid://cxgxfbwykbp84" path="res://scripts/costum_resources/numeric_entry.gd" id="1_shbsc"]
 [ext_resource type="Script" uid="uid://cgmi6f3o7leik" path="res://scripts/costum_resources/effect.gd" id="2_jxsv1"]
 [ext_resource type="Script" uid="uid://br1hibx18tv13" path="res://scripts/costum_resources/card.gd" id="3_euila"]
 [ext_resource type="Script" uid="uid://dtok21t0ujjui" path="res://scripts/costum_resources/numeric_provider.gd" id="3_shbsc"]
@@ -34,27 +35,11 @@ metadata/_custom_type_script = "uid://b8qfrs61nmcix"
 script = ExtResource("3_euila")
 id = "好勇斗狠"
 type = 4
-base_target = null
-card_color = null
-is_x_cost = null
 base_cost = 1
 rarity = 4
-discoverable = null
-draftable = null
 effects = Array[ExtResource("2_jxsv1")]([SubResource("Resource_1mwxc")])
 portrait = ExtResource("5_160ed")
 base_description = "[center]在你的回合开始时，将你[color=gold]弃牌堆[/color]的一张随机攻击牌放入你的[color=gold]手牌[/color]并将其升级。[/center]"
-base_numeric_entries = null
-exhaust = null
-ethereal = null
-sly = null
-eternal = null
-playable = null
-upgraded_target = null
-upgraded_cost = null
 upgraded_description = "[center]在你的回合开始时，将你[color=gold]弃牌堆[/color]的一张随机攻击牌放入你的[color=gold]手牌[/color]并将其升级。[/center]"
-upgraded_numeric_entries = null
 upgraded_effects = Array[ExtResource("2_jxsv1")]([SubResource("Resource_ndr5m")])
-upgraded = null
-upgradable = null
 metadata/_custom_type_script = "uid://br1hibx18tv13"

@@ -6,7 +6,7 @@
 [ext_resource type="Script" uid="uid://b8qfrs61nmcix" path="res://scripts/costum_resources/effects/apply_buff_effect.gd" id="4_pkvxh"]
 [ext_resource type="Script" uid="uid://dpbv4m5rd0bbq" path="res://scripts/costum_resources/intents/apply_buff_sub_intent.gd" id="5_7bxhw"]
 [ext_resource type="Script" uid="uid://vkklgv0ma0yf" path="res://scripts/costum_resources/effects/attack_effect.gd" id="6_thlp2"]
-[ext_resource type="AudioStream" uid="uid://c3pwninr1cylv" path="res://audio/SFX/slash_attack.mp3" id="7_aeog7"]
+[ext_resource type="AudioStream" uid="uid://b3reffdbqylun" path="res://audio/SFX/slash_attack.mp3" id="7_aeog7"]
 [ext_resource type="Script" uid="uid://bces7ijyodhmv" path="res://scripts/costum_resources/intents/attack_sub_intent.gd" id="8_5pvjp"]
 [ext_resource type="Script" uid="uid://ld3vvhu848yu" path="res://entities/enemies/calcified_cultist/calcified_cultist_ai.gd" id="9_0lh4r"]
 

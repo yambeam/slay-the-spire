@@ -395,7 +395,7 @@ func _show_map() -> void:
 	
 	#if stats.current_room!=null:
 		#stats.current_room.type=Room.Type.NOT_ASSIGNED
-	print("执行save_run ---,当前阶段:",stats.current_stage)
+	#print("执行save_run ---,当前阶段:",stats.current_stage)
 	_save_run(true)
 
 func _on_map_exited() -> void:
@@ -731,7 +731,7 @@ func _load_run() -> void:
 			if _pending_stage_transition:
 				_pending_stage_transition = false
 				_transition_to_next_stage()
-			print("执行show_map---1")
+			#print("执行show_map---1")
 			_show_map()
 		SaveGame.State.IN_ROOM:
 			is_on_map = false
@@ -740,7 +740,7 @@ func _load_run() -> void:
 			_restore_room(save_data.room_type, save_data.last_room)
 		_:
 			is_on_map = true
-			print("执行show_map---2")
+			#print("执行show_map---2")
 			_show_map()  # 安全回退
 
 func _collect_room_state() -> Dictionary:

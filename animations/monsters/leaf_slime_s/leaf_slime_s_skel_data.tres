@@ -1,7 +1,7 @@
 [gd_resource type="SpineSkeletonDataResource" format=3 uid="uid://l88yarj7pucn"]
 
-[ext_resource type="SpineAtlasResource" uid="uid://cw6ggpeqtjnx" path="res://animations/monsters/leaf_slime_s/leaf_slime_s.atlas" id="1_o5b5q"]
-[ext_resource type="SpineSkeletonFileResource" uid="uid://bvi4d57hnn1ku" path="res://animations/monsters/leaf_slime_s/leaf_slime_s.skel" id="2_2tbyu"]
+[ext_resource type="SpineAtlasResource" uid="uid://bh3sh85hs5s7i" path="res://animations/monsters/leaf_slime_s/leaf_slime_s.atlas" id="1_o5b5q"]
+[ext_resource type="SpineSkeletonFileResource" uid="uid://dm2e1jivvt0is" path="res://animations/monsters/leaf_slime_s/leaf_slime_s.skel" id="2_2tbyu"]
 
 [sub_resource type="SpineAnimationMix" id="SpineAnimationMix_sggjf"]
 from = "cast"

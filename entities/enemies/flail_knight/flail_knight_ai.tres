@@ -7,8 +7,8 @@
 [ext_resource type="Script" uid="uid://dpbv4m5rd0bbq" path="res://scripts/costum_resources/intents/apply_buff_sub_intent.gd" id="5_bh1hf"]
 [ext_resource type="Script" uid="uid://cgmi6f3o7leik" path="res://scripts/costum_resources/effect.gd" id="6_mwn66"]
 [ext_resource type="Script" uid="uid://vkklgv0ma0yf" path="res://scripts/costum_resources/effects/attack_effect.gd" id="7_efl4c"]
-[ext_resource type="Script" path="res://scripts/costum_resources/effects/iteration_effect.gd" id="8_7yosa"]
-[ext_resource type="AudioStream" uid="uid://b4eqc65cqogm6" path="res://audio/SFX/blunt_attack.mp3" id="8_o52hg"]
+[ext_resource type="Script" uid="uid://c8ly86kb5vc65" path="res://scripts/costum_resources/effects/iteration_effect.gd" id="8_7yosa"]
+[ext_resource type="AudioStream" uid="uid://bcwmh6adledx" path="res://audio/SFX/blunt_attack.mp3" id="8_o52hg"]
 [ext_resource type="Script" uid="uid://bces7ijyodhmv" path="res://scripts/costum_resources/intents/attack_sub_intent.gd" id="9_oc4r7"]
 [ext_resource type="Script" uid="uid://dlsv7qactirat" path="res://entities/enemies/flail_knight/flail_knight.gd" id="10_ib4dq"]
 

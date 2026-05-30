@@ -47,7 +47,7 @@ func extract_keyword(text: String) -> Array:
 	
 func _on_tooltip_show_requested(node: Node, callback_: Callable) -> void:
 	clear()
-	tooltip_timer.start(0.2)
+	tooltip_timer.start(0.5)
 	current_node = node
 	callback = callback_
 

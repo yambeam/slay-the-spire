@@ -86,7 +86,7 @@ func _give_reward():
 
 	var gold_amount =  RandomSetting.instance.randi_range(gold_min, gold_max)
 	run_node.stats.gold += gold_amount
-	print("获得金币：", gold_amount)
+	#print("获得金币：", gold_amount)
 
 	var relic = _get_random_weighted_relic(run_node.stats)
 	if relic:

@@ -72,7 +72,7 @@ metadata/_custom_type_script = "uid://vkklgv0ma0yf"
 
 [sub_resource type="Resource" id="Resource_5l6rc"]
 script = ExtResource("2_twrnw")
-fixed_value = 8
+fixed_value = 11
 metadata/_custom_type_script = "uid://dtok21t0ujjui"
 
 [sub_resource type="Resource" id="Resource_6irl6"]

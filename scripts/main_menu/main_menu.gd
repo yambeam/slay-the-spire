@@ -61,7 +61,7 @@ func handleSettings()->void:
 func _on_continue_pressed() -> void:
 	run_startup.type=RunStartup.Type.CONTINUE_RUN
 	get_tree().change_scene_to_packed(RUN_SCENE)
-	print("coutinue button pressed")
+	#print("coutinue button pressed")
 
 func _on_new_run_pressed() -> void:
 	character_selector.show()

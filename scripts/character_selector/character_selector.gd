@@ -69,7 +69,7 @@ func _set_current_charcter(new_character: CharacterStats) -> void:
 	# TODO: 设置角色描述（current_character.description
 
 func _on_start_pressed() -> void:
-	print("start with {0}".format([current_character.character_name]))
+	#print("start with {0}".format([current_character.character_name]))
 	run_startup.type = RunStartup.Type.NEW_RUN
 	run_startup.picked_character = current_character.create_instance()
 	get_tree().change_scene_to_packed(RUN_SCENE)

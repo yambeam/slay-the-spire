@@ -64,27 +64,12 @@ func _ready() -> void:
 		return
 	pause_menu.save_and_quit.connect(
 		func():
-			#var on_map := is_on_map  # 假设 Map 节点有 visible 属性；若无，需手动维护 is_on_map 变量
-			#if is_on_map:
-				#save_data.state = save_data.State.ON_MAP
-			#else:
-				#save_data.state = save_data.State.IN_ROOM
-				#save_data.map_camera_y = 0.0
-				#save_data.map_old_camera_y = 0.0
-				#if current_room.get_child_count() > 0 and current_room.get_child(0) is BattleReward:
-					#save_data.is_battle_reward = true
-					#save_data.room_state = _collect_room_state()
-			#print(save_data.potions)
-			#save_data.save_data()
 			if not is_on_map:
 				if stats.current_room.type == Room.Type.SHOP:
 					# 这么改不和规矩但是有用
 					current_room.get_child(0)._close_inventory_immediate()
-				#save_data.room_state = _collect_room_state()
 				save_data.map_camera_y = 0.0
 				save_data.save_data()
-			#else:
-				#_save_run(true)
 			# 特殊处理战斗房间: 先暂停combat_resolver在退出
 			if current_room.get_child_count() > 1 and current_room.get_child(0) is CombatRoom:
 				await current_room.get_child(0).stop_combat_resolver()
@@ -106,10 +91,10 @@ func _ready() -> void:
 			_start_run()
 		RunStartup.Type.CONTINUE_RUN:
 			_load_run()
-			print("_load_run:加载游戏数据")
+			#print("_load_run:加载游戏数据")
 
 func _on_map_room_selected(room: Room) -> void:
-	print("[MapSelect] room.type = ", room.type, " row=", room.row, " col=", room.column)
+	#print("[MapSelect] room.type = ", room.type, " row=", room.row, " col=", room.column)
 	is_scroll_blocked = true
 	is_on_map = false
 	#print("进入房间，保存游戏")
@@ -282,7 +267,7 @@ func _on_combat_won(context: RewardContext) -> void:
 			_victory()
 			return
 		_pending_stage_transition = true
-		print("boss房胜利")
+		#print("boss房胜利")
 	var reward_scene := await _change_view(BATTLE_REWARD_SCENE) as BattleReward
 	reward_scene.run_stats = stats
 	reward_scene.character_stats = character
@@ -365,7 +350,7 @@ func on_player_died()->void:
 	death_settlement.char_stats=character
 	death_settlement.run_stats=stats
 	
-	print("角色死亡")
+	#print("角色死亡")
 	if stats.current_room.type==Room.Type.ELITE:
 		elite_mob_killed-=1
 	death_settlement.init(elite_mob_killed)
@@ -402,7 +387,7 @@ func _on_map_exited() -> void:
 	map_node.hide()
 	if current_room.get_child_count() > 0:
 		current_room.get_child(0).show()
-	print("map_exited")
+	#print("map_exited")
 
 func _on_room_exited() -> void:
 	#print(">>> _on_room_exited START")
@@ -771,7 +756,7 @@ func _apply_room_state(scene: Node, state: Dictionary) -> void:
 		scene.set_save_state(state)
 		
 func _restore_room(type: Room.Type, room: Room) -> void:
-	print("Restoring room type: ", type, " room: ", room, " room.type: ", room.type if room else "null")
+	#print("Restoring room type: ", type, " room: ", room, " room.type: ", room.type if room else "null")
 	_restoring = true
 	is_on_map = false
 	var state_to_apply := save_data.room_state.duplicate()  

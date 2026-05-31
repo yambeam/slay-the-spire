@@ -71,7 +71,9 @@ func create_instance() -> CharacterStats:
 	instance.block = 0
 	instance.main_skill.current_charge = 0
 	instance.reset_energy()
-	instance.deck = instance.starting_deck.duplicate()
+	instance.deck = CardPile.new()
+	for card: Card in starting_deck.cards:
+		instance.deck.add_card(card.duplicate())
 	instance.draw_pile = CardPile.new()
 	instance.discard_pile = CardPile.new()
 	instance.exhaust_pile = CardPile.new()
@@ -87,6 +89,6 @@ func take_damage(damage: int) -> int:
 	block = clampi(block - damage, 0, block)
 	health -= actual_damage
 	if health<=0:
-		print("角色生命值小于0，角色死亡")
+		#print("角色生命值小于0，角色死亡")
 		Events.player_died_outside.emit()
 	return actual_damage

@@ -125,7 +125,7 @@ func set_init_incident_data(data:IncidentData)->void:
 	text_2.text=incident_data.option2Description
 
 	if data.incidentName=="slippery_bridge":
-		print("处理滑脚独桥的信息")
+		#print("处理滑脚独桥的信息")
 		random_card_number =  RandomSetting.instance.randi_range(0, char_stats.deck.cards.size()-1) 
 		var card:Card=char_stats.deck.cards[random_card_number]
 		text_1.text="跨越\n\""
@@ -170,30 +170,30 @@ func set_incident_data(data:IncidentData)->void:
 	text_2.text=incident_data.option2Description
 	
 func handle_slippery_bridge_op1()->void:	
-	print("原牌组数量")
-	print(char_stats.deck.cards.size())
+	#print("原牌组数量")
+	#print(char_stats.deck.cards.size())
 	char_stats.deck.remove_at_i(random_card_number)
-	print("卡牌已被移出牌组")
-	print("现在牌组数量")
+	#print("卡牌已被移出牌组")
+	#print("现在牌组数量")
 	print(char_stats.deck.cards.size())
 	Events.incident_exited.emit()
 
 func handle_this_or_that_op1()->void:
 	if countop<incident_data.press_op1_title.size():
 		#把“笨拙”加入牌组
-		print("原牌组数量")
-		print(char_stats.deck.cards.size())
+		#print("原牌组数量")
+		#print(char_stats.deck.cards.size())
 		var card:Card=preload("res://entities/cards/curse_cards/笨拙.tres")
 		char_stats.deck.add_card(card)
-		print("现在牌组数量")
-		print(char_stats.deck.cards.size())
+		#print("现在牌组数量")
+		#print(char_stats.deck.cards.size())
 		#把“笨拙”加入牌组
 		#添加随机遗物
-		print("原来遗物的数量")
-		print(run_stats.relics.size())
+		#print("原来遗物的数量")
+		#print(run_stats.relics.size())
 		add_random_relic()
-		print("现在遗物数量")
-		print(run_stats.relics.size())
+		#print("现在遗物数量")
+		#print(run_stats.relics.size())
 		#添加随机遗物
 		option_2.hide()
 	else: 
@@ -201,8 +201,8 @@ func handle_this_or_that_op1()->void:
 
 func handle_room_full_of_cheese_op1()->void:
 	if countop<incident_data.press_op1_title.size():
-		print("原牌组卡牌数量")
-		print(char_stats.deck.cards.size())
+		#print("原牌组卡牌数量")
+		#print(char_stats.deck.cards.size())
 		var newcards: Array[Card]
 		if Randomcards.size()==0:
 			Randomcards=ItemPool.get_draftable_cards(char_stats.color,ItemPool.card_type_mask, Card.Rarity.COMMON)
@@ -238,17 +238,17 @@ func _change_view(scene: PackedScene) -> Node:
 	return new_view
 	
 func _on_room_exited()->void:
-	print("rewarding room exit")
+	#print("rewarding room exit")
 	Events.incident_exited.emit()
 	
 func handle_brain_leech_op1()->void:
 	if countop<incident_data.press_op1_title.size():
-		print("原生命值")
-		print(char_stats.health)
+		#print("原生命值")
+		#print(char_stats.health)
 		#损失5点生命值
 		char_stats.take_damage(5)
-		print("现在生命值")
-		print(char_stats.health)
+		#print("现在生命值")
+		#print(char_stats.health)
 		
 		var reward_scene :=_change_view(BATTLE_REWARD_SCENE) as BattleReward
 		
@@ -266,26 +266,26 @@ func handle_brain_leech_op1()->void:
 
 func handle_the_legends_were_true_op1()->void:
 	if countop<incident_data.press_op1_title.size():
-		print("原来遗物的数量")
-		print(run_stats.relics.size())
+		#print("原来遗物的数量")
+		#print(run_stats.relics.size())
 		add_random_relic()
-		print("现在遗物数量")
-		print(run_stats.relics.size())
+		#print("现在遗物数量")
+		#print(run_stats.relics.size())
 		option_2.hide()
 	else: 
 		Events.incident_exited.emit()
 	
 func handle_jungle_maze_adventure_op1()->void:
 	if countop<incident_data.press_op1_title.size():
-		print("原金币值")
-		print(run_stats.gold)
+		#print("原金币值")
+		#print(run_stats.gold)
 		#增加35-65个金币
 		random_number= RandomSetting.instance.randi_range(0,65-35)
 		run_stats.gold=run_stats.gold+35+random_number
 		
 		
-		print("现在金币值")
-		print(run_stats.gold)
+		#print("现在金币值")
+		#print(run_stats.gold)
 		option_2.hide()
 	else: 
 		Events.incident_exited.emit()
@@ -293,20 +293,20 @@ func handle_jungle_maze_adventure_op1()->void:
 func handle_unrest_site_op1()->void:
 	if countop<incident_data.press_op1_title.size():
 		
-		print("原生命值")
-		print(char_stats.health)
+		#print("原生命值")
+		#print(char_stats.health)
 		#损失8点最大生命值
 		char_stats._set_max_health(char_stats.max_health-8)
 		
-		print("现在生命值")
-		print(char_stats.health)
+		#print("现在生命值")
+		#print(char_stats.health)
 		
 		#添加随机遗物
-		print("原来遗物的数量")
-		print(run_stats.relics.size())
+		#print("原来遗物的数量")
+		#print(run_stats.relics.size())
 		add_random_relic()
-		print("现在遗物数量")
-		print(run_stats.relics.size())
+		#print("现在遗物数量")
+		#print(run_stats.relics.size())
 		
 		option_2.hide()
 	else: 
@@ -314,21 +314,21 @@ func handle_unrest_site_op1()->void:
 	
 func handle_luminous_choir_op1()->void:
 	if countop<incident_data.press_op1_title.size():
-		print("原金币值")
-		print(run_stats.gold)
+		#print("原金币值")
+		#print(run_stats.gold)
 		#减少100-149个金币
 		random_number= RandomSetting.instance.randi_range(100,149)
 		run_stats.gold=run_stats.gold-random_number
 		if run_stats.gold<0:
 			run_stats.gold=0
-		print("现在金币值")
-		print(run_stats.gold)
+		#print("现在金币值")
+		#print(run_stats.gold)
 		
-		print("原来遗物的数量")
-		print(run_stats.relics.size())
+		#print("原来遗物的数量")
+		#print(run_stats.relics.size())
 		add_random_relic()
-		print("现在遗物数量")
-		print(run_stats.relics.size())
+		#print("现在遗物数量")
+		#print(run_stats.relics.size())
 		option_2.hide()
 	else: 
 		Events.incident_exited.emit()
@@ -341,7 +341,7 @@ func handle_aroma_of_chaos_op1()->void:
 		if newcards.size()==0:
 			set_incident_data(AROMA_OF_CHAOS)
 			countop=countop-1
-			print(countop)
+			#print(countop)
 			return	
 		#loadEnchantment("res://entities/enchantments/")
 		#var i =char_stats.deck.cards.find(newcards)
@@ -380,11 +380,11 @@ func handle_slippery_bridge_op2()->void:
 		text_1.text+=card.id
 		text_1.text+="\""
 		text_1.text+=incident_data.option1Description
-		print("当前生命值")
-		print(char_stats.health)
-		print("扣除生命值后当前生命值")
+		#print("当前生命值")
+		#print(char_stats.health)
+		#print("扣除生命值后当前生命值")
 		char_stats.take_damage(countop+3)
-		print(char_stats.health)
+		#print(char_stats.health)
 		
 	if countop==incident_data.press_op2_title.size()-1:
 		option_1.hide()
@@ -395,19 +395,19 @@ func handle_slippery_bridge_op2()->void:
 
 func handle_this_or_that_op2()->void:
 	if countop<incident_data.press_op2_title.size():
-		print("原生命值")
-		print(char_stats.health)
-		print("原金币值")
-		print(run_stats.gold)
+		#print("原生命值")
+		#print(char_stats.health)
+		#print("原金币值")
+		#print(run_stats.gold)
 		#损失6点生命值
 		char_stats.take_damage(6)
 		#增加41-69个金币
 		random_number= RandomSetting.instance.randi_range(0,69-41)
 		run_stats.gold=run_stats.gold+41+random_number
-		print("现在生命值")
-		print(char_stats.health)
-		print("现在金币值")
-		print(run_stats.gold)
+		#print("现在生命值")
+		#print(char_stats.health)
+		#print("现在金币值")
+		#print(run_stats.gold)
 		option_1.hide()
 	else: 
 		Events.incident_exited.emit()
@@ -415,16 +415,16 @@ func handle_this_or_that_op2()->void:
 
 func handle_room_full_of_cheese_op2()->void:
 	if countop<incident_data.press_op2_title.size():
-		print("原生命值")
-		print(char_stats.health)
+		#print("原生命值")
+		#print(char_stats.health)
 		char_stats.take_damage(14)
-		print("现在生命值")
-		print(char_stats.health)
-		print("原来遗物的数量")
-		print(run_stats.relics.size())
+		#print("现在生命值")
+		#print(char_stats.health)
+		#print("原来遗物的数量")
+		#print(run_stats.relics.size())
 		run_stats.add_relic(ItemPool.event_relic_dict["天选芝士"])
-		print("现在遗物数量")
-		print(run_stats.relics.size())
+		#print("现在遗物数量")
+		#print(run_stats.relics.size())
 		
 		option_1.hide()
 	else: 
@@ -432,8 +432,8 @@ func handle_room_full_of_cheese_op2()->void:
 
 func handle_brain_leech_op2()->void:
 	if countop<incident_data.press_op2_title.size():
-		print("原牌组卡牌数量")
-		print(char_stats.deck.cards.size())
+		#print("原牌组卡牌数量")
+		#print(char_stats.deck.cards.size())
 		
 		var newcards: Array[Card]
 		
@@ -454,8 +454,8 @@ func handle_brain_leech_op2()->void:
 		
 		for card in newcards:
 			char_stats.deck.add_card(card)
-		print("现在牌组卡牌数量")
-		print(char_stats.deck.cards.size())
+		#print("现在牌组卡牌数量")
+		#print(char_stats.deck.cards.size())
 		option_1.hide()
 	else: 
 		Events.incident_exited.emit()
@@ -463,17 +463,17 @@ func handle_brain_leech_op2()->void:
 func handle_the_legends_were_true_op2()->void:
 	if countop<incident_data.press_op2_title.size():
 		
-		print("原生命值")
-		print(char_stats.health)
+		#print("原生命值")
+		#print(char_stats.health)
 		
 		char_stats.take_damage(8)
 	
-		print("现在生命值")
-		print(char_stats.health)
+		#print("现在生命值")
+		#print(char_stats.health)
 		
 		random_number= RandomSetting.instance.randi_range(0,potions.size()-1)
 		var suc=run_stats.add_potion(potions[random_number])
-		print(suc)
+		#print(suc)
 		option_1.hide()
 	else: 
 		Events.incident_exited.emit()
@@ -481,19 +481,19 @@ func handle_the_legends_were_true_op2()->void:
 
 func handle_jungle_maze_adventure_op2()->void:
 	if countop<incident_data.press_op2_title.size():
-		print("原金币值")
-		print(run_stats.gold)
-		print("原生命值")
-		print(char_stats.health)
+		#print("原金币值")
+		#print(run_stats.gold)
+		#print("原生命值")
+		#print(char_stats.health)
 		#增加135-165个金币
 		random_number= RandomSetting.instance.randi_range(0,165-135)
 		run_stats.gold=run_stats.gold+135+random_number
 		#损失18点生命值
 		char_stats.take_damage(18)
-		print("现在生命值")
-		print(char_stats.health)
-		print("现在金币值")
-		print(run_stats.gold)
+		#print("现在生命值")
+		#print(char_stats.health)
+		#print("现在金币值")
+		#print(run_stats.gold)
 		option_1.hide()
 	else: 
 		Events.incident_exited.emit()
@@ -501,19 +501,19 @@ func handle_jungle_maze_adventure_op2()->void:
 func handle_unrest_site_op2()->void:
 	if countop<incident_data.press_op2_title.size():
 		
-		print("原生命值")
-		print(char_stats.health)
+		#print("原生命值")
+		#print(char_stats.health)
 		char_stats.heal(ceil(char_stats.max_health-char_stats.health))
-		print("现在生命值")
-		print(char_stats.health)
+		#print("现在生命值")
+		#print(char_stats.health)
 		
 		#把“睡眠不佳”加入牌组
-		print("原牌组数量")
-		print(char_stats.deck.cards.size())
+		#print("原牌组数量")
+		#print(char_stats.deck.cards.size())
 		var card:Card=preload("res://entities/cards/curse_cards/睡眠不佳.tres")
 		char_stats.deck.add_card(card)
-		print("现在牌组数量")
-		print(char_stats.deck.cards.size())
+		#print("现在牌组数量")
+		#print(char_stats.deck.cards.size())
 		
 		option_1.hide()
 	else: 
@@ -522,8 +522,8 @@ func handle_unrest_site_op2()->void:
 func handle_luminous_choir_op2()->void:
 	if countop<incident_data.press_op2_title.size():
 		
-		print("原牌组卡牌数量")
-		print(char_stats.deck.cards.size())
+		#print("原牌组卡牌数量")
+		#print(char_stats.deck.cards.size())
 		#从当前牌组中选择2张移除
 		var newcards: Array[Card]
 		newcards = await deck_view.select_card_pile(char_stats.deck.cards, 2, 2,"选择2张卡牌")
@@ -537,8 +537,8 @@ func handle_luminous_choir_op2()->void:
 		#把“孢子心灵”加入牌组
 		var card:Card=preload("res://entities/cards/curse_cards/孢子心灵.tres")
 		char_stats.deck.add_card(card)
-		print("现在牌组卡牌数量")
-		print(char_stats.deck.cards.size())
+		#print("现在牌组卡牌数量")
+		#print(char_stats.deck.cards.size())
 		option_1.hide()
 	else: 
 		Events.incident_exited.emit()

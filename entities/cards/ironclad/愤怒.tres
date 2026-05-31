@@ -44,6 +44,7 @@ script = ExtResource("5_oj80b")
 source = 1
 where = 1
 put_card_count_provider = SubResource("Resource_e6lug")
+target_type = 1
 metadata/_custom_type_script = "uid://bfd4cqklwdhs3"
 
 [sub_resource type="Resource" id="Resource_jmvdx"]
@@ -69,6 +70,7 @@ script = ExtResource("5_oj80b")
 source = 1
 where = 1
 put_card_count_provider = SubResource("Resource_2e8cq")
+target_type = 1
 metadata/_custom_type_script = "uid://bfd4cqklwdhs3"
 
 [sub_resource type="Resource" id="Resource_hmecf"]

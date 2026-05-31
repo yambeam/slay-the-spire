@@ -59,10 +59,10 @@ func add_rewards(room: Room, context: RewardContext) -> void:
 	
 	
 	_randomize_extra_potion_rewards(room,context)
-	print("额外遗物数量: ", context.extra_relic_count)
-	print("额外药水数量: ", context.extra_potion_count)	
-	print("相关金币数量: ",context.extra_gold)
-	print("相关卡牌数量: ",context.extra_card_count)
+	#print("额外遗物数量: ", context.extra_relic_count)
+	#print("额外药水数量: ", context.extra_potion_count)	
+	#print("相关金币数量: ",context.extra_gold)
+	#print("相关卡牌数量: ",context.extra_card_count)
 	add_gold_reward(room.enemy_encounter.roll_gold_reward())
 	add_card_reward(context)
 

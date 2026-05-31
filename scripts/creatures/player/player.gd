@@ -146,7 +146,7 @@ func gain_health(context: HealContext) -> int:
 
 func gain_max_health(context: GainMaxHealthContext) -> int:
 	stats.max_health += context.amount
-	print(stats.max_health)
+	#print(stats.max_health)
 	gain_health(HealContext.new(context.source, context.target, context.amount))
 	return context.amount
 	

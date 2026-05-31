@@ -5,7 +5,6 @@ func execute(source: Node, card_context: Dictionary = {}, _previous_result: Vari
 	var card = card_context.get("target_card", null)
 	var source_pile = card_context.get("source_pile", -1)
 	if !(card is Card):
-		print("return 0")
 		return 0
 	match source_pile:
 		SelectCardEffect.Where.HAND:

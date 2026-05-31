@@ -50,7 +50,7 @@ func initialize() -> void:
 		forging.disabled = true
 
 func _on_rest_pressed() -> void:
-	print("休息")
+	#print("休息")
 	char_stats.heal(ceil(char_stats.max_health * 0.3))
 	animation_player.play("fade_out")
 	rest.disabled = true
@@ -60,7 +60,7 @@ func _on_fade_out_finished() -> void:
 	Events.campfire_exited.emit()
 
 func _on_forging_pressed() -> void:
-	print("锻造")
+	#print("锻造")
 	var cards: Array[Card] = await deck_view.select_card_pile(forgeable_cards, 1, 1, "选择一张牌升级", DeckView.SelectionMode.UPGRADE)
 	if !cards.is_empty():
 		cards[0].upgrade()

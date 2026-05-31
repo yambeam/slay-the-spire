@@ -99,7 +99,7 @@ func restore_state(state: Dictionary) -> void:
 				if relic:
 					relic_options.append(relic)
 				else:
-					print("[Load] Failed to load relic at: ", path)
+					printerr("[Load] Failed to load relic at: ", path)
 
 		# 如果遗物选项非空则创建 UI，否则随机生成（安全回退）
 		if relic_options.is_empty():

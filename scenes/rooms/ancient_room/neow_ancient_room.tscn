@@ -3,13 +3,13 @@
 [ext_resource type="SpineSkeletonDataResource" uid="uid://b8qcmnqy80wb3" path="res://animations/backgrounds/neow_room/neow.tres" id="1_8f5lu"]
 [ext_resource type="Texture2D" uid="uid://dpeuhrd5dmvsy" path="res://animations/backgrounds/neow_room/neow_bg.png" id="1_bcp67"]
 [ext_resource type="Script" uid="uid://cutupdoq1h8k" path="res://scripts/rooms/ancient_room/ancient_room.gd" id="1_es3kp"]
-[ext_resource type="Texture2D" uid="uid://b3y04h5kyjxn4" path="res://images/vfx/dot.png" id="3_ldvs6"]
+[ext_resource type="Texture2D" uid="uid://d2srbops1xqm0" path="res://images/vfx/dot.png" id="3_ldvs6"]
 [ext_resource type="Texture2D" uid="uid://kbk0da" path="res://images/atlases/ui_atlas.sprites/proceed_button.tres" id="9_0pwy4"]
-[ext_resource type="FontFile" uid="uid://dqmshhaunu4jy" path="res://fonts/zhs/SourceHanSerifSC-Bold.otf" id="9_0rg71"]
+[ext_resource type="FontFile" uid="uid://wcoiw83db02h" path="res://fonts/zhs/SourceHanSerifSC-Bold.otf" id="9_0rg71"]
 [ext_resource type="Texture2D" uid="uid://pgxvw4uevmce" path="res://animations/backgrounds/neow_room/neow_vignette.png" id="9_vho1v"]
-[ext_resource type="Texture2D" uid="uid://vkpb57sv14qf" path="res://images/vfx/short_grain_rice_particle.png" id="11_j0k18"]
+[ext_resource type="Texture2D" uid="uid://b7gtl7gvi5tfc" path="res://images/vfx/short_grain_rice_particle.png" id="11_j0k18"]
 [ext_resource type="Texture2D" uid="uid://cfmhfqvktmk06" path="res://images/vfx/monsters/the_insatiable/sand_cloud.png" id="14_1qfuc"]
-[ext_resource type="Texture2D" uid="uid://ct1o2rtgfvjlt" path="res://images/vfx/miasma_cloud.png" id="15_lyenu"]
+[ext_resource type="Texture2D" uid="uid://ul1oevmcxsoj" path="res://images/vfx/miasma_cloud.png" id="15_lyenu"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_uldxj"]
 
@@ -146,10 +146,9 @@ metadata/_edit_lock_ = true
 [node name="SpineBoneNode" type="SpineBoneNode" parent="SpineSprite" unique_id=1310767612]
 bone_name = "eye a 1"
 show_behind_parent = true
-position = Vector2(2635.192, 830.93146)
-rotation = 0.025452705
-scale = Vector2(0.9010523, 0.9005223)
-skew = 2.9921532e-05
+position = Vector2(2631.2957, 836.99835)
+rotation = 0.006870795
+scale = Vector2(0.9010428, 0.9006952)
 
 [node name="light4" type="CPUParticles2D" parent="SpineSprite/SpineBoneNode" unique_id=1399388701]
 show_behind_parent = true
@@ -172,10 +171,9 @@ color_ramp = SubResource("Gradient_vwgt8")
 [node name="SpineBoneNode2" type="SpineBoneNode" parent="SpineSprite" unique_id=968764]
 bone_name = "eye b 1"
 show_behind_parent = true
-position = Vector2(2768.7646, 919.3489)
-rotation = 0.025452705
-scale = Vector2(0.9010523, 0.9005223)
-skew = 2.9921532e-05
+position = Vector2(2766.544, 922.93335)
+rotation = 0.006870795
+scale = Vector2(0.9010428, 0.9006952)
 
 [node name="light4" type="CPUParticles2D" parent="SpineSprite/SpineBoneNode2" unique_id=398644402]
 show_behind_parent = true
@@ -198,10 +196,9 @@ color_ramp = SubResource("Gradient_vwgt8")
 [node name="SpineBoneNode3" type="SpineBoneNode" parent="SpineSprite" unique_id=1361686578]
 bone_name = "eye c 1"
 show_behind_parent = true
-position = Vector2(2892.6768, 994.7188)
-rotation = 0.025452705
-scale = Vector2(0.9010523, 0.9005223)
-skew = 2.9921532e-05
+position = Vector2(2891.8826, 996.00024)
+rotation = 0.006870795
+scale = Vector2(0.9010428, 0.9006952)
 
 [node name="light4" type="CPUParticles2D" parent="SpineSprite/SpineBoneNode3" unique_id=418971897]
 show_behind_parent = true

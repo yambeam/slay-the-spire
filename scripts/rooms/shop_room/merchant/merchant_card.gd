@@ -22,7 +22,7 @@ func _ready():
 	cost_label = get_node_or_null("Cost/CostLabel") as Label
 	sale_visual = get_node_or_null("SaleVisual") as Sprite2D   
 	if not card_holder:
-		print("错误：未找到 CardHolder")
+		printerr("错误：未找到 CardHolder")
 		return
 	if shop_item:
 		_refresh_display()

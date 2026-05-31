@@ -20,7 +20,7 @@ func _ready():
 	relic_holder = get_node_or_null("RelicHolder") as Control
 	cost_label = get_node_or_null("Cost/CostLabel") as Label
 	if not relic_holder:
-		print("错误：未找到 RelicHolder")
+		printerr("错误：未找到 RelicHolder")
 		return
 	if shop_item:
 		_refresh_display()

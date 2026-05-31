@@ -178,7 +178,7 @@ func _initialize_inventory_nodes() -> void:
 	if slots_container:
 		_set_slots_initial_position(slots_container)
 	else:
-		print("错误：未找到 SlotsContainer 节点！")
+		printerr("错误：未找到 SlotsContainer 节点！")
 		
 
 #获取runstats
@@ -258,7 +258,7 @@ func _populate_cards() -> void:
 				slots.append(child)
 		_clear_slots(slots, "shop_item")
 		if slots.is_empty() or cards_array.is_empty():
-			print(region_name + "：无槽位或牌库为空")
+			printerr(region_name + "：无槽位或牌库为空")
 			return
 
 		var available = cards_array.duplicate()
@@ -529,11 +529,11 @@ func _show_card_removal_selection() -> Card:
 	is_exiting = false
 	var run_node = _get_run_node()
 	if not run_node or not run_node.character:
-		print("无法获取角色数据")
+		printerr("无法获取角色数据")
 		return null
 	var deck = run_node.character.deck
 	if not deck or deck.cards.is_empty():
-		print("牌组为空，无法移除卡牌")
+		printerr("牌组为空，无法移除卡牌")
 		return null
 
 	var deck_view: DeckView = get_node_or_null("/root/Run/DeckViewLayer/DeckView") as DeckView
@@ -543,17 +543,17 @@ func _show_card_removal_selection() -> Card:
 		deck_view = _find_node_of_type(run_node, DeckView)
 	
 	if not deck_view:
-		print("严重错误：未找到 DeckView 节点，无法弹出选择界面")
+		printerr("严重错误：未找到 DeckView 节点，无法弹出选择界面")
 		return null
 
-	print("成功获取 DeckView，正在调用 select_card_pile...")
+	#print("成功获取 DeckView，正在调用 select_card_pile...")
 	
 	var selected = await deck_view.select_card_pile(
 		deck.cards.duplicate(),
 		1, 1,
 		"选择一张卡牌移除"
 	)
-	print("选择结果数组大小: ", selected.size())
+	#print("选择结果数组大小: ", selected.size())
 	is_exiting = true
 	if selected.size() > 0:
 		return selected[0]

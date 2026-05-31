@@ -83,9 +83,9 @@ func _on_inspect_card_requested(card: Card) -> void:
 func _on_card_selected(card: Card) -> void:
 	match selection_mode:
 		SelectionMode.UPGRADE:
-			print("enter")
+			#print("enter")
 			if max_selection == 1:
-				print("show")
+				#print("show")
 				upgrade_card_inspect.show_card(card)
 			else:
 				_on_card_select_normal(card)
